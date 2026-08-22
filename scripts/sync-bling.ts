@@ -71,13 +71,18 @@ function limparNomeBase(nome: string): string {
 
 // O campo "marca" no Bling e' texto livre, digitado a cada cadastro - por isso a mesma marca
 // aparece com grafias diferentes (ex: "Animale", "ANIMALE"; "Slywear", "SLYWEAR"). Essa funcao
-// so' padroniza CAPITALIZACAO (mecanico, sem adivinhar se marcas com nomes diferentes sao a
-// mesma coisa - ex: "Sly" x "Slywear" ficam de propostio separadas, ver aviso no final do script).
+// padroniza CAPITALIZACAO e tambem funde apelidos conhecidos da mesma marca (confirmado com o
+// Brunno em 22/08/2026: "Sly" e "Slywear" sao a mesma marca, so' grafia diferente).
 const MARCAS_SIGLA = new Set(["nv"]); // marcas que devem ficar em maiusculo (siglas curtas)
+const MARCAS_APELIDOS: Record<string, string> = {
+  sly: "Slywear"
+};
 function normalizarMarca(marca: string): string {
   const limpo = marca.trim();
   if (!limpo) return "Sem marca";
-  if (MARCAS_SIGLA.has(limpo.toLowerCase())) return limpo.toUpperCase();
+  const chave = limpo.toLowerCase();
+  if (MARCAS_APELIDOS[chave]) return MARCAS_APELIDOS[chave];
+  if (MARCAS_SIGLA.has(chave)) return limpo.toUpperCase();
   return limpo.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
 }
 
