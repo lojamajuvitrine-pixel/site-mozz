@@ -21,15 +21,20 @@ projeto) que eu sigo com a parte técnica.
 
 - [ ] Entrar em [developer.bling.com.br](https://developer.bling.com.br) com o login que
       já usa no Bling da MOZZ.
-- [ ] Ir em "Meus Aplicativos" → criar um aplicativo novo (nome sugerido: "Site MOZZ").
-      Nos escopos, marcar pelo menos: Produtos (leitura), Estoques (leitura), Pedidos de
-      Venda (leitura e escrita).
-- [ ] Isso gera um **Client ID** e um **Client Secret**.
-- [ ] Fazer a autorização inicial (o Bling vai pedir login + aprovação, isso só você
-      consegue fazer, é a sua conta) — esse passo gera o **Refresh Token** de longa
-      duração, que fica salvo com segurança e é o que o site usa pra sempre buscar
-      catálogo/estoque e lançar pedidos, sem precisar logar de novo.
-- 🔑 Client ID, Client Secret e Refresh Token.
+- [ ] Central de Extensões → Área do Integrador → **Criar aplicativo** (nome sugerido:
+      "Site MOZZ", visibilidade: privado/só pra você).
+- [ ] No campo **Link de redirecionamento**, cole exatamente:
+      `https://site-mozz.vercel.app/api/bling/callback`
+      (esse é o endereço que já deixei pronto no site pra receber a autorização — se
+      trocarmos de domínio depois, é só editar esse campo de novo).
+- [ ] Em **Escopos**, adicionar pelo menos: Produtos (leitura), Estoques (leitura),
+      Pedidos de Venda (leitura e escrita).
+- [ ] Salvar. Na aba "Informações do app" vão aparecer o **Client ID** e o **Client
+      Secret** (clique no ícone de olho pra revelar o secret).
+- 🔑 Me manda o Client ID e o Client Secret assim que tiver. Eu não tenho acesso à sua
+      conta Vercel, então você mesmo adiciona os dois em Project Settings → Environment
+      Variables (`BLING_CLIENT_ID` e `BLING_CLIENT_SECRET`) e clica em Redeploy — aí eu te
+      devolvo o link de autorização pra você clicar (é o último passo, só um clique).
 
 ## 3. Mercado Pago — conta e credenciais
 
