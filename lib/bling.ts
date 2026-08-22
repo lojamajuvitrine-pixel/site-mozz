@@ -7,6 +7,9 @@
 //
 // Passo a passo de como gerar o primeiro refresh_token esta' em PROXIMOS_PASSOS.md.
 
+import * as fs from "fs";
+import * as path from "path";
+
 const BLING_HOST = "https://api.bling.com.br/Api/v3";
 const BLING_OAUTH_TOKEN_URL = "https://api.bling.com.br/Api/v3/oauth/token";
 
@@ -18,6 +21,28 @@ type BlingTokenResponse = {
 };
 
 let cachedAccessToken: { token: string; expiraEm: number } | null = null;
+
+// O Bling invalida o refresh_token antigo e devolve um NOVO a cada troca (rotacao de refresh
+// token) - usar o valor antigo de novo depois disso da' "Invalid refresh token". Quando rodando
+// localmente (scripts/sync-bling.ts via tsx), a gente atualiza o .env.local sozinho pra nao
+// depender de copiar/colar toda vez. Em producao na Vercel isso nao persiste entre chamadas
+// (sistema de arquivos efemero/somente leitura) - por isso o uso do Bling la' fica limitado
+// a testes pontuais; o fluxo principal e' rodar o sync localmente.
+function atualizarRefreshTokenLocal(novoToken: string) {
+  try {
+    const caminho = path.join(process.cwd(), ".env.local");
+    if (!fs.existsSync(caminho)) return;
+    const conteudo = fs.readFileSync(caminho, "utf-8");
+    const jaTem = /^BLING_REFRESH_TOKEN=.*$/m.test(conteudo);
+    const atualizado = jaTem
+      ? conteudo.replace(/^BLING_REFRESH_TOKEN=.*$/m, `BLING_REFRESH_TOKEN=${novoToken}`)
+      : `${conteudo.trimEnd()}\nBLING_REFRESH_TOKEN=${novoToken}\n`;
+    fs.writeFileSync(caminho, atualizado);
+    console.log("[bling] .env.local atualizado automaticamente com o novo refresh_token.");
+  } catch {
+    // sistema de arquivos somente leitura (ex: Vercel em producao) - inofensivo, so' ignora
+  }
+}
 
 async function obterAccessToken(): Promise<string> {
   if (cachedAccessToken && cachedAccessToken.expiraEm > Date.now()) {
@@ -60,14 +85,11 @@ async function obterAccessToken(): Promise<string> {
     expiraEm: Date.now() + (dados.expires_in - 60) * 1000
   };
 
-  // IMPORTANTE: o Bling invalida o refresh_token antigo e devolve um NOVO a cada troca
-  // (rotacao de refresh token). Sem banco de dados pra guardar isso automaticamente, o novo
-  // valor e' so' impresso no log - se ele vier diferente do que esta' configurado, precisa
-  // atualizar BLING_REFRESH_TOKEN (no .env.local e na Vercel) com esse valor novo, senao a
-  // PROXIMA renovacao vai falhar com "Invalid refresh token".
   if (dados.refresh_token && dados.refresh_token !== refreshToken) {
+    process.env.BLING_REFRESH_TOKEN = dados.refresh_token; // vale pro resto desse processo
+    atualizarRefreshTokenLocal(dados.refresh_token);
     console.warn(
-      `[bling] refresh_token foi rotacionado. Atualize BLING_REFRESH_TOKEN para: ${dados.refresh_token}`
+      `[bling] refresh_token foi rotacionado. Novo valor: ${dados.refresh_token} (na Vercel, atualize BLING_REFRESH_TOKEN manualmente com esse valor se for usar o app la').`
     );
   }
 
