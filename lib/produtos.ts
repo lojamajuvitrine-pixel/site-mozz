@@ -9,6 +9,9 @@ export type Produto = {
   descricao: string;
   tamanhos: string[];
   imagem: string | null;
+  // presente so' em produtos vindos do sync real do Bling (scripts/sync-bling.ts) - indica
+  // se ALGUM tamanho tem saldo em estoque. Produtos do seed manual nao tem esse campo.
+  temEstoque?: boolean;
 };
 
 // Fonte de dados hoje: data/produtos.json (seed manual, so' pra desenvolvimento).
