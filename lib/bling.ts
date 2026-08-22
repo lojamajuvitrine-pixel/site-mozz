@@ -59,6 +59,18 @@ async function obterAccessToken(): Promise<string> {
     // renova um pouco antes de expirar de verdade, pra nao correr risco de token vencido
     expiraEm: Date.now() + (dados.expires_in - 60) * 1000
   };
+
+  // IMPORTANTE: o Bling invalida o refresh_token antigo e devolve um NOVO a cada troca
+  // (rotacao de refresh token). Sem banco de dados pra guardar isso automaticamente, o novo
+  // valor e' so' impresso no log - se ele vier diferente do que esta' configurado, precisa
+  // atualizar BLING_REFRESH_TOKEN (no .env.local e na Vercel) com esse valor novo, senao a
+  // PROXIMA renovacao vai falhar com "Invalid refresh token".
+  if (dados.refresh_token && dados.refresh_token !== refreshToken) {
+    console.warn(
+      `[bling] refresh_token foi rotacionado. Atualize BLING_REFRESH_TOKEN para: ${dados.refresh_token}`
+    );
+  }
+
   return cachedAccessToken.token;
 }
 
