@@ -1,0 +1,82 @@
+[
+  {
+    "id": "blusa-tricot-aurora",
+    "nome": "Blusa Tricot Aurora",
+    "marca": "NV",
+    "preco": 798.0,
+    "novo": true,
+    "descricao": "Blusa em tricot fino, caimento reto, gola careca.",
+    "tamanhos": ["P", "M", "G"],
+    "imagem": null
+  },
+  {
+    "id": "trench-coat-samantha",
+    "nome": "Trench Coat Samantha",
+    "marca": "NV",
+    "preco": 2198.0,
+    "novo": false,
+    "descricao": "Trench coat alfaiatado, forro interno, cinto de amarrar.",
+    "tamanhos": ["P", "M", "G", "GG"],
+    "imagem": null
+  },
+  {
+    "id": "camisa-manga-longa-hannah",
+    "nome": "Camisa Manga Longa Hannah",
+    "marca": "NV",
+    "preco": 748.0,
+    "novo": false,
+    "descricao": "Camisa de seda, manga longa, botões forrados.",
+    "tamanhos": ["P", "M", "G"],
+    "imagem": null
+  },
+  {
+    "id": "jaqueta-puffer-downtown",
+    "nome": "Jaqueta Puffer Downtown",
+    "marca": "Foxton",
+    "preco": 999.0,
+    "novo": false,
+    "descricao": "Jaqueta puffer impermeável, forro térmico.",
+    "tamanhos": ["P", "M", "G", "GG", "3G"],
+    "imagem": null
+  },
+  {
+    "id": "jaqueta-casual-sarja",
+    "nome": "Jaqueta Casual Sarja",
+    "marca": "Foxton",
+    "preco": 999.0,
+    "novo": false,
+    "descricao": "Jaqueta em sarja, corte reto, bolsos frontais.",
+    "tamanhos": ["P", "M", "G", "GG"],
+    "imagem": null
+  },
+  {
+    "id": "vestido-midi-linho",
+    "nome": "Vestido Midi Linho",
+    "marca": "Animale",
+    "preco": 429.0,
+    "novo": true,
+    "descricao": "Vestido midi em linho, decote V, amarração lateral.",
+    "tamanhos": ["P", "M", "G"],
+    "imagem": null
+  },
+  {
+    "id": "conjunto-alfaiataria",
+    "nome": "Conjunto Alfaiataria",
+    "marca": "Animale",
+    "preco": 589.0,
+    "novo": false,
+    "descricao": "Conjunto blazer e calça pantalona em alfaiataria.",
+    "tamanhos": ["P", "M", "G"],
+    "imagem": null
+  },
+  {
+    "id": "camiseta-basica-reserva",
+    "nome": "Camiseta Básica Reserva",
+    "marca": "Reserva",
+    "preco": 149.0,
+    "novo": false,
+    "descricao": "Camiseta 100% algodão, corte tradicional.",
+    "tamanhos": ["P", "M", "G", "GG"],
+    "imagem": null
+  }
+]
