@@ -69,6 +69,18 @@ function limparNomeBase(nome: string): string {
     .trim();
 }
 
+// O campo "marca" no Bling e' texto livre, digitado a cada cadastro - por isso a mesma marca
+// aparece com grafias diferentes (ex: "Animale", "ANIMALE"; "Slywear", "SLYWEAR"). Essa funcao
+// so' padroniza CAPITALIZACAO (mecanico, sem adivinhar se marcas com nomes diferentes sao a
+// mesma coisa - ex: "Sly" x "Slywear" ficam de propostio separadas, ver aviso no final do script).
+const MARCAS_SIGLA = new Set(["nv"]); // marcas que devem ficar em maiusculo (siglas curtas)
+function normalizarMarca(marca: string): string {
+  const limpo = marca.trim();
+  if (!limpo) return "Sem marca";
+  if (MARCAS_SIGLA.has(limpo.toLowerCase())) return limpo.toUpperCase();
+  return limpo.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
+}
+
 async function main() {
   const limiteArg = process.argv.find((a) => a.startsWith("--limite="));
   const limite = limiteArg ? Number(limiteArg.split("=")[1]) : null;
@@ -140,7 +152,7 @@ async function main() {
     produtosMapeados.push({
       id: String(chaveGrupo),
       nome: nomeBase,
-      marca: marca || "Sem marca",
+      marca: normalizarMarca(marca),
       preco: variacoes[0].preco,
       novo: false,
       descricao: "",
@@ -160,6 +172,14 @@ async function main() {
   if (semMarca > 0) {
     console.log(`Atencao: ${semMarca} produto(s) ficaram sem marca identificada - revisar manualmente no arquivo.`);
   }
+
+  const marcas = Array.from(new Set(produtosMapeados.map((p) => p.marca))).sort();
+  console.log(`\nMarcas encontradas (${marcas.length}): ${marcas.join(", ")}`);
+  console.log(
+    "Confere essa lista: se aparecerem duas entradas parecidas (ex: 'Sly' e 'Slywear') que na" +
+      " verdade sao a mesma marca escrita diferente no Bling, me avisa qual e' o nome certo" +
+      " que eu ajusto o de-para no script."
+  );
 }
 
 main().catch((erro) => {
