@@ -92,6 +92,14 @@ export async function listarSaldosEstoqueBling(idsProdutos: number[]) {
   return blingFetch<{ data: unknown[] }>(`/estoques/saldos?${query}`);
 }
 
+// GET /Api/v3/produtos/{id} - detalhe completo de UM produto. Usado so' pra diagnostico
+// (ver diagnostico-marca abaixo): o endpoint de LISTA (/produtos) nao devolve o campo de
+// marca, entao aqui a gente confirma se o detalhe traz esse campo antes de montar o
+// mapeamento definitivo em scripts/sync-bling.ts.
+export async function buscarProdutoDetalheBling(id: number) {
+  return blingFetch<{ data: unknown }>(`/produtos/${id}`);
+}
+
 // POST /Api/v3/pedidos/vendas - cria um pedido de venda no Bling a partir de um pedido
 // aprovado no site. O mapeamento exato de campos (deposito, categoria, forma de pagamento,
 // numeracao) depende de como a conta Bling da MOZZ esta configurada hoje - o formato abaixo
