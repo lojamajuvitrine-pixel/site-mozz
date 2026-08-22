@@ -15,6 +15,11 @@
 //
 // Uso: npm run sync:bling            -> roda o catalogo inteiro (pode levar alguns minutos)
 //      npm run sync:bling -- --limite=20   -> roda só os 20 primeiros grupos, pra testar rápido
+// Esse script roda fora do Next.js (via tsx direto), entao o .env.local NAO e' carregado
+// sozinho como acontece com "next dev"/"next build" - precisa carregar na mao aqui.
+import { config as carregarEnv } from "dotenv";
+carregarEnv({ path: ".env.local" });
+
 import { writeFileSync } from "fs";
 import { listarProdutosBling, buscarProdutoDetalheBling } from "../lib/bling";
 
