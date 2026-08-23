@@ -3,14 +3,14 @@ import { criarPreferenciaPagamento, type ItemCarrinho } from "@/lib/mercadopago"
 
 export async function POST(request: NextRequest) {
   try {
-    const body = (await request.json()) as { itens: ItemCarrinho[] };
+    const body = (await request.json()) as { itens: ItemCarrinho[]; cupomCodigo?: string };
 
     if (!body.itens || body.itens.length === 0) {
       return NextResponse.json({ erro: "Carrinho vazio" }, { status: 400 });
     }
 
     const numeroPedido = `MOZZ-${Date.now()}`;
-    const preferencia = await criarPreferenciaPagamento(body.itens, numeroPedido);
+    const preferencia = await criarPreferenciaPagamento(body.itens, numeroPedido, body.cupomCodigo);
 
     return NextResponse.json({
       initPoint: preferencia.init_point,

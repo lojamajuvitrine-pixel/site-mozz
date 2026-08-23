@@ -112,10 +112,11 @@ function corSlug(cor: string): string {
 }
 
 // Cache do produtos.json da rodada anterior, indexado por id - usado pra pular a chamada de
-// detalhe (marca/nome) em produtos que a gente ja processou antes. Marca praticamente nunca
-// muda depois de cadastrada, entao isso e' seguro e economiza a maior parte do tempo do sync
-// no dia-a-dia (so' produto NOVO no Bling precisa de chamada de detalhe).
-type CacheProduto = { marca: string; nome: string };
+// detalhe (marca/nome/descricao) em produtos que a gente ja processou antes. Marca e
+// descricao praticamente nunca mudam depois de cadastradas, entao isso e' seguro e economiza
+// a maior parte do tempo do sync no dia-a-dia (so' produto NOVO no Bling, ou sem foto ainda,
+// precisa de chamada de detalhe).
+type CacheProduto = { marca: string; nome: string; descricao: string; composicao?: string };
 function carregarCache(): Map<string, CacheProduto> {
   const cache = new Map<string, CacheProduto>();
   try {
@@ -123,12 +124,44 @@ function carregarCache(): Map<string, CacheProduto> {
       id: string;
       nome: string;
       marca: string;
+      descricao?: string;
+      composicao?: string;
     }>;
-    for (const p of anterior) cache.set(p.id, { marca: p.marca, nome: p.nome });
+    for (const p of anterior) {
+      cache.set(p.id, { marca: p.marca, nome: p.nome, descricao: p.descricao ?? "", composicao: p.composicao });
+    }
   } catch {
     // primeira vez rodando, ou arquivo corrompido - sem problema, so' processa tudo do zero
   }
   return cache;
+}
+
+// O Bling guarda a descricao do produto como HTML livre (o texto que o time digita na tela
+// de cadastro) - aqui a gente tira as tags e sobra so' o texto corrido, pra exibir simples no
+// site sem precisar renderizar HTML (e sem risco de HTML quebrado vindo do Bling).
+function textoSemHtml(html: string): string {
+  return html
+    .replace(/<br\s*\/?>/gi, "\n")
+    .replace(/<\/p>/gi, "\n")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/gi, "&")
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{2,}/g, "\n")
+    .split("\n")
+    .map((linha) => linha.trim())
+    .filter(Boolean)
+    .join("\n")
+    .trim();
+}
+
+// Best-effort: se o time escreveu uma linha tipo "Composição: 100% algodão" dentro da
+// descricao do Bling, a gente extrai so' essa parte pra mostrar separada na pagina do
+// produto. Se nao achar esse padrao, composicao fica undefined (a pagina mostra um aviso
+// honesto em vez de inventar tecido - ver lib/detalhesProduto.ts).
+function extrairComposicao(descricaoPlana: string): string | undefined {
+  const m = descricaoPlana.match(/composi[cç][aã]o[:\s-]+([^\n]+)/i);
+  return m ? m[1].trim() : undefined;
 }
 
 type ProdutoBlingLista = {
@@ -154,6 +187,11 @@ type DetalheBling = {
   data: {
     marca?: string;
     nome?: string;
+    // nomes de campo nao confirmados 100% em producao (o sandbox aqui nao tem rede pra
+    // testar contra a API real) - por isso tenta os dois nomes conhecidos da doc da API v3
+    // do Bling; se nenhum vier preenchido, descricao so fica vazia (sem quebrar nada).
+    descricaoCurta?: string;
+    descricaoComplementar?: string;
     // midia do PRODUTO em si (nao de uma variacao especifica) - existe sempre, mas so' e'
     // usada como fallback (ver comentario onde e' lida abaixo).
     midia?: { imagens?: { internas?: ImagemDetalheBling[] } };
@@ -272,6 +310,7 @@ async function main() {
     preco: number;
     novo: boolean;
     descricao: string;
+    composicao?: string;
     cores: VarianteCorSaida[];
     imagem: string | null;
     temEstoque: boolean;
@@ -316,6 +355,8 @@ async function main() {
     const precisaDetalhe = !doCache || coresSemFoto.length > 0;
 
     let marcaFinal: string;
+    let descricaoFinal = doCache?.descricao ?? "";
+    let composicaoFinal = doCache?.composicao;
     if (!precisaDetalhe && doCache) {
       marcaFinal = doCache.marca;
       if (doCache.nome) nomeBase = doCache.nome;
@@ -329,6 +370,11 @@ async function main() {
           marca = detalhe.data.marca ?? "";
           marcaJaNormalizada = false;
           if (detalhe.data.nome) nomeBase = limparNomeBase(detalhe.data.nome);
+        }
+        const descricaoHtml = detalhe.data.descricaoCurta || detalhe.data.descricaoComplementar || "";
+        if (descricaoHtml) {
+          descricaoFinal = textoSemHtml(descricaoHtml);
+          composicaoFinal = extrairComposicao(descricaoFinal) ?? composicaoFinal;
         }
         // monta cor -> LINKS de foto (pode ser mais de uma por cor - o Bling deixa cadastrar
         // varias fotos da mesma peca/cor) usando as variacoes do PROPRIO detalhe (cada uma
@@ -403,7 +449,8 @@ async function main() {
       marca: marcaFinal,
       preco: skus[0].preco,
       novo: false,
-      descricao: "",
+      descricao: descricaoFinal,
+      composicao: composicaoFinal,
       cores,
       imagem: imagemCapa,
       temEstoque

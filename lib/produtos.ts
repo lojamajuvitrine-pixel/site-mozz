@@ -1,4 +1,5 @@
 import produtosData from "@/data/produtos.json";
+import { categoriaDoProduto } from "@/lib/detalhesProduto";
 
 // Uma variacao de COR do produto - cada cor tem suas proprias fotos (pode ser mais de uma,
 // quando cadastradas no Bling) e sua propria lista de tamanhos disponiveis.
@@ -18,6 +19,9 @@ export type Produto = {
   preco: number;
   novo: boolean;
   descricao: string;
+  // extraida (quando possivel) da propria descricao do Bling durante o sync - ver
+  // lib/detalhesProduto.ts pra como isso e' usado (com fallback quando ausente).
+  composicao?: string;
   // opcional por compatibilidade com data/produtos.json de um sync antigo (antes do suporte
   // a cor) - o codigo que le isso sempre trata ausencia/vazio com um fallback pra "Unico".
   cores?: VarianteCor[];
@@ -64,6 +68,28 @@ export function produtosComFoto(): Produto[] {
 // Sempre usar isso (em vez de produto.cores direto) pra ler as cores de um produto - cobre
 // o caso de dado antigo (sync anterior ao suporte a cor) devolvendo um "Unico" de fallback
 // com a foto/tamanhos que ja existiam antes.
+// "Quem viu tambem gostou" - produtos da mesma categoria de peca (blusa, calca, vestido...)
+// e prioriza a mesma marca primeiro, com foto, excluindo o produto atual. Categoria e'
+// inferida pelo nome (ver lib/detalhesProduto.ts) ja que o Bling nao devolve categoria
+// utilizavel sem chamada extra por produto.
+export function produtosRelacionados(produto: Produto, quantidade = 8): Produto[] {
+  const categoriaAtual = categoriaDoProduto(produto.nome);
+  const candidatos = listarProdutos().filter((p) => p.id !== produto.id && !!p.imagem);
+
+  const mesmaCategoria = candidatos.filter((p) => categoriaDoProduto(p.nome) === categoriaAtual);
+  const mesmaMarcaPrimeiro = [
+    ...mesmaCategoria.filter((p) => p.marca === produto.marca),
+    ...mesmaCategoria.filter((p) => p.marca !== produto.marca)
+  ];
+
+  if (mesmaMarcaPrimeiro.length >= quantidade) return mesmaMarcaPrimeiro.slice(0, quantidade);
+
+  // nao teve o suficiente na mesma categoria - completa com outros produtos da mesma marca
+  const jaEscolhidos = new Set(mesmaMarcaPrimeiro.map((p) => p.id));
+  const complemento = candidatos.filter((p) => p.marca === produto.marca && !jaEscolhidos.has(p.id));
+  return [...mesmaMarcaPrimeiro, ...complemento].slice(0, quantidade);
+}
+
 export function coresDoProduto(produto: Produto): VarianteCor[] {
   if (produto.cores && produto.cores.length > 0) return produto.cores;
   const legado = produto as unknown as { tamanhos?: string[] };

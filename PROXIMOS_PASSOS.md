@@ -49,6 +49,52 @@ projeto) que eu sigo com a parte técnica.
       começamos pela de teste).
 - 🔑 Access Token e Public Key (ambiente de teste primeiro).
 
+## 4. Melhor Envio — cálculo de frete por CEP
+
+- [ ] Criar conta grátis em [melhorenvio.com.br](https://melhorenvio.com.br).
+- [ ] Gerar um token de API — normalmente em **Configurações → Tokens** (ou, se a conta
+      pedir, cadastrando um "aplicativo" e autorizando ele pra sua própria conta, do mesmo
+      jeito que fizemos com o Bling). A tela exata pode variar um pouco, mas o nome do menu
+      é sempre parecido com "Tokens" ou "Integrações".
+- [ ] Anotar o **CEP de origem** — de onde os pedidos da MOZZ são despachados (loja física
+      ou depósito).
+- 🔑 Me manda o token gerado e o CEP de origem. Eu coloco em `MELHOR_ENVIO_TOKEN` e
+      `MELHOR_ENVIO_CEP_ORIGEM` (no `.env.local` pra testar, e você replica em Project
+      Settings → Environment Variables na Vercel).
+- Observação importante: como o Bling não guarda peso/dimensão por peça, o cálculo hoje usa
+  um pacote padrão aproximado (peso médio de roupa dobrada) em vez do peso real de cada
+  produto — dá um frete próximo do real, mas não exato centavo a centavo. Se um dia
+  cadastrarmos peso/dimensão reais no Bling, é só eu trocar isso no código.
+
+## 5. GitHub Actions — atualização automática de estoque
+
+Hoje o site lê o catálogo de um arquivo (`data/produtos.json`) gerado pelo sync, não de um
+banco de dados ao vivo — então pra vendas feitas na loja física aparecerem automaticamente
+no site (sem você rodar `npm run sync:bling` na mão), configurei um robô que roda sozinho a
+cada 30 minutos e atualiza só preço/estoque. Falta você criar os "secrets" (senhas seguras
+que só o robô do GitHub enxerga) uma única vez:
+
+- [ ] No GitHub, abrir o repositório do site → **Settings → Secrets and variables →
+      Actions → New repository secret** e criar estes três, com os mesmos valores que já
+      estão no `.env.local` do projeto:
+      - `BLING_CLIENT_ID`
+      - `BLING_CLIENT_SECRET`
+      - `BLING_REFRESH_TOKEN`
+- [ ] Criar um **Personal Access Token** (Settings da sua conta pessoal do GitHub, não do
+      repositório → **Developer settings → Personal access tokens → Fine-grained tokens**),
+      com permissão de **Secrets: Read and write** só nesse repositório. Isso é necessário
+      porque o Bling troca o refresh_token toda vez que é usado — o robô precisa poder
+      atualizar o secret `BLING_REFRESH_TOKEN` sozinho depois de cada rodada, senão para de
+      funcionar na segunda execução.
+- [ ] Colar esse token como um quarto secret chamado `GH_PAT_SECRETS`.
+- [ ] Em **Settings → Actions → General → Workflow permissions**, marcar "Read and write
+      permissions" (o robô também precisa poder dar `git push` da atualização do catálogo).
+- [ ] Depois de configurado, dá pra testar manualmente: aba **Actions** do repositório →
+      "Sync automático de estoque" → **Run workflow**.
+
+Sem isso configurado, o site continua funcionando normalmente — só que o estoque/preço só
+atualiza quando alguém roda `npm run sync:bling` (ou `npm run sync:estoque`) na mão.
+
 ## O que eu já fiz enquanto isso
 
 - Estrutura completa do site (Next.js), com a identidade visual monocromática que
@@ -57,5 +103,20 @@ projeto) que eu sigo com a parte técnica.
 - Criação de preferência de pagamento e webhook do Mercado Pago prontos (só falta o
   Access Token, e um ajuste de segurança que já deixei anotado como TODO no código —
   validar a assinatura do webhook).
+- Carrossel de fotos, seleção de cor/tamanho direto no mosaico (estilo Foxton), parcelamento
+  sem juros, abas de descrição/composição/como cuidar/tabela de medidas, "quem viu também
+  gostou", cupom de desconto e cálculo de frete por CEP — tudo já implementado e no ar assim
+  que você fizer os cadastros dos itens 4 e 5 acima.
+- Robô de sincronização automática de estoque (GitHub Actions) pronto, só falta configurar
+  os secrets do item 5.
 
 Assim que tiver qualquer um dos itens 🔑 acima, me manda que eu já conecto e testo.
+
+## Pendências que dependem do Mercado Pago (itens 3 e 6 acima)
+
+A baixa automática de estoque no Bling quando um pedido é pago no site (site → Bling)
+depende da conta do Mercado Pago estar configurada — combinamos deixar isso por último.
+Quando o item 3 estiver pronto, eu finalizo:
+- Validação da assinatura do webhook do Mercado Pago (segurança).
+- Criação automática do pedido de venda no Bling quando um pagamento é aprovado.
+- Baixa de estoque automática nesse momento.

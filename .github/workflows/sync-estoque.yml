@@ -1,0 +1,62 @@
+name: Sync automático de estoque (Bling → site)
+
+# Roda a cada 30 minutos, das 9h as 21h (horario de Brasilia), de segunda a sabado - horario
+# comercial da loja. Ajuste o cron abaixo se quiser outra frequencia/horario (cron roda em
+# UTC, que esta 3h a frente do horario de Brasilia).
+on:
+  schedule:
+    - cron: "*/30 12-23 * * 1-6"
+  workflow_dispatch: {} # permite rodar manualmente pela aba Actions do GitHub, se precisar
+
+jobs:
+  sync-estoque:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Rodar sync de estoque
+        env:
+          BLING_CLIENT_ID: ${{ secrets.BLING_CLIENT_ID }}
+          BLING_CLIENT_SECRET: ${{ secrets.BLING_CLIENT_SECRET }}
+          BLING_REFRESH_TOKEN: ${{ secrets.BLING_REFRESH_TOKEN }}
+        run: |
+          cat > .env.local <<EOF
+          BLING_CLIENT_ID=$BLING_CLIENT_ID
+          BLING_CLIENT_SECRET=$BLING_CLIENT_SECRET
+          BLING_REFRESH_TOKEN=$BLING_REFRESH_TOKEN
+          EOF
+          npm run sync:estoque
+
+      # O Bling troca o refresh_token a cada uso (rotacao) - se nao atualizarmos o secret do
+      # GitHub com o novo valor, a PROXIMA execucao agendada falha (token usado ja fica
+      # invalido). Precisa do secret GH_PAT_SECRETS (um Personal Access Token com permissao
+      # de gerenciar secrets do repositorio) - ver PROXIMOS_PASSOS.md pra criar esse token.
+      - name: Atualizar BLING_REFRESH_TOKEN no GitHub, se rotacionou
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT_SECRETS }}
+        run: |
+          NOVO_TOKEN=$(grep '^BLING_REFRESH_TOKEN=' .env.local | cut -d '=' -f2-)
+          if [ -n "$NOVO_TOKEN" ] && [ "$NOVO_TOKEN" != "${{ secrets.BLING_REFRESH_TOKEN }}" ]; then
+            echo "Refresh token rotacionou - atualizando secret do repositorio..."
+            gh secret set BLING_REFRESH_TOKEN --body "$NOVO_TOKEN" --repo "${{ github.repository }}"
+          else
+            echo "Refresh token nao mudou - nada a atualizar."
+          fi
+
+      - name: Commit e push, se algo mudou
+        run: |
+          git config user.name "mozz-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/produtos.json
+          if git diff --cached --quiet; then
+            echo "Nenhuma mudanca de preco/estoque nesse ciclo."
+          else
+            git commit -m "sync automático: atualiza preço/estoque via Bling"
+            git push
+          fi
