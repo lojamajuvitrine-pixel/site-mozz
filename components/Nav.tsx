@@ -40,54 +40,85 @@ function IconeConta() {
   );
 }
 
-// No celular, marcas e busca ficam escondidas atras do menu hamburguer (economiza espaco
-// vertical logo na entrada do site) e o carrinho vira so' um icone; no desktop tudo continua
-// sempre visivel como antes. E' o mesmo componente Nav pros dois casos, so' o CSS (md:) que
-// alterna o comportamento.
+// Dois layouts BEM diferentes (desktop vs mobile), cada um so' visivel no seu breakpoint
+// (md:hidden / hidden md:flex) - mais simples de manter do que forcar a mesma grade nos
+// dois tamanhos de tela.
+//
+// Desktop: tudo numa linha so' (logo, marcas, busca, conta, carrinho), estilo Reserva/grandes
+// sites de moda - a busca fica so' o icone, clica pra abrir o campo (ver BarraBusca).
+// Mobile: logo central + hamburguer + conta/carrinho, marcas e busca ficam atras do menu.
 export default function Nav() {
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
     <header className="border-b border-black/10">
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center px-4 md:px-6 py-3 max-w-6xl mx-auto">
-        <button
-          onClick={() => setMenuAberto((v) => !v)}
-          aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
-          className="md:hidden justify-self-start p-1 -ml-1"
-        >
-          <IconeMenu aberto={menuAberto} />
-        </button>
-        <div className="hidden md:block" />
-
-        <Link href="/" className="text-center" onClick={() => setMenuAberto(false)}>
-          <div className="font-serif text-3xl leading-none">M</div>
-          <div className="font-serif text-[14.5px] tracking-widest2">MOZZ</div>
+      {/* --- Desktop --- */}
+      <div className="hidden md:flex items-center gap-8 px-6 py-4 max-w-6xl mx-auto">
+        <Link href="/" className="flex items-baseline gap-1.5 shrink-0">
+          <span className="font-serif text-2xl leading-none">M</span>
+          <span className="font-serif text-[15px] tracking-widest2">MOZZ</span>
         </Link>
 
-        <div className="flex justify-end items-center gap-3 text-[14.5px] text-mozz-black/80">
+        <nav className="flex items-center gap-6 text-[14.5px] text-mozz-black/80">
+          {marcas.map((marca) => (
+            <Link key={marca} href={`/marca/${marca.toLowerCase()}`}>
+              {marca}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex-1" />
+
+        <div className="flex items-center gap-4 text-mozz-black/80">
+          <BarraBusca expansivel />
           <Link href="/conta" aria-label="Minha conta" className="p-1">
             <IconeConta />
           </Link>
-          <Link href="/carrinho" aria-label="Carrinho" className="p-1 -mr-1">
+          <Link href="/carrinho" aria-label="Carrinho" className="p-1">
             <IconeSacola />
           </Link>
         </div>
       </div>
 
-      <div
-        className={`${
-          menuAberto ? "flex" : "hidden"
-        } md:flex flex-col md:flex-row items-center md:justify-between gap-4 md:gap-6 px-4 md:px-6 pb-3 text-[13.5px] text-mozz-gray`}
-      >
-        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+      {/* --- Mobile --- */}
+      <div className="md:hidden">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center px-4 py-3">
+          <button
+            onClick={() => setMenuAberto((v) => !v)}
+            aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
+            className="justify-self-start p-1 -ml-1"
+          >
+            <IconeMenu aberto={menuAberto} />
+          </button>
+
+          <Link href="/" className="text-center" onClick={() => setMenuAberto(false)}>
+            <div className="font-serif text-3xl leading-none">M</div>
+            <div className="font-serif text-[14.5px] tracking-widest2">MOZZ</div>
+          </Link>
+
+          <div className="flex justify-end items-center gap-3 text-mozz-black/80">
+            <Link href="/conta" aria-label="Minha conta" className="p-1">
+              <IconeConta />
+            </Link>
+            <Link href="/carrinho" aria-label="Carrinho" className="p-1 -mr-1">
+              <IconeSacola />
+            </Link>
+          </div>
+        </div>
+
+        <div
+          className={`${
+            menuAberto ? "flex" : "hidden"
+          } flex-col items-center gap-4 px-4 pb-4 text-[13.5px] text-mozz-gray`}
+        >
           {marcas.map((marca) => (
             <Link key={marca} href={`/marca/${marca.toLowerCase()}`} onClick={() => setMenuAberto(false)}>
               {marca}
             </Link>
           ))}
-        </div>
-        <div className="w-full md:w-auto md:max-w-xs">
-          <BarraBusca />
+          <div className="w-full">
+            <BarraBusca />
+          </div>
         </div>
       </div>
     </header>
