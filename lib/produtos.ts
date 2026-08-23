@@ -9,8 +9,20 @@ export type VarianteCor = {
   // baixados durante o sync - NAO e' a URL do Bling, que expira. Array vazio quando essa
   // cor nao tem foto cadastrada no Bling.
   imagens: string[];
+  // TODOS os tamanhos ja cadastrados dessa cor no Bling, com ou sem saldo agora.
   tamanhos: string[];
+  // subconjunto de "tamanhos" que tem saldo em estoque no momento do ultimo sync - opcional
+  // por compatibilidade com dado antigo (sync anterior a esse controle); nesse caso o site
+  // trata ausencia como "todos disponiveis" (ver tamanhosDisponiveisDoColor abaixo).
+  tamanhosDisponiveis?: string[];
 };
+
+// Sempre usar isso (em vez de cor.tamanhosDisponiveis direto) pra saber quais tamanhos de
+// uma cor ainda podem ser comprados - cobre o caso de dado de um sync anterior a esse
+// controle (sem o campo), assumindo "todos disponiveis" em vez de quebrar/esconder tudo.
+export function tamanhosDisponiveisDoColor(cor: VarianteCor): string[] {
+  return cor.tamanhosDisponiveis ?? cor.tamanhos;
+}
 
 export type Produto = {
   id: string;
@@ -93,11 +105,13 @@ export function produtosRelacionados(produto: Produto, quantidade = 8): Produto[
 export function coresDoProduto(produto: Produto): VarianteCor[] {
   if (produto.cores && produto.cores.length > 0) return produto.cores;
   const legado = produto as unknown as { tamanhos?: string[] };
+  const tamanhos = legado.tamanhos && legado.tamanhos.length > 0 ? legado.tamanhos : ["Único"];
   return [
     {
       cor: "Único",
       imagens: produto.imagem ? [produto.imagem] : [],
-      tamanhos: legado.tamanhos && legado.tamanhos.length > 0 ? legado.tamanhos : ["Único"]
+      tamanhos,
+      tamanhosDisponiveis: tamanhos
     }
   ];
 }

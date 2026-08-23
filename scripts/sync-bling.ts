@@ -44,6 +44,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import * as path from "path";
 import sharp from "sharp";
 import { listarProdutosBling, buscarProdutoDetalheBling } from "../lib/bling";
+import { extrairCor, extrairTamanho, limparNomeBase, tamanhosDisponiveisDaCor } from "../lib/blingParse";
 
 // Pasta publica do Next.js - tudo aqui dentro fica acessivel direto por URL (ex:
 // public/produtos/123--branco.jpg vira https://.../produtos/123--branco.jpg).
@@ -221,23 +222,6 @@ async function listarTodosProdutos(): Promise<ProdutoBlingLista[]> {
   return todos;
 }
 
-function extrairTamanho(nome: string): string | null {
-  const m = nome.match(/Tamanho:\s*([^;]+)/i);
-  return m ? m[1].trim() : null;
-}
-
-function extrairCor(nome: string): string | null {
-  const m = nome.match(/Cor:\s*([^;]+)/i);
-  return m ? m[1].trim() : null;
-}
-
-function limparNomeBase(nome: string): string {
-  return nome
-    .replace(/\s*Cor:[^;]+;?/i, "")
-    .replace(/\s*Tamanho:[^;]+;?/i, "")
-    .trim();
-}
-
 // O campo "marca" no Bling e' texto livre, digitado a cada cadastro - por isso a mesma marca
 // aparece com grafias diferentes (ex: "Animale", "ANIMALE"; "Slywear", "SLYWEAR"). Essa funcao
 // padroniza CAPITALIZACAO e tambem funde apelidos conhecidos da mesma marca (confirmado com o
@@ -259,7 +243,7 @@ function normalizarMarca(marca: string): string {
   return limpo.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
 }
 
-type VarianteCorSaida = { cor: string; imagens: string[]; tamanhos: string[] };
+type VarianteCorSaida = { cor: string; imagens: string[]; tamanhos: string[]; tamanhosDisponiveis: string[] };
 
 async function main() {
   const limiteArg = process.argv.find((a) => a.startsWith("--limite="));
@@ -435,7 +419,10 @@ async function main() {
         return {
           cor,
           imagens: imagensPorCor.get(cor) ?? [],
-          tamanhos: tamanhosCor.length > 0 ? tamanhosCor : ["Único"]
+          tamanhos: tamanhosCor.length > 0 ? tamanhosCor : ["Único"],
+          // quais desses tamanhos tem saldo em estoque AGORA - usado pra desabilitar tamanho
+          // esgotado no site em vez de deixar o cliente escolher e so' descobrir no checkout.
+          tamanhosDisponiveis: tamanhosDisponiveisDaCor(cor, skus)
         };
       })
       .sort((a, b) => (a.imagens.length > 0 ? 0 : 1) - (b.imagens.length > 0 ? 0 : 1));

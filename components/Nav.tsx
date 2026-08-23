@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BarraBusca from "@/components/BarraBusca";
 
 const marcas = ["Animale", "NV", "Reserva", "Foxton"];
 
@@ -24,6 +25,9 @@ export default function Nav() {
             {marca}
           </Link>
         ))}
+      </div>
+      <div className="px-6 pb-3">
+        <BarraBusca />
       </div>
     </header>
   );

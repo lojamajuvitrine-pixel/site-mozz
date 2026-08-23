@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Produto } from "@/lib/produtos";
-import { coresDoProduto } from "@/lib/produtos";
+import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { corAproximada } from "@/lib/cor";
 import { formatarParcelamento, formatarPreco } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
@@ -29,6 +29,7 @@ export default function ProductCard({ produto }: { produto: Produto }) {
   const corAtual = cores[corIndex];
   const imagemAtual = corAtual.imagens[0] ?? produto.imagem;
   const parcelamento = formatarParcelamento(produto.preco);
+  const disponiveisAtual = tamanhosDisponiveisDoColor(corAtual);
 
   function selecionarCor(evento: React.MouseEvent, index: number) {
     evento.preventDefault();
@@ -40,6 +41,7 @@ export default function ProductCard({ produto }: { produto: Produto }) {
   function selecionarTamanho(evento: React.MouseEvent, tamanho: string) {
     evento.preventDefault();
     evento.stopPropagation();
+    if (!disponiveisAtual.includes(tamanho)) return;
     adicionar(produto, corAtual.cor, tamanho);
     setAdicionado(tamanho);
     setTimeout(() => setAdicionado(null), 1500);
@@ -76,16 +78,28 @@ export default function ProductCard({ produto }: { produto: Produto }) {
               pagina do produto. */}
           {corAtual.tamanhos.length > 0 && (
             <div className="absolute inset-x-0 bottom-0 p-2 flex flex-wrap gap-1 justify-center bg-gradient-to-t from-black/40 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-              {corAtual.tamanhos.map((tamanho) => (
-                <button
-                  key={tamanho}
-                  onClick={(e) => selecionarTamanho(e, tamanho)}
-                  aria-label={`Adicionar tamanho ${tamanho} à sacola`}
-                  className="min-w-[28px] h-7 px-1.5 text-[11px] bg-white/95 text-mozz-black hover:bg-mozz-black hover:text-white flex items-center justify-center"
-                >
-                  {adicionado === tamanho ? <IconeCheck /> : tamanho}
-                </button>
-              ))}
+              {disponiveisAtual.length === 0 ? (
+                <span className="text-[11px] bg-white/90 text-mozz-gray px-2 py-1">Esgotado</span>
+              ) : (
+                corAtual.tamanhos.map((tamanho) => {
+                  const disponivel = disponiveisAtual.includes(tamanho);
+                  return (
+                    <button
+                      key={tamanho}
+                      onClick={(e) => selecionarTamanho(e, tamanho)}
+                      disabled={!disponivel}
+                      aria-label={disponivel ? `Adicionar tamanho ${tamanho} à sacola` : `Tamanho ${tamanho} esgotado`}
+                      className={`min-w-[28px] h-7 px-1.5 text-[11px] flex items-center justify-center ${
+                        disponivel
+                          ? "bg-white/95 text-mozz-black hover:bg-mozz-black hover:text-white"
+                          : "bg-white/50 text-mozz-gray/60 line-through cursor-not-allowed"
+                      }`}
+                    >
+                      {adicionado === tamanho ? <IconeCheck /> : tamanho}
+                    </button>
+                  );
+                })
+              )}
             </div>
           )}
         </div>

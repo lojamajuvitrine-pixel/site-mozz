@@ -16,6 +16,7 @@ carregarEnv({ path: ".env.local" });
 
 import { readFileSync, writeFileSync } from "fs";
 import { listarProdutosBling } from "../lib/bling";
+import { tamanhosDisponiveisDaCor } from "../lib/blingParse";
 import type { Produto } from "../lib/produtos";
 
 const PAUSA_ENTRE_PAGINAS_MS = 350;
@@ -27,6 +28,7 @@ function dormir(ms: number) {
 type ProdutoBlingLista = {
   id: number;
   idProdutoPai?: number;
+  nome: string; // traz "Cor:X;Tamanho:Y" embutido - usado pra recalcular tamanhosDisponiveis
   preco: number;
   estoque?: { saldoVirtualTotal: number };
   situacao: string;
@@ -83,11 +85,29 @@ async function main() {
     }
     const precoNovo = skus[0].preco;
     const temEstoqueNovo = skus.some((s) => (s.estoque?.saldoVirtualTotal ?? 0) > 0);
-    if (produto.preco !== precoNovo || produto.temEstoque !== temEstoqueNovo) {
+    let mudou = false;
+
+    if (produto.preco !== precoNovo) {
       produto.preco = precoNovo;
-      produto.temEstoque = temEstoqueNovo;
-      atualizados++;
+      mudou = true;
     }
+    if (produto.temEstoque !== temEstoqueNovo) {
+      produto.temEstoque = temEstoqueNovo;
+      mudou = true;
+    }
+
+    // recalcula, por cor, quais tamanhos ainda tem saldo - e' isso que impede o site de
+    // deixar escolher um tamanho que acabou de esgotar entre um sync e outro.
+    for (const cor of produto.cores ?? []) {
+      const disponivelNovo = tamanhosDisponiveisDaCor(cor.cor, skus).sort();
+      const disponivelAtual = [...(cor.tamanhosDisponiveis ?? cor.tamanhos)].sort();
+      if (JSON.stringify(disponivelAtual) !== JSON.stringify(disponivelNovo)) {
+        cor.tamanhosDisponiveis = disponivelNovo;
+        mudou = true;
+      }
+    }
+
+    if (mudou) atualizados++;
   }
 
   writeFileSync("data/produtos.json", JSON.stringify(atual, null, 2));

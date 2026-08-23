@@ -3,19 +3,25 @@
 import { useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
 import type { Produto } from "@/lib/produtos";
+import { normalizarTexto } from "@/lib/cor";
 
 type Ordenacao = "relevancia" | "menor-preco" | "maior-preco";
 
-// Grade de produtos com filtro de marca (opcional - so' aparece se a lista de marcas for
-// passada) e ordenacao por preco. Usado no catalogo completo (/produtos) e nas paginas de
-// marca (/marca/[slug], sem o filtro de marca ali, ja que a pagina inteira ja e' de uma so').
+// Grade de produtos com busca por nome/marca, filtro de marca (opcional - so' aparece se a
+// lista de marcas for passada) e ordenacao por preco. Usado no catalogo completo (/produtos,
+// que pode chegar com um termo ja preenchido vindo da barra de busca do menu) e nas paginas
+// de marca (/marca/[slug], sem o filtro de marca ali, ja que a pagina inteira ja e' de uma
+// so' - mas a busca continua disponivel pra refinar dentro da marca).
 export default function GradeProdutos({
   produtos,
-  marcas
+  marcas,
+  buscaInicial
 }: {
   produtos: Produto[];
   marcas?: string[];
+  buscaInicial?: string;
 }) {
+  const [busca, setBusca] = useState(buscaInicial ?? "");
   const [marcaSelecionada, setMarcaSelecionada] = useState<string>("todas");
   const [ordenacao, setOrdenacao] = useState<Ordenacao>("relevancia");
 
@@ -25,17 +31,30 @@ export default function GradeProdutos({
         ? produtos
         : produtos.filter((p) => p.marca === marcaSelecionada);
 
+    const termo = normalizarTexto(busca.trim());
+    if (termo) {
+      lista = lista.filter(
+        (p) => normalizarTexto(p.nome).includes(termo) || normalizarTexto(p.marca).includes(termo)
+      );
+    }
+
     if (ordenacao === "menor-preco") {
       lista = [...lista].sort((a, b) => a.preco - b.preco);
     } else if (ordenacao === "maior-preco") {
       lista = [...lista].sort((a, b) => b.preco - a.preco);
     }
     return lista;
-  }, [produtos, marcaSelecionada, ordenacao]);
+  }, [produtos, marcaSelecionada, ordenacao, busca]);
 
   return (
     <div>
       <div className="flex flex-wrap items-center gap-3 mb-6">
+        <input
+          value={busca}
+          onChange={(e) => setBusca(e.target.value)}
+          placeholder="Buscar por nome ou marca..."
+          className="border border-black/20 px-3 py-2 text-[13px] flex-1 min-w-[180px]"
+        />
         {marcas && marcas.length > 0 && (
           <select
             value={marcaSelecionada}

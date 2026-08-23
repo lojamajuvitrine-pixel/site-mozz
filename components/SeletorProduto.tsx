@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import type { Produto } from "@/lib/produtos";
-import { coresDoProduto } from "@/lib/produtos";
+import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { formatarParcelamento, formatarPreco } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { corAproximada } from "@/lib/cor";
@@ -34,9 +34,13 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   const cores = coresDoProduto(produto);
   const [corIndex, setCorIndex] = useState(0);
   const corAtual = cores[corIndex];
-  const [tamanho, setTamanho] = useState(corAtual.tamanhos[0]);
+  const disponiveisAtual = tamanhosDisponiveisDoColor(corAtual);
+  // comeca no primeiro tamanho que ainda tem estoque - so' cai pro primeiro tamanho
+  // qualquer (que vai aparecer esgotado) se a cor inteira estiver sem nenhum tamanho.
+  const [tamanho, setTamanho] = useState(disponiveisAtual[0] ?? corAtual.tamanhos[0]);
   const [adicionado, setAdicionado] = useState(false);
   const { adicionar } = useCart();
+  const tamanhoEstaDisponivel = disponiveisAtual.includes(tamanho);
 
   // Carrossel: a cor selecionada pode ter mais de uma foto (o Bling deixa cadastrar varias
   // fotos da mesma peca/cor) - fotoIndex controla qual delas esta em exibicao.
@@ -57,7 +61,8 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
 
   function selecionarCor(index: number) {
     setCorIndex(index);
-    setTamanho(cores[index].tamanhos[0]);
+    const disponiveisDaCor = tamanhosDisponiveisDoColor(cores[index]);
+    setTamanho(disponiveisDaCor[0] ?? cores[index].tamanhos[0]);
     setFotoIndex(0);
   }
 
@@ -184,18 +189,35 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
 
           <p className="text-[12px] text-mozz-gray mb-2">Tamanho</p>
           <div className="flex gap-2 mb-6 flex-wrap">
-            {corAtual.tamanhos.map((t) => (
-              <button
-                key={t}
-                onClick={() => setTamanho(t)}
-                className={`w-9 h-9 text-[12px] border ${
-                  tamanho === t ? "bg-mozz-black text-white border-mozz-black" : "border-black/20"
-                }`}
-              >
-                {t}
-              </button>
-            ))}
+            {corAtual.tamanhos.map((t) => {
+              const disponivel = disponiveisAtual.includes(t);
+              return (
+                <button
+                  key={t}
+                  onClick={() => disponivel && setTamanho(t)}
+                  disabled={!disponivel}
+                  title={disponivel ? undefined : "Esgotado"}
+                  className={`relative w-9 h-9 text-[12px] border ${
+                    tamanho === t && disponivel
+                      ? "bg-mozz-black text-white border-mozz-black"
+                      : disponivel
+                        ? "border-black/20"
+                        : "border-black/10 text-mozz-gray/50 cursor-not-allowed overflow-hidden"
+                  }`}
+                >
+                  {t}
+                  {!disponivel && (
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <span className="w-full h-px bg-black/20 rotate-[-20deg]" />
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
+          {disponiveisAtual.length === 0 && (
+            <p className="text-[12px] text-mozz-gray mb-4">Esgotado nesta cor no momento.</p>
+          )}
 
           <button
             onClick={() => {
@@ -203,9 +225,10 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
               setAdicionado(true);
               setTimeout(() => setAdicionado(false), 1500);
             }}
-            className="w-full text-[13px] py-3 bg-mozz-black text-white"
+            disabled={!tamanhoEstaDisponivel}
+            className="w-full text-[13px] py-3 bg-mozz-black text-white disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            {adicionado ? "Adicionado" : "Adicionar ao carrinho"}
+            {!tamanhoEstaDisponivel ? "Esgotado" : adicionado ? "Adicionado" : "Adicionar ao carrinho"}
           </button>
 
           <CalculoFrete quantidadeItens={1} />
