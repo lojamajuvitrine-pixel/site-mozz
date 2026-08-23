@@ -54,14 +54,14 @@ export default function Nav() {
     <header className="border-b border-black/10">
       {/* --- Desktop --- */}
       <div className="hidden md:flex items-center gap-8 px-6 py-4 max-w-6xl mx-auto">
-        <Link href="/" className="flex items-baseline gap-1.5 shrink-0">
+        <Link href="/" className="flex items-baseline gap-1.5 shrink-0 -ml-2">
           <span className="font-serif text-2xl leading-none">M</span>
           <span className="font-serif text-[15px] tracking-widest2">MOZZ</span>
         </Link>
 
-        <nav className="flex items-center gap-6 text-[14.5px] text-mozz-black/80">
+        <nav className="flex items-center gap-6 text-[14.5px] text-mozz-gray">
           {marcas.map((marca) => (
-            <Link key={marca} href={`/marca/${marca.toLowerCase()}`}>
+            <Link key={marca} href={`/marca/${marca.toLowerCase()}`} className="hover:text-mozz-black transition-colors">
               {marca}
             </Link>
           ))}
