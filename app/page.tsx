@@ -11,26 +11,36 @@ const QTD_VITRINE = 8;
 export default function Home() {
   const comFoto = produtosComFoto();
 
-  // Banner principal rotativo: Reserva (marca 100% masculina) e Animale (a marca feminina
-  // mais forte do portfolio) - ver PROXIMOS_PASSOS.md/conversa sobre a escolha dessas duas.
+  // Banner principal rotativo: uma foto de cada uma das 4 marcas ativas, alternando
+  // masculino/feminino - Reserva e Foxton sao 100% masculinas, Animale e NV sao focadas em
+  // moda feminina (confirmado por pesquisa em 23/08/2026, ver PROXIMOS_PASSOS.md).
   const produtoReserva = listarPorMarca("Reserva").find((p) => p.imagem);
   const produtoAnimale = listarPorMarca("Animale").find((p) => p.imagem);
+  const produtoFoxton = listarPorMarca("Foxton").find((p) => p.imagem);
+  const produtoNV = listarPorMarca("NV").find((p) => p.imagem);
   const banners: BannerItem[] = [
     produtoReserva?.imagem
       ? { imagem: produtoReserva.imagem, marca: "Reserva", label: "Masculino", href: "/marca/reserva" }
       : null,
     produtoAnimale?.imagem
       ? { imagem: produtoAnimale.imagem, marca: "Animale", label: "Feminino", href: "/marca/animale" }
+      : null,
+    produtoFoxton?.imagem
+      ? { imagem: produtoFoxton.imagem, marca: "Foxton", label: "Masculino", href: "/marca/foxton" }
+      : null,
+    produtoNV?.imagem
+      ? { imagem: produtoNV.imagem, marca: "NV", label: "Feminino", href: "/marca/nv" }
       : null
   ].filter((b): b is BannerItem => !!b);
-  // fallback se por algum motivo nenhuma das duas tiver foto ainda (ex: sync incompleto)
+  // fallback se por algum motivo nenhuma das quatro tiver foto ainda (ex: sync incompleto)
   const bannersFinal = banners.length > 0 ? banners : comFoto[0]?.imagem
     ? [{ imagem: comFoto[0].imagem, marca: comFoto[0].marca, label: "", href: "/produtos" }]
     : [];
 
-  // pra variar a marca do banner editorial em relacao ao que ja aparece no hero rotativo
-  const bannerProduto =
-    comFoto.find((p) => p.marca !== "Reserva" && p.marca !== "Animale") ?? comFoto[2] ?? comFoto[1];
+  // pra nao repetir a MESMA foto do hero rotativo aqui embaixo (a marca pode repetir, ja que
+  // agora as 4 marcas ativas ja aparecem todas no hero - mas a foto do produto e' diferente)
+  const imagensDoHero = new Set(bannersFinal.map((b) => b.imagem));
+  const bannerProduto = comFoto.find((p) => p.imagem && !imagensDoHero.has(p.imagem)) ?? comFoto[2] ?? comFoto[1];
   const vitrine = comFoto.slice(0, QTD_VITRINE);
 
   return (
