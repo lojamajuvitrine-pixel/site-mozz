@@ -12,13 +12,16 @@
 //   preco/estoque proprio.
 // - Por isso: 1 chamada de detalhe por GRUPO de variacoes (nao por SKU) e' o suficiente pra
 //   pegar a marca - dá pra economizar bastante chamada num catalogo com milhares de SKUs.
-// - IMPORTANTE (descoberto em 22/08/2026): o "imagemURL" que a lista devolve e' uma URL
-//   ASSINADA do S3 do Bling com prazo de validade MUITO curto (o parametro "Expires" da URL
-//   mostrou vencimento poucos minutos depois da propria sincronizacao) - guardar essa URL
-//   direto no produtos.json nao funciona, ela expira antes de alguem conseguir ver a foto no
-//   site. Por isso a foto e' BAIXADA aqui mesmo durante o sync e salva em public/produtos/,
-//   e o produtos.json guarda so' o caminho local (ex: "/produtos/123.jpg") - que nao expira
-//   nunca, porque a foto passa a ser servida pelo proprio site, nao pelo Bling.
+// - IMPORTANTE (descoberto em 22/08/2026): o "imagemURL" que a lista (GET /produtos) devolve
+//   e' na verdade a MINIATURA (confirmado: e' o mesmo valor de "linkMiniatura" do detalhe,
+//   ~70x70px) e com validade de poucos MINUTOS - por isso as fotos apareciam quebradas/nao
+//   apareciam. A foto em resolucao de verdade fica em outro lugar: GET /produtos/{id} (detalhe)
+//   -> data.midia.imagens.internas[].link (validade de alguns DIAS, bem maior que a miniatura).
+//   Por isso o sync usa o "link" do detalhe pra imagem, nao o "imagemURL" da lista.
+//   De qualquer forma, seja qual for a validade, a URL do Bling expira em algum momento -
+//   a foto e' BAIXADA aqui mesmo durante o sync e salva em public/produtos/, e o produtos.json
+//   guarda so' o caminho local (ex: "/produtos/123.jpg") - que nao expira nunca, porque a foto
+//   passa a ser servida pelo proprio site, nao pelo Bling.
 //
 // Uso: npm run sync:bling                    -> roda o catalogo inteiro. Da segunda vez em
 //        diante e' RAPIDO: so' busca marca/nome de produto NOVO e so' baixa foto que ainda
@@ -98,10 +101,20 @@ type ProdutoBlingLista = {
   estoque?: { saldoVirtualTotal: number };
   situacao: string;
   formato: string; // "S" = simples/variacao, "V" = variavel (produto-pai, sem estoque proprio)
-  // URL assinada do S3 do Bling (orgbling.s3.amazonaws.com), com validade limitada (parametro
-  // "Expires" na propria URL) - por isso a imagem precisa ser renovada a cada sync, nao da'
-  // pra guardar de vez. Nem todo produto tem imagem cadastrada.
+  // A lista tambem devolve isso, mas e' so' a MINIATURA (ver comentario no topo do arquivo) -
+  // nao usamos mais esse campo pra foto, so' fica aqui documentado pra nao reintroduzir o bug.
   imagemURL?: string;
+};
+
+// Foto em resolucao de verdade, vinda do detalhe (GET /produtos/{id}) - ver comentario no
+// topo do arquivo sobre a diferenca entre isso e a miniatura da lista.
+type ImagemDetalheBling = { link?: string };
+type DetalheBling = {
+  data: {
+    marca?: string;
+    nome?: string;
+    midia?: { imagens?: { internas?: ImagemDetalheBling[] } };
+  };
 };
 
 const PAUSA_ENTRE_CHAMADAS_MS = 350; // respeita o limite de requisicoes por segundo da API
@@ -226,28 +239,44 @@ async function main() {
     let marcaFinal: string;
 
     const doCache = cache.get(idStr);
-    if (doCache) {
-      // ja processamos esse produto num sync anterior - reaproveita marca/nome sem gastar
-      // chamada de API (marca praticamente nunca muda depois de cadastrada no Bling).
+    const fotoJaSalva = !forcarFotos ? fotoLocalExistente(idStr) : null;
+    // so' chama o detalhe (mais lento - 1 chamada por produto) quando falta marca/nome no
+    // cache OU falta foto local - as duas coisas vem do mesmo endpoint, entao uma chamada
+    // resolve as duas. Se ja tem as duas, pula e nem gasta tempo de rede.
+    const precisaDetalhe = !doCache || !fotoJaSalva;
+
+    let imagem: string | null = fotoJaSalva;
+    if (fotoJaSalva) fotosReaproveitadas++;
+
+    if (!precisaDetalhe && doCache) {
       marcaFinal = doCache.marca;
       if (doCache.nome) nomeBase = doCache.nome;
     } else {
-      novos++;
-      let marca = "";
+      if (!doCache) novos++;
+      let marca = doCache?.marca ?? "";
+      let marcaJaNormalizada = !!doCache;
       try {
-        const detalhe = (await buscarProdutoDetalheBling(chaveGrupo)) as {
-          data: { marca?: string; nome?: string };
-        };
-        marca = detalhe.data.marca ?? "";
-        if (detalhe.data.nome) nomeBase = limparNomeBase(detalhe.data.nome);
+        const detalhe = (await buscarProdutoDetalheBling(chaveGrupo)) as DetalheBling;
+        if (!doCache) {
+          marca = detalhe.data.marca ?? "";
+          marcaJaNormalizada = false;
+          if (detalhe.data.nome) nomeBase = limparNomeBase(detalhe.data.nome);
+        }
+        if (!fotoJaSalva) {
+          const linkFoto = detalhe.data.midia?.imagens?.internas?.[0]?.link;
+          imagem = linkFoto ? await baixarImagem(linkFoto, idStr) : null;
+          if (imagem) fotosBaixadasAgora++;
+        }
       } catch {
         // chaveGrupo pode ser o id de um item sem produto-pai proprio (grupo de 1 SKU) -
         // nesse caso ela JA e' o id do proprio produto, entao o try acima deveria ter funcionado;
         // se cair aqui mesmo assim, so' registra como "sem marca" pra revisao manual depois.
-        semMarca++;
-        console.warn(`  aviso: nao achei marca do produto ${chaveGrupo} ("${nomeBase}")`);
+        if (!doCache) {
+          semMarca++;
+          console.warn(`  aviso: nao achei marca/foto do produto ${chaveGrupo} ("${nomeBase}")`);
+        }
       }
-      marcaFinal = normalizarMarca(marca);
+      marcaFinal = marcaJaNormalizada ? marca : normalizarMarca(marca);
       await dormir(PAUSA_ENTRE_CHAMADAS_MS); // so' pausa quando realmente chamou a API
     }
 
@@ -256,19 +285,6 @@ async function main() {
     );
 
     const temEstoque = variacoes.some((v) => (v.estoque?.saldoVirtualTotal ?? 0) > 0);
-
-    // foto: se ja existe localmente (de um sync anterior) e nao pedimos --forcar-fotos, so'
-    // reaproveita o arquivo - evita baixar de novo centenas de fotos que nao mudaram.
-    const fotoJaSalva = !forcarFotos ? fotoLocalExistente(idStr) : null;
-    let imagem: string | null;
-    if (fotoJaSalva) {
-      imagem = fotoJaSalva;
-      fotosReaproveitadas++;
-    } else {
-      const imagemURL = variacoes.find((v) => v.imagemURL)?.imagemURL;
-      imagem = imagemURL ? await baixarImagem(imagemURL, idStr) : null;
-      if (imagem) fotosBaixadasAgora++;
-    }
 
     produtosMapeados.push({
       id: idStr,
