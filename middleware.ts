@@ -20,6 +20,21 @@ export async function middleware(request: NextRequest) {
     return resposta;
   }
 
+  // Bug conhecido do Supabase: no PRIMEIRO login de um e-mail novo, o link de confirmacao
+  // ignora o emailRedirectTo que a gente pediu (/auth/callback) e manda o cliente de volta
+  // pra "Site URL" (a home do site) mesmo assim, so' que ainda com o "?code=" na URL. Sem
+  // esse desvio aqui, o cliente cai na home sem logar - com isso, qualquer requisicao que
+  // chegue com "code" na URL (esperado ou nao) e' redirecionada pro callback de verdade, que
+  // troca o code pela sessao e manda pra /conta. Nos logins seguintes (e-mail ja confirmado)
+  // o link vem certo direto pro /auth/callback, e esse desvio nem entra em acao.
+  const codigoNaUrl = request.nextUrl.searchParams.get("code");
+  if (codigoNaUrl && request.nextUrl.pathname !== "/auth/callback") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/callback";
+    url.search = `?code=${encodeURIComponent(codigoNaUrl)}&next=/conta`;
+    return NextResponse.redirect(url);
+  }
+
   const supabase = createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
     cookies: {
       getAll() {
