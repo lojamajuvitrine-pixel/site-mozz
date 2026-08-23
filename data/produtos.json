@@ -100,7 +100,7 @@
   },
   {
     "id": "16693467296",
-    "nome": "Bermuda Cargo Detalhe Elastico",
+    "nome": "Bermuda Cargo Detalhe Elastico Tam:36",
     "marca": "Iodice",
     "preco": 389.9,
     "novo": false,
@@ -113,7 +113,7 @@
   },
   {
     "id": "16693465692",
-    "nome": "Vestido Longo 2 Camadas Franzidos",
+    "nome": "Vestido Longo 2 Camadas Franzidos Tam",
     "marca": "My Place",
     "preco": 299,
     "novo": false,
@@ -126,7 +126,7 @@
   },
   {
     "id": "16693460996",
-    "nome": "Calça Slywear Vermelha",
+    "nome": "Calça Slywear Vermelha TAM:44",
     "marca": "Slywear",
     "preco": 399.8,
     "novo": false,
@@ -139,7 +139,7 @@
   },
   {
     "id": "16692484747",
-    "nome": "Calça Slim Cos Intermediário detalhe",
+    "nome": "Calça Slim Cos Intermediário detalhe Tam:38",
     "marca": "Iodice",
     "preco": 389.9,
     "novo": false,
@@ -164,12 +164,12 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16442957822.jpg",
+    "imagem": "/produtos/16442957822.webp",
     "temEstoque": true
   },
   {
     "id": "16692434855",
-    "nome": "Calça Skinny Cos Baix",
+    "nome": "Calça Skinny Cos Baix tam:38",
     "marca": "Iodice",
     "preco": 499.9,
     "novo": false,
@@ -454,7 +454,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16652681450.jpg",
+    "imagem": "/produtos/16652681450.png",
     "temEstoque": false
   },
   {
@@ -472,7 +472,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16651719546.jpg",
+    "imagem": "/produtos/16651719546.png",
     "temEstoque": true
   },
   {
@@ -553,7 +553,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16651693424.jpg",
+    "imagem": "/produtos/16651693424.png",
     "temEstoque": false
   },
   {
@@ -871,7 +871,7 @@
       "38",
       "36"
     ],
-    "imagem": "/produtos/16647374539.jpg",
+    "imagem": "/produtos/16647374539.png",
     "temEstoque": false
   },
   {
@@ -963,7 +963,7 @@
       "38",
       "40"
     ],
-    "imagem": "/produtos/16638380616.jpg",
+    "imagem": "/produtos/16638380616.png",
     "temEstoque": false
   },
   {
@@ -1066,7 +1066,7 @@
     "tamanhos": [
       "P"
     ],
-    "imagem": "/produtos/16644328116.jpg",
+    "imagem": "/produtos/16644328116.png",
     "temEstoque": false
   },
   {
@@ -1079,7 +1079,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16643915863.jpg",
+    "imagem": "/produtos/16643915863.png",
     "temEstoque": true
   },
   {
@@ -1197,7 +1197,7 @@
       "M",
       "PP"
     ],
-    "imagem": "/produtos/16643843149.jpg",
+    "imagem": "/produtos/16643843149.png",
     "temEstoque": false
   },
   {
@@ -1210,7 +1210,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16643374396.jpg",
+    "imagem": "/produtos/16643374396.png",
     "temEstoque": true
   },
   {
@@ -1254,7 +1254,7 @@
       "38",
       "36"
     ],
-    "imagem": "/produtos/16638750285.jpg",
+    "imagem": "/produtos/16638750285.png",
     "temEstoque": true
   },
   {
@@ -1287,7 +1287,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16638748572.jpg",
+    "imagem": "/produtos/16638748572.png",
     "temEstoque": true
   },
   {
@@ -1320,7 +1320,7 @@
   },
   {
     "id": "16638746893",
-    "nome": "MACACÃO JEANS LIVRE INV26",
+    "nome": "MACACÃO JEANS LIVRE INV26 Corq:JEANS ESCURO;",
     "marca": "Animale",
     "preco": 1598,
     "novo": false,
@@ -1497,7 +1497,7 @@
       "40",
       "36"
     ],
-    "imagem": "/produtos/16638618697.jpg",
+    "imagem": "/produtos/16638618697.png",
     "temEstoque": true
   },
   {
@@ -1628,7 +1628,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16638620328.jpg",
+    "imagem": "/produtos/16638620328.png",
     "temEstoque": false
   },
   {
@@ -1715,7 +1715,7 @@
   },
   {
     "id": "16638618077",
-    "nome": "JAQUETA DE SARJA BEGE PRET INV26",
+    "nome": "JAQUETA DE SARJA BEGE PRET INV26Tsmanho:M",
     "marca": "Animale",
     "preco": 1398,
     "novo": false,
@@ -1849,7 +1849,7 @@
   },
   {
     "id": "16629178647",
-    "nome": "BODY JERSEY SEM ALCA FRANZIDO INV26",
+    "nome": "BODY JERSEY SEM ALCA FRANZIDO INV26Tamanhoa:PP",
     "marca": "Animale",
     "preco": 498,
     "novo": false,
@@ -2132,7 +2132,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16638351526.jpg",
+    "imagem": "/produtos/16638351526.png",
     "temEstoque": false
   },
   {
@@ -2176,7 +2176,7 @@
       "38",
       "36"
     ],
-    "imagem": "/produtos/16638339310.jpg",
+    "imagem": "/produtos/16638339310.png",
     "temEstoque": true
   },
   {
@@ -2190,7 +2190,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16638334080.jpg",
+    "imagem": "/produtos/16638334080.png",
     "temEstoque": false
   },
   {
@@ -2332,7 +2332,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637675561.jpg",
+    "imagem": "/produtos/16637675561.png",
     "temEstoque": true
   },
   {
@@ -2345,7 +2345,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637672722.jpg",
+    "imagem": "/produtos/16637672722.png",
     "temEstoque": false
   },
   {
@@ -2511,7 +2511,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637251418.jpg",
+    "imagem": "/produtos/16637251418.png",
     "temEstoque": false
   },
   {
@@ -2524,7 +2524,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637250020.jpg",
+    "imagem": "/produtos/16637250020.png",
     "temEstoque": false
   },
   {
@@ -2554,7 +2554,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637174055.jpg",
+    "imagem": "/produtos/16637174055.png",
     "temEstoque": true
   },
   {
@@ -2567,7 +2567,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637174049.jpg",
+    "imagem": "/produtos/16637174049.png",
     "temEstoque": true
   },
   {
@@ -2580,7 +2580,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637174043.jpg",
+    "imagem": "/produtos/16637174043.png",
     "temEstoque": false
   },
   {
@@ -2619,7 +2619,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637174026.jpg",
+    "imagem": "/produtos/16637174026.png",
     "temEstoque": false
   },
   {
@@ -2632,7 +2632,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637174022.jpg",
+    "imagem": "/produtos/16637174022.png",
     "temEstoque": true
   },
   {
@@ -2645,7 +2645,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637174019.jpg",
+    "imagem": "/produtos/16637174019.png",
     "temEstoque": true
   },
   {
@@ -2658,7 +2658,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637174016.jpg",
+    "imagem": "/produtos/16637174016.png",
     "temEstoque": false
   },
   {
@@ -2671,7 +2671,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637174012.jpg",
+    "imagem": "/produtos/16637174012.png",
     "temEstoque": true
   },
   {
@@ -2684,7 +2684,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637174004.jpg",
+    "imagem": "/produtos/16637174004.png",
     "temEstoque": true
   },
   {
@@ -2697,7 +2697,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637173998.jpg",
+    "imagem": "/produtos/16637173998.png",
     "temEstoque": false
   },
   {
@@ -2710,7 +2710,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637173990.jpg",
+    "imagem": "/produtos/16637173990.png",
     "temEstoque": false
   },
   {
@@ -2723,7 +2723,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637173985.jpg",
+    "imagem": "/produtos/16637173985.png",
     "temEstoque": false
   },
   {
@@ -2736,7 +2736,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637173978.jpg",
+    "imagem": "/produtos/16637173978.png",
     "temEstoque": true
   },
   {
@@ -2801,7 +2801,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637173936.jpg",
+    "imagem": "/produtos/16637173936.png",
     "temEstoque": true
   },
   {
@@ -2814,7 +2814,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637173927.jpg",
+    "imagem": "/produtos/16637173927.png",
     "temEstoque": true
   },
   {
@@ -2853,7 +2853,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637173907.jpg",
+    "imagem": "/produtos/16637173907.png",
     "temEstoque": false
   },
   {
@@ -2866,7 +2866,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16637173901.jpg",
+    "imagem": "/produtos/16637173901.png",
     "temEstoque": false
   },
   {
@@ -4697,12 +4697,12 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16434354166.jpg",
+    "imagem": "/produtos/16434354166.webp",
     "temEstoque": true
   },
   {
     "id": "16620896792",
-    "nome": "CAMISETA MANGA LONGA MESCLA",
+    "nome": "CAMISETA MANGA LONGA MESCLA PRETO:GGG",
     "marca": "Reserva",
     "preco": 269.9,
     "novo": false,
@@ -4833,7 +4833,7 @@
   },
   {
     "id": "16601144125",
-    "nome": "VESTIDO LONGO EST LITORANEA",
+    "nome": "VESTIDO LONGO EST LITORANEA PRETO E BRANCO:GG",
     "marca": "My Place",
     "preco": 479,
     "novo": false,
@@ -4846,7 +4846,7 @@
   },
   {
     "id": "16600712355",
-    "nome": "SHORTS MASC PRMN MASC PRMN LISTRADO ECOTEX",
+    "nome": "SHORTS MASC PRMN MASC PRMN LISTRADO ECOTEX CAQUI:GG",
     "marca": "Puramania",
     "preco": 179.9,
     "novo": false,
@@ -4859,7 +4859,7 @@
   },
   {
     "id": "16600392212",
-    "nome": "VESTIDO LONGO EST LITORANEA",
+    "nome": "VESTIDO LONGO EST LITORANEA PRETO:GG",
     "marca": "My Place",
     "preco": 479,
     "novo": false,
@@ -4872,7 +4872,7 @@
   },
   {
     "id": "16600182521",
-    "nome": "CAMISA MANGA LONGA COM PREGAS",
+    "nome": "CAMISA MANGA LONGA COM PREGAS AZUL COR 31:GG",
     "marca": "Iodice",
     "preco": 489.9,
     "novo": false,
@@ -4885,7 +4885,7 @@
   },
   {
     "id": "16600178084",
-    "nome": "CAMISA MANGA LONGA COM PREGAS",
+    "nome": "CAMISA MANGA LONGA COM PREGAS ROSA COR 27:GG",
     "marca": "Iodice",
     "preco": 489.9,
     "novo": false,
@@ -4898,7 +4898,7 @@
   },
   {
     "id": "16600172875",
-    "nome": "CAMISA MANGA LONGA COM PALA",
+    "nome": "CAMISA MANGA LONGA COM PALA AZUL CLARO COR 7012:G",
     "marca": "Iodice",
     "preco": 469.9,
     "novo": false,
@@ -4911,7 +4911,7 @@
   },
   {
     "id": "16596454872",
-    "nome": "VESTIDO 513.135 LARANJA PEACH",
+    "nome": "VESTIDO 513.135 LARANJA PEACH LARANJA:G",
     "marca": "Slywear",
     "preco": 759,
     "novo": false,
@@ -5414,7 +5414,7 @@
       "38",
       "34"
     ],
-    "imagem": "/produtos/16553564351.jpg",
+    "imagem": "/produtos/16553564351.webp",
     "temEstoque": false
   },
   {
@@ -5770,7 +5770,7 @@
   },
   {
     "id": "16595436217",
-    "nome": "Blusa Gola Alta Tule",
+    "nome": "Blusa Gola Alta TuleEstampa:Onça Cronos",
     "marca": "Animale",
     "preco": 298,
     "novo": false,
@@ -6103,7 +6103,7 @@
   },
   {
     "id": "16450299636",
-    "nome": "Top Com Manga Longa Canelado De Tricot C",
+    "nome": "Top Com Manga Longa Canelado De Tricot C Tam:P;",
     "marca": "Animale",
     "preco": 398,
     "novo": false,
@@ -6116,7 +6116,7 @@
   },
   {
     "id": "16530949520",
-    "nome": "Vestido Malha Franzido",
+    "nome": "Vestido Malha Franzido Tam:GG;",
     "marca": "Animale",
     "preco": 698,
     "novo": false,
@@ -6129,7 +6129,7 @@
   },
   {
     "id": "16453768295",
-    "nome": "Blusa Tule Onca Suspiro",
+    "nome": "Blusa Tule Onca Suspiro Tam:GG",
     "marca": "Animale",
     "preco": 298,
     "novo": false,
@@ -6142,7 +6142,7 @@
   },
   {
     "id": "16442980862",
-    "nome": "Segunda Pele Tule Color",
+    "nome": "Segunda Pele Tule Color Tam:GG;",
     "marca": "Animale",
     "preco": 228,
     "novo": false,
@@ -6155,7 +6155,7 @@
   },
   {
     "id": "16530949609",
-    "nome": "Blusa Regata Geo Laser Preto E Orla",
+    "nome": "Blusa Regata Geo Laser Preto E Orla Tam:GG",
     "marca": "Animale",
     "preco": 598,
     "novo": false,
@@ -6168,7 +6168,7 @@
   },
   {
     "id": "16494254695",
-    "nome": "Blusa Manga Longa Decote V",
+    "nome": "Blusa Manga Longa Decote V Tam:G",
     "marca": "Animale",
     "preco": 698,
     "novo": false,
@@ -6181,7 +6181,7 @@
   },
   {
     "id": "16450299632",
-    "nome": "Top Gola Alta Cropped Lurex De Tricot",
+    "nome": "Top Gola Alta Cropped Lurex De Tricot Tam:GG",
     "marca": "Animale",
     "preco": 398,
     "novo": false,
@@ -6274,7 +6274,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16443988263.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -8231,7 +8231,7 @@
       "GG",
       "G"
     ],
-    "imagem": "/produtos/16483521183.jpg",
+    "imagem": "/produtos/16483521183.webp",
     "temEstoque": true
   },
   {
@@ -8248,7 +8248,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16532361979.jpg",
+    "imagem": "/produtos/16532361979.webp",
     "temEstoque": true
   },
   {
@@ -8286,7 +8286,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16434113526.jpg",
+    "imagem": "/produtos/16434113526.png",
     "temEstoque": true
   },
   {
@@ -8320,7 +8320,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16470685351.jpg",
+    "imagem": "/produtos/16470685351.webp",
     "temEstoque": true
   },
   {
@@ -8337,7 +8337,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16483539324.jpg",
+    "imagem": "/produtos/16483539324.webp",
     "temEstoque": true
   },
   {
@@ -8354,7 +8354,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16449066900.jpg",
+    "imagem": "/produtos/16449066900.webp",
     "temEstoque": true
   },
   {
@@ -8388,7 +8388,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16434105264.jpg",
+    "imagem": "/produtos/16434105264.webp",
     "temEstoque": false
   },
   {
@@ -8405,7 +8405,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16470679088.jpg",
+    "imagem": "/produtos/16470679088.webp",
     "temEstoque": false
   },
   {
@@ -8422,7 +8422,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16434348341.jpg",
+    "imagem": "/produtos/16434348341.webp",
     "temEstoque": false
   },
   {
@@ -8439,7 +8439,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16434353852.jpg",
+    "imagem": "/produtos/16434353852.webp",
     "temEstoque": false
   },
   {
@@ -8473,7 +8473,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16458364101.jpg",
+    "imagem": "/produtos/16458364101.webp",
     "temEstoque": false
   },
   {
@@ -8489,7 +8489,7 @@
       "GG",
       "G"
     ],
-    "imagem": "/produtos/16443634819.jpg",
+    "imagem": "/produtos/16443634819.webp",
     "temEstoque": false
   },
   {
@@ -8506,7 +8506,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16453552646.jpg",
+    "imagem": "/produtos/16453552646.webp",
     "temEstoque": true
   },
   {
@@ -8553,7 +8553,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16470704074.jpg",
+    "imagem": "/produtos/16470704074.webp",
     "temEstoque": true
   },
   {
@@ -8570,7 +8570,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16434114422.jpg",
+    "imagem": "/produtos/16434114422.webp",
     "temEstoque": true
   },
   {
@@ -8604,7 +8604,7 @@
       "GG",
       "G"
     ],
-    "imagem": "/produtos/16442953706.jpg",
+    "imagem": "/produtos/16442953706.webp",
     "temEstoque": true
   },
   {
@@ -8631,7 +8631,7 @@
       "GG",
       "G"
     ],
-    "imagem": "/produtos/16546450785.jpg",
+    "imagem": "/produtos/16546450785.webp",
     "temEstoque": false
   },
   {
@@ -8660,12 +8660,12 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16546465811.jpg",
+    "imagem": "/produtos/16546465811.webp",
     "temEstoque": true
   },
   {
     "id": "16546483718",
-    "nome": "Calça De Couro Italiano Five Pocket",
+    "nome": "Calça De Couro Italiano Five Pocket Preto:44",
     "marca": "Animale",
     "preco": 6598,
     "novo": false,
@@ -8673,7 +8673,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16546483718.jpg",
+    "imagem": "/produtos/16546483718.webp",
     "temEstoque": true
   },
   {
@@ -8691,7 +8691,7 @@
       "34",
       "38"
     ],
-    "imagem": "/produtos/16546485541.jpg",
+    "imagem": "/produtos/16546485541.webp",
     "temEstoque": false
   },
   {
@@ -8708,7 +8708,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16546494433.jpg",
+    "imagem": "/produtos/16546494433.webp",
     "temEstoque": true
   },
   {
@@ -8726,7 +8726,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16546497184.jpg",
+    "imagem": "/produtos/16546497184.webp",
     "temEstoque": false
   },
   {
@@ -8744,7 +8744,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16553539262.jpg",
+    "imagem": "/produtos/16553539262.webp",
     "temEstoque": false
   },
   {
@@ -8780,12 +8780,12 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16553554031.jpg",
+    "imagem": "/produtos/16553554031.webp",
     "temEstoque": false
   },
   {
     "id": "16553565913",
-    "nome": "Saia De Couro Curta Fenda Frontal Azul Oceano - 38",
+    "nome": "Saia De Couro Curta Fenda Frontal",
     "marca": "Animale",
     "preco": 3298,
     "novo": false,
@@ -8798,12 +8798,12 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16553565913.jpg",
+    "imagem": "/produtos/16553565913.webp",
     "temEstoque": false
   },
   {
     "id": "16553569214",
-    "nome": "Bermuda De Couro Classica Preto - 36",
+    "nome": "Bermuda De Couro Clássica",
     "marca": "Animale",
     "preco": 3998,
     "novo": false,
@@ -8816,7 +8816,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16553569214.jpg",
+    "imagem": "/produtos/16553569214.webp",
     "temEstoque": false
   },
   {
@@ -8834,7 +8834,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16553570557.jpg",
+    "imagem": "/produtos/16553570557.webp",
     "temEstoque": false
   },
   {
@@ -8870,7 +8870,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16553573764.jpg",
+    "imagem": "/produtos/16553573764.webp",
     "temEstoque": true
   },
   {
@@ -8888,12 +8888,12 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16553629471.jpg",
+    "imagem": "/produtos/16553629471.webp",
     "temEstoque": false
   },
   {
     "id": "16553632470",
-    "nome": "Blazer Com Linho Verde Verde Brisa",
+    "nome": "Blazer Com Linho Verde",
     "marca": "Animale",
     "preco": 1798,
     "novo": false,
@@ -8905,7 +8905,7 @@
       "38",
       "36"
     ],
-    "imagem": "/produtos/16553632470.jpg",
+    "imagem": "/produtos/16553632470.webp",
     "temEstoque": false
   },
   {
@@ -8941,12 +8941,12 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16553634593.jpg",
+    "imagem": "/produtos/16553634593.webp",
     "temEstoque": false
   },
   {
     "id": "16553638684",
-    "nome": "Camisa De Tricoline Listra Azul / Branco - 40",
+    "nome": "Camisa de Tricoline Listrada Claudia",
     "marca": "Animale",
     "preco": 598,
     "novo": false,
@@ -8958,12 +8958,12 @@
       "38",
       "36"
     ],
-    "imagem": "/produtos/16553638684.jpg",
+    "imagem": "/produtos/16553638684.webp",
     "temEstoque": false
   },
   {
     "id": "16553640444",
-    "nome": "Vestido De Georgette Leve Midi Desconstruido Estampado Est Folhagem Isla Color - 36",
+    "nome": "Vestido De Georgette Leve Midi Desconstruido Estampado",
     "marca": "Animale",
     "preco": 1598,
     "novo": false,
@@ -8976,7 +8976,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16553640444.jpg",
+    "imagem": "/produtos/16553640444.webp",
     "temEstoque": false
   },
   {
@@ -8994,7 +8994,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16553643704.jpg",
+    "imagem": "/produtos/16553643704.webp",
     "temEstoque": false
   },
   {
@@ -9009,7 +9009,7 @@
       "GG",
       "G"
     ],
-    "imagem": "/produtos/16556239568.jpg",
+    "imagem": "/produtos/16556239568.webp",
     "temEstoque": false
   },
   {
@@ -9026,7 +9026,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16556242707.jpg",
+    "imagem": "/produtos/16556242707.webp",
     "temEstoque": false
   },
   {
@@ -9044,7 +9044,7 @@
       "38",
       "34"
     ],
-    "imagem": "/produtos/16557553230.jpg",
+    "imagem": "/produtos/16557553230.webp",
     "temEstoque": true
   },
   {
@@ -9061,7 +9061,7 @@
       "38",
       "36"
     ],
-    "imagem": "/produtos/16561232523.jpg",
+    "imagem": "/produtos/16561232523.webp",
     "temEstoque": false
   },
   {
@@ -9076,7 +9076,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16561232532.jpg",
+    "imagem": "/produtos/16561232532.webp",
     "temEstoque": false
   },
   {
@@ -9094,7 +9094,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561232546.jpg",
+    "imagem": "/produtos/16561232546.webp",
     "temEstoque": false
   },
   {
@@ -9112,7 +9112,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561232568.jpg",
+    "imagem": "/produtos/16561232568.webp",
     "temEstoque": false
   },
   {
@@ -9130,7 +9130,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561232575.jpg",
+    "imagem": "/produtos/16561232575.webp",
     "temEstoque": false
   },
   {
@@ -9148,7 +9148,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561232578.jpg",
+    "imagem": "/produtos/16561232578.webp",
     "temEstoque": false
   },
   {
@@ -9166,7 +9166,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561232597.jpg",
+    "imagem": "/produtos/16561232597.webp",
     "temEstoque": false
   },
   {
@@ -9184,7 +9184,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561232600.jpg",
+    "imagem": "/produtos/16561232600.webp",
     "temEstoque": false
   },
   {
@@ -9202,7 +9202,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561232609.jpg",
+    "imagem": "/produtos/16561232609.webp",
     "temEstoque": false
   },
   {
@@ -9220,7 +9220,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561232620.jpg",
+    "imagem": "/produtos/16561232620.webp",
     "temEstoque": false
   },
   {
@@ -9238,7 +9238,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561232629.jpg",
+    "imagem": "/produtos/16561232629.webp",
     "temEstoque": true
   },
   {
@@ -9256,7 +9256,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561232640.jpg",
+    "imagem": "/produtos/16561232640.webp",
     "temEstoque": false
   },
   {
@@ -9271,7 +9271,7 @@
       "40",
       "36"
     ],
-    "imagem": "/produtos/16561493348.jpg",
+    "imagem": "/produtos/16561493348.webp",
     "temEstoque": true
   },
   {
@@ -9289,7 +9289,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561496131.jpg",
+    "imagem": "/produtos/16561496131.webp",
     "temEstoque": false
   },
   {
@@ -9307,7 +9307,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561498454.jpg",
+    "imagem": "/produtos/16561498454.webp",
     "temEstoque": false
   },
   {
@@ -9325,7 +9325,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561651450.jpg",
+    "imagem": "/produtos/16561651450.webp",
     "temEstoque": false
   },
   {
@@ -9343,7 +9343,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561651453.jpg",
+    "imagem": "/produtos/16561651453.webp",
     "temEstoque": false
   },
   {
@@ -9360,7 +9360,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16561651471.jpg",
+    "imagem": "/produtos/16561651471.webp",
     "temEstoque": false
   },
   {
@@ -9377,7 +9377,7 @@
       "35",
       "34"
     ],
-    "imagem": "/produtos/16561651475.jpg",
+    "imagem": "/produtos/16561651475.webp",
     "temEstoque": false
   },
   {
@@ -9393,7 +9393,7 @@
       "34",
       "32"
     ],
-    "imagem": "/produtos/16561651494.jpg",
+    "imagem": "/produtos/16561651494.webp",
     "temEstoque": true
   },
   {
@@ -9409,7 +9409,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16561651498.jpg",
+    "imagem": "/produtos/16561651498.webp",
     "temEstoque": false
   },
   {
@@ -9425,7 +9425,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16561651501.jpg",
+    "imagem": "/produtos/16561651501.webp",
     "temEstoque": false
   },
   {
@@ -9442,7 +9442,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16470713845.jpg",
+    "imagem": "/produtos/16470713845.webp",
     "temEstoque": true
   },
   {
@@ -9457,7 +9457,7 @@
       "42",
       "40"
     ],
-    "imagem": "/produtos/16580533582.jpg",
+    "imagem": "/produtos/16580533582.webp",
     "temEstoque": true
   },
   {
@@ -9474,7 +9474,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454777923.jpg",
+    "imagem": "/produtos/16454777923.webp",
     "temEstoque": true
   },
   {
@@ -9504,7 +9504,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16453535504.jpg",
+    "imagem": "/produtos/16453535504.webp",
     "temEstoque": true
   },
   {
@@ -9521,7 +9521,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16465505004.jpg",
+    "imagem": "/produtos/16465505004.webp",
     "temEstoque": true
   },
   {
@@ -9539,7 +9539,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16434344595.jpg",
+    "imagem": "/produtos/16434344595.webp",
     "temEstoque": true
   },
   {
@@ -9556,7 +9556,7 @@
       "38",
       "42"
     ],
-    "imagem": "/produtos/16472542408.jpg",
+    "imagem": "/produtos/16472542408.webp",
     "temEstoque": false
   },
   {
@@ -9573,7 +9573,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16443982630.jpg",
+    "imagem": "/produtos/16443982630.webp",
     "temEstoque": false
   },
   {
@@ -9590,7 +9590,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16449046453.jpg",
+    "imagem": "/produtos/16449046453.webp",
     "temEstoque": false
   },
   {
@@ -9607,7 +9607,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16449047961.jpg",
+    "imagem": "/produtos/16449047961.webp",
     "temEstoque": false
   },
   {
@@ -9637,7 +9637,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16455216929.jpg",
+    "imagem": "/produtos/16455216929.webp",
     "temEstoque": true
   },
   {
@@ -9662,7 +9662,7 @@
   },
   {
     "id": "16573796130",
-    "nome": "Saia De Algodão Midi Reta Com Cós De Elástico e Fendas Nas Laterais Estampada Est Fig Sketch Color - 40",
+    "nome": "Saia Midi Fig Sketch",
     "marca": "Animale",
     "preco": 728,
     "novo": false,
@@ -9696,7 +9696,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16573796140.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -9715,7 +9715,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16573796111.jpg",
+    "imagem": "/produtos/16573796111.webp",
     "temEstoque": false
   },
   {
@@ -9752,7 +9752,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16573796122.jpg",
+    "imagem": "/produtos/16573796122.webp",
     "temEstoque": false
   },
   {
@@ -9769,7 +9769,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16573796148.jpg",
+    "imagem": "/produtos/16573796148.webp",
     "temEstoque": false
   },
   {
@@ -9789,7 +9789,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16573796127.jpg",
+    "imagem": "/produtos/16573796127.webp",
     "temEstoque": true
   },
   {
@@ -9809,7 +9809,7 @@
       "38",
       "36"
     ],
-    "imagem": "/produtos/16573796136.jpg",
+    "imagem": "/produtos/16573796136.webp",
     "temEstoque": false
   },
   {
@@ -9824,7 +9824,7 @@
       "44",
       "40"
     ],
-    "imagem": "/produtos/16573796123.jpg",
+    "imagem": "/produtos/16573796123.webp",
     "temEstoque": true
   },
   {
@@ -9841,7 +9841,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16458365402.jpg",
+    "imagem": "/produtos/16458365402.webp",
     "temEstoque": false
   },
   {
@@ -9858,7 +9858,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16458365821.jpg",
+    "imagem": "/produtos/16458365821.webp",
     "temEstoque": true
   },
   {
@@ -9875,7 +9875,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16465501890.jpg",
+    "imagem": "/produtos/16465501890.webp",
     "temEstoque": true
   },
   {
@@ -9892,7 +9892,7 @@
       "G",
       "M"
     ],
-    "imagem": "/produtos/16470631643.jpg",
+    "imagem": "/produtos/16470631643.webp",
     "temEstoque": false
   },
   {
@@ -9909,7 +9909,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16470666836.jpg",
+    "imagem": "/produtos/16470666836.png",
     "temEstoque": false
   },
   {
@@ -9926,7 +9926,7 @@
       "G",
       "M"
     ],
-    "imagem": "/produtos/16474494389.jpg",
+    "imagem": "/produtos/16474494389.webp",
     "temEstoque": true
   },
   {
@@ -9943,7 +9943,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16483503170.jpg",
+    "imagem": "/produtos/16483503170.webp",
     "temEstoque": true
   },
   {
@@ -9959,7 +9959,7 @@
       "G",
       "M"
     ],
-    "imagem": "/produtos/16483511826.jpg",
+    "imagem": "/produtos/16483511826.webp",
     "temEstoque": false
   },
   {
@@ -9993,7 +9993,7 @@
       "P",
       "G"
     ],
-    "imagem": "/produtos/16487309438.jpg",
+    "imagem": "/produtos/16487309438.webp",
     "temEstoque": false
   },
   {
@@ -10009,7 +10009,7 @@
       "41",
       "39"
     ],
-    "imagem": "/produtos/16524867208.jpg",
+    "imagem": "/produtos/16524867208.webp",
     "temEstoque": false
   },
   {
@@ -10026,7 +10026,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16525980883.jpg",
+    "imagem": "/produtos/16525980883.webp",
     "temEstoque": true
   },
   {
@@ -10060,7 +10060,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16526010119.jpg",
+    "imagem": "/produtos/16526010119.webp",
     "temEstoque": true
   },
   {
@@ -10077,7 +10077,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16532358672.jpg",
+    "imagem": "/produtos/16532358672.webp",
     "temEstoque": true
   },
   {
@@ -10094,7 +10094,7 @@
       "G",
       "M"
     ],
-    "imagem": "/produtos/16532360995.jpg",
+    "imagem": "/produtos/16532360995.webp",
     "temEstoque": false
   },
   {
@@ -10111,7 +10111,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16535228126.jpg",
+    "imagem": "/produtos/16535228126.webp",
     "temEstoque": true
   },
   {
@@ -10128,7 +10128,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16535285668.jpg",
+    "imagem": "/produtos/16535285668.webp",
     "temEstoque": false
   },
   {
@@ -10145,7 +10145,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16535291900.jpg",
+    "imagem": "/produtos/16535291900.webp",
     "temEstoque": true
   },
   {
@@ -10161,7 +10161,7 @@
       "GG",
       "P"
     ],
-    "imagem": "/produtos/16535577364.jpg",
+    "imagem": "/produtos/16535577364.webp",
     "temEstoque": true
   },
   {
@@ -10177,7 +10177,7 @@
       "P",
       "M"
     ],
-    "imagem": "/produtos/16535596573.jpg",
+    "imagem": "/produtos/16535596573.webp",
     "temEstoque": false
   },
   {
@@ -10194,7 +10194,7 @@
       "M",
       "G"
     ],
-    "imagem": "/produtos/16535603971.jpg",
+    "imagem": "/produtos/16535603971.webp",
     "temEstoque": true
   },
   {
@@ -10211,7 +10211,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16565081675.jpg",
+    "imagem": "/produtos/16565081675.webp",
     "temEstoque": true
   },
   {
@@ -10229,7 +10229,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16565794748.jpg",
+    "imagem": "/produtos/16565794748.webp",
     "temEstoque": true
   },
   {
@@ -10247,7 +10247,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16565819577.jpg",
+    "imagem": "/produtos/16565819577.webp",
     "temEstoque": true
   },
   {
@@ -10263,7 +10263,7 @@
       "G",
       "P"
     ],
-    "imagem": "/produtos/16565840580.jpg",
+    "imagem": "/produtos/16565840580.webp",
     "temEstoque": false
   },
   {
@@ -10279,7 +10279,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16565846467.jpg",
+    "imagem": "/produtos/16565846467.webp",
     "temEstoque": false
   },
   {
@@ -10296,7 +10296,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16434353774.jpg",
+    "imagem": "/produtos/16434353774.webp",
     "temEstoque": false
   },
   {
@@ -10313,7 +10313,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16443991067.jpg",
+    "imagem": "/produtos/16443991067.webp",
     "temEstoque": true
   },
   {
@@ -10349,7 +10349,7 @@
       "38",
       "42"
     ],
-    "imagem": "/produtos/16532369639.jpg",
+    "imagem": "/produtos/16532369639.webp",
     "temEstoque": false
   },
   {
@@ -10385,7 +10385,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16443977912.jpg",
+    "imagem": "/produtos/16443977912.webp",
     "temEstoque": true
   },
   {
@@ -10418,7 +10418,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16449069138.jpg",
+    "imagem": "/produtos/16449069138.webp",
     "temEstoque": true
   },
   {
@@ -10435,7 +10435,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16449070889.jpg",
+    "imagem": "/produtos/16449070889.webp",
     "temEstoque": true
   },
   {
@@ -10479,7 +10479,7 @@
   },
   {
     "id": "16571770928",
-    "nome": "TSHIRT 511.013",
+    "nome": "TSHIRT 511.013 OFF:M",
     "marca": "Slywear",
     "preco": 359.9,
     "novo": false,
@@ -10505,7 +10505,7 @@
   },
   {
     "id": "16571600030",
-    "nome": "VESTIDO LONGO DET ARGOLA",
+    "nome": "VESTIDO LONGO DET ARGOLA ROSA:M",
     "marca": "My Place",
     "preco": 435,
     "novo": false,
@@ -10549,7 +10549,7 @@
       "36",
       "34"
     ],
-    "imagem": "/produtos/16569843613.jpg",
+    "imagem": "/produtos/16569843613.webp",
     "temEstoque": false
   },
   {
@@ -10584,7 +10584,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16474644737.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -10597,7 +10597,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16568827201.jpg",
+    "imagem": "/produtos/16568827201.webp",
     "temEstoque": false
   },
   {
@@ -10616,7 +10616,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16458308923.jpg",
+    "imagem": "/produtos/16458308923.webp",
     "temEstoque": true
   },
   {
@@ -10633,7 +10633,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16443634820.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -10650,7 +10650,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16458364677.jpg",
+    "imagem": "/produtos/16458364677.webp",
     "temEstoque": true
   },
   {
@@ -10667,7 +10667,7 @@
       "G",
       "P"
     ],
-    "imagem": "/produtos/16474573642.jpg",
+    "imagem": "/produtos/16474573642.webp",
     "temEstoque": true
   },
   {
@@ -10700,7 +10700,7 @@
       "G",
       "M"
     ],
-    "imagem": "/produtos/16449060067.jpg",
+    "imagem": "/produtos/16449060067.webp",
     "temEstoque": false
   },
   {
@@ -10713,7 +10713,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16434351344.jpg",
+    "imagem": "/produtos/16434351344.webp",
     "temEstoque": false
   },
   {
@@ -10730,7 +10730,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16565853924.jpg",
+    "imagem": "/produtos/16565853924.webp",
     "temEstoque": true
   },
   {
@@ -10746,7 +10746,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16565848757.jpg",
+    "imagem": "/produtos/16565848757.webp",
     "temEstoque": true
   },
   {
@@ -10765,7 +10765,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16458306634.jpg",
+    "imagem": "/produtos/16458306634.webp",
     "temEstoque": false
   },
   {
@@ -10784,7 +10784,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16554636912.jpg",
+    "imagem": "/produtos/16554636912.webp",
     "temEstoque": true
   },
   {
@@ -10802,7 +10802,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16434350222.jpg",
+    "imagem": "/produtos/16434350222.webp",
     "temEstoque": true
   },
   {
@@ -10820,7 +10820,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16443985807.jpg",
+    "imagem": "/produtos/16443985807.webp",
     "temEstoque": true
   },
   {
@@ -10837,7 +10837,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16565083179.jpg",
+    "imagem": "/produtos/16565083179.webp",
     "temEstoque": true
   },
   {
@@ -10854,7 +10854,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16565077018.jpg",
+    "imagem": "/produtos/16565077018.png",
     "temEstoque": true
   },
   {
@@ -11580,7 +11580,7 @@
   },
   {
     "id": "16561679132",
-    "nome": "CALÇA 553.002",
+    "nome": "CALÇA 553.002 ESTAMPA:OLHOS DE TIGRE;",
     "marca": "Slywear",
     "preco": 383.8,
     "novo": false,
@@ -11665,7 +11665,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16561651487.jpg",
+    "imagem": "/produtos/16561651487.webp",
     "temEstoque": false
   },
   {
@@ -11717,7 +11717,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16561232583.jpg",
+    "imagem": "/produtos/16561232583.webp",
     "temEstoque": false
   },
   {
@@ -11738,7 +11738,7 @@
   },
   {
     "id": "16561201516",
-    "nome": "Calca Crepe Rose",
+    "nome": "Calca Crepe Rose Rose:40",
     "marca": "Animale",
     "preco": 1598,
     "novo": false,
@@ -11783,7 +11783,7 @@
   },
   {
     "id": "16560026718",
-    "nome": "554.086 VESTIDO",
+    "nome": "554.086 VESTIDO ESTAMPA:CONSTELAÇÃO FOLHAGENS;",
     "marca": "Slywear",
     "preco": 335.8,
     "novo": false,
@@ -11812,7 +11812,7 @@
   },
   {
     "id": "16560023438",
-    "nome": "554.009 VESTIDO",
+    "nome": "554.009 VESTIDO ESTAMPA:OLHOS DE TIGRE;",
     "marca": "Slywear",
     "preco": 522.99,
     "novo": false,
@@ -11887,7 +11887,7 @@
   },
   {
     "id": "16559955947",
-    "nome": "BLUSA 551.081",
+    "nome": "BLUSA 551.081ESTAMPA:OLHOS DE TIGRE",
     "marca": "Slywear",
     "preco": 450.96,
     "novo": false,
@@ -11901,7 +11901,7 @@
   },
   {
     "id": "16557554902",
-    "nome": "Regata Basic Preto",
+    "nome": "Regata Basic Preto Preto:40",
     "marca": "Animale",
     "preco": 698,
     "novo": false,
@@ -12042,7 +12042,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16553558543.jpg",
+    "imagem": "/produtos/16553558543.webp",
     "temEstoque": false
   },
   {
@@ -12055,7 +12055,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16553554856.jpg",
+    "imagem": "/produtos/16553554856.webp",
     "temEstoque": false
   },
   {
@@ -12649,7 +12649,7 @@
   },
   {
     "id": "16546443023",
-    "nome": "Jaqueta De Couro Faixa Matelasse",
+    "nome": "Jaqueta De Couro Faixa Matelasse Azul Ancora:42",
     "marca": "Animale",
     "preco": 4598,
     "novo": false,
@@ -12737,7 +12737,7 @@
   },
   {
     "id": "16546344633",
-    "nome": "CL M LY COMBAT DW011 BFV",
+    "nome": "CL M LY COMBAT DW011 BFV COR E",
     "marca": "Docks",
     "preco": 179.9,
     "novo": false,
@@ -12772,7 +12772,7 @@
   },
   {
     "id": "16541966579",
-    "nome": "Body Decote Costas Tricot",
+    "nome": "Body De Tricot Com Decote Cavado Costas Preto - M",
     "marca": "Animale",
     "preco": 598,
     "novo": false,
@@ -12780,12 +12780,12 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16541966579.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
     "id": "16541960161",
-    "nome": "Calça De Georgette Pesado Babados Estampada Est Onca Oasis Color",
+    "nome": "Calça De Georgette Pesado Babados Estampada Est Onca Oasis Color 42",
     "marca": "Animale",
     "preco": 1198,
     "novo": false,
@@ -12793,12 +12793,12 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16541960161.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
     "id": "16541943204",
-    "nome": "Calca Com Bolsos Linho Com Viscose",
+    "nome": "Calça Com Linho Ampla Bolso Cargo Detalhe Ilhós Preto - 38",
     "marca": "Animale",
     "preco": 1298,
     "novo": false,
@@ -12806,12 +12806,12 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16541943204.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
     "id": "16541941192",
-    "nome": "Saia Pareo Bordado Poa",
+    "nome": "Saia De Algodão Pareô Reta Com Bordados Off White - M",
     "marca": "Animale",
     "preco": 1399,
     "novo": false,
@@ -12819,7 +12819,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16541941192.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -12837,7 +12837,7 @@
   },
   {
     "id": "16541824597",
-    "nome": "Vestido Longo Cava Quadrada Listra Color",
+    "nome": "Vestido Longo Cava Quadrada Listra Color 40",
     "marca": "Animale",
     "preco": 1398,
     "novo": false,
@@ -12845,12 +12845,12 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16541824597.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
     "id": "16541804447",
-    "nome": "Vestido Rib Decote Nadador",
+    "nome": "Vestido De Rib Decote Nadador Azul Azul Cannes - G",
     "marca": "Animale",
     "preco": 439,
     "novo": false,
@@ -12858,12 +12858,12 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16541804447.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
     "id": "16541694722",
-    "nome": "Vestido De Linho Midi",
+    "nome": "Vestido De Linho Midi Rosa Sakura - 38",
     "marca": "Animale",
     "preco": 1558,
     "novo": false,
@@ -12871,7 +12871,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16541694722.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -12902,7 +12902,7 @@
   },
   {
     "id": "16539246901",
-    "nome": "Jaqueta De Couro Perfecto Azul",
+    "nome": "Jaqueta De Couro Motor Classica Azul Azul Pale - 38",
     "marca": "Animale",
     "preco": 2899,
     "novo": false,
@@ -12910,12 +12910,12 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16539246901.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
     "id": "16539244298",
-    "nome": "Calca De Couro Mix Textura Amarração",
+    "nome": "Calça De Couro Mix Textura Amarracao Azul Tourmalina - 42",
     "marca": "Animale",
     "preco": 7998,
     "novo": false,
@@ -12923,7 +12923,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": "/produtos/16539244298.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -12941,7 +12941,7 @@
   },
   {
     "id": "16537762801",
-    "nome": "CALÇA 543.086",
+    "nome": "CALÇA 543.086 VERDE:P",
     "marca": "Slywear",
     "preco": 551.9,
     "novo": false,
@@ -12980,7 +12980,7 @@
   },
   {
     "id": "16535570725",
-    "nome": "CAMISETA WAFFLE ML",
+    "nome": "CAMISETA WAFFLE ML AZUL MARINHO:G",
     "marca": "Oficina Reserva",
     "preco": 599,
     "novo": false,
@@ -13005,7 +13005,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16535552957.jpg",
+    "imagem": "/produtos/16535552957.webp",
     "temEstoque": true
   },
   {
@@ -13074,7 +13074,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454980335.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -13091,7 +13091,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16455617840.jpg",
+    "imagem": "/produtos/16455617840.webp",
     "temEstoque": true
   },
   {
@@ -13134,7 +13134,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16434349218.jpg",
+    "imagem": "/produtos/16434349218.webp",
     "temEstoque": true
   },
   {
@@ -13308,7 +13308,7 @@
   },
   {
     "id": "16533488546",
-    "nome": "VESTIDO RAVENA ALFAIATARIA",
+    "nome": "VESTIDO RAVENA ALFAIATARIA AZUL:P",
     "marca": "Ents",
     "preco": 619.9,
     "novo": false,
@@ -13321,7 +13321,7 @@
   },
   {
     "id": "16533486757",
-    "nome": "VESTIDO RAVENA ALFAIATARIA",
+    "nome": "VESTIDO RAVENA ALFAIATARIA MARROM BRONZE:M",
     "marca": "Ents",
     "preco": 619.9,
     "novo": false,
@@ -13334,7 +13334,7 @@
   },
   {
     "id": "16533485005",
-    "nome": "VESTIDO VANIA COM LINHO TIE DYE",
+    "nome": "VESTIDO VANIA COM LINHO TIE DYE CINZA:P",
     "marca": "Ents",
     "preco": 639.8,
     "novo": false,
@@ -13347,7 +13347,7 @@
   },
   {
     "id": "16533482723",
-    "nome": "VESTIDO JULIA COM LINHO",
+    "nome": "VESTIDO JULIA COM LINHO MARROM MOCHA:G",
     "marca": "Ents",
     "preco": 759.9,
     "novo": false,
@@ -13360,7 +13360,7 @@
   },
   {
     "id": "16533481488",
-    "nome": "VESTIDO JULIA COM LINHO",
+    "nome": "VESTIDO JULIA COM LINHO CARAMELO:M",
     "marca": "Ents",
     "preco": 759.9,
     "novo": false,
@@ -13373,7 +13373,7 @@
   },
   {
     "id": "16533479460",
-    "nome": "JAQUETA VALENTINA PURO LINHO",
+    "nome": "JAQUETA VALENTINA PURO LINHO MARROM BRONZE:M",
     "marca": "Ents",
     "preco": 639.8,
     "novo": false,
@@ -13386,7 +13386,7 @@
   },
   {
     "id": "16533478125",
-    "nome": "BERMUDA ISIS LINHO PURO",
+    "nome": "BERMUDA ISIS LINHO PURO AMARELO CELESTIAL:P",
     "marca": "Ents",
     "preco": 525.8,
     "novo": false,
@@ -13399,7 +13399,7 @@
   },
   {
     "id": "16533476482",
-    "nome": "CALCA VALENTINA LINHO PURO",
+    "nome": "CALCA VALENTINA LINHO PURO MARROM BRONZE:M",
     "marca": "Ents",
     "preco": 739.8,
     "novo": false,
@@ -13750,7 +13750,7 @@
   },
   {
     "id": "16528143490",
-    "nome": "CAMISETA PRMN BORDADO",
+    "nome": "CAMISETA PRMN BORDADO CINZA:G",
     "marca": "Puramania",
     "preco": 129.9,
     "novo": false,
@@ -13763,7 +13763,7 @@
   },
   {
     "id": "16528106748",
-    "nome": "VESTIDO ALFAIATARIA",
+    "nome": "VESTIDO ALFAIATARIA BEGE:P",
     "marca": "Slywear",
     "preco": 649.9,
     "novo": false,
@@ -13789,7 +13789,7 @@
   },
   {
     "id": "16526925893",
-    "nome": "CAMISA 531.071",
+    "nome": "CAMISA 531.071 MARROM:M",
     "marca": "Slywear",
     "preco": 379.9,
     "novo": false,
@@ -13802,7 +13802,7 @@
   },
   {
     "id": "16504765677",
-    "nome": "CAMISETA WAFFLE ML",
+    "nome": "CAMISETA WAFFLE ML P:BRANCO",
     "marca": "Oficina Reserva",
     "preco": 599,
     "novo": false,
@@ -13827,12 +13827,12 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16458367808.jpg",
+    "imagem": "/produtos/16458367808.webp",
     "temEstoque": true
   },
   {
     "id": "16524548121",
-    "nome": "CALCA  ALFAITARIA SARJADA",
+    "nome": "CALCA  ALFAITARIA SARJADA VERDE:P",
     "marca": "Slywear",
     "preco": 543,
     "novo": false,
@@ -13845,7 +13845,7 @@
   },
   {
     "id": "16524525118",
-    "nome": "BLAZER 545.021",
+    "nome": "BLAZER 545.021 VERDE:P",
     "marca": "Slywear",
     "preco": 666.9,
     "novo": false,
@@ -13871,7 +13871,7 @@
   },
   {
     "id": "16518794684",
-    "nome": "CAMISETA MASC PRMN COM BOLSO",
+    "nome": "CAMISETA MASC PRMN COM BOLSO TIJOLO:GG",
     "marca": "Puramania",
     "preco": 129.9,
     "novo": false,
@@ -13897,7 +13897,7 @@
   },
   {
     "id": "16515219805",
-    "nome": "VESTIDO DCT TORCIDO TRICOT",
+    "nome": "VESTIDO DCT TORCIDO TRICOT PRETO:M",
     "marca": "My Place",
     "preco": 498,
     "novo": false,
@@ -13922,7 +13922,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454787788.jpg",
+    "imagem": "/produtos/16454787788.webp",
     "temEstoque": true
   },
   {
@@ -14044,7 +14044,7 @@
   },
   {
     "id": "16487306391",
-    "nome": "CAMISETA MALHA OFFICE",
+    "nome": "CAMISETA MALHA OFFICE PRETO:G",
     "marca": "Oficina Reserva",
     "preco": 399,
     "novo": false,
@@ -14057,7 +14057,7 @@
   },
   {
     "id": "16487304301",
-    "nome": "POLO TRICOT ANCORA MC",
+    "nome": "POLO TRICOT ANCORA MC AREIA:M",
     "marca": "Oficina Reserva",
     "preco": 799,
     "novo": false,
@@ -14135,7 +14135,7 @@
   },
   {
     "id": "16483933194",
-    "nome": "SUETER TRICOT MERINO GOLA ALTA",
+    "nome": "SUETER TRICOT MERINO GOLA ALTA AZUL MARINHO:G",
     "marca": "Oficina Reserva",
     "preco": 1299,
     "novo": false,
@@ -14343,7 +14343,7 @@
   },
   {
     "id": "16479140857",
-    "nome": "SPENCER COURO BORDADO",
+    "nome": "SPENCER COURO BORDADO CAMEL:M",
     "marca": "My Place",
     "preco": 679,
     "novo": false,
@@ -14367,7 +14367,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16478886836.jpg",
+    "imagem": "/produtos/16478886836.webp",
     "temEstoque": true
   },
   {
@@ -14584,7 +14584,7 @@
       "40",
       "39"
     ],
-    "imagem": "/produtos/16457583688.jpg",
+    "imagem": "/produtos/16457583688.webp",
     "temEstoque": false
   },
   {
@@ -14704,7 +14704,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16470606921.jpg",
+    "imagem": "/produtos/16470606921.webp",
     "temEstoque": false
   },
   {
@@ -14761,7 +14761,7 @@
   },
   {
     "id": "16467098038",
-    "nome": "CAMISETA MASC PRMN BORDADO",
+    "nome": "CAMISETA MASC PRMN BORDADO OFF WHITE:GG",
     "marca": "Puramania",
     "preco": 129.9,
     "novo": false,
@@ -14787,7 +14787,7 @@
   },
   {
     "id": "16466867472",
-    "nome": "CAMISETA MASC PRMN",
+    "nome": "CAMISETA MASC PRMN BRANCO:G",
     "marca": "Puramania",
     "preco": 120,
     "novo": false,
@@ -14800,7 +14800,7 @@
   },
   {
     "id": "16466866439",
-    "nome": "CAMISETA MASC PRMN ESTAMPADA",
+    "nome": "CAMISETA MASC PRMN ESTAMPADA Tam:G",
     "marca": "Puramania",
     "preco": 135,
     "novo": false,
@@ -14904,7 +14904,7 @@
   },
   {
     "id": "16466770564",
-    "nome": "CAMISETA MASC PRMN",
+    "nome": "CAMISETA MASC PRMN AMARELO CLARO:G",
     "marca": "Puramania",
     "preco": 130,
     "novo": false,
@@ -14947,7 +14947,7 @@
   },
   {
     "id": "16465818954",
-    "nome": "CAMISETA MASC PRETO 1233",
+    "nome": "CAMISETA MASC PRETO 1233 PRETO:M",
     "marca": "Puramania",
     "preco": 159,
     "novo": false,
@@ -14988,7 +14988,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16462563128.jpg",
+    "imagem": "/produtos/16462563128.webp",
     "temEstoque": true
   },
   {
@@ -15408,7 +15408,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16455878454.jpg",
+    "imagem": "/produtos/16455878454.webp",
     "temEstoque": true
   },
   {
@@ -15441,7 +15441,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16458368736.jpg",
+    "imagem": "/produtos/16458368736.webp",
     "temEstoque": true
   },
   {
@@ -15458,7 +15458,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16458362986.jpg",
+    "imagem": "/produtos/16458362986.webp",
     "temEstoque": true
   },
   {
@@ -15801,7 +15801,7 @@
       "38",
       "36"
     ],
-    "imagem": "/produtos/16458308293.jpg",
+    "imagem": "/produtos/16458308293.webp",
     "temEstoque": false
   },
   {
@@ -15834,7 +15834,7 @@
       "38",
       "36"
     ],
-    "imagem": "/produtos/16458307288.jpg",
+    "imagem": "/produtos/16458307288.webp",
     "temEstoque": false
   },
   {
@@ -16087,7 +16087,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16434348492.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16227,7 +16227,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16457587617.jpg",
+    "imagem": "/produtos/16457587617.webp",
     "temEstoque": false
   },
   {
@@ -16246,7 +16246,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16457854030.jpg",
+    "imagem": "/produtos/16457854030.webp",
     "temEstoque": true
   },
   {
@@ -16278,7 +16278,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16434344774.jpg",
+    "imagem": "/produtos/16434344774.webp",
     "temEstoque": true
   },
   {
@@ -16309,7 +16309,7 @@
       "40",
       "38"
     ],
-    "imagem": "/produtos/16457811540.jpg",
+    "imagem": "/produtos/16457811540.webp",
     "temEstoque": true
   },
   {
@@ -16378,7 +16378,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16457779658.jpg",
+    "imagem": "/produtos/16457779658.webp",
     "temEstoque": true
   },
   {
@@ -16395,7 +16395,7 @@
       "G",
       "P"
     ],
-    "imagem": "/produtos/16434347842.jpg",
+    "imagem": "/produtos/16434347842.webp",
     "temEstoque": true
   },
   {
@@ -16868,7 +16868,7 @@
       "P",
       "M"
     ],
-    "imagem": "/produtos/16442954738.jpg",
+    "imagem": "/produtos/16442954738.webp",
     "temEstoque": true
   },
   {
@@ -16924,7 +16924,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16457656973.jpg",
+    "imagem": "/produtos/16457656973.webp",
     "temEstoque": true
   },
   {
@@ -16980,7 +16980,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16457591882.jpg",
+    "imagem": "/produtos/16457591882.webp",
     "temEstoque": true
   },
   {
@@ -16998,7 +16998,7 @@
   },
   {
     "id": "16457370436",
-    "nome": "Casaco Tricot Cotton Cashmere",
+    "nome": "Casaco Tricot Cotton Cashmere Aveia - XG",
     "marca": "Foxton",
     "preco": 648,
     "novo": false,
@@ -17006,7 +17006,7 @@
     "tamanhos": [
       "P"
     ],
-    "imagem": "/produtos/16457370436.jpg",
+    "imagem": "/produtos/16457370436.webp",
     "temEstoque": true
   },
   {
@@ -17128,7 +17128,7 @@
   },
   {
     "id": "16442965909",
-    "nome": "Casaco Tricot Dupla Face",
+    "nome": "Casaco Tricot Dupla Face Preto/Camelo New - XG",
     "marca": "Foxton",
     "preco": 698,
     "novo": false,
@@ -17140,7 +17140,7 @@
       "P",
       "XG"
     ],
-    "imagem": "/produtos/16442965909.jpg",
+    "imagem": "/produtos/16442965909.webp",
     "temEstoque": true
   },
   {
@@ -18200,7 +18200,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16455927787.jpg",
+    "imagem": "/produtos/16455927787.webp",
     "temEstoque": true
   },
   {
@@ -18256,7 +18256,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16455900426.jpg",
+    "imagem": "/produtos/16455900426.webp",
     "temEstoque": true
   },
   {
@@ -18325,7 +18325,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16434114006.jpg",
+    "imagem": "/produtos/16434114006.webp",
     "temEstoque": true
   },
   {
@@ -18342,7 +18342,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16434346333.jpg",
+    "imagem": "/produtos/16434346333.webp",
     "temEstoque": false
   },
   {
@@ -18610,7 +18610,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16455560105.jpg",
+    "imagem": "/produtos/16455560105.webp",
     "temEstoque": true
   },
   {
@@ -18639,7 +18639,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16455559735.jpg",
+    "imagem": "/produtos/16455559735.webp",
     "temEstoque": false
   },
   {
@@ -19401,7 +19401,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16455224200.jpg",
+    "imagem": "/produtos/16455224200.webp",
     "temEstoque": false
   },
   {
@@ -19418,7 +19418,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16455221790.jpg",
+    "imagem": "/produtos/16455221790.webp",
     "temEstoque": true
   },
   {
@@ -19435,7 +19435,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454963041.jpg",
+    "imagem": "/produtos/16454963041.webp",
     "temEstoque": true
   },
   {
@@ -19923,7 +19923,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454900410.jpg",
+    "imagem": "/produtos/16454900410.webp",
     "temEstoque": false
   },
   {
@@ -19940,7 +19940,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454786905.jpg",
+    "imagem": "/produtos/16454786905.webp",
     "temEstoque": true
   },
   {
@@ -19957,7 +19957,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454786523.jpg",
+    "imagem": "/produtos/16454786523.webp",
     "temEstoque": false
   },
   {
@@ -19974,7 +19974,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454785499.jpg",
+    "imagem": "/produtos/16454785499.webp",
     "temEstoque": true
   },
   {
@@ -19991,7 +19991,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454782959.jpg",
+    "imagem": "/produtos/16454782959.webp",
     "temEstoque": true
   },
   {
@@ -20008,7 +20008,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454780115.jpg",
+    "imagem": "/produtos/16454780115.webp",
     "temEstoque": true
   },
   {
@@ -20025,7 +20025,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454778939.jpg",
+    "imagem": "/produtos/16454778939.webp",
     "temEstoque": true
   },
   {
@@ -20041,7 +20041,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16434349114.jpg",
+    "imagem": "/produtos/16434349114.png",
     "temEstoque": true
   },
   {
@@ -20058,7 +20058,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454774824.jpg",
+    "imagem": "/produtos/16454774824.webp",
     "temEstoque": true
   },
   {
@@ -20075,7 +20075,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16454774124.jpg",
+    "imagem": "/produtos/16454774124.webp",
     "temEstoque": false
   },
   {
@@ -24244,7 +24244,7 @@
       "M",
       "P"
     ],
-    "imagem": "/produtos/16442956282.jpg",
+    "imagem": "/produtos/16442956282.png",
     "temEstoque": true
   },
   {
@@ -26640,7 +26640,7 @@
       "39",
       "38"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434352676.webp",
     "temEstoque": false
   },
   {
@@ -26684,7 +26684,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434104236.jpg",
     "temEstoque": false
   },
   {
@@ -26697,7 +26697,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434104101.jpg",
     "temEstoque": false
   },
   {
@@ -26710,7 +26710,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434103929.jpg",
     "temEstoque": false
   },
   {
@@ -26723,7 +26723,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434103809.jpg",
     "temEstoque": false
   },
   {
@@ -26736,7 +26736,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434103700.jpg",
     "temEstoque": false
   },
   {
@@ -26749,7 +26749,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434046932.jpg",
     "temEstoque": false
   },
   {
@@ -26762,7 +26762,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434046270.jpg",
     "temEstoque": false
   },
   {
@@ -26775,7 +26775,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434046085.jpg",
     "temEstoque": false
   },
   {
@@ -26814,7 +26814,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434038802.jpg",
     "temEstoque": false
   },
   {
@@ -26827,7 +26827,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434038712.jpg",
     "temEstoque": false
   },
   {
@@ -26892,7 +26892,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434038044.jpg",
     "temEstoque": false
   },
   {
@@ -27217,7 +27217,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16433829582.png",
     "temEstoque": true
   },
   {
@@ -27295,7 +27295,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16433820724.jpg",
     "temEstoque": false
   },
   {
@@ -27308,7 +27308,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16433820423.jpg",
     "temEstoque": false
   },
   {
@@ -27321,7 +27321,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16433820075.jpg",
     "temEstoque": false
   },
   {
@@ -27360,12 +27360,12 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16433818660.jpg",
     "temEstoque": false
   },
   {
     "id": "16433519333",
-    "nome": "TENIS NB BB80 UNISEX",
+    "nome": "TENIS NB BB80 UNISEXTAM:43",
     "marca": "New Balance",
     "preco": 399.99,
     "novo": false,
@@ -27378,7 +27378,7 @@
   },
   {
     "id": "16433523602",
-    "nome": "TENIS NB 480 LOW",
+    "nome": "TENIS NB 480 LOWTAM:43",
     "marca": "New Balance",
     "preco": 559.9,
     "novo": false,
@@ -27386,7 +27386,7 @@
     "tamanhos": [
       "Único"
     ],
-    "imagem": null,
+    "imagem": "/produtos/16433523602.png",
     "temEstoque": false
   },
   {
