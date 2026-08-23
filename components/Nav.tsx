@@ -8,17 +8,13 @@ export default function Nav() {
       <div className="text-center text-[11px] py-1.5 text-mozz-gray">
         Frete gratis acima de R$399 · Troca em 30 dias
       </div>
-      <div className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto">
-        <nav className="hidden md:flex gap-6 text-[13px] text-mozz-black/80">
-          <Link href="/produtos">Todos os produtos</Link>
-          <Link href="/feminino">Feminino</Link>
-          <Link href="/masculino">Masculino</Link>
-        </nav>
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center px-6 py-4 max-w-6xl mx-auto">
+        <div />
         <Link href="/" className="text-center">
           <div className="font-serif text-xl leading-none">M</div>
           <div className="font-serif text-[13px] tracking-widest2">MOZZ</div>
         </Link>
-        <div className="flex gap-4 text-[13px] text-mozz-black/80">
+        <div className="flex justify-end gap-4 text-[13px] text-mozz-black/80">
           <Link href="/carrinho">Carrinho</Link>
         </div>
       </div>

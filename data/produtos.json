@@ -314,7 +314,7 @@
     "cores": [
       {
         "cor": "Verde",
-        "imagem": "/produtos/16442957822--verde.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -325,7 +325,7 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16442957822--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -342,7 +342,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16442957822--verde.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -815,7 +815,7 @@
     "cores": [
       {
         "cor": "JEANS ESCURO",
-        "imagem": "/produtos/16651719546--jeans-escuro.png",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -826,7 +826,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16651719546--jeans-escuro.png",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -1397,7 +1397,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16647374539--unico.png",
+        "imagem": null,
         "tamanhos": [
           "40",
           "38",
@@ -1405,7 +1405,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16647374539--unico.png",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -1526,14 +1526,14 @@
     "cores": [
       {
         "cor": "PRETO",
-        "imagem": "/produtos/16638380616--preto.png",
+        "imagem": null,
         "tamanhos": [
           "38",
           "40"
         ]
       }
     ],
-    "imagem": "/produtos/16638380616--preto.png",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -1672,13 +1672,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16644328116--unico.png",
+        "imagem": null,
         "tamanhos": [
           "P"
         ]
       }
     ],
-    "imagem": "/produtos/16644328116--unico.png",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -1856,14 +1856,14 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16643843149--unico.png",
+        "imagem": null,
         "tamanhos": [
           "M",
           "PP"
         ]
       }
     ],
-    "imagem": "/produtos/16643843149--unico.png",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -1945,7 +1945,7 @@
     "cores": [
       {
         "cor": "07612",
-        "imagem": "/produtos/16638750285--07612.png",
+        "imagem": null,
         "tamanhos": [
           "40",
           "38",
@@ -1953,7 +1953,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16638750285--07612.png",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -1987,7 +1987,7 @@
     "cores": [
       {
         "cor": "JEANS MEDIO",
-        "imagem": "/produtos/16638748572--jeans-medio.png",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -1998,7 +1998,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16638748572--jeans-medio.png",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -2291,14 +2291,14 @@
     "cores": [
       {
         "cor": "VERMELHO WING / LARANJA VELUDO",
-        "imagem": "/produtos/16638618697--vermelho-wing-laranja-veludo.png",
+        "imagem": null,
         "tamanhos": [
           "40",
           "36"
         ]
       }
     ],
-    "imagem": "/produtos/16638618697--vermelho-wing-laranja-veludo.png",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -2472,7 +2472,7 @@
     "cores": [
       {
         "cor": "VERDE ANTIQUE",
-        "imagem": "/produtos/16638620328--verde-antique.png",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -2483,7 +2483,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16638620328--verde-antique.png",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -3210,14 +3210,14 @@
     "cores": [
       {
         "cor": "BEGE SISAL",
-        "imagem": "/produtos/16638351526--bege-sisal.png",
+        "imagem": null,
         "tamanhos": [
           "40",
           "38"
         ]
       }
     ],
-    "imagem": "/produtos/16638351526--bege-sisal.png",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -3270,7 +3270,7 @@
     "cores": [
       {
         "cor": "MARROM",
-        "imagem": "/produtos/16638339310--marrom.png",
+        "imagem": null,
         "tamanhos": [
           "42",
           "40",
@@ -3279,7 +3279,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16638339310--marrom.png",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -3292,14 +3292,14 @@
     "cores": [
       {
         "cor": "OURO VELHO",
-        "imagem": "/produtos/16638334080--ouro-velho.png",
+        "imagem": null,
         "tamanhos": [
           "M",
           "P"
         ]
       }
     ],
-    "imagem": "/produtos/16638334080--ouro-velho.png",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -7446,7 +7446,7 @@
     "cores": [
       {
         "cor": "Azul Klein",
-        "imagem": "/produtos/16434354166--azul-klein.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -7457,7 +7457,7 @@
       },
       {
         "cor": "Off White",
-        "imagem": "/produtos/16434354166--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -7468,7 +7468,7 @@
       },
       {
         "cor": "Khaki",
-        "imagem": "/produtos/16434354166--khaki.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -7489,7 +7489,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434354166--azul-klein.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -8465,7 +8465,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16553564351--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "M",
           "44",
@@ -8476,7 +8476,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16553564351--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -9676,7 +9676,7 @@
     "cores": [
       {
         "cor": "Militar",
-        "imagem": "/produtos/16443988263--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -9686,7 +9686,7 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16443988263--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -9705,7 +9705,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16443988263--militar.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -12530,7 +12530,7 @@
     "cores": [
       {
         "cor": "Branco",
-        "imagem": "/produtos/16434105047--branco.jpg",
+        "imagem": null,
         "tamanhos": [
           "05",
           "04",
@@ -12540,7 +12540,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434105047--branco.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -12553,7 +12553,7 @@
     "cores": [
       {
         "cor": "Areia",
-        "imagem": "/produtos/16483521183--areia.webp",
+        "imagem": null,
         "tamanhos": [
           "M",
           "P",
@@ -12563,7 +12563,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16483521183--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "M",
           "P",
@@ -12573,7 +12573,7 @@
       },
       {
         "cor": "Cacau",
-        "imagem": "/produtos/16483521183--cacau.webp",
+        "imagem": null,
         "tamanhos": [
           "M",
           "P",
@@ -12582,7 +12582,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16483521183--areia.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -12595,7 +12595,7 @@
     "cores": [
       {
         "cor": "Off White",
-        "imagem": "/produtos/16532361979--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12606,7 +12606,7 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16532361979--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12616,7 +12616,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16532361979--off-white.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -12654,7 +12654,7 @@
     "cores": [
       {
         "cor": "Khaki",
-        "imagem": "/produtos/16434113526--khaki.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -12667,7 +12667,7 @@
       },
       {
         "cor": "Areia",
-        "imagem": "/produtos/16434113526--areia.png",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "46",
@@ -12679,7 +12679,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16434113526--preto.png",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -12704,7 +12704,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434113526--khaki.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -12773,7 +12773,7 @@
     "cores": [
       {
         "cor": "Cinza Lua",
-        "imagem": "/produtos/16470685351--cinza-lua.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12794,7 +12794,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16470685351--cinza-lua.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -12807,7 +12807,7 @@
     "cores": [
       {
         "cor": "Cinza Chumbo",
-        "imagem": "/produtos/16483539324--cinza-chumbo.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12818,7 +12818,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16483539324--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12829,7 +12829,7 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16483539324--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12840,7 +12840,7 @@
       },
       {
         "cor": "Areia",
-        "imagem": "/produtos/16483539324--areia.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12850,7 +12850,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16483539324--cinza-chumbo.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -12863,7 +12863,7 @@
     "cores": [
       {
         "cor": "Cinza Mescla",
-        "imagem": "/produtos/16449066900--cinza-mescla.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12874,7 +12874,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16449066900--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12885,7 +12885,7 @@
       },
       {
         "cor": "Militar",
-        "imagem": "/produtos/16449066900--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12895,7 +12895,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16449066900--cinza-mescla.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -12908,7 +12908,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16546430234--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "P",
@@ -12918,7 +12918,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16546430234--unico.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -12931,7 +12931,7 @@
     "cores": [
       {
         "cor": "Areia",
-        "imagem": "/produtos/16434105264--areia.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12942,7 +12942,7 @@
       },
       {
         "cor": "Canela",
-        "imagem": "/produtos/16434105264--canela.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12953,7 +12953,7 @@
       },
       {
         "cor": "Verde Oliva",
-        "imagem": "/produtos/16434105264--verde-oliva.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12964,7 +12964,7 @@
       },
       {
         "cor": "Azul",
-        "imagem": "/produtos/16434105264--azul.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12975,7 +12975,7 @@
       },
       {
         "cor": "Cinza",
-        "imagem": "/produtos/16434105264--cinza.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12986,7 +12986,7 @@
       },
       {
         "cor": "Cinza Chumbo",
-        "imagem": "/produtos/16434105264--cinza-chumbo.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -12997,7 +12997,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16434105264--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13008,7 +13008,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16434105264--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13019,7 +13019,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16434105264--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13029,7 +13029,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434105264--areia.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13042,7 +13042,7 @@
     "cores": [
       {
         "cor": "Militar",
-        "imagem": "/produtos/16470679088--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13053,7 +13053,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16470679088--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13064,7 +13064,7 @@
       },
       {
         "cor": "Cinza Mescla",
-        "imagem": "/produtos/16470679088--cinza-mescla.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13074,7 +13074,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16470679088--militar.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13087,7 +13087,7 @@
     "cores": [
       {
         "cor": "Verde Militar",
-        "imagem": "/produtos/16434348341--verde-militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13098,7 +13098,7 @@
       },
       {
         "cor": "Natural",
-        "imagem": "/produtos/16434348341--natural.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13109,7 +13109,7 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16434348341--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13119,7 +13119,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434348341--verde-militar.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13132,7 +13132,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16434353852--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13142,7 +13142,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434353852--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13178,7 +13178,7 @@
     "cores": [
       {
         "cor": "Azul Royal",
-        "imagem": "/produtos/16458364101--azul-royal.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13189,7 +13189,7 @@
       },
       {
         "cor": "Magenta",
-        "imagem": "/produtos/16458364101--magenta.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13200,7 +13200,7 @@
       },
       {
         "cor": "Khaki",
-        "imagem": "/produtos/16458364101--khaki.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13211,7 +13211,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16458364101--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13221,7 +13221,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458364101--azul-royal.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13234,7 +13234,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16443634819--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "M",
           "3G",
@@ -13244,7 +13244,7 @@
       },
       {
         "cor": "Chocolate",
-        "imagem": "/produtos/16443634819--chocolate.webp",
+        "imagem": null,
         "tamanhos": [
           "M",
           "3G",
@@ -13263,7 +13263,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16443634819--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13276,7 +13276,7 @@
     "cores": [
       {
         "cor": "Militar",
-        "imagem": "/produtos/16453552646--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13287,7 +13287,7 @@
       },
       {
         "cor": "Cinza Mescla",
-        "imagem": "/produtos/16453552646--cinza-mescla.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13298,7 +13298,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16453552646--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13309,7 +13309,7 @@
       },
       {
         "cor": "Azul Carbono",
-        "imagem": "/produtos/16453552646--azul-carbono.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13320,7 +13320,7 @@
       },
       {
         "cor": "Cinza Lua",
-        "imagem": "/produtos/16453552646--cinza-lua.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13374,7 +13374,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16453552646--militar.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -13429,7 +13429,7 @@
     "cores": [
       {
         "cor": "Verde Mata",
-        "imagem": "/produtos/16470704074--verde-mata.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13450,7 +13450,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16470704074--verde-mata.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -13463,7 +13463,7 @@
     "cores": [
       {
         "cor": "Preto Stoned",
-        "imagem": "/produtos/16434114422--preto-stoned.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13474,7 +13474,7 @@
       },
       {
         "cor": "Azul Stoned",
-        "imagem": "/produtos/16434114422--azul-stoned.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13485,7 +13485,7 @@
       },
       {
         "cor": "Verde Stoned",
-        "imagem": "/produtos/16434114422--verde-stoned.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -13495,7 +13495,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434114422--preto-stoned.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -13540,7 +13540,7 @@
     "cores": [
       {
         "cor": "Verde Oliva",
-        "imagem": "/produtos/16442953706--verde-oliva.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "XXG",
@@ -13550,7 +13550,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16442953706--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "XXG",
@@ -13562,7 +13562,7 @@
       },
       {
         "cor": "Cinza Azulado",
-        "imagem": "/produtos/16442953706--cinza-azulado.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "XXG",
@@ -13574,7 +13574,7 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16442953706--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "XXG",
@@ -13586,7 +13586,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16442953706--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "XXG",
           "GG",
@@ -13603,7 +13603,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16442953706--verde-oliva.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -13635,14 +13635,14 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16546450785--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G"
         ]
       }
     ],
-    "imagem": "/produtos/16546450785--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13674,7 +13674,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16546465811--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "40",
@@ -13683,7 +13683,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16546465811--unico.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -13696,13 +13696,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16546483718--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16546483718--unico.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -13715,7 +13715,7 @@
     "cores": [
       {
         "cor": "Amarelo",
-        "imagem": "/produtos/16546485541--amarelo.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -13726,7 +13726,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16546485541--amarelo.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13739,7 +13739,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16546494433--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -13749,7 +13749,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16546494433--unico.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -13762,7 +13762,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16546497184--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -13773,7 +13773,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16546497184--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13786,7 +13786,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16553539262--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -13797,7 +13797,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16553539262--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13834,7 +13834,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16553554031--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -13845,7 +13845,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16553554031--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13906,7 +13906,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16553570557--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -13917,7 +13917,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16553570557--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -13954,7 +13954,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16553573764--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -13965,7 +13965,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16553573764--unico.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -13978,7 +13978,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16553629471--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -13989,7 +13989,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16553629471--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14049,7 +14049,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16553634593--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14060,7 +14060,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16553634593--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14120,7 +14120,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16553643704--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14131,7 +14131,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16553643704--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14144,7 +14144,7 @@
     "cores": [
       {
         "cor": "Vinho / Rosa",
-        "imagem": "/produtos/16556239568--vinho-rosa.webp",
+        "imagem": null,
         "tamanhos": [
           "PP",
           "GG",
@@ -14159,7 +14159,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16556239568--vinho-rosa.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14172,7 +14172,7 @@
     "cores": [
       {
         "cor": "Lilás",
-        "imagem": "/produtos/16556242707--lilas.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "PP",
@@ -14183,7 +14183,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16556242707--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "PP",
@@ -14194,7 +14194,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16556242707--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "PP",
@@ -14204,7 +14204,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16556242707--lilas.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14217,7 +14217,7 @@
     "cores": [
       {
         "cor": "Verde",
-        "imagem": "/produtos/16557553230--verde.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14228,7 +14228,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16557553230--verde.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -14241,7 +14241,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561232523--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14251,7 +14251,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232523--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14285,7 +14285,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561232546--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14296,7 +14296,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232546--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14309,7 +14309,7 @@
     "cores": [
       {
         "cor": "Verde Cardis",
-        "imagem": "/produtos/16561232568--verde-cardis.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14320,7 +14320,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232568--verde-cardis.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14333,7 +14333,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561232575--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14344,7 +14344,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232575--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14357,7 +14357,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561232578--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14368,7 +14368,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232578--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14381,7 +14381,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561232597--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14392,7 +14392,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232597--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14405,7 +14405,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561232600--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14416,7 +14416,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232600--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14429,7 +14429,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561232609--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14440,7 +14440,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232609--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14453,7 +14453,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561232620--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14464,7 +14464,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232620--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14477,7 +14477,7 @@
     "cores": [
       {
         "cor": "Azul Claro",
-        "imagem": "/produtos/16561232629--azul-claro.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14489,7 +14489,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16561232629--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14500,7 +14500,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232629--azul-claro.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -14513,7 +14513,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561232640--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14524,7 +14524,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561232640--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14537,7 +14537,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561493348--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "40",
@@ -14545,7 +14545,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561493348--unico.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -14558,7 +14558,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561496131--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14569,7 +14569,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561496131--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14582,7 +14582,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561498454--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14593,7 +14593,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561498454--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14606,7 +14606,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561651450--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14617,7 +14617,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561651450--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14630,7 +14630,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561651453--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14641,7 +14641,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561651453--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14654,7 +14654,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16561651471--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "42",
           "40",
@@ -14664,7 +14664,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561651471--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14677,7 +14677,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561651475--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "39",
           "37",
@@ -14687,7 +14687,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561651475--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14700,7 +14700,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561651494--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "38",
           "36",
@@ -14709,7 +14709,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561651494--unico.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -14722,7 +14722,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16561651498--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -14731,7 +14731,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561651498--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14744,7 +14744,7 @@
     "cores": [
       {
         "cor": "Vermelho",
-        "imagem": "/produtos/16561651501--vermelho.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -14754,7 +14754,7 @@
       },
       {
         "cor": "Bege",
-        "imagem": "/produtos/16561651501--bege.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -14763,7 +14763,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16561651501--vermelho.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -14776,7 +14776,7 @@
     "cores": [
       {
         "cor": "Verde Oliva",
-        "imagem": "/produtos/16470713845--verde-oliva.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -14786,7 +14786,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16470713845--verde-oliva.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -14799,7 +14799,7 @@
     "cores": [
       {
         "cor": "Azul / Off",
-        "imagem": "/produtos/16580533582--azul-off.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -14814,7 +14814,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16580533582--azul-off.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -14827,7 +14827,7 @@
     "cores": [
       {
         "cor": "Azul Claro",
-        "imagem": "/produtos/16454777923--azul-claro.webp",
+        "imagem": null,
         "tamanhos": [
           "G",
           "GGg",
@@ -14838,7 +14838,7 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16454777923--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -14849,7 +14849,7 @@
       },
       {
         "cor": "Natural",
-        "imagem": "/produtos/16454777923--natural.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -14859,7 +14859,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454777923--azul-claro.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -14891,7 +14891,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16453535504--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -14901,7 +14901,7 @@
       },
       {
         "cor": "Cinza Mescla Escuro",
-        "imagem": "/produtos/16453535504--cinza-mescla-escuro.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -14912,7 +14912,7 @@
       },
       {
         "cor": "Vinho",
-        "imagem": "/produtos/16453535504--vinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -14923,7 +14923,7 @@
       },
       {
         "cor": "Azul Petróleo",
-        "imagem": "/produtos/16453535504--azul-petroleo.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -14934,7 +14934,7 @@
       },
       {
         "cor": "Rosa Seco",
-        "imagem": "/produtos/16453535504--rosa-seco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -14945,7 +14945,7 @@
       },
       {
         "cor": "Militar",
-        "imagem": "/produtos/16453535504--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -14956,7 +14956,7 @@
       },
       {
         "cor": "Azul Seco",
-        "imagem": "/produtos/16453535504--azul-seco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -14967,7 +14967,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16453535504--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -14977,7 +14977,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16453535504--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -14990,7 +14990,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16465505004--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15001,7 +15001,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16465505004--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15012,7 +15012,7 @@
       },
       {
         "cor": "Verde Mata",
-        "imagem": "/produtos/16465505004--verde-mata.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15032,7 +15032,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16465505004--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -15045,7 +15045,7 @@
     "cores": [
       {
         "cor": "Militar",
-        "imagem": "/produtos/16434344595--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -15057,7 +15057,7 @@
       },
       {
         "cor": "Fuligem",
-        "imagem": "/produtos/16434344595--fuligem.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -15069,7 +15069,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16434344595--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -15081,7 +15081,7 @@
       },
       {
         "cor": "Bordeaux",
-        "imagem": "/produtos/16434344595--bordeaux.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -15093,7 +15093,7 @@
       },
       {
         "cor": "Khaki",
-        "imagem": "/produtos/16434344595--khaki.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -15105,7 +15105,7 @@
       },
       {
         "cor": "Areia",
-        "imagem": "/produtos/16434344595--areia.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -15116,7 +15116,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434344595--militar.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -15129,7 +15129,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16472542408--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "41",
           "40",
@@ -15139,7 +15139,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16472542408--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15152,7 +15152,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16443982630--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15163,7 +15163,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16443982630--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15173,7 +15173,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16443982630--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15186,7 +15186,7 @@
     "cores": [
       {
         "cor": "Branco",
-        "imagem": "/produtos/16449046453--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15197,7 +15197,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16449046453--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15207,7 +15207,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16449046453--branco.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15220,7 +15220,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16449047961--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15231,7 +15231,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16449047961--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15241,7 +15241,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16449047961--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15273,7 +15273,7 @@
     "cores": [
       {
         "cor": "Azul Carbono",
-        "imagem": "/produtos/16455216929--azul-carbono.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15284,7 +15284,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16455216929--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15316,7 +15316,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16455216929--azul-carbono.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -15380,7 +15380,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16573796140--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -15393,7 +15393,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16573796140--unico.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15406,7 +15406,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16573796111--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -15418,7 +15418,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16573796111--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15457,7 +15457,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16573796122--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15467,7 +15467,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16573796122--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15480,7 +15480,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16573796148--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "40",
@@ -15497,7 +15497,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16573796148--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15510,7 +15510,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16573796127--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -15523,7 +15523,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16573796127--unico.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -15536,7 +15536,7 @@
     "cores": [
       {
         "cor": "Verde Cadi",
-        "imagem": "/produtos/16573796136--verde-cadi.webp",
+        "imagem": null,
         "tamanhos": [
           "34",
           "48",
@@ -15549,7 +15549,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16573796136--verde-cadi.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15562,7 +15562,7 @@
     "cores": [
       {
         "cor": "Vermelho Flame",
-        "imagem": "/produtos/16573796123--vermelho-flame.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "44",
@@ -15577,7 +15577,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16573796123--vermelho-flame.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -15590,7 +15590,7 @@
     "cores": [
       {
         "cor": "Natural",
-        "imagem": "/produtos/16458365402--natural.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15600,7 +15600,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458365402--natural.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15613,7 +15613,7 @@
     "cores": [
       {
         "cor": "Off White",
-        "imagem": "/produtos/16458365821--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15624,7 +15624,7 @@
       },
       {
         "cor": "Militar",
-        "imagem": "/produtos/16458365821--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15634,7 +15634,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458365821--off-white.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -15647,7 +15647,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16465501890--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15657,7 +15657,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16465501890--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -15670,7 +15670,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16470631643--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15680,7 +15680,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16470631643--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15693,7 +15693,7 @@
     "cores": [
       {
         "cor": "Verde Mata",
-        "imagem": "/produtos/16470666836--verde-mata.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15703,7 +15703,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16470666836--verde-mata.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15716,7 +15716,7 @@
     "cores": [
       {
         "cor": "Militar",
-        "imagem": "/produtos/16474494389--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "P",
           "3G",
@@ -15727,7 +15727,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16474494389--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "P",
           "3G",
@@ -15737,7 +15737,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16474494389--militar.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -15750,7 +15750,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16483503170--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15761,7 +15761,7 @@
       },
       {
         "cor": "Militar",
-        "imagem": "/produtos/16483503170--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15771,7 +15771,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16483503170--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -15784,7 +15784,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16483511826--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "P",
@@ -15793,7 +15793,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16483511826--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15829,7 +15829,7 @@
     "cores": [
       {
         "cor": "Khaki",
-        "imagem": "/produtos/16487309438--khaki.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15839,7 +15839,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16487309438--khaki.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15852,7 +15852,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16524867208--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "37",
           "38",
@@ -15861,7 +15861,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16524867208--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -15874,7 +15874,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16525980883--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15885,7 +15885,7 @@
       },
       {
         "cor": "Militar",
-        "imagem": "/produtos/16525980883--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15896,7 +15896,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16525980883--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15907,7 +15907,7 @@
       },
       {
         "cor": "Azul Klein",
-        "imagem": "/produtos/16525980883--azul-klein.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15917,7 +15917,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16525980883--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -15953,7 +15953,7 @@
     "cores": [
       {
         "cor": "Verde Stoned",
-        "imagem": "/produtos/16526010119--verde-stoned.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15964,7 +15964,7 @@
       },
       {
         "cor": "Preto Stoned",
-        "imagem": "/produtos/16526010119--preto-stoned.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15975,7 +15975,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16526010119--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15986,7 +15986,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16526010119--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -15996,7 +15996,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16526010119--verde-stoned.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16009,7 +16009,7 @@
     "cores": [
       {
         "cor": "Magenta",
-        "imagem": "/produtos/16532358672--magenta.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16019,7 +16019,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16532358672--magenta.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16032,7 +16032,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16532360995--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16042,7 +16042,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16532360995--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -16055,7 +16055,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16535228126--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16066,7 +16066,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16535228126--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16076,7 +16076,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16535228126--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16089,7 +16089,7 @@
     "cores": [
       {
         "cor": "Branco",
-        "imagem": "/produtos/16535285668--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16099,7 +16099,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16535285668--branco.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -16112,7 +16112,7 @@
     "cores": [
       {
         "cor": "Off White",
-        "imagem": "/produtos/16535291900--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16122,7 +16122,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16535291900--off-white.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16135,7 +16135,7 @@
     "cores": [
       {
         "cor": "Fuligem",
-        "imagem": "/produtos/16535577364--fuligem.webp",
+        "imagem": null,
         "tamanhos": [
           "G",
           "M",
@@ -16144,7 +16144,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16535577364--fuligem.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16157,7 +16157,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16535596573--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -16166,7 +16166,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16535596573--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -16179,7 +16179,7 @@
     "cores": [
       {
         "cor": "Azul Tech",
-        "imagem": "/produtos/16535603971--azul-tech.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16189,7 +16189,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16535603971--azul-tech.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16202,7 +16202,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16565081675--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16213,7 +16213,7 @@
       },
       {
         "cor": "Cinza Mescla",
-        "imagem": "/produtos/16565081675--cinza-mescla.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16223,7 +16223,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16565081675--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16236,7 +16236,7 @@
     "cores": [
       {
         "cor": "Areia",
-        "imagem": "/produtos/16565794748--areia.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -16248,7 +16248,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16565794748--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -16259,7 +16259,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16565794748--areia.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16272,7 +16272,7 @@
     "cores": [
       {
         "cor": "Militar",
-        "imagem": "/produtos/16565819577--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -16284,7 +16284,7 @@
       },
       {
         "cor": "Azul Iron",
-        "imagem": "/produtos/16565819577--azul-iron.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -16295,7 +16295,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16565819577--militar.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16308,7 +16308,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16565840580--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "M",
@@ -16317,7 +16317,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16565840580--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -16330,7 +16330,7 @@
     "cores": [
       {
         "cor": "Rosa Lotus",
-        "imagem": "/produtos/16565846467--rosa-lotus.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -16340,7 +16340,7 @@
       },
       {
         "cor": "Azul Klein",
-        "imagem": "/produtos/16565846467--azul-klein.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -16349,7 +16349,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16565846467--rosa-lotus.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -16362,7 +16362,7 @@
     "cores": [
       {
         "cor": "Branco",
-        "imagem": "/produtos/16434353774--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16372,7 +16372,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434353774--branco.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -16385,7 +16385,7 @@
     "cores": [
       {
         "cor": "Verde Mata",
-        "imagem": "/produtos/16443991067--verde-mata.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16396,7 +16396,7 @@
       },
       {
         "cor": "Azul Pretóleo",
-        "imagem": "/produtos/16443991067--azul-pretoleo.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16407,7 +16407,7 @@
       },
       {
         "cor": "Turquesa",
-        "imagem": "/produtos/16443991067--turquesa.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16418,7 +16418,7 @@
       },
       {
         "cor": "Azul Bic",
-        "imagem": "/produtos/16443991067--azul-bic.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16429,7 +16429,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16443991067--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16440,7 +16440,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16443991067--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16451,7 +16451,7 @@
       },
       {
         "cor": "Cinza Concreto",
-        "imagem": "/produtos/16443991067--cinza-concreto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16461,7 +16461,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16443991067--verde-mata.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16498,7 +16498,7 @@
     "cores": [
       {
         "cor": "Militar",
-        "imagem": "/produtos/16532369639--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -16509,7 +16509,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16532369639--militar.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -16547,7 +16547,7 @@
     "cores": [
       {
         "cor": "Verde Escuro",
-        "imagem": "/produtos/16443977912--verde-escuro.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16558,7 +16558,7 @@
       },
       {
         "cor": "Rosa Lotus",
-        "imagem": "/produtos/16443977912--rosa-lotus.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16569,7 +16569,7 @@
       },
       {
         "cor": "Azul Klein",
-        "imagem": "/produtos/16443977912--azul-klein.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16580,7 +16580,7 @@
       },
       {
         "cor": "Azul Royal",
-        "imagem": "/produtos/16443977912--azul-royal.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16591,7 +16591,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16443977912--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16602,7 +16602,7 @@
       },
       {
         "cor": "Verde Bandeira",
-        "imagem": "/produtos/16443977912--verde-bandeira.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16613,7 +16613,7 @@
       },
       {
         "cor": "Magenta",
-        "imagem": "/produtos/16443977912--magenta.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16624,7 +16624,7 @@
       },
       {
         "cor": "Cereja",
-        "imagem": "/produtos/16443977912--cereja.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16635,7 +16635,7 @@
       },
       {
         "cor": "Amarelo Sol",
-        "imagem": "/produtos/16443977912--amarelo-sol.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16646,7 +16646,7 @@
       },
       {
         "cor": "Azul Céu",
-        "imagem": "/produtos/16443977912--azul-ceu.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16657,7 +16657,7 @@
       },
       {
         "cor": "Militar",
-        "imagem": "/produtos/16443977912--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16668,7 +16668,7 @@
       },
       {
         "cor": "Cinza Lua",
-        "imagem": "/produtos/16443977912--cinza-lua.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16679,7 +16679,7 @@
       },
       {
         "cor": "Telha",
-        "imagem": "/produtos/16443977912--telha.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -16689,7 +16689,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16443977912--verde-escuro.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16724,7 +16724,7 @@
     "cores": [
       {
         "cor": "Gelo Claro",
-        "imagem": "/produtos/16449069138--gelo-claro.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -16735,7 +16735,7 @@
       },
       {
         "cor": "Caqui Acinzentado",
-        "imagem": "/produtos/16449069138--caqui-acinzentado.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -16745,7 +16745,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16449069138--gelo-claro.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16758,7 +16758,7 @@
     "cores": [
       {
         "cor": "Verde Oliva",
-        "imagem": "/produtos/16449070889--verde-oliva.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -16769,7 +16769,7 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16449070889--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -16780,7 +16780,7 @@
       },
       {
         "cor": "Azul Ink",
-        "imagem": "/produtos/16449070889--azul-ink.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -16791,7 +16791,7 @@
       },
       {
         "cor": "Caramelo",
-        "imagem": "/produtos/16449070889--caramelo.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -16802,7 +16802,7 @@
       },
       {
         "cor": "Gelo Claro",
-        "imagem": "/produtos/16449070889--gelo-claro.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -16812,7 +16812,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16449070889--verde-oliva.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -16963,7 +16963,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16569843613--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -16974,7 +16974,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16569843613--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -17011,7 +17011,7 @@
     "cores": [
       {
         "cor": "Aveia",
-        "imagem": "/produtos/16474644737--aveia.jpg",
+        "imagem": null,
         "tamanhos": [
           "M"
         ]
@@ -17046,7 +17046,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16474644737--aveia.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -17078,7 +17078,7 @@
     "cores": [
       {
         "cor": "Aveia",
-        "imagem": "/produtos/16458308923--aveia.webp",
+        "imagem": null,
         "tamanhos": [
           "50",
           "48",
@@ -17091,7 +17091,7 @@
       },
       {
         "cor": "Verde Oliva",
-        "imagem": "/produtos/16458308923--verde-oliva.webp",
+        "imagem": null,
         "tamanhos": [
           "50",
           "48",
@@ -17104,7 +17104,7 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16458308923--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "50",
           "48",
@@ -17117,7 +17117,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16458308923--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "50",
           "48",
@@ -17130,7 +17130,7 @@
       },
       {
         "cor": "Caqui",
-        "imagem": "/produtos/16458308923--caqui.webp",
+        "imagem": null,
         "tamanhos": [
           "50",
           "48",
@@ -17142,7 +17142,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458308923--aveia.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -17155,7 +17155,7 @@
     "cores": [
       {
         "cor": "AREIA",
-        "imagem": "/produtos/16443634820--areia.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17166,7 +17166,7 @@
       },
       {
         "cor": "CANELA",
-        "imagem": "/produtos/16443634820--canela.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17177,7 +17177,7 @@
       },
       {
         "cor": "OFF WHITE",
-        "imagem": "/produtos/16443634820--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17188,7 +17188,7 @@
       },
       {
         "cor": "PRETO",
-        "imagem": "/produtos/16443634820--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17199,7 +17199,7 @@
       },
       {
         "cor": "AZUL MARINHO",
-        "imagem": "/produtos/16443634820--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17209,7 +17209,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16443634820--areia.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -17222,7 +17222,7 @@
     "cores": [
       {
         "cor": "Natural",
-        "imagem": "/produtos/16458364677--natural.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17243,7 +17243,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458364677--natural.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -17256,7 +17256,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16474573642--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "M",
           "3G",
@@ -17267,7 +17267,7 @@
       },
       {
         "cor": "Militar",
-        "imagem": "/produtos/16474573642--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "M",
           "3G",
@@ -17277,7 +17277,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16474573642--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -17357,7 +17357,7 @@
     "cores": [
       {
         "cor": "Branco",
-        "imagem": "/produtos/16449060067--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17367,7 +17367,7 @@
       },
       {
         "cor": "Natural",
-        "imagem": "/produtos/16449060067--natural.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17377,7 +17377,7 @@
       },
       {
         "cor": "Azul Pluma",
-        "imagem": "/produtos/16449060067--azul-pluma.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17387,7 +17387,7 @@
       },
       {
         "cor": "Amarelo Creme",
-        "imagem": "/produtos/16449060067--amarelo-creme.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17397,7 +17397,7 @@
       },
       {
         "cor": "Azul Royal",
-        "imagem": "/produtos/16449060067--azul-royal.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -17406,7 +17406,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16449060067--branco.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -17419,13 +17419,13 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16434351344--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16434351344--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -17438,7 +17438,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16565853924--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "44",
@@ -17448,7 +17448,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16565853924--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -17461,7 +17461,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16565848757--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -17470,7 +17470,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16565848757--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -17483,7 +17483,7 @@
     "cores": [
       {
         "cor": "Indigo",
-        "imagem": "/produtos/16458306634--indigo.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -17495,7 +17495,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458306634--indigo.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -17508,7 +17508,7 @@
     "cores": [
       {
         "cor": "Off White",
-        "imagem": "/produtos/16554636912--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -17521,7 +17521,7 @@
       },
       {
         "cor": "Khaki",
-        "imagem": "/produtos/16554636912--khaki.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -17534,7 +17534,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16554636912--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -17547,7 +17547,7 @@
       },
       {
         "cor": "Fuligem",
-        "imagem": "/produtos/16554636912--fuligem.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -17559,7 +17559,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16554636912--off-white.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -17572,7 +17572,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16434350222--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -17583,7 +17583,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434350222--azul-marinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -17596,7 +17596,7 @@
     "cores": [
       {
         "cor": "Off White",
-        "imagem": "/produtos/16443985807--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -17608,7 +17608,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16443985807--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -17620,7 +17620,7 @@
       },
       {
         "cor": "Único",
-        "imagem": "/produtos/16443985807--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -17631,7 +17631,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16443985807--off-white.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -17644,7 +17644,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16565083179--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "G",
           "GGg",
@@ -17654,7 +17654,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16565083179--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -17667,7 +17667,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16565077018--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -17677,7 +17677,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16565077018--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -20530,13 +20530,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16541966579--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16541966579--unico.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -20549,13 +20549,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16541960161--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16541960161--unico.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -20568,13 +20568,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16541943204--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16541943204--unico.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -20587,13 +20587,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16541941192--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16541941192--unico.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -20625,13 +20625,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16541824597--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16541824597--unico.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -20644,13 +20644,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16541804447--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16541804447--unico.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -20663,13 +20663,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16541694722--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16541694722--unico.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -20720,13 +20720,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16539246901--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16539246901--unico.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -20739,13 +20739,13 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16539244298--unico.jpg",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16539244298--unico.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -20853,7 +20853,7 @@
     "cores": [
       {
         "cor": "Marinho Stoned",
-        "imagem": "/produtos/16535552957--marinho-stoned.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -20863,7 +20863,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16535552957--marinho-stoned.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -20952,7 +20952,7 @@
     "cores": [
       {
         "cor": "Vinho",
-        "imagem": "/produtos/16454980335--vinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -20963,7 +20963,7 @@
       },
       {
         "cor": "Off White",
-        "imagem": "/produtos/16454980335--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -20974,7 +20974,7 @@
       },
       {
         "cor": "Azul Klein",
-        "imagem": "/produtos/16454980335--azul-klein.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -20985,7 +20985,7 @@
       },
       {
         "cor": "Azul Petroleo",
-        "imagem": "/produtos/16454980335--azul-petroleo.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -20996,7 +20996,7 @@
       },
       {
         "cor": "MILITAR",
-        "imagem": "/produtos/16454980335--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21007,7 +21007,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16454980335--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21018,7 +21018,7 @@
       },
       {
         "cor": "Azul Iron",
-        "imagem": "/produtos/16454980335--azul-iron.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21029,7 +21029,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16454980335--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21040,7 +21040,7 @@
       },
       {
         "cor": "Fuligem",
-        "imagem": "/produtos/16454980335--fuligem.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21051,7 +21051,7 @@
       },
       {
         "cor": "Cinza Lua",
-        "imagem": "/produtos/16454980335--cinza-lua.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21062,7 +21062,7 @@
       },
       {
         "cor": "Laranja Ferrugem",
-        "imagem": "/produtos/16454980335--laranja-ferrugem.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21073,7 +21073,7 @@
       },
       {
         "cor": "Verde Mata",
-        "imagem": "/produtos/16454980335--verde-mata.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21094,7 +21094,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454980335--vinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -21107,7 +21107,7 @@
     "cores": [
       {
         "cor": "Off White",
-        "imagem": "/produtos/16455617840--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21118,7 +21118,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16455617840--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21129,7 +21129,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16455617840--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21140,7 +21140,7 @@
       },
       {
         "cor": "Verde Mata",
-        "imagem": "/produtos/16455617840--verde-mata.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21150,7 +21150,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16455617840--off-white.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -21201,7 +21201,7 @@
     "cores": [
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16434349218--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -21244,7 +21244,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434349218--marinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -22245,7 +22245,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16458367808--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -22256,7 +22256,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16458367808--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -22266,7 +22266,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458367808--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -22393,7 +22393,7 @@
     "cores": [
       {
         "cor": "Magenta",
-        "imagem": "/produtos/16454787788--magenta.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -22404,7 +22404,7 @@
       },
       {
         "cor": "Azul Mar",
-        "imagem": "/produtos/16454787788--azul-mar.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -22415,7 +22415,7 @@
       },
       {
         "cor": "Vinho",
-        "imagem": "/produtos/16454787788--vinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -22426,7 +22426,7 @@
       },
       {
         "cor": "Esmeralda",
-        "imagem": "/produtos/16454787788--esmeralda.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -22437,7 +22437,7 @@
       },
       {
         "cor": "Azul Seco",
-        "imagem": "/produtos/16454787788--azul-seco.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -22448,7 +22448,7 @@
       },
       {
         "cor": "Verda Mata",
-        "imagem": "/produtos/16454787788--verda-mata.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -22459,7 +22459,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16454787788--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -22470,7 +22470,7 @@
       },
       {
         "cor": "Militar",
-        "imagem": "/produtos/16454787788--militar.jpg",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -22481,7 +22481,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16454787788--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -22492,7 +22492,7 @@
       },
       {
         "cor": "Cinza Lua",
-        "imagem": "/produtos/16454787788--cinza-lua.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -22502,7 +22502,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454787788--magenta.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -23142,7 +23142,7 @@
     "cores": [
       {
         "cor": "Cinza Mescla",
-        "imagem": "/produtos/16478886836--cinza-mescla.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "42",
@@ -23151,7 +23151,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16478886836--cinza-mescla.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -23453,7 +23453,7 @@
     "cores": [
       {
         "cor": "Off White",
-        "imagem": "/produtos/16457583688--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "43",
@@ -23465,7 +23465,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16457583688--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "44",
           "43",
@@ -23476,7 +23476,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16457583688--off-white.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -23641,7 +23641,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16470606921--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -23650,7 +23650,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16470606921--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -23986,7 +23986,7 @@
     "cores": [
       {
         "cor": "Fuligem",
-        "imagem": "/produtos/16466039903--fuligem.jpg",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -23996,7 +23996,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16466039903--fuligem.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -24050,7 +24050,7 @@
     "cores": [
       {
         "cor": "Rosa Claro",
-        "imagem": "/produtos/16462563128--rosa-claro.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -24060,7 +24060,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16462563128--rosa-claro.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -24662,7 +24662,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16455878454--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -24673,7 +24673,7 @@
       },
       {
         "cor": "Khaki",
-        "imagem": "/produtos/16455878454--khaki.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -24683,7 +24683,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16455878454--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -24741,7 +24741,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16458368736--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -24751,7 +24751,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16458368736--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -24760,7 +24760,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458368736--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -24773,7 +24773,7 @@
     "cores": [
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16458362986--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -24783,7 +24783,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458362986--marinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -25263,7 +25263,7 @@
     "cores": [
       {
         "cor": "Indigo",
-        "imagem": "/produtos/16458308293--indigo.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -25276,7 +25276,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458308293--indigo.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -25308,7 +25308,7 @@
     "cores": [
       {
         "cor": "Indigo",
-        "imagem": "/produtos/16458307288--indigo.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -25321,7 +25321,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458307288--indigo.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -25712,7 +25712,7 @@
     "cores": [
       {
         "cor": "Azul Iron",
-        "imagem": "/produtos/16434348492--azul-iron.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -25725,7 +25725,7 @@
       },
       {
         "cor": "Cinza Lua",
-        "imagem": "/produtos/16434348492--cinza-lua.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -25738,7 +25738,7 @@
       },
       {
         "cor": "Verde Mata",
-        "imagem": "/produtos/16434348492--verde-mata.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -25750,7 +25750,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434348492--azul-iron.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -25915,7 +25915,7 @@
     "cores": [
       {
         "cor": "Indigo",
-        "imagem": "/produtos/16458206857--indigo.jpg",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -25926,7 +25926,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16458206857--indigo.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -25939,7 +25939,7 @@
     "cores": [
       {
         "cor": "Areia",
-        "imagem": "/produtos/16457587617--areia.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -25951,7 +25951,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16457587617--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -25962,7 +25962,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16457587617--areia.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -25975,7 +25975,7 @@
     "cores": [
       {
         "cor": "Fuligem",
-        "imagem": "/produtos/16457854030--fuligem.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -25987,7 +25987,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16457854030--fuligem.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -26000,20 +26000,20 @@
     "cores": [
       {
         "cor": "Cinza",
-        "imagem": "/produtos/16434105066--cinza.jpg",
+        "imagem": null,
         "tamanhos": [
           "42"
         ]
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16434105066--azul-marinho.jpg",
+        "imagem": null,
         "tamanhos": [
           "42"
         ]
       }
     ],
-    "imagem": "/produtos/16434105066--cinza.jpg",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -26026,7 +26026,7 @@
     "cores": [
       {
         "cor": "Militar",
-        "imagem": "/produtos/16434344774--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -26039,7 +26039,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16434344774--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "48",
@@ -26051,7 +26051,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434344774--militar.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -26083,7 +26083,7 @@
     "cores": [
       {
         "cor": "Cinza Lua",
-        "imagem": "/produtos/16457811540--cinza-lua.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -26095,7 +26095,7 @@
       },
       {
         "cor": "Fuligem",
-        "imagem": "/produtos/16457811540--fuligem.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -26107,7 +26107,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16457811540--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -26119,7 +26119,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16457811540--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -26131,7 +26131,7 @@
       },
       {
         "cor": "Off White",
-        "imagem": "/produtos/16457811540--off-white.webp",
+        "imagem": null,
         "tamanhos": [
           "48",
           "46",
@@ -26154,7 +26154,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16457811540--cinza-lua.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -26243,7 +26243,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16457779658--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26253,7 +26253,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16457779658--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -26266,7 +26266,7 @@
     "cores": [
       {
         "cor": "Militar",
-        "imagem": "/produtos/16434347842--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26277,7 +26277,7 @@
       },
       {
         "cor": "Azul Petróleo",
-        "imagem": "/produtos/16434347842--azul-petroleo.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26288,7 +26288,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16434347842--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26299,7 +26299,7 @@
       },
       {
         "cor": "Laranja Ferrugem",
-        "imagem": "/produtos/16434347842--laranja-ferrugem.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26310,7 +26310,7 @@
       },
       {
         "cor": "Vinho",
-        "imagem": "/produtos/16434347842--vinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26321,7 +26321,7 @@
       },
       {
         "cor": "Verde Esmeralda",
-        "imagem": "/produtos/16434347842--verde-esmeralda.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26332,7 +26332,7 @@
       },
       {
         "cor": "Cinza Concreto",
-        "imagem": "/produtos/16434347842--cinza-concreto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26343,7 +26343,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16434347842--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26354,7 +26354,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16434347842--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26365,7 +26365,7 @@
       },
       {
         "cor": "Verde",
-        "imagem": "/produtos/16434347842--verde.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -26375,7 +26375,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434347842--militar.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -27053,7 +27053,7 @@
     "cores": [
       {
         "cor": "Rosa Conhaque",
-        "imagem": "/produtos/16442954738--rosa-conhaque.webp",
+        "imagem": null,
         "tamanhos": [
           "XXG",
           "XG"
@@ -27061,7 +27061,7 @@
       },
       {
         "cor": "Azul Ink",
-        "imagem": "/produtos/16442954738--azul-ink.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -27071,7 +27071,7 @@
       },
       {
         "cor": "Cinza Azulado",
-        "imagem": "/produtos/16442954738--cinza-azulado.webp",
+        "imagem": null,
         "tamanhos": [
           "XXG",
           "XG",
@@ -27083,7 +27083,7 @@
       },
       {
         "cor": "Vinho",
-        "imagem": "/produtos/16442954738--vinho.webp",
+        "imagem": null,
         "tamanhos": [
           "XXG",
           "XG",
@@ -27092,7 +27092,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16442954738--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "G"
@@ -27100,7 +27100,7 @@
       },
       {
         "cor": "Azul Royal",
-        "imagem": "/produtos/16442954738--azul-royal.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "P"
@@ -27108,7 +27108,7 @@
       },
       {
         "cor": "Branco",
-        "imagem": "/produtos/16442954738--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "XXG",
           "XG"
@@ -27122,7 +27122,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16442954738--rosa-conhaque.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -27192,7 +27192,7 @@
     "cores": [
       {
         "cor": "Verde Oliva",
-        "imagem": "/produtos/16457656973--verde-oliva.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -27203,7 +27203,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16457656973--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "GG",
@@ -27224,7 +27224,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16457656973--verde-oliva.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -27294,7 +27294,7 @@
     "cores": [
       {
         "cor": "Cinza Mescla Escuro",
-        "imagem": "/produtos/16457591882--cinza-mescla-escuro.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -27304,7 +27304,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16457591882--cinza-mescla-escuro.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -27336,14 +27336,14 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16457370436--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "P"
         ]
       },
       {
         "cor": "Azul Lavado",
-        "imagem": "/produtos/16457370436--azul-lavado.webp",
+        "imagem": null,
         "tamanhos": [
           "P"
         ]
@@ -27356,7 +27356,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16457370436--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -27540,7 +27540,7 @@
     "cores": [
       {
         "cor": "Preto/Camelo",
-        "imagem": "/produtos/16442965909--preto-camelo.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -27550,7 +27550,7 @@
       },
       {
         "cor": "Verde/Azul",
-        "imagem": "/produtos/16442965909--verde-azul.webp",
+        "imagem": null,
         "tamanhos": [
           "XG",
           "G",
@@ -27566,7 +27566,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16442965909--preto-camelo.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -29102,7 +29102,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16455927787--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -29112,7 +29112,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16455927787--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -29182,7 +29182,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16455900426--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -29192,7 +29192,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16455900426--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -29281,7 +29281,7 @@
     "cores": [
       {
         "cor": "Branco",
-        "imagem": "/produtos/16434114006--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -29292,7 +29292,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16434114006--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -29303,7 +29303,7 @@
       },
       {
         "cor": "Rosa Claro",
-        "imagem": "/produtos/16434114006--rosa-claro.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -29314,7 +29314,7 @@
       },
       {
         "cor": "Verde Escuro",
-        "imagem": "/produtos/16434114006--verde-escuro.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -29325,7 +29325,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16434114006--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -29335,7 +29335,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434114006--branco.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -29348,7 +29348,7 @@
     "cores": [
       {
         "cor": "Azul Claro",
-        "imagem": "/produtos/16434346333--azul-claro.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -29358,7 +29358,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434346333--azul-claro.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -29736,7 +29736,7 @@
     "cores": [
       {
         "cor": "Verde Mata",
-        "imagem": "/produtos/16455560105--verde-mata.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -29746,7 +29746,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16455560105--verde-mata.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -29778,7 +29778,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16455559735--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -29787,7 +29787,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16455559735--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -31024,7 +31024,7 @@
     "cores": [
       {
         "cor": "Azul Petróleo",
-        "imagem": "/produtos/16455224200--azul-petroleo.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -31034,7 +31034,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16455224200--azul-petroleo.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -31047,7 +31047,7 @@
     "cores": [
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16455221790--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -31057,7 +31057,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16455221790--marinho.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -31070,7 +31070,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16454963041--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -31081,7 +31081,7 @@
       },
       {
         "cor": "Cinza Mescla",
-        "imagem": "/produtos/16454963041--cinza-mescla.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -31092,7 +31092,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16454963041--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -31103,7 +31103,7 @@
       },
       {
         "cor": "Bordeaux",
-        "imagem": "/produtos/16454963041--bordeaux.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -31114,7 +31114,7 @@
       },
       {
         "cor": "Azul Iron",
-        "imagem": "/produtos/16454963041--azul-iron.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -31125,7 +31125,7 @@
       },
       {
         "cor": "Militar",
-        "imagem": "/produtos/16454963041--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -31136,7 +31136,7 @@
       },
       {
         "cor": "Cinza Lua",
-        "imagem": "/produtos/16454963041--cinza-lua.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -31147,7 +31147,7 @@
       },
       {
         "cor": "Verde Escuro",
-        "imagem": "/produtos/16454963041--verde-escuro.webp",
+        "imagem": null,
         "tamanhos": [
           "3G",
           "GG",
@@ -31168,7 +31168,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454963041--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -31888,7 +31888,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16454900410--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GGG",
           "GG",
@@ -31899,7 +31899,7 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16454900410--azul-marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GGG",
           "GG",
@@ -31909,7 +31909,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454900410--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -31922,7 +31922,7 @@
     "cores": [
       {
         "cor": "Branco",
-        "imagem": "/produtos/16454786905--branco.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -31932,7 +31932,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454786905--branco.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -31945,7 +31945,7 @@
     "cores": [
       {
         "cor": "Único",
-        "imagem": "/produtos/16454786523--unico.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -31955,7 +31955,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454786523--unico.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -31968,7 +31968,7 @@
     "cores": [
       {
         "cor": "Verde",
-        "imagem": "/produtos/16454785499--verde.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -31979,7 +31979,7 @@
       },
       {
         "cor": "Bordeaux",
-        "imagem": "/produtos/16454785499--bordeaux.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -31990,7 +31990,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16454785499--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32001,7 +32001,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16454785499--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32011,7 +32011,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454785499--verde.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -32024,7 +32024,7 @@
     "cores": [
       {
         "cor": "Militar",
-        "imagem": "/produtos/16454782959--militar.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32035,7 +32035,7 @@
       },
       {
         "cor": "Khaki",
-        "imagem": "/produtos/16454782959--khaki.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32046,7 +32046,7 @@
       },
       {
         "cor": "Azul Klein",
-        "imagem": "/produtos/16454782959--azul-klein.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32056,7 +32056,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454782959--militar.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -32069,7 +32069,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16454780115--preto.jpg",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32080,7 +32080,7 @@
       },
       {
         "cor": "Azul Klein",
-        "imagem": "/produtos/16454780115--azul-klein.png",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32090,7 +32090,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454780115--preto.jpg",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -32103,7 +32103,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16454778939--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32113,7 +32113,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454778939--preto.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -32126,7 +32126,7 @@
     "cores": [
       {
         "cor": "Off White",
-        "imagem": "/produtos/16434349114--off-white.png",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -32136,7 +32136,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16434349114--marinho.png",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -32146,7 +32146,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16434349114--preto.png",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -32155,7 +32155,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434349114--off-white.png",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -32168,7 +32168,7 @@
     "cores": [
       {
         "cor": "Azul Klein",
-        "imagem": "/produtos/16454774824--azul-klein.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32179,7 +32179,7 @@
       },
       {
         "cor": "Preto",
-        "imagem": "/produtos/16454774824--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32190,7 +32190,7 @@
       },
       {
         "cor": "Verde Escuro",
-        "imagem": "/produtos/16454774824--verde-escuro.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32201,7 +32201,7 @@
       },
       {
         "cor": "Azul Royal",
-        "imagem": "/produtos/16454774824--azul-royal.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32222,7 +32222,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454774824--azul-klein.webp",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -32235,7 +32235,7 @@
     "cores": [
       {
         "cor": "Preto",
-        "imagem": "/produtos/16454774124--preto.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32246,7 +32246,7 @@
       },
       {
         "cor": "Marinho",
-        "imagem": "/produtos/16454774124--marinho.webp",
+        "imagem": null,
         "tamanhos": [
           "GGg",
           "GG",
@@ -32256,7 +32256,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16454774124--preto.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -38530,7 +38530,7 @@
     "cores": [
       {
         "cor": "Azul Marinho",
-        "imagem": "/produtos/16442956282--azul-marinho.png",
+        "imagem": null,
         "tamanhos": [
           "GG",
           "G",
@@ -38539,7 +38539,7 @@
       },
       {
         "cor": "Aveia",
-        "imagem": "/produtos/16442956282--aveia.png",
+        "imagem": null,
         "tamanhos": [
           "G",
           "M"
@@ -38553,7 +38553,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16442956282--azul-marinho.png",
+    "imagem": null,
     "temEstoque": true
   },
   {
@@ -42043,7 +42043,7 @@
     "cores": [
       {
         "cor": "All Black",
-        "imagem": "/produtos/16434352676--all-black.webp",
+        "imagem": null,
         "tamanhos": [
           "42",
           "41",
@@ -42053,7 +42053,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16434352676--all-black.webp",
+    "imagem": null,
     "temEstoque": false
   },
   {
@@ -43149,13 +43149,13 @@
     "cores": [
       {
         "cor": "MARROM",
-        "imagem": "/produtos/16433523602--marrom.png",
+        "imagem": null,
         "tamanhos": [
           "Único"
         ]
       }
     ],
-    "imagem": "/produtos/16433523602--marrom.png",
+    "imagem": null,
     "temEstoque": false
   },
   {

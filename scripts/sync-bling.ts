@@ -41,6 +41,7 @@ carregarEnv({ path: ".env.local" });
 
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import * as path from "path";
+import sharp from "sharp";
 import { listarProdutosBling, buscarProdutoDetalheBling } from "../lib/bling";
 
 // Pasta publica do Next.js - tudo aqui dentro fica acessivel direto por URL (ex:
@@ -57,17 +58,27 @@ function fotoLocalExistente(idArquivo: string): string | null {
   return achado ? `/produtos/${achado}` : null;
 }
 
-// Baixa a foto do S3 do Bling enquanto a URL assinada ainda e' valida e salva localmente em
-// public/produtos/. Retorna o caminho local (pra guardar no produtos.json) ou null se falhar.
+// Baixa a foto do S3 do Bling enquanto a URL assinada ainda e' valida, redimensiona e
+// recomprime, e salva localmente em public/produtos/. Retorna o caminho local (pra guardar
+// no produtos.json) ou null se falhar.
+//
+// As fotos originais do Bling vem PESADAS (as vezes 1-2MB, algumas em PNG - que nao
+// comprime foto bem) - isso deixava o mosaico de produtos lento pra carregar, com varias
+// fotos grandes na mesma tela. Aqui a gente redimensiona (nunca aumenta, so' diminui se for
+// maior que 1200px de largura - da conta tanto do card pequeno da vitrine quanto da foto
+// grande da pagina do produto) e recomprime sempre como JPEG qualidade 78. Isso sozinho
+// costuma cortar o tamanho do arquivo pra uma fracao do original.
 async function baixarImagem(url: string, idArquivo: string): Promise<string | null> {
   try {
     const resposta = await fetch(url);
     if (!resposta.ok) return null;
-    const tipo = resposta.headers.get("content-type") ?? "";
-    const extensao = tipo.includes("png") ? "png" : tipo.includes("webp") ? "webp" : "jpg";
-    const nomeArquivo = `${idArquivo}.${extensao}`;
-    const bytes = Buffer.from(await resposta.arrayBuffer());
-    writeFileSync(path.join(PASTA_IMAGENS, nomeArquivo), bytes);
+    const bytesOriginais = Buffer.from(await resposta.arrayBuffer());
+    const bytesOtimizados = await sharp(bytesOriginais)
+      .resize({ width: 1200, withoutEnlargement: true })
+      .jpeg({ quality: 78 })
+      .toBuffer();
+    const nomeArquivo = `${idArquivo}.jpg`;
+    writeFileSync(path.join(PASTA_IMAGENS, nomeArquivo), bytesOtimizados);
     return `/produtos/${nomeArquivo}`;
   } catch {
     return null;
@@ -128,6 +139,9 @@ type DetalheBling = {
   data: {
     marca?: string;
     nome?: string;
+    // midia do PRODUTO em si (nao de uma variacao especifica) - existe sempre, mas so' e'
+    // usada como fallback (ver comentario onde e' lida abaixo).
+    midia?: { imagens?: { internas?: ImagemDetalheBling[] } };
     variacoes?: VariacaoDetalheBling[];
   };
 };
@@ -302,14 +316,19 @@ async function main() {
           if (detalhe.data.nome) nomeBase = limparNomeBase(detalhe.data.nome);
         }
         // monta cor -> link de foto usando as variacoes do PROPRIO detalhe (cada uma tem sua
-        // midia) - so' baixa quem realmente falta.
+        // midia) - so' baixa quem realmente falta. Produto SEM variacao de tamanho/cor (SKU
+        // unico, comum em marcas menores como a NV) as vezes nao devolve "variacoes" nenhuma
+        // no detalhe - nesse caso cai no fallback da midia do produto em si (mesmo campo,
+        // um nivel acima). E' esse fallback que faltava e deixava produto sem foto mesmo
+        // quando ela existia no Bling.
         const variacoesDetalhe = detalhe.data.variacoes ?? [];
+        const linkFallbackProduto = detalhe.data.midia?.imagens?.internas?.[0]?.link;
         for (const cor of coresSemFoto) {
           const match = variacoesDetalhe.find((v) => {
             const corDaVariacao = extrairCor(v.variacao?.nome ?? "") ?? "Único";
             return corDaVariacao === cor && v.midia?.imagens?.internas?.[0]?.link;
           });
-          const link = match?.midia?.imagens?.internas?.[0]?.link;
+          const link = match?.midia?.imagens?.internas?.[0]?.link ?? linkFallbackProduto;
           if (link) {
             const caminho = await baixarImagem(link, `${idStr}--${corSlug(cor)}`);
             if (caminho) {
