@@ -54,9 +54,9 @@ export default function Nav() {
     <header className="border-b border-black/10">
       {/* --- Desktop --- */}
       <div className="hidden md:flex items-center gap-8 px-6 py-4 max-w-6xl mx-auto">
-        <Link href="/" className="flex items-baseline gap-1.5 shrink-0 -ml-2">
-          <span className="font-serif text-2xl leading-none">M</span>
-          <span className="font-serif text-[15px] tracking-widest2">MOZZ</span>
+        <Link href="/" className="text-center shrink-0 -ml-2">
+          <div className="font-serif text-3xl leading-none">M</div>
+          <div className="font-serif text-[14.5px] tracking-widest2">MOZZ</div>
         </Link>
 
         <nav className="flex items-center gap-6 text-[14.5px] text-mozz-gray">
