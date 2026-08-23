@@ -94,37 +94,12 @@ guarda esse login (Supabase: banco de dados + autenticação, gratuito pra esse 
   Bling, que ainda não existem. Por enquanto a conta serve pra login/identificação do cliente;
   assim que o pagamento estiver de ponta a ponta, eu ligo o histórico de verdade.
 
-## 8. Resend — e-mail próprio pro login (tira o limite de 2 e-mails/hora)
+## 8. Resend — e-mail próprio pro login ✅ (concluído em 23/08/2026)
 
-O Supabase manda o e-mail do link mágico de um endereço genérico dele
-(`noreply@mail.app.supabase.io`) com um limite de só **2 e-mails por hora** - baixo demais
-pra loja recebendo cadastro de cliente de verdade. A troca por um serviço de e-mail próprio
-(Resend, grátis até 3.000 e-mails/mês) tira esse limite e ainda manda o e-mail com a cara da
-MOZZ. Esse passo é **inteiramente seu** - a configuração fica dentro do painel do Supabase,
-eu não tenho acesso lá:
-
-- [ ] Criar conta grátis em [resend.com](https://resend.com/signup).
-- [ ] No painel, **Domains → Add Domain** → digitar um subdomínio (recomendado, ex:
-      `notificacoes.lojamozz.com.br`, não o domínio raiz) → escolher a região → o Resend vai
-      gerar registros DNS (TXT e MX) pra você adicionar no Registro.br (mesmo lugar de antes,
-      pra apontar o site na Vercel).
-- [ ] Depois de adicionar os registros, espera a verificação (geralmente uns 15 minutos,
-      pode levar até 72h em casos raros).
-- [ ] Ir em **API Keys → Create API Key** e copiar o valor gerado.
-- [ ] Voltar no painel do **Supabase** → **Authentication → Emails → SMTP Settings** →
-      ativar "Enable Custom SMTP" e preencher:
-      - **Host**: `smtp.resend.com`
-      - **Port**: `465`
-      - **Username**: `resend`
-      - **Password**: a API Key que você copiou do Resend
-      - **Sender email**: um endereço do subdomínio verificado (ex:
-        `contato@notificacoes.lojamozz.com.br`)
-      - **Sender name**: `MOZZ`
-- [ ] Salvar. A partir daí os e-mails de login passam a vir do Resend, sem o limite de 2/hora.
-
-Se travar em algum desses passos (por exemplo, não achar onde colar os registros DNS no
-Registro.br), me chama que eu ajudo a diagnosticar, do mesmo jeito que fizemos com o domínio
-da Vercel.
+- [x] Domínio `notificacoes.lojamozz.com.br` verificado no Resend (DKIM, SPF e MX
+      confirmados via DNS).
+- [x] SMTP custom configurado no Supabase (Authentication → Emails → SMTP Settings) usando
+      o Resend - e-mail de login não depende mais do limite de 2/hora do Supabase.
 
 ## 5. GitHub Actions — atualização automática de estoque ✅ (concluído em 23/08/2026)
 
