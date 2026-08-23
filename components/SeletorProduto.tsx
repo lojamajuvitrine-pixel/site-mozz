@@ -66,6 +66,12 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
     setFotoIndex(0);
   }
 
+  function adicionarAoCarrinho() {
+    adicionar(produto, corAtual.cor, tamanho);
+    setAdicionado(true);
+    setTimeout(() => setAdicionado(false), 1500);
+  }
+
   function fotoAnterior() {
     setFotoIndex((i) => (i === 0 ? corAtual.imagens.length - 1 : i - 1));
   }
@@ -124,7 +130,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
                   >
                     <IconeSeta direcao="direita" />
                   </button>
-                  <span className="absolute top-3 right-3 text-[11px] bg-black/60 text-white px-2 py-0.5 rounded-full">
+                  <span className="absolute top-3 right-3 text-[12.5px] bg-black/60 text-white px-2 py-0.5 rounded-full">
                     {fotoIndex + 1}/{corAtual.imagens.length}
                   </span>
                 </>
@@ -154,17 +160,17 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
       </div>
 
       <div>
-        <p className="text-[12px] text-mozz-gray">{produto.marca}</p>
-        <p className="font-serif text-2xl mt-1">{produto.nome}</p>
-        <p className="text-[15px] mt-2">{formatarPreco(produto.preco)}</p>
+        <p className="text-[13.5px] text-mozz-gray">{produto.marca}</p>
+        <p className="font-serif text-3xl mt-1">{produto.nome}</p>
+        <p className="text-[17px] mt-2">{formatarPreco(produto.preco)}</p>
         {formatarParcelamento(produto.preco) && (
-          <p className="text-[12px] text-mozz-gray mt-1">{formatarParcelamento(produto.preco)}</p>
+          <p className="text-[13.5px] text-mozz-gray mt-1">{formatarParcelamento(produto.preco)}</p>
         )}
 
         <div className="mt-6">
           {cores.length > 1 && (
             <>
-              <p className="text-[12px] text-mozz-gray mb-2">Cor: {corAtual.cor}</p>
+              <p className="text-[13.5px] text-mozz-gray mb-2">Cor: {corAtual.cor}</p>
               <div className="flex gap-2 mb-6 flex-wrap">
                 {cores.map((c, i) => (
                   <button
@@ -187,7 +193,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
             </>
           )}
 
-          <p className="text-[12px] text-mozz-gray mb-2">Tamanho</p>
+          <p className="text-[13.5px] text-mozz-gray mb-2">Tamanho</p>
           <div className="flex gap-2 mb-6 flex-wrap">
             {corAtual.tamanhos.map((t) => {
               const disponivel = disponiveisAtual.includes(t);
@@ -197,7 +203,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
                   onClick={() => disponivel && setTamanho(t)}
                   disabled={!disponivel}
                   title={disponivel ? undefined : "Esgotado"}
-                  className={`relative w-9 h-9 text-[12px] border ${
+                  className={`relative w-9 h-9 text-[13.5px] border ${
                     tamanho === t && disponivel
                       ? "bg-mozz-black text-white border-mozz-black"
                       : disponivel
@@ -216,23 +222,32 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
             })}
           </div>
           {disponiveisAtual.length === 0 && (
-            <p className="text-[12px] text-mozz-gray mb-4">Esgotado nesta cor no momento.</p>
+            <p className="text-[13.5px] text-mozz-gray mb-4">Esgotado nesta cor no momento.</p>
           )}
 
           <button
-            onClick={() => {
-              adicionar(produto, corAtual.cor, tamanho);
-              setAdicionado(true);
-              setTimeout(() => setAdicionado(false), 1500);
-            }}
+            onClick={adicionarAoCarrinho}
             disabled={!tamanhoEstaDisponivel}
-            className="w-full text-[13px] py-3 bg-mozz-black text-white disabled:opacity-40 disabled:cursor-not-allowed"
+            className="w-full text-[14.5px] py-3 bg-mozz-black text-white disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {!tamanhoEstaDisponivel ? "Esgotado" : adicionado ? "Adicionado" : "Adicionar ao carrinho"}
           </button>
 
           <CalculoFrete quantidadeItens={1} />
         </div>
+      </div>
+
+      {/* barra fixa so' no celular - mantem preco e botao de comprar sempre alcancaveis
+          mesmo depois de rolar pra ver descricao/composicao/medidas mais embaixo na pagina */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-black/10 px-4 py-3 flex items-center gap-3 z-20">
+        <p className="text-[15px] shrink-0">{formatarPreco(produto.preco)}</p>
+        <button
+          onClick={adicionarAoCarrinho}
+          disabled={!tamanhoEstaDisponivel}
+          className="flex-1 text-[13.5px] py-3 bg-mozz-black text-white disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          {!tamanhoEstaDisponivel ? "Esgotado" : adicionado ? "Adicionado" : "Adicionar ao carrinho"}
+        </button>
       </div>
     </section>
   );

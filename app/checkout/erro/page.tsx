@@ -8,12 +8,12 @@ export const dynamic = "force-dynamic";
 export default function PaginaCheckoutErro() {
   return (
     <section className="py-16 max-w-md mx-auto text-center">
-      <p className="font-serif text-2xl mb-3">Pagamento nao aprovado</p>
-      <p className="text-[13px] text-mozz-gray mb-6">
+      <p className="font-serif text-3xl mb-3">Pagamento nao aprovado</p>
+      <p className="text-[14.5px] text-mozz-gray mb-6">
         Nao conseguimos confirmar seu pagamento. Seu carrinho continua salvo - voce pode
         tentar novamente ou usar outra forma de pagamento.
       </p>
-      <a href="/carrinho" className="inline-block text-[13px] py-3 px-6 bg-mozz-black text-white">
+      <a href="/carrinho" className="inline-block text-[14.5px] py-3 px-6 bg-mozz-black text-white">
         Voltar ao carrinho
       </a>
     </section>

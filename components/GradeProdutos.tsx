@@ -58,13 +58,13 @@ export default function GradeProdutos({
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
           placeholder="Buscar por nome ou marca..."
-          className="border border-black/20 px-3 py-2 text-[13px] flex-1 min-w-[180px]"
+          className="border border-black/20 px-3 py-2 text-[14.5px] flex-1 min-w-[180px]"
         />
         {marcas && marcas.length > 0 && (
           <select
             value={marcaSelecionada}
             onChange={(e) => setMarcaSelecionada(e.target.value)}
-            className="border border-black/20 px-3 py-2 text-[13px] bg-white"
+            className="border border-black/20 px-3 py-2 text-[14.5px] bg-white"
           >
             <option value="todas">Todas as marcas</option>
             {marcas.map((m) => (
@@ -77,19 +77,19 @@ export default function GradeProdutos({
         <select
           value={ordenacao}
           onChange={(e) => setOrdenacao(e.target.value as Ordenacao)}
-          className="border border-black/20 px-3 py-2 text-[13px] bg-white"
+          className="border border-black/20 px-3 py-2 text-[14.5px] bg-white"
         >
           <option value="relevancia">Ordenar por relevancia</option>
           <option value="menor-preco">Preco: menor para maior</option>
           <option value="maior-preco">Preco: maior para menor</option>
         </select>
-        <span className="text-[12px] text-mozz-gray ml-auto">
+        <span className="text-[13.5px] text-mozz-gray ml-auto">
           {listaFiltrada.length} peca(s)
         </span>
       </div>
 
       {listaFiltrada.length === 0 ? (
-        <p className="text-[13px] text-mozz-gray py-8 text-center">
+        <p className="text-[14.5px] text-mozz-gray py-8 text-center">
           Nenhuma peca encontrada com esse filtro.
         </p>
       ) : (

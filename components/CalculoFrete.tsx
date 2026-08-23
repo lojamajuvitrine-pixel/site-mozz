@@ -42,7 +42,7 @@ export default function CalculoFrete({ quantidadeItens = 1 }: { quantidadeItens?
 
   return (
     <div className="mt-6 pt-6 border-t border-black/10">
-      <p className="text-[12px] text-mozz-gray mb-2">Calcular frete e prazo de entrega</p>
+      <p className="text-[13.5px] text-mozz-gray mb-2">Calcular frete e prazo de entrega</p>
       <div className="flex gap-2">
         <input
           value={cep}
@@ -50,23 +50,23 @@ export default function CalculoFrete({ quantidadeItens = 1 }: { quantidadeItens?
           onKeyDown={(evento) => evento.key === "Enter" && calcular()}
           placeholder="Seu CEP"
           maxLength={9}
-          className="flex-1 border border-black/20 px-3 py-2 text-[13px] focus:outline-none focus:border-mozz-black"
+          className="flex-1 border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
         />
         <button
           onClick={calcular}
           disabled={carregando}
-          className="text-[12px] px-4 border border-mozz-black hover:bg-mozz-black hover:text-white transition-colors disabled:opacity-60"
+          className="text-[13.5px] px-4 border border-mozz-black hover:bg-mozz-black hover:text-white transition-colors disabled:opacity-60"
         >
           {carregando ? "..." : "Calcular"}
         </button>
       </div>
-      {erro && <p className="text-[12px] text-red-600 mt-2">{erro}</p>}
+      {erro && <p className="text-[13.5px] text-red-600 mt-2">{erro}</p>}
       {opcoes && opcoes.length > 0 && (
         <div className="mt-3 divide-y divide-black/10 border border-black/10">
           {opcoes.map((opcao) => (
             <div
               key={`${opcao.transportadora}-${opcao.servico}`}
-              className="flex justify-between items-center px-3 py-2 text-[12px]"
+              className="flex justify-between items-center px-3 py-2 text-[13.5px]"
             >
               <span>
                 {opcao.transportadora} {opcao.servico} · até {opcao.prazoDias} dia(s) úteis
@@ -77,7 +77,7 @@ export default function CalculoFrete({ quantidadeItens = 1 }: { quantidadeItens?
         </div>
       )}
       {opcoes && opcoes.length === 0 && (
-        <p className="text-[12px] text-mozz-gray mt-2">Nenhuma opção de frete encontrada para esse CEP.</p>
+        <p className="text-[13.5px] text-mozz-gray mt-2">Nenhuma opção de frete encontrada para esse CEP.</p>
       )}
     </div>
   );

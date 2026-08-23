@@ -62,17 +62,17 @@ export default function PaginaCarrinho() {
   }
 
   if (itens.length === 0) {
-    return <p className="py-16 text-center text-mozz-gray text-[13px]">Seu carrinho esta vazio.</p>;
+    return <p className="py-16 text-center text-mozz-gray text-[14.5px]">Seu carrinho esta vazio.</p>;
   }
 
   return (
     <section className="py-8 max-w-xl">
-      <p className="font-serif text-2xl mb-6">Carrinho</p>
+      <p className="font-serif text-3xl mb-6">Carrinho</p>
       <div className="divide-y divide-black/10">
         {itens.map((item) => (
           <div
             key={`${item.produto.id}-${item.cor}-${item.tamanho}`}
-            className="flex justify-between py-4 text-[13px]"
+            className="flex justify-between py-4 text-[14.5px]"
           >
             <div>
               <p>{item.produto.nome}</p>
@@ -95,28 +95,28 @@ export default function PaginaCarrinho() {
       </div>
 
       <div className="mt-4">
-        <p className="text-[12px] text-mozz-gray mb-2">Cupom de desconto</p>
+        <p className="text-[13.5px] text-mozz-gray mb-2">Cupom de desconto</p>
         <div className="flex gap-2">
           <input
             value={codigoCupom}
             onChange={(e) => setCodigoCupom(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && aplicarCupom()}
             placeholder="Código do cupom"
-            className="flex-1 border border-black/20 px-3 py-2 text-[13px] uppercase focus:outline-none focus:border-mozz-black"
+            className="flex-1 border border-black/20 px-3 py-2 text-[14.5px] uppercase focus:outline-none focus:border-mozz-black"
           />
           <button
             onClick={aplicarCupom}
             disabled={validandoCupom}
-            className="text-[12px] px-4 border border-mozz-black hover:bg-mozz-black hover:text-white transition-colors disabled:opacity-60"
+            className="text-[13.5px] px-4 border border-mozz-black hover:bg-mozz-black hover:text-white transition-colors disabled:opacity-60"
           >
             {validandoCupom ? "..." : "Aplicar"}
           </button>
         </div>
         {cupomAplicado && !cupomAplicado.valido && (
-          <p className="text-[12px] text-red-600 mt-2">{cupomAplicado.motivo}</p>
+          <p className="text-[13.5px] text-red-600 mt-2">{cupomAplicado.motivo}</p>
         )}
         {cupomAplicado?.valido && (
-          <p className="text-[12px] text-green-700 mt-2">
+          <p className="text-[13.5px] text-green-700 mt-2">
             Cupom {cupomAplicado.cupom.codigo} aplicado: -{formatarPreco(cupomAplicado.desconto)}
           </p>
         )}
@@ -124,28 +124,28 @@ export default function PaginaCarrinho() {
 
       <div className="mt-2">
         {desconto > 0 && (
-          <div className="flex justify-between py-1 text-[13px] text-mozz-gray">
+          <div className="flex justify-between py-1 text-[14.5px] text-mozz-gray">
             <span>Subtotal</span>
             <span>{formatarPreco(total)}</span>
           </div>
         )}
         {desconto > 0 && (
-          <div className="flex justify-between py-1 text-[13px] text-green-700">
+          <div className="flex justify-between py-1 text-[14.5px] text-green-700">
             <span>Desconto</span>
             <span>-{formatarPreco(desconto)}</span>
           </div>
         )}
-        <div className="flex justify-between py-4 text-[14px] border-t border-black/10 mt-2">
+        <div className="flex justify-between py-4 text-[16px] border-t border-black/10 mt-2">
           <span>Total</span>
           <span>{formatarPreco(totalComDesconto)}</span>
         </div>
       </div>
 
-      {erro && <p className="text-[12px] text-red-600 mb-2">{erro}</p>}
+      {erro && <p className="text-[13.5px] text-red-600 mb-2">{erro}</p>}
       <button
         onClick={finalizarCompra}
         disabled={carregando}
-        className="w-full text-[13px] py-3 bg-mozz-black text-white disabled:opacity-60"
+        className="w-full text-[14.5px] py-3 bg-mozz-black text-white disabled:opacity-60"
       >
         {carregando ? "Redirecionando..." : "Finalizar compra"}
       </button>

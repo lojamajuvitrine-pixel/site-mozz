@@ -34,7 +34,7 @@ export default function BarraBusca() {
         value={termo}
         onChange={(evento) => setTermo(evento.target.value)}
         placeholder="Buscar produtos..."
-        className="flex-1 text-[12px] outline-none text-mozz-black placeholder:text-mozz-gray bg-transparent"
+        className="flex-1 text-[13.5px] outline-none text-mozz-black placeholder:text-mozz-gray bg-transparent"
       />
     </form>
   );

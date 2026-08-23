@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { Produto } from "@/lib/produtos";
 import {
   categoriaDoProduto,
-  composicaoOuAviso,
+  composicaoDoProduto,
   instrucoesDeCuidado,
   tabelaDeMedidas,
   textoDescricao
@@ -26,7 +26,8 @@ type Secao = { titulo: string; conteudo: React.ReactNode };
 export default function DetalhesProduto({ produto }: { produto: Produto }) {
   const categoria = categoriaDoProduto(produto.nome);
   const tabela = tabelaDeMedidas(categoria);
-  const cuidados = instrucoesDeCuidado(produto.composicao);
+  const composicao = composicaoDoProduto(produto);
+  const cuidados = instrucoesDeCuidado(composicao);
 
   const secoes: Secao[] = [
     {
@@ -35,7 +36,7 @@ export default function DetalhesProduto({ produto }: { produto: Produto }) {
     },
     {
       titulo: "Composição",
-      conteudo: <p>{composicaoOuAviso(produto)}</p>
+      conteudo: <p>{composicao}</p>
     },
     {
       titulo: "Como cuidar",
@@ -77,7 +78,7 @@ export default function DetalhesProduto({ produto }: { produto: Produto }) {
             </tbody>
           </table>
           <p className="text-mozz-gray mt-3">
-            Medidas de referência (podem variar levemente conforme o modelo e o caimento da peça).
+            Compare com uma peça que você já tenha em casa pra escolher o tamanho ideal.
           </p>
         </div>
       )
@@ -101,12 +102,12 @@ function ItemAcordeao({ titulo, children }: { titulo: string; children: React.Re
     <div className="border-b border-black/10">
       <button
         onClick={() => setAberto((v) => !v)}
-        className="w-full flex items-center justify-between py-4 text-[13px]"
+        className="w-full flex items-center justify-between py-4 text-[14.5px]"
       >
         {titulo}
         <IconeMais aberto={aberto} />
       </button>
-      {aberto && <div className="pb-5 text-[12.5px] text-mozz-black/80 leading-relaxed">{children}</div>}
+      {aberto && <div className="pb-5 text-[14px] text-mozz-black/80 leading-relaxed">{children}</div>}
     </div>
   );
 }

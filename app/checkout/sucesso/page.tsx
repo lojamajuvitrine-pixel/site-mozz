@@ -22,12 +22,12 @@ function Conteudo() {
 
   return (
     <section className="py-16 max-w-md mx-auto text-center">
-      <p className="font-serif text-2xl mb-3">Pedido confirmado</p>
-      <p className="text-[13px] text-mozz-gray mb-1">Seu pagamento foi aprovado.</p>
+      <p className="font-serif text-3xl mb-3">Pedido confirmado</p>
+      <p className="text-[14.5px] text-mozz-gray mb-1">Seu pagamento foi aprovado.</p>
       {numeroPedido && (
-        <p className="text-[13px] text-mozz-gray mb-6">Numero do pedido: {numeroPedido}</p>
+        <p className="text-[14.5px] text-mozz-gray mb-6">Numero do pedido: {numeroPedido}</p>
       )}
-      <a href="/" className="inline-block text-[13px] underline mt-4">
+      <a href="/" className="inline-block text-[14.5px] underline mt-4">
         Voltar para a loja
       </a>
     </section>

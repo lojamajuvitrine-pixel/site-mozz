@@ -168,12 +168,72 @@ export function instrucoesDeCuidado(composicao?: string): string[] {
   return ["Lavar à mão ou em ciclo delicado, com água fria", ...base];
 }
 
-// Composicao a mostrar na pagina - usa a do produto se o Bling trouxe (extraida da
-// descricao no sync), senao mostra um aviso honesto em vez de inventar um tecido.
-export function composicaoOuAviso(produto: Produto): string {
-  return produto.composicao?.trim() || "Composição não informada pelo fornecedor para esta peça específica.";
+// Composicao tipica por tipo de peca (mix de tecido mais comum do mercado de moda BR pra
+// cada categoria) - usada como fallback quando o Bling nao trouxe a composicao real dessa
+// peca especifica (a maioria do catalogo hoje, ja que o fornecedor raramente preenche esse
+// campo). Ordem importa: combinacoes mais especificas antes de genericas.
+const COMPOSICOES_TIPICAS: Array<[string, string]> = [
+  ["jaqueta jeans", "98% Algodão, 2% Elastano"],
+  ["jaqueta couro", "100% Poliuretano (couro ecológico)"],
+  ["jaqueta", "100% Poliéster"],
+  ["casaco", "70% Poliéster, 30% Lã"],
+  ["moletom", "60% Algodão, 40% Poliéster"],
+  ["tricot", "70% Acrílico, 30% Poliamida"],
+  ["trico", "70% Acrílico, 30% Poliamida"],
+  ["sueter", "70% Acrílico, 30% Poliamida"],
+  ["cardigan", "70% Acrílico, 30% Poliamida"],
+  ["jeans", "98% Algodão, 2% Elastano"],
+  ["denim", "98% Algodão, 2% Elastano"],
+  ["legging", "88% Poliamida, 12% Elastano"],
+  ["camisa", "100% Algodão"],
+  ["camiseta", "100% Algodão"],
+  ["regata", "95% Algodão, 5% Elastano"],
+  ["cropped", "95% Algodão, 5% Elastano"],
+  ["body", "92% Poliamida, 8% Elastano"],
+  ["blazer", "68% Poliéster, 30% Viscose, 2% Elastano"],
+  ["colete", "100% Poliéster"],
+  ["blusa", "97% Viscose, 3% Elastano"],
+  ["vestido", "95% Viscose, 5% Elastano"],
+  ["macaquinho", "95% Viscose, 5% Elastano"],
+  ["macacao", "95% Viscose, 5% Elastano"],
+  ["saia", "97% Poliéster, 3% Elastano"],
+  ["bermuda", "98% Algodão, 2% Elastano"],
+  ["short", "98% Algodão, 2% Elastano"],
+  ["calca", "97% Algodão, 3% Elastano"]
+];
+const COMPOSICAO_PADRAO = "95% Algodão, 5% Elastano";
+
+function composicaoTipica(nomeProduto: string): string {
+  const normalizado = normalizarTexto(nomeProduto);
+  const achada = COMPOSICOES_TIPICAS.find(([chave]) => normalizado.includes(chave));
+  return achada?.[1] ?? COMPOSICAO_PADRAO;
 }
 
+// Composicao a mostrar na pagina - usa a do produto se o Bling trouxe (extraida da
+// descricao no sync); quando nao tem, preenche com a composicao tipica dessa categoria de
+// peca (mix de tecido mais usado nesse tipo de produto no mercado) em vez de deixar em
+// branco - decisao do Brunno em 23/08/2026.
+export function composicaoDoProduto(produto: Produto): string {
+  return produto.composicao?.trim() || composicaoTipica(produto.nome);
+}
+
+// Descricoes curtas por categoria pra compor o texto de fallback quando o Bling nao tem
+// descricao cadastrada (a maioria do catalogo hoje).
+const DESCRITOR_POR_CATEGORIA: Record<CategoriaPeca, string> = {
+  top: "peça moderna, com caimento confortável e acabamento cuidadoso",
+  bottom: "peça versátil, pensada pra ir do dia a dia a produções mais elaboradas",
+  vestido: "peça de caimento fluido, feita pra ser a protagonista do look",
+  macacao: "peça prática e cheia de atitude, num corte único",
+  macaquinho: "peça prática e cheia de atitude, num corte único",
+  calcado: "peça confortável e cheia de estilo, pra completar qualquer produção",
+  acessorio: "peça que dá o toque final em qualquer produção",
+  outro: "peça atemporal, com a identidade autoral da marca"
+};
+
 export function textoDescricao(produto: Produto): string {
-  return produto.descricao?.trim() || `${produto.nome} - ${produto.marca}.`;
+  const real = produto.descricao?.trim();
+  if (real) return real;
+  const categoria = categoriaDoProduto(produto.nome);
+  const descritor = DESCRITOR_POR_CATEGORIA[categoria];
+  return `${produto.nome}, da ${produto.marca} — ${descritor}.`;
 }

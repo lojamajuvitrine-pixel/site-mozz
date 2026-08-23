@@ -10,8 +10,8 @@ export default function PaginaProdutos({ searchParams }: { searchParams?: { busc
 
   return (
     <section className="py-8">
-      <p className="font-serif text-2xl mb-1">Todos os produtos</p>
-      <p className="text-[13px] text-mozz-gray mb-6">{produtos.length} pecas disponiveis</p>
+      <p className="font-serif text-3xl mb-1">Todos os produtos</p>
+      <p className="text-[14.5px] text-mozz-gray mb-6">{produtos.length} pecas disponiveis</p>
       <GradeProdutos produtos={produtos} marcas={marcas} buscaInicial={searchParams?.busca} />
     </section>
   );

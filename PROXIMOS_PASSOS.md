@@ -66,6 +66,20 @@ projeto) que eu sigo com a parte técnica.
   produto — dá um frete próximo do real, mas não exato centavo a centavo. Se um dia
   cadastrarmos peso/dimensão reais no Bling, é só eu trocar isso no código.
 
+## 6. Meta Pixel e Google Analytics — rastreamento de anúncios e tráfego
+
+- [ ] **Meta Pixel** (anúncios/remarketing no Instagram e Facebook): no
+      [Gerenciador de Eventos](https://business.facebook.com/events_manager) da conta de
+      anúncios da MOZZ, criar uma fonte de dados do tipo "Web" (Pixel). Isso gera um ID
+      numérico (parecido com `123456789012345`).
+- [ ] **Google Analytics** (de onde vem o tráfego, como o cliente navega): criar uma
+      propriedade GA4 em [analytics.google.com](https://analytics.google.com) pro domínio
+      do site. Isso gera um ID no formato `G-XXXXXXXXXX`.
+- 🔑 Me manda os dois IDs. Eu coloco em `NEXT_PUBLIC_META_PIXEL_ID` e `NEXT_PUBLIC_GA_ID`
+      (no `.env.local` e você replica na Vercel). O código já está pronto pra ativar sozinho
+      assim que os IDs existirem — sem isso, o site funciona normal, só sem esses dois
+      rastreamentos.
+
 ## 5. GitHub Actions — atualização automática de estoque
 
 Hoje o site lê o catálogo de um arquivo (`data/produtos.json`) gerado pelo sync, não de um
