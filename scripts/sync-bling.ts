@@ -75,7 +75,11 @@ function limparNomeBase(nome: string): string {
 // Brunno em 22/08/2026: "Sly" e "Slywear" sao a mesma marca, so' grafia diferente).
 const MARCAS_SIGLA = new Set(["nv"]); // marcas que devem ficar em maiusculo (siglas curtas)
 const MARCAS_APELIDOS: Record<string, string> = {
-  sly: "Slywear"
+  sly: "Slywear",
+  // erros de digitacao encontrados no sync de 22/08/2026 (catalogo com 1.966 produtos)
+  iodioce: "Iodice",
+  animalet: "Animale",
+  animaleq: "Animale"
 };
 function normalizarMarca(marca: string): string {
   const limpo = marca.trim();
