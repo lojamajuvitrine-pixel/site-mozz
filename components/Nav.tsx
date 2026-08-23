@@ -40,11 +40,7 @@ export default function Nav() {
 
   return (
     <header className="border-b border-black/10">
-      <div className="text-center text-[12.5px] py-1.5 text-mozz-gray px-2">
-        Frete grátis acima de R$399 · Troca em 30 dias
-      </div>
-
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center px-4 md:px-6 py-4 max-w-6xl mx-auto">
+      <div className="grid grid-cols-[1fr_auto_1fr] items-center px-4 md:px-6 py-3 max-w-6xl mx-auto">
         <button
           onClick={() => setMenuAberto((v) => !v)}
           aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
@@ -60,11 +56,8 @@ export default function Nav() {
         </Link>
 
         <div className="flex justify-end items-center gap-4 text-[14.5px] text-mozz-black/80">
-          <Link href="/carrinho" aria-label="Carrinho" className="md:hidden p-1 -mr-1">
+          <Link href="/carrinho" aria-label="Carrinho" className="p-1 -mr-1">
             <IconeSacola />
-          </Link>
-          <Link href="/carrinho" className="hidden md:inline">
-            Carrinho
           </Link>
         </div>
       </div>
@@ -72,16 +65,18 @@ export default function Nav() {
       <div
         className={`${
           menuAberto ? "flex" : "hidden"
-        } md:flex flex-col md:flex-row items-center md:justify-center gap-4 md:gap-6 px-4 md:px-6 pb-3 text-[13.5px] text-mozz-gray`}
+        } md:flex flex-col md:flex-row items-center md:justify-between gap-4 md:gap-6 px-4 md:px-6 pb-3 text-[13.5px] text-mozz-gray`}
       >
-        {marcas.map((marca) => (
-          <Link key={marca} href={`/marca/${marca.toLowerCase()}`} onClick={() => setMenuAberto(false)}>
-            {marca}
-          </Link>
-        ))}
-      </div>
-      <div className={`${menuAberto ? "block" : "hidden"} md:block px-4 md:px-6 pb-3`}>
-        <BarraBusca />
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+          {marcas.map((marca) => (
+            <Link key={marca} href={`/marca/${marca.toLowerCase()}`} onClick={() => setMenuAberto(false)}>
+              {marca}
+            </Link>
+          ))}
+        </div>
+        <div className="w-full md:w-auto md:max-w-xs">
+          <BarraBusca />
+        </div>
       </div>
     </header>
   );

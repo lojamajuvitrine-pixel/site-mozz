@@ -4,6 +4,7 @@ import { useCart } from "@/lib/cart-context";
 import { formatarPreco } from "@/lib/formato";
 import { useState } from "react";
 import CalculoFrete from "@/components/CalculoFrete";
+import { rastrearIniciarCheckout } from "@/lib/tracking";
 
 type ResultadoCupom =
   | { valido: true; cupom: { codigo: string; tipo: "percentual" | "fixo"; valor: number }; desconto: number }
@@ -43,6 +44,17 @@ export default function PaginaCarrinho() {
   async function finalizarCompra() {
     setErro(null);
     setCarregando(true);
+    // dispara InitiateCheckout/begin_checkout ANTES de redirecionar pro Mercado Pago - depois
+    // do redirect a pagina ja saiu do ar e o evento nunca dispararia.
+    rastrearIniciarCheckout(
+      itens.map((i) => ({
+        id: i.produto.id,
+        nome: i.produto.nome,
+        marca: i.produto.marca,
+        preco: i.produto.preco,
+        quantidade: i.quantidade
+      }))
+    );
     try {
       const resposta = await fetch("/api/mercadopago/criar-preferencia", {
         method: "POST",

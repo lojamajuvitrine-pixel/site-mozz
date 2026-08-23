@@ -9,13 +9,28 @@
 import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useCart } from "@/lib/cart-context";
+import { rastrearCompra } from "@/lib/tracking";
 
 function Conteudo() {
   const params = useSearchParams();
-  const { limpar } = useCart();
+  const { itens, limpar } = useCart();
   const numeroPedido = params.get("external_reference");
 
   useEffect(() => {
+    // dispara o Purchase ANTES de limpar - depois do limpar() o carrinho fica vazio e nao
+    // teria mais item/valor pra mandar no evento (ver limitacao anotada em lib/tracking.ts).
+    if (itens.length > 0) {
+      rastrearCompra(
+        numeroPedido ?? "sem-numero",
+        itens.map((i) => ({
+          id: i.produto.id,
+          nome: i.produto.nome,
+          marca: i.produto.marca,
+          preco: i.produto.preco,
+          quantidade: i.quantidade
+        }))
+      );
+    }
     limpar(); // esvazia o carrinho, ja que a compra foi concluida
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

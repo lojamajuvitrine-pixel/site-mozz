@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import type { Produto } from "@/lib/produtos";
+import { rastrearAdicionarAoCarrinho } from "@/lib/tracking";
 
 export type ItemCarrinho = { produto: Produto; cor: string; tamanho: string; quantidade: number };
 
@@ -40,6 +41,16 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [itens, carregado]);
 
   function adicionar(produto: Produto, cor: string, tamanho: string) {
+    // dispara ANTES do setState (nao depende do resultado) - evento de rastreamento,
+    // se falhar por qualquer motivo (ad blocker, etc.) nao pode impedir o carrinho de
+    // funcionar, por isso fica fora do setter.
+    rastrearAdicionarAoCarrinho({
+      id: produto.id,
+      nome: produto.nome,
+      marca: produto.marca,
+      preco: produto.preco,
+      quantidade: 1
+    });
     setItens((atual) => {
       const existente = atual.find(
         (i) => i.produto.id === produto.id && i.cor === cor && i.tamanho === tamanho

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import BannerHero, { type BannerItem } from "@/components/BannerHero";
-import { listarPorMarca, marcasDisponiveis, produtosComFoto } from "@/lib/produtos";
+import { listarPorMarca, produtosComFoto } from "@/lib/produtos";
 
 // Quantos produtos aparecem na vitrine "Novidades" da home - o catalogo completo (com todos
 // os produtos, com ou sem foto) fica em /produtos.
@@ -10,7 +10,6 @@ const QTD_VITRINE = 8;
 
 export default function Home() {
   const comFoto = produtosComFoto();
-  const marcas = marcasDisponiveis();
 
   // Banner principal rotativo: Reserva (marca 100% masculina) e Animale (a marca feminina
   // mais forte do portfolio) - ver PROXIMOS_PASSOS.md/conversa sobre a escolha dessas duas.
@@ -38,19 +37,6 @@ export default function Home() {
     <div>
       <BannerHero banners={bannersFinal} />
 
-      <section className="grid grid-cols-2 md:grid-cols-4 border-b border-black/10 -mx-6">
-        {marcas.map((marca) => (
-          <Link
-            key={marca}
-            href={`/marca/${marca.toLowerCase()}`}
-            className="text-center py-8 border-black/10 border-r last:border-r-0"
-          >
-            <p className="text-[12.5px] text-mozz-gray">Marca</p>
-            <p className="font-serif text-[17px] mt-1">{marca}</p>
-          </Link>
-        ))}
-      </section>
-
       {bannerProduto?.imagem && (
         <section className="grid md:grid-cols-2 -mx-6 border-b border-black/10">
           <div className="relative aspect-[4/5] md:aspect-auto">
@@ -64,7 +50,6 @@ export default function Home() {
             />
           </div>
           <div className="flex flex-col items-start justify-center px-8 py-12 md:px-14">
-            <p className="text-[12.5px] text-mozz-gray mb-2">{bannerProduto.marca}</p>
             <p className="font-serif text-[29px] md:text-[33px] leading-tight mb-4">
               Quatro marcas,
               <br />
