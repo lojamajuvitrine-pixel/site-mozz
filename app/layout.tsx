@@ -4,11 +4,10 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/lib/cart-context";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://site-mozz.vercel.app";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "MOZZ — Animale, NV, Reserva e Foxton em um só lugar",
     template: "%s | MOZZ"

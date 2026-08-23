@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 import { listarProdutos, marcasDisponiveis } from "@/lib/produtos";
+import { SITE_URL as siteUrl } from "@/lib/site";
 
 // Sitemap gerado automaticamente com TODO produto do catalogo - e' o que ajuda o Google a
 // achar e indexar cada peca (em vez de depender so' de seguir link por link a partir da
 // home). Fica disponivel em /sitemap.xml sozinho, o Next.js cuida do resto.
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://site-mozz.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const produtos = listarProdutos();

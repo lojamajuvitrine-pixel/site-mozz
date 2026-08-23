@@ -5,8 +5,7 @@ import SeletorProduto from "@/components/SeletorProduto";
 import DetalhesProduto from "@/components/DetalhesProduto";
 import ProdutosRelacionados from "@/components/ProdutosRelacionados";
 import { textoDescricao } from "@/lib/detalhesProduto";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://site-mozz.vercel.app";
+import { SITE_URL as siteUrl } from "@/lib/site";
 
 // generateMetadata roda no servidor por produto - e' o que faz o Google (e o preview de link
 // no WhatsApp/Instagram) mostrar o nome/foto/preco certos da peca em vez do titulo generico
