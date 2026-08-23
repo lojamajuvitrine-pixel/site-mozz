@@ -12,6 +12,13 @@
 //   preco/estoque proprio.
 // - Por isso: 1 chamada de detalhe por GRUPO de variacoes (nao por SKU) e' o suficiente pra
 //   pegar a marca - dá pra economizar bastante chamada num catalogo com milhares de SKUs.
+// - IMPORTANTE (descoberto em 22/08/2026): o "imagemURL" que a lista devolve e' uma URL
+//   ASSINADA do S3 do Bling com prazo de validade MUITO curto (o parametro "Expires" da URL
+//   mostrou vencimento poucos minutos depois da propria sincronizacao) - guardar essa URL
+//   direto no produtos.json nao funciona, ela expira antes de alguem conseguir ver a foto no
+//   site. Por isso a foto e' BAIXADA aqui mesmo durante o sync e salva em public/produtos/,
+//   e o produtos.json guarda so' o caminho local (ex: "/produtos/123.jpg") - que nao expira
+//   nunca, porque a foto passa a ser servida pelo proprio site, nao pelo Bling.
 //
 // Uso: npm run sync:bling            -> roda o catalogo inteiro (pode levar alguns minutos)
 //      npm run sync:bling -- --limite=20   -> roda só os 20 primeiros grupos, pra testar rápido
@@ -20,8 +27,31 @@
 import { config as carregarEnv } from "dotenv";
 carregarEnv({ path: ".env.local" });
 
-import { writeFileSync } from "fs";
+import { existsSync, mkdirSync, writeFileSync } from "fs";
+import * as path from "path";
 import { listarProdutosBling, buscarProdutoDetalheBling } from "../lib/bling";
+
+// Pasta publica do Next.js - tudo aqui dentro fica acessivel direto por URL (ex:
+// public/produtos/123.jpg vira https://.../produtos/123.jpg), sem precisar de rota de API.
+const PASTA_IMAGENS = path.join(process.cwd(), "public", "produtos");
+if (!existsSync(PASTA_IMAGENS)) mkdirSync(PASTA_IMAGENS, { recursive: true });
+
+// Baixa a foto do S3 do Bling enquanto a URL assinada ainda e' valida e salva localmente em
+// public/produtos/. Retorna o caminho local (pra guardar no produtos.json) ou null se falhar.
+async function baixarImagem(url: string, idProduto: string): Promise<string | null> {
+  try {
+    const resposta = await fetch(url);
+    if (!resposta.ok) return null;
+    const tipo = resposta.headers.get("content-type") ?? "";
+    const extensao = tipo.includes("png") ? "png" : tipo.includes("webp") ? "webp" : "jpg";
+    const nomeArquivo = `${idProduto}.${extensao}`;
+    const bytes = Buffer.from(await resposta.arrayBuffer());
+    writeFileSync(path.join(PASTA_IMAGENS, nomeArquivo), bytes);
+    return `/produtos/${nomeArquivo}`;
+  } catch {
+    return null;
+  }
+}
 
 type ProdutoBlingLista = {
   id: number;
@@ -161,8 +191,10 @@ async function main() {
     );
 
     const temEstoque = variacoes.some((v) => (v.estoque?.saldoVirtualTotal ?? 0) > 0);
-    // pega a primeira imagem disponivel entre as variacoes do grupo (nem toda variacao tem foto propria)
-    const imagem = variacoes.find((v) => v.imagemURL)?.imagemURL ?? null;
+    // pega a primeira imagem disponivel entre as variacoes do grupo (nem toda variacao tem foto
+    // propria) e baixa na hora, porque a URL assinada do Bling expira em poucos minutos.
+    const imagemURL = variacoes.find((v) => v.imagemURL)?.imagemURL;
+    const imagem = imagemURL ? await baixarImagem(imagemURL, String(chaveGrupo)) : null;
 
     produtosMapeados.push({
       id: String(chaveGrupo),
@@ -183,7 +215,9 @@ async function main() {
   }
 
   writeFileSync("data/produtos.json", JSON.stringify(produtosMapeados, null, 2));
+  const comFoto = produtosMapeados.filter((p) => p.imagem).length;
   console.log(`\nPronto! data/produtos.json atualizado com ${produtosMapeados.length} produtos.`);
+  console.log(`Fotos baixadas para public/produtos/: ${comFoto} de ${produtosMapeados.length}.`);
   if (semMarca > 0) {
     console.log(`Atencao: ${semMarca} produto(s) ficaram sem marca identificada - revisar manualmente no arquivo.`);
   }

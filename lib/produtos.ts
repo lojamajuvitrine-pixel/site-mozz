@@ -8,6 +8,9 @@ export type Produto = {
   novo: boolean;
   descricao: string;
   tamanhos: string[];
+  // caminho local dentro de public/produtos/ (ex: "/produtos/123.jpg"), baixado durante o
+  // sync - NAO e' a URL do Bling, que expira em minutos. null quando o produto nao tem foto
+  // cadastrada no Bling.
   imagem: string | null;
   // presente so' em produtos vindos do sync real do Bling (scripts/sync-bling.ts) - indica
   // se ALGUM tamanho tem saldo em estoque. Produtos do seed manual nao tem esse campo.
