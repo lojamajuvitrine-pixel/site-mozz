@@ -1,13 +1,13 @@
 import produtosData from "@/data/produtos.json";
 
-// Uma variacao de COR do produto - cada cor tem sua propria foto (quando cadastrada no
-// Bling) e sua propria lista de tamanhos disponiveis.
+// Uma variacao de COR do produto - cada cor tem suas proprias fotos (pode ser mais de uma,
+// quando cadastradas no Bling) e sua propria lista de tamanhos disponiveis.
 export type VarianteCor = {
   cor: string;
-  // caminho local dentro de public/produtos/ (ex: "/produtos/123--branco.jpg"), baixado
-  // durante o sync - NAO e' a URL do Bling, que expira. null quando essa cor nao tem foto
-  // cadastrada no Bling.
-  imagem: string | null;
+  // caminhos locais dentro de public/produtos/ (ex: "/produtos/123--branco--0.jpg"),
+  // baixados durante o sync - NAO e' a URL do Bling, que expira. Array vazio quando essa
+  // cor nao tem foto cadastrada no Bling.
+  imagens: string[];
   tamanhos: string[];
 };
 
@@ -70,7 +70,7 @@ export function coresDoProduto(produto: Produto): VarianteCor[] {
   return [
     {
       cor: "Único",
-      imagem: produto.imagem,
+      imagens: produto.imagem ? [produto.imagem] : [],
       tamanhos: legado.tamanhos && legado.tamanhos.length > 0 ? legado.tamanhos : ["Único"]
     }
   ];

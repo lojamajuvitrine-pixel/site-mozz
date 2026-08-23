@@ -86,6 +86,18 @@ function IconeLupa() {
   );
 }
 
+function IconeSeta({ direcao }: { direcao: "esquerda" | "direita" }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="16" height="16">
+      <path
+        d={direcao === "esquerda" ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function SeletorProduto({ produto }: { produto: Produto }) {
   const cores = coresDoProduto(produto);
   const [corIndex, setCorIndex] = useState(0);
@@ -93,6 +105,11 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   const [tamanho, setTamanho] = useState(corAtual.tamanhos[0]);
   const [adicionado, setAdicionado] = useState(false);
   const { adicionar } = useCart();
+
+  // Carrossel: a cor selecionada pode ter mais de uma foto (o Bling deixa cadastrar varias
+  // fotos da mesma peca/cor) - fotoIndex controla qual delas esta em exibicao.
+  const [fotoIndex, setFotoIndex] = useState(0);
+  const fotoAtual = corAtual.imagens[fotoIndex] ?? null;
 
   // Zoom com lupa: ao passar o mouse na foto, ela amplia seguindo a posicao do cursor -
   // so' funciona com mouse (desktop), em touch o toque normal continua indo pra galeria.
@@ -109,43 +126,93 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   function selecionarCor(index: number) {
     setCorIndex(index);
     setTamanho(cores[index].tamanhos[0]);
+    setFotoIndex(0);
+  }
+
+  function fotoAnterior() {
+    setFotoIndex((i) => (i === 0 ? corAtual.imagens.length - 1 : i - 1));
+  }
+
+  function proximaFoto() {
+    setFotoIndex((i) => (i === corAtual.imagens.length - 1 ? 0 : i + 1));
   }
 
   return (
     <section className="py-8 grid md:grid-cols-2 gap-10">
-      <div
-        className={`relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden ${
-          corAtual.imagem ? "cursor-zoom-in" : ""
-        }`}
-        onMouseEnter={() => setZoomAtivo(true)}
-        onMouseLeave={() => setZoomAtivo(false)}
-        onMouseMove={moverMouseNaFoto}
-      >
-        {corAtual.imagem ? (
-          <>
-            <Image
-              key={corAtual.imagem}
-              src={corAtual.imagem}
-              alt={`${produto.nome} - ${corAtual.cor}`}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              // foto grande da pagina do produto - qualidade alta, e' onde o cliente olha o
-              // detalhe da peca de perto. O card pequeno do mosaico usa qualidade mais baixa
-              // (ver ProductCard.tsx) pra carregar rapido.
-              quality={90}
-              className="object-cover transition-transform duration-150 ease-out"
-              style={{
-                transform: zoomAtivo ? "scale(2)" : "scale(1)",
-                transformOrigin: `${origemZoom.x}% ${origemZoom.y}%`
-              }}
-              priority
-            />
-            <span className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white/90 text-mozz-black flex items-center justify-center pointer-events-none">
-              <IconeLupa />
-            </span>
-          </>
-        ) : (
-          <span className="text-mozz-gray text-xs">foto do produto</span>
+      <div>
+        <div
+          className={`relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden ${
+            fotoAtual ? "cursor-zoom-in" : ""
+          }`}
+          onMouseEnter={() => setZoomAtivo(true)}
+          onMouseLeave={() => setZoomAtivo(false)}
+          onMouseMove={moverMouseNaFoto}
+        >
+          {fotoAtual ? (
+            <>
+              <Image
+                key={fotoAtual}
+                src={fotoAtual}
+                alt={`${produto.nome} - ${corAtual.cor}`}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                // foto grande da pagina do produto - qualidade alta, e' onde o cliente olha o
+                // detalhe da peca de perto. O card pequeno do mosaico usa qualidade mais baixa
+                // (ver ProductCard.tsx) pra carregar rapido.
+                quality={90}
+                className="object-cover transition-transform duration-150 ease-out"
+                style={{
+                  transform: zoomAtivo ? "scale(2)" : "scale(1)",
+                  transformOrigin: `${origemZoom.x}% ${origemZoom.y}%`
+                }}
+                priority
+              />
+              <span className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white/90 text-mozz-black flex items-center justify-center pointer-events-none">
+                <IconeLupa />
+              </span>
+
+              {corAtual.imagens.length > 1 && (
+                <>
+                  <button
+                    onClick={fotoAnterior}
+                    aria-label="Foto anterior"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 text-mozz-black flex items-center justify-center hover:bg-white"
+                  >
+                    <IconeSeta direcao="esquerda" />
+                  </button>
+                  <button
+                    onClick={proximaFoto}
+                    aria-label="Proxima foto"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 text-mozz-black flex items-center justify-center hover:bg-white"
+                  >
+                    <IconeSeta direcao="direita" />
+                  </button>
+                  <span className="absolute top-3 right-3 text-[11px] bg-black/60 text-white px-2 py-0.5 rounded-full">
+                    {fotoIndex + 1}/{corAtual.imagens.length}
+                  </span>
+                </>
+              )}
+            </>
+          ) : (
+            <span className="text-mozz-gray text-xs">foto do produto</span>
+          )}
+        </div>
+
+        {corAtual.imagens.length > 1 && (
+          <div className="flex gap-2 mt-3 flex-wrap">
+            {corAtual.imagens.map((imagem, i) => (
+              <button
+                key={imagem}
+                onClick={() => setFotoIndex(i)}
+                aria-label={`Ver foto ${i + 1}`}
+                className={`relative w-14 h-[70px] overflow-hidden border ${
+                  i === fotoIndex ? "border-mozz-black" : "border-black/15"
+                }`}
+              >
+                <Image src={imagem} alt="" fill sizes="56px" quality={50} className="object-cover" />
+              </button>
+            ))}
+          </div>
         )}
       </div>
 

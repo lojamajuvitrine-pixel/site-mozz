@@ -18,13 +18,14 @@
 //   de SKUs.
 // - IMPORTANTE: o "imagemURL" que a lista (GET /produtos) devolve e' na verdade a MINIATURA
 //   (~70x70px) e com validade de poucos MINUTOS - nao usamos mais esse campo. A foto de
-//   verdade fica em data.midia.imagens.internas[].link no endpoint de DETALHE, com validade
-//   de dias. Cada variacao (SKU) do detalhe tem a SUA PROPRIA midia - ou seja, cada COR pode
-//   ter uma foto diferente, e e' assim que a gente monta a selecao de cor com foto
-//   correspondente no site. De qualquer forma, seja qual for a validade, a URL do Bling
-//   expira em algum momento - a foto e' BAIXADA aqui mesmo durante o sync e salva em
-//   public/produtos/ (um arquivo por COR, nome "<idGrupo>--<cor>.ext"), e o produtos.json
-//   guarda so' o caminho local, que nao expira nunca.
+//   verdade fica em data.midia.imagens.internas[] no endpoint de DETALHE (pode ter MAIS DE
+//   UMA foto por cor - o array vem completo), com validade de dias. Cada variacao (SKU) do
+//   detalhe tem a SUA PROPRIA midia - ou seja, cada COR pode ter fotos diferentes, e e' assim
+//   que a gente monta a selecao de cor com carrossel de fotos correspondente no site. De
+//   qualquer forma, seja qual for a validade, a URL do Bling expira em algum momento - as
+//   fotos sao BAIXADAS aqui mesmo durante o sync e salvas em public/produtos/ (um arquivo por
+//   FOTO, nome "<idGrupo>--<cor>--<indice>.jpg"), e o produtos.json guarda so' os caminhos
+//   locais, que nao expiram nunca.
 //
 // Uso: npm run sync:bling                    -> roda o catalogo inteiro. Da segunda vez em
 //        diante e' RAPIDO: so' busca marca/nome/foto de produto NOVO ou cor sem foto local
@@ -49,13 +50,22 @@ import { listarProdutosBling, buscarProdutoDetalheBling } from "../lib/bling";
 const PASTA_IMAGENS = path.join(process.cwd(), "public", "produtos");
 if (!existsSync(PASTA_IMAGENS)) mkdirSync(PASTA_IMAGENS, { recursive: true });
 
-// Fotos ja baixadas em syncs anteriores (nome do arquivo = "<idGrupo>--<corSlug>.<extensao>")
-// - usado pra NAO baixar de novo em toda sincronizacao, so' o que ainda falta. E' o que faz
-// o sync do dia-a-dia ficar rapido depois da primeira carga completa.
+// Fotos ja baixadas em syncs anteriores (nome do arquivo = "<idGrupo>--<corSlug>--<indice>.jpg",
+// uma por foto - cada cor pode ter varias) - usado pra NAO baixar de novo em toda
+// sincronizacao, so' o que ainda falta. E' o que faz o sync do dia-a-dia ficar rapido
+// depois da primeira carga completa.
 const FOTOS_EXISTENTES = new Set(existsSync(PASTA_IMAGENS) ? readdirSync(PASTA_IMAGENS) : []);
-function fotoLocalExistente(idArquivo: string): string | null {
-  const achado = Array.from(FOTOS_EXISTENTES).find((nome) => nome.startsWith(`${idArquivo}.`));
-  return achado ? `/produtos/${achado}` : null;
+// Todas as fotos ja baixadas de uma cor especifica, em ordem (0, 1, 2...).
+function fotosLocaisDaCor(idBase: string): string[] {
+  const prefixo = `${idBase}--`;
+  return Array.from(FOTOS_EXISTENTES)
+    .filter((nome) => nome.startsWith(prefixo))
+    .sort((a, b) => {
+      const numA = Number(a.slice(prefixo.length).split(".")[0]);
+      const numB = Number(b.slice(prefixo.length).split(".")[0]);
+      return numA - numB;
+    })
+    .map((nome) => `/produtos/${nome}`);
 }
 
 // Baixa a foto do S3 do Bling enquanto a URL assinada ainda e' valida, redimensiona e
@@ -211,7 +221,7 @@ function normalizarMarca(marca: string): string {
   return limpo.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
 }
 
-type VarianteCorSaida = { cor: string; imagem: string | null; tamanhos: string[] };
+type VarianteCorSaida = { cor: string; imagens: string[]; tamanhos: string[] };
 
 async function main() {
   const limiteArg = process.argv.find((a) => a.startsWith("--limite="));
@@ -289,14 +299,14 @@ async function main() {
 
     const doCache = cache.get(idStr);
 
-    // ja tem foto local dessa cor (de um sync anterior)? guarda o que ja existe e so' marca
-    // como "falta" quem realmente falta (ou tudo, se --forcar-fotos).
-    const imagensPorCor = new Map<string, string | null>();
+    // ja tem foto(s) local(is) dessa cor (de um sync anterior)? guarda o que ja existe e so'
+    // marca como "falta" quem realmente falta (ou tudo, se --forcar-fotos).
+    const imagensPorCor = new Map<string, string[]>();
     for (const cor of coresUnicas) {
-      const existente = !forcarFotos ? fotoLocalExistente(`${idStr}--${corSlug(cor)}`) : null;
-      if (existente) {
-        imagensPorCor.set(cor, existente);
-        fotosReaproveitadas++;
+      const existentes = !forcarFotos ? fotosLocaisDaCor(`${idStr}--${corSlug(cor)}`) : [];
+      if (existentes.length > 0) {
+        imagensPorCor.set(cor, existentes);
+        fotosReaproveitadas += existentes.length;
       }
     }
     const coresSemFoto = coresUnicas.filter((cor) => !imagensPorCor.has(cor));
@@ -320,26 +330,35 @@ async function main() {
           marcaJaNormalizada = false;
           if (detalhe.data.nome) nomeBase = limparNomeBase(detalhe.data.nome);
         }
-        // monta cor -> link de foto usando as variacoes do PROPRIO detalhe (cada uma tem sua
-        // midia) - so' baixa quem realmente falta. Produto SEM variacao de tamanho/cor (SKU
-        // unico, comum em marcas menores como a NV) as vezes nao devolve "variacoes" nenhuma
-        // no detalhe - nesse caso cai no fallback da midia do produto em si (mesmo campo,
-        // um nivel acima). E' esse fallback que faltava e deixava produto sem foto mesmo
-        // quando ela existia no Bling.
+        // monta cor -> LINKS de foto (pode ser mais de uma por cor - o Bling deixa cadastrar
+        // varias fotos da mesma peca/cor) usando as variacoes do PROPRIO detalhe (cada uma
+        // tem sua midia) - so' baixa quem realmente falta. Produto SEM variacao de tamanho/
+        // cor (SKU unico, comum em marcas menores como a NV) as vezes nao devolve "variacoes"
+        // nenhuma no detalhe - nesse caso cai no fallback da midia do produto em si (mesmo
+        // campo, um nivel acima). E' esse fallback que faltava e deixava produto sem foto
+        // mesmo quando ela existia no Bling.
         const variacoesDetalhe = detalhe.data.variacoes ?? [];
-        const linkFallbackProduto = detalhe.data.midia?.imagens?.internas?.[0]?.link;
+        const linksFallbackProduto = (detalhe.data.midia?.imagens?.internas ?? [])
+          .map((im) => im.link)
+          .filter((l): l is string => !!l);
         for (const cor of coresSemFoto) {
           const match = variacoesDetalhe.find((v) => {
             const corDaVariacao = extrairCor(v.variacao?.nome ?? "") ?? "Único";
-            return corDaVariacao === cor && v.midia?.imagens?.internas?.[0]?.link;
+            return corDaVariacao === cor;
           });
-          const link = match?.midia?.imagens?.internas?.[0]?.link ?? linkFallbackProduto;
-          if (link) {
-            const caminho = await baixarImagem(link, `${idStr}--${corSlug(cor)}`);
-            if (caminho) {
-              imagensPorCor.set(cor, caminho);
-              fotosBaixadasAgora++;
-            }
+          const linksVariacao = (match?.midia?.imagens?.internas ?? [])
+            .map((im) => im.link)
+            .filter((l): l is string => !!l);
+          const links = linksVariacao.length > 0 ? linksVariacao : linksFallbackProduto;
+
+          const caminhosBaixados: string[] = [];
+          for (let i = 0; i < links.length; i++) {
+            const caminho = await baixarImagem(links[i], `${idStr}--${corSlug(cor)}--${i}`);
+            if (caminho) caminhosBaixados.push(caminho);
+          }
+          if (caminhosBaixados.length > 0) {
+            imagensPorCor.set(cor, caminhosBaixados);
+            fotosBaixadasAgora += caminhosBaixados.length;
           }
         }
       } catch {
@@ -355,7 +374,7 @@ async function main() {
       await dormir(PAUSA_ENTRE_CHAMADAS_MS); // so' pausa quando realmente chamou a API
     }
 
-    // monta a lista final de cores com tamanhos + foto - cor com foto vem primeiro, pra foto
+    // monta a lista final de cores com tamanhos + fotos - cor com foto vem primeiro, pra foto
     // de capa (card de vitrine) ser sempre de uma cor que tem foto quando possivel.
     const cores: VarianteCorSaida[] = coresUnicas
       .map((cor) => {
@@ -369,14 +388,14 @@ async function main() {
         );
         return {
           cor,
-          imagem: imagensPorCor.get(cor) ?? null,
+          imagens: imagensPorCor.get(cor) ?? [],
           tamanhos: tamanhosCor.length > 0 ? tamanhosCor : ["Único"]
         };
       })
-      .sort((a, b) => (a.imagem ? 0 : 1) - (b.imagem ? 0 : 1));
+      .sort((a, b) => (a.imagens.length > 0 ? 0 : 1) - (b.imagens.length > 0 ? 0 : 1));
 
     const temEstoque = skus.some((s) => (s.estoque?.saldoVirtualTotal ?? 0) > 0);
-    const imagemCapa = cores.find((c) => c.imagem)?.imagem ?? null;
+    const imagemCapa = cores.find((c) => c.imagens.length > 0)?.imagens[0] ?? null;
 
     produtosMapeados.push({
       id: idStr,
