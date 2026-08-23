@@ -10,9 +10,9 @@ export default function Nav() {
       </div>
       <div className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto">
         <nav className="hidden md:flex gap-6 text-[13px] text-mozz-black/80">
+          <Link href="/produtos">Todos os produtos</Link>
           <Link href="/feminino">Feminino</Link>
           <Link href="/masculino">Masculino</Link>
-          <Link href="/marca/animale">Marcas</Link>
         </nav>
         <Link href="/" className="text-center">
           <div className="font-serif text-xl leading-none">M</div>

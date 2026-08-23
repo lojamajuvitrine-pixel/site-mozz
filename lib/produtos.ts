@@ -41,3 +41,10 @@ export function buscarProduto(id: string): Produto | undefined {
 export function marcasDisponiveis(): string[] {
   return Array.from(new Set(listarProdutos().map((p) => p.marca)));
 }
+
+// So' os produtos que tem foto - usado nas vitrines de destaque (home) pra nao mostrar o
+// placeholder "foto do produto" logo na entrada do site. O catalogo completo (/produtos)
+// continua mostrando todo mundo, com ou sem foto.
+export function produtosComFoto(): Produto[] {
+  return listarProdutos().filter((p) => !!p.imagem);
+}
