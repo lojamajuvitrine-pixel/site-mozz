@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import PerfilForm, { type DadosPerfil } from "@/components/PerfilForm";
 
 // Protegida pelo middleware.ts (redireciona pra /conta/entrar antes de chegar aqui se nao
 // tiver sessao) - o redirect() abaixo e' so' uma segunda camada de seguranca, caso essa
@@ -16,6 +17,23 @@ export default async function PaginaConta() {
     redirect("/conta/entrar");
   }
 
+  // metadata do usuario vem solta (any) do Supabase - mapeia pros campos que o formulario
+  // espera, com fallback vazio pra quem ainda nao preencheu nada.
+  const meta = user.user_metadata ?? {};
+  const perfilInicial: Partial<DadosPerfil> = {
+    nomeCompleto: meta.nome_completo ?? "",
+    cpf: meta.cpf ?? "",
+    telefone: meta.telefone ?? "",
+    dataNascimento: meta.data_nascimento ?? "",
+    cep: meta.cep ?? "",
+    endereco: meta.endereco ?? "",
+    numero: meta.numero ?? "",
+    complemento: meta.complemento ?? "",
+    bairro: meta.bairro ?? "",
+    cidade: meta.cidade ?? "",
+    uf: meta.uf ?? ""
+  };
+
   return (
     <section className="py-12 max-w-xl">
       <div className="flex items-baseline justify-between mb-8">
@@ -28,6 +46,14 @@ export default async function PaginaConta() {
             Sair
           </button>
         </form>
+      </div>
+
+      <div className="mb-10">
+        <p className="text-[14.5px] mb-3">Meus dados</p>
+        <p className="text-[13px] text-mozz-gray mb-4">
+          Preenche pra agilizar a entrega e a nota fiscal dos seus pedidos.
+        </p>
+        <PerfilForm perfilInicial={perfilInicial} />
       </div>
 
       <div>
