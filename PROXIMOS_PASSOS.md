@@ -86,7 +86,8 @@ projeto) que eu sigo com a parte técnica.
 Hoje o site lê o catálogo de um arquivo (`data/produtos.json`) gerado pelo sync, não de um
 banco de dados ao vivo — então pra vendas feitas na loja física aparecerem automaticamente
 no site (sem você rodar `npm run sync:bling` na mão), configurei um robô que roda sozinho a
-cada 30 minutos e atualiza só preço/estoque. Falta você criar os "secrets" (senhas seguras
+cada 5 minutos (o menor intervalo que o GitHub aceita) e atualiza só preço/estoque. Falta
+você criar os "secrets" (senhas seguras
 que só o robô do GitHub enxerga) uma única vez:
 
 - [ ] No GitHub, abrir o repositório do site → **Settings → Secrets and variables →

@@ -1,11 +1,15 @@
 name: Sync automático de estoque (Bling → site)
 
-# Roda a cada 30 minutos, das 9h as 21h (horario de Brasilia), de segunda a sabado - horario
-# comercial da loja. Ajuste o cron abaixo se quiser outra frequencia/horario (cron roda em
-# UTC, que esta 3h a frente do horario de Brasilia).
+# Roda a cada 5 minutos, das 9h as 21h (horario de Brasilia), de segunda a sabado - horario
+# comercial da loja. 5 em 5 e' o MENOR intervalo que o GitHub Actions aceita pra schedule
+# (qualquer coisa menor e' ignorada) - como o repositorio e' publico, rodar com essa
+# frequencia nao consome cota paga de minutos de Actions. Unica ressalva: em horario de pico
+# o GitHub pode atrasar um pouco a execucao agendada (nao e' garantia de precisao ao segundo,
+# so' o intervalo minimo configurado). Ajuste o cron abaixo se quiser outra frequencia/horario
+# (cron roda em UTC, que esta 3h a frente do horario de Brasilia).
 on:
   schedule:
-    - cron: "*/30 12-23 * * 1-6"
+    - cron: "*/5 12-23 * * 1-6"
   workflow_dispatch: {} # permite rodar manualmente pela aba Actions do GitHub, se precisar
 
 jobs:
