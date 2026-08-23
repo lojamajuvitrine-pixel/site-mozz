@@ -18,24 +18,13 @@ projeto) que eu sigo com a parte técnica.
       sitemap e nos links de retorno do checkout do Mercado Pago pro domínio definitivo (já
       atualizei o `.env.local` local com esse valor).
 
-## 2. Bling — app de integração (API v3)
+## 2. Bling — app de integração (API v3) ✅ (concluído em 23/08/2026)
 
-- [ ] Entrar em [developer.bling.com.br](https://developer.bling.com.br) com o login que
-      já usa no Bling da MOZZ.
-- [ ] Central de Extensões → Área do Integrador → **Criar aplicativo** (nome sugerido:
-      "Site MOZZ", visibilidade: privado/só pra você).
-- [ ] No campo **Link de redirecionamento**, cole exatamente:
-      `https://site-mozz.vercel.app/api/bling/callback`
-      (esse é o endereço que já deixei pronto no site pra receber a autorização — se
-      trocarmos de domínio depois, é só editar esse campo de novo).
-- [ ] Em **Escopos**, adicionar pelo menos: Produtos (leitura), Estoques (leitura),
-      Pedidos de Venda (leitura e escrita).
-- [ ] Salvar. Na aba "Informações do app" vão aparecer o **Client ID** e o **Client
-      Secret** (clique no ícone de olho pra revelar o secret).
-- 🔑 Me manda o Client ID e o Client Secret assim que tiver. Eu não tenho acesso à sua
-      conta Vercel, então você mesmo adiciona os dois em Project Settings → Environment
-      Variables (`BLING_CLIENT_ID` e `BLING_CLIENT_SECRET`) e clica em Redeploy — aí eu te
-      devolvo o link de autorização pra você clicar (é o último passo, só um clique).
+- [x] App "Site MOZZ" criado em developer.bling.com.br, Client ID/Secret gerados.
+- [x] Autorização feita (fluxo OAuth via `/api/bling/callback`), `BLING_REFRESH_TOKEN`
+      obtido e funcionando.
+- [x] Primeiro `npm run sync:bling` rodado com credenciais reais - catálogo atualizado com
+      982 produtos das 4 marcas ativas (343 com estoque disponível, 495 com foto real).
 
 ## 3. Mercado Pago — conta e credenciais
 
@@ -81,50 +70,28 @@ projeto) que eu sigo com a parte técnica.
       assim que os IDs existirem — sem isso, o site funciona normal, só sem esses dois
       rastreamentos.
 
-## 5. GitHub Actions — atualização automática de estoque
+## 5. GitHub Actions — atualização automática de estoque ✅ (concluído em 23/08/2026)
 
-Hoje o site lê o catálogo de um arquivo (`data/produtos.json`) gerado pelo sync, não de um
-banco de dados ao vivo — então pra vendas feitas na loja física aparecerem automaticamente
-no site (sem você rodar `npm run sync:bling` na mão), configurei um robô que roda sozinho a
-cada 5 minutos (o menor intervalo que o GitHub aceita) e atualiza só preço/estoque. Falta
-você criar os "secrets" (senhas seguras
-que só o robô do GitHub enxerga) uma única vez:
-
-- [ ] No GitHub, abrir o repositório do site → **Settings → Secrets and variables →
-      Actions → New repository secret** e criar estes três, com os mesmos valores que já
-      estão no `.env.local` do projeto:
-      - `BLING_CLIENT_ID`
-      - `BLING_CLIENT_SECRET`
-      - `BLING_REFRESH_TOKEN`
-- [ ] Criar um **Personal Access Token** (Settings da sua conta pessoal do GitHub, não do
-      repositório → **Developer settings → Personal access tokens → Fine-grained tokens**),
-      com permissão de **Secrets: Read and write** só nesse repositório. Isso é necessário
-      porque o Bling troca o refresh_token toda vez que é usado — o robô precisa poder
-      atualizar o secret `BLING_REFRESH_TOKEN` sozinho depois de cada rodada, senão para de
-      funcionar na segunda execução.
-- [ ] Colar esse token como um quarto secret chamado `GH_PAT_SECRETS`.
-- [ ] Em **Settings → Actions → General → Workflow permissions**, marcar "Read and write
-      permissions" (o robô também precisa poder dar `git push` da atualização do catálogo).
-- [ ] Depois de configurado, dá pra testar manualmente: aba **Actions** do repositório →
-      "Sync automático de estoque" → **Run workflow**.
-
-Sem isso configurado, o site continua funcionando normalmente — só que o estoque/preço só
-atualiza quando alguém roda `npm run sync:bling` (ou `npm run sync:estoque`) na mão.
+- [x] Os 4 secrets criados (`BLING_CLIENT_ID`, `BLING_CLIENT_SECRET`, `BLING_REFRESH_TOKEN`,
+      `GH_PAT_SECRETS`) e "Read and write permissions" ativado em Settings → Actions →
+      General.
+- [x] Testado manualmente (Run workflow) - rodou com sucesso. A partir de agora o robô roda
+      sozinho a cada 5 minutos (9h-20h, seg-sáb) e mantém preço/estoque do site em dia com
+      o Bling, sem precisar rodar nada na mão.
 
 ## O que eu já fiz enquanto isso
 
 - Estrutura completa do site (Next.js), com a identidade visual monocromática que
-  definimos, catálogo de exemplo, carrinho funcionando de ponta a ponta.
-- Cliente do Bling pronto (só falta o Refresh Token pra virar real).
+  definimos, catálogo real sincronizado do Bling (982 produtos, 4 marcas), carrinho
+  funcionando de ponta a ponta.
+- Integração com o Bling ativa e sincronizando sozinha a cada 5 minutos (itens 2 e 5).
 - Criação de preferência de pagamento e webhook do Mercado Pago prontos (só falta o
   Access Token, e um ajuste de segurança que já deixei anotado como TODO no código —
   validar a assinatura do webhook).
 - Carrossel de fotos, seleção de cor/tamanho direto no mosaico (estilo Foxton), parcelamento
   sem juros, abas de descrição/composição/como cuidar/tabela de medidas, "quem viu também
-  gostou", cupom de desconto e cálculo de frete por CEP — tudo já implementado e no ar assim
-  que você fizer os cadastros dos itens 4 e 5 acima.
-- Robô de sincronização automática de estoque (GitHub Actions) pronto, só falta configurar
-  os secrets do item 5.
+  gostou", cupom de desconto e cálculo de frete por CEP — tudo já implementado, só falta o
+  cadastro do item 4 (Melhor Envio) pro frete calcular de verdade.
 
 Assim que tiver qualquer um dos itens 🔑 acima, me manda que eu já conecto e testo.
 
