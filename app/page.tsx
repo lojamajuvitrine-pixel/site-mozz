@@ -26,6 +26,7 @@ export default function Home() {
             fill
             priority
             sizes="100vw"
+            quality={85}
             className="object-cover opacity-80"
           />
         )}
@@ -67,6 +68,7 @@ export default function Home() {
               alt={bannerProduto.nome}
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
+              quality={85}
               className="object-cover"
             />
           </div>

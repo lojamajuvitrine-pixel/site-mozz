@@ -63,19 +63,24 @@ function fotoLocalExistente(idArquivo: string): string | null {
 // no produtos.json) ou null se falhar.
 //
 // As fotos originais do Bling vem PESADAS (as vezes 1-2MB, algumas em PNG - que nao
-// comprime foto bem) - isso deixava o mosaico de produtos lento pra carregar, com varias
-// fotos grandes na mesma tela. Aqui a gente redimensiona (nunca aumenta, so' diminui se for
-// maior que 1200px de largura - da conta tanto do card pequeno da vitrine quanto da foto
-// grande da pagina do produto) e recomprime sempre como JPEG qualidade 78. Isso sozinho
-// costuma cortar o tamanho do arquivo pra uma fracao do original.
+// comprime foto bem). Aqui a gente guarda um "mestre" em boa qualidade (nunca aumenta, so'
+// diminui se for maior que 1600px de largura - da' resolucao de sobra ate' pra tela grande/
+// retina - e recomprime como JPEG qualidade 85, que ainda e' bem nitido).
+//
+// A velocidade no MOSAICO (varios produtos na mesma tela) nao vem de degradar esse arquivo -
+// vem do proprio Next.js: o componente <Image> do site pede uma qualidade BAIXA (60) so' pro
+// card pequeno da vitrine (components/ProductCard.tsx) e ALTA (90) pra foto grande da pagina
+// do produto (components/SeletorProduto.tsx), e o Next gera e serve automaticamente o
+// tamanho certo pra cada caso a partir desse mesmo arquivo mestre - nao precisa guardar dois
+// arquivos por foto.
 async function baixarImagem(url: string, idArquivo: string): Promise<string | null> {
   try {
     const resposta = await fetch(url);
     if (!resposta.ok) return null;
     const bytesOriginais = Buffer.from(await resposta.arrayBuffer());
     const bytesOtimizados = await sharp(bytesOriginais)
-      .resize({ width: 1200, withoutEnlargement: true })
-      .jpeg({ quality: 78 })
+      .resize({ width: 1600, withoutEnlargement: true })
+      .jpeg({ quality: 85 })
       .toBuffer();
     const nomeArquivo = `${idArquivo}.jpg`;
     writeFileSync(path.join(PASTA_IMAGENS, nomeArquivo), bytesOtimizados);

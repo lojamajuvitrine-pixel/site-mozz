@@ -100,6 +100,10 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
             alt={`${produto.nome} - ${corAtual.cor}`}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
+            // foto grande da pagina do produto - qualidade alta, e' onde o cliente olha o
+            // detalhe da peca de perto. O card pequeno do mosaico usa qualidade mais baixa
+            // (ver ProductCard.tsx) pra carregar rapido.
+            quality={90}
             className="object-cover"
             priority
           />

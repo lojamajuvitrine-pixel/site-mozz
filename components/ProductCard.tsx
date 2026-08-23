@@ -18,6 +18,10 @@ export default function ProductCard({ produto }: { produto: Produto }) {
             alt={produto.nome}
             fill
             sizes="(max-width: 768px) 50vw, 25vw"
+            // card pequeno do mosaico - qualidade mais baixa (o olho nao percebe nesse
+            // tamanho) pra carregar rapido mesmo com varios produtos na tela ao mesmo tempo.
+            // A foto grande da pagina do produto usa qualidade alta (ver SeletorProduto.tsx).
+            quality={60}
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
