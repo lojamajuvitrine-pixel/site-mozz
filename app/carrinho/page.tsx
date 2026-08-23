@@ -36,15 +36,21 @@ export default function PaginaCarrinho() {
       <p className="font-serif text-2xl mb-6">Carrinho</p>
       <div className="divide-y divide-black/10">
         {itens.map((item) => (
-          <div key={`${item.produto.id}-${item.tamanho}`} className="flex justify-between py-4 text-[13px]">
+          <div
+            key={`${item.produto.id}-${item.cor}-${item.tamanho}`}
+            className="flex justify-between py-4 text-[13px]"
+          >
             <div>
               <p>{item.produto.nome}</p>
-              <p className="text-mozz-gray">Tam. {item.tamanho} · Qtd. {item.quantidade}</p>
+              <p className="text-mozz-gray">
+                {item.cor && item.cor !== "Único" ? `Cor ${item.cor} · ` : ""}
+                Tam. {item.tamanho} · Qtd. {item.quantidade}
+              </p>
             </div>
             <div className="text-right">
               <p>{formatarPreco(item.produto.preco * item.quantidade)}</p>
               <button
-                onClick={() => remover(item.produto.id, item.tamanho)}
+                onClick={() => remover(item.produto.id, item.cor, item.tamanho)}
                 className="text-mozz-gray underline mt-1"
               >
                 Remover

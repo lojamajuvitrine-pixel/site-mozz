@@ -1,5 +1,16 @@
 import produtosData from "@/data/produtos.json";
 
+// Uma variacao de COR do produto - cada cor tem sua propria foto (quando cadastrada no
+// Bling) e sua propria lista de tamanhos disponiveis.
+export type VarianteCor = {
+  cor: string;
+  // caminho local dentro de public/produtos/ (ex: "/produtos/123--branco.jpg"), baixado
+  // durante o sync - NAO e' a URL do Bling, que expira. null quando essa cor nao tem foto
+  // cadastrada no Bling.
+  imagem: string | null;
+  tamanhos: string[];
+};
+
 export type Produto = {
   id: string;
   nome: string;
@@ -7,13 +18,14 @@ export type Produto = {
   preco: number;
   novo: boolean;
   descricao: string;
-  tamanhos: string[];
-  // caminho local dentro de public/produtos/ (ex: "/produtos/123.jpg"), baixado durante o
-  // sync - NAO e' a URL do Bling, que expira em minutos. null quando o produto nao tem foto
-  // cadastrada no Bling.
+  // opcional por compatibilidade com data/produtos.json de um sync antigo (antes do suporte
+  // a cor) - o codigo que le isso sempre trata ausencia/vazio com um fallback pra "Unico".
+  cores?: VarianteCor[];
+  // foto de capa pra vitrine/card (normalmente a foto da primeira cor que tiver foto) -
+  // continua existindo pra nao precisar mexer no ProductCard.
   imagem: string | null;
   // presente so' em produtos vindos do sync real do Bling (scripts/sync-bling.ts) - indica
-  // se ALGUM tamanho tem saldo em estoque. Produtos do seed manual nao tem esse campo.
+  // se ALGUM tamanho/cor tem saldo em estoque. Produtos do seed manual nao tem esse campo.
   temEstoque?: boolean;
 };
 
@@ -47,4 +59,19 @@ export function marcasDisponiveis(): string[] {
 // continua mostrando todo mundo, com ou sem foto.
 export function produtosComFoto(): Produto[] {
   return listarProdutos().filter((p) => !!p.imagem);
+}
+
+// Sempre usar isso (em vez de produto.cores direto) pra ler as cores de um produto - cobre
+// o caso de dado antigo (sync anterior ao suporte a cor) devolvendo um "Unico" de fallback
+// com a foto/tamanhos que ja existiam antes.
+export function coresDoProduto(produto: Produto): VarianteCor[] {
+  if (produto.cores && produto.cores.length > 0) return produto.cores;
+  const legado = produto as unknown as { tamanhos?: string[] };
+  return [
+    {
+      cor: "Único",
+      imagem: produto.imagem,
+      tamanhos: legado.tamanhos && legado.tamanhos.length > 0 ? legado.tamanhos : ["Único"]
+    }
+  ];
 }

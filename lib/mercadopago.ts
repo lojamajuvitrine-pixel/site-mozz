@@ -15,7 +15,7 @@ function obterCliente() {
   return new MercadoPagoConfig({ accessToken });
 }
 
-export type ItemCarrinho = { produto: Produto; tamanho: string; quantidade: number };
+export type ItemCarrinho = { produto: Produto; cor: string; tamanho: string; quantidade: number };
 
 export async function criarPreferenciaPagamento(itens: ItemCarrinho[], numeroPedido: string) {
   const client = obterCliente();
@@ -27,7 +27,10 @@ export async function criarPreferenciaPagamento(itens: ItemCarrinho[], numeroPed
       external_reference: numeroPedido,
       items: itens.map((item) => ({
         id: item.produto.id,
-        title: `${item.produto.nome} (${item.tamanho})`,
+        title:
+          item.cor && item.cor !== "Único"
+            ? `${item.produto.nome} (${item.cor}, ${item.tamanho})`
+            : `${item.produto.nome} (${item.tamanho})`,
         quantity: item.quantidade,
         unit_price: item.produto.preco,
         currency_id: "BRL"

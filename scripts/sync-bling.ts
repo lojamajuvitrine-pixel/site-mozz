@@ -2,30 +2,33 @@
 // data/produtos.json - assim o site builda com o catalogo atualizado sem precisar de banco
 // de dados pra uma loja desse tamanho. Roda localmente (precisa das credenciais no .env.local).
 //
-// Descobertas sobre a API do Bling (confirmadas com produtos reais da MOZZ em 22/08/2026):
+// Descobertas sobre a API do Bling (confirmadas com produtos reais da MOZZ em 22-23/08/2026):
 // - GET /produtos (lista, paginado) NAO traz o campo "marca" - so' id, nome, codigo, preco,
-//   precoCusto, estoque.saldoVirtualTotal, situacao, formato, idProdutoPai.
-// - GET /produtos/{id} (detalhe, UM produto por vez) traz "marca" (string, ex: "Reserva"),
-//   junto com categoria.id e variacao.nome (ex: "Tamanho:G").
+//   precoCusto, estoque.saldoVirtualTotal, situacao, formato, idProdutoPai. O "nome" de cada
+//   VARIACAO (formato "S") vem com "Cor:X;Tamanho:Y" embutido - e' dali que a gente tira cor
+//   e tamanho de cada SKU, sem precisar de chamada extra.
+// - GET /produtos/{id} (detalhe, UM produto por vez) traz "marca" (string, ex: "Reserva") no
+//   nivel do produto-pai, e tambem devolve o array "variacoes" completo de novo - so' que
+//   dessa vez com "midia.imagens.internas[].link" por SKU (a foto de verdade, ver abaixo).
 // - Produtos com variacao de tamanho/cor viram varias linhas na lista (formato "S", todas
 //   apontando pro mesmo idProdutoPai). O produto "pai" (formato "V") e' so' uma casca, sem
 //   preco/estoque proprio.
 // - Por isso: 1 chamada de detalhe por GRUPO de variacoes (nao por SKU) e' o suficiente pra
-//   pegar a marca - dá pra economizar bastante chamada num catalogo com milhares de SKUs.
-// - IMPORTANTE (descoberto em 22/08/2026): o "imagemURL" que a lista (GET /produtos) devolve
-//   e' na verdade a MINIATURA (confirmado: e' o mesmo valor de "linkMiniatura" do detalhe,
-//   ~70x70px) e com validade de poucos MINUTOS - por isso as fotos apareciam quebradas/nao
-//   apareciam. A foto em resolucao de verdade fica em outro lugar: GET /produtos/{id} (detalhe)
-//   -> data.midia.imagens.internas[].link (validade de alguns DIAS, bem maior que a miniatura).
-//   Por isso o sync usa o "link" do detalhe pra imagem, nao o "imagemURL" da lista.
-//   De qualquer forma, seja qual for a validade, a URL do Bling expira em algum momento -
-//   a foto e' BAIXADA aqui mesmo durante o sync e salva em public/produtos/, e o produtos.json
-//   guarda so' o caminho local (ex: "/produtos/123.jpg") - que nao expira nunca, porque a foto
-//   passa a ser servida pelo proprio site, nao pelo Bling.
+//   pegar a marca e as fotos - da' pra economizar bastante chamada num catalogo com milhares
+//   de SKUs.
+// - IMPORTANTE: o "imagemURL" que a lista (GET /produtos) devolve e' na verdade a MINIATURA
+//   (~70x70px) e com validade de poucos MINUTOS - nao usamos mais esse campo. A foto de
+//   verdade fica em data.midia.imagens.internas[].link no endpoint de DETALHE, com validade
+//   de dias. Cada variacao (SKU) do detalhe tem a SUA PROPRIA midia - ou seja, cada COR pode
+//   ter uma foto diferente, e e' assim que a gente monta a selecao de cor com foto
+//   correspondente no site. De qualquer forma, seja qual for a validade, a URL do Bling
+//   expira em algum momento - a foto e' BAIXADA aqui mesmo durante o sync e salva em
+//   public/produtos/ (um arquivo por COR, nome "<idGrupo>--<cor>.ext"), e o produtos.json
+//   guarda so' o caminho local, que nao expira nunca.
 //
 // Uso: npm run sync:bling                    -> roda o catalogo inteiro. Da segunda vez em
-//        diante e' RAPIDO: so' busca marca/nome de produto NOVO e so' baixa foto que ainda
-//        nao tem local (preco/estoque sempre atualizam, isso vem de graca na lista).
+//        diante e' RAPIDO: so' busca marca/nome/foto de produto NOVO ou cor sem foto local
+//        (preco/estoque/tamanho sempre atualizam, isso vem de graca na lista).
 //      npm run sync:bling -- --limite=20      -> roda só os 20 primeiros grupos, pra testar
 //      npm run sync:bling -- --completo       -> ignora o cache, busca marca/nome de TODOS de
 //        novo (use se corrigiu marca de varios produtos direto no Bling)
@@ -41,34 +44,45 @@ import * as path from "path";
 import { listarProdutosBling, buscarProdutoDetalheBling } from "../lib/bling";
 
 // Pasta publica do Next.js - tudo aqui dentro fica acessivel direto por URL (ex:
-// public/produtos/123.jpg vira https://.../produtos/123.jpg), sem precisar de rota de API.
+// public/produtos/123--branco.jpg vira https://.../produtos/123--branco.jpg).
 const PASTA_IMAGENS = path.join(process.cwd(), "public", "produtos");
 if (!existsSync(PASTA_IMAGENS)) mkdirSync(PASTA_IMAGENS, { recursive: true });
 
-// Fotos ja baixadas em syncs anteriores (nome do arquivo = "<id>.<extensao>") - usado pra NAO
-// baixar de novo em toda sincronizacao, so' os produtos novos que ainda nao tem foto local.
-// Isso e' o que faz o sync do dia-a-dia ficar rapido depois da primeira carga completa.
+// Fotos ja baixadas em syncs anteriores (nome do arquivo = "<idGrupo>--<corSlug>.<extensao>")
+// - usado pra NAO baixar de novo em toda sincronizacao, so' o que ainda falta. E' o que faz
+// o sync do dia-a-dia ficar rapido depois da primeira carga completa.
 const FOTOS_EXISTENTES = new Set(existsSync(PASTA_IMAGENS) ? readdirSync(PASTA_IMAGENS) : []);
-function fotoLocalExistente(idProduto: string): string | null {
-  const achado = Array.from(FOTOS_EXISTENTES).find((nome) => nome.startsWith(`${idProduto}.`));
+function fotoLocalExistente(idArquivo: string): string | null {
+  const achado = Array.from(FOTOS_EXISTENTES).find((nome) => nome.startsWith(`${idArquivo}.`));
   return achado ? `/produtos/${achado}` : null;
 }
 
 // Baixa a foto do S3 do Bling enquanto a URL assinada ainda e' valida e salva localmente em
 // public/produtos/. Retorna o caminho local (pra guardar no produtos.json) ou null se falhar.
-async function baixarImagem(url: string, idProduto: string): Promise<string | null> {
+async function baixarImagem(url: string, idArquivo: string): Promise<string | null> {
   try {
     const resposta = await fetch(url);
     if (!resposta.ok) return null;
     const tipo = resposta.headers.get("content-type") ?? "";
     const extensao = tipo.includes("png") ? "png" : tipo.includes("webp") ? "webp" : "jpg";
-    const nomeArquivo = `${idProduto}.${extensao}`;
+    const nomeArquivo = `${idArquivo}.${extensao}`;
     const bytes = Buffer.from(await resposta.arrayBuffer());
     writeFileSync(path.join(PASTA_IMAGENS, nomeArquivo), bytes);
     return `/produtos/${nomeArquivo}`;
   } catch {
     return null;
   }
+}
+
+// Vira parte de nome de arquivo: sem acento, minusculo, so' letra/numero/hifen.
+function corSlug(cor: string): string {
+  const limpo = cor
+    .normalize("NFD")
+    .replace(new RegExp("[\\u0300-\\u036f]", "g"), "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-+|-+$)/g, "");
+  return limpo || "unico";
 }
 
 // Cache do produtos.json da rodada anterior, indexado por id - usado pra pular a chamada de
@@ -101,19 +115,20 @@ type ProdutoBlingLista = {
   estoque?: { saldoVirtualTotal: number };
   situacao: string;
   formato: string; // "S" = simples/variacao, "V" = variavel (produto-pai, sem estoque proprio)
-  // A lista tambem devolve isso, mas e' so' a MINIATURA (ver comentario no topo do arquivo) -
-  // nao usamos mais esse campo pra foto, so' fica aqui documentado pra nao reintroduzir o bug.
-  imagemURL?: string;
 };
 
 // Foto em resolucao de verdade, vinda do detalhe (GET /produtos/{id}) - ver comentario no
 // topo do arquivo sobre a diferenca entre isso e a miniatura da lista.
 type ImagemDetalheBling = { link?: string };
+type VariacaoDetalheBling = {
+  variacao?: { nome?: string };
+  midia?: { imagens?: { internas?: ImagemDetalheBling[] } };
+};
 type DetalheBling = {
   data: {
     marca?: string;
     nome?: string;
-    midia?: { imagens?: { internas?: ImagemDetalheBling[] } };
+    variacoes?: VariacaoDetalheBling[];
   };
 };
 
@@ -144,6 +159,11 @@ function extrairTamanho(nome: string): string | null {
   return m ? m[1].trim() : null;
 }
 
+function extrairCor(nome: string): string | null {
+  const m = nome.match(/Cor:\s*([^;]+)/i);
+  return m ? m[1].trim() : null;
+}
+
 function limparNomeBase(nome: string): string {
   return nome
     .replace(/\s*Cor:[^;]+;?/i, "")
@@ -171,6 +191,8 @@ function normalizarMarca(marca: string): string {
   if (MARCAS_SIGLA.has(chave)) return limpo.toUpperCase();
   return limpo.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
 }
+
+type VarianteCorSaida = { cor: string; imagem: string | null; tamanhos: string[] };
 
 async function main() {
   const limiteArg = process.argv.find((a) => a.startsWith("--limite="));
@@ -212,7 +234,7 @@ async function main() {
   } else {
     console.log(`${grupos.size} produtos distintos (agrupando variacoes de tamanho/cor).`);
   }
-  console.log("Buscando a marca de cada produto (1 chamada por produto, com pausa entre elas - pode demorar)...");
+  console.log("Processando produtos (marca/foto so' quando necessario - pode demorar na primeira vez)...");
 
   const produtosMapeados: Array<{
     id: string;
@@ -221,7 +243,7 @@ async function main() {
     preco: number;
     novo: boolean;
     descricao: string;
-    tamanhos: string[];
+    cores: VarianteCorSaida[];
     imagem: string | null;
     temEstoque: boolean;
   }> = [];
@@ -232,22 +254,39 @@ async function main() {
   let fotosBaixadasAgora = 0;
   let fotosReaproveitadas = 0;
 
-  for (const [chaveGrupo, variacoes] of entradas) {
+  for (const [chaveGrupo, skus] of entradas) {
     processados++;
     const idStr = String(chaveGrupo);
-    let nomeBase = limparNomeBase(variacoes[0].nome);
-    let marcaFinal: string;
+    let nomeBase = limparNomeBase(skus[0].nome);
+
+    // cada SKU da lista ja traz "Cor:X;Tamanho:Y" no nome - agrupa por cor sem precisar de
+    // chamada extra. Produto sem cor cadastrada cai tudo numa cor so' ("Único").
+    const skusComCorTamanho = skus.map((sku) => ({
+      sku,
+      cor: extrairCor(sku.nome) ?? "Único",
+      tamanho: extrairTamanho(sku.nome)
+    }));
+    const coresUnicas = Array.from(new Set(skusComCorTamanho.map((s) => s.cor)));
 
     const doCache = cache.get(idStr);
-    const fotoJaSalva = !forcarFotos ? fotoLocalExistente(idStr) : null;
+
+    // ja tem foto local dessa cor (de um sync anterior)? guarda o que ja existe e so' marca
+    // como "falta" quem realmente falta (ou tudo, se --forcar-fotos).
+    const imagensPorCor = new Map<string, string | null>();
+    for (const cor of coresUnicas) {
+      const existente = !forcarFotos ? fotoLocalExistente(`${idStr}--${corSlug(cor)}`) : null;
+      if (existente) {
+        imagensPorCor.set(cor, existente);
+        fotosReaproveitadas++;
+      }
+    }
+    const coresSemFoto = coresUnicas.filter((cor) => !imagensPorCor.has(cor));
+
     // so' chama o detalhe (mais lento - 1 chamada por produto) quando falta marca/nome no
-    // cache OU falta foto local - as duas coisas vem do mesmo endpoint, entao uma chamada
-    // resolve as duas. Se ja tem as duas, pula e nem gasta tempo de rede.
-    const precisaDetalhe = !doCache || !fotoJaSalva;
+    // cache OU falta foto local de alguma cor - as duas coisas vem do mesmo endpoint.
+    const precisaDetalhe = !doCache || coresSemFoto.length > 0;
 
-    let imagem: string | null = fotoJaSalva;
-    if (fotoJaSalva) fotosReaproveitadas++;
-
+    let marcaFinal: string;
     if (!precisaDetalhe && doCache) {
       marcaFinal = doCache.marca;
       if (doCache.nome) nomeBase = doCache.nome;
@@ -262,10 +301,22 @@ async function main() {
           marcaJaNormalizada = false;
           if (detalhe.data.nome) nomeBase = limparNomeBase(detalhe.data.nome);
         }
-        if (!fotoJaSalva) {
-          const linkFoto = detalhe.data.midia?.imagens?.internas?.[0]?.link;
-          imagem = linkFoto ? await baixarImagem(linkFoto, idStr) : null;
-          if (imagem) fotosBaixadasAgora++;
+        // monta cor -> link de foto usando as variacoes do PROPRIO detalhe (cada uma tem sua
+        // midia) - so' baixa quem realmente falta.
+        const variacoesDetalhe = detalhe.data.variacoes ?? [];
+        for (const cor of coresSemFoto) {
+          const match = variacoesDetalhe.find((v) => {
+            const corDaVariacao = extrairCor(v.variacao?.nome ?? "") ?? "Único";
+            return corDaVariacao === cor && v.midia?.imagens?.internas?.[0]?.link;
+          });
+          const link = match?.midia?.imagens?.internas?.[0]?.link;
+          if (link) {
+            const caminho = await baixarImagem(link, `${idStr}--${corSlug(cor)}`);
+            if (caminho) {
+              imagensPorCor.set(cor, caminho);
+              fotosBaixadasAgora++;
+            }
+          }
         }
       } catch {
         // chaveGrupo pode ser o id de um item sem produto-pai proprio (grupo de 1 SKU) -
@@ -280,21 +331,38 @@ async function main() {
       await dormir(PAUSA_ENTRE_CHAMADAS_MS); // so' pausa quando realmente chamou a API
     }
 
-    const tamanhos = Array.from(
-      new Set(variacoes.map((v) => extrairTamanho(v.nome)).filter((t): t is string => !!t))
-    );
+    // monta a lista final de cores com tamanhos + foto - cor com foto vem primeiro, pra foto
+    // de capa (card de vitrine) ser sempre de uma cor que tem foto quando possivel.
+    const cores: VarianteCorSaida[] = coresUnicas
+      .map((cor) => {
+        const tamanhosCor = Array.from(
+          new Set(
+            skusComCorTamanho
+              .filter((s) => s.cor === cor)
+              .map((s) => s.tamanho)
+              .filter((t): t is string => !!t)
+          )
+        );
+        return {
+          cor,
+          imagem: imagensPorCor.get(cor) ?? null,
+          tamanhos: tamanhosCor.length > 0 ? tamanhosCor : ["Único"]
+        };
+      })
+      .sort((a, b) => (a.imagem ? 0 : 1) - (b.imagem ? 0 : 1));
 
-    const temEstoque = variacoes.some((v) => (v.estoque?.saldoVirtualTotal ?? 0) > 0);
+    const temEstoque = skus.some((s) => (s.estoque?.saldoVirtualTotal ?? 0) > 0);
+    const imagemCapa = cores.find((c) => c.imagem)?.imagem ?? null;
 
     produtosMapeados.push({
       id: idStr,
       nome: nomeBase,
       marca: marcaFinal,
-      preco: variacoes[0].preco,
+      preco: skus[0].preco,
       novo: false,
       descricao: "",
-      tamanhos: tamanhos.length > 0 ? tamanhos : ["Único"],
-      imagem,
+      cores,
+      imagem: imagemCapa,
       temEstoque
     });
 
@@ -305,11 +373,13 @@ async function main() {
 
   writeFileSync("data/produtos.json", JSON.stringify(produtosMapeados, null, 2));
   const comFoto = produtosMapeados.filter((p) => p.imagem).length;
+  const totalCores = produtosMapeados.reduce((soma, p) => soma + p.cores.length, 0);
   console.log(`\nPronto! data/produtos.json atualizado com ${produtosMapeados.length} produtos.`);
   console.log(`Produtos novos (buscaram marca na API agora): ${novos}.`);
+  console.log(`Variacoes de cor no total: ${totalCores}.`);
   console.log(
-    `Fotos: ${comFoto} de ${produtosMapeados.length} com foto` +
-      ` (${fotosBaixadasAgora} baixada(s) agora, ${fotosReaproveitadas} reaproveitada(s) de antes).`
+    `Fotos: ${comFoto} de ${produtosMapeados.length} produtos com pelo menos uma foto` +
+      ` (${fotosBaixadasAgora} foto(s) baixada(s) agora, ${fotosReaproveitadas} reaproveitada(s) de antes).`
   );
   if (semMarca > 0) {
     console.log(`Atencao: ${semMarca} produto(s) ficaram sem marca identificada - revisar manualmente no arquivo.`);

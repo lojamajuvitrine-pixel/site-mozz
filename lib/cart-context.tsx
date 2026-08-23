@@ -3,12 +3,12 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import type { Produto } from "@/lib/produtos";
 
-export type ItemCarrinho = { produto: Produto; tamanho: string; quantidade: number };
+export type ItemCarrinho = { produto: Produto; cor: string; tamanho: string; quantidade: number };
 
 type CartContextType = {
   itens: ItemCarrinho[];
-  adicionar: (produto: Produto, tamanho: string) => void;
-  remover: (produtoId: string, tamanho: string) => void;
+  adicionar: (produto: Produto, cor: string, tamanho: string) => void;
+  remover: (produtoId: string, cor: string, tamanho: string) => void;
   limpar: () => void;
   total: number;
 };
@@ -39,25 +39,25 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
   }, [itens, carregado]);
 
-  function adicionar(produto: Produto, tamanho: string) {
+  function adicionar(produto: Produto, cor: string, tamanho: string) {
     setItens((atual) => {
       const existente = atual.find(
-        (i) => i.produto.id === produto.id && i.tamanho === tamanho
+        (i) => i.produto.id === produto.id && i.cor === cor && i.tamanho === tamanho
       );
       if (existente) {
         return atual.map((i) =>
-          i.produto.id === produto.id && i.tamanho === tamanho
+          i.produto.id === produto.id && i.cor === cor && i.tamanho === tamanho
             ? { ...i, quantidade: i.quantidade + 1 }
             : i
         );
       }
-      return [...atual, { produto, tamanho, quantidade: 1 }];
+      return [...atual, { produto, cor, tamanho, quantidade: 1 }];
     });
   }
 
-  function remover(produtoId: string, tamanho: string) {
+  function remover(produtoId: string, cor: string, tamanho: string) {
     setItens((atual) =>
-      atual.filter((i) => !(i.produto.id === produtoId && i.tamanho === tamanho))
+      atual.filter((i) => !(i.produto.id === produtoId && i.cor === cor && i.tamanho === tamanho))
     );
   }
 
