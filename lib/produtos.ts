@@ -53,7 +53,11 @@ export type Produto = {
 // Brunno em 22/08/2026, pra nao mostrar peca que o cliente nao consegue comprar. Produtos
 // do seed manual (sem esse campo, undefined) continuam aparecendo normalmente.
 export function listarProdutos(): Produto[] {
-  return (produtosData as Produto[]).filter((p) => p.temEstoque !== false);
+  const produtos = (produtosData as Produto[]).filter((p) => p.temEstoque !== false);
+  // prioriza quem tem foto - produto sem foto cai no placeholder "foto do produto" no card,
+  // o que passa impressao ruim numa vitrine, entao sempre aparece depois de quem tem (sort
+  // e' estavel, entao dentro de cada grupo a ordem original do Bling e' mantida).
+  return [...produtos].sort((a, b) => (a.imagem ? 0 : 1) - (b.imagem ? 0 : 1));
 }
 
 export function listarPorMarca(marca: string): Produto[] {

@@ -38,12 +38,17 @@ export default function GradeProdutos({
       );
     }
 
-    if (ordenacao === "menor-preco") {
-      lista = [...lista].sort((a, b) => a.preco - b.preco);
-    } else if (ordenacao === "maior-preco") {
-      lista = [...lista].sort((a, b) => b.preco - a.preco);
-    }
-    return lista;
+    // produto com foto sempre antes de produto sem foto, mesmo ordenando por preco - senao
+    // um produto sem foto barato pula pra frente de tudo e a vitrine fica com cara de
+    // catalogo incompleto logo na primeira fileira.
+    return [...lista].sort((a, b) => {
+      const temFotoA = a.imagem ? 0 : 1;
+      const temFotoB = b.imagem ? 0 : 1;
+      if (temFotoA !== temFotoB) return temFotoA - temFotoB;
+      if (ordenacao === "menor-preco") return a.preco - b.preco;
+      if (ordenacao === "maior-preco") return b.preco - a.preco;
+      return 0; // relevancia - mantem a ordem original (produtos ja vem com foto priorizada)
+    });
   }, [produtos, marcaSelecionada, ordenacao, busca]);
 
   return (
