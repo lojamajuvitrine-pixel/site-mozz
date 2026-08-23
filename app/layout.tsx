@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/lib/cart-context";
-
-// Fontes de verdade via next/font - antes eram so' referenciadas no globals.css (variavel
-// --font-serif/--font-sans) mas o arquivo da fonte nunca era baixado, entao o navegador
-// sempre caia no fallback (Georgia/Helvetica) mesmo o CSS "pedindo" Playfair Display. Usar
-// next/font tambem otimiza o carregamento (self-hosted automaticamente, sem flash de fonte
-// errada) em vez de depender de um <link> pro Google Fonts.
-const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const serif = Playfair_Display({ subsets: ["latin"], variable: "--font-serif", display: "swap" });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://site-mozz.vercel.app";
 
@@ -42,7 +33,20 @@ const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_ID;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${sans.variable} ${serif.variable}`}>
+    <html lang="pt-BR">
+      <head>
+        {/* Fontes via <link> pro Google Fonts, carregadas pelo NAVEGADOR de quem visita o
+            site - em vez de next/font/google, que baixa a fonte durante o BUILD na Vercel e
+            quebrou o deploy quando essa etapa falhou (erro "Failed to collect page data for
+            /_not-found" em 23/08/2026). Esse jeito classico nao depende de rede no momento
+            de publicar, so' no momento de visitar o site (bem mais confiavel). */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        />
+      </head>
       <body className="font-sans">
         {metaPixelId && (
           <Script id="meta-pixel" strategy="afterInteractive">

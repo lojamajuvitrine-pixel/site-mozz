@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* --font-serif e --font-sans agora vem do next/font (ver app/layout.tsx) - injeta o CSS
-   variable de verdade com a fonte baixada, em vez de so' declarar o nome aqui e depender do
-   navegador ja' ter ela instalada (o que quase nunca acontece pra fontes como Playfair
-   Display). */
+/* Fontes carregadas via <link> pro Google Fonts no <head> (ver app/layout.tsx) - essas
+   variaveis so' declaram QUAL fonte usar, o arquivo em si e' baixado pelo navegador de quem
+   visita o site. */
+:root {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 body {
   color: #111111;
