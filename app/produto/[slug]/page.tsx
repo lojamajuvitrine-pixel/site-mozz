@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { buscarProduto } from "@/lib/produtos";
 import { formatarPreco } from "@/lib/formato";
 import { notFound } from "next/navigation";
@@ -9,8 +10,19 @@ export default function PaginaProduto({ params }: { params: { slug: string } }) 
 
   return (
     <section className="py-8 grid md:grid-cols-2 gap-10">
-      <div className="aspect-[3/4] bg-mozz-stone flex items-center justify-center">
-        <span className="text-mozz-gray text-xs">foto do produto</span>
+      <div className="relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden">
+        {produto.imagem ? (
+          <Image
+            src={produto.imagem}
+            alt={produto.nome}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+            priority
+          />
+        ) : (
+          <span className="text-mozz-gray text-xs">foto do produto</span>
+        )}
       </div>
       <div>
         <p className="text-[12px] text-mozz-gray">{produto.marca}</p>

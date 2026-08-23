@@ -33,6 +33,10 @@ type ProdutoBlingLista = {
   estoque?: { saldoVirtualTotal: number };
   situacao: string;
   formato: string; // "S" = simples/variacao, "V" = variavel (produto-pai, sem estoque proprio)
+  // URL assinada do S3 do Bling (orgbling.s3.amazonaws.com), com validade limitada (parametro
+  // "Expires" na propria URL) - por isso a imagem precisa ser renovada a cada sync, nao da'
+  // pra guardar de vez. Nem todo produto tem imagem cadastrada.
+  imagemURL?: string;
 };
 
 const PAUSA_ENTRE_CHAMADAS_MS = 350; // respeita o limite de requisicoes por segundo da API
@@ -157,6 +161,8 @@ async function main() {
     );
 
     const temEstoque = variacoes.some((v) => (v.estoque?.saldoVirtualTotal ?? 0) > 0);
+    // pega a primeira imagem disponivel entre as variacoes do grupo (nem toda variacao tem foto propria)
+    const imagem = variacoes.find((v) => v.imagemURL)?.imagemURL ?? null;
 
     produtosMapeados.push({
       id: String(chaveGrupo),
@@ -166,7 +172,7 @@ async function main() {
       novo: false,
       descricao: "",
       tamanhos: tamanhos.length > 0 ? tamanhos : ["Único"],
-      imagem: null,
+      imagem,
       temEstoque
     });
 
