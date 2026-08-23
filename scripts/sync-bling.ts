@@ -20,14 +20,20 @@
 //   e o produtos.json guarda so' o caminho local (ex: "/produtos/123.jpg") - que nao expira
 //   nunca, porque a foto passa a ser servida pelo proprio site, nao pelo Bling.
 //
-// Uso: npm run sync:bling            -> roda o catalogo inteiro (pode levar alguns minutos)
-//      npm run sync:bling -- --limite=20   -> roda só os 20 primeiros grupos, pra testar rápido
+// Uso: npm run sync:bling                    -> roda o catalogo inteiro. Da segunda vez em
+//        diante e' RAPIDO: so' busca marca/nome de produto NOVO e so' baixa foto que ainda
+//        nao tem local (preco/estoque sempre atualizam, isso vem de graca na lista).
+//      npm run sync:bling -- --limite=20      -> roda só os 20 primeiros grupos, pra testar
+//      npm run sync:bling -- --completo       -> ignora o cache, busca marca/nome de TODOS de
+//        novo (use se corrigiu marca de varios produtos direto no Bling)
+//      npm run sync:bling -- --forcar-fotos   -> baixa TODAS as fotos de novo, mesmo as que
+//        ja existem localmente (use se trocou foto de produto que ja tinha foto)
 // Esse script roda fora do Next.js (via tsx direto), entao o .env.local NAO e' carregado
 // sozinho como acontece com "next dev"/"next build" - precisa carregar na mao aqui.
 import { config as carregarEnv } from "dotenv";
 carregarEnv({ path: ".env.local" });
 
-import { existsSync, mkdirSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "fs";
 import * as path from "path";
 import { listarProdutosBling, buscarProdutoDetalheBling } from "../lib/bling";
 
@@ -35,6 +41,15 @@ import { listarProdutosBling, buscarProdutoDetalheBling } from "../lib/bling";
 // public/produtos/123.jpg vira https://.../produtos/123.jpg), sem precisar de rota de API.
 const PASTA_IMAGENS = path.join(process.cwd(), "public", "produtos");
 if (!existsSync(PASTA_IMAGENS)) mkdirSync(PASTA_IMAGENS, { recursive: true });
+
+// Fotos ja baixadas em syncs anteriores (nome do arquivo = "<id>.<extensao>") - usado pra NAO
+// baixar de novo em toda sincronizacao, so' os produtos novos que ainda nao tem foto local.
+// Isso e' o que faz o sync do dia-a-dia ficar rapido depois da primeira carga completa.
+const FOTOS_EXISTENTES = new Set(existsSync(PASTA_IMAGENS) ? readdirSync(PASTA_IMAGENS) : []);
+function fotoLocalExistente(idProduto: string): string | null {
+  const achado = Array.from(FOTOS_EXISTENTES).find((nome) => nome.startsWith(`${idProduto}.`));
+  return achado ? `/produtos/${achado}` : null;
+}
 
 // Baixa a foto do S3 do Bling enquanto a URL assinada ainda e' valida e salva localmente em
 // public/produtos/. Retorna o caminho local (pra guardar no produtos.json) ou null se falhar.
@@ -51,6 +66,26 @@ async function baixarImagem(url: string, idProduto: string): Promise<string | nu
   } catch {
     return null;
   }
+}
+
+// Cache do produtos.json da rodada anterior, indexado por id - usado pra pular a chamada de
+// detalhe (marca/nome) em produtos que a gente ja processou antes. Marca praticamente nunca
+// muda depois de cadastrada, entao isso e' seguro e economiza a maior parte do tempo do sync
+// no dia-a-dia (so' produto NOVO no Bling precisa de chamada de detalhe).
+type CacheProduto = { marca: string; nome: string };
+function carregarCache(): Map<string, CacheProduto> {
+  const cache = new Map<string, CacheProduto>();
+  try {
+    const anterior = JSON.parse(readFileSync("data/produtos.json", "utf-8")) as Array<{
+      id: string;
+      nome: string;
+      marca: string;
+    }>;
+    for (const p of anterior) cache.set(p.id, { marca: p.marca, nome: p.nome });
+  } catch {
+    // primeira vez rodando, ou arquivo corrompido - sem problema, so' processa tudo do zero
+  }
+  return cache;
 }
 
 type ProdutoBlingLista = {
@@ -127,6 +162,20 @@ function normalizarMarca(marca: string): string {
 async function main() {
   const limiteArg = process.argv.find((a) => a.startsWith("--limite="));
   const limite = limiteArg ? Number(limiteArg.split("=")[1]) : null;
+  // --completo ignora o cache e busca marca/nome de novo pra TODOS os produtos (util se voce
+  // corrigiu marca de varios produtos direto no Bling e quer que o site reflita isso agora).
+  const completo = process.argv.includes("--completo");
+  // --forcar-fotos rebaixa TODAS as fotos de novo, mesmo as que ja existem localmente (util
+  // se voce trocou a foto de produtos que ja tinham foto cadastrada antes).
+  const forcarFotos = process.argv.includes("--forcar-fotos");
+
+  const cache = completo ? new Map<string, CacheProduto>() : carregarCache();
+  if (cache.size > 0) {
+    console.log(
+      `Cache de ${cache.size} produto(s) do sync anterior carregado - so' vou buscar marca/nome` +
+        ` de produtos novos (use --completo pra ignorar o cache e buscar tudo de novo).`
+    );
+  }
 
   console.log("Buscando lista completa de produtos no Bling...");
   const todos = await listarTodosProdutos();
@@ -166,24 +215,40 @@ async function main() {
 
   let processados = 0;
   let semMarca = 0;
+  let novos = 0;
+  let fotosBaixadasAgora = 0;
+  let fotosReaproveitadas = 0;
 
   for (const [chaveGrupo, variacoes] of entradas) {
     processados++;
-    let marca = "";
+    const idStr = String(chaveGrupo);
     let nomeBase = limparNomeBase(variacoes[0].nome);
+    let marcaFinal: string;
 
-    try {
-      const detalhe = (await buscarProdutoDetalheBling(chaveGrupo)) as {
-        data: { marca?: string; nome?: string };
-      };
-      marca = detalhe.data.marca ?? "";
-      if (detalhe.data.nome) nomeBase = limparNomeBase(detalhe.data.nome);
-    } catch {
-      // chaveGrupo pode ser o id de um item sem produto-pai proprio (grupo de 1 SKU) -
-      // nesse caso ela JA e' o id do proprio produto, entao o try acima deveria ter funcionado;
-      // se cair aqui mesmo assim, so' registra como "sem marca" pra revisao manual depois.
-      semMarca++;
-      console.warn(`  aviso: nao achei marca do produto ${chaveGrupo} ("${nomeBase}")`);
+    const doCache = cache.get(idStr);
+    if (doCache) {
+      // ja processamos esse produto num sync anterior - reaproveita marca/nome sem gastar
+      // chamada de API (marca praticamente nunca muda depois de cadastrada no Bling).
+      marcaFinal = doCache.marca;
+      if (doCache.nome) nomeBase = doCache.nome;
+    } else {
+      novos++;
+      let marca = "";
+      try {
+        const detalhe = (await buscarProdutoDetalheBling(chaveGrupo)) as {
+          data: { marca?: string; nome?: string };
+        };
+        marca = detalhe.data.marca ?? "";
+        if (detalhe.data.nome) nomeBase = limparNomeBase(detalhe.data.nome);
+      } catch {
+        // chaveGrupo pode ser o id de um item sem produto-pai proprio (grupo de 1 SKU) -
+        // nesse caso ela JA e' o id do proprio produto, entao o try acima deveria ter funcionado;
+        // se cair aqui mesmo assim, so' registra como "sem marca" pra revisao manual depois.
+        semMarca++;
+        console.warn(`  aviso: nao achei marca do produto ${chaveGrupo} ("${nomeBase}")`);
+      }
+      marcaFinal = normalizarMarca(marca);
+      await dormir(PAUSA_ENTRE_CHAMADAS_MS); // so' pausa quando realmente chamou a API
     }
 
     const tamanhos = Array.from(
@@ -191,15 +256,24 @@ async function main() {
     );
 
     const temEstoque = variacoes.some((v) => (v.estoque?.saldoVirtualTotal ?? 0) > 0);
-    // pega a primeira imagem disponivel entre as variacoes do grupo (nem toda variacao tem foto
-    // propria) e baixa na hora, porque a URL assinada do Bling expira em poucos minutos.
-    const imagemURL = variacoes.find((v) => v.imagemURL)?.imagemURL;
-    const imagem = imagemURL ? await baixarImagem(imagemURL, String(chaveGrupo)) : null;
+
+    // foto: se ja existe localmente (de um sync anterior) e nao pedimos --forcar-fotos, so'
+    // reaproveita o arquivo - evita baixar de novo centenas de fotos que nao mudaram.
+    const fotoJaSalva = !forcarFotos ? fotoLocalExistente(idStr) : null;
+    let imagem: string | null;
+    if (fotoJaSalva) {
+      imagem = fotoJaSalva;
+      fotosReaproveitadas++;
+    } else {
+      const imagemURL = variacoes.find((v) => v.imagemURL)?.imagemURL;
+      imagem = imagemURL ? await baixarImagem(imagemURL, idStr) : null;
+      if (imagem) fotosBaixadasAgora++;
+    }
 
     produtosMapeados.push({
-      id: String(chaveGrupo),
+      id: idStr,
       nome: nomeBase,
-      marca: normalizarMarca(marca),
+      marca: marcaFinal,
       preco: variacoes[0].preco,
       novo: false,
       descricao: "",
@@ -208,16 +282,19 @@ async function main() {
       temEstoque
     });
 
-    if (processados % 20 === 0) {
+    if (processados % 100 === 0) {
       console.log(`  ${processados}/${entradas.length} processados...`);
     }
-    await dormir(PAUSA_ENTRE_CHAMADAS_MS);
   }
 
   writeFileSync("data/produtos.json", JSON.stringify(produtosMapeados, null, 2));
   const comFoto = produtosMapeados.filter((p) => p.imagem).length;
   console.log(`\nPronto! data/produtos.json atualizado com ${produtosMapeados.length} produtos.`);
-  console.log(`Fotos baixadas para public/produtos/: ${comFoto} de ${produtosMapeados.length}.`);
+  console.log(`Produtos novos (buscaram marca na API agora): ${novos}.`);
+  console.log(
+    `Fotos: ${comFoto} de ${produtosMapeados.length} com foto` +
+      ` (${fotosBaixadasAgora} baixada(s) agora, ${fotosReaproveitadas} reaproveitada(s) de antes).`
+  );
   if (semMarca > 0) {
     console.log(`Atencao: ${semMarca} produto(s) ficaram sem marca identificada - revisar manualmente no arquivo.`);
   }
