@@ -31,6 +31,15 @@ function IconeSacola() {
   );
 }
 
+function IconeConta() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="19" height="19">
+      <circle cx="12" cy="8" r="3.2" />
+      <path d="M5 20c1.2-3.8 4-5.6 7-5.6s5.8 1.8 7 5.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 // No celular, marcas e busca ficam escondidas atras do menu hamburguer (economiza espaco
 // vertical logo na entrada do site) e o carrinho vira so' um icone; no desktop tudo continua
 // sempre visivel como antes. E' o mesmo componente Nav pros dois casos, so' o CSS (md:) que
@@ -55,7 +64,10 @@ export default function Nav() {
           <div className="font-serif text-[14.5px] tracking-widest2">MOZZ</div>
         </Link>
 
-        <div className="flex justify-end items-center gap-4 text-[14.5px] text-mozz-black/80">
+        <div className="flex justify-end items-center gap-3 text-[14.5px] text-mozz-black/80">
+          <Link href="/conta" aria-label="Minha conta" className="p-1">
+            <IconeConta />
+          </Link>
           <Link href="/carrinho" aria-label="Carrinho" className="p-1 -mr-1">
             <IconeSacola />
           </Link>

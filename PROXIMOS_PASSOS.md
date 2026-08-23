@@ -70,6 +70,30 @@ projeto) que eu sigo com a parte técnica.
       assim que os IDs existirem — sem isso, o site funciona normal, só sem esses dois
       rastreamentos.
 
+## 7. Supabase — login do cliente (link mágico) e "Minha conta"
+
+Implementei a área "Minha conta" com login sem senha: o cliente digita o e-mail, recebe um
+link, clica e entra — sem senha nenhuma pra criar/esquecer/vazar. Falta só criar a conta que
+guarda esse login (Supabase: banco de dados + autenticação, gratuito pra esse volume):
+
+- [ ] Criar conta grátis em [supabase.com](https://supabase.com) e criar um novo projeto
+      (nome sugerido: "site-mozz", região São Paulo se disponível).
+- [ ] Dentro do projeto, ir em **Project Settings → API** e copiar dois valores: **Project
+      URL** e a chave **anon public** (não a `service_role`, essa não deve sair de lá).
+- [ ] Ir em **Authentication → URL Configuration** e preencher:
+      - **Site URL**: `https://lojamozz.com.br`
+      - **Redirect URLs**: adicionar `https://lojamozz.com.br/auth/callback` e também
+        `https://site-mozz.vercel.app/auth/callback` (garante que funciona nos dois domínios
+        enquanto a troca não está 100% migrada). O Supabase só deixa o link mágico redirecionar
+        pra endereços que estiverem nessa lista.
+- 🔑 Me manda o Project URL e a chave anon public. Eu coloco em `NEXT_PUBLIC_SUPABASE_URL` e
+      `NEXT_PUBLIC_SUPABASE_ANON_KEY` (no `.env.local` e você replica em Project Settings →
+      Environment Variables na Vercel, depois Redeploy).
+- Observação: o histórico de pedidos dentro de "Minha conta" ainda vai aparecer vazio depois
+  disso configurado — ele depende do item 3 (Mercado Pago) e da baixa automática de pedido no
+  Bling, que ainda não existem. Por enquanto a conta serve pra login/identificação do cliente;
+  assim que o pagamento estiver de ponta a ponta, eu ligo o histórico de verdade.
+
 ## 5. GitHub Actions — atualização automática de estoque ✅ (concluído em 23/08/2026)
 
 - [x] Os 4 secrets criados (`BLING_CLIENT_ID`, `BLING_CLIENT_SECRET`, `BLING_REFRESH_TOKEN`,
