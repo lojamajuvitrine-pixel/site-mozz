@@ -77,6 +77,15 @@ function corAproximada(nomeCor: string): string {
   return encontrada?.[1] ?? "#c7c6c0";
 }
 
+function IconeLupa() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="15" height="15">
+      <circle cx="11" cy="11" r="6" />
+      <line x1="20" y1="20" x2="15.5" y2="15.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export default function SeletorProduto({ produto }: { produto: Produto }) {
   const cores = coresDoProduto(produto);
   const [corIndex, setCorIndex] = useState(0);
@@ -85,6 +94,18 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   const [adicionado, setAdicionado] = useState(false);
   const { adicionar } = useCart();
 
+  // Zoom com lupa: ao passar o mouse na foto, ela amplia seguindo a posicao do cursor -
+  // so' funciona com mouse (desktop), em touch o toque normal continua indo pra galeria.
+  const [zoomAtivo, setZoomAtivo] = useState(false);
+  const [origemZoom, setOrigemZoom] = useState({ x: 50, y: 50 });
+
+  function moverMouseNaFoto(evento: React.MouseEvent<HTMLDivElement>) {
+    const retangulo = evento.currentTarget.getBoundingClientRect();
+    const x = ((evento.clientX - retangulo.left) / retangulo.width) * 100;
+    const y = ((evento.clientY - retangulo.top) / retangulo.height) * 100;
+    setOrigemZoom({ x, y });
+  }
+
   function selecionarCor(index: number) {
     setCorIndex(index);
     setTamanho(cores[index].tamanhos[0]);
@@ -92,21 +113,37 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
 
   return (
     <section className="py-8 grid md:grid-cols-2 gap-10">
-      <div className="relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden">
+      <div
+        className={`relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden ${
+          corAtual.imagem ? "cursor-zoom-in" : ""
+        }`}
+        onMouseEnter={() => setZoomAtivo(true)}
+        onMouseLeave={() => setZoomAtivo(false)}
+        onMouseMove={moverMouseNaFoto}
+      >
         {corAtual.imagem ? (
-          <Image
-            key={corAtual.imagem}
-            src={corAtual.imagem}
-            alt={`${produto.nome} - ${corAtual.cor}`}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            // foto grande da pagina do produto - qualidade alta, e' onde o cliente olha o
-            // detalhe da peca de perto. O card pequeno do mosaico usa qualidade mais baixa
-            // (ver ProductCard.tsx) pra carregar rapido.
-            quality={90}
-            className="object-cover"
-            priority
-          />
+          <>
+            <Image
+              key={corAtual.imagem}
+              src={corAtual.imagem}
+              alt={`${produto.nome} - ${corAtual.cor}`}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              // foto grande da pagina do produto - qualidade alta, e' onde o cliente olha o
+              // detalhe da peca de perto. O card pequeno do mosaico usa qualidade mais baixa
+              // (ver ProductCard.tsx) pra carregar rapido.
+              quality={90}
+              className="object-cover transition-transform duration-150 ease-out"
+              style={{
+                transform: zoomAtivo ? "scale(2)" : "scale(1)",
+                transformOrigin: `${origemZoom.x}% ${origemZoom.y}%`
+              }}
+              priority
+            />
+            <span className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white/90 text-mozz-black flex items-center justify-center pointer-events-none">
+              <IconeLupa />
+            </span>
+          </>
         ) : (
           <span className="text-mozz-gray text-xs">foto do produto</span>
         )}
