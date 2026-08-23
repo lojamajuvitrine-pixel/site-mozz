@@ -45,6 +45,13 @@ export type Produto = {
   temEstoque?: boolean;
 };
 
+// Decisao do Brunno em 23/08/2026: por enquanto o site trabalha SO' com essas 4 marcas
+// (as "principais" do portfolio) - as marcas menores (Slywear, Puramania, Iodice, My Place,
+// Open, Ents, etc.) ficam de fora do catalogo publico ate' segunda ordem, mesmo que ja
+// tenham produtos sincronizados do Bling em data/produtos.json. Pra voltar a mostrar
+// alguma marca, e' so' adicionar ela nessa lista - nao precisa rodar sync de novo.
+const MARCAS_ATIVAS = new Set(["Animale", "NV", "Foxton", "Reserva"]);
+
 // Fonte de dados hoje: data/produtos.json (seed manual, so' pra desenvolvimento).
 // Em producao, npm run sync:bling sobrescreve esse arquivo com o catalogo real do Bling.
 //
@@ -53,7 +60,9 @@ export type Produto = {
 // Brunno em 22/08/2026, pra nao mostrar peca que o cliente nao consegue comprar. Produtos
 // do seed manual (sem esse campo, undefined) continuam aparecendo normalmente.
 export function listarProdutos(): Produto[] {
-  const produtos = (produtosData as Produto[]).filter((p) => p.temEstoque !== false);
+  const produtos = (produtosData as Produto[]).filter(
+    (p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca)
+  );
   // prioriza quem tem foto - produto sem foto cai no placeholder "foto do produto" no card,
   // o que passa impressao ruim numa vitrine, entao sempre aparece depois de quem tem (sort
   // e' estavel, entao dentro de cada grupo a ordem original do Bling e' mantida).

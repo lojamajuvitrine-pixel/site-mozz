@@ -7,15 +7,16 @@ poder ligar o site de verdade nas contas da MOZZ. Assim que cada item estiver pr
 manda as informações marcadas com 🔑 (aqui no chat, ou direto no arquivo `.env.local` do
 projeto) que eu sigo com a parte técnica.
 
-## 1. Hospedagem (Vercel) + domínio
+## 1. Hospedagem (Vercel) + domínio ✅ (domínio ativo em 23/08/2026)
 
-- [ ] Criar conta na [vercel.com](https://vercel.com) (dá pra entrar com GitHub).
-- [ ] Criar uma conta no [GitHub](https://github.com) se ainda não tiver — é lá que o
-      código do site vai morar, e a Vercel publica automaticamente a cada atualização.
-- [ ] Decidir: continuar com `lojamozz.com.br` (repassar o domínio pra apontar pra Vercel,
-      o que tira a Nuvemshop do ar) ou registrar um domínio novo. Você comentou que paga o
-      domínio — se for um novo, é só comprar (Registro.br, Vercel Domains, etc.).
-- 🔑 Depois de criado: nome de usuário/organização da Vercel, e a decisão sobre o domínio.
+- [x] Conta Vercel + GitHub conectados, site publicando automaticamente a cada push.
+- [x] `lojamozz.com.br` apontado pra Vercel (registros DNS feitos no Registro.br) - já
+      confirmei que está resolvendo com SSL funcionando.
+- [ ] **Falta só um passo seu**: em Project Settings → Environment Variables na Vercel,
+      atualizar `NEXT_PUBLIC_SITE_URL` de `https://site-mozz.vercel.app` pra
+      `https://lojamozz.com.br`, e clicar em Redeploy. Isso ajusta o domínio usado no SEO,
+      sitemap e nos links de retorno do checkout do Mercado Pago pro domínio definitivo (já
+      atualizei o `.env.local` local com esse valor).
 
 ## 2. Bling — app de integração (API v3)
 

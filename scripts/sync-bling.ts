@@ -243,6 +243,14 @@ function normalizarMarca(marca: string): string {
   return limpo.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
 }
 
+// Decisao do Brunno em 23/08/2026: por enquanto o site trabalha SO' com essas 4 marcas -
+// mesma lista de lib/produtos.ts (nao da' pra importar direto de la' porque esse script roda
+// fora do Next.js). Produto de marca fora dessa lista e' pulado ANTES de baixar foto (a parte
+// mais lenta do sync) - ainda gasta 1 chamada de detalhe pra produto NOVO (e' o unico jeito de
+// descobrir a marca dele), mas produto ja conhecido do cache nem chega a chamar a API.
+// Pra voltar a sincronizar alguma marca, e' so' adicionar ela aqui E em lib/produtos.ts.
+const MARCAS_ATIVAS = new Set(["Animale", "NV", "Foxton", "Reserva"]);
+
 type VarianteCorSaida = { cor: string; imagens: string[]; tamanhos: string[]; tamanhosDisponiveis: string[] };
 
 async function main() {
@@ -305,6 +313,7 @@ async function main() {
   let novos = 0;
   let fotosBaixadasAgora = 0;
   let fotosReaproveitadas = 0;
+  let marcasFiltradas = 0; // produtos pulados por serem de marca fora de MARCAS_ATIVAS
 
   for (const [chaveGrupo, skus] of entradas) {
     processados++;
@@ -338,6 +347,13 @@ async function main() {
     // cache OU falta foto local de alguma cor - as duas coisas vem do mesmo endpoint.
     const precisaDetalhe = !doCache || coresSemFoto.length > 0;
 
+    // Fora da lista de marcas ativas (produto ja conhecido do cache)? pula sem nem chamar a
+    // API - nao precisa gastar chamada de detalhe pra confirmar marca que a gente ja sabe.
+    if (doCache && !MARCAS_ATIVAS.has(doCache.marca)) {
+      marcasFiltradas++;
+      continue;
+    }
+
     let marcaFinal: string;
     let descricaoFinal = doCache?.descricao ?? "";
     let composicaoFinal = doCache?.composicao;
@@ -355,6 +371,17 @@ async function main() {
           marcaJaNormalizada = false;
           if (detalhe.data.nome) nomeBase = limparNomeBase(detalhe.data.nome);
         }
+
+        // produto NOVO de marca fora da lista ativa: agora que a gente sabe a marca, pula
+        // ANTES de baixar qualquer foto (a parte lenta) - so' a chamada de detalhe acima (que
+        // era o unico jeito de descobrir a marca) foi gasta.
+        const marcaNormalizadaAgora = marcaJaNormalizada ? marca : normalizarMarca(marca);
+        if (!MARCAS_ATIVAS.has(marcaNormalizadaAgora)) {
+          marcasFiltradas++;
+          await dormir(PAUSA_ENTRE_CHAMADAS_MS);
+          continue;
+        }
+
         const descricaoHtml = detalhe.data.descricaoCurta || detalhe.data.descricaoComplementar || "";
         if (descricaoHtml) {
           descricaoFinal = textoSemHtml(descricaoHtml);
@@ -402,6 +429,14 @@ async function main() {
       }
       marcaFinal = marcaJaNormalizada ? marca : normalizarMarca(marca);
       await dormir(PAUSA_ENTRE_CHAMADAS_MS); // so' pausa quando realmente chamou a API
+    }
+
+    // rede de seguranca: cobre o caso raro de erro na chamada de detalhe (bloco catch acima)
+    // deixando marcaFinal como "Sem marca" pra um produto novo - nao entra no catalogo do
+    // site de qualquer forma, entao nem vale a pena montar cores/imagem pra ele.
+    if (!MARCAS_ATIVAS.has(marcaFinal)) {
+      marcasFiltradas++;
+      continue;
     }
 
     // monta a lista final de cores com tamanhos + fotos - cor com foto vem primeiro, pra foto
@@ -452,6 +487,10 @@ async function main() {
   const comFoto = produtosMapeados.filter((p) => p.imagem).length;
   const totalCores = produtosMapeados.reduce((soma, p) => soma + p.cores.length, 0);
   console.log(`\nPronto! data/produtos.json atualizado com ${produtosMapeados.length} produtos.`);
+  console.log(
+    `Fora do catalogo por marca (so' trabalhamos com ${Array.from(MARCAS_ATIVAS).join(", ")} por` +
+      ` enquanto): ${marcasFiltradas} produto(s).`
+  );
   console.log(`Produtos novos (buscaram marca na API agora): ${novos}.`);
   console.log(`Variacoes de cor no total: ${totalCores}.`);
   console.log(
