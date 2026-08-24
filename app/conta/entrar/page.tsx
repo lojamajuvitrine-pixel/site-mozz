@@ -10,6 +10,10 @@ import { SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
 
 function FormularioEntrar() {
   const params = useSearchParams();
+  // Pra onde mandar depois do login - normalmente /conta, mas o middleware manda pra ca' com
+  // ?next=/admin/... quando quem tentou acessar o painel administrativo ainda nao tinha
+  // sessao (mesmo login por link magico serve pros dois casos, cliente e admin).
+  const next = params.get("next") || "/conta";
   const [email, setEmail] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [enviado, setEnviado] = useState(false);
@@ -26,7 +30,7 @@ function FormularioEntrar() {
       const { error } = await supabase.auth.signInWithOtp({
         email,
         options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback?next=/conta`
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`
         }
       });
       if (error) throw error;

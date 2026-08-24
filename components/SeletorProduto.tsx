@@ -162,7 +162,14 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
       <div>
         <p className="text-[13.5px] text-mozz-gray">{produto.marca}</p>
         <p className="font-serif text-3xl mt-1">{produto.nome}</p>
-        <p className="text-[17px] mt-2">{formatarPreco(produto.preco)}</p>
+        {produto.precoOriginal ? (
+          <p className="mt-2">
+            <span className="text-[14px] text-mozz-gray/60 line-through mr-2">{formatarPreco(produto.precoOriginal)}</span>
+            <span className="text-[19px]">{formatarPreco(produto.preco)}</span>
+          </p>
+        ) : (
+          <p className="text-[17px] mt-2">{formatarPreco(produto.preco)}</p>
+        )}
         {formatarParcelamento(produto.preco) && (
           <p className="text-[13.5px] text-mozz-gray mt-1">{formatarParcelamento(produto.preco)}</p>
         )}

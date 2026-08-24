@@ -4,9 +4,11 @@ import { listarProdutos, marcasDisponiveis } from "@/lib/produtos";
 // Catalogo completo - a home mostra so' uma vitrine curada, aqui e' tudo que tem estoque.
 // searchParams.busca vem da barra de busca do menu (Nav > BarraBusca), que manda pra ca'
 // com o termo na URL - GradeProdutos usa isso so' como valor inicial do campo de busca dela.
-export default function PaginaProdutos({ searchParams }: { searchParams?: { busca?: string } }) {
-  const produtos = listarProdutos();
-  const marcas = marcasDisponiveis().sort();
+export const revalidate = 30;
+
+export default async function PaginaProdutos({ searchParams }: { searchParams?: { busca?: string } }) {
+  const [produtos, marcasBrutas] = await Promise.all([listarProdutos(), marcasDisponiveis()]);
+  const marcas = marcasBrutas.sort();
 
   return (
     <section className="py-8">

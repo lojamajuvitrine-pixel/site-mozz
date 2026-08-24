@@ -56,6 +56,11 @@ export default function ProductCard({ produto }: { produto: Produto }) {
               Novo
             </span>
           )}
+          {produto.precoOriginal && (
+            <span className="absolute top-2 right-2 z-10 text-[11.5px] bg-white text-mozz-black px-2 py-0.5">
+              Oferta
+            </span>
+          )}
           {imagemAtual ? (
             <Image
               key={imagemAtual}
@@ -127,7 +132,14 @@ export default function ProductCard({ produto }: { produto: Produto }) {
 
       <Link href={`/produto/${produto.id}`} className="block">
         <p className="text-[14px] mt-2">{produto.nome}</p>
-        <p className="text-[14px] text-mozz-gray">{formatarPreco(produto.preco)}</p>
+        {produto.precoOriginal ? (
+          <p className="text-[14px]">
+            <span className="text-mozz-gray/50 line-through mr-1.5">{formatarPreco(produto.precoOriginal)}</span>
+            <span>{formatarPreco(produto.preco)}</span>
+          </p>
+        ) : (
+          <p className="text-[14px] text-mozz-gray">{formatarPreco(produto.preco)}</p>
+        )}
         {parcelamento && <p className="text-[12.5px] text-mozz-gray/80">{parcelamento}</p>}
       </Link>
     </div>

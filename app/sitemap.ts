@@ -6,13 +6,13 @@ import { SITE_URL as siteUrl } from "@/lib/site";
 // achar e indexar cada peca (em vez de depender so' de seguir link por link a partir da
 // home). Fica disponivel em /sitemap.xml sozinho, o Next.js cuida do resto.
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const produtos = listarProdutos();
-  const marcas = marcasDisponiveis();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [produtos, marcas] = await Promise.all([listarProdutos(), marcasDisponiveis()]);
 
   const paginasEstaticas: MetadataRoute.Sitemap = [
     { url: siteUrl, changeFrequency: "daily", priority: 1 },
-    { url: `${siteUrl}/produtos`, changeFrequency: "daily", priority: 0.9 }
+    { url: `${siteUrl}/produtos`, changeFrequency: "daily", priority: 0.9 },
+    { url: `${siteUrl}/outlet`, changeFrequency: "daily", priority: 0.7 }
   ];
 
   const paginasMarca: MetadataRoute.Sitemap = marcas.map((marca) => ({

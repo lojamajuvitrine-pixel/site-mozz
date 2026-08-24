@@ -65,6 +65,9 @@ export default function Nav() {
               {marca}
             </Link>
           ))}
+          <Link href="/outlet" className="hover:text-mozz-black transition-colors">
+            Outlet
+          </Link>
         </nav>
 
         <div className="flex-1" />
@@ -116,6 +119,9 @@ export default function Nav() {
               {marca}
             </Link>
           ))}
+          <Link href="/outlet" onClick={() => setMenuAberto(false)}>
+            Outlet
+          </Link>
           <div className="w-full">
             <BarraBusca />
           </div>

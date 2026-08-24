@@ -1,0 +1,194 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Image from "next/image";
+import { formatarPreco } from "@/lib/formato";
+import { normalizarTexto } from "@/lib/cor";
+
+type LinhaProduto = {
+  id: string;
+  nome: string;
+  marca: string;
+  imagem: string | null;
+  precoBling: number;
+  precoEspecialAtual: number | null;
+  destaque: boolean;
+  outlet: boolean;
+};
+
+type EstadoLinha = {
+  precoEspecial: string; // valor do input, como texto - vazio = sem oferta
+  destaque: boolean;
+  outlet: boolean;
+  salvando: boolean;
+  erro: string | null;
+  salvoAgora: boolean;
+};
+
+function estadoInicial(linha: LinhaProduto): EstadoLinha {
+  return {
+    precoEspecial: linha.precoEspecialAtual !== null ? String(linha.precoEspecialAtual) : "",
+    destaque: linha.destaque,
+    outlet: linha.outlet,
+    salvando: false,
+    erro: null,
+    salvoAgora: false
+  };
+}
+
+// Painel administrativo (client component) - lista todo o catalogo com busca, e por linha
+// deixa configurar preco especial (input livre, vazio = sem oferta), destaque (aparece
+// priorizado na vitrine "Novidades" da home) e outlet (aparece na aba /outlet). Cada linha
+// salva de forma independente, direto em /api/admin/produtos.
+export default function PainelProdutos({ produtosIniciais }: { produtosIniciais: LinhaProduto[] }) {
+  const [busca, setBusca] = useState("");
+  const [estados, setEstados] = useState<Record<string, EstadoLinha>>(() =>
+    Object.fromEntries(produtosIniciais.map((p) => [p.id, estadoInicial(p)]))
+  );
+
+  const listaFiltrada = useMemo(() => {
+    const termo = normalizarTexto(busca.trim());
+    if (!termo) return produtosIniciais;
+    return produtosIniciais.filter(
+      (p) => normalizarTexto(p.nome).includes(termo) || normalizarTexto(p.marca).includes(termo)
+    );
+  }, [produtosIniciais, busca]);
+
+  function atualizarEstado(id: string, alteracao: Partial<EstadoLinha>) {
+    setEstados((atual) => ({ ...atual, [id]: { ...atual[id], ...alteracao, salvoAgora: false, erro: null } }));
+  }
+
+  async function salvar(linha: LinhaProduto) {
+    const estado = estados[linha.id];
+    const precoDigitado = estado.precoEspecial.trim();
+
+    let precoEspecial: number | null = null;
+    if (precoDigitado) {
+      const numero = Number(precoDigitado.replace(",", "."));
+      if (!Number.isFinite(numero) || numero <= 0) {
+        atualizarEstado(linha.id, { erro: "Preço inválido" });
+        return;
+      }
+      precoEspecial = numero;
+    }
+
+    atualizarEstado(linha.id, { salvando: true, erro: null });
+    try {
+      const resposta = await fetch("/api/admin/produtos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          produtoId: linha.id,
+          precoEspecial,
+          destaque: estado.destaque,
+          outlet: estado.outlet
+        })
+      });
+      if (!resposta.ok) {
+        const corpo = await resposta.json().catch(() => null);
+        throw new Error(corpo?.erro ?? "Não foi possível salvar");
+      }
+      setEstados((atual) => ({
+        ...atual,
+        [linha.id]: { ...atual[linha.id], salvando: false, salvoAgora: true }
+      }));
+    } catch (e) {
+      atualizarEstado(linha.id, {
+        salvando: false,
+        erro: e instanceof Error ? e.message : "Não foi possível salvar"
+      });
+    }
+  }
+
+  return (
+    <div>
+      <input
+        value={busca}
+        onChange={(e) => setBusca(e.target.value)}
+        placeholder="Buscar por nome ou marca..."
+        className="border border-black/20 px-3 py-2 text-[14.5px] w-full max-w-sm mb-4"
+      />
+
+      <div className="overflow-x-auto">
+        <table className="w-full text-[13.5px] border-collapse">
+          <thead>
+            <tr className="border-b border-black/10 text-left text-mozz-gray">
+              <th className="py-2 pr-3 font-normal">Peça</th>
+              <th className="py-2 pr-3 font-normal">Preço Bling</th>
+              <th className="py-2 pr-3 font-normal">Preço especial</th>
+              <th className="py-2 pr-3 font-normal text-center">Destaque</th>
+              <th className="py-2 pr-3 font-normal text-center">Outlet</th>
+              <th className="py-2 pr-3 font-normal"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {listaFiltrada.map((linha) => {
+              const estado = estados[linha.id];
+              if (!estado) return null;
+              return (
+                <tr key={linha.id} className="border-b border-black/5 align-middle">
+                  <td className="py-2 pr-3">
+                    <div className="flex items-center gap-2">
+                      <div className="relative w-10 h-12 bg-mozz-stone shrink-0 overflow-hidden">
+                        {linha.imagem && (
+                          <Image src={linha.imagem} alt="" fill sizes="40px" className="object-cover" />
+                        )}
+                      </div>
+                      <div>
+                        <p className="leading-tight">{linha.nome}</p>
+                        <p className="text-mozz-gray text-[12px]">{linha.marca}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-2 pr-3 text-mozz-gray whitespace-nowrap">
+                    {formatarPreco(linha.precoBling)}
+                  </td>
+                  <td className="py-2 pr-3">
+                    <input
+                      value={estado.precoEspecial}
+                      onChange={(e) => atualizarEstado(linha.id, { precoEspecial: e.target.value })}
+                      placeholder="Sem oferta"
+                      inputMode="decimal"
+                      className="border border-black/20 px-2 py-1.5 text-[13.5px] w-24"
+                    />
+                  </td>
+                  <td className="py-2 pr-3 text-center">
+                    <input
+                      type="checkbox"
+                      checked={estado.destaque}
+                      onChange={(e) => atualizarEstado(linha.id, { destaque: e.target.checked })}
+                      className="w-4 h-4"
+                    />
+                  </td>
+                  <td className="py-2 pr-3 text-center">
+                    <input
+                      type="checkbox"
+                      checked={estado.outlet}
+                      onChange={(e) => atualizarEstado(linha.id, { outlet: e.target.checked })}
+                      className="w-4 h-4"
+                    />
+                  </td>
+                  <td className="py-2 pr-3 whitespace-nowrap">
+                    <button
+                      onClick={() => salvar(linha)}
+                      disabled={estado.salvando}
+                      className="text-[12.5px] px-3 py-1.5 bg-mozz-black text-white disabled:opacity-50"
+                    >
+                      {estado.salvando ? "Salvando..." : "Salvar"}
+                    </button>
+                    {estado.salvoAgora && <span className="text-[12px] text-mozz-gray ml-2">Salvo</span>}
+                    {estado.erro && <span className="text-[12px] text-red-600 ml-2">{estado.erro}</span>}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      {listaFiltrada.length === 0 && (
+        <p className="text-[14.5px] text-mozz-gray py-8 text-center">Nenhuma peça encontrada.</p>
+      )}
+    </div>
+  );
+}

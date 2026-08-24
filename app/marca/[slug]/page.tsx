@@ -11,8 +11,10 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function PaginaMarca({ params }: { params: { slug: string } }) {
-  const produtos = listarPorMarca(params.slug);
+export const revalidate = 30;
+
+export default async function PaginaMarca({ params }: { params: { slug: string } }) {
+  const produtos = await listarPorMarca(params.slug);
 
   if (produtos.length === 0) {
     notFound();

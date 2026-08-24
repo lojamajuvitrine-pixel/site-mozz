@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
+import { ehAdmin } from "@/lib/admin";
 
 // Roda em TODA requisicao que bate no site (ver "matcher" no final do arquivo). Duas coisas:
 // 1) renova o cookie de sessao do Supabase automaticamente (sem isso o login expira sozinho
@@ -52,11 +53,24 @@ export async function middleware(request: NextRequest) {
     data: { user }
   } = await supabase.auth.getUser();
 
-  const rotaProtegida = request.nextUrl.pathname.startsWith("/conta") && request.nextUrl.pathname !== "/conta/entrar";
+  const rotaAdmin = request.nextUrl.pathname.startsWith("/admin");
+  const rotaProtegida =
+    (request.nextUrl.pathname.startsWith("/conta") && request.nextUrl.pathname !== "/conta/entrar") || rotaAdmin;
 
   if (!user && rotaProtegida) {
     const url = request.nextUrl.clone();
     url.pathname = "/conta/entrar";
+    url.search = `?next=${encodeURIComponent(request.nextUrl.pathname)}`;
+    return NextResponse.redirect(url);
+  }
+
+  // Logado mas sem ser o e-mail admin - manda pra home, sem entrar no painel (a
+  // pagina/API route de admin tambem checa isso de novo, essa checagem aqui e' so' pra
+  // nem chegar a renderizar nada da area administrativa).
+  if (rotaAdmin && user && !ehAdmin(user.email)) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/";
+    url.search = "";
     return NextResponse.redirect(url);
   }
 

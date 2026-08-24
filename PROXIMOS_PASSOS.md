@@ -94,6 +94,56 @@ guarda esse login (Supabase: banco de dados + autenticação, gratuito pra esse 
   Bling, que ainda não existem. Por enquanto a conta serve pra login/identificação do cliente;
   assim que o pagamento estiver de ponta a ponta, eu ligo o histórico de verdade.
 
+## 9. Painel de produtos (preço especial, destaque e outlet) — precisa de 1 SQL no Supabase
+
+Criei um painel interno em `/admin/produtos` (só você acessa, com o mesmo login por link
+mágico da área do cliente) pra você poder, direto pelo site, sem mexer em nada dentro do
+Bling:
+- Colocar um **preço especial** em qualquer peça (o preço original do Bling aparece riscado
+  do lado).
+- Marcar peças como **destaque**, pra elas aparecerem priorizadas na vitrine "Novidades" da
+  home.
+- Marcar peças como **outlet**, pra elas aparecerem também na nova aba "Outlet" do menu (sem
+  sair de onde já apareciam antes).
+
+Isso fica guardado numa tabela própria do site no Supabase (não mexe na Lista de Preços nem
+em nada do cadastro do Bling). Só falta você criar essa tabela — como eu não alcanço o
+Supabase daqui, é um SQL rápido pra rodar uma vez:
+
+- [ ] No painel do Supabase, ir em **SQL Editor → New query**, colar o SQL abaixo e clicar em
+      **Run**:
+
+```sql
+create table public.produtos_site (
+  produto_id text primary key,
+  preco_especial numeric(10,2),
+  destaque boolean not null default false,
+  outlet boolean not null default false,
+  atualizado_em timestamptz not null default now()
+);
+
+alter table public.produtos_site enable row level security;
+
+create policy "Leitura publica de produtos_site"
+on public.produtos_site for select
+to anon, authenticated
+using (true);
+
+create policy "Somente admin escreve em produtos_site"
+on public.produtos_site for all
+to authenticated
+using (auth.jwt() ->> 'email' = 'brbo15@hotmail.com')
+with check (auth.jwt() ->> 'email' = 'brbo15@hotmail.com');
+```
+
+- Depois de rodar, acesse `https://lojamozz.com.br/admin/produtos` logado com seu e-mail
+  (`brbo15@hotmail.com`) - é a mesma tela de login por link mágico da área do cliente.
+- Se um dia quiser dar acesso ao painel pra mais alguém da equipe, me avisa: preciso
+  atualizar tanto o `auth.jwt() ->> 'email' = ...` acima (troca por uma lista de e-mails, ex.
+  `in ('brbo15@hotmail.com', 'outro@email.com')`) quanto o `lib/admin.ts` no código.
+- As mudanças no painel aparecem no site em até uns 30 segundos (não precisa esperar o robô
+  de sincronização do Bling nem redeploy).
+
 ## 8. Resend — e-mail próprio pro login ✅ (concluído em 23/08/2026)
 
 - [x] Domínio `notificacoes.lojamozz.com.br` verificado no Resend (DKIM, SPF e MX

@@ -1,5 +1,7 @@
+import { cache } from "react";
 import produtosData from "@/data/produtos.json";
 import { categoriaDoProduto } from "@/lib/detalhesProduto";
+import { buscarConfigProdutos, type ConfigProduto } from "@/lib/produtoConfig";
 
 // Uma variacao de COR do produto - cada cor tem suas proprias fotos (pode ser mais de uma,
 // quando cadastradas no Bling) e sua propria lista de tamanhos disponiveis.
@@ -43,6 +45,14 @@ export type Produto = {
   // presente so' em produtos vindos do sync real do Bling (scripts/sync-bling.ts) - indica
   // se ALGUM tamanho/cor tem saldo em estoque. Produtos do seed manual nao tem esse campo.
   temEstoque?: boolean;
+  // Preco de venda ORIGINAL do Bling - so' vem preenchido quando "preco" acima foi
+  // substituido por um preco especial cadastrado no painel /admin/produtos (ver
+  // lib/produtoConfig.ts). Usado pra mostrar o "de/por" riscado no card e na pagina do
+  // produto. Ausente = "preco" ja e' o preco normal do Bling, sem oferta ativa.
+  precoOriginal?: number;
+  // Configs "so' do site" (painel /admin/produtos), sem nada equivalente no Bling.
+  destaque?: boolean;
+  outlet?: boolean;
 };
 
 // Decisao do Brunno em 23/08/2026: por enquanto o site trabalha SO' com essas 4 marcas
@@ -52,6 +62,21 @@ export type Produto = {
 // alguma marca, e' so' adicionar ela nessa lista - nao precisa rodar sync de novo.
 const MARCAS_ATIVAS = new Set(["Animale", "NV", "Foxton", "Reserva"]);
 
+// Busca as configs especiais (preco/destaque/outlet) UMA vez por requisicao - React cache()
+// dedupe chamadas identicas dentro do mesmo ciclo de renderizacao no servidor, entao mesmo
+// chamando listarProdutos() varias vezes numa mesma pagina (ex: a home chama listarPorMarca
+// quatro vezes) so' bate no Supabase uma unica vez.
+const buscarConfigProdutosCache = cache(buscarConfigProdutos);
+
+function aplicarConfigEspecial(produto: Produto, config: ConfigProduto | undefined): Produto {
+  if (!config) return produto;
+  const comFlags: Produto = { ...produto, destaque: config.destaque, outlet: config.outlet };
+  if (config.precoEspecial !== null && config.precoEspecial !== produto.preco) {
+    return { ...comFlags, preco: config.precoEspecial, precoOriginal: produto.preco };
+  }
+  return comFlags;
+}
+
 // Fonte de dados hoje: data/produtos.json (seed manual, so' pra desenvolvimento).
 // Em producao, npm run sync:bling sobrescreve esse arquivo com o catalogo real do Bling.
 //
@@ -59,35 +84,59 @@ const MARCAS_ATIVAS = new Set(["Animale", "NV", "Foxton", "Reserva"]);
 // existe em produtos vindos do sync real) ficam FORA do catalogo publico - decisao do
 // Brunno em 22/08/2026, pra nao mostrar peca que o cliente nao consegue comprar. Produtos
 // do seed manual (sem esse campo, undefined) continuam aparecendo normalmente.
-export function listarProdutos(): Produto[] {
-  const produtos = (produtosData as Produto[]).filter(
-    (p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca)
-  );
+//
+// Async desde 23/08/2026: alem do catalogo estatico do Bling, aplica por cima as configs
+// especiais so' do site (preco especial/destaque/outlet, cadastradas em /admin/produtos e
+// guardadas no Supabase) - ver lib/produtoConfig.ts. Se o Supabase estiver fora do ar ou sem
+// nenhuma config cadastrada, o catalogo continua funcionando normal com o preco do Bling.
+export async function listarProdutos(): Promise<Produto[]> {
+  const config = await buscarConfigProdutosCache();
+  const produtos = (produtosData as Produto[])
+    .filter((p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca))
+    .map((p) => aplicarConfigEspecial(p, config.get(p.id)));
   // prioriza quem tem foto - produto sem foto cai no placeholder "foto do produto" no card,
   // o que passa impressao ruim numa vitrine, entao sempre aparece depois de quem tem (sort
   // e' estavel, entao dentro de cada grupo a ordem original do Bling e' mantida).
   return [...produtos].sort((a, b) => (a.imagem ? 0 : 1) - (b.imagem ? 0 : 1));
 }
 
-export function listarPorMarca(marca: string): Produto[] {
-  return listarProdutos().filter(
-    (p) => p.marca.toLowerCase() === marca.toLowerCase()
-  );
+export async function listarPorMarca(marca: string): Promise<Produto[]> {
+  const produtos = await listarProdutos();
+  return produtos.filter((p) => p.marca.toLowerCase() === marca.toLowerCase());
 }
 
-export function buscarProduto(id: string): Produto | undefined {
-  return listarProdutos().find((p) => p.id === id);
+export async function buscarProduto(id: string): Promise<Produto | undefined> {
+  const produtos = await listarProdutos();
+  return produtos.find((p) => p.id === id);
 }
 
-export function marcasDisponiveis(): string[] {
-  return Array.from(new Set(listarProdutos().map((p) => p.marca)));
+export async function marcasDisponiveis(): Promise<string[]> {
+  const produtos = await listarProdutos();
+  return Array.from(new Set(produtos.map((p) => p.marca)));
 }
 
 // So' os produtos que tem foto - usado nas vitrines de destaque (home) pra nao mostrar o
 // placeholder "foto do produto" logo na entrada do site. O catalogo completo (/produtos)
 // continua mostrando todo mundo, com ou sem foto.
-export function produtosComFoto(): Produto[] {
-  return listarProdutos().filter((p) => !!p.imagem);
+export async function produtosComFoto(): Promise<Produto[]> {
+  const produtos = await listarProdutos();
+  return produtos.filter((p) => !!p.imagem);
+}
+
+// Pecas marcadas como "outlet" no painel /admin/produtos - aparecem na aba /outlet, ALEM de
+// continuarem aparecendo normalmente na marca/catalogo de origem (outlet e' uma curadoria
+// cruzada, nao uma remocao).
+export async function listarOutlet(): Promise<Produto[]> {
+  const produtos = await listarProdutos();
+  return produtos.filter((p) => p.outlet);
+}
+
+// Pecas marcadas como "destaque" no painel /admin/produtos - usado pra priorizar a vitrine
+// "Novidades" da home (ver app/page.tsx) em vez do fallback automatico (so' foto + ordem do
+// Bling).
+export async function listarDestaques(): Promise<Produto[]> {
+  const produtos = await listarProdutos();
+  return produtos.filter((p) => p.destaque);
 }
 
 // Sempre usar isso (em vez de produto.cores direto) pra ler as cores de um produto - cobre
@@ -97,9 +146,10 @@ export function produtosComFoto(): Produto[] {
 // e prioriza a mesma marca primeiro, com foto, excluindo o produto atual. Categoria e'
 // inferida pelo nome (ver lib/detalhesProduto.ts) ja que o Bling nao devolve categoria
 // utilizavel sem chamada extra por produto.
-export function produtosRelacionados(produto: Produto, quantidade = 8): Produto[] {
+export async function produtosRelacionados(produto: Produto, quantidade = 8): Promise<Produto[]> {
   const categoriaAtual = categoriaDoProduto(produto.nome);
-  const candidatos = listarProdutos().filter((p) => p.id !== produto.id && !!p.imagem);
+  const todos = await listarProdutos();
+  const candidatos = todos.filter((p) => p.id !== produto.id && !!p.imagem);
 
   const mesmaCategoria = candidatos.filter((p) => categoriaDoProduto(p.nome) === categoriaAtual);
   const mesmaMarcaPrimeiro = [

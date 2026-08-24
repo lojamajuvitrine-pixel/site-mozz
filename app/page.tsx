@@ -8,16 +8,24 @@ import { listarPorMarca, produtosComFoto } from "@/lib/produtos";
 // os produtos, com ou sem foto) fica em /produtos.
 const QTD_VITRINE = 8;
 
-export default function Home() {
-  const comFoto = produtosComFoto();
+export const revalidate = 30;
+
+export default async function Home() {
+  const comFoto = await produtosComFoto();
 
   // Banner principal rotativo: uma foto de cada uma das 4 marcas ativas, alternando
   // masculino/feminino - Reserva e Foxton sao 100% masculinas, Animale e NV sao focadas em
   // moda feminina (confirmado por pesquisa em 23/08/2026, ver PROXIMOS_PASSOS.md).
-  const produtoReserva = listarPorMarca("Reserva").find((p) => p.imagem);
-  const produtoAnimale = listarPorMarca("Animale").find((p) => p.imagem);
-  const produtoFoxton = listarPorMarca("Foxton").find((p) => p.imagem);
-  const produtoNV = listarPorMarca("NV").find((p) => p.imagem);
+  const [reserva, animale, foxton, nv] = await Promise.all([
+    listarPorMarca("Reserva"),
+    listarPorMarca("Animale"),
+    listarPorMarca("Foxton"),
+    listarPorMarca("NV")
+  ]);
+  const produtoReserva = reserva.find((p) => p.imagem);
+  const produtoAnimale = animale.find((p) => p.imagem);
+  const produtoFoxton = foxton.find((p) => p.imagem);
+  const produtoNV = nv.find((p) => p.imagem);
   const banners: BannerItem[] = [
     produtoReserva?.imagem
       ? { imagem: produtoReserva.imagem, marca: "Reserva", label: "Masculino", href: "/marca/reserva" }
@@ -41,7 +49,12 @@ export default function Home() {
   // agora as 4 marcas ativas ja aparecem todas no hero - mas a foto do produto e' diferente)
   const imagensDoHero = new Set(bannersFinal.map((b) => b.imagem));
   const bannerProduto = comFoto.find((p) => p.imagem && !imagensDoHero.has(p.imagem)) ?? comFoto[2] ?? comFoto[1];
-  const vitrine = comFoto.slice(0, QTD_VITRINE);
+
+  // Vitrine "Novidades": prioriza pecas marcadas como destaque no painel /admin/produtos - se
+  // o Brunno ainda nao marcou nenhuma, cai no comportamento automatico de sempre (primeiros
+  // produtos com foto, na ordem do Bling), pra home nunca ficar vazia.
+  const destaques = comFoto.filter((p) => p.destaque);
+  const vitrine = (destaques.length > 0 ? destaques : comFoto).slice(0, QTD_VITRINE);
 
   return (
     <div>

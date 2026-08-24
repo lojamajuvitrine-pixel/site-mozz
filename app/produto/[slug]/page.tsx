@@ -10,8 +10,10 @@ import { SITE_URL as siteUrl } from "@/lib/site";
 // generateMetadata roda no servidor por produto - e' o que faz o Google (e o preview de link
 // no WhatsApp/Instagram) mostrar o nome/foto/preco certos da peca em vez do titulo generico
 // do site inteiro.
+export const revalidate = 30;
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const produto = buscarProduto(params.slug);
+  const produto = await buscarProduto(params.slug);
   if (!produto) return {};
 
   const descricao = textoDescricao(produto).slice(0, 160);
@@ -29,8 +31,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function PaginaProduto({ params }: { params: { slug: string } }) {
-  const produto = buscarProduto(params.slug);
+export default async function PaginaProduto({ params }: { params: { slug: string } }) {
+  const produto = await buscarProduto(params.slug);
   if (!produto) notFound();
 
   const cores = coresDoProduto(produto);
