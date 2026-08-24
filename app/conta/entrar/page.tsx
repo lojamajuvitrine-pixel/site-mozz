@@ -86,11 +86,14 @@ function FormularioEntrar() {
         <form onSubmit={confirmarCodigo} className="flex flex-col gap-3">
           <input
             value={codigo}
-            onChange={(e) => setCodigo(e.target.value.replace(/\D/g, "").slice(0, 6))}
-            placeholder="000000"
+            // O Supabase pode mandar codigo de 6 A 10 digitos dependendo da configuracao do
+            // projeto (o padrao mudou de 6 pra 8 em projetos mais novos) - por isso o campo
+            // aceita qualquer tamanho nessa faixa, sem cortar o que o cliente colar/digitar.
+            onChange={(e) => setCodigo(e.target.value.replace(/\D/g, "").slice(0, 10))}
+            placeholder="Código recebido por e-mail"
             inputMode="numeric"
             autoFocus
-            className="border border-black/20 px-3 py-2.5 text-[20px] tracking-[0.4em] text-center focus:outline-none focus:border-mozz-black"
+            className="border border-black/20 px-3 py-2.5 text-[20px] tracking-[0.3em] text-center focus:outline-none focus:border-mozz-black"
           />
           {erro && <p className="text-[13.5px] text-red-600">{erro}</p>}
           <button
