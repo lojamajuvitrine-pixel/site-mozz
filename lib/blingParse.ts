@@ -35,11 +35,14 @@ const TAMANHOS_LETRA = new Set(["PP", "P", "M", "G", "GG", "XG", "XGG", "XXG", "
 // Essa funcao so' reconhece o padrao (nao decide se funde ou nao - isso e' responsabilidade
 // de quem chama, que so' funde quando ha' MAIS DE UM produto com a mesma marca+nome-base, pra
 // nao fundir por engano um nome que so' coincidentemente termina em algo parecido com
-// tamanho). Reconhece:
+// tamanho). Reconhece dois formatos de sufixo vistos em dados reais (ex: "Blusa Tule Onca
+// Suspiro Tam:GG" alem do "Mini Saia De Lã - 36" original) e, dentro de cada um:
 // - numero de 2 digitos entre 30 e 56 (cobre toda numeracao BR de roupa/calcado usada hoje)
 // - letra de tamanho conhecida (PP, P, M, G, GG, XG, XGG, XXG, U)
 export function extrairTamanhoDoNomeProduto(nome: string): { base: string; tamanho: string } | null {
-  const m = nome.match(/^(.*)\s-\s*([A-Za-zÀ-ú0-9]{1,4})$/);
+  const mTraco = nome.match(/^(.*)\s-\s*([A-Za-zÀ-ú0-9]{1,4})$/);
+  const mTam = !mTraco ? nome.match(/^(.*)\s+Tam:?\s*([A-Za-zÀ-ú0-9]{1,4})$/i) : null;
+  const m = mTraco ?? mTam;
   if (!m) return null;
   const base = m[1].trim();
   const tokenBruto = m[2].trim();
