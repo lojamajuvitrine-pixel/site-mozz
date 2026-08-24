@@ -154,7 +154,7 @@ export default function GradeProdutos({
           onChange={(e) => setOrdenacao(e.target.value as Ordenacao)}
           className="border border-black/20 px-3 py-2 text-[14.5px] bg-white"
         >
-          <option value="relevancia">Ordenar por relevancia</option>
+          <option value="relevancia">Ordenar por relevância</option>
           <option value="menor-preco">Preco: menor para maior</option>
           <option value="maior-preco">Preco: maior para menor</option>
         </select>

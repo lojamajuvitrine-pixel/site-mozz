@@ -230,9 +230,24 @@ const DESCRITOR_POR_CATEGORIA: Record<CategoriaPeca, string> = {
   outro: "peça atemporal, com a identidade autoral da marca"
 };
 
+// Algumas descricoes do Bling vem com a propria palavra "Descrição" (ou "Descrição:") como
+// primeira linha, cadastrada junto do texto - isso duplicava o titulo, ja que o acordeao do
+// site ja mostra "Descrição" como cabecalho da secao (bug visto ao vivo em 24/08/2026).
+// Removida aqui, na leitura, pra nao precisar mexer no dado bruto do Bling.
+const PREFIXO_DESCRICAO_DUPLICADO = /^descri[cç][aã]o:?\s*\n?/i;
+
+// Um numero pequeno de pecas tem esse campo preenchido so' com a composicao do tecido (ex:
+// "73% Algodão 26% Poliester 1% Elastano") em vez de uma descricao de verdade - depois de
+// remover o prefixo duplicado acima, o que sobra e' curto demais e so' tem % de tecido, entao
+// cai no texto gerado (mesma logica de quando o campo esta' vazio).
+function pareceSoComposicao(texto: string): boolean {
+  return texto.length < 60 && /^\d{1,3}%\s*[A-Za-zÀ-ú]/.test(texto);
+}
+
 export function textoDescricao(produto: Produto): string {
-  const real = produto.descricao?.trim();
-  if (real) return real;
+  const bruto = produto.descricao?.trim();
+  const real = bruto?.replace(PREFIXO_DESCRICAO_DUPLICADO, "").trim();
+  if (real && !pareceSoComposicao(real)) return real;
   const categoria = categoriaDoProduto(produto.nome);
   const descritor = DESCRITOR_POR_CATEGORIA[categoria];
   return `${produto.nome}, da ${produto.marca} — ${descritor}.`;

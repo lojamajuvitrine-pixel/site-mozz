@@ -76,14 +76,14 @@ export default async function Home() {
             <p className="font-serif text-[29px] md:text-[33px] leading-tight mb-4">
               Quatro marcas,
               <br />
-              um so lugar
+              um só lugar
             </p>
             <p className="text-[14.5px] text-mozz-gray max-w-xs mb-6">
               Curadoria Animale, NV, Reserva e Foxton reunida na MOZZ, com entrega pra todo o
               Brasil.
             </p>
             <Link href="/produtos" className="text-[14.5px] underline">
-              Explorar catalogo
+              Explorar catálogo
             </Link>
           </div>
         </section>
