@@ -73,11 +73,14 @@ export default function ProductCard({ produto }: { produto: Produto }) {
             <span className="text-mozz-gray text-xs">foto do produto</span>
           )}
 
-          {/* Overlay de tamanhos - some no desktop ate' passar o mouse, sempre visivel no
-              touch/mobile (nao ha' hover confiavel), pra escolher e adicionar sem abrir a
-              pagina do produto. */}
+          {/* Overlay de tamanhos - so' desktop, e so' aparece ao passar o mouse (pra escolher e
+              adicionar sem abrir a pagina do produto). Escondido no touch/mobile: la' nao tem
+              hover pra "revelar" o overlay so' quando o cliente quer - ele ficava sempre visivel
+              cobrindo a parte de baixo da foto inteira, e roubava o toque de quem so' queria
+              abrir os detalhes da peca (bug reportado em 23/08/2026). No celular o fluxo normal
+              e' abrir a pagina do produto e escolher tamanho la', como em qualquer loja. */}
           {corAtual.tamanhos.length > 0 && (
-            <div className="absolute inset-x-0 bottom-0 p-2 flex flex-wrap gap-1 justify-center bg-gradient-to-t from-black/40 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+            <div className="hidden md:flex absolute inset-x-0 bottom-0 p-2 flex-wrap gap-1 justify-center bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
               {disponiveisAtual.length === 0 ? (
                 <span className="text-[12.5px] bg-white/90 text-mozz-gray px-2 py-1">Esgotado</span>
               ) : (
