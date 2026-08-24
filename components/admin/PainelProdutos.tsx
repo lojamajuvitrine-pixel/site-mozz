@@ -18,6 +18,7 @@ type LinhaProduto = {
 
 type EstadoLinha = {
   precoEspecial: string; // valor do input, como texto - vazio = sem oferta
+  percentual: string; // so' uma calculadora auxiliar - preenche o preco especial acima, nao e' salvo
   destaque: boolean;
   outlet: boolean;
   salvando: boolean;
@@ -28,12 +29,23 @@ type EstadoLinha = {
 function estadoInicial(linha: LinhaProduto): EstadoLinha {
   return {
     precoEspecial: linha.precoEspecialAtual !== null ? String(linha.precoEspecialAtual) : "",
+    percentual: "",
     destaque: linha.destaque,
     outlet: linha.outlet,
     salvando: false,
     erro: null,
     salvoAgora: false
   };
+}
+
+// Calcula o preco especial a partir de um % de desconto em cima do preco do Bling - so'
+// preenche o campo de preco (que continua sendo o unico valor de fato salvo), pra quem
+// prefere pensar em "20% off" em vez de calcular o valor final na mao.
+function precoComDesconto(precoBling: number, percentualTexto: string): string | null {
+  const percentual = Number(percentualTexto.replace(",", "."));
+  if (!Number.isFinite(percentual) || percentual <= 0 || percentual >= 100) return null;
+  const precoComDesconto = precoBling * (1 - percentual / 100);
+  return precoComDesconto.toFixed(2);
 }
 
 // Painel administrativo (client component) - lista todo o catalogo com busca, e por linha
@@ -56,6 +68,17 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
 
   function atualizarEstado(id: string, alteracao: Partial<EstadoLinha>) {
     setEstados((atual) => ({ ...atual, [id]: { ...atual[id], ...alteracao, salvoAgora: false, erro: null } }));
+  }
+
+  // Digitou um % de desconto - calcula o preco final e joga direto no campo de preco
+  // especial (que continua editavel na mao depois, se quiser ajustar um centavo pra cima ou
+  // pra baixo).
+  function aplicarPercentual(linha: LinhaProduto, percentualTexto: string) {
+    const precoCalculado = precoComDesconto(linha.precoBling, percentualTexto);
+    atualizarEstado(linha.id, {
+      percentual: percentualTexto,
+      ...(precoCalculado ? { precoEspecial: precoCalculado } : {})
+    });
   }
 
   async function salvar(linha: LinhaProduto) {
@@ -115,6 +138,7 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
             <tr className="border-b border-black/10 text-left text-mozz-gray">
               <th className="py-2 pr-3 font-normal">Peça</th>
               <th className="py-2 pr-3 font-normal">Preço Bling</th>
+              <th className="py-2 pr-3 font-normal">Desconto</th>
               <th className="py-2 pr-3 font-normal">Preço especial</th>
               <th className="py-2 pr-3 font-normal text-center">Destaque</th>
               <th className="py-2 pr-3 font-normal text-center">Outlet</th>
@@ -144,9 +168,22 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
                     {formatarPreco(linha.precoBling)}
                   </td>
                   <td className="py-2 pr-3">
+                    <div className="flex items-center gap-1">
+                      <input
+                        value={estado.percentual}
+                        onChange={(e) => aplicarPercentual(linha, e.target.value)}
+                        placeholder="0"
+                        inputMode="decimal"
+                        title="Percentual de desconto - calcula o preço especial ao lado"
+                        className="border border-black/20 px-2 py-1.5 text-[13.5px] w-14"
+                      />
+                      <span className="text-mozz-gray text-[12.5px]">%</span>
+                    </div>
+                  </td>
+                  <td className="py-2 pr-3">
                     <input
                       value={estado.precoEspecial}
-                      onChange={(e) => atualizarEstado(linha.id, { precoEspecial: e.target.value })}
+                      onChange={(e) => atualizarEstado(linha.id, { precoEspecial: e.target.value, percentual: "" })}
                       placeholder="Sem oferta"
                       inputMode="decimal"
                       className="border border-black/20 px-2 py-1.5 text-[13.5px] w-24"
