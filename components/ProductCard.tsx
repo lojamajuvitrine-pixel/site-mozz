@@ -30,6 +30,12 @@ export default function ProductCard({ produto }: { produto: Produto }) {
   const imagemAtual = corAtual.imagens[0] ?? produto.imagem;
   const parcelamento = formatarParcelamento(produto.preco);
   const disponiveisAtual = tamanhosDisponiveisDoColor(corAtual);
+  // % de desconto pra mostrar na badge da foto - calculado em cima do preco original vs o
+  // preco especial (cadastrados no painel /admin/produtos), arredondado pro inteiro mais
+  // proximo (ex: 19,6% -> "-20%") pra ficar com cara de vitrine, nao de planilha.
+  const percentualDesconto = produto.precoOriginal
+    ? Math.round((1 - produto.preco / produto.precoOriginal) * 100)
+    : null;
 
   function selecionarCor(evento: React.MouseEvent, index: number) {
     evento.preventDefault();
@@ -56,9 +62,9 @@ export default function ProductCard({ produto }: { produto: Produto }) {
               Novo
             </span>
           )}
-          {produto.precoOriginal && (
-            <span className="absolute top-2 right-2 z-10 text-[11.5px] bg-white text-mozz-black px-2 py-0.5">
-              Oferta
+          {percentualDesconto !== null && percentualDesconto > 0 && (
+            <span className="absolute top-2 right-2 z-10 text-[11.5px] bg-mozz-black text-white px-2 py-0.5">
+              -{percentualDesconto}%
             </span>
           )}
           {imagemAtual ? (
