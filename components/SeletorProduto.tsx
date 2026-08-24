@@ -8,6 +8,7 @@ import { formatarParcelamento, formatarPreco } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { corAproximada } from "@/lib/cor";
 import CalculoFrete from "@/components/CalculoFrete";
+import AvisoEstoque from "@/components/AvisoEstoque";
 
 function IconeLupa() {
   return (
@@ -231,6 +232,8 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
           {disponiveisAtual.length === 0 && (
             <p className="text-[13.5px] text-mozz-gray mb-4">Esgotado nesta cor no momento.</p>
           )}
+
+          {!tamanhoEstaDisponivel && <AvisoEstoque produtoId={produto.id} tamanho={tamanho} />}
 
           <button
             onClick={adicionarAoCarrinho}

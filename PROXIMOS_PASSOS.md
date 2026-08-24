@@ -189,6 +189,52 @@ with check (auth.jwt() ->> 'email' = 'brbo15@hotmail.com');
       sozinho a cada 5 minutos (9h-20h, seg-sáb) e mantém preço/estoque do site em dia com
       o Bling, sem precisar rodar nada na mão.
 
+## 11. "Avise-me quando voltar ao estoque" — tabela + 2 chaves novas
+
+Adicionei na página do produto: quando o tamanho escolhido está esgotado, aparece um campo
+pra cliente deixar o e-mail. Quando aquele tamanho específico volta a ter saldo (detectado no
+próprio robô de sync que já roda a cada 5 minutos), ela recebe um e-mail automático via Resend
+avisando. Falta duas coisas do seu lado:
+
+- [ ] No painel do Supabase, **SQL Editor → New query**, colar e rodar:
+
+```sql
+create table public.avisos_estoque (
+  id uuid primary key default gen_random_uuid(),
+  produto_id text not null,
+  tamanho text not null,
+  email text not null,
+  criado_em timestamptz not null default now(),
+  notificado boolean not null default false,
+  notificado_em timestamptz
+);
+
+create unique index avisos_estoque_pendente_unico
+  on public.avisos_estoque (produto_id, tamanho, email)
+  where not notificado;
+
+alter table public.avisos_estoque enable row level security;
+
+create policy "Qualquer um pode pedir aviso"
+on public.avisos_estoque for insert
+to anon, authenticated
+with check (true);
+```
+
+  Só existe política de **insert** de propósito — ninguém (nem o site) consegue ler os
+  e-mails salvos com a chave pública. Só o robô de sync consegue ler/marcar como notificado,
+  usando uma chave separada (próximo item).
+
+- [ ] Em **Project Settings → API**, além da chave `anon public` que você já mandou, agora
+      preciso também da chave **`service_role`** (na mesma tela, um pouco mais abaixo — essa
+      é secreta, nunca aparece pro navegador, só é usada pelo robô de sync que roda no GitHub).
+- [ ] No painel do Resend ([resend.com](https://resend.com), mesma conta que já configuramos
+      pro e-mail de login), ir em **API Keys → Create API Key** e gerar uma chave nova
+      (permissão de "Sending" já basta).
+- 🔑 Me manda os dois: a chave `service_role` do Supabase e a API Key do Resend. Eu coloco em
+      `SUPABASE_SERVICE_ROLE_KEY` e `RESEND_API_KEY` (no `.env.local` local e como **secrets**
+      novos no GitHub, pro robô automático também conseguir enviar).
+
 ## O que eu já fiz enquanto isso
 
 - Estrutura completa do site (Next.js), com a identidade visual monocromática que

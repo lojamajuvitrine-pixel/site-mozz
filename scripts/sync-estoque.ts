@@ -18,6 +18,7 @@ import { readFileSync, writeFileSync } from "fs";
 import { listarProdutosBling } from "../lib/bling";
 import { tamanhosDisponiveisDaCor } from "../lib/blingParse";
 import type { Produto } from "../lib/produtos";
+import { notificarAvisosDeEstoque } from "./avisoEstoque";
 
 const PAUSA_ENTRE_PAGINAS_MS = 350;
 
@@ -57,7 +58,30 @@ async function listarTodosProdutos(): Promise<ProdutoBlingLista[]> {
 // sync completo. Se algum desses ids nao aparecer mais como ativo no Bling (grupo sumiu da
 // lista), trata como "esse tamanho especifico esgotou/saiu" em vez de quebrar o produto
 // inteiro - mesmo principio de seguranca do caminho normal abaixo.
-function atualizarProdutoFundido(produto: Produto, grupos: Map<number, ProdutoBlingLista[]>): boolean {
+// Registra, no mapa novosDisponiveis (produtoId -> tamanhos que ACABARAM de voltar ao
+// estoque), a diferenca entre a lista de tamanhos disponiveis antes e depois do sync - e' isso
+// que scripts/avisoEstoque.ts usa pra saber quem notificar. So' conta como "novo" tamanho que
+// NAO estava disponivel antes e passou a estar agora (reaparecer de verdade, nao so continuar
+// disponivel).
+function registrarNovosDisponiveis(
+  novosDisponiveis: Map<string, Set<string>>,
+  produtoId: string,
+  antes: string[],
+  depois: string[]
+) {
+  const antesSet = new Set(antes);
+  const novos = depois.filter((t) => !antesSet.has(t));
+  if (novos.length === 0) return;
+  if (!novosDisponiveis.has(produtoId)) novosDisponiveis.set(produtoId, new Set());
+  const conjunto = novosDisponiveis.get(produtoId)!;
+  for (const t of novos) conjunto.add(t);
+}
+
+function atualizarProdutoFundido(
+  produto: Produto,
+  grupos: Map<number, ProdutoBlingLista[]>,
+  novosDisponiveis: Map<string, Set<string>>
+): boolean {
   let mudou = false;
   const gruposPorTamanho = produto.gruposBlingPorTamanho ?? {};
   const tamanhos = Object.keys(gruposPorTamanho);
@@ -95,6 +119,7 @@ function atualizarProdutoFundido(produto: Produto, grupos: Map<number, ProdutoBl
     const disponivelAtual = [...(cor.tamanhosDisponiveis ?? cor.tamanhos)].sort();
     const disponivelOrdenado = [...disponiveisNovo].sort();
     if (JSON.stringify(disponivelAtual) !== JSON.stringify(disponivelOrdenado)) {
+      registrarNovosDisponiveis(novosDisponiveis, produto.id, disponivelAtual, disponivelOrdenado);
       cor.tamanhosDisponiveis = disponiveisNovo;
       mudou = true;
     }
@@ -123,10 +148,11 @@ async function main() {
   const atual = JSON.parse(readFileSync("data/produtos.json", "utf-8")) as Produto[];
   let atualizados = 0;
   let naoEncontrados = 0;
+  const novosDisponiveis = new Map<string, Set<string>>();
 
   for (const produto of atual) {
     if (produto.gruposBlingPorTamanho) {
-      if (atualizarProdutoFundido(produto, grupos)) atualizados++;
+      if (atualizarProdutoFundido(produto, grupos, novosDisponiveis)) atualizados++;
       continue;
     }
 
@@ -160,6 +186,7 @@ async function main() {
       const disponivelNovo = tamanhosDisponiveisDaCor(cor.cor, skus).sort();
       const disponivelAtual = [...(cor.tamanhosDisponiveis ?? cor.tamanhos)].sort();
       if (JSON.stringify(disponivelAtual) !== JSON.stringify(disponivelNovo)) {
+        registrarNovosDisponiveis(novosDisponiveis, produto.id, disponivelAtual, disponivelNovo);
         cor.tamanhosDisponiveis = disponivelNovo;
         mudou = true;
       }
@@ -173,6 +200,8 @@ async function main() {
   if (naoEncontrados > 0) {
     console.log(`Atenção: ${naoEncontrados} produto(s) do site não apareceram como ativos no Bling agora.`);
   }
+
+  await notificarAvisosDeEstoque(novosDisponiveis, atual);
 }
 
 main().catch((erro) => {
