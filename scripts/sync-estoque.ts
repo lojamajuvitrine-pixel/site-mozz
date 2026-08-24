@@ -50,6 +50,59 @@ async function listarTodosProdutos(): Promise<ProdutoBlingLista[]> {
   return todos;
 }
 
+// Produtos "fundidos" (varios produtos-pai do Bling, um por tamanho, unificados numa peca so'
+// - ver extrairTamanhoDoNomeProduto em lib/blingParse.ts e a fusao em scripts/sync-bling.ts)
+// nao tem mais um produto.id que bata direto com um grupo do Bling - por isso precisam desse
+// caminho a parte, que itera tamanho por tamanho usando o mapa gruposBlingPorTamanho salvo no
+// sync completo. Se algum desses ids nao aparecer mais como ativo no Bling (grupo sumiu da
+// lista), trata como "esse tamanho especifico esgotou/saiu" em vez de quebrar o produto
+// inteiro - mesmo principio de seguranca do caminho normal abaixo.
+function atualizarProdutoFundido(produto: Produto, grupos: Map<number, ProdutoBlingLista[]>): boolean {
+  let mudou = false;
+  const gruposPorTamanho = produto.gruposBlingPorTamanho ?? {};
+  const tamanhos = Object.keys(gruposPorTamanho);
+
+  const disponiveisNovo: string[] = [];
+  const precosEmEstoque: number[] = [];
+  const precosTodos: number[] = [];
+
+  for (const tamanho of tamanhos) {
+    const skusDoTamanho = gruposPorTamanho[tamanho].flatMap((id) => grupos.get(Number(id)) ?? []);
+    for (const s of skusDoTamanho) precosTodos.push(s.preco);
+
+    const temEstoqueTamanho = skusDoTamanho.some((s) => (s.estoque?.saldoVirtualTotal ?? 0) > 0);
+    if (temEstoqueTamanho) {
+      disponiveisNovo.push(tamanho);
+      precosEmEstoque.push(skusDoTamanho[0].preco);
+    }
+  }
+
+  const temEstoqueNovo = disponiveisNovo.length > 0;
+  const precoNovo =
+    precosEmEstoque.length > 0 ? Math.min(...precosEmEstoque) : precosTodos.length > 0 ? Math.min(...precosTodos) : produto.preco;
+
+  if (produto.preco !== precoNovo) {
+    produto.preco = precoNovo;
+    mudou = true;
+  }
+  if (produto.temEstoque !== temEstoqueNovo) {
+    produto.temEstoque = temEstoqueNovo;
+    mudou = true;
+  }
+
+  const cor = produto.cores?.[0];
+  if (cor) {
+    const disponivelAtual = [...(cor.tamanhosDisponiveis ?? cor.tamanhos)].sort();
+    const disponivelOrdenado = [...disponiveisNovo].sort();
+    if (JSON.stringify(disponivelAtual) !== JSON.stringify(disponivelOrdenado)) {
+      cor.tamanhosDisponiveis = disponiveisNovo;
+      mudou = true;
+    }
+  }
+
+  return mudou;
+}
+
 async function main() {
   console.log("Sync rapido de preco/estoque (sem fotos/marca/descricao)...");
 
@@ -72,6 +125,11 @@ async function main() {
   let naoEncontrados = 0;
 
   for (const produto of atual) {
+    if (produto.gruposBlingPorTamanho) {
+      if (atualizarProdutoFundido(produto, grupos)) atualizados++;
+      continue;
+    }
+
     const skus = grupos.get(Number(produto.id));
     if (!skus) {
       // produto nao apareceu na lista de ativos agora (pode ter sido inativado no Bling) -

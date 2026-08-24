@@ -45,6 +45,14 @@ export type Produto = {
   // presente so' em produtos vindos do sync real do Bling (scripts/sync-bling.ts) - indica
   // se ALGUM tamanho/cor tem saldo em estoque. Produtos do seed manual nao tem esse campo.
   temEstoque?: boolean;
+  // So' presente em produtos "fundidos" no sync - varios produtos-pai do Bling que na
+  // verdade sao a MESMA peca, um produto por tamanho (ver extrairTamanhoDoNomeProduto em
+  // lib/blingParse.ts). Mapeia cada tamanho pros id(s) do(s) grupo(s) Bling ORIGINAIS que o
+  // representam (pode ser mais de um id pro mesmo tamanho, quando a peca foi cadastrada em
+  // duplicidade no Bling) - e' assim que scripts/sync-estoque.ts sabe onde buscar o
+  // saldo/preco atualizado de cada tamanho, ja que nao existe mais um produto.id proprio por
+  // tamanho depois da fusao.
+  gruposBlingPorTamanho?: Record<string, string[]>;
   // Preco de venda ORIGINAL do Bling - so' vem preenchido quando "preco" acima foi
   // substituido por um preco especial cadastrado no painel /admin/produtos (ver
   // lib/produtoConfig.ts). Usado pra mostrar o "de/por" riscado no card e na pagina do

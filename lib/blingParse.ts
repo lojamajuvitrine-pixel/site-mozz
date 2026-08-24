@@ -19,6 +19,39 @@ export function limparNomeBase(nome: string): string {
     .trim();
 }
 
+// Tamanhos "letra" reconhecidos no final do NOME DO PRODUTO (diferente de extrairTamanho
+// acima, que le "Tamanho:Y" dentro do nome de um SKU/variacao) - ver comentario completo em
+// extrairTamanhoDoNomeProduto logo abaixo.
+const TAMANHOS_LETRA = new Set(["PP", "P", "M", "G", "GG", "XG", "XGG", "XXG", "U"]);
+
+// Decisao do Brunno em 24/08/2026: algumas pecas (sobretudo Animale) sao cadastradas no Bling
+// como um PRODUTO INTEIRO SEPARADO por tamanho - ex: "Mini Saia De Lã Com Cós Marrom Rum - 36"
+// e "Mini Saia De Lã Com Cós Marrom Rum - 40" viram dois produtos-pai DISTINTOS no Bling (cada
+// um com seu proprio id/estoque/preco), em vez de usar variacao de tamanho dentro de UM
+// produto so'. O site nao mexe em nada disso no Bling - em vez disso, o sync (ver
+// scripts/sync-bling.ts) RECONHECE esse padrao pelo nome e funde os produtos numa peca so',
+// com os tamanhos como opcoes de verdade.
+//
+// Essa funcao so' reconhece o padrao (nao decide se funde ou nao - isso e' responsabilidade
+// de quem chama, que so' funde quando ha' MAIS DE UM produto com a mesma marca+nome-base, pra
+// nao fundir por engano um nome que so' coincidentemente termina em algo parecido com
+// tamanho). Reconhece:
+// - numero de 2 digitos entre 30 e 56 (cobre toda numeracao BR de roupa/calcado usada hoje)
+// - letra de tamanho conhecida (PP, P, M, G, GG, XG, XGG, XXG, U)
+export function extrairTamanhoDoNomeProduto(nome: string): { base: string; tamanho: string } | null {
+  const m = nome.match(/^(.*)\s-\s*([A-Za-zÀ-ú0-9]{1,4})$/);
+  if (!m) return null;
+  const base = m[1].trim();
+  const tokenBruto = m[2].trim();
+  const tokenMaiusculo = tokenBruto.toUpperCase();
+
+  if (/^\d{2}$/.test(tokenBruto)) {
+    const numero = Number(tokenBruto);
+    return numero >= 30 && numero <= 56 ? { base, tamanho: tokenBruto } : null;
+  }
+  return TAMANHOS_LETRA.has(tokenMaiusculo) ? { base, tamanho: tokenMaiusculo } : null;
+}
+
 export type SkuComEstoque = { nome: string; estoque?: { saldoVirtualTotal: number } };
 
 // Pra uma cor especifica de um produto, calcula quais tamanhos tem saldo em estoque AGORA,

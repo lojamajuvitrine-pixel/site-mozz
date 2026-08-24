@@ -44,7 +44,13 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 
 import * as path from "path";
 import sharp from "sharp";
 import { listarProdutosBling, buscarProdutoDetalheBling } from "../lib/bling";
-import { extrairCor, extrairTamanho, limparNomeBase, tamanhosDisponiveisDaCor } from "../lib/blingParse";
+import {
+  extrairCor,
+  extrairTamanho,
+  extrairTamanhoDoNomeProduto,
+  limparNomeBase,
+  tamanhosDisponiveisDaCor
+} from "../lib/blingParse";
 
 // Pasta publica do Next.js - tudo aqui dentro fica acessivel direto por URL (ex:
 // public/produtos/123--branco.jpg vira https://.../produtos/123--branco.jpg).
@@ -253,6 +259,115 @@ const MARCAS_ATIVAS = new Set(["Animale", "NV", "Foxton", "Reserva"]);
 
 type VarianteCorSaida = { cor: string; imagens: string[]; tamanhos: string[]; tamanhosDisponiveis: string[] };
 
+type ProdutoSaida = {
+  id: string;
+  nome: string;
+  marca: string;
+  preco: number;
+  novo: boolean;
+  descricao: string;
+  composicao?: string;
+  cores: VarianteCorSaida[];
+  imagem: string | null;
+  temEstoque: boolean;
+  gruposBlingPorTamanho?: Record<string, string[]>;
+};
+
+// Ordem de exibicao dos tamanhos-letra (numero e' sempre ordenado numericamente, nao precisa
+// de lista) - usado so' na fusao abaixo, pra pecas fundidas mostrarem os tamanhos em ordem
+// (PP, P, M...) em vez da ordem em que apareceram na lista do Bling.
+const ORDEM_TAMANHOS_LETRA = ["PP", "P", "M", "G", "GG", "XG", "XGG", "XXG", "U"];
+function compararTamanhos(a: string, b: string): number {
+  const numA = Number(a);
+  const numB = Number(b);
+  if (!Number.isNaN(numA) && !Number.isNaN(numB)) return numA - numB;
+  return ORDEM_TAMANHOS_LETRA.indexOf(a) - ORDEM_TAMANHOS_LETRA.indexOf(b);
+}
+
+// Funde produtos que sao a MESMA peca cadastrada como um produto-pai SEPARADO por tamanho no
+// Bling (ver comentario completo em extrairTamanhoDoNomeProduto, lib/blingParse.ts). So' funde
+// quando ha' 2+ produtos com a mesma marca+nome-base E cada um deles e' um produto "simples"
+// (so' 1 cor) - produto com variacao de cor de verdade fica de fora por seguranca, e um nome
+// sozinho no padrao (sem "irmao" de outro tamanho) fica como esta', com o sufixo no nome, ja
+// que nao da' pra ter certeza se e' mesmo um tamanho isolado ou coincidencia.
+function fundirVariantesPorTamanho(produtos: ProdutoSaida[]): ProdutoSaida[] {
+  type Membro = ProdutoSaida & { _tamanho: string; _base: string };
+  const grupos = new Map<string, Membro[]>();
+  const resultado: ProdutoSaida[] = [];
+
+  for (const p of produtos) {
+    const extraido = p.cores.length === 1 ? extrairTamanhoDoNomeProduto(p.nome) : null;
+    if (!extraido) {
+      resultado.push(p);
+      continue;
+    }
+    const chave = `${p.marca}||${extraido.base}`;
+    if (!grupos.has(chave)) grupos.set(chave, []);
+    grupos.get(chave)!.push({ ...p, _tamanho: extraido.tamanho, _base: extraido.base });
+  }
+
+  for (const membros of grupos.values()) {
+    if (membros.length === 1) {
+      const { _tamanho, _base, ...original } = membros[0];
+      resultado.push(original);
+      continue;
+    }
+
+    // o mesmo tamanho pode aparecer em MAIS DE UM membro (peca cadastrada em duplicidade no
+    // Bling, visto em dados reais) - agrupa por tamanho antes de montar o produto final, pra
+    // nao mostrar "36" duas vezes na lista de tamanhos.
+    const porTamanho = new Map<string, Membro[]>();
+    for (const m of membros) {
+      if (!porTamanho.has(m._tamanho)) porTamanho.set(m._tamanho, []);
+      porTamanho.get(m._tamanho)!.push(m);
+    }
+
+    const tamanhos = Array.from(porTamanho.keys()).sort(compararTamanhos);
+    const tamanhosDisponiveis = tamanhos.filter((t) => porTamanho.get(t)!.some((m) => m.temEstoque));
+    const gruposBlingPorTamanho: Record<string, string[]> = {};
+    for (const [tamanho, ms] of porTamanho) gruposBlingPorTamanho[tamanho] = ms.map((m) => m.id);
+
+    // preco: o da(s) unidade(s) realmente em estoque agora (menor valor, se houver mais de
+    // um) - sem nada em estoque no momento, usa o menor preco entre todos mesmo assim (so'
+    // pra ter um valor coerente caso volte a ter saldo antes do proximo sync).
+    const precosEmEstoque = membros.filter((m) => m.temEstoque).map((m) => m.preco);
+    const preco =
+      precosEmEstoque.length > 0 ? Math.min(...precosEmEstoque) : Math.min(...membros.map((m) => m.preco));
+
+    // imagem: usa a primeira que tiver foto de verdade (normalmente e' a mesma foto em todo
+    // tamanho, ja que e' a mesma peca).
+    const membroComFoto = membros.find((m) => m.cores[0]?.imagens.length > 0) ?? membros[0];
+    const membroComDescricao = membros.find((m) => m.descricao) ?? membros[0];
+    // id estavel: o menor id numerico entre os membros atuais - so' muda entre syncs se esse
+    // tamanho especifico sair do catalogo (raro, e' um trade-off aceitavel dado que o Bling
+    // nao tem um id "de verdade" pra peca fundida).
+    const idEstavel = [...membros].sort((a, b) => Number(a.id) - Number(b.id))[0].id;
+
+    resultado.push({
+      id: idEstavel,
+      nome: membros[0]._base,
+      marca: membros[0].marca,
+      preco,
+      novo: false,
+      descricao: membroComDescricao.descricao,
+      composicao: membroComDescricao.composicao,
+      cores: [
+        {
+          cor: "Único",
+          imagens: membroComFoto.cores[0]?.imagens ?? [],
+          tamanhos,
+          tamanhosDisponiveis
+        }
+      ],
+      imagem: membroComFoto.cores[0]?.imagens[0] ?? null,
+      temEstoque: membros.some((m) => m.temEstoque),
+      gruposBlingPorTamanho
+    });
+  }
+
+  return resultado;
+}
+
 async function main() {
   const limiteArg = process.argv.find((a) => a.startsWith("--limite="));
   const limite = limiteArg ? Number(limiteArg.split("=")[1]) : null;
@@ -295,18 +410,7 @@ async function main() {
   }
   console.log("Processando produtos (marca/foto so' quando necessario - pode demorar na primeira vez)...");
 
-  const produtosMapeados: Array<{
-    id: string;
-    nome: string;
-    marca: string;
-    preco: number;
-    novo: boolean;
-    descricao: string;
-    composicao?: string;
-    cores: VarianteCorSaida[];
-    imagem: string | null;
-    temEstoque: boolean;
-  }> = [];
+  const produtosMapeados: ProdutoSaida[] = [];
 
   let processados = 0;
   let semMarca = 0;
@@ -483,25 +587,36 @@ async function main() {
     }
   }
 
-  writeFileSync("data/produtos.json", JSON.stringify(produtosMapeados, null, 2));
-  const comFoto = produtosMapeados.filter((p) => p.imagem).length;
-  const totalCores = produtosMapeados.reduce((soma, p) => soma + p.cores.length, 0);
-  console.log(`\nPronto! data/produtos.json atualizado com ${produtosMapeados.length} produtos.`);
+  // PASSO EXTRA (24/08/2026): funde produtos que na verdade sao a MESMA peca cadastrada como
+  // um produto-pai SEPARADO por tamanho no Bling (ver comentario completo em
+  // extrairTamanhoDoNomeProduto, lib/blingParse.ts) - reconhece pelo nome, nao mexe em nada
+  // do lado do Bling.
+  const produtosFinais = fundirVariantesPorTamanho(produtosMapeados);
+  const qtdFundidos = produtosMapeados.length - produtosFinais.length;
+
+  writeFileSync("data/produtos.json", JSON.stringify(produtosFinais, null, 2));
+  const comFoto = produtosFinais.filter((p) => p.imagem).length;
+  const totalCores = produtosFinais.reduce((soma, p) => soma + p.cores.length, 0);
+  console.log(`\nPronto! data/produtos.json atualizado com ${produtosFinais.length} produtos.`);
   console.log(
     `Fora do catalogo por marca (so' trabalhamos com ${Array.from(MARCAS_ATIVAS).join(", ")} por` +
       ` enquanto): ${marcasFiltradas} produto(s).`
   );
   console.log(`Produtos novos (buscaram marca na API agora): ${novos}.`);
+  console.log(
+    `Pecas fundidas (cadastradas como produto separado por tamanho no Bling, unificadas aqui): ` +
+      `${qtdFundidos} produto(s) a menos no catalogo final.`
+  );
   console.log(`Variacoes de cor no total: ${totalCores}.`);
   console.log(
-    `Fotos: ${comFoto} de ${produtosMapeados.length} produtos com pelo menos uma foto` +
+    `Fotos: ${comFoto} de ${produtosFinais.length} produtos com pelo menos uma foto` +
       ` (${fotosBaixadasAgora} foto(s) baixada(s) agora, ${fotosReaproveitadas} reaproveitada(s) de antes).`
   );
   if (semMarca > 0) {
     console.log(`Atencao: ${semMarca} produto(s) ficaram sem marca identificada - revisar manualmente no arquivo.`);
   }
 
-  const marcas = Array.from(new Set(produtosMapeados.map((p) => p.marca))).sort();
+  const marcas = Array.from(new Set(produtosFinais.map((p) => p.marca))).sort();
   console.log(`\nMarcas encontradas (${marcas.length}): ${marcas.join(", ")}`);
   console.log(
     "Confere essa lista: se aparecerem duas entradas parecidas (ex: 'Sly' e 'Slywear') que na" +
