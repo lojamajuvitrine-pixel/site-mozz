@@ -94,6 +94,35 @@ guarda esse login (Supabase: banco de dados + autenticação, gratuito pra esse 
   Bling, que ainda não existem. Por enquanto a conta serve pra login/identificação do cliente;
   assim que o pagamento estiver de ponta a ponta, eu ligo o histórico de verdade.
 
+## 10. Login por código (não mais link) — 2 templates de e-mail pra ajustar no Supabase
+
+Descoberto em 24/08/2026: com e-mail @hotmail/@outlook, o Microsoft Safe Links "clica"
+sozinho em todo link de e-mail pra escanear segurança - isso consumia o link mágico (uso
+único) antes do cliente clicar de verdade, dando sempre "link expirado". Troquei o login pra
+usar um **código de 6 dígitos digitado na tela** em vez de link clicável - isso já está pronto
+no código, mas precisa de um ajuste nos templates de e-mail do Supabase pra eles mostrarem o
+código em vez do link:
+
+- [ ] No painel do Supabase, ir em **Authentication → Email Templates**.
+- [ ] Abrir o template **Magic Link** e trocar o conteúdo pra algo assim (pode ajustar o
+      texto, o importante é ter `{{ .Token }}` em vez de qualquer link):
+
+```html
+<h2>Seu código de acesso MOZZ</h2>
+<p>Use o código abaixo pra entrar no site:</p>
+<h1 style="letter-spacing: 4px; font-size: 32px;">{{ .Token }}</h1>
+<p>Esse código expira em alguns minutos e só vale uma vez.</p>
+```
+
+- [ ] Repetir o mesmo ajuste no template **Confirm signup** (é o que é usado no PRIMEIRO
+      login de um e-mail novo, antes de existir conta - sem ajustar esse também, o problema
+      volta a acontecer só no primeiro acesso de cada cliente novo).
+- [ ] Salvar os dois.
+
+Depois disso, o e-mail que o cliente recebe mostra só um código de 6 dígitos (sem nenhum
+link pra escanear/"clicar sozinho"), e a tela de login em `/conta/entrar` já pede esse código
+digitado.
+
 ## 9. Painel de produtos (preço especial, destaque e outlet) — precisa de 1 SQL no Supabase
 
 Criei um painel interno em `/admin/produtos` (só você acessa, com o mesmo login por link
