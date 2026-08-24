@@ -28,8 +28,14 @@ export async function middleware(request: NextRequest) {
   // chegue com "code" na URL (esperado ou nao) e' redirecionada pro callback de verdade, que
   // troca o code pela sessao e manda pra /conta. Nos logins seguintes (e-mail ja confirmado)
   // o link vem certo direto pro /auth/callback, e esse desvio nem entra em acao.
+  //
+  // IMPORTANTE (bug descoberto em 24/08/2026): esse desvio NAO pode pegar rotas de API - o
+  // retorno do OAuth do Bling tambem chega com "?code=" (em /api/bling/callback), e sem essa
+  // exclusao ele era sequestrado por esse desvio do Supabase e nunca chegava no callback de
+  // verdade do Bling. Qualquer futuro fluxo OAuth de outro servico (Melhor Envio, etc.) que
+  // use uma rota /api/.../callback tambem precisa ficar de fora daqui pelo mesmo motivo.
   const codigoNaUrl = request.nextUrl.searchParams.get("code");
-  if (codigoNaUrl && request.nextUrl.pathname !== "/auth/callback") {
+  if (codigoNaUrl && request.nextUrl.pathname !== "/auth/callback" && !request.nextUrl.pathname.startsWith("/api/")) {
     const url = request.nextUrl.clone();
     url.pathname = "/auth/callback";
     url.search = `?code=${encodeURIComponent(codigoNaUrl)}&next=/conta`;
