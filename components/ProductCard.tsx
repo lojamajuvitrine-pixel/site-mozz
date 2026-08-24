@@ -8,11 +8,31 @@ import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { corAproximada } from "@/lib/cor";
 import { formatarParcelamento, formatarPreco } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
+import { useFavoritos } from "@/lib/favoritos-context";
 
 function IconeCheck() {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="13" height="13">
       <path d="M5 12l5 5L20 7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function IconeCoracao({ preenchido }: { preenchido: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill={preenchido ? "currentColor" : "none"}
+      stroke="currentColor"
+      strokeWidth="1.8"
+      width="16"
+      height="16"
+    >
+      <path
+        d="M12 20.5s-7.5-4.6-10-9.3C.5 8 1.9 4.5 5.3 4c2-.3 3.9.7 4.8 2.4.9-1.7 2.8-2.7 4.8-2.4 3.4.5 4.8 4 3.3 7.2-2.5 4.7-10 9.3-10 9.3z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -23,6 +43,8 @@ function IconeCheck() {
 // pagina do produto quem quiser ver mais detalhe (fotos extras, medidas, composicao...).
 export default function ProductCard({ produto }: { produto: Produto }) {
   const { adicionar } = useCart();
+  const { ehFavorito, alternarFavorito } = useFavoritos();
+  const favoritado = ehFavorito(produto.id);
   const cores = coresDoProduto(produto);
   const [corIndex, setCorIndex] = useState(0);
   const [adicionado, setAdicionado] = useState<string | null>(null); // guarda o tamanho adicionado, pra feedback
@@ -36,6 +58,12 @@ export default function ProductCard({ produto }: { produto: Produto }) {
   const percentualDesconto = produto.precoOriginal
     ? Math.round((1 - produto.preco / produto.precoOriginal) * 100)
     : null;
+
+  function alternarFavoritoClick(evento: React.MouseEvent) {
+    evento.preventDefault();
+    evento.stopPropagation();
+    alternarFavorito(produto.id);
+  }
 
   function selecionarCor(evento: React.MouseEvent, index: number) {
     evento.preventDefault();
@@ -57,16 +85,25 @@ export default function ProductCard({ produto }: { produto: Produto }) {
     <div className="group">
       <Link href={`/produto/${produto.id}`} className="block">
         <div className="relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden">
-          {produto.novo && (
-            <span className="absolute top-2 left-2 z-10 text-[11.5px] bg-mozz-black text-white px-2 py-0.5">
-              Novo
+          <div className="absolute top-2 left-2 z-10 flex flex-col gap-1 items-start">
+            {produto.novo && (
+              <span className="text-[11.5px] bg-mozz-black text-white px-2 py-0.5">Novo</span>
+            )}
+            {percentualDesconto !== null && percentualDesconto > 0 && (
+              <span className="text-[11.5px] bg-mozz-black text-white px-2 py-0.5">-{percentualDesconto}%</span>
+            )}
+          </div>
+
+          <button
+            onClick={alternarFavoritoClick}
+            aria-label={favoritado ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+            className="absolute top-2 right-2 z-20 w-7 h-7 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors"
+          >
+            <span className={favoritado ? "text-mozz-black" : "text-mozz-gray"}>
+              <IconeCoracao preenchido={favoritado} />
             </span>
-          )}
-          {percentualDesconto !== null && percentualDesconto > 0 && (
-            <span className="absolute top-2 right-2 z-10 text-[11.5px] bg-mozz-black text-white px-2 py-0.5">
-              -{percentualDesconto}%
-            </span>
-          )}
+          </button>
+
           {imagemAtual ? (
             <Image
               key={imagemAtual}

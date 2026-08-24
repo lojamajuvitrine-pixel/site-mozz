@@ -57,6 +57,51 @@ const CORES_APROX: Array<[string, string]> = [
   ["prata", "#b7b7b2"]
 ];
 
+// Agrupa os nomes de cor (texto livre do Bling, ex: "Azul Marinho", "Azul Royal", "Verde
+// Oliva"...) em FAMILIAS amplas ("Azul", "Verde"...) pra usar no filtro de cor do catalogo -
+// filtrar por "Azul" e' o que o cliente espera, nao precisar saber que a peca que ele quer
+// esta' cadastrada como "Azul Petroleo" especificamente. Ordem nao importa aqui (diferente de
+// CORES_APROX acima) porque so' precisamos da familia, nao da cor exata.
+const FAMILIAS_COR: Array<[string, string]> = [
+  ["branco", "Branco"],
+  ["off white", "Branco"],
+  ["preto", "Preto"],
+  ["cinza", "Cinza"],
+  ["azul", "Azul"],
+  ["indigo", "Azul"],
+  ["jeans", "Azul"],
+  ["denim", "Azul"],
+  ["verde", "Verde"],
+  ["vermelho", "Vermelho"],
+  ["rosa", "Rosa"],
+  ["pink", "Rosa"],
+  ["lilas", "Roxo"],
+  ["lavanda", "Roxo"],
+  ["roxo", "Roxo"],
+  ["amarelo", "Amarelo"],
+  ["mostarda", "Amarelo"],
+  ["bege", "Bege"],
+  ["nude", "Bege"],
+  ["areia", "Bege"],
+  ["chocolate", "Marrom"],
+  ["marrom", "Marrom"],
+  ["caramelo", "Marrom"],
+  ["camel", "Marrom"],
+  ["terracota", "Marrom"],
+  ["ferrugem", "Marrom"],
+  ["bordo", "Vinho"],
+  ["vinho", "Vinho"],
+  ["laranja", "Laranja"],
+  ["dourado", "Dourado/Prata"],
+  ["prata", "Dourado/Prata"]
+];
+
+export function familiaDaCor(nomeCor: string): string {
+  const normalizado = normalizarTexto(nomeCor);
+  const encontrada = FAMILIAS_COR.find(([chave]) => normalizado.includes(chave));
+  return encontrada?.[1] ?? "Outras";
+}
+
 export function normalizarTexto(texto: string): string {
   return texto
     .normalize("NFD")

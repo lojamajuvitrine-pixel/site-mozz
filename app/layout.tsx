@@ -3,7 +3,9 @@ import Script from "next/script";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import BotaoWhatsapp from "@/components/BotaoWhatsapp";
 import { CartProvider } from "@/lib/cart-context";
+import { FavoritosProvider } from "@/lib/favoritos-context";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -78,9 +80,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
 
         <CartProvider>
-          <Nav />
-          <main className="max-w-6xl mx-auto px-6">{children}</main>
-          <Footer />
+          <FavoritosProvider>
+            <Nav />
+            <main className="max-w-6xl mx-auto px-6">{children}</main>
+            <Footer />
+            <BotaoWhatsapp />
+          </FavoritosProvider>
         </CartProvider>
       </body>
     </html>

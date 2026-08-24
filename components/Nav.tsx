@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import BarraBusca from "@/components/BarraBusca";
+import { useFavoritos } from "@/lib/favoritos-context";
 
 const marcas = ["Animale", "NV", "Reserva", "Foxton"];
 
@@ -40,6 +41,28 @@ function IconeConta() {
   );
 }
 
+function IconeCoracaoNav() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="19" height="19">
+      <path
+        d="M12 20.5s-7.5-4.6-10-9.3C.5 8 1.9 4.5 5.3 4c2-.3 3.9.7 4.8 2.4.9-1.7 2.8-2.7 4.8-2.4 3.4.5 4.8 4 3.3 7.2-2.5 4.7-10 9.3-10 9.3z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+// Badge numerico (contagem de favoritos) - mesma posicao/estilo nos dois layouts.
+function BadgeContagem({ valor }: { valor: number }) {
+  if (valor === 0) return null;
+  return (
+    <span className="absolute -top-1.5 -right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-mozz-black text-white text-[10px] leading-4 text-center">
+      {valor}
+    </span>
+  );
+}
+
 // Dois layouts BEM diferentes (desktop vs mobile), cada um so' visivel no seu breakpoint
 // (md:hidden / hidden md:flex) - mais simples de manter do que forcar a mesma grade nos
 // dois tamanhos de tela.
@@ -49,6 +72,7 @@ function IconeConta() {
 // Mobile: logo central + hamburguer + conta/carrinho, marcas e busca ficam atras do menu.
 export default function Nav() {
   const [menuAberto, setMenuAberto] = useState(false);
+  const { favoritos } = useFavoritos();
 
   return (
     <header className="border-b border-black/10">
@@ -77,6 +101,10 @@ export default function Nav() {
           <Link href="/conta" aria-label="Minha conta" className="p-1">
             <IconeConta />
           </Link>
+          <Link href="/favoritos" aria-label="Favoritos" className="relative p-1">
+            <IconeCoracaoNav />
+            <BadgeContagem valor={favoritos.length} />
+          </Link>
           <Link href="/carrinho" aria-label="Carrinho" className="p-1">
             <IconeSacola />
           </Link>
@@ -102,6 +130,10 @@ export default function Nav() {
           <div className="flex justify-end items-center gap-3 text-mozz-black/80">
             <Link href="/conta" aria-label="Minha conta" className="p-1">
               <IconeConta />
+            </Link>
+            <Link href="/favoritos" aria-label="Favoritos" className="relative p-1">
+              <IconeCoracaoNav />
+              <BadgeContagem valor={favoritos.length} />
             </Link>
             <Link href="/carrinho" aria-label="Carrinho" className="p-1 -mr-1">
               <IconeSacola />
