@@ -23,7 +23,10 @@ export const metadata: Metadata = {
     title: "MOZZ — Animale, NV, Reserva e Foxton em um só lugar",
     description: "Loja multimarcas com peças da Animale, NV, Reserva e Foxton."
   },
-  robots: { index: true, follow: true }
+  robots: { index: true, follow: true },
+  verification: {
+    google: "A69GTCztgZTHdFELF65m0LHVAFPLN3slT-6u5koLaeA"
+  }
 };
 
 // IDs de rastreamento (Meta Pixel / Google Analytics) - so' carrega o script quando a
