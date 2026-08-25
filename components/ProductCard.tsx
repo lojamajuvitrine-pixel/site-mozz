@@ -18,6 +18,18 @@ function IconeCheck() {
   );
 }
 
+function IconeSeta({ direcao }: { direcao: "esquerda" | "direita" }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="14" height="14">
+      <path
+        d={direcao === "esquerda" ? "M15 5l-7 7 7 7" : "M9 5l7 7-7 7"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function IconeCoracao({ preenchido }: { preenchido: boolean }) {
   return (
     <svg
@@ -49,13 +61,16 @@ export default function ProductCard({ produto }: { produto: Produto }) {
   const [corIndex, setCorIndex] = useState(0);
   const [adicionado, setAdicionado] = useState<string | null>(null); // guarda o tamanho adicionado, pra feedback
   const corAtual = cores[corIndex];
+  // Carrossel direto no card do mosaico, com setinha - pra rodar as fotos da peca sem precisar
+  // abrir a pagina do produto (pedido do Brunno em 24/08/2026).
+  const [fotoIndex, setFotoIndex] = useState(0);
   // Sem fallback pra produto.imagem aqui: isso mostrava a foto de OUTRA cor quando a
   // selecionada nao tinha foto propria (ex: "Azul Claro" sem foto mostrava a camisa Militar) -
   // bug reportado pelo Brunno em 24/08/2026. Cor sem foto agora cai no aviso honesto "foto do
   // produto" (mesmo comportamento ja usado na pagina do produto, ver SeletorProduto.tsx) em
   // vez de uma foto que nao e' da cor escolhida. Na carga inicial (corIndex 0) isso raramente
   // muda algo, ja que o sync poe cor com foto primeiro.
-  const imagemAtual = corAtual.imagens[0] ?? null;
+  const imagemAtual = corAtual.imagens[fotoIndex] ?? null;
   const parcelamento = formatarParcelamento(produto.preco);
   const disponiveisAtual = tamanhosDisponiveisDoColor(corAtual);
   // % de desconto pra mostrar na badge da foto - calculado em cima do preco original vs o
@@ -75,7 +90,20 @@ export default function ProductCard({ produto }: { produto: Produto }) {
     evento.preventDefault();
     evento.stopPropagation();
     setCorIndex(index);
+    setFotoIndex(0);
     setAdicionado(null);
+  }
+
+  function fotoAnterior(evento: React.MouseEvent) {
+    evento.preventDefault();
+    evento.stopPropagation();
+    setFotoIndex((i) => (i === 0 ? corAtual.imagens.length - 1 : i - 1));
+  }
+
+  function proximaFoto(evento: React.MouseEvent) {
+    evento.preventDefault();
+    evento.stopPropagation();
+    setFotoIndex((i) => (i === corAtual.imagens.length - 1 ? 0 : i + 1));
   }
 
   function selecionarTamanho(evento: React.MouseEvent, tamanho: string) {
@@ -125,6 +153,36 @@ export default function ProductCard({ produto }: { produto: Produto }) {
             />
           ) : (
             <span className="text-mozz-gray text-xs">foto do produto</span>
+          )}
+
+          {/* Setinhas do carrossel - sempre visiveis (nao so' no hover, diferente do overlay de
+              tamanho abaixo) pra funcionar tambem no toque do celular, ja' que sao pequenas e
+              ficam nas bordas, sem "roubar" o toque de quem quer abrir a pagina do produto. */}
+          {corAtual.imagens.length > 1 && (
+            <>
+              <button
+                onClick={fotoAnterior}
+                aria-label="Foto anterior"
+                className="absolute left-1.5 top-1/2 -translate-y-1/2 z-10 w-6 h-6 rounded-full bg-white/90 text-mozz-black flex items-center justify-center hover:bg-white transition-colors"
+              >
+                <IconeSeta direcao="esquerda" />
+              </button>
+              <button
+                onClick={proximaFoto}
+                aria-label="Próxima foto"
+                className="absolute right-1.5 top-1/2 -translate-y-1/2 z-10 w-6 h-6 rounded-full bg-white/90 text-mozz-black flex items-center justify-center hover:bg-white transition-colors"
+              >
+                <IconeSeta direcao="direita" />
+              </button>
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10 flex gap-1">
+                {corAtual.imagens.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`w-1 h-1 rounded-full ${i === fotoIndex ? "bg-white" : "bg-white/50"}`}
+                  />
+                ))}
+              </div>
+            </>
           )}
 
           {/* Overlay de tamanhos - so' desktop, e so' aparece ao passar o mouse (pra escolher e
