@@ -14,7 +14,7 @@ type ResultadoCupom =
   | { valido: false; motivo: string };
 
 export default function PaginaCarrinho() {
-  const { itens, remover, total } = useCart();
+  const { itens, remover, atualizarQuantidade, total } = useCart();
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
 
@@ -184,10 +184,31 @@ export default function PaginaCarrinho() {
           >
             <div>
               <p>{item.produto.nome}</p>
-              <p className="text-mozz-gray">
+              <p className="text-mozz-gray mb-2">
                 {item.cor && item.cor !== "Único" ? `Cor ${item.cor} · ` : ""}
-                Tam. {item.tamanho} · Qtd. {item.quantidade}
+                Tam. {item.tamanho}
               </p>
+              <div className="flex items-center border border-black/20 w-fit">
+                <button
+                  onClick={() =>
+                    atualizarQuantidade(item.produto.id, item.cor, item.tamanho, item.quantidade - 1)
+                  }
+                  aria-label="Diminuir quantidade"
+                  className="w-7 h-7 flex items-center justify-center hover:bg-black/5"
+                >
+                  −
+                </button>
+                <span className="w-8 text-center">{item.quantidade}</span>
+                <button
+                  onClick={() =>
+                    atualizarQuantidade(item.produto.id, item.cor, item.tamanho, item.quantidade + 1)
+                  }
+                  aria-label="Aumentar quantidade"
+                  className="w-7 h-7 flex items-center justify-center hover:bg-black/5"
+                >
+                  +
+                </button>
+              </div>
             </div>
             <div className="text-right">
               <p>{formatarPreco(item.produto.preco * item.quantidade)}</p>

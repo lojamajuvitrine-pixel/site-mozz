@@ -10,6 +10,7 @@ type CartContextType = {
   itens: ItemCarrinho[];
   adicionar: (produto: Produto, cor: string, tamanho: string) => void;
   remover: (produtoId: string, cor: string, tamanho: string) => void;
+  atualizarQuantidade: (produtoId: string, cor: string, tamanho: string, quantidade: number) => void;
   limpar: () => void;
   total: number;
 };
@@ -72,6 +73,25 @@ export function CartProvider({ children }: { children: ReactNode }) {
     );
   }
 
+  // Usado pelos botoes +/- e pelo campo de quantidade na pagina do carrinho - faltava essa
+  // funcao (encontrado em 25/08/2026): o carrinho so' tinha "adicionar" (sempre soma 1, chamado
+  // na pagina do produto) e "remover" (tira a linha inteira), sem jeito de so' AJUSTAR a
+  // quantidade de um item ja no carrinho. Quantidade < 1 remove a linha (mesmo efeito de
+  // "remover"), pra nao deixar item com quantidade zero/negativa no carrinho.
+  function atualizarQuantidade(produtoId: string, cor: string, tamanho: string, quantidade: number) {
+    if (quantidade < 1) {
+      remover(produtoId, cor, tamanho);
+      return;
+    }
+    setItens((atual) =>
+      atual.map((i) =>
+        i.produto.id === produtoId && i.cor === cor && i.tamanho === tamanho
+          ? { ...i, quantidade }
+          : i
+      )
+    );
+  }
+
   function limpar() {
     setItens([]);
   }
@@ -79,7 +99,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const total = itens.reduce((soma, i) => soma + i.produto.preco * i.quantidade, 0);
 
   return (
-    <CartContext.Provider value={{ itens, adicionar, remover, limpar, total }}>
+    <CartContext.Provider value={{ itens, adicionar, remover, atualizarQuantidade, limpar, total }}>
       {children}
     </CartContext.Provider>
   );
