@@ -12,7 +12,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paginasEstaticas: MetadataRoute.Sitemap = [
     { url: siteUrl, changeFrequency: "daily", priority: 1 },
     { url: `${siteUrl}/produtos`, changeFrequency: "daily", priority: 0.9 },
-    { url: `${siteUrl}/outlet`, changeFrequency: "daily", priority: 0.7 }
+    { url: `${siteUrl}/outlet`, changeFrequency: "daily", priority: 0.7 },
+    { url: `${siteUrl}/trocas`, changeFrequency: "monthly", priority: 0.3 }
   ];
 
   const paginasMarca: MetadataRoute.Sitemap = marcas.map((marca) => ({

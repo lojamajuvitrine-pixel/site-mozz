@@ -1,29 +1,56 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export type BannerItem = { imagem: string; marca: string; label: string; href: string };
 
+// Distancia minima (px) de arrasto pra contar como swipe de verdade, em vez de um toque sem
+// querer - valor comum pra gestos horizontais em telas de celular.
+const LIMIAR_SWIPE = 40;
+
 // Banner principal da home - proporcao editorial (bem larga no desktop, mais vertical no
 // celular, no estilo dos grandes sites de moda) e rotativo entre as imagens recebidas (hoje:
-// uma masculina/Reserva, uma feminina/Animale) com troca automatica a cada alguns segundos
-// e bolinhas pra trocar na mao.
+// uma masculina/Reserva, uma feminina/Animale) com troca automatica a cada alguns segundos,
+// bolinhas pra trocar na mao e arrastar com o dedo (swipe) no celular - o autoplay reinicia a
+// contagem a cada troca (automatica ou manual), pra nao pular de banner logo em seguida de um
+// swipe.
 export default function BannerHero({ banners }: { banners: BannerItem[] }) {
   const [indice, setIndice] = useState(0);
+  const inicioToqueX = useRef<number | null>(null);
 
   useEffect(() => {
     if (banners.length <= 1) return;
     const intervalo = setInterval(() => setIndice((i) => (i + 1) % banners.length), 6000);
     return () => clearInterval(intervalo);
-  }, [banners.length]);
+  }, [banners.length, indice]);
 
   if (banners.length === 0) return null;
   const atual = banners[indice];
 
+  function trocar(direcao: 1 | -1) {
+    setIndice((i) => (i + direcao + banners.length) % banners.length);
+  }
+
+  function aoTocar(e: React.TouchEvent) {
+    inicioToqueX.current = e.touches[0].clientX;
+  }
+
+  function aoSoltarToque(e: React.TouchEvent) {
+    if (inicioToqueX.current === null || banners.length <= 1) return;
+    const delta = e.changedTouches[0].clientX - inicioToqueX.current;
+    inicioToqueX.current = null;
+    if (Math.abs(delta) < LIMIAR_SWIPE) return;
+    trocar(delta < 0 ? 1 : -1);
+  }
+
   return (
-    <section className="relative -mx-6 aspect-[4/5] md:aspect-[21/9] bg-mozz-black overflow-hidden">
+    <section
+      className="relative -mx-6 aspect-[4/5] md:aspect-[21/9] bg-mozz-black overflow-hidden touch-pan-y"
+      onTouchStart={aoTocar}
+      onTouchEnd={aoSoltarToque}
+    >
       {banners.map((banner, i) => (
         <Image
           key={banner.imagem}

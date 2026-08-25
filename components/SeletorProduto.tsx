@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
@@ -81,16 +81,36 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
     setFotoIndex((i) => (i === corAtual.imagens.length - 1 ? 0 : i + 1));
   }
 
+  // Swipe no celular: arrastar o dedo na foto troca pra anterior/proxima, sem precisar acertar
+  // as setinhas pequenas - distancia minima de 40px pra nao confundir com um toque sem querer.
+  const LIMIAR_SWIPE = 40;
+  const inicioToqueX = useRef<number | null>(null);
+
+  function aoTocarNaFoto(e: React.TouchEvent) {
+    inicioToqueX.current = e.touches[0].clientX;
+  }
+
+  function aoSoltarToqueNaFoto(e: React.TouchEvent) {
+    if (inicioToqueX.current === null || corAtual.imagens.length <= 1) return;
+    const delta = e.changedTouches[0].clientX - inicioToqueX.current;
+    inicioToqueX.current = null;
+    if (Math.abs(delta) < LIMIAR_SWIPE) return;
+    if (delta < 0) proximaFoto();
+    else fotoAnterior();
+  }
+
   return (
     <section className="py-8 grid md:grid-cols-2 gap-10">
       <div>
         <div
-          className={`relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden ${
+          className={`relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden touch-pan-y ${
             fotoAtual ? "cursor-zoom-in" : ""
           }`}
           onMouseEnter={() => setZoomAtivo(true)}
           onMouseLeave={() => setZoomAtivo(false)}
           onMouseMove={moverMouseNaFoto}
+          onTouchStart={aoTocarNaFoto}
+          onTouchEnd={aoSoltarToqueNaFoto}
         >
           {fotoAtual ? (
             <>
