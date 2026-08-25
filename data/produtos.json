@@ -935,7 +935,12 @@
     "cores": [
       {
         "cor": "55911",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16638507527--55911--0.jpg",
+          "/produtos/16638507527--55911--1.jpg",
+          "/produtos/16638507527--55911--2.jpg",
+          "/produtos/16638507527--55911--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "40",
@@ -947,7 +952,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16638507527--55911--0.jpg",
     "temEstoque": true
   },
   {
@@ -1696,7 +1701,12 @@
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16643883905--unico--0.jpg",
+          "/produtos/16643883905--unico--1.jpg",
+          "/produtos/16643883905--unico--2.jpg",
+          "/produtos/16643883905--unico--3.jpg"
+        ],
         "tamanhos": [
           "38"
         ],
@@ -1705,7 +1715,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16643883905--unico--0.jpg",
     "temEstoque": true
   },
   {
@@ -2432,7 +2442,12 @@
     "cores": [
       {
         "cor": "VERMELHO WING",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16638621663--vermelho-wing--0.jpg",
+          "/produtos/16638621663--vermelho-wing--1.jpg",
+          "/produtos/16638621663--vermelho-wing--2.jpg",
+          "/produtos/16638621663--vermelho-wing--3.jpg"
+        ],
         "tamanhos": [
           "40",
           "36"
@@ -2442,7 +2457,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16638621663--vermelho-wing--0.jpg",
     "temEstoque": true
   },
   {
@@ -3046,7 +3061,12 @@
     "cores": [
       {
         "cor": "PRETO/BRANCO",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16638481555--preto-branco--0.jpg",
+          "/produtos/16638481555--preto-branco--1.jpg",
+          "/produtos/16638481555--preto-branco--2.jpg",
+          "/produtos/16638481555--preto-branco--3.jpg"
+        ],
         "tamanhos": [
           "44",
           "42",
@@ -3062,7 +3082,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16638481555--preto-branco--0.jpg",
     "temEstoque": true
   },
   {
@@ -5247,7 +5267,12 @@
     "cores": [
       {
         "cor": "MARROM DRIES",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16630962980--marrom-dries--0.jpg",
+          "/produtos/16630962980--marrom-dries--1.jpg",
+          "/produtos/16630962980--marrom-dries--2.jpg",
+          "/produtos/16630962980--marrom-dries--3.jpg"
+        ],
         "tamanhos": [
           "40"
         ],
@@ -5256,7 +5281,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16630962980--marrom-dries--0.jpg",
     "temEstoque": true
   },
   {
@@ -6637,7 +6662,12 @@
     "cores": [
       {
         "cor": "MARROM DRIES",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16628426090--marrom-dries--0.jpg",
+          "/produtos/16628426090--marrom-dries--1.jpg",
+          "/produtos/16628426090--marrom-dries--2.jpg",
+          "/produtos/16628426090--marrom-dries--3.jpg"
+        ],
         "tamanhos": [
           "G",
           "M",
@@ -6649,7 +6679,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16628426090--marrom-dries--0.jpg",
     "temEstoque": true
   },
   {
@@ -9758,26 +9788,6 @@
     "temEstoque": true
   },
   {
-    "id": "16453768295",
-    "nome": "Blusa Tule Onca Suspiro Tam:GG",
-    "marca": "Animale",
-    "preco": 298,
-    "novo": false,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "Único"
-        ],
-        "tamanhosDisponiveis": []
-      }
-    ],
-    "imagem": null,
-    "temEstoque": false
-  },
-  {
     "id": "16442980862",
     "nome": "Segunda Pele Tule Color Tam:GG;",
     "marca": "Animale",
@@ -9787,66 +9797,6 @@
     "cores": [
       {
         "cor": "Marrom Café",
-        "imagens": [],
-        "tamanhos": [
-          "Único"
-        ],
-        "tamanhosDisponiveis": []
-      }
-    ],
-    "imagem": null,
-    "temEstoque": false
-  },
-  {
-    "id": "16530949609",
-    "nome": "Blusa Regata Geo Laser Preto E Orla Tam:GG",
-    "marca": "Animale",
-    "preco": 598,
-    "novo": false,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "Único"
-        ],
-        "tamanhosDisponiveis": []
-      }
-    ],
-    "imagem": null,
-    "temEstoque": false
-  },
-  {
-    "id": "16494254695",
-    "nome": "Blusa Manga Longa Decote V Tam:G",
-    "marca": "Animale",
-    "preco": 698,
-    "novo": false,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "Único"
-        ],
-        "tamanhosDisponiveis": []
-      }
-    ],
-    "imagem": null,
-    "temEstoque": false
-  },
-  {
-    "id": "16450299632",
-    "nome": "Top Gola Alta Cropped Lurex De Tricot Tam:GG",
-    "marca": "Animale",
-    "preco": 398,
-    "novo": false,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
         "imagens": [],
         "tamanhos": [
           "Único"
@@ -9990,6 +9940,1114 @@
     ],
     "imagem": "/produtos/16443988263--militar--0.jpg",
     "temEstoque": true
+  },
+  {
+    "id": "16594139940",
+    "nome": "Jaqueta De Couro Motor Furadinha Bege Bege Sand",
+    "marca": "Animale",
+    "preco": 3598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594139940--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594139940--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594139883",
+    "nome": "Saia Midi Detalhe Aba Nos Bolsos Com Linho Estampado Est Camuflado Flor Biscoito e Cafe",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "A estampa camuflada ganha novas propostas no modelo de Saia Midi com cintura alta, shape evasê, bolsos frontais e elástico regulável na cintura. Aposte em complementos na mesma paleta de cores para uma produção moderna. Detalhes: - Comprimento midi; - Shape evasê; - Bolsos frontais; - Cintura alta; - Elástico regulável na cintura.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594139883--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594139883--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594139647",
+    "nome": "Jaqueta De Couro Perfecto Zíperes Bege Sand",
+    "marca": "Animale",
+    "preco": 2899,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594139647--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594139647--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594139611",
+    "nome": "Vestido De Couro Midi Regata Corset Preto Preto",
+    "marca": "Animale",
+    "preco": 2999,
+    "novo": false,
+    "descricao": "Vestido Midi de Couro em modelo regata com alças, top corset, fechamento por zíper nas costas, recortes com pespontos e barra evasê. Must-have em todas as estações, o modelo traduz contemporaneidade e exclusividade em cada detalhe.\nDetalhes:\n- 100% Couro;\n- Fechamento por zíper nas costas;\n- Comprimento midi;\n- Barra evasê;\n- Alças;\n- Top corset;\n- Recortes pespontados;\n- A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594139611--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594139611--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594139278",
+    "nome": "Colete De Algodão Com Linho Alongado Com Botões e Cinto Preto",
+    "marca": "Animale",
+    "preco": 829,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594139278--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594139278--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594139227",
+    "nome": "Colete De Algodão Com Linho Alongado Com Botões e Cinto Preto",
+    "marca": "Animale",
+    "preco": 829,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594139227--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594139227--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594138990",
+    "nome": "Vestido Midi Alça Larga De Gorgorão De Algodão Preto Preto",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594138990--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594138990--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594138875",
+    "nome": "Camisa De Georgette Pesado Ampla Estampada Est Lenco Pantera Preto e Branco",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594138875--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594138875--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594138670",
+    "nome": "Calça De Georgette Pesado Ampla Estampada Est Lenco Pantera Preto e Branco",
+    "marca": "Animale",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594138670--unico--0.jpg",
+          "/produtos/16594138670--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594138670--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594138325",
+    "nome": "Blusa Manga Longa Franzida Gola Alta Amarração Nas Costas De Algodão Estampada Pois Vitral Cafe e Creme",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594138325--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594138325--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594137855",
+    "nome": "Calça Pantalona Basic Com Linho Off White Preto",
+    "marca": "Animale",
+    "preco": 539,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594137855--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594137855--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594137646",
+    "nome": "Macaquinho De Linho Manga Longa Com Regulagem Na Cintura Bege Sand",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594137646--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594137646--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594137548",
+    "nome": "Calça Jeans Lavagem Cool Jeans Escuro",
+    "marca": "Animale",
+    "preco": 579,
+    "novo": false,
+    "descricao": "Calça Jeans com lavagem escura, cintura baixa, abotoamento frontal, bolsos forrados e passantes no cós. A peça se destaca por sua versatilidade atemporal, sendo uma escolha perfeita para composições urbanas, como o look com o Pull de Tricot. Detalhes: - Jeans escuro; - Bolsos frontais e nas costas; - Botão frontal; - Passantes no cós; - Shape reto.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594137548--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594137548--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594137464",
+    "nome": "Calça De Georgette Pantalona Estampado Est Floral Rosa Off e Preto",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594137464--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594137464--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594137104",
+    "nome": "Blusa Cropped De Malha Crepe Preto",
+    "marca": "Animale",
+    "preco": 228,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594137104--unico--0.jpg",
+          "/produtos/16594137104--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594137104--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594137040",
+    "nome": "Blusa Tee Manga Curta Bicolor Off White C/Preto",
+    "marca": "Animale",
+    "preco": 348,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594137040--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594137040--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594136883",
+    "nome": "Blusa Manga Longa Bicolor Pb Preto C/Off",
+    "marca": "Animale",
+    "preco": 209,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594136883--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594136883--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594136659",
+    "nome": "Vestido Curto Plissado Color Est Textura Retro Color",
+    "marca": "Animale",
+    "preco": 1679,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594136659--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594136659--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594136302",
+    "nome": "Regata De Georgette Leve De Alça Marrom Busto Com Renda Marrom Doe",
+    "marca": "Animale",
+    "preco": 299,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594136302--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594136302--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594135657",
+    "nome": "Vestido De Georgette Midi Decote v Estampado Est. Cobra Vintage Color",
+    "marca": "Animale",
+    "preco": 1498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594135657--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594135657--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594135420",
+    "nome": "Saia Midi De Algodão Estampada Est Onca Sombra Superlemon",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "Aposta do Inverno 25, nosso icônico animal print surge no modelo de Saia Midi com passadores, fechamento interno no cós e shape evasê. A proposta combina com maxi acessórios e cria looks hi-lo com regatas ou tops de malha. Detalhes: - Comprimento midi; - Fechamento interno no cós; - Shape evasê. A modelagem deste produto tende a ser mais estreita do que o habitual, sugerimos optar por um tamanho maior.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594135420--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594135420--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594135213",
+    "nome": "Mini Saia De Lã Com Botões No Cós Verde Mescla",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594135213--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594135213--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594135050",
+    "nome": "Mini Saia De Lã Com Cós Marrom Rum",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594135050--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16594135050--unico--0.jpg",
+    "temEstoque": true
+  },
+  {
+    "id": "16594134950",
+    "nome": "Calca Reta Veludo Preto Preto",
+    "marca": "Animale",
+    "preco": 299,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594134950--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594134950--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594134266",
+    "nome": "Calça Moletom Urbano New Preto",
+    "marca": "Foxton",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594134266--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594134266--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594134227",
+    "nome": "Calça Moletom Urbano New Preto",
+    "marca": "Foxton",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594134227--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594134227--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594133020",
+    "nome": "Polo Tricot Corda New Off White",
+    "marca": "Foxton",
+    "preco": 598,
+    "novo": false,
+    "descricao": "A Polo Tricot Corda New é uma peça casual básica e atemporal. Confeccionada em tricot de algodão puro, com o ponto corda da Foxton, ela possui uma modelagem contemporânea urbana.\nA peça tem gola polo e meia abertura frontal com um botão aparente. As mangas e a barra possuem acabamento em ponto ribana, um clássico do modelo polo. Possui aviamento com assinatura Foxton nas costas.\nA modelagem tradicional garante que a camisa possa ser usada em ocasiões de trabalho ou eventos noturnos, combinada com calças jeans ou de sarja.\nDetalhes:\nTricot 100% algodão\nModelagem polo clássica\nPeitilho coberto, 1 botão aparente\nAcabamentos em ponto de ribana\nO modelo mede 1,90 m, veste tamanho 40 e calça 43.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594133020--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594133020--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594132999",
+    "nome": "Polo Tricot Corda New Off White",
+    "marca": "Foxton",
+    "preco": 598,
+    "novo": false,
+    "descricao": "A Polo Tricot Corda New é uma peça casual básica e atemporal. Confeccionada em tricot de algodão puro, com o ponto corda da Foxton, ela possui uma modelagem contemporânea urbana.\nA peça tem gola polo e meia abertura frontal com um botão aparente. As mangas e a barra possuem acabamento em ponto ribana, um clássico do modelo polo. Possui aviamento com assinatura Foxton nas costas.\nA modelagem tradicional garante que a camisa possa ser usada em ocasiões de trabalho ou eventos noturnos, combinada com calças jeans ou de sarja.\nDetalhes:\nTricot 100% algodão\nModelagem polo clássica\nPeitilho coberto, 1 botão aparente\nAcabamentos em ponto de ribana\nO modelo mede 1,90 m, veste tamanho 40 e calça 43.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594132999--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594132999--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594132902",
+    "nome": "Polo Tricot Corda New Verde Oliva",
+    "marca": "Foxton",
+    "preco": 598,
+    "novo": false,
+    "descricao": "A Polo Tricot Corda New é uma peça casual básica e atemporal. Confeccionada em tricot de algodão puro, com o ponto corda da Foxton, ela possui uma modelagem contemporânea urbana.\nA peça tem gola polo e meia abertura frontal com um botão aparente. As mangas e a barra possuem acabamento em ponto ribana, um clássico do modelo polo. Possui aviamento com assinatura Foxton nas costas.\nA modelagem tradicional garante que a camisa possa ser usada em ocasiões de trabalho ou eventos noturnos, combinada com calças jeans ou de sarja.\nDetalhes:\nTricot 100% algodão\nModelagem polo clássica\nPeitilho coberto, 1 botão aparente\nAcabamentos em ponto de ribana\nO modelo mede 1,90 m, veste tamanho 40 e calça 43.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594132902--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594132902--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594132874",
+    "nome": "Polo Tricot Corda New Verde Oliva",
+    "marca": "Foxton",
+    "preco": 648,
+    "novo": false,
+    "descricao": "A Polo Tricot Corda New é uma peça casual básica e atemporal. Confeccionada em tricot de algodão puro, com o ponto corda da Foxton, ela possui uma modelagem contemporânea urbana.\nA peça tem gola polo e meia abertura frontal com um botão aparente. As mangas e a barra possuem acabamento em ponto ribana, um clássico do modelo polo. Possui aviamento com assinatura Foxton nas costas.\nA modelagem tradicional garante que a camisa possa ser usada em ocasiões de trabalho ou eventos noturnos, combinada com calças jeans ou de sarja.\nDetalhes:\nTricot 100% algodão\nModelagem polo clássica\nPeitilho coberto, 1 botão aparente\nAcabamentos em ponto de ribana\nO modelo mede 1,90 m, veste tamanho 40 e calça 43.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594132874--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594132874--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594125866",
+    "nome": "Regata De Tricot Canelado Com Decote u Básica Marrom Pimenta",
+    "marca": "Animale",
+    "preco": 328,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594125866--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594125866--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594125746",
+    "nome": "Regata De Tricot Canelado Com Decote u Básica Verde Yura",
+    "marca": "Animale",
+    "preco": 328,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594125746--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594125746--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594125684",
+    "nome": "Regata De Tricot Canelado Com Decote u Básica Verde Yura",
+    "marca": "Animale",
+    "preco": 328,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594125684--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16594125684--unico--0.jpg",
+    "temEstoque": true
+  },
+  {
+    "id": "16594125601",
+    "nome": "Regata De Tricot Canelado Com Decote u Básica Preto",
+    "marca": "Animale",
+    "preco": 328,
+    "novo": false,
+    "descricao": "Regata de Tricot canelado com comprimento clássico, alças e decote em U. Uma proposta versátil e atemporal.\nDetalhes:\n- Alças;\n- Comprimento clássico;\n- Decote em U;\n- A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594125601--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594125601--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594125518",
+    "nome": "Regata De Tricot Canelado Com Decote u Básica Preto",
+    "marca": "Animale",
+    "preco": 328,
+    "novo": false,
+    "descricao": "Regata de Tricot canelado com comprimento clássico, alças e decote em U. Uma proposta versátil e atemporal.\nDetalhes:\n- Alças;\n- Comprimento clássico;\n- Decote em U;\n- A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594125518--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594125518--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594125429",
+    "nome": "Calça Pantalona Cós De Elástico Bicolor Preto / Bege",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594125429--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16594125429--unico--0.jpg",
+    "temEstoque": true
+  },
+  {
+    "id": "16594125403",
+    "nome": "Calça Pantalona Cós De Elástico Bicolor Preto / Bege",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594125403--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594125403--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594125049",
+    "nome": "Vestido De Georgette Curto Com Decote v Estampado Est Textura Snake Color",
+    "marca": "Animale",
+    "preco": 879,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594125049--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594125049--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594124968",
+    "nome": "Vestido De Georgette Leve Curto Gola Alta Estampado Est Onca Reticula Ruibarbo e Doe",
+    "marca": "Animale",
+    "preco": 879,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594124968--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594124968--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594124927",
+    "nome": "Vestido De Georgette Curto Franzdio Marrom Marrom Ruibarbo",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594124927--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594124927--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594124895",
+    "nome": "Vestido De Geogette Midi Com Cut Marrom Marrom Ruibarbo",
+    "marca": "Animale",
+    "preco": 839,
+    "novo": false,
+    "descricao": "A modelagem deste produto tende a ser mais estreita do que o habitual, sugerimos optar por um tamanho maior.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594124895--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594124895--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594124782",
+    "nome": "Camisa Tricoline Essential Branca Branco",
+    "marca": "Animale",
+    "preco": 359,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594124782--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594124782--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594124759",
+    "nome": "Camisa Tricoline Essential Branca Branco",
+    "marca": "Animale",
+    "preco": 359,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594124759--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594124759--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594124710",
+    "nome": "Short De Couro Clochard Pespontos Amarelo Papiro",
+    "marca": "Animale",
+    "preco": 3998,
+    "novo": false,
+    "descricao": "Short Clochard de Couro com shape amplo, recorte no quadril e regulagem por rolotê com cadarço na cintura alta. A peça também possui bolsos e mini fendas laterais. Um clássico na matéria-prima ícone do nosso DNA. Detalhes: - Comprimento curto; - Fechamento por amarração regulável na cintura; - Cintura alta; - Bolsos laterais; - Bolso faca nas costas; - Shape amplo; - Recorte no quadril; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594124710--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594124710--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594124690",
+    "nome": "Short De Couro Clochard Pespontos Amarelo Papiro",
+    "marca": "Animale",
+    "preco": 3998,
+    "novo": false,
+    "descricao": "Short Clochard de Couro com shape amplo, recorte no quadril e regulagem por rolotê com cadarço na cintura alta. A peça também possui bolsos e mini fendas laterais. Um clássico na matéria-prima ícone do nosso DNA. Detalhes: - Comprimento curto; - Fechamento por amarração regulável na cintura; - Cintura alta; - Bolsos laterais; - Bolso faca nas costas; - Shape amplo; - Recorte no quadril; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594124690--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594124690--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594124258",
+    "nome": "Top De Algodão Franzido Detalhe Cut Preto Preto",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "Top Franzido de Algodão com decote reto, recorte no busto, lastex nas costas e alças com amarração regulável no pescoço. Uma escolha feminina e versátil para composições contemporâneas. Detalhes: - Decote reto; - Comprimento cropped; - Alças reguláveis por amarração; - Lastex nas costas; - Abertura no busto; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594124258--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594124258--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594124139",
+    "nome": "Calça De Couro Basic Bege Baia",
+    "marca": "Animale",
+    "preco": 3998,
+    "novo": false,
+    "descricao": "Calça de Couro com shape reto, fechamento por abotoamento, bolsos, passadores na cintura média, recortes pespontados e rebites de metal. Um clássico reinventado nos tons da estação. Detalhes: - Bolsos; - Shape reto; - Cintura média; - Fechamento por abotoamento; - Recortes pespontados; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594124139--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594124139--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594123973",
+    "nome": "Calça De Georgette Pantalona Estampada Est Listra Isla Color",
+    "marca": "Animale",
+    "preco": 639,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594123973--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594123973--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594123857",
+    "nome": "Calça Bomber Cós De Elástico De Viscose Estampada Est Onca Urbe Color",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "A Calça Bomber de Onça traz o nosso clássico animal print em um modelo de cintura alta, com elástico no cós, amarração regulável e bolsos laterais. Para uma produção autêntica, aposte no total look com a blusa na mesma proposta. Detalhes: - Cintura alta; - Bolsos laterais; - Modelagem bomber; - Elástico no cós com amarração regulável.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594123857--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594123857--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16594123002",
+    "nome": "Top De Crepe Justo Preto Preto",
+    "marca": "Animale",
+    "preco": 1018,
+    "novo": false,
+    "descricao": "Top Liso com recortes pespontados que valorizam a silhueta. Em modelo tipo corset e sem alças, apresenta zíper nas costas e shape justo. Design contemporâneo e sofisticado, perfeito para composições autênticas. Detalhes: - Modelo corset; - Sem alças; - Fechamento por zíper nas costas; - Shape justo; - Recortes pespontados; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16594123002--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16594123002--unico--0.jpg",
+    "temEstoque": false
   },
   {
     "id": "16532361979",
@@ -15855,6 +16913,31 @@
     "temEstoque": true
   },
   {
+    "id": "16568827201",
+    "nome": "Calça Pantalona Sem Cós De Viscose Estampada Est Geo Losango Preto",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "Calça Pantalona em modelo sem cós, com pregas frontais, bolsos laterais, cintura alta e zíper nas costas. Ideal para compor produções elegantes, como o look com a T-Shirt de Tricot e acessórios neutros. Detalhes: - Shape pantalona; - Sem cós; - Pregas frontais; - Bolsos laterais; - Cintura alta; - Fechamento por zíper nas costas.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16568827201--unico--0.jpg",
+          "/produtos/16568827201--unico--1.jpg",
+          "/produtos/16568827201--unico--2.jpg",
+          "/produtos/16568827201--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16568827201--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16458308923",
     "nome": "Calça Chino Slim",
     "marca": "Foxton",
@@ -16760,6 +17843,34 @@
     "temEstoque": false
   },
   {
+    "id": "16553554856",
+    "nome": "Jaqueta De Couro Mix Textura Marrom Gengibre",
+    "marca": "Animale",
+    "preco": 7998,
+    "novo": false,
+    "descricao": "Jaqueta de Couro com mix de texturas. Apresenta recortes com chamois, comprimento clássico, forro estampado, gola colarinho, elástico nas costas e bolsos frontais. A peça também possui fechamento por zíper nos punhos e abotoamento frontal. Um clássico que aparece reinventado na temporada, traduzindo exclusividade em cada detalhe.\nDetalhes:\n- Mix de texturas;\n- Comprimento clássico;\n- Possui forro;\n- Gola colarinho;\n- Elástico nas costas;\n- Bolsos frontais;\n- Fechamento por zíper nos punhos;\n- Abotoamento frontal;\n- A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16553554856--unico--0.jpg",
+          "/produtos/16553554856--unico--1.jpg",
+          "/produtos/16553554856--unico--2.jpg",
+          "/produtos/16553554856--unico--3.jpg",
+          "/produtos/16553554856--unico--4.jpg",
+          "/produtos/16553554856--unico--5.jpg",
+          "/produtos/16553554856--unico--6.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16553554856--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16553552394",
     "nome": "JAQUETA DE COURO MOTOR FURADINHA",
     "marca": "Animale",
@@ -16886,6 +17997,28 @@
     ],
     "imagem": "/produtos/16541824597--unico--0.jpg",
     "temEstoque": true
+  },
+  {
+    "id": "16539246901",
+    "nome": "Jaqueta De Couro Motor Classica Azul Azul Pale",
+    "marca": "Animale",
+    "preco": 2899,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16539246901--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16539246901--unico--0.jpg",
+    "temEstoque": false
   },
   {
     "id": "16539242251",
@@ -17018,6 +18151,28 @@
       }
     ],
     "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16535548152",
+    "nome": "Sandalia De Couro Rolote Com Detalhe Metal Preto",
+    "marca": "Animale",
+    "preco": 1998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16535548152--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16535548152--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -17482,6 +18637,30 @@
     "temEstoque": true
   },
   {
+    "id": "16535245227",
+    "nome": "Calça De Algodão Listras Brick Marinho / Laranja",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "Calça Animale de algodão com listras nas cores marinho e laranja, modelo elegante e confortável. Peça original da marca Animale, com caimento moderno e tecido leve, ideal para compor looks sofisticados ou casuais.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16535245227--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16535245227--unico--0.jpg",
+    "temEstoque": true
+  },
+  {
     "id": "16535222150",
     "nome": "Camisa Duda Textura Taipas",
     "marca": "Animale",
@@ -17499,6 +18678,51 @@
       }
     ],
     "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16535173864",
+    "nome": "Colete Bolsos Frente Off White",
+    "marca": "Animale",
+    "preco": 1798,
+    "novo": false,
+    "descricao": "Colete sem mangas e sem gola. A peça apresenta ombreiras, abotoamento frontal, bolsos laterais com tampa, fenda nas costas e passadores na cintura com faixa removível. Um modelo autêntico que traduz personalidade e sofisticação. Detalhes: - Fechamento por abotoamento frontal; - Sem mangas; - Comprimento alongado; - Bolsos laterais com tampa; - Sem gola; - Ombreiras; - Passadores na cintura com faixa regulável removível; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16535173864--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16535173864--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16535171231",
+    "nome": "Blazer Cinza Reto Cinza Ash",
+    "marca": "Animale",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "Descrição: O Blazer apresenta comprimento clássico, mangas longas, ombreiras, gola colarinho, bolsos e abotoamento. O modelo compõe a alfaiataria contemporânea e elegante da coleção. Detalhes: - Fechamentos por abotoamento; - Gola colarinho; - Comprimento clássico; - Bolsos frontais; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16535171231--unico--0.jpg",
+          "/produtos/16535171231--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16535171231--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -17642,6 +18866,51 @@
     "temEstoque": false
   },
   {
+    "id": "16530949588",
+    "nome": "Camisa De Cambraia Listra Marinho Azul Marinho C/ Listra Branca",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "Camisa de Cambraia Listrada com comprimento clássico, gola padre, mangas longas, fechamento por abotoamento, detalhe de pregas e barra fraldada. Versátil e atemporal. Detalhes: - Comprimento clássico; - Gola padre; - Fechamento por abotoamento; - Barra fraldada; - Mangas longas; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16530949588--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16530949588--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16530949582",
+    "nome": "Camisa De Seda Ampla Estampada Manga Longa Est Loc Foto Paisagem Color",
+    "marca": "Animale",
+    "preco": 1998,
+    "novo": false,
+    "descricao": "A Camisa Estampada apresenta mangas longas, comprimento médio, fechamentos por abotoamento, gola colarinho, prega nas costas e fendas laterais. Must-have para composições autênticas e sofisticadas. Detalhes: - Mangas longas; - Fendas laterais; - Gola colarinho; - Comprimento médio; - Fechamento por abotoamento frontal e nos punhos; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16530949582--unico--0.jpg",
+          "/produtos/16530949582--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16530949582--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16530949573",
     "nome": "Camisa Com Bordado De Flor De Rafia",
     "marca": "Animale",
@@ -17722,6 +18991,28 @@
     "temEstoque": false
   },
   {
+    "id": "16530949510",
+    "nome": "Vestido Midi Bicolor Decote Reto Preto / Bege",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16530949510--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16530949510--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16530949504",
     "nome": "Vestido Com Bordado Na Barra",
     "marca": "Animale",
@@ -17742,6 +19033,28 @@
     ],
     "imagem": null,
     "temEstoque": true
+  },
+  {
+    "id": "16530949486",
+    "nome": "Vestido De Georgette Midi Bordado Com Bojo Preto Preto",
+    "marca": "Animale",
+    "preco": 869,
+    "novo": false,
+    "descricao": "Vestido Midi com bojo, alças, shape reto e fechamento por zíper nas costas. Como detalhe especial, apresenta bordados ao longo do modelo. Uma proposta autêntica para a estação.\nDetalhes:\n- Comprimento midi;\n- Alças;\n- Bojo;\n- Bordados;\n- Fechamento por zíper nas costas;\n- Shape reto;\n- A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16530949486--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16530949486--unico--0.jpg",
+    "temEstoque": false
   },
   {
     "id": "16530949482",
@@ -18076,6 +19389,28 @@
     "temEstoque": false
   },
   {
+    "id": "16494254587",
+    "nome": "Vestido De Georgette Midi Decote v Estampado Est. Cobra Vintage Color",
+    "marca": "Animale",
+    "preco": 1498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16494254587--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16494254587--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16494254370",
     "nome": "Camisa Tricoline Listra Rosa",
     "marca": "Animale",
@@ -18093,6 +19428,50 @@
       }
     ],
     "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16494254369",
+    "nome": "Vestido De Georgette Leve Midi De Alça Estampado Babados Est Pois Lente Color",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "Novo ícone para a estação, o Vestido Midi com estampa de Pois Bicolor possui forro, alças reguláveis, decote em V, fendas laterais, saia ampla e cintura ajustada com regulagem por amarração. O destaque especial aparece nos babados, que destacam a silhueta de forma ultra feminina. A bota de couro complementa o look com sofisticação.\nDetalhes:\n- Comprimento midi;\n- Alças reguláveis por amarração;\n- Saia ampla com mini fendas;\n- Decote em V;\n- Babados;\n- Regulagem por amarração na cintura;\n- Possui forro.\nO produto apresenta uma modelagem mais ampla do que o padrão convencional.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16494254369--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16494254369--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16494254366",
+    "nome": "Vestido De Georgette Leve Midi De Alça Estampado Babados Est Pois Lente Color",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "Novo ícone para a estação, o Vestido Midi com estampa de Pois Bicolor possui forro, alças reguláveis, decote em V, fendas laterais, saia ampla e cintura ajustada com regulagem por amarração. O destaque especial aparece nos babados, que destacam a silhueta de forma ultra feminina. A bota de couro complementa o look com sofisticação.\nDetalhes:\n- Comprimento midi;\n- Alças reguláveis por amarração;\n- Saia ampla com mini fendas;\n- Decote em V;\n- Babados;\n- Regulagem por amarração na cintura;\n- Possui forro.\nO produto apresenta uma modelagem mais ampla do que o padrão convencional.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16494254366--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16494254366--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -18156,6 +19535,28 @@
     "temEstoque": false
   },
   {
+    "id": "16486088175",
+    "nome": "Macacão Manga Longa Cenoura Jacquard De Viscose Preto Preto",
+    "marca": "Animale",
+    "preco": 499,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16486088175--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16486088175--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16486088162",
     "nome": "Vestido Midi Clarice Preto E Plum P",
     "marca": "Animale",
@@ -18216,6 +19617,50 @@
     "temEstoque": false
   },
   {
+    "id": "16480049830",
+    "nome": "Regata De Georgette Leve De Alça Marrom Renda Aplicada Marrom Doe",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16480049830--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16480049830--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16480047473",
+    "nome": "Camisa De Seda Ampla Marrom Marrom Biscoito",
+    "marca": "Animale",
+    "preco": 809,
+    "novo": false,
+    "descricao": "A Camisa de Seda apresenta mangas longas, comprimento longo, gola colarinho, pala com pregas nas costas, shape amplo e fechamentos por abotoamento. Uma escolha sofisticada e atemporal.\nDetalhes:\n- Fechamento com abotoamento frontal e nos punhos;\n- Bolsos frontais;\n- Mangas longas;\n- Gola colarinho;\n- Shape amplo;\n- Comprimento longo.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16480047473--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16480047473--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16480047468",
     "nome": "Calca Jeans Skinny Basic High Black",
     "marca": "Animale",
@@ -18236,6 +19681,51 @@
     "temEstoque": false
   },
   {
+    "id": "16480047463",
+    "nome": "Calça De Georgette Pesado Babados Marrom Biscoito",
+    "marca": "Animale",
+    "preco": 779,
+    "novo": false,
+    "descricao": "A Calça de Georgette Marrom aparece como uma das apostas da coleção, em modelo com forro, abotoamento na cintura alta, zíper lateral e shape reto. Os babados frontais criam uma sensação de leveza e movimento. A blusa na mesma proposta finaliza o look com frescor e feminilidade.\nDetalhes:\n- Possui forro;\n- Fechamento por abotoamento e zíper na lateral do cós;\n- Cintura alta;\n- Shape reto;\n- Babados frontais.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16480047463--unico--0.jpg",
+          "/produtos/16480047463--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16480047463--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16480047459",
+    "nome": "Camisa De Georgette Leve Ampla Estampada Est Onça Parda Preto",
+    "marca": "Animale",
+    "preco": 399,
+    "novo": false,
+    "descricao": "Camisa estampada com mangas longas, comprimento clássico, decote em V com babado, fechamento por abotoamento frontal e shape amplo.\nDetalhes:\n- Mangas longas;\n- Decote em V;\n- Abotoamento frontal;\n- Shape amplo;\n- Babados;\n- Comprimento clássico.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16480047459--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16480047459--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16480047452",
     "nome": "Cinto De Couro Recheio Pino",
     "marca": "Animale",
@@ -18253,6 +19743,117 @@
       }
     ],
     "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16480047437",
+    "nome": "Vestido De Georgette Leve Longo Manga Longa Estampado Com Fenda Est Onca Reticula Ruibarbo e Doe",
+    "marca": "Animale",
+    "preco": 999,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16480047437--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16480047437--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16480047431",
+    "nome": "Vestido De Georgette Curto Com Decote v Estampado Est Textura Snake Color",
+    "marca": "Animale",
+    "preco": 879,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16480047431--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16480047431--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16480047401",
+    "nome": "Vestido De Georgette Curto Com Gola Alta Estampado Est Floral Rosa Off e Preto/Est. Floral",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16480047401--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16480047401--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16480047397",
+    "nome": "Jaqueta De Couro Box Estonada Azul Club",
+    "marca": "Animale",
+    "preco": 7598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16480047397--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16480047397--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16480047395",
+    "nome": "Jaqueta De Couro Ampla Botoes Preto",
+    "marca": "Animale",
+    "preco": 3799,
+    "novo": false,
+    "descricao": "Jaqueta de Couro Ampla com comprimento clássico, decote redondo, recortes pespontados e fechamento frontal por abotoamento. Também possui forro estampado e bolsos laterais. Um must-have atemporal.\nDetalhes:\n- Fechamentos por abotoamento;\n- Bolsos laterais;\n- Recortes pespontados;\n- Comprimento clássico;\n- Possui forro;\n- Shape amplo;\n- Decote redondo;\n- A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16480047395--unico--0.jpg",
+          "/produtos/16480047395--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16480047395--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -18368,6 +19969,141 @@
     "temEstoque": false
   },
   {
+    "id": "16475855136",
+    "nome": "Camisa De Algodao Lisa Azul Claro Azul Claro",
+    "marca": "Animale",
+    "preco": 349,
+    "novo": false,
+    "descricao": "A Camisa de Algodão renova a alfaiataria da temporada no modelo com mangas longas, gola colarinho, comprimento clássico, bolso frontal e pregas nas costas.\nDetalhes:\n- Mangas longas;\n- Fechamento por abotoamento;\n- Comprimento clássico;\n- Bolso frontal.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16475855136--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16475855136--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16475855134",
+    "nome": "Calça De Georgette Cargo Estampado Est Textura Snake Color",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16475855134--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16475855134--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16475855129",
+    "nome": "Calça De Georgette Cargo Estampado Est Textura Snake Color",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16475855129--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16475855129--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16475855124",
+    "nome": "Saia De Georgette Pesado Curta Estampada Babados Est Onca Reticula Ruibarbo e Doe",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16475855124--unico--0.jpg",
+          "/produtos/16475855124--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16475855124--unico--0.jpg",
+    "temEstoque": true
+  },
+  {
+    "id": "16475855122",
+    "nome": "Saia Midi De Algodão Estampada Est Onca Sombra Superlemon",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "Aposta do Inverno 25, nosso icônico animal print surge no modelo de Saia Midi com passadores, fechamento interno no cós e shape evasê. A proposta combina com maxi acessórios e cria looks hi-lo com regatas ou tops de malha. Detalhes: - Comprimento midi; - Fechamento interno no cós; - Shape evasê. A modelagem deste produto tende a ser mais estreita do que o habitual, sugerimos optar por um tamanho maior.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16475855122--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16475855122--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16475855119",
+    "nome": "Vestido De Georgette Leve Midi Manga Longa Estampado Fenda Lateral Est Floral Seco Azul e Preto",
+    "marca": "Animale",
+    "preco": 2598,
+    "novo": false,
+    "descricao": "O Vestido na estampa Floral Seco possui forro, shape amplo, mangas longas com babados, abotoamento frontal no decote em V, recortes e fendas na barra. A bota de couro completa o look, trazendo um contraponto urbano e moderno ao mood boho do visual. Detalhes: - Comprimento longuete; - Possui forro; - Shape amplo; - Mangas longas com babados; - Fechamento por abotoamento frontal; - Recortes; - Fendas;",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16475855119--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16475855119--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16475855115",
     "nome": "Casaco Manga Longa Duo Color Tricot Pb",
     "marca": "Animale",
@@ -18470,6 +20206,138 @@
     "temEstoque": false
   },
   {
+    "id": "16470815060",
+    "nome": "Blusa De Malha Gola Alta Preto Preto",
+    "marca": "Animale",
+    "preco": 349,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16470815060--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16470815060--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16470815057",
+    "nome": "Calça Bomber Cós De Elástico De Viscose Estampada Est Onca Urbe Color",
+    "marca": "Animale",
+    "preco": 519,
+    "novo": false,
+    "descricao": "A Calça Bomber de Onça traz o nosso clássico animal print em um modelo de cintura alta, com elástico no cós, amarração regulável e bolsos laterais. Para uma produção autêntica, aposte no total look com a blusa na mesma proposta. Detalhes: - Cintura alta; - Bolsos laterais; - Modelagem bomber; - Elástico no cós com amarração regulável.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16470815057--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16470815057--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16470815056",
+    "nome": "Calça Pantalona Basic Com Linho Off White Preto",
+    "marca": "Animale",
+    "preco": 539,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16470815056--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16470815056--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16470815055",
+    "nome": "Vestido De Georgette Leve Curto Gola Alta Estampado Est Onca Reticula Ruibarbo e Doe",
+    "marca": "Animale",
+    "preco": 879,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16470815055--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16470815055--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16470813075",
+    "nome": "Calça Jeans Lavagem Cool Jeans Escuro",
+    "marca": "Animale",
+    "preco": 579,
+    "novo": false,
+    "descricao": "Calça Jeans com lavagem escura, cintura baixa, abotoamento frontal, bolsos forrados e passantes no cós. A peça se destaca por sua versatilidade atemporal, sendo uma escolha perfeita para composições urbanas, como o look com o Pull de Tricot. Detalhes: - Jeans escuro; - Bolsos frontais e nas costas; - Botão frontal; - Passantes no cós; - Shape reto.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16470813075--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16470813075--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16470813074",
+    "nome": "Calça De Couro Basic Bege Baia",
+    "marca": "Animale",
+    "preco": 3998,
+    "novo": false,
+    "descricao": "Calça de Couro com shape reto, fechamento por abotoamento, bolsos, passadores na cintura média, recortes pespontados e rebites de metal. Um clássico reinventado nos tons da estação. Detalhes: - Bolsos; - Shape reto; - Cintura média; - Fechamento por abotoamento; - Recortes pespontados; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16470813074--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16470813074--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16470813068",
     "nome": "Trench Coat De Couro Curto Manga Fraldad",
     "marca": "Animale",
@@ -18537,6 +20405,50 @@
       }
     ],
     "imagem": "/produtos/16470606921--preto--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16466842521",
+    "nome": "Blusa De Tricot Manga Longa Portuguesa Cinza",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16466842521--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16466842521--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16466842514",
+    "nome": "Calça De Georgette Pantalona Estampado Est Floral Rosa Off e Preto",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16466842514--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16466842514--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -18622,6 +20534,96 @@
     ],
     "imagem": "/produtos/16462563128--rosa-claro--0.jpg",
     "temEstoque": true
+  },
+  {
+    "id": "16461888791",
+    "nome": "Calça Reta Com Zíper Na Perna Marrom Biscoito",
+    "marca": "Animale",
+    "preco": 679,
+    "novo": false,
+    "descricao": "A Calça Reta Marrom é um must-have para diferentes ocasiões. O modelo possui cintura alta, zíper nas laterais da barra, bolsos, passadores e fechamento interno no cós. Uma escolha atemporal, perfeita para transitar entre o office look e eventos casuais.\nDetalhes:\n- Zíper nas laterais;\n- Cintura alta;\n- Shape reto;\n- Bolsos;\n- Fechamento interno no cós.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16461888791--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16461888791--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16461888775",
+    "nome": "Mini Saia De Lã Com Cós Marrom Rum",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16461888775--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16461888775--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16461888767",
+    "nome": "Mini Saia De Lã Com Botões No Cós Verde Mescla",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16461888767--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16461888767--unico--0.jpg",
+    "temEstoque": true
+  },
+  {
+    "id": "16461888756",
+    "nome": "Macaquinho De Linho Manga Longa Com Regulagem Na Cintura Bege Sand",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16461888756--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16461888756--unico--0.jpg",
+    "temEstoque": false
   },
   {
     "id": "16461888744",
@@ -21184,6 +23186,28 @@
     "temEstoque": false
   },
   {
+    "id": "16453799924",
+    "nome": "Vestido Curto Plissado Color Est Textura Retro Color",
+    "marca": "Animale",
+    "preco": 1679,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16453799924--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16453799924--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16453799921",
     "nome": "Overtop Transpassado Marrom Rum",
     "marca": "Animale",
@@ -21448,6 +23472,28 @@
     "temEstoque": false
   },
   {
+    "id": "16453768277",
+    "nome": "Camisa De Georgette Pesado Ampla Estampada Est Lenco Pantera Preto e Branco",
+    "marca": "Animale",
+    "preco": 999,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16453768277--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16453768277--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16453768270",
     "nome": "Camisa Cropped Onca Sombra",
     "marca": "Animale",
@@ -21485,6 +23531,28 @@
       }
     ],
     "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16453768259",
+    "nome": "Saia Tania Preto",
+    "marca": "Animale",
+    "preco": 739,
+    "novo": false,
+    "descricao": "Saia Midi com zíper frontal, cintura média com passadores e cinto removível, pala larga no cós e recortes que valorizam a silhueta.\nDetalhes:\n- Zíper frontal;\n- Shape reto;\n- Comprimento Midi;\n- Cintura média;\n- Cinto removível.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16453768259--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16453768259--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -21545,6 +23613,28 @@
       }
     ],
     "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16453768220",
+    "nome": "Vestido De Georgette Curto Franzdio Marrom Marrom Ruibarbo",
+    "marca": "Animale",
+    "preco": 679,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16453768220--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16453768220--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -21692,6 +23782,73 @@
     "temEstoque": false
   },
   {
+    "id": "16450299627",
+    "nome": "Camisa Recortes Mix Pure Preta Preto",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16450299627--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16450299627--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16450299625",
+    "nome": "Calça Pantalona Sem Cós De Viscose Estampada Est Geo Losango Preto",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "Calça Pantalona em modelo sem cós, com pregas frontais, bolsos laterais, cintura alta e zíper nas costas. Ideal para compor produções elegantes, como o look com a T-Shirt de Tricot e acessórios neutros. Detalhes: - Shape pantalona; - Sem cós; - Pregas frontais; - Bolsos laterais; - Cintura alta; - Fechamento por zíper nas costas.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16450299625--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16450299625--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16450299623",
+    "nome": "Calça De Georgette Pesado Ampla Estampada Est Lenco Pantera Preto e Branco",
+    "marca": "Animale",
+    "preco": 849,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16450299623--unico--0.jpg",
+          "/produtos/16450299623--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16450299623--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16450299619",
     "nome": "Saia Listrada Fenda De Tricot",
     "marca": "Animale",
@@ -21712,6 +23869,28 @@
     "temEstoque": false
   },
   {
+    "id": "16450299618",
+    "nome": "Vestido De Geogette Midi Com Cut Marrom Marrom Ruibarbo",
+    "marca": "Animale",
+    "preco": 839,
+    "novo": false,
+    "descricao": "A modelagem deste produto tende a ser mais estreita do que o habitual, sugerimos optar por um tamanho maior.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16450299618--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16450299618--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16450299614",
     "nome": "Vestido Cut Preto De Tricot",
     "marca": "Animale",
@@ -21729,6 +23908,29 @@
       }
     ],
     "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16450299613",
+    "nome": "Vestido Midi Alça Larga De Gorgorão De Algodão Estampado Est Fig Recorte Lettering Preto e Glitch",
+    "marca": "Animale",
+    "preco": 509,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16450299613--unico--0.jpg",
+          "/produtos/16450299613--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16450299613--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -21812,6 +24014,116 @@
     "temEstoque": false
   },
   {
+    "id": "16443343832",
+    "nome": "Blusa Manga Longa Bicolor Pb Preto C/Off",
+    "marca": "Animale",
+    "preco": 209,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16443343832--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16443343832--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16443343831",
+    "nome": "Blusa Tee Manga Curta Bicolor Off White C/Preto",
+    "marca": "Animale",
+    "preco": 348,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16443343831--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16443343831--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16443343830",
+    "nome": "Blusa Manga Longa Franzida Gola Alta Amarração Nas Costas De Algodão Estampada Pois Vitral Cafe e Creme",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16443343830--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16443343830--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16443343828",
+    "nome": "Calca Reta Veludo Preto Preto",
+    "marca": "Animale",
+    "preco": 299,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16443343828--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16443343828--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16443343826",
+    "nome": "Saia Midi Evase De Laise Bolas Nude Marzipan",
+    "marca": "Animale",
+    "preco": 929,
+    "novo": false,
+    "descricao": "Saia Midi de Laise de Algodão com recortes em formatos de bolas, shape evasê, cintura média com pala e fechamento por zíper nas costas.\nDetalhes:\n- Comprimento midi;\n- Cintura média;\n- Fechamento por zíper nas costas;\n- Shape evasê;\n- Laise.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16443343826--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16443343826--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16443343825",
     "nome": "Vestido Malha Onca Superlemon",
     "marca": "Animale",
@@ -21869,6 +24181,28 @@
       }
     ],
     "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16443333066",
+    "nome": "Camisa De Linho Bege Sand",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "A Camisa de Linho no tom Bege Sand atualiza a nossa clássica linha de alfaiataria em modelo com comprimento clássico, mangas longas, bolso frontal, gola colarinho, pala com prega nas costas e botões frontais. A atemporalidade da camisa cria propostas versáteis, modernas e urbanas que vão além do office look. Detalhes: - Fechamento com botões frontais; - Comprimento clássico; - Gola colarinho; - Bolso frontal; - Não possui forro.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16443333066--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16443333066--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -21947,6 +24281,30 @@
       }
     ],
     "imagem": "/produtos/16442956282--azul-marinho--0.jpg",
+    "temEstoque": true
+  },
+  {
+    "id": "16442980854",
+    "nome": "Saia Midi Detalhe Aba Nos Bolsos Com Linho Estampado Est Camuflado Flor Biscoito e Cafe",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "A estampa camuflada ganha novas propostas no modelo de Saia Midi com cintura alta, shape evasê, bolsos frontais e elástico regulável na cintura. Aposte em complementos na mesma paleta de cores para uma produção moderna. Detalhes: - Comprimento midi; - Shape evasê; - Bolsos frontais; - Cintura alta; - Elástico regulável na cintura.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16442980854--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16442980854--unico--0.jpg",
     "temEstoque": true
   },
   {
@@ -22228,6 +24586,162 @@
     "temEstoque": false
   },
   {
+    "id": "16434104236",
+    "nome": "Blusa Cropped De Malha Crepe Preto",
+    "marca": "Animale",
+    "preco": 228,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16434104236--unico--0.jpg",
+          "/produtos/16434104236--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16434104236--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16434103929",
+    "nome": "Blusa Malha Manga Longa Detalhe Franzido Est Pois Pontos Preto e Queimado",
+    "marca": "Animale",
+    "preco": 199,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16434103929--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16434103929--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16434103809",
+    "nome": "Vestido Midi Manga Longa Vitral Est Pois Vitral Cafe e Creme",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16434103809--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16434103809--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16434103700",
+    "nome": "Vestido De Tricot Curto Com Recorte Ombro Preto",
+    "marca": "Animale",
+    "preco": 389,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16434103700--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16434103700--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16434046932",
+    "nome": "Calça Cargo Nude Marzipan",
+    "marca": "Animale",
+    "preco": 859,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16434046932--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16434046932--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16434046270",
+    "nome": "Vestido Midi Alça Larga De Gorgorão De Algodão Preto Preto",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16434046270--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16434046270--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16434046085",
+    "nome": "Vestido Midi Manga Longa De Viscose Com Estampa Localizada Est Floral Pincel Off e Preto",
+    "marca": "Animale",
+    "preco": 679,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16434046085--unico--0.jpg",
+          "/produtos/16434046085--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16434046085--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16434038966",
     "nome": "Tunica Sem Manga Com Gola Alta",
     "marca": "Animale",
@@ -22265,6 +24779,28 @@
       }
     ],
     "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16434038802",
+    "nome": "Blusa De Algodão Com Bordado e Gola Preto",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16434038802--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16434038802--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -22345,6 +24881,28 @@
       }
     ],
     "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16434038044",
+    "nome": "Jaqueta De Couro Perfecto Zíperes Bege Sand",
+    "marca": "Animale",
+    "preco": 4998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16434038044--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16434038044--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -22989,6 +25547,28 @@
     "temEstoque": false
   },
   {
+    "id": "16433820423",
+    "nome": "Calça Com Bolsos e Zíperes Preto",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16433820423--unico--0.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16433820423--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
     "id": "16433819892",
     "nome": "Vestido Amarração Onca Plum",
     "marca": "Animale",
@@ -23029,8 +25609,8 @@
     "temEstoque": false
   },
   {
-    "id": "16535245227",
-    "nome": "Calça De Algodão Listras Brick Marinho / Laranja",
+    "id": "16604250955",
+    "nome": "Calça De Algodão Listras Brick Marinho / Laranja - 38",
     "marca": "Animale",
     "preco": 998,
     "novo": false,
@@ -23042,28 +25622,17 @@
           "/produtos/16604250955--unico--0.jpg"
         ],
         "tamanhos": [
-          "38",
-          "40"
+          "Único"
         ],
-        "tamanhosDisponiveis": [
-          "40"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16604250955--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorTamanho": {
-      "38": [
-        "16604250955"
-      ],
-      "40": [
-        "16535245227"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594124258",
-    "nome": "Top De Algodão Franzido Detalhe Cut Preto Preto",
+    "id": "16595597299",
+    "nome": "Top De Algodão Franzido Detalhe Cut Preto Preto - 40",
     "marca": "Animale",
     "preco": 598,
     "novo": false,
@@ -23075,26 +25644,17 @@
           "/produtos/16595597299--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16595597299--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594124258"
-      ],
-      "40": [
-        "16595597299"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16470813074",
-    "nome": "Calça De Couro Basic Bege Baia",
+    "id": "16595535015",
+    "nome": "Calça De Couro Basic Bege Baia - 42",
     "marca": "Animale",
     "preco": 3998,
     "novo": false,
@@ -23106,29 +25666,16 @@
           "/produtos/16595535015--unico--0.jpg"
         ],
         "tamanhos": [
-          "38",
-          "40",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16595535015--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "38": [
-        "16470813074"
-      ],
-      "40": [
-        "16594124139"
-      ],
-      "42": [
-        "16595535015"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16434038044",
+    "id": "16594139668",
     "nome": "Jaqueta De Couro Perfecto Zíperes Bege Sand",
     "marca": "Animale",
     "preco": 2899,
@@ -23141,7 +25688,6 @@
           "/produtos/16595524744--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
           "38",
           "40"
         ],
@@ -23151,20 +25697,16 @@
     "imagem": "/produtos/16595524744--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "36": [
-        "16434038044"
-      ],
       "38": [
         "16594139668"
       ],
       "40": [
-        "16595524744",
-        "16594139647"
+        "16595524744"
       ]
     }
   },
   {
-    "id": "16470815057",
+    "id": "16594137212",
     "nome": "Calça Bomber Cós De Elástico De Viscose Estampada Est Onca Urbe Color",
     "marca": "Animale",
     "preco": 798,
@@ -23179,7 +25721,6 @@
         "tamanhos": [
           "36",
           "38",
-          "40",
           "42"
         ],
         "tamanhosDisponiveis": [
@@ -23191,14 +25732,10 @@
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "36": [
-        "16595485777",
-        "16470815057"
+        "16595485777"
       ],
       "38": [
         "16594137240"
-      ],
-      "40": [
-        "16594123857"
       ],
       "42": [
         "16595485279",
@@ -23207,7 +25744,7 @@
     }
   },
   {
-    "id": "16475855122",
+    "id": "16594135475",
     "nome": "Saia Midi De Algodão Estampada Est Onca Sombra Superlemon",
     "marca": "Animale",
     "preco": 898,
@@ -23220,12 +25757,10 @@
           "/produtos/16595469194--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
           "36",
           "38",
           "40",
-          "42",
-          "44"
+          "42"
         ],
         "tamanhosDisponiveis": []
       }
@@ -23233,9 +25768,6 @@
     "imagem": "/produtos/16595469194--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "34": [
-        "16594135420"
-      ],
       "36": [
         "16594135475"
       ],
@@ -23247,14 +25779,11 @@
       ],
       "42": [
         "16594135604"
-      ],
-      "44": [
-        "16475855122"
       ]
     }
   },
   {
-    "id": "16461888775",
+    "id": "16595461294",
     "nome": "Mini Saia De Lã Com Cós Marrom Rum",
     "marca": "Animale",
     "preco": 798,
@@ -23268,35 +25797,25 @@
         ],
         "tamanhos": [
           "36",
-          "38",
-          "40",
-          "42"
+          "40"
         ],
-        "tamanhosDisponiveis": [
-          "42"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16595461461--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorTamanho": {
       "36": [
         "16595461461"
       ],
-      "38": [
-        "16461888775"
-      ],
       "40": [
         "16595461294"
-      ],
-      "42": [
-        "16594135050"
       ]
     }
   },
   {
-    "id": "16461888767",
-    "nome": "Mini Saia De Lã Com Botões No Cós Verde Mescla",
+    "id": "16595459866",
+    "nome": "Mini Saia De Lã Com Botões No Cós Verde Mescla - 36",
     "marca": "Animale",
     "preco": 898,
     "novo": false,
@@ -23308,33 +25827,19 @@
           "/produtos/16595459866--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "38",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": [
-          "36",
-          "38"
+          "Único"
         ]
       }
     ],
     "imagem": "/produtos/16595459866--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16595459866"
-      ],
-      "38": [
-        "16461888767"
-      ],
-      "40": [
-        "16594135213"
-      ]
-    }
+    "temEstoque": true
   },
   {
-    "id": "16475855119",
-    "nome": "Vestido De Georgette Leve Midi Manga Longa Estampado Fenda Lateral Est Floral Seco Azul e Preto",
+    "id": "16595364872",
+    "nome": "Vestido De Georgette Leve Midi Manga Longa Estampado Fenda Lateral Est Floral Seco Azul e Preto - 38",
     "marca": "Animale",
     "preco": 2598,
     "novo": false,
@@ -23346,28 +25851,99 @@
           "/produtos/16595364872--unico--0.jpg"
         ],
         "tamanhos": [
-          "38",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": [
-          "38"
+          "Único"
         ]
       }
     ],
     "imagem": "/produtos/16595364872--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorTamanho": {
-      "38": [
-        "16595364872"
-      ],
-      "40": [
-        "16475855119"
-      ]
-    }
+    "temEstoque": true
   },
   {
-    "id": "16466842514",
-    "nome": "Calça De Georgette Pantalona Estampado Est Floral Rosa Off e Preto",
+    "id": "16453768295",
+    "nome": "Blusa Tule Onca Suspiro Tam:GG",
+    "marca": "Animale",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16530949609",
+    "nome": "Blusa Regata Geo Laser Preto E Orla Tam:GG",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16494254695",
+    "nome": "Blusa Manga Longa Decote V Tam:G",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16450299632",
+    "nome": "Top Gola Alta Cropped Lurex De Tricot Tam:GG",
+    "marca": "Animale",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16594652008",
+    "nome": "Calça De Georgette Pantalona Estampado Est Floral Rosa Off e Preto - 42",
     "marca": "Animale",
     "preco": 1198,
     "novo": false,
@@ -23379,30 +25955,17 @@
           "/produtos/16594652008--unico--0.jpg"
         ],
         "tamanhos": [
-          "38",
-          "40",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594652008--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "38": [
-        "16466842514"
-      ],
-      "40": [
-        "16594137464"
-      ],
-      "42": [
-        "16594652008"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594139940",
-    "nome": "Jaqueta De Couro Motor Furadinha Bege Bege Sand",
+    "id": "16594139976",
+    "nome": "Jaqueta De Couro Motor Furadinha Bege Bege Sand - 36",
     "marca": "Animale",
     "preco": 3598,
     "novo": false,
@@ -23414,26 +25977,17 @@
           "/produtos/16594139976--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594139976--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594139976"
-      ],
-      "40": [
-        "16594139940"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16442980854",
-    "nome": "Saia Midi Detalhe Aba Nos Bolsos Com Linho Estampado Est Camuflado Flor Biscoito e Cafe",
+    "id": "16594139899",
+    "nome": "Saia Midi Detalhe Aba Nos Bolsos Com Linho Estampado Est Camuflado Flor Biscoito e Cafe - 36",
     "marca": "Animale",
     "preco": 798,
     "novo": false,
@@ -23445,32 +25999,17 @@
           "/produtos/16594139899--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "36",
-          "40"
+          "Único"
         ],
-        "tamanhosDisponiveis": [
-          "34"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594139899--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorTamanho": {
-      "34": [
-        "16442980854"
-      ],
-      "36": [
-        "16594139899"
-      ],
-      "40": [
-        "16594139883"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16480047397",
-    "nome": "Jaqueta De Couro Box Estonada Azul Club",
+    "id": "16594139801",
+    "nome": "Jaqueta De Couro Box Estonada Azul Club - 42",
     "marca": "Animale",
     "preco": 4599,
     "novo": false,
@@ -23482,26 +26021,17 @@
           "/produtos/16594139801--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594139801--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16480047397"
-      ],
-      "42": [
-        "16594139801"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594139611",
-    "nome": "Vestido De Couro Midi Regata Corset Preto Preto",
+    "id": "16594139623",
+    "nome": "Vestido De Couro Midi Regata Corset Preto Preto - 40",
     "marca": "Animale",
     "preco": 2999,
     "novo": false,
@@ -23513,26 +26043,17 @@
           "/produtos/16594139623--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594139623--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594139611"
-      ],
-      "40": [
-        "16594139623"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16433820423",
-    "nome": "Calça Com Bolsos e Zíperes Preto",
+    "id": "16594139549",
+    "nome": "Calça Com Bolsos e Zíperes Preto - 38",
     "marca": "Animale",
     "preco": 1298,
     "novo": false,
@@ -23544,26 +26065,17 @@
           "/produtos/16594139549--unico--0.jpg"
         ],
         "tamanhos": [
-          "38",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594139549--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "38": [
-        "16594139549"
-      ],
-      "40": [
-        "16433820423"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16434038802",
-    "nome": "Blusa De Algodão Com Bordado e Gola Preto",
+    "id": "16594139396",
+    "nome": "Blusa De Algodão Com Bordado e Gola Preto - 38",
     "marca": "Animale",
     "preco": 998,
     "novo": false,
@@ -23575,25 +26087,16 @@
           "/produtos/16594139396--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "38"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594139396--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16434038802"
-      ],
-      "38": [
-        "16594139396"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594139227",
+    "id": "16594139307",
     "nome": "Colete De Algodão Com Linho Alongado Com Botões e Cinto Preto",
     "marca": "Animale",
     "preco": 829,
@@ -23606,8 +26109,6 @@
           "/produtos/16594139361--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "36",
           "38",
           "40",
           "42"
@@ -23618,12 +26119,6 @@
     "imagem": "/produtos/16594139361--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "34": [
-        "16594139227"
-      ],
-      "36": [
-        "16594139278"
-      ],
       "38": [
         "16594139307"
       ],
@@ -23636,8 +26131,8 @@
     }
   },
   {
-    "id": "16434046085",
-    "nome": "Vestido Midi Manga Longa De Viscose Com Estampa Localizada Est Floral Pincel Off e Preto",
+    "id": "16594139123",
+    "nome": "Vestido Midi Manga Longa De Viscose Com Estampa Localizada Est Floral Pincel Off e Preto - 38",
     "marca": "Animale",
     "preco": 679,
     "novo": false,
@@ -23650,26 +26145,17 @@
           "/produtos/16594139123--unico--1.jpg"
         ],
         "tamanhos": [
-          "36",
-          "38"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594139123--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16434046085"
-      ],
-      "38": [
-        "16594139123"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16450299613",
-    "nome": "Vestido Midi Alça Larga De Gorgorão De Algodão Estampado Est Fig Recorte Lettering Preto e Glitch",
+    "id": "16594139034",
+    "nome": "Vestido Midi Alça Larga De Gorgorão De Algodão Estampado Est Fig Recorte Lettering Preto e Glitch - 40",
     "marca": "Animale",
     "preco": 509,
     "novo": false,
@@ -23682,26 +26168,17 @@
           "/produtos/16594139034--unico--1.jpg"
         ],
         "tamanhos": [
-          "40",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594139034--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "40": [
-        "16594139034"
-      ],
-      "42": [
-        "16450299613"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16434046270",
-    "nome": "Vestido Midi Alça Larga De Gorgorão De Algodão Preto Preto",
+    "id": "16594139005",
+    "nome": "Vestido Midi Alça Larga De Gorgorão De Algodão Preto Preto - 38",
     "marca": "Animale",
     "preco": 699,
     "novo": false,
@@ -23713,32 +26190,19 @@
           "/produtos/16594139005--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "38",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594139005--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594138990"
-      ],
-      "38": [
-        "16594139005"
-      ],
-      "40": [
-        "16434046270"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16453768277",
+    "id": "16594138902",
     "nome": "Camisa De Georgette Pesado Ampla Estampada Est Lenco Pantera Preto e Branco",
     "marca": "Animale",
-    "preco": 999,
+    "preco": 1598,
     "novo": false,
     "descricao": "",
     "cores": [
@@ -23748,10 +26212,8 @@
           "/produtos/16594138939--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
           "38",
-          "40",
-          "42"
+          "40"
         ],
         "tamanhosDisponiveis": []
       }
@@ -23759,25 +26221,19 @@
     "imagem": "/produtos/16594138939--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "36": [
-        "16453768277"
-      ],
       "38": [
         "16594138939"
       ],
       "40": [
         "16594138902"
-      ],
-      "42": [
-        "16594138875"
       ]
     }
   },
   {
-    "id": "16450299623",
+    "id": "16594138735",
     "nome": "Calça De Georgette Pesado Ampla Estampada Est Lenco Pantera Preto e Branco",
     "marca": "Animale",
-    "preco": 849,
+    "preco": 1398,
     "novo": false,
     "descricao": "",
     "cores": [
@@ -23788,10 +26244,8 @@
           "/produtos/16594138781--unico--1.jpg"
         ],
         "tamanhos": [
-          "34",
           "38",
-          "40",
-          "44"
+          "40"
         ],
         "tamanhosDisponiveis": []
       }
@@ -23799,25 +26253,19 @@
     "imagem": "/produtos/16594138781--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "34": [
-        "16450299623"
-      ],
       "38": [
         "16594138781"
       ],
       "40": [
         "16594138735"
-      ],
-      "44": [
-        "16594138670"
       ]
     }
   },
   {
-    "id": "16434046932",
-    "nome": "Calça Cargo Nude Marzipan",
+    "id": "16594138587",
+    "nome": "Calça Cargo Nude Marzipan - 38",
     "marca": "Animale",
-    "preco": 859,
+    "preco": 1598,
     "novo": false,
     "descricao": "",
     "cores": [
@@ -23827,26 +26275,17 @@
           "/produtos/16594138587--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "38"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594138587--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "34": [
-        "16434046932"
-      ],
-      "38": [
-        "16594138587"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16434103700",
-    "nome": "Vestido De Tricot Curto Com Recorte Ombro Preto",
+    "id": "16594138510",
+    "nome": "Vestido De Tricot Curto Com Recorte Ombro Preto - M",
     "marca": "Animale",
     "preco": 389,
     "novo": false,
@@ -23858,26 +26297,17 @@
           "/produtos/16594138510--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "M"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594138510--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "M": [
-        "16594138510"
-      ],
-      "P": [
-        "16434103700"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16434103809",
-    "nome": "Vestido Midi Manga Longa Vitral Est Pois Vitral Cafe e Creme",
+    "id": "16594138452",
+    "nome": "Vestido Midi Manga Longa Vitral Est Pois Vitral Cafe e Creme - M",
     "marca": "Animale",
     "preco": 798,
     "novo": false,
@@ -23889,25 +26319,16 @@
           "/produtos/16594138452--unico--0.jpg"
         ],
         "tamanhos": [
-          "PP",
-          "M"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594138452--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "M": [
-        "16594138452"
-      ],
-      "PP": [
-        "16434103809"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16443343830",
+    "id": "16594138349",
     "nome": "Blusa Manga Longa Franzida Gola Alta Amarração Nas Costas De Algodão Estampada Pois Vitral Cafe e Creme",
     "marca": "Animale",
     "preco": 598,
@@ -23920,10 +26341,8 @@
           "/produtos/16594138382--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
           "36",
-          "38",
-          "40"
+          "38"
         ],
         "tamanhosDisponiveis": []
       }
@@ -23931,23 +26350,17 @@
     "imagem": "/produtos/16594138382--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "34": [
-        "16443343830"
-      ],
       "36": [
         "16594138382"
       ],
       "38": [
         "16594138349"
-      ],
-      "40": [
-        "16594138325"
       ]
     }
   },
   {
-    "id": "16443343826",
-    "nome": "Saia Midi Evase De Laise Bolas Nude Marzipan",
+    "id": "16594138229",
+    "nome": "Saia Midi Evase De Laise Bolas Nude Marzipan - 36",
     "marca": "Animale",
     "preco": 929,
     "novo": false,
@@ -23959,26 +26372,17 @@
           "/produtos/16594138229--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "36"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594138229--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "34": [
-        "16443343826"
-      ],
-      "36": [
-        "16594138229"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16486088175",
-    "nome": "Macacão Manga Longa Cenoura Jacquard De Viscose Preto Preto",
+    "id": "16594138034",
+    "nome": "Macacão Manga Longa Cenoura Jacquard De Viscose Preto Preto - 44",
     "marca": "Animale",
     "preco": 499,
     "novo": false,
@@ -23990,26 +26394,17 @@
           "/produtos/16594138034--unico--0.jpg"
         ],
         "tamanhos": [
-          "38",
-          "44"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594138034--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "38": [
-        "16486088175"
-      ],
-      "44": [
-        "16594138034"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16453768259",
-    "nome": "Saia Tania Preto",
+    "id": "16594137967",
+    "nome": "Saia Tania Preto - 36",
     "marca": "Animale",
     "preco": 739,
     "novo": false,
@@ -24021,26 +26416,17 @@
           "/produtos/16594137967--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594137967--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594137967"
-      ],
-      "40": [
-        "16453768259"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16470815056",
-    "nome": "Calça Pantalona Basic Com Linho Off White Preto",
+    "id": "16594137896",
+    "nome": "Calça Pantalona Basic Com Linho Off White Preto - 40",
     "marca": "Animale",
     "preco": 539,
     "novo": false,
@@ -24052,30 +26438,17 @@
           "/produtos/16594137896--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "38",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594137896--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594137855"
-      ],
-      "38": [
-        "16470815056"
-      ],
-      "40": [
-        "16594137896"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16443333066",
-    "nome": "Camisa De Linho Bege Sand",
+    "id": "16594137705",
+    "nome": "Camisa De Linho Bege Sand - 40",
     "marca": "Animale",
     "preco": 898,
     "novo": false,
@@ -24087,26 +26460,17 @@
           "/produtos/16594137705--unico--0.jpg"
         ],
         "tamanhos": [
-          "40",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594137705--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "40": [
-        "16594137705"
-      ],
-      "42": [
-        "16443333066"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16461888756",
-    "nome": "Macaquinho De Linho Manga Longa Com Regulagem Na Cintura Bege Sand",
+    "id": "16594137677",
+    "nome": "Macaquinho De Linho Manga Longa Com Regulagem Na Cintura Bege Sand - 40",
     "marca": "Animale",
     "preco": 1598,
     "novo": false,
@@ -24118,32 +26482,19 @@
           "/produtos/16594137677--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "40",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594137677--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "34": [
-        "16594137646"
-      ],
-      "40": [
-        "16594137677"
-      ],
-      "42": [
-        "16461888756"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16470813075",
+    "id": "16594137572",
     "nome": "Calça Jeans Lavagem Cool Jeans Escuro",
     "marca": "Animale",
-    "preco": 579,
+    "preco": 798,
     "novo": false,
     "descricao": "Calça Jeans com lavagem escura, cintura baixa, abotoamento frontal, bolsos forrados e passantes no cós. A peça se destaca por sua versatilidade atemporal, sendo uma escolha perfeita para composições urbanas, como o look com o Pull de Tricot. Detalhes: - Jeans escuro; - Bolsos frontais e nas costas; - Botão frontal; - Passantes no cós; - Shape reto.",
     "cores": [
@@ -24153,8 +26504,6 @@
           "/produtos/16594137612--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "40",
           "42",
           "44"
         ],
@@ -24164,12 +26513,6 @@
     "imagem": "/produtos/16594137612--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "34": [
-        "16470813075"
-      ],
-      "40": [
-        "16594137548"
-      ],
       "42": [
         "16594137572"
       ],
@@ -24179,8 +26522,8 @@
     }
   },
   {
-    "id": "16475855129",
-    "nome": "Calça De Georgette Cargo Estampado Est Textura Snake Color",
+    "id": "16594137380",
+    "nome": "Calça De Georgette Cargo Estampado Est Textura Snake Color - 38",
     "marca": "Animale",
     "preco": 1198,
     "novo": false,
@@ -24192,29 +26535,16 @@
           "/produtos/16594137380--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "38",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594137380--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "34": [
-        "16475855129"
-      ],
-      "38": [
-        "16594137380"
-      ],
-      "42": [
-        "16475855134"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16450299625",
+    "id": "16594137280",
     "nome": "Calça Pantalona Sem Cós De Viscose Estampada Est Geo Losango Preto",
     "marca": "Animale",
     "preco": 698,
@@ -24227,7 +26557,6 @@
           "/produtos/16594137335--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
           "38",
           "40",
           "42"
@@ -24238,12 +26567,8 @@
     "imagem": "/produtos/16594137335--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "36": [
-        "16450299625"
-      ],
       "38": [
-        "16594137335",
-        "16568827201"
+        "16594137335"
       ],
       "40": [
         "16594137310"
@@ -24254,8 +26579,8 @@
     }
   },
   {
-    "id": "16434104236",
-    "nome": "Blusa Cropped De Malha Crepe Preto",
+    "id": "16594137144",
+    "nome": "Blusa Cropped De Malha Crepe Preto - PP",
     "marca": "Animale",
     "preco": 149,
     "novo": false,
@@ -24268,30 +26593,17 @@
           "/produtos/16594137144--unico--1.jpg"
         ],
         "tamanhos": [
-          "PP",
-          "P",
-          "M"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594137144--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "PP": [
-        "16594137144"
-      ],
-      "M": [
-        "16594137104"
-      ],
-      "P": [
-        "16434104236"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16443343831",
-    "nome": "Blusa Tee Manga Curta Bicolor Off White C/Preto",
+    "id": "16594137068",
+    "nome": "Blusa Tee Manga Curta Bicolor Off White C/Preto - PP",
     "marca": "Animale",
     "preco": 348,
     "novo": false,
@@ -24303,26 +26615,13 @@
           "/produtos/16594137068--unico--0.jpg"
         ],
         "tamanhos": [
-          "PP",
-          "M",
-          "GG"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594137068--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "PP": [
-        "16594137068"
-      ],
-      "GG": [
-        "16594137040"
-      ],
-      "M": [
-        "16443343831"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16594137011",
@@ -24347,8 +26646,8 @@
     "temEstoque": false
   },
   {
-    "id": "16443343832",
-    "nome": "Blusa Manga Longa Bicolor Pb Preto C/Off",
+    "id": "16594136927",
+    "nome": "Blusa Manga Longa Bicolor Pb Preto C/Off - M",
     "marca": "Animale",
     "preco": 209,
     "novo": false,
@@ -24360,29 +26659,16 @@
           "/produtos/16594136927--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "M",
-          "G"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594136927--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "M": [
-        "16594136927"
-      ],
-      "G": [
-        "16594136883"
-      ],
-      "P": [
-        "16443343832"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16480047463",
+    "id": "16571608152",
     "nome": "Calça De Georgette Pesado Babados Marrom Biscoito",
     "marca": "Animale",
     "preco": 778.8,
@@ -24396,8 +26682,7 @@
           "/produtos/16594136745--unico--1.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "36"
         ],
         "tamanhosDisponiveis": []
       }
@@ -24408,14 +26693,11 @@
       "36": [
         "16594136745",
         "16571608152"
-      ],
-      "40": [
-        "16480047463"
       ]
     }
   },
   {
-    "id": "16453799924",
+    "id": "16594136684",
     "nome": "Vestido Curto Plissado Color Est Textura Retro Color",
     "marca": "Animale",
     "preco": 1679,
@@ -24429,9 +26711,7 @@
         ],
         "tamanhos": [
           "36",
-          "38",
-          "40",
-          "42"
+          "38"
         ],
         "tamanhosDisponiveis": []
       }
@@ -24444,20 +26724,14 @@
       ],
       "38": [
         "16594136721"
-      ],
-      "40": [
-        "16594136659"
-      ],
-      "42": [
-        "16453799924"
       ]
     }
   },
   {
-    "id": "16470815055",
-    "nome": "Vestido De Georgette Leve Curto Gola Alta Estampado Est Onca Reticula Ruibarbo e Doe",
+    "id": "16594136615",
+    "nome": "Vestido De Georgette Leve Curto Gola Alta Estampado Est Onca Reticula Ruibarbo e Doe - 36",
     "marca": "Animale",
-    "preco": 879,
+    "preco": 1398,
     "novo": false,
     "descricao": "",
     "cores": [
@@ -24467,27 +26741,17 @@
           "/produtos/16594136615--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594136615--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594136615",
-        "16594124968"
-      ],
-      "40": [
-        "16470815055"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16480047401",
-    "nome": "Vestido De Georgette Curto Com Gola Alta Estampado Est Floral Rosa Off e Preto/Est. Floral",
+    "id": "16594136504",
+    "nome": "Vestido De Georgette Curto Com Gola Alta Estampado Est Floral Rosa Off e Preto/Est. Floral - 40",
     "marca": "Animale",
     "preco": 1198,
     "novo": false,
@@ -24499,26 +26763,17 @@
           "/produtos/16594136504--unico--0.jpg"
         ],
         "tamanhos": [
-          "38",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594136504--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "38": [
-        "16480047401"
-      ],
-      "40": [
-        "16594136504"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16475855136",
-    "nome": "Camisa De Algodao Lisa Azul Claro Azul Claro",
+    "id": "16594136430",
+    "nome": "Camisa De Algodao Lisa Azul Claro Azul Claro - G",
     "marca": "Animale",
     "preco": 349,
     "novo": false,
@@ -24530,26 +26785,17 @@
           "/produtos/16594136430--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "G"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594136430--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "G": [
-        "16594136430"
-      ],
-      "P": [
-        "16475855136"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16450299627",
-    "nome": "Camisa Recortes Mix Pure Preta Preto",
+    "id": "16594136383",
+    "nome": "Camisa Recortes Mix Pure Preta Preto - 42",
     "marca": "Animale",
     "preco": 1298,
     "novo": false,
@@ -24561,26 +26807,17 @@
           "/produtos/16594136383--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594136383--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16450299627"
-      ],
-      "42": [
-        "16594136383"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594136302",
-    "nome": "Regata De Georgette Leve De Alça Marrom Busto Com Renda Marrom Doe",
+    "id": "16594136326",
+    "nome": "Regata De Georgette Leve De Alça Marrom Busto Com Renda Marrom Doe - 38",
     "marca": "Animale",
     "preco": 299,
     "novo": false,
@@ -24592,22 +26829,13 @@
           "/produtos/16594136326--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "38"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594136326--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594136302"
-      ],
-      "38": [
-        "16594136326"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16594136246",
@@ -24632,8 +26860,8 @@
     "temEstoque": false
   },
   {
-    "id": "16480047459",
-    "nome": "Camisa De Georgette Leve Ampla Estampada Est Onça Parda Preto",
+    "id": "16594136186",
+    "nome": "Camisa De Georgette Leve Ampla Estampada Est Onça Parda Preto - 44",
     "marca": "Animale",
     "preco": 399,
     "novo": false,
@@ -24645,26 +26873,17 @@
           "/produtos/16594136186--unico--0.jpg"
         ],
         "tamanhos": [
-          "40",
-          "44"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594136186--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "40": [
-        "16480047459"
-      ],
-      "44": [
-        "16594136186"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16470815060",
-    "nome": "Blusa De Malha Gola Alta Preto Preto",
+    "id": "16594136127",
+    "nome": "Blusa De Malha Gola Alta Preto Preto - M",
     "marca": "Animale",
     "preco": 349,
     "novo": false,
@@ -24676,26 +26895,17 @@
           "/produtos/16594136127--unico--0.jpg"
         ],
         "tamanhos": [
-          "PP",
-          "M"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594136127--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "M": [
-        "16594136127"
-      ],
-      "PP": [
-        "16470815060"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16480047431",
-    "nome": "Vestido De Georgette Curto Com Decote v Estampado Est Textura Snake Color",
+    "id": "16594136089",
+    "nome": "Vestido De Georgette Curto Com Decote v Estampado Est Textura Snake Color - 42",
     "marca": "Animale",
     "preco": 879,
     "novo": false,
@@ -24707,29 +26917,16 @@
           "/produtos/16594136089--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "38",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594136089--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "34": [
-        "16594125049"
-      ],
-      "38": [
-        "16480047431"
-      ],
-      "42": [
-        "16594136089"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16453768220",
+    "id": "16594136004",
     "nome": "Vestido De Georgette Curto Franzdio Marrom Marrom Ruibarbo",
     "marca": "Animale",
     "preco": 679,
@@ -24742,9 +26939,7 @@
           "/produtos/16594136034--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
           "38",
-          "40",
           "42"
         ],
         "tamanhosDisponiveis": []
@@ -24753,14 +26948,8 @@
     "imagem": "/produtos/16594136034--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "36": [
-        "16453768220"
-      ],
       "38": [
         "16594136034"
-      ],
-      "40": [
-        "16594124927"
       ],
       "42": [
         "16594136004"
@@ -24790,8 +26979,8 @@
     "temEstoque": false
   },
   {
-    "id": "16480047473",
-    "nome": "Camisa De Seda Ampla Marrom Marrom Biscoito",
+    "id": "16594135869",
+    "nome": "Camisa De Seda Ampla Marrom Marrom Biscoito - 42",
     "marca": "Animale",
     "preco": 809,
     "novo": false,
@@ -24803,25 +26992,16 @@
           "/produtos/16594135869--unico--0.jpg"
         ],
         "tamanhos": [
-          "40",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594135869--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "40": [
-        "16480047473"
-      ],
-      "42": [
-        "16594135869"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16494254587",
+    "id": "16594135699",
     "nome": "Vestido De Georgette Midi Decote v Estampado Est. Cobra Vintage Color",
     "marca": "Animale",
     "preco": 1498,
@@ -24834,11 +27014,9 @@
           "/produtos/16594135780--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
           "38",
           "40",
-          "42",
-          "44"
+          "42"
         ],
         "tamanhosDisponiveis": []
       }
@@ -24846,9 +27024,6 @@
     "imagem": "/produtos/16594135780--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "36": [
-        "16594135657"
-      ],
       "38": [
         "16594135699"
       ],
@@ -24857,15 +27032,12 @@
       ],
       "42": [
         "16594135780"
-      ],
-      "44": [
-        "16494254587"
       ]
     }
   },
   {
-    "id": "16475855124",
-    "nome": "Saia De Georgette Pesado Curta Estampada Babados Est Onca Reticula Ruibarbo e Doe",
+    "id": "16594135258",
+    "nome": "Saia De Georgette Pesado Curta Estampada Babados Est Onca Reticula Ruibarbo e Doe - 40",
     "marca": "Animale",
     "preco": 898,
     "novo": false,
@@ -24878,28 +27050,17 @@
           "/produtos/16594135258--unico--1.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
-        "tamanhosDisponiveis": [
-          "36"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594135258--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16475855124"
-      ],
-      "40": [
-        "16594135258"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16443343828",
-    "nome": "Calca Reta Veludo Preto Preto",
+    "id": "16594134990",
+    "nome": "Calca Reta Veludo Preto Preto - PP",
     "marca": "Animale",
     "preco": 299,
     "novo": false,
@@ -24911,30 +27072,17 @@
           "/produtos/16594134990--unico--0.jpg"
         ],
         "tamanhos": [
-          "PP",
-          "P",
-          "G"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594134990--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "PP": [
-        "16594134990"
-      ],
-      "P": [
-        "16594134950"
-      ],
-      "G": [
-        "16443343828"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16480047437",
-    "nome": "Vestido De Georgette Leve Longo Manga Longa Estampado Com Fenda Est Onca Reticula Ruibarbo e Doe",
+    "id": "16594134780",
+    "nome": "Vestido De Georgette Leve Longo Manga Longa Estampado Com Fenda Est Onca Reticula Ruibarbo e Doe - 34",
     "marca": "Animale",
     "preco": 999,
     "novo": false,
@@ -24946,25 +27094,16 @@
           "/produtos/16594134780--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "36"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594134780--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "34": [
-        "16594134780"
-      ],
-      "36": [
-        "16480047437"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16450299618",
+    "id": "16594134583",
     "nome": "Vestido De Geogette Midi Com Cut Marrom Marrom Ruibarbo",
     "marca": "Animale",
     "preco": 839,
@@ -24977,10 +27116,8 @@
           "/produtos/16594134705--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
           "38",
           "40",
-          "42",
           "44"
         ],
         "tamanhosDisponiveis": []
@@ -24989,17 +27126,11 @@
     "imagem": "/produtos/16594134705--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "36": [
-        "16450299618"
-      ],
       "38": [
         "16594134705"
       ],
       "40": [
         "16594134583"
-      ],
-      "42": [
-        "16594124895"
       ],
       "44": [
         "16594134639"
@@ -25007,8 +27138,8 @@
     }
   },
   {
-    "id": "16480047395",
-    "nome": "Jaqueta De Couro Ampla Botoes Preto",
+    "id": "16594134436",
+    "nome": "Jaqueta De Couro Ampla Botoes Preto - 36",
     "marca": "Animale",
     "preco": 3799,
     "novo": false,
@@ -25021,25 +27152,16 @@
           "/produtos/16594134436--unico--1.jpg"
         ],
         "tamanhos": [
-          "36",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594134436--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594134436"
-      ],
-      "42": [
-        "16480047395"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594134227",
+    "id": "16594134302",
     "nome": "Calça Moletom Urbano New Preto",
     "marca": "Foxton",
     "preco": 398,
@@ -25052,8 +27174,6 @@
           "/produtos/16594134394--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "M",
           "G",
           "GG",
           "XG"
@@ -25072,17 +27192,11 @@
       ],
       "G": [
         "16594134302"
-      ],
-      "M": [
-        "16594134266"
-      ],
-      "P": [
-        "16594134227"
       ]
     }
   },
   {
-    "id": "16594132999",
+    "id": "16594133048",
     "nome": "Polo Tricot Corda New Off White",
     "marca": "Foxton",
     "preco": 598,
@@ -25095,8 +27209,6 @@
           "/produtos/16594133137--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "M",
           "G",
           "GG",
           "XG"
@@ -25115,17 +27227,11 @@
       ],
       "G": [
         "16594133048"
-      ],
-      "P": [
-        "16594133020"
-      ],
-      "M": [
-        "16594132999"
       ]
     }
   },
   {
-    "id": "16594132874",
+    "id": "16594132922",
     "nome": "Polo Tricot Corda New Verde Oliva",
     "marca": "Foxton",
     "preco": 598,
@@ -25138,8 +27244,6 @@
           "/produtos/16594132962--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "M",
           "G",
           "GG",
           "XG"
@@ -25158,18 +27262,12 @@
       ],
       "G": [
         "16594132922"
-      ],
-      "M": [
-        "16594132902"
-      ],
-      "P": [
-        "16594132874"
       ]
     }
   },
   {
-    "id": "16535173864",
-    "nome": "Colete Bolsos Frente Off White",
+    "id": "16594128957",
+    "nome": "Colete Bolsos Frente Off White - 36",
     "marca": "Animale",
     "preco": 1798,
     "novo": false,
@@ -25181,24 +27279,15 @@
           "/produtos/16594128957--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": [
-          "36"
+          "Único"
         ]
       }
     ],
     "imagem": "/produtos/16594128957--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594128957"
-      ],
-      "40": [
-        "16535173864"
-      ]
-    }
+    "temEstoque": true
   },
   {
     "id": "16594128342",
@@ -25223,8 +27312,8 @@
     "temEstoque": false
   },
   {
-    "id": "16530949510",
-    "nome": "Vestido Midi Bicolor Decote Reto Preto / Bege",
+    "id": "16594128298",
+    "nome": "Vestido Midi Bicolor Decote Reto Preto / Bege - 38",
     "marca": "Animale",
     "preco": 798,
     "novo": false,
@@ -25236,22 +27325,13 @@
           "/produtos/16594128298--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "38"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594128298--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16530949510"
-      ],
-      "38": [
-        "16594128298"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16594127279",
@@ -25276,8 +27356,8 @@
     "temEstoque": false
   },
   {
-    "id": "16594125866",
-    "nome": "Regata De Tricot Canelado Com Decote u Básica Marrom Pimenta",
+    "id": "16594125900",
+    "nome": "Regata De Tricot Canelado Com Decote u Básica Marrom Pimenta - P",
     "marca": "Animale",
     "preco": 328,
     "novo": false,
@@ -25289,26 +27369,17 @@
           "/produtos/16594125900--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "M"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594125900--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "P": [
-        "16594125900"
-      ],
-      "M": [
-        "16594125866"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594125684",
-    "nome": "Regata De Tricot Canelado Com Decote u Básica Verde Yura",
+    "id": "16594125828",
+    "nome": "Regata De Tricot Canelado Com Decote u Básica Verde Yura - P",
     "marca": "Animale",
     "preco": 328,
     "novo": false,
@@ -25320,32 +27391,17 @@
           "/produtos/16594125828--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "M",
-          "G"
+          "Único"
         ],
-        "tamanhosDisponiveis": [
-          "G"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594125828--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorTamanho": {
-      "P": [
-        "16594125828"
-      ],
-      "M": [
-        "16594125746"
-      ],
-      "G": [
-        "16594125684"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594125518",
-    "nome": "Regata De Tricot Canelado Com Decote u Básica Preto",
+    "id": "16594125654",
+    "nome": "Regata De Tricot Canelado Com Decote u Básica Preto - G",
     "marca": "Animale",
     "preco": 328,
     "novo": false,
@@ -25357,30 +27413,17 @@
           "/produtos/16594125654--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "M",
-          "G"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594125654--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "G": [
-        "16594125654"
-      ],
-      "M": [
-        "16594125601"
-      ],
-      "P": [
-        "16594125518"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594125403",
-    "nome": "Calça Pantalona Cós De Elástico Bicolor Preto / Bege",
+    "id": "16594125468",
+    "nome": "Calça Pantalona Cós De Elástico Bicolor Preto / Bege - 34",
     "marca": "Animale",
     "preco": 698,
     "novo": false,
@@ -25392,28 +27435,13 @@
           "/produtos/16594125468--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "38",
-          "42"
+          "Único"
         ],
-        "tamanhosDisponiveis": [
-          "38"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594125468--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorTamanho": {
-      "34": [
-        "16594125468"
-      ],
-      "38": [
-        "16594125429"
-      ],
-      "42": [
-        "16594125403"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16594125328",
@@ -25439,8 +27467,8 @@
     "temEstoque": false
   },
   {
-    "id": "16461888791",
-    "nome": "Calça Reta Com Zíper Na Perna Marrom Biscoito",
+    "id": "16594125021",
+    "nome": "Calça Reta Com Zíper Na Perna Marrom Biscoito - 36",
     "marca": "Animale",
     "preco": 679,
     "novo": false,
@@ -25452,26 +27480,17 @@
           "/produtos/16594125021--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "44"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594125021--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594125021"
-      ],
-      "44": [
-        "16461888791"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594124759",
-    "nome": "Camisa Tricoline Essential Branca Branco",
+    "id": "16594124838",
+    "nome": "Camisa Tricoline Essential Branca Branco - 36",
     "marca": "Animale",
     "preco": 359,
     "novo": false,
@@ -25483,30 +27502,17 @@
           "/produtos/16594124838--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "38",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594124838--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594124838"
-      ],
-      "38": [
-        "16594124782"
-      ],
-      "40": [
-        "16594124759"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594124690",
-    "nome": "Short De Couro Clochard Pespontos Amarelo Papiro",
+    "id": "16594124730",
+    "nome": "Short De Couro Clochard Pespontos Amarelo Papiro - 34",
     "marca": "Animale",
     "preco": 3998,
     "novo": false,
@@ -25518,26 +27524,13 @@
           "/produtos/16594124730--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "38",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594124730--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "34": [
-        "16594124730"
-      ],
-      "38": [
-        "16594124710"
-      ],
-      "42": [
-        "16594124690"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16594124673",
@@ -25650,8 +27643,8 @@
     "temEstoque": false
   },
   {
-    "id": "16594123973",
-    "nome": "Calça De Georgette Pantalona Estampada Est Listra Isla Color",
+    "id": "16594123988",
+    "nome": "Calça De Georgette Pantalona Estampada Est Listra Isla Color - 34",
     "marca": "Animale",
     "preco": 639,
     "novo": false,
@@ -25663,26 +27656,17 @@
           "/produtos/16594123988--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
-          "38"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594123988--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "34": [
-        "16594123988"
-      ],
-      "38": [
-        "16594123973"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16594123002",
-    "nome": "Top De Crepe Justo Preto Preto",
+    "id": "16594123048",
+    "nome": "Top De Crepe Justo Preto Preto - 36",
     "marca": "Animale",
     "preco": 1018,
     "novo": false,
@@ -25694,26 +27678,17 @@
           "/produtos/16594123048--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594123048--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16594123048"
-      ],
-      "40": [
-        "16594123002"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16535548152",
-    "nome": "Sandalia De Couro Rolote Com Detalhe Metal Preto",
+    "id": "16594121515",
+    "nome": "Sandalia De Couro Rolote Com Detalhe Metal Preto - 35",
     "marca": "Animale",
     "preco": 1998,
     "novo": false,
@@ -25725,26 +27700,17 @@
           "/produtos/16594121515--unico--0.jpg"
         ],
         "tamanhos": [
-          "35",
-          "37"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594121515--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "35": [
-        "16594121515"
-      ],
-      "37": [
-        "16535548152"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16553554856",
-    "nome": "Jaqueta De Couro Mix Textura Marrom Gengibre",
+    "id": "16553558543",
+    "nome": "Jaqueta De Couro Mix Textura Marrom Gengibre - 42",
     "marca": "Animale",
     "preco": 7998,
     "novo": false,
@@ -25760,22 +27726,13 @@
           "/produtos/16553558543--unico--4.jpg"
         ],
         "tamanhos": [
-          "36",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16553558543--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16553554856"
-      ],
-      "42": [
-        "16553558543"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16541966579",
@@ -25891,8 +27848,8 @@
     "temEstoque": false
   },
   {
-    "id": "16539246901",
-    "nome": "Jaqueta De Couro Motor Classica Azul Azul Pale",
+    "id": "16540594741",
+    "nome": "Jaqueta De Couro Motor Classica Azul Azul Pale - 42",
     "marca": "Animale",
     "preco": 2899,
     "novo": false,
@@ -25904,22 +27861,13 @@
           "/produtos/16540594741--unico--0.jpg"
         ],
         "tamanhos": [
-          "38",
-          "42"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16540594741--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "38": [
-        "16539246901"
-      ],
-      "42": [
-        "16540594741"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16539244298",
@@ -26056,8 +28004,8 @@
     "temEstoque": false
   },
   {
-    "id": "16535171231",
-    "nome": "Blazer Cinza Reto Cinza Ash",
+    "id": "16535181950",
+    "nome": "Blazer Cinza Reto Cinza Ash - 40",
     "marca": "Animale",
     "preco": 1398,
     "novo": false,
@@ -26070,22 +28018,13 @@
           "/produtos/16535181950--unico--1.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16535181950--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16535171231"
-      ],
-      "40": [
-        "16535181950"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16535033746",
@@ -26178,8 +28117,8 @@
     "temEstoque": false
   },
   {
-    "id": "16530949588",
-    "nome": "Camisa De Cambraia Listra Marinho Azul Marinho C/ Listra Branca",
+    "id": "16530949589",
+    "nome": "Camisa De Cambraia Listra Marinho Azul Marinho C/ Listra Branca - M",
     "marca": "Animale",
     "preco": 1198,
     "novo": false,
@@ -26191,26 +28130,17 @@
           "/produtos/16530949589--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "M"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16530949589--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "M": [
-        "16530949589"
-      ],
-      "P": [
-        "16530949588"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16530949582",
-    "nome": "Camisa De Seda Ampla Estampada Manga Longa Est Loc Foto Paisagem Color",
+    "id": "16530949586",
+    "nome": "Camisa De Seda Ampla Estampada Manga Longa Est Loc Foto Paisagem Color - 36",
     "marca": "Animale",
     "preco": 1998,
     "novo": false,
@@ -26223,22 +28153,13 @@
           "/produtos/16530949586--unico--1.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16530949586--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16530949586"
-      ],
-      "40": [
-        "16530949582"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16530949571",
@@ -26395,8 +28316,8 @@
     "temEstoque": false
   },
   {
-    "id": "16530949486",
-    "nome": "Vestido De Georgette Midi Bordado Com Bojo Preto Preto",
+    "id": "16530949488",
+    "nome": "Vestido De Georgette Midi Bordado Com Bojo Preto Preto - 40",
     "marca": "Animale",
     "preco": 869,
     "novo": false,
@@ -26408,25 +28329,16 @@
           "/produtos/16530949488--unico--0.jpg"
         ],
         "tamanhos": [
-          "36",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16530949488--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "36": [
-        "16530949486"
-      ],
-      "40": [
-        "16530949488"
-      ]
-    }
+    "temEstoque": false
   },
   {
-    "id": "16494254366",
+    "id": "16494254371",
     "nome": "Vestido De Georgette Leve Midi De Alça Estampado Babados Est Pois Lente Color",
     "marca": "Animale",
     "preco": 1598,
@@ -26439,9 +28351,7 @@
           "/produtos/16494254588--unico--0.jpg"
         ],
         "tamanhos": [
-          "34",
           "36",
-          "38",
           "42"
         ],
         "tamanhosDisponiveis": []
@@ -26450,14 +28360,8 @@
     "imagem": "/produtos/16494254588--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorTamanho": {
-      "34": [
-        "16494254366"
-      ],
       "36": [
         "16494254588"
-      ],
-      "38": [
-        "16494254369"
       ],
       "42": [
         "16494254371"
@@ -26465,8 +28369,8 @@
     }
   },
   {
-    "id": "16480049830",
-    "nome": "Regata De Georgette Leve De Alça Marrom Renda Aplicada Marrom Doe",
+    "id": "16480049832",
+    "nome": "Regata De Georgette Leve De Alça Marrom Renda Aplicada Marrom Doe - 40",
     "marca": "Animale",
     "preco": 898,
     "novo": false,
@@ -26478,22 +28382,13 @@
           "/produtos/16480049832--unico--0.jpg"
         ],
         "tamanhos": [
-          "38",
-          "40"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16480049832--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "38": [
-        "16480049830"
-      ],
-      "40": [
-        "16480049832"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16480047403",
@@ -26540,8 +28435,8 @@
     "temEstoque": false
   },
   {
-    "id": "16466842521",
-    "nome": "Blusa De Tricot Manga Longa Portuguesa Cinza",
+    "id": "16466865472",
+    "nome": "Blusa De Tricot Manga Longa Portuguesa Cinza - G",
     "marca": "Animale",
     "preco": 698,
     "novo": false,
@@ -26553,22 +28448,13 @@
           "/produtos/16466865472--unico--0.jpg"
         ],
         "tamanhos": [
-          "P",
-          "G"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16466865472--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "G": [
-        "16466865472"
-      ],
-      "P": [
-        "16466842521"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16466842509",
@@ -26748,8 +28634,8 @@
     "temEstoque": false
   },
   {
-    "id": "16434103929",
-    "nome": "Blusa Malha Manga Longa Detalhe Franzido Est Pois Pontos Preto e Queimado",
+    "id": "16450299629",
+    "nome": "Blusa Malha Manga Longa Detalhe Franzido Est Pois Pontos Preto e Queimado - PP",
     "marca": "Animale",
     "preco": 199,
     "novo": false,
@@ -26761,22 +28647,13 @@
           "/produtos/16450299629--unico--0.jpg"
         ],
         "tamanhos": [
-          "PP",
-          "G"
+          "Único"
         ],
         "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16450299629--unico--0.jpg",
-    "temEstoque": false,
-    "gruposBlingPorTamanho": {
-      "PP": [
-        "16450299629"
-      ],
-      "G": [
-        "16434103929"
-      ]
-    }
+    "temEstoque": false
   },
   {
     "id": "16443343827",
