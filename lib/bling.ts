@@ -206,6 +206,54 @@ export type EnderecoPedidoBling = {
   uf: string;
 };
 
+// Busca um contato existente no Bling pelo CPF (query "pesquisa" da API de listagem) e,
+// se nao encontrar, cria um novo via POST /contatos. Descoberto em 25/08/2026, contra a
+// primeira venda real: o POST /pedidos/vendas exige "contato.id" (referencia a um contato
+// JA CADASTRADO no Bling) - so' mandar nome/cpf/email inline (sem id) da' os erros
+// "Id do contato da venda e' obrigatorio" e "O cliente nao foi preenchido", mesmo com todos
+// os outros dados presentes. O endereco do CLIENTE (cadastro) vai aqui, no contato; o endereco
+// de ENTREGA desse pedido especifico continua em transporte.etiqueta (podem ser diferentes).
+async function buscarOuCriarContatoBling(params: {
+  nome: string;
+  cpf: string;
+  email: string;
+  telefone?: string;
+  endereco: EnderecoPedidoBling;
+}): Promise<number> {
+  const cpfLimpo = params.cpf.replace(/\D/g, "");
+
+  const busca = await blingFetch<{ data: Array<{ id: number }> }>(
+    `/contatos?pesquisa=${encodeURIComponent(cpfLimpo)}&limite=1`
+  );
+  if (busca.data && busca.data.length > 0) {
+    return busca.data[0].id;
+  }
+
+  const end = params.endereco;
+  const criado = await blingFetch<{ data: { id: number } }>("/contatos", {
+    method: "POST",
+    body: JSON.stringify({
+      nome: params.nome,
+      tipo: "F",
+      numeroDocumento: cpfLimpo,
+      email: params.email || undefined,
+      celular: params.telefone,
+      endereco: {
+        geral: {
+          endereco: end.rua,
+          numero: end.numero,
+          complemento: end.complemento ?? "",
+          bairro: end.bairro,
+          cep: end.cep,
+          municipio: end.cidade,
+          uf: end.uf
+        }
+      }
+    })
+  });
+  return criado.data.id;
+}
+
 export async function criarPedidoVendaBling(params: {
   numeroPedidoLoja: string;
   cliente: { nome: string; cpf: string; email: string; telefone?: string };
@@ -214,25 +262,30 @@ export async function criarPedidoVendaBling(params: {
   totalFrete: number;
 }) {
   const end = params.endereco;
+  const contatoId = await buscarOuCriarContatoBling({
+    nome: params.cliente.nome,
+    cpf: params.cliente.cpf,
+    email: params.cliente.email,
+    telefone: params.cliente.telefone,
+    endereco: end
+  });
+
+  // "data" (data do pedido) e' obrigatoria - sem ela o Bling nem consegue gerar a(s)
+  // parcela(s) financeira(s) padrao automaticamente (erro "data para geracao das parcelas
+  // e' invalida"). dataSaida/dataPrevista tambem sao exigidas pelo schema da API; usamos a
+  // data de hoje pras tres na falta de um calculo de prazo de envio mais preciso.
+  const hoje = new Date().toISOString().slice(0, 10);
+
   return blingFetch<{ data: unknown }>("/pedidos/vendas", {
     method: "POST",
     body: JSON.stringify({
       numeroLoja: params.numeroPedidoLoja,
+      data: hoje,
+      dataSaida: hoje,
+      dataPrevista: hoje,
       contato: {
-        nome: params.cliente.nome,
-        numeroDocumento: params.cliente.cpf,
-        email: params.cliente.email,
-        telefone: params.cliente.telefone,
-        endereco: {
-          endereco: end.rua,
-          numero: end.numero,
-          complemento: end.complemento ?? "",
-          bairro: end.bairro,
-          cep: end.cep,
-          municipio: end.cidade,
-          uf: end.uf,
-          pais: "Brasil"
-        }
+        id: contatoId,
+        nome: params.cliente.nome
       },
       itens: params.itens.map((item) => ({
         produto: { id: item.produtoId },
