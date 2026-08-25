@@ -222,11 +222,24 @@ async function buscarOuCriarContatoBling(params: {
 }): Promise<number> {
   const cpfLimpo = params.cpf.replace(/\D/g, "");
 
-  const busca = await blingFetch<{ data: Array<{ id: number }> }>(
-    `/contatos?pesquisa=${encodeURIComponent(cpfLimpo)}&limite=1`
-  );
-  if (busca.data && busca.data.length > 0) {
-    return busca.data[0].id;
+  // BUG encontrado em 25/08/2026, na primeira venda real (pagamento 174612277989): o endpoint
+  // GET /contatos?pesquisa={cpf} do Bling e' busca por TEXTO LIVRE, nao busca exata - com
+  // cpfLimpo valido (11 digitos de um cliente real, ja' cadastrado no Bling com esse CPF) ele
+  // devolveu um contato TOTALMENTE diferente ("Consumo Interno", um cadastro generico de baixa
+  // de estoque) como primeiro resultado, que a gente aceitava cegamente. A API v3 do Bling tem
+  // um parametro dedicado pra isso - "numeroDocumento" (confirmado no OpenAPI spec oficial,
+  // GET /contatos) - que filtra por CPF/CNPJ exato no proprio servidor, entao usamos ele em vez
+  // de "pesquisa". Mesmo assim mantemos a conferencia client-side como cinto-de-seguranca, caso
+  // o filtro do servidor um dia se comporte como busca parcial tambem.
+  if (cpfLimpo) {
+    const busca = await blingFetch<{ data: Array<{ id: number; numeroDocumento?: string }> }>(
+      `/contatos?numeroDocumento=${encodeURIComponent(cpfLimpo)}&limite=10`
+    );
+    const encontrado =
+      busca.data?.find((c) => (c.numeroDocumento ?? "").replace(/\D/g, "") === cpfLimpo) ?? busca.data?.[0];
+    if (encontrado) {
+      return encontrado.id;
+    }
   }
 
   const end = params.endereco;
