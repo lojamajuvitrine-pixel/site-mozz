@@ -289,6 +289,21 @@ export async function criarPedidoVendaBling(params: {
   // data de hoje pras tres na falta de um calculo de prazo de envio mais preciso.
   const hoje = new Date().toISOString().slice(0, 10);
 
+  const totalItens = params.itens.reduce((soma, item) => soma + item.quantidade * item.valor, 0);
+  const totalPedido = totalItens + params.totalFrete;
+
+  // ID da forma de pagamento "Mercado Pago", cadastrada manualmente no Bling em 25/08/2026
+  // (Cadastros > Formas de pagamento; Tipo "Outros", Destino "Conta a receber/pagar", Conta
+  // financeira "Mercado Pago - Mercado Livre"). Sem "parcelas" o pedido ficava sem forma de
+  // pagamento nenhuma e sem conta a receber gerada.
+  const ID_FORMA_PAGAMENTO_MERCADO_PAGO = 10977522;
+
+  // Vendedor padrao pras vendas do site - decisao do Brunno em 25/08/2026: usar sempre a
+  // Izabella, ja' que o site nao tem noção de vendedor proprio. A conta Bling tem "Vendedor
+  // obrigatorio nos pedidos de vendas" ativado, entao sem isso o POST falha assim que o
+  // contato deixa de ser o generico "Consumo Interno".
+  const ID_VENDEDOR_PADRAO_SITE = 15596528457;
+
   return blingFetch<{ data: unknown }>("/pedidos/vendas", {
     method: "POST",
     body: JSON.stringify({
@@ -300,11 +315,20 @@ export async function criarPedidoVendaBling(params: {
         id: contatoId,
         nome: params.cliente.nome
       },
+      vendedor: { id: ID_VENDEDOR_PADRAO_SITE },
       itens: params.itens.map((item) => ({
         produto: { id: item.produtoId },
         quantidade: item.quantidade,
         valor: item.valor
       })),
+      parcelas: [
+        {
+          dataVencimento: hoje,
+          valor: totalPedido,
+          formaPagamento: { id: ID_FORMA_PAGAMENTO_MERCADO_PAGO },
+          observacoes: "Pago via Mercado Pago"
+        }
+      ],
       transporte: {
         frete: params.totalFrete,
         etiqueta: {
