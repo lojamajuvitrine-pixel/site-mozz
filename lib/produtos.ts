@@ -26,6 +26,43 @@ export function tamanhosDisponiveisDoColor(cor: VarianteCor): string[] {
   return cor.tamanhosDisponiveis ?? cor.tamanhos;
 }
 
+// Ordem "natural" de tamanho (numero em ordem numerica, letra na ordem de tamanho real) -
+// o Bling nao garante nenhuma ordem no cadastro (normalmente e' ordem de criacao do SKU), e
+// sem isso os tamanhos apareciam fora de ordem tanto no seletor da pagina do produto quanto
+// no card da vitrine (ex: "GG, P, 38, M, 36" em vez de "P, M, GG" ou "36, 38"). Bug reportado
+// pelo Brunno em 25/08/2026 - corrigido AQUI (uma vez so', no catalogo) em vez de em cada
+// componente que exibe tamanho, pra cobrir SeletorProduto, ProductCard e o filtro do
+// GradeProdutos de uma vez. Cobre as variacoes de grafia reais encontradas no catalogo
+// (ex: "3G"/"GGg" como sinonimos de "GGG", "Unico" sem acento) alem da lista padrao.
+const ORDEM_TAMANHO_LETRA = ["PP", "P", "M", "G", "GG", "GGG", "3G", "XG", "XGG", "XXG", "U", "UNICO", "ÚNICO"];
+export function compararTamanhos(a: string, b: string): number {
+  const numA = Number(a);
+  const numB = Number(b);
+  if (!Number.isNaN(numA) && !Number.isNaN(numB) && a.trim() !== "" && b.trim() !== "") {
+    return numA - numB;
+  }
+  const posA = ORDEM_TAMANHO_LETRA.indexOf(a.toUpperCase());
+  const posB = ORDEM_TAMANHO_LETRA.indexOf(b.toUpperCase());
+  if (posA !== -1 && posB !== -1) return posA - posB;
+  if (posA !== -1) return -1; // tamanho conhecido vem antes de um rotulo estranho/nao mapeado
+  if (posB !== -1) return 1;
+  return a.localeCompare(b);
+}
+
+function ordenarTamanhosDoProduto(produto: Produto): Produto {
+  if (!produto.cores || produto.cores.length === 0) return produto;
+  return {
+    ...produto,
+    cores: produto.cores.map((cor) => ({
+      ...cor,
+      tamanhos: [...cor.tamanhos].sort(compararTamanhos),
+      tamanhosDisponiveis: cor.tamanhosDisponiveis
+        ? [...cor.tamanhosDisponiveis].sort(compararTamanhos)
+        : undefined
+    }))
+  };
+}
+
 // Devolve o id do produto NO BLING (numerico) que corresponde a um tamanho especifico -
 // necessario pra criar o pedido de venda no Bling (ver lib/mercadopago.ts e o webhook do
 // Mercado Pago) porque produtos "fundidos" no sync (ver gruposBlingPorTamanho em
@@ -128,7 +165,8 @@ export async function listarProdutos(opcoes?: { incluirSemFoto?: boolean }): Pro
   const produtos = (produtosData as Produto[])
     .filter((p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca))
     .filter((p) => opcoes?.incluirSemFoto || !!p.imagem)
-    .map((p) => aplicarConfigEspecial(p, config.get(p.id)));
+    .map((p) => aplicarConfigEspecial(p, config.get(p.id)))
+    .map(ordenarTamanhosDoProduto);
   // prioriza quem tem foto - so' importa mais quando incluirSemFoto=true (no catalogo publico
   // normal ninguem mais chega aqui sem foto); sort e' estavel, entao dentro de cada grupo a
   // ordem original do Bling e' mantida.

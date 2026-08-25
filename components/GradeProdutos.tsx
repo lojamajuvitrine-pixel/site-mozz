@@ -2,25 +2,10 @@
 
 import { useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
-import { coresDoProduto, tamanhosDisponiveisDoColor, type Produto } from "@/lib/produtos";
+import { coresDoProduto, tamanhosDisponiveisDoColor, compararTamanhos, type Produto } from "@/lib/produtos";
 import { familiaDaCor, normalizarTexto } from "@/lib/cor";
 
 type Ordenacao = "relevancia" | "menor-preco" | "maior-preco";
-
-// Ordem "natural" de tamanho pro filtro (numero em ordem numerica, letra na ordem de
-// tamanho real) - sem isso a lista sairia em ordem alfabetica (ex: "10, 12, 36, 38, 40, G, M,
-// P" em vez de "P, M, G" ou "36, 38, 40"). So' usado aqui no filtro; a ordem de exibicao dos
-// tamanhos DENTRO de um produto (SeletorProduto/ProductCard) ja vem correta do sync.
-const ORDEM_LETRA = ["PP", "P", "M", "G", "GG", "XG", "XGG", "XXG", "U", "ÚNICO"];
-function compararTamanhos(a: string, b: string): number {
-  const numA = Number(a);
-  const numB = Number(b);
-  if (!Number.isNaN(numA) && !Number.isNaN(numB)) return numA - numB;
-  const posA = ORDEM_LETRA.indexOf(a.toUpperCase());
-  const posB = ORDEM_LETRA.indexOf(b.toUpperCase());
-  if (posA !== -1 && posB !== -1) return posA - posB;
-  return a.localeCompare(b);
-}
 
 // Grade de produtos com busca por nome/marca, filtro de marca (opcional - so' aparece se a
 // lista de marcas for passada), filtro de tamanho e cor (derivados dinamicamente dos produtos
