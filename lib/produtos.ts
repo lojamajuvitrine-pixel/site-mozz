@@ -26,6 +26,24 @@ export function tamanhosDisponiveisDoColor(cor: VarianteCor): string[] {
   return cor.tamanhosDisponiveis ?? cor.tamanhos;
 }
 
+// Devolve o id do produto NO BLING (numerico) que corresponde a um tamanho especifico -
+// necessario pra criar o pedido de venda no Bling (ver lib/mercadopago.ts e o webhook do
+// Mercado Pago) porque produtos "fundidos" no sync (ver gruposBlingPorTamanho em
+// lib/blingParse.ts) nao tem mais um produto.id proprio por tamanho: o produto.id do site e'
+// so' um id "representante" do grupo fundido. Pra peca NAO fundida (sem gruposBlingPorTamanho),
+// produto.id ja e' o id real do Bling. Resolvido no momento da compra (nao no webhook, que
+// pode rodar bem depois) pra garantir que o pedido no Bling aponta pro produto certo mesmo se
+// o catalogo mudar entre a compra e a confirmacao do pagamento.
+export function resolverProdutoIdBling(produto: Produto, tamanho: string): number {
+  const idsDoTamanho = produto.gruposBlingPorTamanho?.[tamanho];
+  const idBruto = idsDoTamanho && idsDoTamanho.length > 0 ? idsDoTamanho[0] : produto.id;
+  const id = Number(idBruto);
+  if (!Number.isFinite(id)) {
+    throw new Error(`Nao foi possivel resolver o id Bling do produto ${produto.id} (tamanho ${tamanho})`);
+  }
+  return id;
+}
+
 export type Produto = {
   id: string;
   nome: string;
@@ -93,18 +111,27 @@ function aplicarConfigEspecial(produto: Produto, config: ConfigProduto | undefin
 // Brunno em 22/08/2026, pra nao mostrar peca que o cliente nao consegue comprar. Produtos
 // do seed manual (sem esse campo, undefined) continuam aparecendo normalmente.
 //
+// Produto SEM NENHUMA foto (p.imagem null - nenhuma cor tem foto cadastrada no Bling) tambem
+// fica FORA do catalogo publico por padrao - decisao do Brunno em 25/08/2026: peca sem foto
+// nao vende e passa impressao ruim, entao fica desativada ate' alguem subir a foto no Bling
+// (proximo sync ja reativa sozinho, sem precisar mexer em nada aqui - e' so' um filtro sobre
+// o dado atual, nao uma flag manual). Passe { incluirSemFoto: true } pra ver TODOS os
+// produtos mesmo sem foto - usado so' no painel /admin/produtos, pra poder preparar preco
+// especial/destaque/outlet ANTES da foto existir.
+//
 // Async desde 23/08/2026: alem do catalogo estatico do Bling, aplica por cima as configs
 // especiais so' do site (preco especial/destaque/outlet, cadastradas em /admin/produtos e
 // guardadas no Supabase) - ver lib/produtoConfig.ts. Se o Supabase estiver fora do ar ou sem
 // nenhuma config cadastrada, o catalogo continua funcionando normal com o preco do Bling.
-export async function listarProdutos(): Promise<Produto[]> {
+export async function listarProdutos(opcoes?: { incluirSemFoto?: boolean }): Promise<Produto[]> {
   const config = await buscarConfigProdutosCache();
   const produtos = (produtosData as Produto[])
     .filter((p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca))
+    .filter((p) => opcoes?.incluirSemFoto || !!p.imagem)
     .map((p) => aplicarConfigEspecial(p, config.get(p.id)));
-  // prioriza quem tem foto - produto sem foto cai no placeholder "foto do produto" no card,
-  // o que passa impressao ruim numa vitrine, entao sempre aparece depois de quem tem (sort
-  // e' estavel, entao dentro de cada grupo a ordem original do Bling e' mantida).
+  // prioriza quem tem foto - so' importa mais quando incluirSemFoto=true (no catalogo publico
+  // normal ninguem mais chega aqui sem foto); sort e' estavel, entao dentro de cada grupo a
+  // ordem original do Bling e' mantida.
   return [...produtos].sort((a, b) => (a.imagem ? 0 : 1) - (b.imagem ? 0 : 1));
 }
 

@@ -2,9 +2,11 @@
 
 import { useCart } from "@/lib/cart-context";
 import { formatarPreco } from "@/lib/formato";
-import { useState } from "react";
-import CalculoFrete from "@/components/CalculoFrete";
+import { useEffect, useState } from "react";
+import CalculoFrete, { type OpcaoFrete } from "@/components/CalculoFrete";
 import { rastrearIniciarCheckout } from "@/lib/tracking";
+import { validarCpf, formatarCpf } from "@/lib/cpf";
+import { createClient } from "@/lib/supabase/client";
 
 type ResultadoCupom =
   | { valido: true; cupom: { codigo: string; tipo: "percentual" | "fixo"; valor: number }; desconto: number }
@@ -19,9 +21,32 @@ export default function PaginaCarrinho() {
   const [cupomAplicado, setCupomAplicado] = useState<ResultadoCupom | null>(null);
   const [validandoCupom, setValidandoCupom] = useState(false);
 
+  const [freteSelecionado, setFreteSelecionado] = useState<OpcaoFrete | null>(null);
+
+  // Dados pra nota fiscal/entrega - pre-preenchidos automaticamente se o cliente ja' tiver
+  // feito login e preenchido o perfil em /conta (ver PerfilForm), mas o checkout NAO exige
+  // login (compra como visitante e' permitida - ver middleware.ts).
+  const [nomeCompleto, setNomeCompleto] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [telefone, setTelefone] = useState("");
+
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      const meta = data.user?.user_metadata ?? {};
+      if (meta.nome_completo) setNomeCompleto(meta.nome_completo);
+      if (meta.cpf) setCpf(meta.cpf);
+      if (meta.telefone) setTelefone(meta.telefone);
+    });
+  }, []);
+
   const quantidadeTotal = itens.reduce((soma, i) => soma + i.quantidade, 0);
   const desconto = cupomAplicado?.valido ? cupomAplicado.desconto : 0;
   const totalComDesconto = Math.max(0, total - desconto);
+  const totalComFrete = totalComDesconto + (freteSelecionado?.preco ?? 0);
+
+  const cpfValido = validarCpf(cpf);
+  const podeFinalizar = nomeCompleto.trim().length > 3 && cpfValido && freteSelecionado !== null;
 
   async function aplicarCupom() {
     if (!codigoCupom.trim()) return;
@@ -42,6 +67,14 @@ export default function PaginaCarrinho() {
   }
 
   async function finalizarCompra() {
+    if (!podeFinalizar) {
+      setErro(
+        freteSelecionado === null
+          ? "Calcule o frete pelo CEP e escolha uma opção de entrega antes de continuar"
+          : "Preencha nome completo e CPF válidos"
+      );
+      return;
+    }
     setErro(null);
     setCarregando(true);
     // dispara InitiateCheckout/begin_checkout ANTES de redirecionar pro Mercado Pago - depois
@@ -61,7 +94,15 @@ export default function PaginaCarrinho() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           itens,
-          cupomCodigo: cupomAplicado?.valido ? cupomAplicado.cupom.codigo : undefined
+          cupomCodigo: cupomAplicado?.valido ? cupomAplicado.cupom.codigo : undefined,
+          cliente: { nomeCompleto: nomeCompleto.trim(), cpf, telefone: telefone || undefined },
+          frete: freteSelecionado
+            ? {
+                servico: freteSelecionado.servico,
+                transportadora: freteSelecionado.transportadora,
+                preco: freteSelecionado.preco
+              }
+            : undefined
         })
       });
       const dados = await resposta.json();
@@ -134,6 +175,39 @@ export default function PaginaCarrinho() {
         )}
       </div>
 
+      <CalculoFrete
+        quantidadeItens={quantidadeTotal}
+        selecionavel
+        opcaoSelecionada={freteSelecionado}
+        onSelecionar={setFreteSelecionado}
+      />
+
+      <div className="mt-6 pt-6 border-t border-black/10">
+        <p className="text-[13.5px] text-mozz-gray mb-2">Dados pra entrega e nota fiscal</p>
+        <div className="flex flex-col gap-2">
+          <input
+            value={nomeCompleto}
+            onChange={(e) => setNomeCompleto(e.target.value)}
+            placeholder="Nome completo"
+            className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
+          />
+          <input
+            value={cpf}
+            onChange={(e) => setCpf(formatarCpf(e.target.value))}
+            placeholder="CPF"
+            maxLength={14}
+            className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
+          />
+          {cpf.length === 14 && !cpfValido && <p className="text-[13px] text-red-600">CPF inválido</p>}
+          <input
+            value={telefone}
+            onChange={(e) => setTelefone(e.target.value)}
+            placeholder="Telefone (opcional)"
+            className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
+          />
+        </div>
+      </div>
+
       <div className="mt-2">
         {desconto > 0 && (
           <div className="flex justify-between py-1 text-[14.5px] text-mozz-gray">
@@ -147,9 +221,13 @@ export default function PaginaCarrinho() {
             <span>-{formatarPreco(desconto)}</span>
           </div>
         )}
+        <div className="flex justify-between py-1 text-[14.5px] text-mozz-gray">
+          <span>Frete</span>
+          <span>{freteSelecionado ? formatarPreco(freteSelecionado.preco) : "a calcular"}</span>
+        </div>
         <div className="flex justify-between py-4 text-[16px] border-t border-black/10 mt-2">
           <span>Total</span>
-          <span>{formatarPreco(totalComDesconto)}</span>
+          <span>{formatarPreco(totalComFrete)}</span>
         </div>
       </div>
 
@@ -161,8 +239,6 @@ export default function PaginaCarrinho() {
       >
         {carregando ? "Redirecionando..." : "Finalizar compra"}
       </button>
-
-      <CalculoFrete quantidadeItens={quantidadeTotal} />
     </section>
   );
 }

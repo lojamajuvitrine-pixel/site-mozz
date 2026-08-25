@@ -22,7 +22,10 @@ export default async function PaginaAdminProdutos() {
   if (!user) redirect("/conta/entrar?next=/admin/produtos");
   if (!ehAdmin(user.email)) redirect("/");
 
-  const produtos = await listarProdutos();
+  // incluirSemFoto: true - o painel precisa mostrar TAMBEM as pecas sem foto ainda (fora do
+  // catalogo publico - ver comentario em lib/produtos.ts), pra dar pra preparar preco
+  // especial/destaque/outlet ja' esperando a foto subir.
+  const produtos = await listarProdutos({ incluirSemFoto: true });
 
   // O painel precisa do preco ORIGINAL do Bling separado do preco especial (pra mostrar as
   // duas colunas) - listarProdutos() ja devolve isso pronto: quando ha' oferta ativa,

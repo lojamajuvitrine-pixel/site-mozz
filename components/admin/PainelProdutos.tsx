@@ -54,17 +54,23 @@ function precoComDesconto(precoBling: number, percentualTexto: string): string |
 // salva de forma independente, direto em /api/admin/produtos.
 export default function PainelProdutos({ produtosIniciais }: { produtosIniciais: LinhaProduto[] }) {
   const [busca, setBusca] = useState("");
+  // pecas sem foto ficam FORA do catalogo publico ate' alguem subir a foto no Bling (ver
+  // lib/produtos.ts) - esse filtro ajuda a achar rapido quem falta fotografar/subir foto.
+  const [soSemFoto, setSoSemFoto] = useState(false);
   const [estados, setEstados] = useState<Record<string, EstadoLinha>>(() =>
     Object.fromEntries(produtosIniciais.map((p) => [p.id, estadoInicial(p)]))
   );
 
+  const totalSemFoto = useMemo(() => produtosIniciais.filter((p) => !p.imagem).length, [produtosIniciais]);
+
   const listaFiltrada = useMemo(() => {
     const termo = normalizarTexto(busca.trim());
-    if (!termo) return produtosIniciais;
-    return produtosIniciais.filter(
-      (p) => normalizarTexto(p.nome).includes(termo) || normalizarTexto(p.marca).includes(termo)
-    );
-  }, [produtosIniciais, busca]);
+    return produtosIniciais.filter((p) => {
+      if (soSemFoto && p.imagem) return false;
+      if (!termo) return true;
+      return normalizarTexto(p.nome).includes(termo) || normalizarTexto(p.marca).includes(termo);
+    });
+  }, [produtosIniciais, busca, soSemFoto]);
 
   function atualizarEstado(id: string, alteracao: Partial<EstadoLinha>) {
     setEstados((atual) => ({ ...atual, [id]: { ...atual[id], ...alteracao, salvoAgora: false, erro: null } }));
@@ -125,12 +131,27 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
 
   return (
     <div>
-      <input
-        value={busca}
-        onChange={(e) => setBusca(e.target.value)}
-        placeholder="Buscar por nome ou marca..."
-        className="border border-black/20 px-3 py-2 text-[14.5px] w-full max-w-sm mb-4"
-      />
+      <div className="flex flex-wrap items-center gap-3 mb-4">
+        <input
+          value={busca}
+          onChange={(e) => setBusca(e.target.value)}
+          placeholder="Buscar por nome ou marca..."
+          className="border border-black/20 px-3 py-2 text-[14.5px] w-full max-w-sm"
+        />
+        <label className="flex items-center gap-1.5 text-[13.5px] text-mozz-gray cursor-pointer">
+          <input
+            type="checkbox"
+            checked={soSemFoto}
+            onChange={(e) => setSoSemFoto(e.target.checked)}
+            className="w-4 h-4"
+          />
+          Só sem foto ({totalSemFoto})
+        </label>
+      </div>
+      <p className="text-[13px] text-mozz-gray mb-4">
+        Peça sem foto fica automaticamente fora do catálogo até alguém subir a foto no Bling - não
+        precisa ativar nada aqui depois, é só o próximo sync que já mostra ela pro cliente.
+      </p>
 
       <div className="overflow-x-auto">
         <table className="w-full text-[13.5px] border-collapse">
@@ -160,7 +181,14 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
                       </div>
                       <div>
                         <p className="leading-tight">{linha.nome}</p>
-                        <p className="text-mozz-gray text-[12px]">{linha.marca}</p>
+                        <p className="text-mozz-gray text-[12px]">
+                          {linha.marca}
+                          {!linha.imagem && (
+                            <span className="ml-2 text-red-600 border border-red-600 px-1 py-0.5 text-[11px]">
+                              sem foto
+                            </span>
+                          )}
+                        </p>
                       </div>
                     </div>
                   </td>
