@@ -7,16 +7,14 @@ poder ligar o site de verdade nas contas da MOZZ. Assim que cada item estiver pr
 manda as informações marcadas com 🔑 (aqui no chat, ou direto no arquivo `.env.local` do
 projeto) que eu sigo com a parte técnica.
 
-## 1. Hospedagem (Vercel) + domínio ✅ (domínio ativo em 23/08/2026)
+## 1. Hospedagem (Vercel) + domínio ✅ (concluído em 24/08/2026)
 
 - [x] Conta Vercel + GitHub conectados, site publicando automaticamente a cada push.
 - [x] `lojamozz.com.br` apontado pra Vercel (registros DNS feitos no Registro.br) - já
       confirmei que está resolvendo com SSL funcionando.
-- [ ] **Falta só um passo seu**: em Project Settings → Environment Variables na Vercel,
-      atualizar `NEXT_PUBLIC_SITE_URL` de `https://site-mozz.vercel.app` pra
-      `https://lojamozz.com.br`, e clicar em Redeploy. Isso ajusta o domínio usado no SEO,
-      sitemap e nos links de retorno do checkout do Mercado Pago pro domínio definitivo (já
-      atualizei o `.env.local` local com esse valor).
+- [x] `NEXT_PUBLIC_SITE_URL` atualizado pra `https://lojamozz.com.br` nas Environment
+      Variables da Vercel e redeploy feito - sitemap, SEO e links de retorno do checkout já
+      usam o domínio definitivo.
 
 ## 2. Bling — app de integração (API v3) ✅ (concluído em 23/08/2026)
 
@@ -26,31 +24,23 @@ projeto) que eu sigo com a parte técnica.
 - [x] Primeiro `npm run sync:bling` rodado com credenciais reais - catálogo atualizado com
       982 produtos das 4 marcas ativas (343 com estoque disponível, 495 com foto real).
 
-## 3. Mercado Pago — conta e credenciais
+## 3. Mercado Pago — conta e credenciais ✅ (concluído em 24/08/2026)
 
-- [ ] Confirmar se já existe uma conta Mercado Pago vinculada ao CNPJ da MOZZ (bem comum
-      já ter, já que vocês usam a Infinite Pay/maquininha — mas o Mercado Pago é uma
-      conta separada). Se não tiver, criar em
-      [mercadopago.com.br](https://www.mercadopago.com.br) — precisa de CNPJ, dados
-      bancários pra receber os repasses.
-- [ ] Dentro da conta, ir em **Suas integrações** → criar uma aplicação nova (nome
-      sugerido: "Site MOZZ", tipo "Checkout Pro").
-- [ ] Isso gera o **Access Token** e a **Public Key** (tem versão de teste e de produção —
-      começamos pela de teste).
-- 🔑 Access Token e Public Key (ambiente de teste primeiro).
+- [x] Aplicação "MOZZ Site" criada no Mercado Pago, credenciais de **produção** ativas
+      (Access Token + Public Key) e já configuradas na Vercel - checkout processando
+      pagamentos reais.
+- Importante: confirmar no painel do Mercado Pago que há conta bancária vinculada pra
+  receber os repasses das vendas.
 
-## 4. Melhor Envio — cálculo de frete por CEP
+## 4. Melhor Envio — cálculo de frete por CEP ✅ (concluído em 25/08/2026)
 
-- [ ] Criar conta grátis em [melhorenvio.com.br](https://melhorenvio.com.br).
-- [ ] Gerar um token de API — normalmente em **Configurações → Tokens** (ou, se a conta
-      pedir, cadastrando um "aplicativo" e autorizando ele pra sua própria conta, do mesmo
-      jeito que fizemos com o Bling). A tela exata pode variar um pouco, mas o nome do menu
-      é sempre parecido com "Tokens" ou "Integrações".
-- [ ] Anotar o **CEP de origem** — de onde os pedidos da MOZZ são despachados (loja física
-      ou depósito).
-- 🔑 Me manda o token gerado e o CEP de origem. Eu coloco em `MELHOR_ENVIO_TOKEN` e
-      `MELHOR_ENVIO_CEP_ORIGEM` (no `.env.local` pra testar, e você replica em Project
-      Settings → Environment Variables na Vercel).
+- [x] Conta criada em melhorenvio.com.br, token de API gerado.
+- [x] CEP de origem (84320-000) anotado.
+- [x] Token e CEP configurados em `MELHOR_ENVIO_TOKEN` e `MELHOR_ENVIO_CEP_ORIGEM` no
+      `.env.local` e nas Environment Variables da Vercel (`MELHOR_ENVIO_SANDBOX=false`),
+      site redeployado.
+- [x] Testado ao vivo no site: cálculo de frete retornando várias transportadoras reais
+      (Loggi, Jadlog, Correios, LATAM Cargo, Azul Cargo, Total Express) com preço e prazo.
 - Observação importante: como o Bling não guarda peso/dimensão por peça, o cálculo hoje usa
   um pacote padrão aproximado (peso médio de roupa dobrada) em vez do peso real de cada
   produto — dá um frete próximo do real, mas não exato centavo a centavo. Se um dia
@@ -70,29 +60,14 @@ projeto) que eu sigo com a parte técnica.
       assim que os IDs existirem — sem isso, o site funciona normal, só sem esses dois
       rastreamentos.
 
-## 7. Supabase — login do cliente (link mágico) e "Minha conta"
+## 7. Supabase — login do cliente (link mágico) e "Minha conta" ✅ (concluído)
 
-Implementei a área "Minha conta" com login sem senha: o cliente digita o e-mail, recebe um
-link, clica e entra — sem senha nenhuma pra criar/esquecer/vazar. Falta só criar a conta que
-guarda esse login (Supabase: banco de dados + autenticação, gratuito pra esse volume):
-
-- [ ] Criar conta grátis em [supabase.com](https://supabase.com) e criar um novo projeto
-      (nome sugerido: "site-mozz", região São Paulo se disponível).
-- [ ] Dentro do projeto, ir em **Project Settings → API** e copiar dois valores: **Project
-      URL** e a chave **anon public** (não a `service_role`, essa não deve sair de lá).
-- [ ] Ir em **Authentication → URL Configuration** e preencher:
-      - **Site URL**: `https://lojamozz.com.br`
-      - **Redirect URLs**: adicionar `https://lojamozz.com.br/auth/callback` e também
-        `https://site-mozz.vercel.app/auth/callback` (garante que funciona nos dois domínios
-        enquanto a troca não está 100% migrada). O Supabase só deixa o link mágico redirecionar
-        pra endereços que estiverem nessa lista.
-- 🔑 Me manda o Project URL e a chave anon public. Eu coloco em `NEXT_PUBLIC_SUPABASE_URL` e
-      `NEXT_PUBLIC_SUPABASE_ANON_KEY` (no `.env.local` e você replica em Project Settings →
-      Environment Variables na Vercel, depois Redeploy).
-- Observação: o histórico de pedidos dentro de "Minha conta" ainda vai aparecer vazio depois
-  disso configurado — ele depende do item 3 (Mercado Pago) e da baixa automática de pedido no
-  Bling, que ainda não existem. Por enquanto a conta serve pra login/identificação do cliente;
-  assim que o pagamento estiver de ponta a ponta, eu ligo o histórico de verdade.
+- [x] Projeto Supabase criado, `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+      configurados e funcionando.
+- Observação: o histórico de pedidos dentro de "Minha conta" ainda depende da baixa
+  automática de pedido no Bling (ver "Pendências que dependem do Mercado Pago" no fim do
+  arquivo) — agora que o item 3 está pronto, isso é o próximo passo técnico que eu mesmo
+  faço, sem precisar de nada do seu lado.
 
 ## 10. Login por código (não mais link) — 2 templates de e-mail pra ajustar no Supabase
 
@@ -123,7 +98,7 @@ Depois disso, o e-mail que o cliente recebe mostra só um código de 6 dígitos 
 link pra escanear/"clicar sozinho"), e a tela de login em `/conta/entrar` já pede esse código
 digitado.
 
-## 9. Painel de produtos (preço especial, destaque e outlet) — precisa de 1 SQL no Supabase
+## 9. Painel de produtos (preço especial, destaque e outlet) ✅ (concluído em 24/08/2026)
 
 Criei um painel interno em `/admin/produtos` (só você acessa, com o mesmo login por link
 mágico da área do cliente) pra você poder, direto pelo site, sem mexer em nada dentro do
@@ -135,37 +110,9 @@ Bling:
 - Marcar peças como **outlet**, pra elas aparecerem também na nova aba "Outlet" do menu (sem
   sair de onde já apareciam antes).
 
-Isso fica guardado numa tabela própria do site no Supabase (não mexe na Lista de Preços nem
-em nada do cadastro do Bling). Só falta você criar essa tabela — como eu não alcanço o
-Supabase daqui, é um SQL rápido pra rodar uma vez:
-
-- [ ] No painel do Supabase, ir em **SQL Editor → New query**, colar o SQL abaixo e clicar em
-      **Run**:
-
-```sql
-create table public.produtos_site (
-  produto_id text primary key,
-  preco_especial numeric(10,2),
-  destaque boolean not null default false,
-  outlet boolean not null default false,
-  atualizado_em timestamptz not null default now()
-);
-
-alter table public.produtos_site enable row level security;
-
-create policy "Leitura publica de produtos_site"
-on public.produtos_site for select
-to anon, authenticated
-using (true);
-
-create policy "Somente admin escreve em produtos_site"
-on public.produtos_site for all
-to authenticated
-using (auth.jwt() ->> 'email' = 'brbo15@hotmail.com')
-with check (auth.jwt() ->> 'email' = 'brbo15@hotmail.com');
-```
-
-- Depois de rodar, acesse `https://lojamozz.com.br/admin/produtos` logado com seu e-mail
+- [x] Tabela `produtos_site` criada no Supabase (5 colunas, RLS ativo, 2 políticas - leitura
+      pública e escrita só pro seu e-mail admin). Já testado e confirmado.
+- Acesse `https://lojamozz.com.br/admin/produtos` logado com seu e-mail
   (`brbo15@hotmail.com`) - é a mesma tela de login por link mágico da área do cliente.
 - Se um dia quiser dar acesso ao painel pra mais alguém da equipe, me avisa: preciso
   atualizar tanto o `auth.jwt() ->> 'email' = ...` acima (troca por uma lista de e-mails, ex.
@@ -189,51 +136,16 @@ with check (auth.jwt() ->> 'email' = 'brbo15@hotmail.com');
       sozinho a cada 5 minutos (9h-20h, seg-sáb) e mantém preço/estoque do site em dia com
       o Bling, sem precisar rodar nada na mão.
 
-## 11. "Avise-me quando voltar ao estoque" — tabela + 2 chaves novas
+## 11. "Avise-me quando voltar ao estoque" ✅ (concluído em 24/08/2026)
 
-Adicionei na página do produto: quando o tamanho escolhido está esgotado, aparece um campo
-pra cliente deixar o e-mail. Quando aquele tamanho específico volta a ter saldo (detectado no
-próprio robô de sync que já roda a cada 5 minutos), ela recebe um e-mail automático via Resend
-avisando. Falta duas coisas do seu lado:
-
-- [ ] No painel do Supabase, **SQL Editor → New query**, colar e rodar:
-
-```sql
-create table public.avisos_estoque (
-  id uuid primary key default gen_random_uuid(),
-  produto_id text not null,
-  tamanho text not null,
-  email text not null,
-  criado_em timestamptz not null default now(),
-  notificado boolean not null default false,
-  notificado_em timestamptz
-);
-
-create unique index avisos_estoque_pendente_unico
-  on public.avisos_estoque (produto_id, tamanho, email)
-  where not notificado;
-
-alter table public.avisos_estoque enable row level security;
-
-create policy "Qualquer um pode pedir aviso"
-on public.avisos_estoque for insert
-to anon, authenticated
-with check (true);
-```
-
-  Só existe política de **insert** de propósito — ninguém (nem o site) consegue ler os
-  e-mails salvos com a chave pública. Só o robô de sync consegue ler/marcar como notificado,
-  usando uma chave separada (próximo item).
-
-- [ ] Em **Project Settings → API**, além da chave `anon public` que você já mandou, agora
-      preciso também da chave **`service_role`** (na mesma tela, um pouco mais abaixo — essa
-      é secreta, nunca aparece pro navegador, só é usada pelo robô de sync que roda no GitHub).
-- [ ] No painel do Resend ([resend.com](https://resend.com), mesma conta que já configuramos
-      pro e-mail de login), ir em **API Keys → Create API Key** e gerar uma chave nova
-      (permissão de "Sending" já basta).
-- 🔑 Me manda os dois: a chave `service_role` do Supabase e a API Key do Resend. Eu coloco em
-      `SUPABASE_SERVICE_ROLE_KEY` e `RESEND_API_KEY` (no `.env.local` local e como **secrets**
-      novos no GitHub, pro robô automático também conseguir enviar).
+- [x] Tabela `avisos_estoque` criada no Supabase (RLS ativo, só permite insert público).
+- [x] `SUPABASE_SERVICE_ROLE_KEY` obtida e configurada em `.env.local` e como secret no
+      GitHub Actions.
+- [x] `RESEND_API_KEY` (chave nova, permissão "Sending") gerada e configurada do mesmo jeito.
+- [x] Secret `NEXT_PUBLIC_SUPABASE_URL` também adicionado no GitHub Actions (o workflow
+      precisava dele e ainda não existia lá).
+- O robô de sync (a cada 5 minutos) agora já envia o e-mail automático via Resend quando um
+  tamanho volta ao estoque.
 
 ## O que eu já fiz enquanto isso
 
@@ -246,8 +158,8 @@ with check (true);
   validar a assinatura do webhook).
 - Carrossel de fotos, seleção de cor/tamanho direto no mosaico (estilo Foxton), parcelamento
   sem juros, abas de descrição/composição/como cuidar/tabela de medidas, "quem viu também
-  gostou", cupom de desconto e cálculo de frete por CEP — tudo já implementado, só falta o
-  cadastro do item 4 (Melhor Envio) pro frete calcular de verdade.
+  gostou", cupom de desconto e cálculo de frete por CEP — tudo implementado e funcionando,
+  incluindo o frete real via Melhor Envio (item 4).
 
 Assim que tiver qualquer um dos itens 🔑 acima, me manda que eu já conecto e testo.
 
