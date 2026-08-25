@@ -53,7 +53,21 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   const [zoomAtivo, setZoomAtivo] = useState(false);
   const [origemZoom, setOrigemZoom] = useState({ x: 50, y: 50 });
 
-  function moverMouseNaFoto(evento: React.MouseEvent<HTMLDivElement>) {
+  // Troquei mouse-events por pointer-events aqui: alguns celulares disparam um mouseenter
+  // "fantasma" ao tocar na tela, o que ativava o zoom bem na hora que o cliente tentava
+  // arrastar o dedo pra trocar de foto (bug reportado pelo Brunno em 24/08/2026 - "quando
+  // passo o dedo pra rolar a foto ele acaba dando zoom"). PointerEvent tem `pointerType`, que
+  // diz com certeza se veio do mouse ou do dedo - só ativa zoom quando for realmente mouse.
+  function aoEntrarPonteiro(evento: React.PointerEvent<HTMLDivElement>) {
+    if (evento.pointerType === "mouse") setZoomAtivo(true);
+  }
+
+  function aoSairPonteiro(evento: React.PointerEvent<HTMLDivElement>) {
+    if (evento.pointerType === "mouse") setZoomAtivo(false);
+  }
+
+  function moverPonteiroNaFoto(evento: React.PointerEvent<HTMLDivElement>) {
+    if (evento.pointerType !== "mouse") return;
     const retangulo = evento.currentTarget.getBoundingClientRect();
     const x = ((evento.clientX - retangulo.left) / retangulo.width) * 100;
     const y = ((evento.clientY - retangulo.top) / retangulo.height) * 100;
@@ -88,6 +102,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
 
   function aoTocarNaFoto(e: React.TouchEvent) {
     inicioToqueX.current = e.touches[0].clientX;
+    setZoomAtivo(false); // segurança extra: garante que nenhum toque comece com zoom ligado
   }
 
   function aoSoltarToqueNaFoto(e: React.TouchEvent) {
@@ -106,9 +121,9 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
           className={`relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden touch-pan-y ${
             fotoAtual ? "cursor-zoom-in" : ""
           }`}
-          onMouseEnter={() => setZoomAtivo(true)}
-          onMouseLeave={() => setZoomAtivo(false)}
-          onMouseMove={moverMouseNaFoto}
+          onPointerEnter={aoEntrarPonteiro}
+          onPointerLeave={aoSairPonteiro}
+          onPointerMove={moverPonteiroNaFoto}
           onTouchStart={aoTocarNaFoto}
           onTouchEnd={aoSoltarToqueNaFoto}
         >
