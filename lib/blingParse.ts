@@ -12,10 +12,19 @@ export function extrairCor(nome: string): string | null {
   return m ? m[1].trim() : null;
 }
 
+// Codigo de colecao que o Bling deixa colado no nome (ex: "INV26" = Inverno/26, "VER26" =
+// Verao/26) - faz sentido como organizacao interna, mas fica com cara de erro de digitacao pro
+// cliente na vitrine (ainda mais depois que a home passou a falar "Primavera 26" - ver banner
+// da home). Removido aqui, na leitura, sem precisar mexer no cadastro no Bling - pedido do
+// Brunno em 24/08/2026.
+const CODIGO_COLECAO = /\s*\b(INV|VER|PRIM|OUT)\d{2}\b\s*/i;
+
 export function limparNomeBase(nome: string): string {
   return nome
     .replace(/\s*Cor:[^;]+;?/i, "")
     .replace(/\s*Tamanho:[^;]+;?/i, "")
+    .replace(CODIGO_COLECAO, " ")
+    .replace(/\s{2,}/g, " ")
     .trim();
 }
 

@@ -309,7 +309,30 @@ function fundirVariantesPorTamanho(produtos: ProdutoSaida[]): ProdutoSaida[] {
   for (const membros of grupos.values()) {
     if (membros.length === 1) {
       const { _tamanho, _base, ...original } = membros[0];
-      resultado.push(original);
+      // Produto isolado (sem "irmao" de outro tamanho) cujo NOME bate no padrao de sufixo de
+      // tamanho (" - 42", "Tam:GG"...) mas so' tem UMA cor cadastrada e ela nao tem NENHUMA
+      // variacao de tamanho de verdade (SKU unico, cor com tamanhos exatamente ["Único"]) - a'
+      // o "sufixo" no nome E' o tamanho real da peca, so' que preso na legenda em vez de virar
+      // opcao de compra (ex: "Calça ... Azul Tourmalina - 42", card mostrava "Único" pra
+      // escolher e o "- 42" ficava so' decorativo no nome). Limpa o nome e expoe o numero como
+      // tamanho de verdade - bug reportado pelo Brunno em 24/08/2026. So' mexe nesse caso
+      // exato: produto com tamanho de verdade (P/M/G, ou mais de uma cor) fica intocado.
+      const corUnica = original.cores.length === 1 ? original.cores[0] : null;
+      if (corUnica && corUnica.tamanhos.length === 1 && corUnica.tamanhos[0] === "Único") {
+        resultado.push({
+          ...original,
+          nome: _base,
+          cores: [
+            {
+              ...corUnica,
+              tamanhos: [_tamanho],
+              tamanhosDisponiveis: corUnica.tamanhosDisponiveis.length > 0 ? [_tamanho] : []
+            }
+          ]
+        });
+      } else {
+        resultado.push(original);
+      }
       continue;
     }
 
@@ -431,7 +454,19 @@ async function main() {
       cor: extrairCor(sku.nome) ?? "Único",
       tamanho: extrairTamanho(sku.nome)
     }));
-    const coresUnicas = Array.from(new Set(skusComCorTamanho.map((s) => s.cor)));
+    // "Único" e' o valor de reserva quando o SKU nao tem "Cor:X" no nome (produto sem
+    // variacao de cor de verdade, ex: um acessorio com so' uma cor). Mas se o MESMO produto
+    // TAMBEM tem cor(es) de verdade nomeada(s) (ex: "Vermelho Flame"), esse "Único" nao e' uma
+    // segunda cor legitima - e' sinal de que sobrou algum SKU/variacao cadastrado no Bling sem
+    // o campo "Cor" preenchido, e ele virava uma bolinha extra errada no site (bug reportado
+    // pelo Brunno em 24/08/2026, ex: macacao vermelho com uma segunda bolinha cinza "Único").
+    // Nesse caso ignora esse SKU pra nao mostrar cor fantasma - o jeito certo de resolver de
+    // vez e' preencher o campo "Cor" desse SKU no Bling (ai' ele vira uma cor de verdade, ou
+    // se for a mesma peca, a mesma cor que ja existe).
+    let coresUnicas = Array.from(new Set(skusComCorTamanho.map((s) => s.cor)));
+    if (coresUnicas.length > 1 && coresUnicas.includes("Único")) {
+      coresUnicas = coresUnicas.filter((c) => c !== "Único");
+    }
 
     const doCache = cache.get(idStr);
 
