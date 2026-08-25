@@ -14,12 +14,17 @@ export default function CalculoFrete({
   quantidadeItens = 1,
   selecionavel = false,
   opcaoSelecionada = null,
-  onSelecionar
+  onSelecionar,
+  onCepCalculado
 }: {
   quantidadeItens?: number;
   selecionavel?: boolean;
   opcaoSelecionada?: OpcaoFrete | null;
   onSelecionar?: (opcao: OpcaoFrete) => void;
+  // dispara com o CEP (so' digitos) toda vez que o calculo de frete da' certo - usado no
+  // carrinho pra tambem preencher o endereco de entrega automaticamente (ver lib/cep.ts),
+  // sem duplicar o campo de CEP num segundo lugar do formulario.
+  onCepCalculado?: (cepLimpo: string) => void;
 }) {
   const [cep, setCep] = useState("");
   const [opcoes, setOpcoes] = useState<OpcaoFrete[] | null>(null);
@@ -50,6 +55,7 @@ export default function CalculoFrete({
       if (selecionavel && onSelecionar && dados.opcoes?.length > 0) {
         onSelecionar(dados.opcoes[0]);
       }
+      onCepCalculado?.(cepLimpo);
     } catch (e) {
       setErro(e instanceof Error ? e.message : "Não foi possível calcular o frete");
     } finally {

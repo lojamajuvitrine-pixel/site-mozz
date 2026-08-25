@@ -130,6 +130,7 @@ export async function POST(request: NextRequest) {
         email: pagamento.payer?.email ?? "",
         telefone: pedido.telefone
       },
+      endereco: pedido.endereco,
       itens: itensBling,
       totalFrete: pedido.frete
     });

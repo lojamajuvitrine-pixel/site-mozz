@@ -7,6 +7,7 @@ import CalculoFrete, { type OpcaoFrete } from "@/components/CalculoFrete";
 import { rastrearIniciarCheckout } from "@/lib/tracking";
 import { validarCpf, formatarCpf } from "@/lib/cpf";
 import { createClient } from "@/lib/supabase/client";
+import { buscarEnderecoPorCep } from "@/lib/cep";
 
 type ResultadoCupom =
   | { valido: true; cupom: { codigo: string; tipo: "percentual" | "fixo"; valor: number }; desconto: number }
@@ -30,6 +31,21 @@ export default function PaginaCarrinho() {
   const [cpf, setCpf] = useState("");
   const [telefone, setTelefone] = useState("");
 
+  // Endereco de entrega - sem isso o pedido aprovado nao tem pra onde ser enviado (bug
+  // encontrado na venda teste de 25/08/2026: o checkout so' pedia CEP pra calcular o frete,
+  // nunca o endereco completo). Rua/bairro/cidade/UF sao preenchidos automaticamente pelo
+  // CEP usado no calculo de frete (ver CalculoFrete.tsx -> onCepCalculado), mas continuam
+  // editaveis - o cliente confere/corrige antes de finalizar. Numero e' sempre manual (o
+  // ViaCEP nao devolve numero de casa).
+  const [cepEndereco, setCepEndereco] = useState("");
+  const [rua, setRua] = useState("");
+  const [numero, setNumero] = useState("");
+  const [complemento, setComplemento] = useState("");
+  const [bairro, setBairro] = useState("");
+  const [cidade, setCidade] = useState("");
+  const [uf, setUf] = useState("");
+  const [buscandoCep, setBuscandoCep] = useState(false);
+
   useEffect(() => {
     const supabase = createClient();
     supabase.auth.getUser().then(({ data }) => {
@@ -37,8 +53,28 @@ export default function PaginaCarrinho() {
       if (meta.nome_completo) setNomeCompleto(meta.nome_completo);
       if (meta.cpf) setCpf(meta.cpf);
       if (meta.telefone) setTelefone(meta.telefone);
+      if (meta.cep) setCepEndereco(meta.cep);
+      if (meta.endereco) setRua(meta.endereco);
+      if (meta.numero) setNumero(meta.numero);
+      if (meta.complemento) setComplemento(meta.complemento);
+      if (meta.bairro) setBairro(meta.bairro);
+      if (meta.cidade) setCidade(meta.cidade);
+      if (meta.uf) setUf(meta.uf);
     });
   }, []);
+
+  async function aoCalcularFrete(cepLimpo: string) {
+    setCepEndereco(cepLimpo);
+    setBuscandoCep(true);
+    const endereco = await buscarEnderecoPorCep(cepLimpo);
+    if (endereco) {
+      setRua((atual) => endereco.rua || atual);
+      setBairro((atual) => endereco.bairro || atual);
+      setCidade((atual) => endereco.cidade || atual);
+      setUf((atual) => endereco.uf || atual);
+    }
+    setBuscandoCep(false);
+  }
 
   const quantidadeTotal = itens.reduce((soma, i) => soma + i.quantidade, 0);
   const desconto = cupomAplicado?.valido ? cupomAplicado.desconto : 0;
@@ -46,7 +82,11 @@ export default function PaginaCarrinho() {
   const totalComFrete = totalComDesconto + (freteSelecionado?.preco ?? 0);
 
   const cpfValido = validarCpf(cpf);
-  const podeFinalizar = nomeCompleto.trim().length > 3 && cpfValido && freteSelecionado !== null;
+  const enderecoCompleto =
+    rua.trim().length > 2 && numero.trim().length > 0 && bairro.trim().length > 1 &&
+    cidade.trim().length > 1 && uf.trim().length === 2;
+  const podeFinalizar =
+    nomeCompleto.trim().length > 3 && cpfValido && freteSelecionado !== null && enderecoCompleto;
 
   async function aplicarCupom() {
     if (!codigoCupom.trim()) return;
@@ -71,7 +111,9 @@ export default function PaginaCarrinho() {
       setErro(
         freteSelecionado === null
           ? "Calcule o frete pelo CEP e escolha uma opção de entrega antes de continuar"
-          : "Preencha nome completo e CPF válidos"
+          : !enderecoCompleto
+            ? "Preencha o endereço de entrega completo (rua, número, bairro, cidade e UF)"
+            : "Preencha nome completo e CPF válidos"
       );
       return;
     }
@@ -95,7 +137,20 @@ export default function PaginaCarrinho() {
         body: JSON.stringify({
           itens,
           cupomCodigo: cupomAplicado?.valido ? cupomAplicado.cupom.codigo : undefined,
-          cliente: { nomeCompleto: nomeCompleto.trim(), cpf, telefone: telefone || undefined },
+          cliente: {
+            nomeCompleto: nomeCompleto.trim(),
+            cpf,
+            telefone: telefone || undefined,
+            endereco: {
+              cep: cepEndereco,
+              rua: rua.trim(),
+              numero: numero.trim(),
+              complemento: complemento.trim() || undefined,
+              bairro: bairro.trim(),
+              cidade: cidade.trim(),
+              uf: uf.trim().toUpperCase()
+            }
+          },
           frete: freteSelecionado
             ? {
                 servico: freteSelecionado.servico,
@@ -180,6 +235,7 @@ export default function PaginaCarrinho() {
         selecionavel
         opcaoSelecionada={freteSelecionado}
         onSelecionar={setFreteSelecionado}
+        onCepCalculado={aoCalcularFrete}
       />
 
       <div className="mt-6 pt-6 border-t border-black/10">
@@ -205,6 +261,53 @@ export default function PaginaCarrinho() {
             placeholder="Telefone (opcional)"
             className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
           />
+        </div>
+
+        <p className="text-[13.5px] text-mozz-gray mt-4 mb-2">
+          Endereço de entrega {buscandoCep && "· buscando pelo CEP..."}
+        </p>
+        <div className="flex flex-col gap-2">
+          <div className="flex gap-2">
+            <input
+              value={rua}
+              onChange={(e) => setRua(e.target.value)}
+              placeholder="Rua"
+              className="flex-[3] border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
+            />
+            <input
+              value={numero}
+              onChange={(e) => setNumero(e.target.value)}
+              placeholder="Número"
+              className="flex-1 border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
+            />
+          </div>
+          <input
+            value={complemento}
+            onChange={(e) => setComplemento(e.target.value)}
+            placeholder="Complemento (opcional)"
+            className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
+          />
+          <div className="flex gap-2">
+            <input
+              value={bairro}
+              onChange={(e) => setBairro(e.target.value)}
+              placeholder="Bairro"
+              className="flex-[2] border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
+            />
+            <input
+              value={cidade}
+              onChange={(e) => setCidade(e.target.value)}
+              placeholder="Cidade"
+              className="flex-[2] border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
+            />
+            <input
+              value={uf}
+              onChange={(e) => setUf(e.target.value.toUpperCase().slice(0, 2))}
+              placeholder="UF"
+              maxLength={2}
+              className="flex-1 border border-black/20 px-3 py-2 text-[14.5px] uppercase focus:outline-none focus:border-mozz-black"
+            />
+          </div>
         </div>
       </div>
 

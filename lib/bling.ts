@@ -144,12 +144,31 @@ export type ItemPedidoBling = {
   valor: number;
 };
 
+// Endereco de entrega (ver EnderecoCheckout em lib/mercadopago.ts) - adicionado em 25/08/2026
+// depois de descobrir, numa venda de teste real, que o checkout nunca coletava isso (so' CPF/
+// nome/CEP-pra-frete). Manda o endereco em DOIS lugares do payload porque a documentacao da
+// API v3 do Bling nao deixa 100% claro qual delas vira a etiqueta de envio de verdade:
+// "contato.endereco" (endereco cadastral do cliente) e "transporte.etiqueta" (endereco
+// especifico de entrega desse pedido). IMPORTANTE: confirmar contra um pedido real criado no
+// Bling (a propria venda teste de hoje serve pra isso) e remover o que sobrar redundante.
+export type EnderecoPedidoBling = {
+  cep: string;
+  rua: string;
+  numero: string;
+  complemento?: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
+};
+
 export async function criarPedidoVendaBling(params: {
   numeroPedidoLoja: string;
   cliente: { nome: string; cpf: string; email: string; telefone?: string };
+  endereco: EnderecoPedidoBling;
   itens: ItemPedidoBling[];
   totalFrete: number;
 }) {
+  const end = params.endereco;
   return blingFetch<{ data: unknown }>("/pedidos/vendas", {
     method: "POST",
     body: JSON.stringify({
@@ -158,14 +177,37 @@ export async function criarPedidoVendaBling(params: {
         nome: params.cliente.nome,
         numeroDocumento: params.cliente.cpf,
         email: params.cliente.email,
-        telefone: params.cliente.telefone
+        telefone: params.cliente.telefone,
+        endereco: {
+          endereco: end.rua,
+          numero: end.numero,
+          complemento: end.complemento ?? "",
+          bairro: end.bairro,
+          cep: end.cep,
+          municipio: end.cidade,
+          uf: end.uf,
+          pais: "Brasil"
+        }
       },
       itens: params.itens.map((item) => ({
         produto: { id: item.produtoId },
         quantidade: item.quantidade,
         valor: item.valor
       })),
-      transporte: { frete: params.totalFrete }
+      transporte: {
+        frete: params.totalFrete,
+        etiqueta: {
+          nome: params.cliente.nome,
+          endereco: end.rua,
+          numero: end.numero,
+          complemento: end.complemento ?? "",
+          municipio: end.cidade,
+          uf: end.uf,
+          cep: end.cep,
+          bairro: end.bairro,
+          nomePais: "Brasil"
+        }
+      }
     })
   });
 }

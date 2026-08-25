@@ -22,7 +22,22 @@ export type ItemCarrinho = { produto: Produto; cor: string; tamanho: string; qua
 
 export type FreteEscolhido = { servico: string; transportadora: string; preco: number };
 
-export type ClienteCheckout = { nomeCompleto: string; cpf: string; telefone?: string };
+export type EnderecoCheckout = {
+  cep: string;
+  rua: string;
+  numero: string;
+  complemento?: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
+};
+
+export type ClienteCheckout = {
+  nomeCompleto: string;
+  cpf: string;
+  telefone?: string;
+  endereco: EnderecoCheckout;
+};
 
 // Formato compacto guardado no metadata da preferencia (volta intacto no payload do
 // pagamento quando o Mercado Pago chama o webhook - ver app/api/mercadopago/webhook) - assim
@@ -34,6 +49,7 @@ export type PedidoMetadata = {
   nome: string;
   cpf: string;
   telefone?: string;
+  endereco: EnderecoCheckout;
 };
 
 export async function criarPreferenciaPagamento(
@@ -45,6 +61,10 @@ export async function criarPreferenciaPagamento(
 ) {
   if (!cliente.nomeCompleto.trim() || !validarCpf(cliente.cpf)) {
     throw new Error("Nome completo e CPF válidos são obrigatórios pra finalizar a compra");
+  }
+  const end = cliente.endereco;
+  if (!end?.rua?.trim() || !end?.numero?.trim() || !end?.bairro?.trim() || !end?.cidade?.trim() || !end?.uf?.trim()) {
+    throw new Error("Endereço de entrega completo é obrigatório pra finalizar a compra");
   }
 
   const client = obterCliente();
@@ -105,7 +125,16 @@ export async function criarPreferenciaPagamento(
     frete: frete?.preco ?? 0,
     nome: cliente.nomeCompleto.trim(),
     cpf: cliente.cpf.replace(/\D/g, ""),
-    telefone: cliente.telefone
+    telefone: cliente.telefone,
+    endereco: {
+      cep: end.cep.replace(/\D/g, ""),
+      rua: end.rua.trim(),
+      numero: end.numero.trim(),
+      complemento: end.complemento?.trim() || undefined,
+      bairro: end.bairro.trim(),
+      cidade: end.cidade.trim(),
+      uf: end.uf.trim().toUpperCase()
+    }
   };
 
   const resposta = await preference.create({
@@ -116,7 +145,15 @@ export async function criarPreferenciaPagamento(
         ...(codigoCupomAplicado ? { cupom: codigoCupomAplicado } : {}),
         pedido_json: JSON.stringify(pedidoMetadata)
       },
-      payer: { name: cliente.nomeCompleto.trim().split(" ")[0], identification: { type: "CPF", number: pedidoMetadata.cpf } },
+      payer: {
+        name: cliente.nomeCompleto.trim().split(" ")[0],
+        identification: { type: "CPF", number: pedidoMetadata.cpf },
+        address: {
+          zip_code: pedidoMetadata.endereco.cep,
+          street_name: pedidoMetadata.endereco.rua,
+          street_number: pedidoMetadata.endereco.numero
+        }
+      },
       back_urls: {
         success: `${siteUrl}/checkout/sucesso`,
         failure: `${siteUrl}/checkout/erro`,
