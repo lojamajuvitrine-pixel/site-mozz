@@ -35,6 +35,9 @@
 //        novo (use se corrigiu marca de varios produtos direto no Bling)
 //      npm run sync:bling -- --forcar-fotos   -> baixa TODAS as fotos de novo, mesmo as que
 //        ja existem localmente (use se trocou foto de produto que ja tinha foto)
+//      npm run sync:bling -- --produtos=123,456 -> baixa foto de novo so' desses ids (o "id"
+//        que aparece na URL do produto no site) - use quando so' ACRESCENTOU foto em pecas que
+//        ja tinham alguma (bem mais rapido que --forcar-fotos, que refaz o catalogo inteiro)
 // Esse script roda fora do Next.js (via tsx direto), entao o .env.local NAO e' carregado
 // sozinho como acontece com "next dev"/"next build" - precisa carregar na mao aqui.
 import { config as carregarEnv } from "dotenv";
@@ -400,6 +403,13 @@ async function main() {
   // --forcar-fotos rebaixa TODAS as fotos de novo, mesmo as que ja existem localmente (util
   // se voce trocou a foto de produtos que ja tinham foto cadastrada antes).
   const forcarFotos = process.argv.includes("--forcar-fotos");
+  // --produtos=123,456 forca so' os ids listados (o "id do grupo", o mesmo que aparece na URL
+  // do produto no site) a rebaixar foto de novo - pra quando voce so' ACRESCENTOU foto em
+  // pecas que ja tinham alguma (o sync normal ve que a cor ja tem foto local e pula, mesmo
+  // que o Bling tenha foto nova - precisaria do --forcar-fotos, que rebaixa o CATALOGO INTEIRO,
+  // bem mais lento). Uso: npm run sync:bling -- --produtos=16442957822,16442953706
+  const produtosArg = process.argv.find((a) => a.startsWith("--produtos="));
+  const idsForcados = new Set(produtosArg ? produtosArg.split("=")[1].split(",").map((s) => s.trim()) : []);
 
   const cache = completo ? new Map<string, CacheProduto>() : carregarCache();
   if (cache.size > 0) {
@@ -472,9 +482,10 @@ async function main() {
 
     // ja tem foto(s) local(is) dessa cor (de um sync anterior)? guarda o que ja existe e so'
     // marca como "falta" quem realmente falta (ou tudo, se --forcar-fotos).
+    const forcarEsseProduto = forcarFotos || idsForcados.has(idStr);
     const imagensPorCor = new Map<string, string[]>();
     for (const cor of coresUnicas) {
-      const existentes = !forcarFotos ? fotosLocaisDaCor(`${idStr}--${corSlug(cor)}`) : [];
+      const existentes = !forcarEsseProduto ? fotosLocaisDaCor(`${idStr}--${corSlug(cor)}`) : [];
       if (existentes.length > 0) {
         imagensPorCor.set(cor, existentes);
         fotosReaproveitadas += existentes.length;
@@ -498,7 +509,11 @@ async function main() {
     let composicaoFinal = doCache?.composicao;
     if (!precisaDetalhe && doCache) {
       marcaFinal = doCache.marca;
-      if (doCache.nome) nomeBase = doCache.nome;
+      // nomeBase JA foi calculado ali em cima (linha ~425) a partir do nome fresco que vem da
+      // lista - nao sobrescreve mais com o nome VELHO do cache: isso fazia o nome voltar a
+      // ficar sujo (ex: com "INV26" de volta) toda vez que o produto nao precisava buscar o
+      // detalhe de novo, mesmo depois de melhorar a limpeza em limparNomeBase (bug encontrado
+      // em 24/08/2026 junto com o pedido de tirar o "INV26" da legenda).
     } else {
       if (!doCache) novos++;
       let marca = doCache?.marca ?? "";
