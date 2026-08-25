@@ -510,12 +510,7 @@ async function main() {
           const linksVariacao = (match?.midia?.imagens?.internas ?? [])
             .map((im) => im.link)
             .filter((l): l is string => !!l);
-          // O Bling devolve essa lista da mais recente pra mais antiga (ordem de upload
-          // invertida) - sem esse .reverse(), a foto 1 cadastrada no Bling virava a ULTIMA da
-          // galeria no site (numeracao decrescente, bug reportado pelo Brunno em 24/08/2026).
-          // Invertido aqui garante numeracao crescente: a primeira foto cadastrada e' sempre a
-          // primeira exibida.
-          const links = [...(linksVariacao.length > 0 ? linksVariacao : linksFallbackProduto)].reverse();
+          const links = linksVariacao.length > 0 ? linksVariacao : linksFallbackProduto;
 
           const caminhosBaixados: string[] = [];
           for (let i = 0; i < links.length; i++) {
@@ -552,6 +547,10 @@ async function main() {
     // de capa (card de vitrine) ser sempre de uma cor que tem foto quando possivel.
     const cores: VarianteCorSaida[] = coresUnicas
       .map((cor) => {
+        // Sem esse .sort(), os tamanhos ficavam na ordem que o Bling devolve os SKUs (nem
+        // sempre crescente, ex: "44, 42, 40, 38, 36, 34" - bug reportado pelo Brunno em
+        // 24/08/2026). compararTamanhos (definida acima, usada tambem na fusao por tamanho)
+        // entende tanto numero (34 a 56) quanto letra (PP, P, M, G...).
         const tamanhosCor = Array.from(
           new Set(
             skusComCorTamanho
@@ -559,7 +558,7 @@ async function main() {
               .map((s) => s.tamanho)
               .filter((t): t is string => !!t)
           )
-        );
+        ).sort(compararTamanhos);
         return {
           cor,
           imagens: imagensPorCor.get(cor) ?? [],
