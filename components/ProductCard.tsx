@@ -49,7 +49,13 @@ export default function ProductCard({ produto }: { produto: Produto }) {
   const [corIndex, setCorIndex] = useState(0);
   const [adicionado, setAdicionado] = useState<string | null>(null); // guarda o tamanho adicionado, pra feedback
   const corAtual = cores[corIndex];
-  const imagemAtual = corAtual.imagens[0] ?? produto.imagem;
+  // Sem fallback pra produto.imagem aqui: isso mostrava a foto de OUTRA cor quando a
+  // selecionada nao tinha foto propria (ex: "Azul Claro" sem foto mostrava a camisa Militar) -
+  // bug reportado pelo Brunno em 24/08/2026. Cor sem foto agora cai no aviso honesto "foto do
+  // produto" (mesmo comportamento ja usado na pagina do produto, ver SeletorProduto.tsx) em
+  // vez de uma foto que nao e' da cor escolhida. Na carga inicial (corIndex 0) isso raramente
+  // muda algo, ja que o sync poe cor com foto primeiro.
+  const imagemAtual = corAtual.imagens[0] ?? null;
   const parcelamento = formatarParcelamento(produto.preco);
   const disponiveisAtual = tamanhosDisponiveisDoColor(corAtual);
   // % de desconto pra mostrar na badge da foto - calculado em cima do preco original vs o

@@ -8,10 +8,16 @@
 //
 // Usado tanto na pagina do produto (SeletorProduto.tsx) quanto no card do mosaico
 // (ProductCard.tsx) - por isso mora aqui em vez de duplicado nos dois.
+// Portugues tem concordancia de genero no adjetivo de cor (a peca e' "Camiseta PRETA" mas
+// "Vestido PRETO") - o Bling as vezes cadastra a forma feminina. Sem essas variantes, "Preta"
+// nao batia com a chave "preto" (o .includes exige a palavra inteira) e caia no cinza generico
+// do fallback - bug reportado pelo Brunno em 24/08/2026 (bolinha "khaki" pra uma peca preta).
 const CORES_APROX: Array<[string, string]> = [
   ["off white", "#f5f0e6"],
   ["branco", "#ffffff"],
+  ["branca", "#ffffff"],
   ["preto", "#111111"],
+  ["preta", "#111111"],
   ["cinza mescla", "#9a9994"],
   ["cinza chumbo", "#4a4a48"],
   ["cinza", "#8a8a86"],
@@ -32,9 +38,11 @@ const CORES_APROX: Array<[string, string]> = [
   ["verde claro", "#8bb06a"],
   ["verde", "#3d5c34"],
   ["vermelho", "#a02020"],
+  ["vermelha", "#a02020"],
   ["bordo", "#5c1f2a"],
   ["vinho", "#5c1f2a"],
   ["amarelo", "#d8b84a"],
+  ["amarela", "#d8b84a"],
   ["mostarda", "#b8862f"],
   ["rosa claro", "#e6b8c4"],
   ["rosa bebe", "#e9c3d0"],
@@ -43,6 +51,7 @@ const CORES_APROX: Array<[string, string]> = [
   ["lilas", "#b9a3d6"],
   ["lavanda", "#b9a3d6"],
   ["roxo", "#5c4478"],
+  ["roxa", "#5c4478"],
   ["bege", "#d8c9ae"],
   ["nude", "#c9a988"],
   ["chocolate", "#4a2f1f"],
@@ -54,6 +63,7 @@ const CORES_APROX: Array<[string, string]> = [
   ["laranja", "#c9702f"],
   ["areia", "#c9b892"],
   ["dourado", "#b8963f"],
+  ["dourada", "#b8963f"],
   ["prata", "#b7b7b2"]
 ];
 
@@ -64,8 +74,10 @@ const CORES_APROX: Array<[string, string]> = [
 // CORES_APROX acima) porque so' precisamos da familia, nao da cor exata.
 const FAMILIAS_COR: Array<[string, string]> = [
   ["branco", "Branco"],
+  ["branca", "Branco"],
   ["off white", "Branco"],
   ["preto", "Preto"],
+  ["preta", "Preto"],
   ["cinza", "Cinza"],
   ["azul", "Azul"],
   ["indigo", "Azul"],
@@ -73,12 +85,15 @@ const FAMILIAS_COR: Array<[string, string]> = [
   ["denim", "Azul"],
   ["verde", "Verde"],
   ["vermelho", "Vermelho"],
+  ["vermelha", "Vermelho"],
   ["rosa", "Rosa"],
   ["pink", "Rosa"],
   ["lilas", "Roxo"],
   ["lavanda", "Roxo"],
   ["roxo", "Roxo"],
+  ["roxa", "Roxo"],
   ["amarelo", "Amarelo"],
+  ["amarela", "Amarelo"],
   ["mostarda", "Amarelo"],
   ["bege", "Bege"],
   ["nude", "Bege"],
