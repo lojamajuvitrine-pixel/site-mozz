@@ -1,0 +1,58 @@
+name: Sync completo do Bling (fotos, marca, descrição, preço, estoque)
+
+# Diferente do sync-estoque.yml (roda sozinho a cada 5 minutos, so' preco/estoque), esse aqui
+# roda so' quando VOCE clica em "Run workflow" na aba Actions do GitHub - use sempre que
+# cadastrar foto nova, produto novo, ou mudar nome/marca/descricao no Bling e quiser que
+# apareca no site sem esperar. Demora mais que o sync rapido (baixa e otimiza toda foto nova).
+on:
+  workflow_dispatch: {}
+
+jobs:
+  sync-bling-completo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Rodar sync completo (fotos, marca, descrição, preço, estoque)
+        env:
+          BLING_CLIENT_ID: ${{ secrets.BLING_CLIENT_ID }}
+          BLING_CLIENT_SECRET: ${{ secrets.BLING_CLIENT_SECRET }}
+          BLING_REFRESH_TOKEN: ${{ secrets.BLING_REFRESH_TOKEN }}
+        run: |
+          cat > .env.local <<EOF
+          BLING_CLIENT_ID=$BLING_CLIENT_ID
+          BLING_CLIENT_SECRET=$BLING_CLIENT_SECRET
+          BLING_REFRESH_TOKEN=$BLING_REFRESH_TOKEN
+          EOF
+          npm run sync:bling
+
+      # Mesmo cuidado do sync-estoque.yml - o Bling troca o refresh_token a cada uso.
+      - name: Atualizar BLING_REFRESH_TOKEN no GitHub, se rotacionou
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT_SECRETS }}
+        run: |
+          NOVO_TOKEN=$(grep '^BLING_REFRESH_TOKEN=' .env.local | cut -d '=' -f2-)
+          if [ -n "$NOVO_TOKEN" ] && [ "$NOVO_TOKEN" != "${{ secrets.BLING_REFRESH_TOKEN }}" ]; then
+            echo "Refresh token rotacionou - atualizando secret do repositorio..."
+            gh secret set BLING_REFRESH_TOKEN --body "$NOVO_TOKEN" --repo "${{ github.repository }}"
+          else
+            echo "Refresh token nao mudou - nada a atualizar."
+          fi
+
+      - name: Commit e push, se algo mudou
+        run: |
+          git config user.name "mozz-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/produtos.json public/produtos
+          if git diff --cached --quiet; then
+            echo "Nenhuma mudanca de catalogo/foto nesse ciclo."
+          else
+            git commit -m "sync completo: atualiza fotos/marca/descricao/preco/estoque via Bling"
+            git push
+          fi
