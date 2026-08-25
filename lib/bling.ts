@@ -9,6 +9,7 @@
 
 import * as fs from "fs";
 import * as path from "path";
+import { createClient } from "@supabase/supabase-js";
 
 const BLING_HOST = "https://api.bling.com.br/Api/v3";
 const BLING_OAUTH_TOKEN_URL = "https://api.bling.com.br/Api/v3/oauth/token";
@@ -44,6 +45,50 @@ function atualizarRefreshTokenLocal(novoToken: string) {
   }
 }
 
+// Fonte compartilhada do refresh_token entre os DOIS processos que usam o Bling: o webhook do
+// Mercado Pago (roda na Vercel, sempre que um pagamento e' aprovado) e o sync automatico de
+// estoque (roda no GitHub Actions, a cada 5min em horario comercial). Como o Bling ROTACIONA o
+// refresh_token a cada uso (o antigo vira invalido na hora), esses dois processos brigavam pelo
+// mesmo valor estatico guardado em dois lugares diferentes (variavel de ambiente da Vercel vs
+// secret do GitHub) - qualquer um dos dois que usasse primeiro invalidava a copia do outro,
+// causando "Invalid refresh token" aleatoriamente (foi o que quebrou o pedido de venda da
+// primeira compra real, em 25/08/2026). A tabela bling_oauth_token no Supabase agora e' a UNICA
+// fonte de verdade: os dois processos leem de la' antes de renovar e escrevem de volta depois -
+// a variavel de ambiente BLING_REFRESH_TOKEN vira so' uma semente inicial/fallback pro caso do
+// Supabase estar fora do ar. Ainda existe uma janela pequena de corrida se os dois renovarem ao
+// mesmo tempo exato, mas o webhook do Mercado Pago se auto-recupera nesse caso (devolve 500,
+// o Mercado Pago tenta de novo minutos depois, e a essa altura o token no Supabase ja' esta'
+// atualizado).
+function obterClienteSupabaseServico() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const chave = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !chave) return null;
+  return createClient(url, chave);
+}
+
+async function lerRefreshTokenCompartilhado(): Promise<string | null> {
+  const supabase = obterClienteSupabaseServico();
+  if (!supabase) return null;
+  try {
+    const { data } = await supabase.from("bling_oauth_token").select("refresh_token").eq("id", 1).maybeSingle();
+    return data?.refresh_token ?? null;
+  } catch {
+    return null; // Supabase fora do ar/tabela ainda nao existe - cai pro fallback da env var
+  }
+}
+
+async function salvarRefreshTokenCompartilhado(novoToken: string) {
+  const supabase = obterClienteSupabaseServico();
+  if (!supabase) return;
+  try {
+    await supabase
+      .from("bling_oauth_token")
+      .upsert({ id: 1, refresh_token: novoToken, atualizado_em: new Date().toISOString() });
+  } catch (erro) {
+    console.warn("[bling] falha ao salvar refresh_token compartilhado no Supabase:", erro);
+  }
+}
+
 async function obterAccessToken(): Promise<string> {
   if (cachedAccessToken && cachedAccessToken.expiraEm > Date.now()) {
     return cachedAccessToken.token;
@@ -51,7 +96,9 @@ async function obterAccessToken(): Promise<string> {
 
   const clientId = process.env.BLING_CLIENT_ID;
   const clientSecret = process.env.BLING_CLIENT_SECRET;
-  const refreshToken = process.env.BLING_REFRESH_TOKEN;
+  // Supabase primeiro (fonte compartilhada e sempre mais recente) - so' cai pra variavel de
+  // ambiente se o Supabase nao estiver configurado ou a tabela ainda nao tiver linha nenhuma.
+  const refreshToken = (await lerRefreshTokenCompartilhado()) ?? process.env.BLING_REFRESH_TOKEN;
 
   if (!clientId || !clientSecret || !refreshToken) {
     throw new Error(
@@ -87,10 +134,8 @@ async function obterAccessToken(): Promise<string> {
 
   if (dados.refresh_token && dados.refresh_token !== refreshToken) {
     process.env.BLING_REFRESH_TOKEN = dados.refresh_token; // vale pro resto desse processo
-    atualizarRefreshTokenLocal(dados.refresh_token);
-    console.warn(
-      `[bling] refresh_token foi rotacionado. Novo valor: ${dados.refresh_token} (na Vercel, atualize BLING_REFRESH_TOKEN manualmente com esse valor se for usar o app la').`
-    );
+    atualizarRefreshTokenLocal(dados.refresh_token); // conveniencia so' quando roda localmente
+    await salvarRefreshTokenCompartilhado(dados.refresh_token); // fonte de verdade pros dois processos
   }
 
   return cachedAccessToken.token;
