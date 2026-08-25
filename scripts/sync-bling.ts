@@ -510,7 +510,12 @@ async function main() {
           const linksVariacao = (match?.midia?.imagens?.internas ?? [])
             .map((im) => im.link)
             .filter((l): l is string => !!l);
-          const links = linksVariacao.length > 0 ? linksVariacao : linksFallbackProduto;
+          // O Bling devolve essa lista da mais recente pra mais antiga (ordem de upload
+          // invertida) - sem esse .reverse(), a foto 1 cadastrada no Bling virava a ULTIMA da
+          // galeria no site (numeracao decrescente, bug reportado pelo Brunno em 24/08/2026).
+          // Invertido aqui garante numeracao crescente: a primeira foto cadastrada e' sempre a
+          // primeira exibida.
+          const links = [...(linksVariacao.length > 0 ? linksVariacao : linksFallbackProduto)].reverse();
 
           const caminhosBaixados: string[] = [];
           for (let i = 0; i < links.length; i++) {
