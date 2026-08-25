@@ -48,17 +48,33 @@ projeto) que eu sigo com a parte técnica.
 
 ## 6. Meta Pixel e Google Analytics — rastreamento de anúncios e tráfego
 
-- [ ] **Meta Pixel** (anúncios/remarketing no Instagram e Facebook): no
-      [Gerenciador de Eventos](https://business.facebook.com/events_manager) da conta de
-      anúncios da MOZZ, criar uma fonte de dados do tipo "Web" (Pixel). Isso gera um ID
-      numérico (parecido com `123456789012345`).
-- [ ] **Google Analytics** (de onde vem o tráfego, como o cliente navega): criar uma
-      propriedade GA4 em [analytics.google.com](https://analytics.google.com) pro domínio
-      do site. Isso gera um ID no formato `G-XXXXXXXXXX`.
-- 🔑 Me manda os dois IDs. Eu coloco em `NEXT_PUBLIC_META_PIXEL_ID` e `NEXT_PUBLIC_GA_ID`
-      (no `.env.local` e você replica na Vercel). O código já está pronto pra ativar sozinho
-      assim que os IDs existirem — sem isso, o site funciona normal, só sem esses dois
-      rastreamentos.
+### Meta Pixel (passo a passo)
+
+1. Acesse [business.facebook.com/events_manager](https://business.facebook.com/events_manager)
+   logado com a conta que administra a página/anúncios da MOZZ.
+2. No menu à esquerda, clique em **"Conectar fontes de dados"** (ou no `+` verde) →
+   escolha **"Web"** → **"Pixel do Meta"**.
+3. Dê um nome (ex: "Pixel MOZZ Site") e coloque a URL `https://lojamozz.com.br` quando
+   pedir o site — não precisa instalar nada manualmente, o código já está pronto no site.
+4. Ao terminar, clique no Pixel criado → **"Configurações"** no topo. O **ID do Pixel** é o
+   número que aparece lá (parecido com `123456789012345`) — copia esse número.
+
+### Google Analytics (passo a passo)
+
+1. Acesse [analytics.google.com](https://analytics.google.com) logado com uma conta Google.
+2. Clique em **"Administrador"** (ícone de engrenagem, canto inferior esquerdo) →
+   **"Criar propriedade"**.
+3. Nome da propriedade: "MOZZ Site" (ou o que preferir), fuso horário Brasil, moeda Real.
+4. Em **"Sobre sua empresa"**, pode preencher rápido/genérico — não afeta o rastreamento.
+5. Em **"Fluxo de dados"**, escolha **"Web"** → URL `https://lojamozz.com.br` → nome do
+   fluxo "Site MOZZ" → **"Criar fluxo"**.
+6. Na tela que abre, o **ID de mensuração** aparece no topo direito, formato `G-XXXXXXXXXX`
+   — copia esse código.
+
+- 🔑 Me manda os dois IDs (Pixel e `G-XXXXXXXXXX`) aqui no chat. Eu coloco em
+      `NEXT_PUBLIC_META_PIXEL_ID` e `NEXT_PUBLIC_GA_ID` (no `.env.local` e replico na
+      Vercel). O código já está pronto pra ativar sozinho assim que os IDs existirem — sem
+      isso, o site funciona normal, só sem esses dois rastreamentos.
 
 ## 7. Supabase — login do cliente (link mágico) e "Minha conta" ✅ (concluído)
 
