@@ -5,7 +5,7 @@ export function formatarPreco(valor: number): string {
 // Parcelamento sem juros pra mostrar no card/pagina do produto, no padrao das lojas de moda
 // (ex: "ou 5x de R$ 199,80 sem juros"). MAX_PARCELAS_SEM_JUROS e' o teto de parcelas da MOZZ -
 // se um dia isso mudar (ex: acordo diferente com a adquirente), so mexer aqui.
-const MAX_PARCELAS_SEM_JUROS = 5;
+const MAX_PARCELAS_SEM_JUROS = 3;
 // abaixo desse valor nao faz sentido parcelar (parcela ficaria menor que isso)
 const VALOR_MINIMO_PARCELA = 30;
 
