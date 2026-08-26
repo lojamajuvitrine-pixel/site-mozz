@@ -2,7 +2,7 @@ import Link from "next/link";
 
 // Link direto pro Google Maps com o endereco da loja ja preenchido na busca - abre o app do
 // Maps no celular ou o site no desktop, sem precisar guardar coordenadas exatas (lat/long).
-const ENDERECO_LOJA = "Avenida Coronel Rogério Borba, nº 5, Reserva, PR";
+const ENDERECO_LOJA = "Avenida Coronel Rogério Borba, nº 480, Reserva, PR";
 const LINK_MAPS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ENDERECO_LOJA)}`;
 
 // Mesmo numero do botao flutuante de WhatsApp (components/BotaoWhatsapp.tsx) - repetido aqui
