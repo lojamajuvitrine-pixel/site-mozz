@@ -55,7 +55,7 @@ export default function BannerHero({ banners }: { banners: BannerItem[] }) {
         <Image
           key={banner.imagem}
           src={banner.imagem}
-          alt=""
+          alt={`${banner.label} — coleção ${banner.marca} MOZZ`}
           fill
           priority={i === 0}
           sizes="100vw"
