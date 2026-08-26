@@ -50,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "ClothingStore", name: "MOZZ", url: SITE_URL, telephone: "+5542988351888", address: { "@type": "PostalAddress", streetAddress: "Avenida Coronel Rogério Borba, 480", addressLocality: "Reserva", addressRegion: "PR", postalCode: "84320-000", addressCountry: "BR" }, openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "09:00", closes: "18:00" }, { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "09:00", closes: "12:00" }] }) }} />
       </head>
       <body className="font-sans">
         {metaPixelId && (
