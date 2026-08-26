@@ -142,7 +142,7 @@ export default function ProductCard({ produto }: { produto: Produto }) {
             <Image
               key={imagemAtual}
               src={imagemAtual}
-              alt={produto.nome}
+              alt={`${produto.marca} ${produto.nome}`}
               fill
               sizes="(max-width: 768px) 50vw, 25vw"
               // card pequeno do mosaico - qualidade mais baixa (o olho nao percebe nesse
