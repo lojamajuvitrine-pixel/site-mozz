@@ -46,7 +46,7 @@ export default function Footer() {
 
         <div>
           <TituloColuna>Pagamento</TituloColuna>
-          <p>Cartão de crédito em até 5x sem juros</p>
+          <p>Cartão de crédito em até 3x sem juros</p>
           <p>Pix</p>
           <p>Boleto</p>
         </div>
