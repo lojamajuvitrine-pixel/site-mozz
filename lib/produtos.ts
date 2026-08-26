@@ -162,10 +162,11 @@ function aplicarConfigEspecial(produto: Produto, config: ConfigProduto | undefin
 // nenhuma config cadastrada, o catalogo continua funcionando normal com o preco do Bling.
 export async function listarProdutos(opcoes?: { incluirSemFoto?: boolean }): Promise<Produto[]> {
   const config = await buscarConfigProdutosCache();
-  const produtos = (produtosData as Produto[])
+const produtos = (produtosData as Produto[])
     .filter((p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca))
     .filter((p) => opcoes?.incluirSemFoto || !!p.imagem)
     .map((p) => aplicarConfigEspecial(p, config.get(p.id)))
+    .filter((p) => p.preco > 0)
     .map(ordenarTamanhosDoProduto);
   // prioriza quem tem foto - so' importa mais quando incluirSemFoto=true (no catalogo publico
   // normal ninguem mais chega aqui sem foto); sort e' estavel, entao dentro de cada grupo a
