@@ -132,7 +132,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
               <Image
                 key={fotoAtual}
                 src={fotoAtual}
-                alt={`${produto.nome} - ${corAtual.cor}`}
+                alt={`${produto.marca} ${produto.nome} - ${corAtual.cor}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 // foto grande da pagina do produto - qualidade alta, e' onde o cliente olha o
