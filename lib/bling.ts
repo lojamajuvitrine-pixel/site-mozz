@@ -110,10 +110,11 @@ async function obterAccessToken(): Promise<string> {
 
   const resposta = await fetch(BLING_OAUTH_TOKEN_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Authorization: `Basic ${basicAuth}`
-    },
+   headers: {
+  "Content-Type": "application/x-www-form-urlencoded",
+  Authorization: `Basic ${basicAuth}`,
+  "enable-jwt": "1"
+},
     body: new URLSearchParams({
       grant_type: "refresh_token",
       refresh_token: refreshToken
@@ -145,9 +146,10 @@ async function blingFetch<T>(caminho: string, init?: RequestInit): Promise<T> {
   const token = await obterAccessToken();
   const resposta = await fetch(`${BLING_HOST}${caminho}`, {
     ...init,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
+headers: {
+  Authorization: `Bearer ${token}`,
+  "Content-Type": "application/json",
+  "enable-jwt": "1",
       ...(init?.headers ?? {})
     }
   });
