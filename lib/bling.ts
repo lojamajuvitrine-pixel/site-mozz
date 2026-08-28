@@ -89,32 +89,29 @@ async function salvarRefreshTokenCompartilhado(novoToken: string) {
   }
 }
 
-async function obterAccessToken(): Promise<string> {
-  if (cachedAccessToken && cachedAccessToken.expiraEm > Date.now()) {
-    return cachedAccessToken.token;
-  }
+function aguardar(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
+// Troca um refresh_token pelos tokens novos. Isolado numa funcao a parte pra poder ser chamado
+// de novo (com um refresh_token diferente) no retry de corrida logo abaixo, sem duplicar a
+// chamada HTTP. Guarda o status HTTP no erro pra quem chama saber se vale tentar de novo.
+async function trocarRefreshTokenPorTokens(refreshToken: string): Promise<BlingTokenResponse> {
   const clientId = process.env.BLING_CLIENT_ID;
   const clientSecret = process.env.BLING_CLIENT_SECRET;
-  // Supabase primeiro (fonte compartilhada e sempre mais recente) - so' cai pra variavel de
-  // ambiente se o Supabase nao estiver configurado ou a tabela ainda nao tiver linha nenhuma.
-  const refreshToken = (await lerRefreshTokenCompartilhado()) ?? process.env.BLING_REFRESH_TOKEN;
-
-  if (!clientId || !clientSecret || !refreshToken) {
-    throw new Error(
-      "Credenciais do Bling ausentes. Configure BLING_CLIENT_ID, BLING_CLIENT_SECRET e BLING_REFRESH_TOKEN no .env."
-    );
+  if (!clientId || !clientSecret) {
+    throw new Error("Credenciais do Bling ausentes. Configure BLING_CLIENT_ID e BLING_CLIENT_SECRET no .env.");
   }
 
   const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
 
   const resposta = await fetch(BLING_OAUTH_TOKEN_URL, {
     method: "POST",
-   headers: {
-  "Content-Type": "application/x-www-form-urlencoded",
-  Authorization: `Basic ${basicAuth}`,
-  "enable-jwt": "1"
-},
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Basic ${basicAuth}`,
+      "enable-jwt": "1"
+    },
     body: new URLSearchParams({
       grant_type: "refresh_token",
       refresh_token: refreshToken
@@ -123,20 +120,62 @@ async function obterAccessToken(): Promise<string> {
 
   if (!resposta.ok) {
     const texto = await resposta.text();
-    throw new Error(`Falha ao renovar token do Bling (${resposta.status}): ${texto}`);
+    const erro = new Error(`Falha ao renovar token do Bling (${resposta.status}): ${texto}`) as Error & {
+      status?: number;
+    };
+    erro.status = resposta.status;
+    throw erro;
   }
 
-  const dados = (await resposta.json()) as BlingTokenResponse;
+  return (await resposta.json()) as BlingTokenResponse;
+}
+
+async function obterAccessToken(): Promise<string> {
+  if (cachedAccessToken && cachedAccessToken.expiraEm > Date.now()) {
+    return cachedAccessToken.token;
+  }
+
+  // Supabase primeiro (fonte compartilhada e sempre mais recente) - so' cai pra variavel de
+  // ambiente se o Supabase nao estiver configurado ou a tabela ainda nao tiver linha nenhuma.
+  const refreshTokenInicial = (await lerRefreshTokenCompartilhado()) ?? process.env.BLING_REFRESH_TOKEN;
+  if (!refreshTokenInicial) {
+    throw new Error("Credenciais do Bling ausentes. Nenhum refresh_token disponivel (Supabase nem BLING_REFRESH_TOKEN).");
+  }
+
+  let refreshTokenUsado = refreshTokenInicial;
+  let dados: BlingTokenResponse;
+  try {
+    dados = await trocarRefreshTokenPorTokens(refreshTokenUsado);
+  } catch (erroOriginal) {
+    // 400 (invalid_grant) nesse ponto costuma ser CORRIDA, nao token morto de verdade: outro
+    // processo (webhook do Mercado Pago, o sync de 5 em 5 min, uma execucao manual) rotacionou
+    // esse MESMO refresh_token um instante antes (o Bling so' aceita cada refresh_token UMA vez
+    // - ver comentario grande acima de lerRefreshTokenCompartilhado). Em vez de falhar na hora,
+    // espera um pouco (tempo do outro processo terminar de salvar o token novo no Supabase) e
+    // busca de novo - se mudou, tenta com o valor atualizado antes de desistir de verdade.
+    const status = (erroOriginal as { status?: number })?.status;
+    if (status !== 400) throw erroOriginal;
+
+    await aguardar(2500);
+    const refreshTokenAtualizado = await lerRefreshTokenCompartilhado();
+    if (!refreshTokenAtualizado || refreshTokenAtualizado === refreshTokenUsado) {
+      throw erroOriginal; // Supabase nao mudou - nao era corrida, o token esta' morto mesmo
+    }
+
+    refreshTokenUsado = refreshTokenAtualizado;
+    dados = await trocarRefreshTokenPorTokens(refreshTokenUsado); // se falhar aqui, propaga normalmente
+  }
+
   cachedAccessToken = {
     token: dados.access_token,
     // renova um pouco antes de expirar de verdade, pra nao correr risco de token vencido
     expiraEm: Date.now() + (dados.expires_in - 60) * 1000
   };
 
-  if (dados.refresh_token && dados.refresh_token !== refreshToken) {
+  if (dados.refresh_token && dados.refresh_token !== refreshTokenUsado) {
     process.env.BLING_REFRESH_TOKEN = dados.refresh_token; // vale pro resto desse processo
     atualizarRefreshTokenLocal(dados.refresh_token); // conveniencia so' quando roda localmente
-    await salvarRefreshTokenCompartilhado(dados.refresh_token); // fonte de verdade pros dois processos
+    await salvarRefreshTokenCompartilhado(dados.refresh_token); // fonte de verdade pros processos
   }
 
   return cachedAccessToken.token;
