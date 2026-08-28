@@ -1,3 +1,4 @@
+
 // Cliente da API v3 do Bling (https://developer.bling.com.br/bling-api).
 // Autenticacao OAuth2: o app e' cadastrado uma vez em developer.bling.com.br/aplicativos,
 // o que gera client_id/client_secret. O usuario autoriza o app (fluxo "authorization code")
@@ -6,23 +7,23 @@
 // rapido, tipicamente 6h) sem precisar o usuario logar de novo.
 //
 // Passo a passo de como gerar o primeiro refresh_token esta' em PROXIMOS_PASSOS.md.
-
+ 
 import * as fs from "fs";
 import * as path from "path";
 import { createClient } from "@supabase/supabase-js";
-
+ 
 const BLING_HOST = "https://api.bling.com.br/Api/v3";
 const BLING_OAUTH_TOKEN_URL = "https://api.bling.com.br/Api/v3/oauth/token";
-
+ 
 type BlingTokenResponse = {
   access_token: string;
   refresh_token: string;
   expires_in: number;
   token_type: string;
 };
-
+ 
 let cachedAccessToken: { token: string; expiraEm: number } | null = null;
-
+ 
 // O Bling invalida o refresh_token antigo e devolve um NOVO a cada troca (rotacao de refresh
 // token) - usar o valor antigo de novo depois disso da' "Invalid refresh token". Quando rodando
 // localmente (scripts/sync-bling.ts via tsx), a gente atualiza o .env.local sozinho pra nao
@@ -44,7 +45,7 @@ function atualizarRefreshTokenLocal(novoToken: string) {
     // sistema de arquivos somente leitura (ex: Vercel em producao) - inofensivo, so' ignora
   }
 }
-
+ 
 // Fonte compartilhada do refresh_token entre os DOIS processos que usam o Bling: o webhook do
 // Mercado Pago (roda na Vercel, sempre que um pagamento e' aprovado) e o sync automatico de
 // estoque (roda no GitHub Actions, a cada 5min em horario comercial). Como o Bling ROTACIONA o
@@ -65,34 +66,75 @@ function obterClienteSupabaseServico() {
   if (!url || !chave) return null;
   return createClient(url, chave);
 }
-
+ 
+// DIAGNOSTICO TEMPORARIO (28/08/2026) - varios invalid_grant seguidos mesmo logo depois de
+// reautorizar, sem corrida (confirmado via logs da Vercel: 0 chamadas do webhook do MP no
+// periodo) e com client_id/secret batendo dos dois lados (GitHub e Vercel). Log so' com
+// booleanos/tamanhos/ultimos-4-caracteres - nunca a chave nem o token inteiro - pra descobrir
+// se o GitHub Actions consegue mesmo LER o Supabase ou se esta' caindo no fallback da env var
+// sem a gente perceber. Remover depois de identificar a causa.
 async function lerRefreshTokenCompartilhado(): Promise<string | null> {
   const supabase = obterClienteSupabaseServico();
-  if (!supabase) return null;
+  if (!supabase) {
+    console.warn("[bling][diag] Supabase NAO configurado (falta NEXT_PUBLIC_SUPABASE_URL ou SUPABASE_SERVICE_ROLE_KEY) - vai cair no fallback da env var BLING_REFRESH_TOKEN.");
+    return null;
+  }
   try {
-    const { data } = await supabase.from("bling_oauth_token").select("refresh_token").eq("id", 1).maybeSingle();
-    return data?.refresh_token ?? null;
-  } catch {
+    const { data, error } = await supabase.from("bling_oauth_token").select("refresh_token").eq("id", 1).maybeSingle();
+    if (error) {
+      console.warn(`[bling][diag] Supabase respondeu com ERRO ao ler o token: ${error.message} (code: ${error.code ?? "?"})`);
+      return null;
+    }
+    if (!data?.refresh_token) {
+      console.warn("[bling][diag] Supabase respondeu OK mas sem nenhuma linha/refresh_token (tabela vazia?) - vai cair no fallback da env var.");
+      return null;
+    }
+    console.log(`[bling][diag] Supabase OK - token lido termina em "...${data.refresh_token.slice(-6)}" (${data.refresh_token.length} caracteres).`);
+    return data.refresh_token;
+  } catch (erro) {
+    console.warn("[bling][diag] Excecao ao tentar ler o Supabase (rede/config?):", erro);
     return null; // Supabase fora do ar/tabela ainda nao existe - cai pro fallback da env var
   }
 }
-
+ 
+// Tenta salvar ate' 3x (com um pequeno intervalo) antes de desistir. Esse valor e' o ULTIMO
+// refresh_token valido que a gente tem - se essa gravacao falhar silenciosamente (like antes),
+// o Bling ja' invalidou o token antigo mas ninguem mais tem o novo em lugar nenhum, e a unica
+// saida vira uma reautorizacao manual (foi exatamente isso que aconteceu em 28/08/2026). Um
+// blip transitorio do Supabase nao pode custar isso.
 async function salvarRefreshTokenCompartilhado(novoToken: string) {
   const supabase = obterClienteSupabaseServico();
   if (!supabase) return;
-  try {
-    await supabase
-      .from("bling_oauth_token")
-      .upsert({ id: 1, refresh_token: novoToken, atualizado_em: new Date().toISOString() });
-  } catch (erro) {
-    console.warn("[bling] falha ao salvar refresh_token compartilhado no Supabase:", erro);
+ 
+  const tentativas = 3;
+  for (let tentativa = 1; tentativa <= tentativas; tentativa++) {
+    try {
+      const { error } = await supabase
+        .from("bling_oauth_token")
+        .upsert({ id: 1, refresh_token: novoToken, atualizado_em: new Date().toISOString() });
+      if (!error) return; // sucesso
+      throw error;
+    } catch (erro) {
+      if (tentativa === tentativas) {
+        // esgotou as tentativas - loga ALTO (nao so' warn) porque a partir daqui o token novo
+        // so' existe na memoria desse processo, e some quando ele terminar.
+        console.error(
+          `[bling] FALHA ao salvar refresh_token compartilhado no Supabase apos ${tentativas} tentativas - ` +
+            `o token novo pode se perder. Erro:`,
+          erro
+        );
+        return;
+      }
+      console.warn(`[bling] tentativa ${tentativa}/${tentativas} de salvar refresh_token falhou, tentando de novo:`, erro);
+      await aguardar(500 * tentativa);
+    }
   }
 }
-
+ 
 function aguardar(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-
+ 
 // Troca um refresh_token pelos tokens novos. Isolado numa funcao a parte pra poder ser chamado
 // de novo (com um refresh_token diferente) no retry de corrida logo abaixo, sem duplicar a
 // chamada HTTP. Guarda o status HTTP no erro pra quem chama saber se vale tentar de novo.
@@ -102,9 +144,9 @@ async function trocarRefreshTokenPorTokens(refreshToken: string): Promise<BlingT
   if (!clientId || !clientSecret) {
     throw new Error("Credenciais do Bling ausentes. Configure BLING_CLIENT_ID e BLING_CLIENT_SECRET no .env.");
   }
-
+ 
   const basicAuth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
-
+ 
   const resposta = await fetch(BLING_OAUTH_TOKEN_URL, {
     method: "POST",
     headers: {
@@ -117,7 +159,7 @@ async function trocarRefreshTokenPorTokens(refreshToken: string): Promise<BlingT
       refresh_token: refreshToken
     })
   });
-
+ 
   if (!resposta.ok) {
     const texto = await resposta.text();
     const erro = new Error(`Falha ao renovar token do Bling (${resposta.status}): ${texto}`) as Error & {
@@ -126,22 +168,28 @@ async function trocarRefreshTokenPorTokens(refreshToken: string): Promise<BlingT
     erro.status = resposta.status;
     throw erro;
   }
-
+ 
   return (await resposta.json()) as BlingTokenResponse;
 }
-
+ 
 async function obterAccessToken(): Promise<string> {
   if (cachedAccessToken && cachedAccessToken.expiraEm > Date.now()) {
     return cachedAccessToken.token;
   }
-
+ 
   // Supabase primeiro (fonte compartilhada e sempre mais recente) - so' cai pra variavel de
   // ambiente se o Supabase nao estiver configurado ou a tabela ainda nao tiver linha nenhuma.
-  const refreshTokenInicial = (await lerRefreshTokenCompartilhado()) ?? process.env.BLING_REFRESH_TOKEN;
+  const doSupabase = await lerRefreshTokenCompartilhado();
+  const refreshTokenInicial = doSupabase ?? process.env.BLING_REFRESH_TOKEN;
   if (!refreshTokenInicial) {
     throw new Error("Credenciais do Bling ausentes. Nenhum refresh_token disponivel (Supabase nem BLING_REFRESH_TOKEN).");
   }
-
+  if (!doSupabase) {
+    console.warn(
+      `[bling][diag] Usando o FALLBACK (env var BLING_REFRESH_TOKEN), nao o Supabase - termina em "...${refreshTokenInicial.slice(-6)}" (${refreshTokenInicial.length} caracteres).`
+    );
+  }
+ 
   let refreshTokenUsado = refreshTokenInicial;
   let dados: BlingTokenResponse;
   try {
@@ -155,32 +203,32 @@ async function obterAccessToken(): Promise<string> {
     // busca de novo - se mudou, tenta com o valor atualizado antes de desistir de verdade.
     const status = (erroOriginal as { status?: number })?.status;
     if (status !== 400) throw erroOriginal;
-
+ 
     await aguardar(2500);
     const refreshTokenAtualizado = await lerRefreshTokenCompartilhado();
     if (!refreshTokenAtualizado || refreshTokenAtualizado === refreshTokenUsado) {
       throw erroOriginal; // Supabase nao mudou - nao era corrida, o token esta' morto mesmo
     }
-
+ 
     refreshTokenUsado = refreshTokenAtualizado;
     dados = await trocarRefreshTokenPorTokens(refreshTokenUsado); // se falhar aqui, propaga normalmente
   }
-
+ 
   cachedAccessToken = {
     token: dados.access_token,
     // renova um pouco antes de expirar de verdade, pra nao correr risco de token vencido
     expiraEm: Date.now() + (dados.expires_in - 60) * 1000
   };
-
+ 
   if (dados.refresh_token && dados.refresh_token !== refreshTokenUsado) {
     process.env.BLING_REFRESH_TOKEN = dados.refresh_token; // vale pro resto desse processo
     atualizarRefreshTokenLocal(dados.refresh_token); // conveniencia so' quando roda localmente
     await salvarRefreshTokenCompartilhado(dados.refresh_token); // fonte de verdade pros processos
   }
-
+ 
   return cachedAccessToken.token;
 }
-
+ 
 async function blingFetch<T>(caminho: string, init?: RequestInit): Promise<T> {
   const token = await obterAccessToken();
   const resposta = await fetch(`${BLING_HOST}${caminho}`, {
@@ -192,26 +240,26 @@ headers: {
       ...(init?.headers ?? {})
     }
   });
-
+ 
   if (!resposta.ok) {
     const texto = await resposta.text();
     throw new Error(`Bling API erro ${resposta.status} em ${caminho}: ${texto}`);
   }
-
+ 
   return resposta.json() as Promise<T>;
 }
-
+ 
 // GET /Api/v3/produtos - lista de produtos cadastrados no Bling.
 export async function listarProdutosBling(pagina = 1) {
   return blingFetch<{ data: unknown[] }>(`/produtos?pagina=${pagina}&limite=100`);
 }
-
+ 
 // GET /Api/v3/estoques/saldos - saldo de estoque por produto/deposito.
 export async function listarSaldosEstoqueBling(idsProdutos: number[]) {
   const query = idsProdutos.map((id) => `idsProdutos[]=${id}`).join("&");
   return blingFetch<{ data: unknown[] }>(`/estoques/saldos?${query}`);
 }
-
+ 
 // GET /Api/v3/produtos/{id} - detalhe completo de UM produto. Usado so' pra diagnostico
 // (ver diagnostico-marca abaixo): o endpoint de LISTA (/produtos) nao devolve o campo de
 // marca, entao aqui a gente confirma se o detalhe traz esse campo antes de montar o
@@ -219,7 +267,7 @@ export async function listarSaldosEstoqueBling(idsProdutos: number[]) {
 export async function buscarProdutoDetalheBling(id: number) {
   return blingFetch<{ data: unknown }>(`/produtos/${id}`);
 }
-
+ 
 // POST /Api/v3/pedidos/vendas - cria um pedido de venda no Bling a partir de um pedido
 // aprovado no site. O mapeamento exato de campos (deposito, categoria, forma de pagamento,
 // numeracao) depende de como a conta Bling da MOZZ esta configurada hoje - o formato abaixo
@@ -229,7 +277,7 @@ export type ItemPedidoBling = {
   quantidade: number;
   valor: number;
 };
-
+ 
 // Endereco de entrega (ver EnderecoCheckout em lib/mercadopago.ts) - adicionado em 25/08/2026
 // depois de descobrir, numa venda de teste real, que o checkout nunca coletava isso (so' CPF/
 // nome/CEP-pra-frete). Manda o endereco em DOIS lugares do payload porque a documentacao da
@@ -246,7 +294,7 @@ export type EnderecoPedidoBling = {
   cidade: string;
   uf: string;
 };
-
+ 
 // Busca um contato existente no Bling pelo CPF (query "pesquisa" da API de listagem) e,
 // se nao encontrar, cria um novo via POST /contatos. Descoberto em 25/08/2026, contra a
 // primeira venda real: o POST /pedidos/vendas exige "contato.id" (referencia a um contato
@@ -262,7 +310,7 @@ async function buscarOuCriarContatoBling(params: {
   endereco: EnderecoPedidoBling;
 }): Promise<number> {
   const cpfLimpo = params.cpf.replace(/\D/g, "");
-
+ 
   // BUG encontrado em 25/08/2026, na primeira venda real (pagamento 174612277989): o endpoint
   // GET /contatos?pesquisa={cpf} do Bling e' busca por TEXTO LIVRE, nao busca exata - com
   // cpfLimpo valido (11 digitos de um cliente real, ja' cadastrado no Bling com esse CPF) ele
@@ -282,7 +330,7 @@ async function buscarOuCriarContatoBling(params: {
       return encontrado.id;
     }
   }
-
+ 
   const end = params.endereco;
   const criado = await blingFetch<{ data: { id: number } }>("/contatos", {
     method: "POST",
@@ -307,7 +355,7 @@ async function buscarOuCriarContatoBling(params: {
   });
   return criado.data.id;
 }
-
+ 
 export async function criarPedidoVendaBling(params: {
   numeroPedidoLoja: string;
   cliente: { nome: string; cpf: string; email: string; telefone?: string };
@@ -323,28 +371,28 @@ export async function criarPedidoVendaBling(params: {
     telefone: params.cliente.telefone,
     endereco: end
   });
-
+ 
   // "data" (data do pedido) e' obrigatoria - sem ela o Bling nem consegue gerar a(s)
   // parcela(s) financeira(s) padrao automaticamente (erro "data para geracao das parcelas
   // e' invalida"). dataSaida/dataPrevista tambem sao exigidas pelo schema da API; usamos a
   // data de hoje pras tres na falta de um calculo de prazo de envio mais preciso.
   const hoje = new Date().toISOString().slice(0, 10);
-
+ 
   const totalItens = params.itens.reduce((soma, item) => soma + item.quantidade * item.valor, 0);
   const totalPedido = totalItens + params.totalFrete;
-
+ 
   // ID da forma de pagamento "Mercado Pago", cadastrada manualmente no Bling em 25/08/2026
   // (Cadastros > Formas de pagamento; Tipo "Outros", Destino "Conta a receber/pagar", Conta
   // financeira "Mercado Pago - Mercado Livre"). Sem "parcelas" o pedido ficava sem forma de
   // pagamento nenhuma e sem conta a receber gerada.
   const ID_FORMA_PAGAMENTO_MERCADO_PAGO = 10977522;
-
+ 
   // Vendedor padrao pras vendas do site - decisao do Brunno em 25/08/2026: usar sempre a
   // Izabella, ja' que o site nao tem noção de vendedor proprio. A conta Bling tem "Vendedor
   // obrigatorio nos pedidos de vendas" ativado, entao sem isso o POST falha assim que o
   // contato deixa de ser o generico "Consumo Interno".
   const ID_VENDEDOR_PADRAO_SITE = 15596528457;
-
+ 
   return blingFetch<{ data: unknown }>("/pedidos/vendas", {
     method: "POST",
     body: JSON.stringify({
