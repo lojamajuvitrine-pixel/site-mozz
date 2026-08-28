@@ -67,32 +67,31 @@ function obterClienteSupabaseServico() {
   return createClient(url, chave);
 }
  
-// DIAGNOSTICO TEMPORARIO (28/08/2026) - varios invalid_grant seguidos mesmo logo depois de
-// reautorizar, sem corrida (confirmado via logs da Vercel: 0 chamadas do webhook do MP no
-// periodo) e com client_id/secret batendo dos dois lados (GitHub e Vercel). Log so' com
-// booleanos/tamanhos/ultimos-4-caracteres - nunca a chave nem o token inteiro - pra descobrir
-// se o GitHub Actions consegue mesmo LER o Supabase ou se esta' caindo no fallback da env var
-// sem a gente perceber. Remover depois de identificar a causa.
+// Log leve e permanente (nunca a chave nem o token inteiro, so' os ultimos 6 caracteres, que
+// ja trocam a cada uso) - descobriu, em 28/08/2026, que o sync-bling-completo.yml rodava sem
+// NEXT_PUBLIC_SUPABASE_URL/SUPABASE_SERVICE_ROLE_KEY no ambiente (secret cadastrada no GitHub
+// mas nunca referenciada no bloco env: do workflow) e caia silenciosamente no fallback antigo
+// da env var BLING_REFRESH_TOKEN sem ninguem perceber. Vale manter pra pegar isso na hora, em
+// vez de descobrir depois de varias falhas.
 async function lerRefreshTokenCompartilhado(): Promise<string | null> {
   const supabase = obterClienteSupabaseServico();
   if (!supabase) {
-    console.warn("[bling][diag] Supabase NAO configurado (falta NEXT_PUBLIC_SUPABASE_URL ou SUPABASE_SERVICE_ROLE_KEY) - vai cair no fallback da env var BLING_REFRESH_TOKEN.");
+    console.warn("[bling] Supabase nao configurado nesse ambiente (falta NEXT_PUBLIC_SUPABASE_URL ou SUPABASE_SERVICE_ROLE_KEY) - usando o fallback da env var BLING_REFRESH_TOKEN.");
     return null;
   }
   try {
     const { data, error } = await supabase.from("bling_oauth_token").select("refresh_token").eq("id", 1).maybeSingle();
     if (error) {
-      console.warn(`[bling][diag] Supabase respondeu com ERRO ao ler o token: ${error.message} (code: ${error.code ?? "?"})`);
+      console.warn(`[bling] Supabase respondeu com erro ao ler o token: ${error.message} (code: ${error.code ?? "?"})`);
       return null;
     }
     if (!data?.refresh_token) {
-      console.warn("[bling][diag] Supabase respondeu OK mas sem nenhuma linha/refresh_token (tabela vazia?) - vai cair no fallback da env var.");
+      console.warn("[bling] Supabase respondeu OK mas sem nenhuma linha/refresh_token (tabela vazia?) - usando o fallback da env var.");
       return null;
     }
-    console.log(`[bling][diag] Supabase OK - token lido termina em "...${data.refresh_token.slice(-6)}" (${data.refresh_token.length} caracteres).`);
     return data.refresh_token;
   } catch (erro) {
-    console.warn("[bling][diag] Excecao ao tentar ler o Supabase (rede/config?):", erro);
+    console.warn("[bling] Excecao ao tentar ler o Supabase (rede/config?):", erro);
     return null; // Supabase fora do ar/tabela ainda nao existe - cai pro fallback da env var
   }
 }
@@ -185,9 +184,7 @@ async function obterAccessToken(): Promise<string> {
     throw new Error("Credenciais do Bling ausentes. Nenhum refresh_token disponivel (Supabase nem BLING_REFRESH_TOKEN).");
   }
   if (!doSupabase) {
-    console.warn(
-      `[bling][diag] Usando o FALLBACK (env var BLING_REFRESH_TOKEN), nao o Supabase - termina em "...${refreshTokenInicial.slice(-6)}" (${refreshTokenInicial.length} caracteres).`
-    );
+    console.warn("[bling] Usando o fallback da env var BLING_REFRESH_TOKEN, nao o Supabase - ver aviso acima.");
   }
  
   let refreshTokenUsado = refreshTokenInicial;
