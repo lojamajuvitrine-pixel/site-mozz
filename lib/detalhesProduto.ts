@@ -72,8 +72,10 @@ export function categoriaDoProduto(nomeProduto: string): CategoriaPeca {
 }
 
 // Tabela de medidas em cm - referencia padrao de mercado por numeracao BR, usada quando o
-// produto nao tem medida propria cadastrada.
-type TabelaMedidas = { colunas: string[]; linhas: Array<[string, ...string[]]> };
+// produto nao tem medida propria cadastrada (ver medidasCustomizadas em lib/produtos.ts e o
+// painel /admin/produtos, onde o Brunno pode cadastrar a medida REAL de uma peca especifica -
+// pedido dele em 29/08/2026, ate' entao so' existia essa tabela generica por categoria).
+export type TabelaMedidas = { colunas: string[]; linhas: string[][] };
 
 const TABELA_SUPERIOR_VESTIDO: TabelaMedidas = {
   colunas: ["Tamanho", "Busto (cm)", "Cintura (cm)", "Quadril (cm)"],
@@ -121,6 +123,51 @@ export function tabelaDeMedidas(categoria: CategoriaPeca): TabelaMedidas | null 
     default:
       return null;
   }
+}
+
+// Converte uma tabela de medidas pra texto editavel numa textarea (linha de cabecalho +
+// uma linha por tamanho, valores separados por virgula) - usado pra pre-preencher o campo
+// no painel /admin/produtos, seja com a tabela customizada ja salva ou com a generica da
+// categoria (ponto de partida pra so' trocar os numeros em vez de digitar tudo do zero).
+export function tabelaParaCsv(tabela: TabelaMedidas): string {
+  return [tabela.colunas.join(", "), ...tabela.linhas.map((linha) => linha.join(", "))].join("\n");
+}
+
+// Caminho inverso - le o texto digitado no painel de volta pra uma TabelaMedidas, validando
+// que todas as linhas tem o mesmo numero de valores que o cabecalho (senao a tabela sai
+// torta na pagina do produto). Aceita virgula ou ponto-e-virgula como separador (fica facil
+// colar direto de uma planilha em pt-BR, que costuma usar ; quando o numero tem virgula
+// decimal). Linhas em branco sao ignoradas. texto vazio -> sem tabela customizada (volta a
+// usar a generica da categoria).
+export function csvParaTabela(texto: string): { tabela: TabelaMedidas | null; erro: string | null } {
+  const linhasBrutas = texto
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean);
+
+  if (linhasBrutas.length === 0) return { tabela: null, erro: null };
+  if (linhasBrutas.length < 2) {
+    return { tabela: null, erro: "Precisa de uma linha de cabeçalho e pelo menos uma linha de tamanho" };
+  }
+
+  const separador = linhasBrutas[0].includes(";") ? ";" : ",";
+  const dividirLinha = (l: string) => l.split(separador).map((v) => v.trim());
+
+  const colunas = dividirLinha(linhasBrutas[0]);
+  if (colunas.length < 2) {
+    return { tabela: null, erro: "O cabeçalho precisa de pelo menos 2 colunas (ex: Tamanho, Busto)" };
+  }
+
+  const linhas = linhasBrutas.slice(1).map(dividirLinha);
+  const linhaComTamanhoErrado = linhas.findIndex((l) => l.length !== colunas.length);
+  if (linhaComTamanhoErrado !== -1) {
+    return {
+      tabela: null,
+      erro: `A linha "${linhasBrutas[linhaComTamanhoErrado + 1]}" tem ${linhas[linhaComTamanhoErrado].length} valor(es), mas o cabeçalho tem ${colunas.length} coluna(s)`
+    };
+  }
+
+  return { tabela: { colunas, linhas }, erro: null };
 }
 
 // Instrucoes de cuidado - a primeira linha muda conforme o tecido detectado na composicao
@@ -209,12 +256,15 @@ function composicaoTipica(nomeProduto: string): string {
   return achada?.[1] ?? COMPOSICAO_PADRAO;
 }
 
-// Composicao a mostrar na pagina - usa a do produto se o Bling trouxe (extraida da
-// descricao no sync); quando nao tem, preenche com a composicao tipica dessa categoria de
-// peca (mix de tecido mais usado nesse tipo de produto no mercado) em vez de deixar em
-// branco - decisao do Brunno em 23/08/2026.
+// Composicao a mostrar na pagina, em ordem de prioridade: (1) a customizada, cadastrada a
+// mao no painel /admin/produtos - a mais confiavel, ja que foi digitada de proposito pra
+// aquela peca (pedido do Brunno em 29/08/2026, porque a extracao do Bling abaixo e' fragil e
+// nem sempre funciona); (2) a que o Bling trouxe (extraida da descricao no sync, so' quando
+// o time escreveu "Composição: ..." dentro do texto); (3) quando nenhuma das duas existe,
+// a composicao tipica dessa categoria de peca (mix de tecido mais usado nesse tipo de
+// produto no mercado) em vez de deixar em branco - decisao do Brunno em 23/08/2026.
 export function composicaoDoProduto(produto: Produto): string {
-  return produto.composicao?.trim() || composicaoTipica(produto.nome);
+  return produto.composicaoCustomizada?.trim() || produto.composicao?.trim() || composicaoTipica(produto.nome);
 }
 
 // Descricoes curtas por categoria pra compor o texto de fallback quando o Bling nao tem
