@@ -7,6 +7,15 @@ name: Sync completo do Bling (fotos, marca, descrição, preço, estoque)
 on:
   workflow_dispatch: {}
 
+# Evita que esse sync rode ao mesmo tempo que o sync-estoque.yml (roda sozinho a cada 5min) ou
+# outra execucao dele mesmo - os dois terminam com um "git push" pra main, e rodando junto um
+# empurra o chao debaixo do outro (bug reportado pelo Brunno em 29/08/2026: o push do sync
+# completo foi rejeitado porque a main tinha andado enquanto ele ainda baixava as fotos novas).
+# Mesmo grupo de nome no sync-estoque.yml -> o GitHub enfileira em vez de rodar em paralelo.
+concurrency:
+  group: bling-sync-git-push
+  cancel-in-progress: false
+
 jobs:
   sync-bling-completo:
     runs-on: ubuntu-latest
@@ -56,7 +65,28 @@ jobs:
           git add data/produtos.json public/produtos
           if git diff --cached --quiet; then
             echo "Nenhuma mudanca de catalogo/foto nesse ciclo."
-          else
-            git commit -m "sync completo: atualiza fotos/marca/descricao/preco/estoque via Bling"
-            git push
+            exit 0
           fi
+          git commit -m "sync completo: atualiza fotos/marca/descricao/preco/estoque via Bling"
+
+          # Esse job pode demorar minutos baixando/otimizando foto nova - se alguem editou
+          # algo direto pelo site do GitHub nesse meio tempo (ou o concurrency acima nao
+          # bastou), o push simples e' rejeitado ("fetch first"), e o commit fica preso so'
+          # aqui no runner sem publicar nada (bug reportado pelo Brunno em 29/08/2026).
+          # Corrigido com um busca-reaplica-tenta-de-novo, ate' 5 vezes.
+          for tentativa in 1 2 3 4 5; do
+            if git push; then
+              echo "Push ok."
+              exit 0
+            fi
+            echo "Push rejeitado (tentativa $tentativa/5) - buscando o que mudou na main e reaplicando esse commit por cima..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "Rebase deu conflito de verdade (bem raro - normalmente so' mexe em data/produtos.json e public/produtos). Abortando; rode o sync completo de novo."
+              git rebase --abort
+              exit 1
+            fi
+            sleep 5
+          done
+          echo "Nao consegui publicar depois de 5 tentativas - verifique manualmente."
+          exit 1
