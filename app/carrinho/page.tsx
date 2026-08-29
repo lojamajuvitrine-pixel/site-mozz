@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "@/lib/cart-context";
+import { idVarianteProduto } from "@/lib/produtos";
 import { formatarPreco } from "@/lib/formato";
 import { useEffect, useState } from "react";
 import CalculoFrete, { type OpcaoFrete } from "@/components/CalculoFrete";
@@ -123,7 +124,7 @@ export default function PaginaCarrinho() {
     // do redirect a pagina ja saiu do ar e o evento nunca dispararia.
     rastrearIniciarCheckout(
       itens.map((i) => ({
-        id: i.produto.id,
+        id: idVarianteProduto(i.produto.id, i.cor, i.tamanho),
         nome: i.produto.nome,
         marca: i.produto.marca,
         preco: i.produto.preco,
