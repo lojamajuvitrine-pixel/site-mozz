@@ -1,95 +1,70 @@
-import { NextRequest, NextResponse } from "next/server";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ehAdmin } from "@/lib/admin";
+import { listarProdutos } from "@/lib/produtos";
+import { categoriaDoProduto, composicaoDoProduto, tabelaDeMedidas, tabelaParaCsv } from "@/lib/detalhesProduto";
+import PainelProdutos from "@/components/admin/PainelProdutos";
 
-// So' o e-mail admin (ver lib/admin.ts) pode ler/escrever aqui - confere a sessao (cookie,
-// via lib/supabase/server) de quem esta chamando. Essa checagem e' so' a primeira camada: a
-// policy de RLS da tabela produtos_site no Supabase e' quem garante de verdade, mesmo que
-// alguem tente chamar essa rota direto sem passar pelo middleware/pagina.
-async function clienteSeAdmin() {
+// Painel interno pra mexer em preco especial, destaque (vitrine da home) e outlet de qualquer
+// peca, direto no site - sem tocar em nada dentro do Bling. So' o e-mail admin acessa (ver
+// lib/admin.ts); o middleware.ts ja bloqueia visitante nao-logado/nao-admin antes de chegar
+// aqui, essa checagem e' so' uma segunda camada.
+//
+// force-dynamic: essa pagina depende da sessao (cookies) de quem esta logado, entao nao da'
+// pra pre-renderizar - sempre roda no servidor a cada visita.
+export const dynamic = "force-dynamic";
+
+export default async function PaginaAdminProdutos() {
   const supabase = createClient();
   const {
     data: { user }
   } = await supabase.auth.getUser();
-  if (!ehAdmin(user?.email)) return null;
-  return supabase;
-}
 
-type TabelaMedidasPayload = { colunas: string[]; linhas: string[][] };
+  if (!user) redirect("/conta/entrar?next=/admin/produtos");
+  if (!ehAdmin(user.email)) redirect("/");
 
-type PayloadProduto = {
-  produtoId?: string;
-  precoEspecial?: number | null;
-  destaque?: boolean;
-  outlet?: boolean;
-  // Medida REAL da peca (painel /admin/produtos, pedido do Brunno em 29/08/2026) - null/
-  // ausente = sem tabela customizada, volta a usar a generica da categoria (ver
-  // lib/detalhesProduto.ts). Formato validado aqui pra nunca salvar jsonb torto no Supabase
-  // (o cliente ja valida com csvParaTabela antes de mandar, isso aqui e' so' defesa extra).
-  medidasCustomizadas?: TabelaMedidasPayload | null;
-  // Composicao REAL da peca (mesmo pedido, 29/08/2026) - null/ausente/vazio = sem
-  // customizada, volta a usar a do Bling (se tiver) ou a generica da categoria.
-  composicaoCustomizada?: string | null;
-};
+  // incluirSemFoto: true - o painel precisa mostrar TAMBEM as pecas sem foto ainda (fora do
+  // catalogo publico - ver comentario em lib/produtos.ts), pra dar pra preparar preco
+  // especial/destaque/outlet ja' esperando a foto subir.
+  const produtos = await listarProdutos({ incluirSemFoto: true });
 
-function medidasValidas(valor: unknown): valor is TabelaMedidasPayload {
-  if (!valor || typeof valor !== "object") return false;
-  const v = valor as { colunas?: unknown; linhas?: unknown };
-  const colunas = v.colunas;
-  const linhas = v.linhas;
-  if (!Array.isArray(colunas) || colunas.length === 0 || !colunas.every((c) => typeof c === "string")) {
-    return false;
-  }
-  if (!Array.isArray(linhas) || linhas.length === 0) return false;
-  const totalColunas = colunas.length;
-  return linhas.every(
-    (linha) => Array.isArray(linha) && linha.length === totalColunas && linha.every((x) => typeof x === "string")
-  );
-}
-
-// Cadastra/atualiza a config especial de um produto (preco especial, destaque, outlet,
-// tabela de medidas). Sempre manda o registro INTEIRO (nao so' o campo que mudou) - o painel
-// ja carrega o estado atual completo de cada linha, entao um upsert simples resolve sem
-// precisar de merge parcial. Se TUDO voltar ao padrao (sem preco, destaque=false,
-// outlet=false, sem medidas customizadas), apaga a linha em vez de guardar um registro vazio -
-// mantem a tabela so' com produtos que tem algo de fato configurado.
-export async function POST(request: NextRequest) {
-  const supabase = await clienteSeAdmin();
-  if (!supabase) return NextResponse.json({ erro: "Não autorizado" }, { status: 401 });
-
-  const body = (await request.json()) as PayloadProduto;
-  if (!body.produtoId) {
-    return NextResponse.json({ erro: "produtoId obrigatório" }, { status: 400 });
-  }
-  if (body.precoEspecial !== null && body.precoEspecial !== undefined && body.precoEspecial <= 0) {
-    return NextResponse.json({ erro: "Preço especial precisa ser maior que zero" }, { status: 400 });
-  }
-  if (body.medidasCustomizadas != null && !medidasValidas(body.medidasCustomizadas)) {
-    return NextResponse.json({ erro: "Tabela de medidas em formato inválido" }, { status: 400 });
-  }
-
-  const precoEspecial = body.precoEspecial ?? null;
-  const destaque = !!body.destaque;
-  const outlet = !!body.outlet;
-  const medidasCustomizadas = body.medidasCustomizadas ?? null;
-  const composicaoCustomizada = body.composicaoCustomizada?.trim() || null;
-
-  if (precoEspecial === null && !destaque && !outlet && !medidasCustomizadas && !composicaoCustomizada) {
-    const { error } = await supabase.from("produtos_site").delete().eq("produto_id", body.produtoId);
-    if (error) return NextResponse.json({ erro: error.message }, { status: 500 });
-    return NextResponse.json({ ok: true, removido: true });
-  }
-
-  const { error } = await supabase.from("produtos_site").upsert({
-    produto_id: body.produtoId,
-    preco_especial: precoEspecial,
-    destaque,
-    outlet,
-    medidas_customizadas: medidasCustomizadas,
-    composicao_customizada: composicaoCustomizada,
-    atualizado_em: new Date().toISOString()
+  // O painel precisa do preco ORIGINAL do Bling separado do preco especial (pra mostrar as
+  // duas colunas) - listarProdutos() ja devolve isso pronto: quando ha' oferta ativa,
+  // "precoOriginal" e' o preco do Bling e "preco" e' o especial; sem oferta, "preco" ja e' o
+  // proprio preco do Bling.
+  const linhas = produtos.map((p) => {
+    // Ponto de partida pro campo de medidas no painel: se ja tem tabela customizada salva,
+    // mostra ela; senao, pre-preenche com a tabela GENERICA da categoria (so' de referencia,
+    // pra' facilitar - o Brunno so' precisa trocar os numeros em vez de digitar do zero).
+    const tabelaGenerica = tabelaDeMedidas(categoriaDoProduto(p.nome));
+    const tabelaBase = p.medidasCustomizadas ?? tabelaGenerica;
+    return {
+      id: p.id,
+      nome: p.nome,
+      marca: p.marca,
+      imagem: p.imagem,
+      precoBling: p.precoOriginal ?? p.preco,
+      precoEspecialAtual: p.precoOriginal ? p.preco : null,
+      destaque: !!p.destaque,
+      outlet: !!p.outlet,
+      medidasCustomizada: !!p.medidasCustomizadas,
+      medidasCsv: tabelaBase ? tabelaParaCsv(tabelaBase) : "",
+      // Mesma logica da tabela de medidas: se ja tem composicao customizada salva, mostra
+      // ela; senao pre-preenche com o que a pagina do produto mostraria hoje (a do Bling se
+      // tiver, senao a generica da categoria) - so' de ponto de partida.
+      composicaoCustomizada: !!p.composicaoCustomizada,
+      composicaoAtual: composicaoDoProduto(p)
+    };
   });
 
-  if (error) return NextResponse.json({ erro: error.message }, { status: 500 });
-  return NextResponse.json({ ok: true });
+  return (
+    <section className="py-8">
+      <p className="font-serif text-3xl mb-1">Painel de produtos</p>
+      <p className="text-[14.5px] text-mozz-gray mb-6">
+        Preço especial, destaque na home, outlet, composição e tabela de medidas - tudo isso é
+        só do site, não mexe em nada dentro do Bling.
+      </p>
+      <PainelProdutos produtosIniciais={linhas} />
+    </section>
+  );
 }
