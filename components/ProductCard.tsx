@@ -70,7 +70,6 @@ export default function ProductCard({ produto }: { produto: Produto }) {
   // produto" (mesmo comportamento ja usado na pagina do produto, ver SeletorProduto.tsx) em
   // vez de uma foto que nao e' da cor escolhida. Na carga inicial (corIndex 0) isso raramente
   // muda algo, ja que o sync poe cor com foto primeiro.
-  const imagemAtual = corAtual.imagens[fotoIndex] ?? null;
   const parcelamento = formatarParcelamento(produto.preco);
   const disponiveisAtual = tamanhosDisponiveisDoColor(corAtual);
   // % de desconto pra mostrar na badge da foto - calculado em cima do preco original vs o
@@ -138,19 +137,31 @@ export default function ProductCard({ produto }: { produto: Produto }) {
             </span>
           </button>
 
-          {imagemAtual ? (
-            <Image
-              key={imagemAtual}
-              src={imagemAtual}
-              alt={`${produto.marca} ${produto.nome}`}
-              fill
-              sizes="(max-width: 768px) 50vw, 25vw"
-              // card pequeno do mosaico - qualidade mais baixa (o olho nao percebe nesse
-              // tamanho) pra carregar rapido mesmo com varios produtos na tela ao mesmo tempo.
-              // A foto grande da pagina do produto usa qualidade alta (ver SeletorProduto.tsx).
-              quality={60}
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-            />
+          {corAtual.imagens.length > 0 ? (
+            // Todas as fotos da cor atual ficam montadas ao mesmo tempo (uma por cima da
+            // outra, controladas por opacidade) em vez de so' a foto do indice atual. Antes,
+            // trocar de foto no carrossel (setinha) desmontava e remontava o <Image> do zero -
+            // isso disparava um pedido novo pro otimizador de imagem da Next a cada clique, e
+            // por isso a troca "demorava" (bug reportado pelo Brunno em 29/08/2026). Assim, o
+            // navegador ja' carrega as fotos da cor selecionada em segundo plano assim que o
+            // card entra na tela (mesmo comportamento de lazy-load de antes, so' que pra todas
+            // de uma vez), e trocar de foto vira so' uma troca de opacidade - instantaneo.
+            corAtual.imagens.map((imagem, i) => (
+              <Image
+                key={imagem}
+                src={imagem}
+                alt={`${produto.marca} ${produto.nome}`}
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                // card pequeno do mosaico - qualidade mais baixa (o olho nao percebe nesse
+                // tamanho) pra carregar rapido mesmo com varios produtos na tela ao mesmo tempo.
+                // A foto grande da pagina do produto usa qualidade alta (ver SeletorProduto.tsx).
+                quality={60}
+                className={`object-cover transition-all duration-300 ${
+                  i === fotoIndex ? "opacity-100 group-hover:scale-105" : "opacity-0 pointer-events-none"
+                }`}
+              />
+            ))
           ) : (
             <span className="text-mozz-gray text-xs">foto do produto</span>
           )}
@@ -252,3 +263,4 @@ export default function ProductCard({ produto }: { produto: Produto }) {
     </div>
   );
 }
+
