@@ -19,7 +19,7 @@ export default async function PaginaAdminProdutos() {
   if (!ehAdmin(user.email)) redirect("/");
 
   const [produtos, configuracaoLoja] = await Promise.all([
-    listarProdutos({ incluirSemFoto: true }),
+    listarProdutos({ incluirSemFoto: true, incluirInativos: true }),
     buscarConfiguracaoLoja()
   ]);
 
@@ -32,6 +32,7 @@ export default async function PaginaAdminProdutos() {
     precoEspecialAtual: p.precoOriginal ? p.preco : null,
     destaque: !!p.destaque,
     outlet: !!p.outlet,
+    ativo: p.ativo !== false,
     medidasSalvas: p.medidasCustomizadas ?? null,
     composicaoCustomizada: !!p.composicaoCustomizada,
     composicaoAtual: composicaoDoProduto(p)
@@ -41,8 +42,8 @@ export default async function PaginaAdminProdutos() {
     <section className="py-8">
       <p className="font-serif text-3xl mb-1">Painel de produtos</p>
       <p className="text-[14.5px] text-mozz-gray mb-6">
-        Preço especial, destaque na home, outlet, composição e tabela de medidas - tudo isso é
-        só do site, não mexe em nada dentro do Bling.
+        Preço especial, destaque na home, outlet, ativar/desativar, composição e tabela de
+        medidas - tudo isso é só do site, não mexe em nada dentro do Bling.
       </p>
       <ConfiguracoesLoja configuracaoInicial={configuracaoLoja} />
       <PainelProdutos produtosIniciais={linhas} />
