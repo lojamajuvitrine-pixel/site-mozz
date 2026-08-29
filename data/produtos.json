@@ -1688,11 +1688,16 @@
     "marca": "Animale",
     "preco": 1298,
     "novo": false,
-    "descricao": "",
+    "descricao": "Vestido Slip Dress Estampado. A peça possui comprimento midi, alças, decote degagê e shape fluido. Um design que traduz leveza, feminilidade e sofisticação natural. Detalhes: - Comprimento midi; - Shape fluido; - Decote degagê; - Alças; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16644385261--unico--0.jpg",
+          "/produtos/16644385261--unico--1.jpg",
+          "/produtos/16644385261--unico--2.jpg",
+          "/produtos/16644385261--unico--3.jpg"
+        ],
         "tamanhos": [
           "Único"
         ],
@@ -1701,7 +1706,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16644385261--unico--0.jpg",
     "temEstoque": true
   },
   {
@@ -1785,7 +1790,12 @@
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16643852351--unico--0.jpg",
+          "/produtos/16643852351--unico--1.jpg",
+          "/produtos/16643852351--unico--2.jpg",
+          "/produtos/16643852351--unico--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -1802,7 +1812,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16643852351--unico--0.jpg",
     "temEstoque": true
   },
   {
@@ -25849,7 +25859,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "G"
         ]
       }
     ],
