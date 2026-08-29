@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ehAdmin } from "@/lib/admin";
 import { listarProdutos } from "@/lib/produtos";
-import { categoriaDoProduto, composicaoDoProduto, tabelaDeMedidas, tabelaParaCsv } from "@/lib/detalhesProduto";
+import { composicaoDoProduto } from "@/lib/detalhesProduto";
 import { buscarConfiguracaoLoja } from "@/lib/configLoja";
 import PainelProdutos from "@/components/admin/PainelProdutos";
 import ConfiguracoesLoja from "@/components/admin/ConfiguracoesLoja";
@@ -23,24 +23,19 @@ export default async function PaginaAdminProdutos() {
     buscarConfiguracaoLoja()
   ]);
 
-  const linhas = produtos.map((p) => {
-    const tabelaGenerica = tabelaDeMedidas(categoriaDoProduto(p.nome));
-    const tabelaBase = p.medidasCustomizadas ?? tabelaGenerica;
-    return {
-      id: p.id,
-      nome: p.nome,
-      marca: p.marca,
-      imagem: p.imagem,
-      precoBling: p.precoOriginal ?? p.preco,
-      precoEspecialAtual: p.precoOriginal ? p.preco : null,
-      destaque: !!p.destaque,
-      outlet: !!p.outlet,
-      medidasCustomizada: !!p.medidasCustomizadas,
-      medidasCsv: tabelaBase ? tabelaParaCsv(tabelaBase) : "",
-      composicaoCustomizada: !!p.composicaoCustomizada,
-      composicaoAtual: composicaoDoProduto(p)
-    };
-  });
+  const linhas = produtos.map((p) => ({
+    id: p.id,
+    nome: p.nome,
+    marca: p.marca,
+    imagem: p.imagem,
+    precoBling: p.precoOriginal ?? p.preco,
+    precoEspecialAtual: p.precoOriginal ? p.preco : null,
+    destaque: !!p.destaque,
+    outlet: !!p.outlet,
+    medidasSalvas: p.medidasCustomizadas ?? null,
+    composicaoCustomizada: !!p.composicaoCustomizada,
+    composicaoAtual: composicaoDoProduto(p)
+  }));
 
   return (
     <section className="py-8">
