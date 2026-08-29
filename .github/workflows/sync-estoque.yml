@@ -12,6 +12,14 @@ on:
     - cron: "*/5 12-23 * * 1-6"
   workflow_dispatch: {} # permite rodar manualmente pela aba Actions do GitHub, se precisar
 
+# Evita que esse sync rode ao mesmo tempo que o sync-bling-completo.yml (fotos/marca/etc,
+# manual) ou outra execucao dele mesmo - os dois terminam com um "git push" pra main, e
+# rodando junto um empurra o chao debaixo do outro (bug reportado pelo Brunno em 29/08/2026).
+# Mesmo grupo de nome no sync-bling-completo.yml -> o GitHub enfileira em vez de rodar junto.
+concurrency:
+  group: bling-sync-git-push
+  cancel-in-progress: false
+
 jobs:
   sync-estoque:
     runs-on: ubuntu-latest
@@ -66,7 +74,28 @@ jobs:
           git add data/produtos.json
           if git diff --cached --quiet; then
             echo "Nenhuma mudanca de preco/estoque nesse ciclo."
-          else
-            git commit -m "sync automático: atualiza preço/estoque via Bling"
-            git push
+            exit 0
           fi
+          git commit -m "sync automático: atualiza preço/estoque via Bling"
+
+          # Se alguem editou algo direto pelo site do GitHub (ou o sync completo) bem no meio
+          # desse ciclo, o push simples pode ser rejeitado ("fetch first") e essa atualizacao
+          # de preco/estoque fica presa so' aqui no runner sem publicar (bug reportado pelo
+          # Brunno em 29/08/2026). Corrigido com um busca-reaplica-tenta-de-novo, ate' 5 vezes -
+          # nao tem problema demorar um pouco a mais aqui, o proximo ciclo e' so' em 5min.
+          for tentativa in 1 2 3 4 5; do
+            if git push; then
+              echo "Push ok."
+              exit 0
+            fi
+            echo "Push rejeitado (tentativa $tentativa/5) - buscando o que mudou na main e reaplicando esse commit por cima..."
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "Rebase deu conflito de verdade (bem raro - esse job so' mexe em data/produtos.json). Abortando; o proximo ciclo (5min) resolve sozinho."
+              git rebase --abort
+              exit 1
+            fi
+            sleep 5
+          done
+          echo "Nao consegui publicar depois de 5 tentativas - o proximo ciclo (5min) tenta de novo."
+          exit 1
