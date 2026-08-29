@@ -13,6 +13,11 @@ export type ConfigProduto = {
   outlet: boolean;
   medidasCustomizadas: TabelaMedidas | null;
   composicaoCustomizada: string | null;
+  // false = peca desativada manualmente no painel /admin/produtos - some do catalogo publico
+  // mesmo tendo estoque/foto no Bling, ate' alguem reativar (pedido do Brunno em 29/08/2026,
+  // pra poder tirar uma peca do ar sem precisar mexer em nada no Bling - ex: peca com defeito,
+  // fora de linha, ou que ele quer segurar a venda por um tempo).
+  ativo: boolean;
 };
 
 type LinhaProdutoSite = {
@@ -22,6 +27,7 @@ type LinhaProdutoSite = {
   outlet: boolean;
   medidas_customizadas?: unknown;
   composicao_customizada?: string | null;
+  ativo?: boolean;
 };
 
 // Confere que o jsonb salvo tem mesmo a cara de uma TabelaMedidas antes de usar - protege
@@ -51,7 +57,7 @@ export async function buscarConfigProdutos(): Promise<Map<string, ConfigProduto>
     const supabase = clientePublico();
     const { data, error } = await supabase
       .from("produtos_site")
-      .select("produto_id, preco_especial, destaque, outlet, medidas_customizadas, composicao_customizada");
+      .select("produto_id, preco_especial, destaque, outlet, medidas_customizadas, composicao_customizada, ativo");
     if (error || !data) return new Map();
 
     return new Map(
@@ -62,7 +68,10 @@ export async function buscarConfigProdutos(): Promise<Map<string, ConfigProduto>
           destaque: !!linha.destaque,
           outlet: !!linha.outlet,
           medidasCustomizadas: validarTabelaMedidas(linha.medidas_customizadas),
-          composicaoCustomizada: linha.composicao_customizada?.trim() || null
+          composicaoCustomizada: linha.composicao_customizada?.trim() || null,
+          // so' false quando explicitamente desativado - linha antiga sem essa coluna, ou
+          // qualquer valor que nao seja exatamente false, conta como ativa.
+          ativo: linha.ativo !== false
         }
       ])
     );
