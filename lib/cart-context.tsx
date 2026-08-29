@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import type { Produto } from "@/lib/produtos";
+import { idVarianteProduto, type Produto } from "@/lib/produtos";
 import { rastrearAdicionarAoCarrinho } from "@/lib/tracking";
 
 export type ItemCarrinho = { produto: Produto; cor: string; tamanho: string; quantidade: number };
@@ -46,7 +46,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     // se falhar por qualquer motivo (ad blocker, etc.) nao pode impedir o carrinho de
     // funcionar, por isso fica fora do setter.
     rastrearAdicionarAoCarrinho({
-      id: produto.id,
+      id: idVarianteProduto(produto.id, cor, tamanho),
       nome: produto.nome,
       marca: produto.marca,
       preco: produto.preco,
