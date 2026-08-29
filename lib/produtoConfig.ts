@@ -1,14 +1,18 @@
 // Configuracoes "so' do site" por produto - preco especial, destaque (aparece priorizado na
-// vitrine da home) e outlet (aparece na aba /outlet) - tudo isso vive numa tabela a parte no
-// Supabase (produtos_site), sem nunca mexer no cadastro do Bling. E' o que alimenta o painel
-// administrativo em /admin/produtos (ver app/admin/produtos/page.tsx).
+// vitrine da home), outlet (aparece na aba /outlet) e a tabela de medidas real da peca - tudo
+// isso vive numa tabela a parte no Supabase (produtos_site), sem nunca mexer no cadastro do
+// Bling. E' o que alimenta o painel administrativo em /admin/produtos (ver
+// app/admin/produtos/page.tsx).
 import { clientePublico } from "@/lib/supabase/publico";
 import { SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
+import type { TabelaMedidas } from "@/lib/detalhesProduto";
 
 export type ConfigProduto = {
   precoEspecial: number | null;
   destaque: boolean;
   outlet: boolean;
+  medidasCustomizadas: TabelaMedidas | null;
+  composicaoCustomizada: string | null;
 };
 
 type LinhaProdutoSite = {
@@ -16,20 +20,38 @@ type LinhaProdutoSite = {
   preco_especial: number | null;
   destaque: boolean;
   outlet: boolean;
+  medidas_customizadas?: unknown;
+  composicao_customizada?: string | null;
 };
 
-// Le a tabela inteira com um cliente PUBLICO (sem sessao) - a leitura precisa acontecer pra
-// TODO visitante do site, logado ou nao (a tabela tem RLS liberando SELECT geral, so' a
-// escrita fica restrita ao e-mail admin - ver lib/admin.ts e a policy no Supabase). Tabela
-// pequena (uma linha por produto com alguma config especial, nunca o catalogo inteiro), da'
-// pra trazer tudo de uma vez em vez de consultar produto por produto.
+// Confere que o jsonb salvo tem mesmo a cara de uma TabelaMedidas antes de usar - protege
+// contra linha antiga (coluna ainda nao existia), null, ou qualquer coisa fora do formato
+// esperado. Se nao bater, trata como "sem tabela customizada" (volta pra generica da
+// categoria) em vez de quebrar a pagina do produto.
+function validarTabelaMedidas(valor: unknown): TabelaMedidas | null {
+  if (!valor || typeof valor !== "object") return null;
+  const v = valor as { colunas?: unknown; linhas?: unknown };
+  const colunas = v.colunas;
+  const linhas = v.linhas;
+  if (!Array.isArray(colunas) || colunas.length === 0 || !colunas.every((c) => typeof c === "string")) {
+    return null;
+  }
+  if (!Array.isArray(linhas) || linhas.length === 0) return null;
+  const totalColunas = colunas.length;
+  const linhasValidas = linhas.every(
+    (linha) => Array.isArray(linha) && linha.length === totalColunas && linha.every((x) => typeof x === "string")
+  );
+  if (!linhasValidas) return null;
+  return { colunas: colunas as string[], linhas: linhas as string[][] };
+}
+
 export async function buscarConfigProdutos(): Promise<Map<string, ConfigProduto>> {
   if (!SUPABASE_CONFIGURADO) return new Map();
   try {
     const supabase = clientePublico();
     const { data, error } = await supabase
       .from("produtos_site")
-      .select("produto_id, preco_especial, destaque, outlet");
+      .select("produto_id, preco_especial, destaque, outlet, medidas_customizadas, composicao_customizada");
     if (error || !data) return new Map();
 
     return new Map(
@@ -38,13 +60,13 @@ export async function buscarConfigProdutos(): Promise<Map<string, ConfigProduto>
         {
           precoEspecial: linha.preco_especial !== null ? Number(linha.preco_especial) : null,
           destaque: !!linha.destaque,
-          outlet: !!linha.outlet
+          outlet: !!linha.outlet,
+          medidasCustomizadas: validarTabelaMedidas(linha.medidas_customizadas),
+          composicaoCustomizada: linha.composicao_customizada?.trim() || null
         }
       ])
     );
   } catch {
-    // Supabase fora do ar ou tabela ainda nao criada - o site nunca pode quebrar por causa
-    // disso, so' deixa de aplicar as configs especiais nesse ciclo (volta ao padrao do Bling).
     return new Map();
   }
 }
