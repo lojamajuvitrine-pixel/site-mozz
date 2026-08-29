@@ -63,6 +63,30 @@ function ordenarTamanhosDoProduto(produto: Produto): Produto {
   };
 }
 
+// Padroniza a capitalizacao do NOME do produto (Primeira Letra De Cada Palavra Maiuscula, o
+// resto minusculo) - o Bling traz o nome sem nenhum padrao (TUDO MAIUSCULO em boa parte do
+// catalogo, mas tambem tem peca ja certinha ou so' a primeira palavra maiuscula), o que deixa
+// o site com uma cara inconsistente entre uma peca e outra. Pedido do Brunno em 29/08/2026
+// pra padronizar TODAS as pecas de uma vez, sem precisar corrigir uma por uma no Bling - so'
+// muda como o nome APARECE aqui no site (ver listarProdutos abaixo), nunca o cadastro real.
+// \p{L}+ pega qualquer sequencia de letras (inclusive com acento - "amarração" continua uma
+// palavra so') e capitaliza cada uma: funciona pra nome separado por espaco, hifen ("T-SHIRT"
+// -> "T-Shirt"), barra, parenteses etc, sem quebrar acento nem mexer em numero. Limitacao
+// conhecida (rara no catalogo, so' 4 pecas em 29/08/2026): uma sigla de 2 letras junto de
+// outra letra vira so' a primeira maiuscula (ex: "Tam:GG;" no proprio nome vira "Tam:Gg;") -
+// caso apareca, o ideal e' corrigir esse nome direto no Bling, tirando o "Tam:" do nome.
+function capitalizarNomeProduto(nome: string): string {
+  return nome
+    .trim()
+    .replace(/\s+/g, " ")
+    .toLowerCase()
+    .replace(/\p{L}+/gu, (palavra) => palavra.charAt(0).toUpperCase() + palavra.slice(1));
+}
+
+function normalizarNomeDoProduto(produto: Produto): Produto {
+  return { ...produto, nome: capitalizarNomeProduto(produto.nome) };
+}
+
 // Devolve o id do produto NO BLING (numerico) que corresponde a um tamanho especifico -
 // necessario pra criar o pedido de venda no Bling (ver lib/mercadopago.ts e o webhook do
 // Mercado Pago) porque produtos "fundidos" no sync (ver gruposBlingPorTamanho em
@@ -126,6 +150,10 @@ export type Produto = {
   // descricao do Bling, um jeito fragil que nem sempre funciona - pedido do Brunno em
   // 29/08/2026 de ter um campo direto pra isso, sem depender do texto do Bling).
   composicaoCustomizada?: string;
+  // false = peca desativada manualmente no painel /admin/produtos - some do catalogo publico
+  // (ver listarProdutos abaixo), mesmo com estoque/foto no Bling. Espelha o campo "ativo" de
+  // ConfigProduto (lib/produtoConfig.ts); ausente/undefined conta como ativa.
+  ativo?: boolean;
 };
 
 // Decisao do Brunno em 23/08/2026: por enquanto o site trabalha SO' com essas 4 marcas
@@ -147,6 +175,7 @@ function aplicarConfigEspecial(produto: Produto, config: ConfigProduto | undefin
     ...produto,
     destaque: config.destaque,
     outlet: config.outlet,
+    ativo: config.ativo,
     medidasCustomizadas: config.medidasCustomizadas ?? undefined,
     composicaoCustomizada: config.composicaoCustomizada ?? undefined
   };
@@ -176,14 +205,25 @@ function aplicarConfigEspecial(produto: Produto, config: ConfigProduto | undefin
 // especiais so' do site (preco especial/destaque/outlet, cadastradas em /admin/produtos e
 // guardadas no Supabase) - ver lib/produtoConfig.ts. Se o Supabase estiver fora do ar ou sem
 // nenhuma config cadastrada, o catalogo continua funcionando normal com o preco do Bling.
-export async function listarProdutos(opcoes?: { incluirSemFoto?: boolean }): Promise<Produto[]> {
+//
+// Peca desativada manualmente (config.ativo === false, ver lib/produtoConfig.ts) tambem fica
+// FORA do catalogo publico por padrao - pedido do Brunno em 29/08/2026, pra poder tirar uma
+// peca do ar (defeito, fora de linha, segurar venda) sem mexer em nada no Bling. Passe
+// { incluirInativos: true } pra ver TODOS os produtos mesmo desativados - usado so' no painel
+// /admin/produtos, pra poder reativar depois.
+export async function listarProdutos(opcoes?: {
+  incluirSemFoto?: boolean;
+  incluirInativos?: boolean;
+}): Promise<Produto[]> {
   const config = await buscarConfigProdutosCache();
-const produtos = (produtosData as Produto[])
+  const produtos = (produtosData as Produto[])
     .filter((p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca))
     .filter((p) => opcoes?.incluirSemFoto || !!p.imagem)
     .map((p) => aplicarConfigEspecial(p, config.get(p.id)))
+    .filter((p) => opcoes?.incluirInativos || p.ativo !== false)
     .filter((p) => p.preco > 0)
-    .map(ordenarTamanhosDoProduto);
+    .map(ordenarTamanhosDoProduto)
+    .map(normalizarNomeDoProduto);
   // prioriza quem tem foto - so' importa mais quando incluirSemFoto=true (no catalogo publico
   // normal ninguem mais chega aqui sem foto); sort e' estavel, entao dentro de cada grupo a
   // ordem original do Bling e' mantida.
