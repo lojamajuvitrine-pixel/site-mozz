@@ -24,6 +24,36 @@ function hostMelhorEnvio(): string {
 
 export type OpcaoFrete = { servico: string; transportadora: string; preco: number; prazoDias: number };
 
+// Opcao especial de "retirar na loja" - nao vem do Melhor Envio, e' oferecida direto no
+// carrinho quando habilitada em /admin/produtos (ver lib/configLoja.ts). transportadora
+// "Retirada" e' o sinal que o resto do codigo usa pra reconhecer essa opcao (ver ehRetirada
+// abaixo e a revalidacao em lib/mercadopago.ts) - nenhuma transportadora real do Melhor Envio
+// usa esse nome.
+export const FRETE_RETIRADA: OpcaoFrete = {
+  servico: "Retirada na loja",
+  transportadora: "Retirada",
+  preco: 0,
+  prazoDias: 0
+};
+
+export function ehRetirada(opcao: Pick<OpcaoFrete, "transportadora">): boolean {
+  return opcao.transportadora === FRETE_RETIRADA.transportadora;
+}
+
+// O Melhor Envio costuma devolver bastante opcao (Correios PAC/SEDEX, Jadlog .Package/.Com
+// etc) - o Brunno achou que isso confunde o cliente na hora de escolher (pedido de
+// 29/08/2026). Reduz pra no maximo 2: a mais barata, e a mais rapida entre as que chegam MAIS
+// rapido que a mais barata (pra nao mostrar uma segunda opcao so' redundante, com o mesmo
+// prazo por um preco maior). Lista ja' vem ordenada por preco de calcularFrete.
+function simplificarOpcoes(opcoesPorPreco: OpcaoFrete[]): OpcaoFrete[] {
+  if (opcoesPorPreco.length <= 2) return opcoesPorPreco;
+  const [maisBarata, ...resto] = opcoesPorPreco;
+  const maisRapida = resto
+    .filter((opcao) => opcao.prazoDias < maisBarata.prazoDias)
+    .sort((a, b) => a.prazoDias - b.prazoDias || a.preco - b.preco)[0];
+  return maisRapida ? [maisBarata, maisRapida] : [maisBarata];
+}
+
 type RespostaMelhorEnvio = Array<{
   name?: string;
   price?: string;
@@ -80,7 +110,7 @@ export async function calcularFrete(cepDestino: string, quantidadeItens: number)
 
   const dados = (await resposta.json()) as RespostaMelhorEnvio;
 
-  return dados
+  const opcoesPorPreco = dados
     .filter((opcao) => !opcao.error && opcao.price)
     .map((opcao) => ({
       servico: opcao.name ?? "Entrega",
@@ -89,4 +119,6 @@ export async function calcularFrete(cepDestino: string, quantidadeItens: number)
       prazoDias: opcao.delivery_time ?? 0
     }))
     .sort((a, b) => a.preco - b.preco);
+
+  return simplificarOpcoes(opcoesPorPreco);
 }
