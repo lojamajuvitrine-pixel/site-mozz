@@ -3,7 +3,9 @@ import { createClient } from "@/lib/supabase/server";
 import { ehAdmin } from "@/lib/admin";
 import { listarProdutos } from "@/lib/produtos";
 import { categoriaDoProduto, composicaoDoProduto, tabelaDeMedidas, tabelaParaCsv } from "@/lib/detalhesProduto";
+import { buscarConfiguracaoLoja } from "@/lib/configLoja";
 import PainelProdutos from "@/components/admin/PainelProdutos";
+import ConfiguracoesLoja from "@/components/admin/ConfiguracoesLoja";
 
 export const dynamic = "force-dynamic";
 
@@ -16,7 +18,10 @@ export default async function PaginaAdminProdutos() {
   if (!user) redirect("/conta/entrar?next=/admin/produtos");
   if (!ehAdmin(user.email)) redirect("/");
 
-  const produtos = await listarProdutos({ incluirSemFoto: true });
+  const [produtos, configuracaoLoja] = await Promise.all([
+    listarProdutos({ incluirSemFoto: true }),
+    buscarConfiguracaoLoja()
+  ]);
 
   const linhas = produtos.map((p) => {
     const tabelaGenerica = tabelaDeMedidas(categoriaDoProduto(p.nome));
@@ -44,6 +49,7 @@ export default async function PaginaAdminProdutos() {
         Preço especial, destaque na home, outlet, composição e tabela de medidas - tudo isso é
         só do site, não mexe em nada dentro do Bling.
       </p>
+      <ConfiguracoesLoja configuracaoInicial={configuracaoLoja} />
       <PainelProdutos produtosIniciais={linhas} />
     </section>
   );
