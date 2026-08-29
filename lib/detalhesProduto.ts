@@ -77,6 +77,44 @@ export function categoriaDoProduto(nomeProduto: string): CategoriaPeca {
 // pedido dele em 29/08/2026, ate' entao so' existia essa tabela generica por categoria).
 export type TabelaMedidas = { colunas: string[]; linhas: string[][] };
 
+// Grade fixa de medidas por peça, preenchida direto numa tabela no painel /admin/produtos -
+// pedido do Brunno em 29/08/2026: sempre essas 7 medidas (busto, cintura, cintura baixa,
+// quadril, coxa total, comprimento cintura-ao-chão, comprimento do braço), com a opção de
+// usar tamanho por letra (PP a GGG) ou por numeração (34 a 44).
+export const SISTEMA_TAMANHO_LETRA = ["PP", "P", "M", "G", "GG", "GGG"] as const;
+export const SISTEMA_TAMANHO_NUMERICO = ["34", "36", "38", "40", "42", "44"] as const;
+export type SistemaTamanho = "letra" | "numerico";
+
+export const COLUNAS_MEDIDAS = [
+  "Busto (cm)",
+  "Cintura (cm)",
+  "Cintura baixa (cm)",
+  "Quadril (cm)",
+  "Coxa total (cm)",
+  "Comprimento cintura ao chão (cm)",
+  "Comprimento do braço (cm)"
+];
+
+// Grade vazia (só com os tamanhos preenchidos) pra' comecar a preencher do zero ao trocar de
+// sistema de tamanho no painel.
+export function tabelaVaziaParaSistema(sistema: SistemaTamanho): TabelaMedidas {
+  const tamanhos = sistema === "letra" ? SISTEMA_TAMANHO_LETRA : SISTEMA_TAMANHO_NUMERICO;
+  return {
+    colunas: ["Tamanho", ...COLUNAS_MEDIDAS],
+    linhas: tamanhos.map((tamanho) => [tamanho, "", "", "", "", "", "", ""])
+  };
+}
+
+// Descobre qual sistema (letra ou numerico) uma tabela ja salva esta' usando, olhando o
+// primeiro tamanho da primeira linha - usado pra' pre-selecionar o radio certo no painel.
+export function sistemaDaTabela(tabela: TabelaMedidas | null): SistemaTamanho {
+  const primeiroTamanho = tabela?.linhas[0]?.[0];
+  if (primeiroTamanho && (SISTEMA_TAMANHO_NUMERICO as readonly string[]).includes(primeiroTamanho)) {
+    return "numerico";
+  }
+  return "letra";
+}
+
 const TABELA_SUPERIOR_VESTIDO: TabelaMedidas = {
   colunas: ["Tamanho", "Busto (cm)", "Cintura (cm)", "Quadril (cm)"],
   linhas: [
