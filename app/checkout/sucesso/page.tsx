@@ -9,6 +9,7 @@
 import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useCart } from "@/lib/cart-context";
+import { idVarianteProduto } from "@/lib/produtos";
 import { rastrearCompra } from "@/lib/tracking";
 
 function Conteudo() {
@@ -23,7 +24,7 @@ function Conteudo() {
       rastrearCompra(
         numeroPedido ?? "sem-numero",
         itens.map((i) => ({
-          id: i.produto.id,
+          id: idVarianteProduto(i.produto.id, i.cor, i.tamanho),
           nome: i.produto.nome,
           marca: i.produto.marca,
           preco: i.produto.preco,
