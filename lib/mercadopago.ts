@@ -6,9 +6,15 @@
 
 import { MercadoPagoConfig, Preference } from "mercadopago";
 import type { Produto } from "@/lib/produtos";
-import { resolverProdutoIdBling } from "@/lib/produtos";
+import { resolverProdutoIdBling, buscarProduto, coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { validarCupom } from "@/lib/cupom";
 import { validarCpf } from "@/lib/cpf";
+
+// Erro "esperado" (o pedido em si nao pode seguir por um motivo que o cliente precisa saber -
+// endereco incompleto, tamanho sem estoque, etc.) - diferente de um erro tecnico inesperado
+// (Mercado Pago fora do ar, bug). A rota da API (app/api/mercadopago/criar-preferencia) usa
+// isso pra decidir se mostra a mensagem real pro cliente ou uma generica (ver comentario la').
+export class ErroValidacaoPedido extends Error {}
 
 function obterCliente() {
   const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
@@ -60,12 +66,37 @@ export async function criarPreferenciaPagamento(
   cupomCodigo?: string
 ) {
   if (!cliente.nomeCompleto.trim() || !validarCpf(cliente.cpf)) {
-    throw new Error("Nome completo e CPF válidos são obrigatórios pra finalizar a compra");
+    throw new ErroValidacaoPedido("Nome completo e CPF válidos são obrigatórios pra finalizar a compra");
   }
   const end = cliente.endereco;
   if (!end?.rua?.trim() || !end?.numero?.trim() || !end?.bairro?.trim() || !end?.cidade?.trim() || !end?.uf?.trim()) {
-    throw new Error("Endereço de entrega completo é obrigatório pra finalizar a compra");
+    throw new ErroValidacaoPedido("Endereço de entrega completo é obrigatório pra finalizar a compra");
   }
+
+  // Revalida cada item do carrinho contra o catalogo real (data/produtos.json, atualizado a
+  // cada 5min pelo sync-estoque) ANTES de criar a preferencia - nunca confia no que veio do
+  // carrinho no navegador. Isso fecha dois problemas de uma vez, os dois levantados pelo
+  // Brunno em 29/08/2026: (1) nada impedia comprar um tamanho que zerou o estoque entre a
+  // cliente ver a pagina e finalizar a compra; (2) o preco usado era o que veio no corpo do
+  // request (item.produto.preco) - alguem adulterando a chamada da API diretamente (fora do
+  // site normal) conseguiria mandar qualquer preco. Dai' pra frente so' o preco/nome vindos
+  // AGORA do catalogo (produtoReal) sao usados - o que veio do carrinho serve so' pra saber
+  // QUAL produto/cor/tamanho/quantidade, nunca o preco.
+  const itensValidados = await Promise.all(
+    itens.map(async (item) => {
+      const produtoReal = await buscarProduto(item.produto.id);
+      if (!produtoReal) {
+        throw new ErroValidacaoPedido(`"${item.produto.nome}" não está mais disponível`);
+      }
+      const corReal = coresDoProduto(produtoReal).find((c) => c.cor === item.cor);
+      if (!corReal || !tamanhosDisponiveisDoColor(corReal).includes(item.tamanho)) {
+        throw new ErroValidacaoPedido(
+          `"${produtoReal.nome}" (${item.cor}, tamanho ${item.tamanho}) está sem estoque no momento`
+        );
+      }
+      return { item, produtoReal };
+    })
+  );
 
   const client = obterCliente();
   const preference = new Preference(client);
@@ -76,7 +107,7 @@ export async function criarPreferenciaPagamento(
   // de "desconto" com preco negativo, entao o jeito e' aplicar o desconto proporcionalmente
   // no preco unitario de cada item (reduz todo mundo pela mesma porcentagem), o que da' no
   // mesmo total final.
-  const subtotal = itens.reduce((soma, item) => soma + item.produto.preco * item.quantidade, 0);
+  const subtotal = itensValidados.reduce((soma, { item, produtoReal }) => soma + produtoReal.preco * item.quantidade, 0);
   let fatorDesconto = 1;
   let codigoCupomAplicado: string | undefined;
   if (cupomCodigo && subtotal > 0) {
@@ -87,18 +118,18 @@ export async function criarPreferenciaPagamento(
     }
   }
 
-  const itensPreferencia = itens.map((item) => ({
-    id: item.produto.id,
+  const itensPreferencia = itensValidados.map(({ item, produtoReal }) => ({
+    id: produtoReal.id,
     title:
       item.cor && item.cor !== "Único"
-        ? `${item.produto.nome} (${item.cor}, ${item.tamanho})`
-        : `${item.produto.nome} (${item.tamanho})`,
+        ? `${produtoReal.nome} (${item.cor}, ${item.tamanho})`
+        : `${produtoReal.nome} (${item.tamanho})`,
     quantity: item.quantidade,
-    unit_price: Math.round(item.produto.preco * fatorDesconto * 100) / 100,
+    unit_price: Math.round(produtoReal.preco * fatorDesconto * 100) / 100,
     currency_id: "BRL",
     // resolvido AGORA (nao no webhook) pra nao depender do catalogo nao ter mudado ate' o
     // pagamento ser confirmado - ver resolverProdutoIdBling em lib/produtos.ts.
-    _idBling: resolverProdutoIdBling(item.produto, item.tamanho)
+    _idBling: resolverProdutoIdBling(produtoReal, item.tamanho)
   }));
 
   // Frete entra como um item a parte (o Mercado Pago nao tem um campo nativo de "frete" na
@@ -116,9 +147,9 @@ export async function criarPreferenciaPagamento(
   }
 
   const pedidoMetadata: PedidoMetadata = {
-    itens: itens.map((item, indice) => ({
+    itens: itensValidados.map(({ item, produtoReal }, indice) => ({
       id: itensPreferencia[indice]._idBling,
-      nome: `${item.produto.nome} (${item.tamanho})`,
+      nome: `${produtoReal.nome} (${item.tamanho})`,
       qtd: item.quantidade,
       valor: itensPreferencia[indice].unit_price
     })),
