@@ -9,6 +9,8 @@ import type { Produto } from "@/lib/produtos";
 import { resolverProdutoIdBling, buscarProduto, coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { validarCupom } from "@/lib/cupom";
 import { validarCpf } from "@/lib/cpf";
+import { calcularFrete, ehRetirada } from "@/lib/frete";
+import { buscarConfiguracaoLoja } from "@/lib/configLoja";
 
 // Erro "esperado" (o pedido em si nao pode seguir por um motivo que o cliente precisa saber -
 // endereco incompleto, tamanho sem estoque, etc.) - diferente de um erro tecnico inesperado
@@ -57,6 +59,47 @@ export type PedidoMetadata = {
   telefone?: string;
   endereco: EnderecoCheckout;
 };
+
+// Nunca confia no preco de frete que veio do carrinho (o mesmo raciocinio do preco dos
+// produtos acima - alguem poderia adulterar a chamada da API direto, fora do site normal, e
+// mandar frete a R$0 pra qualquer transportadora) - pedido do Brunno em 29/08/2026, junto com
+// retirada na loja e frete gratis a partir de um valor.
+async function revalidarFrete(
+  freteEscolhido: FreteEscolhido | undefined,
+  subtotalComDesconto: number,
+  cepDestino: string,
+  quantidadeItens: number
+): Promise<FreteEscolhido | undefined> {
+  if (!freteEscolhido) return undefined;
+
+  // Retirada na loja e' sempre gratis - nao depende de cotacao nenhuma de transportadora.
+  if (ehRetirada(freteEscolhido)) {
+    return { servico: freteEscolhido.servico, transportadora: freteEscolhido.transportadora, preco: 0 };
+  }
+
+  // Frete gratis a partir de um valor minimo (configuravel em /admin/produtos, ver
+  // lib/configLoja.ts) - se o carrinho bateu o valor, cobra zero independente do que o Melhor
+  // Envio cotaria pra essa transportadora.
+  const configuracaoLoja = await buscarConfiguracaoLoja();
+  if (configuracaoLoja.freteGratisAcimaDe !== null && subtotalComDesconto >= configuracaoLoja.freteGratisAcimaDe) {
+    return { servico: freteEscolhido.servico, transportadora: freteEscolhido.transportadora, preco: 0 };
+  }
+
+  // Frete pago de verdade - cota de novo no Melhor Envio com o CEP de entrega e usa o preco
+  // que ELE devolve agora pra essa transportadora/servico, nunca o numero que veio do
+  // carrinho. Se a opcao escolhida nao aparecer mais (cotacao mudou, servico saiu do ar), pede
+  // pro cliente calcular de novo em vez de aceitar um preco nao verificado.
+  const opcoesReais = await calcularFrete(cepDestino, quantidadeItens);
+  const opcaoReal = opcoesReais.find(
+    (o) => o.transportadora === freteEscolhido.transportadora && o.servico === freteEscolhido.servico
+  );
+  if (!opcaoReal) {
+    throw new ErroValidacaoPedido(
+      "A opção de frete escolhida não está mais disponível - calcule o frete de novo antes de continuar"
+    );
+  }
+  return { servico: opcaoReal.servico, transportadora: opcaoReal.transportadora, preco: opcaoReal.preco };
+}
 
 export async function criarPreferenciaPagamento(
   itens: ItemCarrinho[],
@@ -117,6 +160,13 @@ export async function criarPreferenciaPagamento(
       codigoCupomAplicado = resultado.cupom.codigo;
     }
   }
+  const subtotalComDesconto = Math.round(subtotal * fatorDesconto * 100) / 100;
+
+  // Revalida o frete (retirada/frete gratis/preco real da transportadora) so' DEPOIS de saber
+  // o subtotal com desconto de verdade - o valor minimo do frete gratis compara com esse
+  // numero, nao com o subtotal cheio. Ver revalidarFrete acima.
+  const quantidadeTotalItens = itens.reduce((soma, item) => soma + item.quantidade, 0);
+  const freteSeguro = await revalidarFrete(frete, subtotalComDesconto, end.cep, quantidadeTotalItens);
 
   const itensPreferencia = itensValidados.map(({ item, produtoReal }) => ({
     id: produtoReal.id,
@@ -135,12 +185,12 @@ export async function criarPreferenciaPagamento(
   // Frete entra como um item a parte (o Mercado Pago nao tem um campo nativo de "frete" na
   // Preference API) - assim ele soma no total cobrado do cliente de verdade, em vez de ficar
   // so' informativo como estava antes (ver components/CalculoFrete.tsx).
-  if (frete && frete.preco > 0) {
+  if (freteSeguro && freteSeguro.preco > 0) {
     itensPreferencia.push({
       id: "frete",
-      title: `Frete - ${frete.transportadora} ${frete.servico}`,
+      title: `Frete - ${freteSeguro.transportadora} ${freteSeguro.servico}`,
       quantity: 1,
-      unit_price: Math.round(frete.preco * 100) / 100,
+      unit_price: Math.round(freteSeguro.preco * 100) / 100,
       currency_id: "BRL",
       _idBling: 0
     });
@@ -153,7 +203,7 @@ export async function criarPreferenciaPagamento(
       qtd: item.quantidade,
       valor: itensPreferencia[indice].unit_price
     })),
-    frete: frete?.preco ?? 0,
+    frete: freteSeguro?.preco ?? 0,
     nome: cliente.nomeCompleto.trim(),
     cpf: cliente.cpf.replace(/\D/g, ""),
     telefone: cliente.telefone,
