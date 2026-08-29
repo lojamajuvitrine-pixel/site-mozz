@@ -4,7 +4,8 @@ import { useCart } from "@/lib/cart-context";
 import { idVarianteProduto } from "@/lib/produtos";
 import { formatarPreco } from "@/lib/formato";
 import { useEffect, useState } from "react";
-import CalculoFrete, { type OpcaoFrete } from "@/components/CalculoFrete";
+import CalculoFrete, { type OpcaoFrete, type ConfigLojaFrete } from "@/components/CalculoFrete";
+import { ehRetirada } from "@/lib/frete";
 import { rastrearIniciarCheckout } from "@/lib/tracking";
 import { validarCpf, formatarCpf } from "@/lib/cpf";
 import { createClient } from "@/lib/supabase/client";
@@ -24,6 +25,17 @@ export default function PaginaCarrinho() {
   const [validandoCupom, setValidandoCupom] = useState(false);
 
   const [freteSelecionado, setFreteSelecionado] = useState<OpcaoFrete | null>(null);
+  // Frete gratis a partir de X e retirada na loja - configuraveis em /admin/produtos (ver
+  // lib/configLoja.ts). null enquanto ainda esta' carregando; nesse meio-tempo o carrinho
+  // funciona normal, so' sem mostrar "Retirar na loja" nem a mensagem de frete gratis.
+  const [configLoja, setConfigLoja] = useState<ConfigLojaFrete | null>(null);
+
+  useEffect(() => {
+    fetch("/api/config-loja")
+      .then((r) => r.json())
+      .then(setConfigLoja)
+      .catch(() => {});
+  }, []);
 
   // Dados pra nota fiscal/entrega - pre-preenchidos automaticamente se o cliente ja' tiver
   // feito login e preenchido o perfil em /conta (ver PerfilForm), mas o checkout NAO exige
@@ -80,7 +92,21 @@ export default function PaginaCarrinho() {
   const quantidadeTotal = itens.reduce((soma, i) => soma + i.quantidade, 0);
   const desconto = cupomAplicado?.valido ? cupomAplicado.desconto : 0;
   const totalComDesconto = Math.max(0, total - desconto);
-  const totalComFrete = totalComDesconto + (freteSelecionado?.preco ?? 0);
+
+  // Recalcula o preco EFETIVO do frete escolhido em cima do subtotal atual (em vez de so'
+  // usar o preco que foi gravado no momento do clique) - assim, se o cliente adicionar mais
+  // um item e o carrinho passar do valor minimo do frete gratis DEPOIS de já ter escolhido
+  // uma transportadora, o total aqui atualiza sozinho sem precisar recalcular o frete de novo.
+  // Retirada na loja e' sempre gratis. O checkout revalida tudo isso de novo no servidor (ver
+  // lib/mercadopago.ts) - o que acontece aqui e' so' pra mostrar o total certo pro cliente.
+  const freteGratisAtivo =
+    configLoja?.freteGratisAcimaDe != null && totalComDesconto >= configLoja.freteGratisAcimaDe;
+  const precoFreteEfetivo = freteSelecionado
+    ? ehRetirada(freteSelecionado) || freteGratisAtivo
+      ? 0
+      : freteSelecionado.preco
+    : 0;
+  const totalComFrete = totalComDesconto + precoFreteEfetivo;
 
   const cpfValido = validarCpf(cpf);
   const enderecoCompleto =
@@ -156,7 +182,7 @@ export default function PaginaCarrinho() {
             ? {
                 servico: freteSelecionado.servico,
                 transportadora: freteSelecionado.transportadora,
-                preco: freteSelecionado.preco
+                preco: precoFreteEfetivo
               }
             : undefined
         })
@@ -258,6 +284,8 @@ export default function PaginaCarrinho() {
         opcaoSelecionada={freteSelecionado}
         onSelecionar={setFreteSelecionado}
         onCepCalculado={aoCalcularFrete}
+        configLoja={configLoja}
+        subtotal={totalComDesconto}
       />
 
       <div className="mt-6 pt-6 border-t border-black/10">
@@ -348,7 +376,7 @@ export default function PaginaCarrinho() {
         )}
         <div className="flex justify-between py-1 text-[14.5px] text-mozz-gray">
           <span>Frete</span>
-          <span>{freteSelecionado ? formatarPreco(freteSelecionado.preco) : "a calcular"}</span>
+          <span>{freteSelecionado ? formatarPreco(precoFreteEfetivo) : "a calcular"}</span>
         </div>
         <div className="flex justify-between py-4 text-[16px] border-t border-black/10 mt-2">
           <span>Total</span>
