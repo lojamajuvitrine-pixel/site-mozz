@@ -25,7 +25,9 @@ type Secao = { titulo: string; conteudo: React.ReactNode };
 // a categoria da peca tem uma tabela relevante (acessorio nao tem, por exemplo).
 export default function DetalhesProduto({ produto }: { produto: Produto }) {
   const categoria = categoriaDoProduto(produto.nome);
-  const tabela = tabelaDeMedidas(categoria);
+  // Prioriza a medida REAL dessa peca (cadastrada no painel /admin/produtos) sobre a tabela
+  // generica da categoria - ver medidasCustomizadas em lib/produtos.ts.
+  const tabela = produto.medidasCustomizadas ?? tabelaDeMedidas(categoria);
   const composicao = composicaoDoProduto(produto);
   const cuidados = instrucoesDeCuidado(composicao);
 
