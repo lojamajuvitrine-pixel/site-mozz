@@ -22,6 +22,7 @@ type LinhaProduto = {
   precoEspecialAtual: number | null;
   destaque: boolean;
   outlet: boolean;
+  ativo: boolean;
   medidasSalvas: TabelaMedidas | null;
   composicaoCustomizada: boolean;
   composicaoAtual: string;
@@ -32,6 +33,7 @@ type EstadoLinha = {
   percentual: string;
   destaque: boolean;
   outlet: boolean;
+  ativo: boolean;
   medidasSistema: SistemaTamanho;
   medidasValores: string[][];
   composicaoTexto: string;
@@ -72,6 +74,7 @@ function estadoInicial(linha: LinhaProduto): EstadoLinha {
     percentual: "",
     destaque: linha.destaque,
     outlet: linha.outlet,
+    ativo: linha.ativo,
     medidasSistema: sistema,
     medidasValores: valores,
     composicaoTexto: linha.composicaoCustomizada ? linha.composicaoAtual : "",
@@ -92,20 +95,23 @@ function precoComDesconto(precoBling: number, percentualTexto: string): string |
 export default function PainelProdutos({ produtosIniciais }: { produtosIniciais: LinhaProduto[] }) {
   const [busca, setBusca] = useState("");
   const [soSemFoto, setSoSemFoto] = useState(false);
+  const [soDesativadas, setSoDesativadas] = useState(false);
   const [estados, setEstados] = useState<Record<string, EstadoLinha>>(() =>
     Object.fromEntries(produtosIniciais.map((p) => [p.id, estadoInicial(p)]))
   );
 
   const totalSemFoto = useMemo(() => produtosIniciais.filter((p) => !p.imagem).length, [produtosIniciais]);
+  const totalDesativadas = useMemo(() => produtosIniciais.filter((p) => !p.ativo).length, [produtosIniciais]);
 
   const listaFiltrada = useMemo(() => {
     const termo = normalizarTexto(busca.trim());
     return produtosIniciais.filter((p) => {
       if (soSemFoto && p.imagem) return false;
+      if (soDesativadas && p.ativo) return false;
       if (!termo) return true;
       return normalizarTexto(p.nome).includes(termo) || normalizarTexto(p.marca).includes(termo);
     });
-  }, [produtosIniciais, busca, soSemFoto]);
+  }, [produtosIniciais, busca, soSemFoto, soDesativadas]);
 
   function atualizarEstado(id: string, alteracao: Partial<EstadoLinha>) {
     setEstados((atual) => ({ ...atual, [id]: { ...atual[id], ...alteracao, salvoAgora: false, erro: null } }));
@@ -180,6 +186,7 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
           precoEspecial,
           destaque: estado.destaque,
           outlet: estado.outlet,
+          ativo: estado.ativo,
           medidasCustomizadas,
           composicaoCustomizada
         })
@@ -218,6 +225,15 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
           />
           Só sem foto ({totalSemFoto})
         </label>
+        <label className="flex items-center gap-1.5 text-[13.5px] text-mozz-gray cursor-pointer">
+          <input
+            type="checkbox"
+            checked={soDesativadas}
+            onChange={(e) => setSoDesativadas(e.target.checked)}
+            className="w-4 h-4"
+          />
+          Só desativadas ({totalDesativadas})
+        </label>
       </div>
       <p className="text-[13px] text-mozz-gray mb-4">
         Peça sem foto fica automaticamente fora do catálogo até alguém subir a foto no Bling - não
@@ -234,6 +250,7 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
               <th className="py-2 pr-3 font-normal">Preço especial</th>
               <th className="py-2 pr-3 font-normal text-center">Destaque</th>
               <th className="py-2 pr-3 font-normal text-center">Outlet</th>
+              <th className="py-2 pr-3 font-normal text-center">Ativa</th>
               <th className="py-2 pr-3 font-normal">Composição / medidas</th>
               <th className="py-2 pr-3 font-normal"></th>
             </tr>
@@ -245,7 +262,7 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
               const temAlgumCustomizado = !!linha.medidasSalvas || linha.composicaoCustomizada;
               return (
                 <Fragment key={linha.id}>
-                  <tr className="border-b border-black/5 align-middle">
+                  <tr className={`border-b border-black/5 align-middle ${!estado.ativo ? "opacity-50" : ""}`}>
                     <td className="py-2 pr-3">
                       <div className="flex items-center gap-2">
                         <div className="relative w-10 h-12 bg-mozz-stone shrink-0 overflow-hidden">
@@ -260,6 +277,11 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
                             {!linha.imagem && (
                               <span className="ml-2 text-red-600 border border-red-600 px-1 py-0.5 text-[11px]">
                                 sem foto
+                              </span>
+                            )}
+                            {!estado.ativo && (
+                              <span className="ml-2 text-red-600 border border-red-600 px-1 py-0.5 text-[11px]">
+                                desativada
                               </span>
                             )}
                           </p>
@@ -307,6 +329,15 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
                         className="w-4 h-4"
                       />
                     </td>
+                    <td className="py-2 pr-3 text-center">
+                      <input
+                        type="checkbox"
+                        checked={estado.ativo}
+                        onChange={(e) => atualizarEstado(linha.id, { ativo: e.target.checked })}
+                        title="Desmarque pra tirar essa peça do catálogo público"
+                        className="w-4 h-4"
+                      />
+                    </td>
                     <td className="py-2 pr-3 whitespace-nowrap">
                       <button
                         onClick={() => atualizarEstado(linha.id, { detalhesAberto: !estado.detalhesAberto })}
@@ -332,7 +363,7 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
                   </tr>
                   {estado.detalhesAberto && (
                     <tr className="border-b border-black/5 bg-mozz-stone/40">
-                      <td colSpan={8} className="py-3 px-3">
+                      <td colSpan={9} className="py-3 px-3">
                         <div className="mb-4">
                           <p className="text-[13px] mb-1">Composição</p>
                           <p className="text-[12.5px] text-mozz-gray mb-2">
