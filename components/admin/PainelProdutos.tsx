@@ -4,7 +4,14 @@ import { Fragment, useMemo, useState } from "react";
 import Image from "next/image";
 import { formatarPreco } from "@/lib/formato";
 import { normalizarTexto } from "@/lib/cor";
-import { csvParaTabela } from "@/lib/detalhesProduto";
+import {
+  COLUNAS_MEDIDAS,
+  SISTEMA_TAMANHO_LETRA,
+  SISTEMA_TAMANHO_NUMERICO,
+  sistemaDaTabela,
+  type SistemaTamanho,
+  type TabelaMedidas
+} from "@/lib/detalhesProduto";
 
 type LinhaProduto = {
   id: string;
@@ -15,24 +22,18 @@ type LinhaProduto = {
   precoEspecialAtual: number | null;
   destaque: boolean;
   outlet: boolean;
-  // true = essa peca ja tem tabela de medidas REAL salva (nao so' a generica de referencia).
-  medidasCustomizada: boolean;
-  // CSV pronto pra' cair na textarea: a tabela customizada se ja existir, senao a generica
-  // da categoria como ponto de partida (ver app/admin/produtos/page.tsx).
-  medidasCsv: string;
-  // true = essa peca ja tem composicao REAL salva (nao so' a do Bling/generica).
+  medidasSalvas: TabelaMedidas | null;
   composicaoCustomizada: boolean;
-  // Texto pronto pra' cair no input: a composicao customizada se ja existir, senao o que a
-  // pagina do produto mostraria hoje (do Bling, ou generica da categoria) - so' de sugestao.
   composicaoAtual: string;
 };
 
 type EstadoLinha = {
-  precoEspecial: string; // valor do input, como texto - vazio = sem oferta
-  percentual: string; // so' uma calculadora auxiliar - preenche o preco especial acima, nao e' salvo
+  precoEspecial: string;
+  percentual: string;
   destaque: boolean;
   outlet: boolean;
-  medidasTexto: string;
+  medidasSistema: SistemaTamanho;
+  medidasValores: string[][];
   composicaoTexto: string;
   detalhesAberto: boolean;
   salvando: boolean;
@@ -40,16 +41,39 @@ type EstadoLinha = {
   salvoAgora: boolean;
 };
 
+function tamanhosDoSistema(sistema: SistemaTamanho): readonly string[] {
+  return sistema === "letra" ? SISTEMA_TAMANHO_LETRA : SISTEMA_TAMANHO_NUMERICO;
+}
+
+function gradeVazia(sistema: SistemaTamanho): string[][] {
+  return tamanhosDoSistema(sistema).map(() => COLUNAS_MEDIDAS.map(() => ""));
+}
+
+function medidasIniciais(tabela: TabelaMedidas | null): { sistema: SistemaTamanho; valores: string[][] } {
+  if (!tabela) return { sistema: "letra", valores: gradeVazia("letra") };
+  const sistema = sistemaDaTabela(tabela);
+  const tamanhos = tamanhosDoSistema(sistema);
+  const valores = tamanhos.map((tamanho) => {
+    const linha = tabela.linhas.find((l) => l[0] === tamanho);
+    if (!linha) return COLUNAS_MEDIDAS.map(() => "");
+    return COLUNAS_MEDIDAS.map((_, indice) => linha[indice + 1] ?? "");
+  });
+  return { sistema, valores };
+}
+
+function temAlgumaMedida(valores: string[][]): boolean {
+  return valores.some((linha) => linha.some((valor) => valor.trim() !== ""));
+}
+
 function estadoInicial(linha: LinhaProduto): EstadoLinha {
+  const { sistema, valores } = medidasIniciais(linha.medidasSalvas);
   return {
     precoEspecial: linha.precoEspecialAtual !== null ? String(linha.precoEspecialAtual) : "",
     percentual: "",
     destaque: linha.destaque,
     outlet: linha.outlet,
-    // So' pre-preenche o texto se for um valor REAL ja salvo - se for so' a sugestao (tabela
-    // generica ou composicao do Bling/generica), comeca vazio (mostrado como placeholder),
-    // pra nunca dar a entender que a sugestao ja foi "salva" como se fosse a real da peca.
-    medidasTexto: linha.medidasCustomizada ? linha.medidasCsv : "",
+    medidasSistema: sistema,
+    medidasValores: valores,
     composicaoTexto: linha.composicaoCustomizada ? linha.composicaoAtual : "",
     detalhesAberto: false,
     salvando: false,
@@ -58,9 +82,6 @@ function estadoInicial(linha: LinhaProduto): EstadoLinha {
   };
 }
 
-// Calcula o preco especial a partir de um % de desconto em cima do preco do Bling - so'
-// preenche o campo de preco (que continua sendo o unico valor de fato salvo), pra quem
-// prefere pensar em "20% off" em vez de calcular o valor final na mao.
 function precoComDesconto(precoBling: number, percentualTexto: string): string | null {
   const percentual = Number(percentualTexto.replace(",", "."));
   if (!Number.isFinite(percentual) || percentual <= 0 || percentual >= 100) return null;
@@ -68,15 +89,8 @@ function precoComDesconto(precoBling: number, percentualTexto: string): string |
   return precoComDesconto.toFixed(2);
 }
 
-// Painel administrativo (client component) - lista todo o catalogo com busca, e por linha
-// deixa configurar preco especial (input livre, vazio = sem oferta), destaque (aparece
-// priorizado na vitrine "Novidades" da home), outlet (aparece na aba /outlet), composicao e
-// tabela de medidas reais da peca. Cada linha salva de forma independente, direto em
-// /api/admin/produtos.
 export default function PainelProdutos({ produtosIniciais }: { produtosIniciais: LinhaProduto[] }) {
   const [busca, setBusca] = useState("");
-  // pecas sem foto ficam FORA do catalogo publico ate' alguem subir a foto no Bling (ver
-  // lib/produtos.ts) - esse filtro ajuda a achar rapido quem falta fotografar/subir foto.
   const [soSemFoto, setSoSemFoto] = useState(false);
   const [estados, setEstados] = useState<Record<string, EstadoLinha>>(() =>
     Object.fromEntries(produtosIniciais.map((p) => [p.id, estadoInicial(p)]))
@@ -97,15 +111,37 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
     setEstados((atual) => ({ ...atual, [id]: { ...atual[id], ...alteracao, salvoAgora: false, erro: null } }));
   }
 
-  // Digitou um % de desconto - calcula o preco final e joga direto no campo de preco
-  // especial (que continua editavel na mao depois, se quiser ajustar um centavo pra cima ou
-  // pra baixo).
   function aplicarPercentual(linha: LinhaProduto, percentualTexto: string) {
     const precoCalculado = precoComDesconto(linha.precoBling, percentualTexto);
     atualizarEstado(linha.id, {
       percentual: percentualTexto,
       ...(precoCalculado ? { precoEspecial: precoCalculado } : {})
     });
+  }
+
+  function trocarSistema(linhaId: string, novoSistema: SistemaTamanho) {
+    const estado = estados[linhaId];
+    if (estado.medidasSistema === novoSistema) return;
+    if (temAlgumaMedida(estado.medidasValores)) {
+      const confirmou = window.confirm(
+        "Trocar o sistema de tamanho apaga as medidas já preenchidas nessa grade. Continuar?"
+      );
+      if (!confirmou) return;
+    }
+    atualizarEstado(linhaId, { medidasSistema: novoSistema, medidasValores: gradeVazia(novoSistema) });
+  }
+
+  function atualizarValorMedida(linhaId: string, tamanhoIndice: number, colunaIndice: number, valor: string) {
+    const estado = estados[linhaId];
+    const novosValores = estado.medidasValores.map((linha, i) =>
+      i === tamanhoIndice ? linha.map((v, j) => (j === colunaIndice ? valor : v)) : linha
+    );
+    atualizarEstado(linhaId, { detalhesAberto: true, medidasValores: novosValores });
+  }
+
+  function limparDetalhes(linhaId: string) {
+    const sistema = estados[linhaId].medidasSistema;
+    atualizarEstado(linhaId, { medidasValores: gradeVazia(sistema), composicaoTexto: "" });
   }
 
   async function salvar(linha: LinhaProduto) {
@@ -122,19 +158,15 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
       precoEspecial = numero;
     }
 
-    // Vazio = sem tabela customizada (volta pra generica da categoria). Se tiver texto,
-    // precisa ser uma tabela valida (cabecalho + linhas com o mesmo numero de colunas) -
-    // valida AQUI, antes de gastar uma chamada de rede, pra dar o erro na hora.
-    let medidasCustomizadas: { colunas: string[]; linhas: string[][] } | null = null;
-    const medidasTexto = estado.medidasTexto.trim();
-    if (medidasTexto) {
-      const resultado = csvParaTabela(medidasTexto);
-      if (!resultado.tabela) {
-        atualizarEstado(linha.id, { erro: resultado.erro ?? "Tabela de medidas inválida", detalhesAberto: true });
-        return;
-      }
-      medidasCustomizadas = resultado.tabela;
-    }
+    const medidasCustomizadas: TabelaMedidas | null = temAlgumaMedida(estado.medidasValores)
+      ? {
+          colunas: ["Tamanho", ...COLUNAS_MEDIDAS],
+          linhas: tamanhosDoSistema(estado.medidasSistema).map((tamanho, i) => [
+            tamanho,
+            ...estado.medidasValores[i]
+          ])
+        }
+      : null;
 
     const composicaoCustomizada = estado.composicaoTexto.trim() || null;
 
@@ -210,7 +242,7 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
             {listaFiltrada.map((linha) => {
               const estado = estados[linha.id];
               if (!estado) return null;
-              const temAlgumCustomizado = linha.medidasCustomizada || linha.composicaoCustomizada;
+              const temAlgumCustomizado = !!linha.medidasSalvas || linha.composicaoCustomizada;
               return (
                 <Fragment key={linha.id}>
                   <tr className="border-b border-black/5 align-middle">
@@ -318,18 +350,65 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
                         <div>
                           <p className="text-[13px] mb-1">Tabela de medidas</p>
                           <p className="text-[12.5px] text-mozz-gray mb-2">
-                            Uma linha por tamanho, valores separados por vírgula. Primeira linha é
-                            o cabeçalho. Já vem preenchido com a tabela genérica de referência
-                            dessa categoria - troque pelos números reais dessa peça, ou apague
-                            tudo pra voltar a usar a genérica.
+                            Escolha o sistema de tamanho e preencha as medidas de cada um (em cm).
+                            Célula em branco fica em branco na página do produto - só preencha o que
+                            tiver certeza.
                           </p>
-                          <textarea
-                            value={estado.medidasTexto}
-                            onChange={(e) => atualizarEstado(linha.id, { detalhesAberto: true, medidasTexto: e.target.value })}
-                            placeholder={linha.medidasCsv || "Tamanho, Busto (cm), Cintura (cm), Quadril (cm)\n36, 84, 64, 92"}
-                            rows={5}
-                            className="w-full max-w-lg border border-black/20 px-3 py-2 text-[13px] font-mono"
-                          />
+                          <div className="flex items-center gap-4 mb-3">
+                            <label className="flex items-center gap-1.5 text-[13px] cursor-pointer">
+                              <input
+                                type="radio"
+                                name={`sistema-${linha.id}`}
+                                checked={estado.medidasSistema === "letra"}
+                                onChange={() => trocarSistema(linha.id, "letra")}
+                                className="w-3.5 h-3.5"
+                              />
+                              PP, P, M, G, GG, GGG
+                            </label>
+                            <label className="flex items-center gap-1.5 text-[13px] cursor-pointer">
+                              <input
+                                type="radio"
+                                name={`sistema-${linha.id}`}
+                                checked={estado.medidasSistema === "numerico"}
+                                onChange={() => trocarSistema(linha.id, "numerico")}
+                                className="w-3.5 h-3.5"
+                              />
+                              34, 36, 38, 40, 42, 44
+                            </label>
+                          </div>
+                          <div className="overflow-x-auto">
+                            <table className="text-[12.5px] border-collapse">
+                              <thead>
+                                <tr>
+                                  <th className="py-1 pr-2 text-left font-normal text-mozz-gray">Tamanho</th>
+                                  {COLUNAS_MEDIDAS.map((coluna) => (
+                                    <th key={coluna} className="py-1 pr-2 text-left font-normal text-mozz-gray whitespace-nowrap">
+                                      {coluna}
+                                    </th>
+                                  ))}
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {tamanhosDoSistema(estado.medidasSistema).map((tamanho, tamanhoIndice) => (
+                                  <tr key={tamanho}>
+                                    <td className="py-1 pr-2 font-medium">{tamanho}</td>
+                                    {COLUNAS_MEDIDAS.map((_, colunaIndice) => (
+                                      <td key={colunaIndice} className="py-1 pr-2">
+                                        <input
+                                          value={estado.medidasValores[tamanhoIndice]?.[colunaIndice] ?? ""}
+                                          onChange={(e) =>
+                                            atualizarValorMedida(linha.id, tamanhoIndice, colunaIndice, e.target.value)
+                                          }
+                                          inputMode="decimal"
+                                          className="border border-black/20 px-1.5 py-1 text-[12.5px] w-16"
+                                        />
+                                      </td>
+                                    ))}
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
                         </div>
                         <div className="flex items-center gap-2 mt-3">
                           <button
@@ -339,9 +418,9 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
                           >
                             {estado.salvando ? "Salvando..." : "Salvar"}
                           </button>
-                          {(estado.medidasTexto.trim() || estado.composicaoTexto.trim()) && (
+                          {(temAlgumaMedida(estado.medidasValores) || estado.composicaoTexto.trim()) && (
                             <button
-                              onClick={() => atualizarEstado(linha.id, { medidasTexto: "", composicaoTexto: "" })}
+                              onClick={() => limparDetalhes(linha.id)}
                               className="text-[12.5px] text-mozz-gray underline underline-offset-2"
                             >
                               Limpar os dois (volta a usar o padrão)
