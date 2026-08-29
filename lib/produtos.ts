@@ -252,3 +252,34 @@ export function coresDoProduto(produto: Produto): VarianteCor[] {
     }
   ];
 }
+
+// Vira parte de id/nome de arquivo: sem acento, minusculo, so' letra/numero/hifen - mesma
+// regra do corSlug() em scripts/sync-bling.ts (usado pra nome de arquivo de foto), repetida
+// aqui pra nao criar dependencia de app/ em cima de scripts/. Mantida sincronizada de proposito
+// (mesma logica, mesmo resultado) - se um dia mudar uma, mudar a outra junto.
+function normalizarParaId(valor: string): string {
+  const limpo = valor
+    .normalize("NFD")
+    .replace(new RegExp("[\\u0300-\\u036f]", "g"), "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-+|-+$)/g, "");
+  return limpo || "unico";
+}
+
+// Id ESTAVEL por variacao (cor+tamanho) de um produto - usado no feed da Meta (uma linha por
+// variacao vendavel, ver app/api/meta-feed/route.ts) E nos eventos do Pixel (ver
+// lib/tracking.ts e os 3 lugares que chamam rastrear*), pra garantir que os dois sempre
+// mandem o MESMO id pra mesma combinacao de produto+cor+tamanho (exigencia da Meta pra
+// Dynamic Ads/Advantage+ Catalog Ads funcionar - ver analise de 27/08/2026 com o Brunno).
+//
+// IMPORTANTE: isso NAO e' o id real da variacao no Bling (esse dado nao existe mais depois
+// do sync - ver resolverProdutoIdBling acima, que so' resolve id real do Bling pra produtos
+// "fundidos", com gruposBlingPorTamanho). E' um id CONSTRUIDO, deterministico e estavel
+// enquanto o nome da cor/tamanho nao mudar no Bling - decisao consciente pra nao precisar
+// mexer no pipeline de sync (scripts/sync-bling.ts e scripts/sync-estoque.ts) nem rodar sync
+// completo de novo so' pra isso. Se um dia precisar do id real do Bling por variacao, essa
+// funcao e' o unico lugar a trocar.
+export function idVarianteProduto(produtoId: string, cor: string, tamanho: string): string {
+  return `${produtoId}--${normalizarParaId(cor)}--${normalizarParaId(tamanho)}`;
+}
