@@ -18,6 +18,7 @@ type PayloadProduto = {
   precoEspecial?: number | null;
   destaque?: boolean;
   outlet?: boolean;
+  ativo?: boolean;
   medidasCustomizadas?: TabelaMedidasPayload | null;
   composicaoCustomizada?: string | null;
 };
@@ -55,10 +56,16 @@ export async function POST(request: NextRequest) {
   const precoEspecial = body.precoEspecial ?? null;
   const destaque = !!body.destaque;
   const outlet = !!body.outlet;
+  // ausente = ativa (comportamento padrao) - so' considera "desativada" quando o painel manda
+  // explicitamente false.
+  const ativo = body.ativo !== false;
   const medidasCustomizadas = body.medidasCustomizadas ?? null;
   const composicaoCustomizada = body.composicaoCustomizada?.trim() || null;
 
-  if (precoEspecial === null && !destaque && !outlet && !medidasCustomizadas && !composicaoCustomizada) {
+  // So' apaga a linha (volta tudo pro padrao do Bling) quando NENHUM campo tem valor
+  // diferente do padrao - "ativo" tambem entra nessa conta, senao uma peca desativada com
+  // mais nada customizado seria removida da tabela e voltaria a aparecer no catalogo.
+  if (precoEspecial === null && !destaque && !outlet && ativo && !medidasCustomizadas && !composicaoCustomizada) {
     const { error } = await supabase.from("produtos_site").delete().eq("produto_id", body.produtoId);
     if (error) return NextResponse.json({ erro: error.message }, { status: 500 });
     return NextResponse.json({ ok: true, removido: true });
@@ -69,6 +76,7 @@ export async function POST(request: NextRequest) {
     preco_especial: precoEspecial,
     destaque,
     outlet,
+    ativo,
     medidas_customizadas: medidasCustomizadas,
     composicao_customizada: composicaoCustomizada,
     atualizado_em: new Date().toISOString()
