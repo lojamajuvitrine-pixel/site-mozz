@@ -1,6 +1,6 @@
 import { cache } from "react";
 import produtosData from "@/data/produtos.json";
-import { categoriaDoProduto } from "@/lib/detalhesProduto";
+import { categoriaDoProduto, type TabelaMedidas } from "@/lib/detalhesProduto";
 import { buscarConfigProdutos, type ConfigProduto } from "@/lib/produtoConfig";
 
 // Uma variacao de COR do produto - cada cor tem suas proprias fotos (pode ser mais de uma,
@@ -116,6 +116,16 @@ export type Produto = {
   // Configs "so' do site" (painel /admin/produtos), sem nada equivalente no Bling.
   destaque?: boolean;
   outlet?: boolean;
+  // Medida REAL dessa peca especifica, cadastrada no painel /admin/produtos (pedido do
+  // Brunno em 29/08/2026) - quando ausente, a pagina do produto usa a tabela GENERICA da
+  // categoria (ver tabelaDeMedidas em lib/detalhesProduto.ts), que e' so' uma referencia de
+  // mercado, nao a medida de verdade daquela peca.
+  medidasCustomizadas?: TabelaMedidas;
+  // Composicao REAL dessa peca, cadastrada no painel /admin/produtos - tem prioridade sobre
+  // "composicao" acima (que depende do time ter escrito "Composição: ..." dentro da
+  // descricao do Bling, um jeito fragil que nem sempre funciona - pedido do Brunno em
+  // 29/08/2026 de ter um campo direto pra isso, sem depender do texto do Bling).
+  composicaoCustomizada?: string;
 };
 
 // Decisao do Brunno em 23/08/2026: por enquanto o site trabalha SO' com essas 4 marcas
@@ -133,7 +143,13 @@ const buscarConfigProdutosCache = cache(buscarConfigProdutos);
 
 function aplicarConfigEspecial(produto: Produto, config: ConfigProduto | undefined): Produto {
   if (!config) return produto;
-  const comFlags: Produto = { ...produto, destaque: config.destaque, outlet: config.outlet };
+  const comFlags: Produto = {
+    ...produto,
+    destaque: config.destaque,
+    outlet: config.outlet,
+    medidasCustomizadas: config.medidasCustomizadas ?? undefined,
+    composicaoCustomizada: config.composicaoCustomizada ?? undefined
+  };
   if (config.precoEspecial !== null && config.precoEspecial !== produto.preco) {
     return { ...comFlags, preco: config.precoEspecial, precoOriginal: produto.preco };
   }
