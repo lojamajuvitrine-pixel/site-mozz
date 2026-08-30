@@ -149,17 +149,6 @@ export default function CalculoFrete({
           {carregando ? "..." : "Calcular"}
         </button>
       </div>
-      {selecionavel && limiarFreteGratis !== null && (
-        <p className="text-[13px] text-mozz-gray mt-2">
-          {freteGratisConquistado
-            ? "Frete grátis aplicado nessa compra."
-            : subtotal !== undefined
-              ? `Frete grátis em compras acima de ${formatarPreco(limiarFreteGratis)} (faltam ${formatarPreco(
-                  Math.max(0, limiarFreteGratis - subtotal)
-                )}).`
-              : `Frete grátis em compras acima de ${formatarPreco(limiarFreteGratis)}.`}
-        </p>
-      )}
       {erro && <p className="text-[13.5px] text-red-600 mt-2">{erro}</p>}
       {opcoes && opcoes.length > 0 && (
         <div className="mt-3 divide-y divide-black/10 border border-black/10">
