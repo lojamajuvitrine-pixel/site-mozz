@@ -29,6 +29,9 @@ export default function Footer() {
         <div>
           <p className="font-serif text-xl text-mozz-black mb-2">MOZZ</p>
           <p className="leading-relaxed">Animale · NV · Reserva · Foxton, num só lugar.</p>
+          <Link href="/quem-somos" className={`${linkClasse} mt-2`}>
+            Quem somos
+          </Link>
         </div>
 
         <div>
