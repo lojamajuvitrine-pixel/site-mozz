@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
@@ -9,6 +9,7 @@ import { useCart } from "@/lib/cart-context";
 import { corAproximada } from "@/lib/cor";
 import CalculoFrete from "@/components/CalculoFrete";
 import AvisoEstoque from "@/components/AvisoEstoque";
+import AvisoFreteGratis from "@/components/AvisoFreteGratis";
 
 function IconeLupa() {
   return (
@@ -42,6 +43,18 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   const [adicionado, setAdicionado] = useState(false);
   const { adicionar } = useCart();
   const tamanhoEstaDisponivel = disponiveisAtual.includes(tamanho);
+
+  // Limite do frete gratis (configuravel em /admin/produtos, ver lib/configLoja.ts) - buscado
+  // aqui so' pra mostrar o aviso (ver AvisoFreteGratis abaixo); null enquanto carrega, nesse
+  // meio-tempo o aviso simplesmente nao aparece ainda (a pagina nunca trava por causa disso,
+  // mesmo padrao ja' usado no carrinho - ver app/carrinho/page.tsx).
+  const [freteGratisAcimaDe, setFreteGratisAcimaDe] = useState<number | null>(null);
+  useEffect(() => {
+    fetch("/api/config-loja")
+      .then((r) => r.json())
+      .then((config) => setFreteGratisAcimaDe(config?.freteGratisAcimaDe ?? null))
+      .catch(() => {});
+  }, []);
 
   // Carrossel: a cor selecionada pode ter mais de uma foto (o Bling deixa cadastrar varias
   // fotos da mesma peca/cor) - fotoIndex controla qual delas esta em exibicao.
@@ -209,6 +222,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
         {formatarParcelamento(produto.preco) && (
           <p className="text-[13.5px] text-mozz-gray mt-1">{formatarParcelamento(produto.preco)}</p>
         )}
+        <AvisoFreteGratis limiar={freteGratisAcimaDe} subtotal={produto.preco} />
 
         <div className="mt-6">
           {cores.length > 1 && (
