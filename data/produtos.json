@@ -5,11 +5,16 @@
     "marca": "Animale",
     "preco": 638,
     "novo": false,
-    "descricao": "",
+    "descricao": "Top de georgette estampado em modelo trapézio, com alças reguláveis por amarração no rolotê do decote redondo e elástico na barra. Uma proposta fluida e feminina. Detalhes: - Modelo trapézio; - Rolotê regulável no decote; - Alças; - Elástico na barra; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16698139295--unico--0.jpg",
+          "/produtos/16698139295--unico--1.jpg",
+          "/produtos/16698139295--unico--2.jpg",
+          "/produtos/16698139295--unico--3.jpg"
+        ],
         "tamanhos": [
           "Único"
         ],
@@ -18,7 +23,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16698139295--unico--0.jpg",
     "temEstoque": true
   },
   {
@@ -133,11 +138,16 @@
     "marca": "Animale",
     "preco": 798,
     "novo": false,
-    "descricao": "",
+    "descricao": "Short Liso com comprimento curto, bolsos frontais com tampa, bolso faca nas costas, cintura média com fechamento interno e passadores no cós. Uma peça versátil e moderna. Detalhes: - Bolsos frontais com tampa; - Bolso faca nas costas; - Cintura média; - Fechamento interno; - Passadores; - Comprimento curto; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
     "cores": [
       {
         "cor": "CAQUI",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16628464062--caqui--0.jpg",
+          "/produtos/16628464062--caqui--1.jpg",
+          "/produtos/16628464062--caqui--2.jpg",
+          "/produtos/16628464062--caqui--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -153,7 +163,12 @@
       },
       {
         "cor": "MARROM DRIES",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16628464062--marrom-dries--0.jpg",
+          "/produtos/16628464062--marrom-dries--1.jpg",
+          "/produtos/16628464062--marrom-dries--2.jpg",
+          "/produtos/16628464062--marrom-dries--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -168,7 +183,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16628464062--caqui--0.jpg",
     "temEstoque": true
   },
   {
@@ -25857,7 +25872,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "G"
         ]
       }
     ],
