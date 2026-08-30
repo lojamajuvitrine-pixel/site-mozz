@@ -35,30 +35,24 @@ export default function PaginaQuemSomos() {
       <div className="max-w-2xl mx-auto px-6">
         <p className="font-serif text-3xl mt-10 mb-6">Quem somos</p>
 
-        {/*
-          TEXTO PROVISÓRIO — Brunno, escrevi um rascunho com o que já sei sobre a loja (endereço,
-          marcas, loja física + site). Reescreve à vontade, principalmente os trechos sobre a
-          história de vocês — como começou, há quanto tempo, o que te fez abrir a loja etc. -
-          isso só quem viveu sabe contar direito.
-        */}
         <div className="space-y-5 text-[14.5px] text-mozz-black/80 leading-relaxed">
           <p>
-            A MOZZ é uma loja física em Reserva, no Paraná — a mesma que você vê na foto acima —
-            que também vende pelo site. Não somos um site que existe só na internet: é a mesma
-            loja, o mesmo endereço, as mesmas peças que você pode ver e experimentar pessoalmente
-            se estiver por perto.
+            Bem-vindo à MOZZ. Somos uma loja física em Reserva (PR) que também leva sua
+            experiência de moda para o ambiente online. Aqui não há barreiras: o mesmo estoque, a
+            mesma qualidade e o mesmo cuidado do nosso endereço físico estão disponíveis na
+            internet.
           </p>
 
           <p>
-            Nossa curadoria reúne quatro marcas premium — Animale, NV, Reserva e Foxton — num só
-            lugar. Cada peça que chega até você passa pela nossa seleção antes de ir pra
-            prateleira (ou pro nosso catálogo online).
+            Reunimos uma curadoria premium com quatro marcas de desejo: Animale, NV, Reserva e
+            Foxton. Escolhemos a dedo cada peça que entra em nosso catálogo para garantir o padrão
+            que você busca.
           </p>
 
           <p>
-            Se tiver qualquer dúvida antes de comprar — sobre tamanho, uma peça específica, prazo
-            de entrega — fala com a gente pelo WhatsApp. É gente de verdade, da loja de verdade,
-            do outro lado.
+            Quer ajuda para escolher o tamanho ou saber mais sobre o envio? Clique no ícone do
+            WhatsApp e fale com a nossa equipe. É atendimento humano, direto da nossa loja física
+            para você.
           </p>
         </div>
 
@@ -118,4 +112,3 @@ export default function PaginaQuemSomos() {
     </section>
   );
 }
-
