@@ -5,7 +5,7 @@ import { validarCupom } from "@/lib/cupom";
 // pro checkout. A validacao de verdade (que decide quanto o cliente paga) roda de novo no
 // servidor ao criar a preferencia do Mercado Pago (ver app/api/mercadopago/criar-preferencia).
 export async function POST(request: NextRequest) {
-  const body = (await request.json()) as { codigo: string; subtotal: number };
-  const resultado = validarCupom(body.codigo ?? "", body.subtotal ?? 0);
+  const body = (await request.json()) as { codigo: string; subtotal: number; cpf?: string };
+  const resultado = await validarCupom(body.codigo ?? "", body.subtotal ?? 0, body.cpf);
   return NextResponse.json(resultado);
 }
