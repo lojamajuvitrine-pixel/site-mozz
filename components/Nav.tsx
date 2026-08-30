@@ -92,6 +92,9 @@ export default function Nav() {
           <Link href="/outlet" className="hover:text-mozz-black transition-colors">
             Outlet
           </Link>
+          <Link href="/quem-somos" className="hover:text-mozz-black transition-colors">
+            Quem somos
+          </Link>
         </nav>
 
         <div className="flex-1" />
@@ -153,6 +156,9 @@ export default function Nav() {
           ))}
           <Link href="/outlet" onClick={() => setMenuAberto(false)}>
             Outlet
+          </Link>
+          <Link href="/quem-somos" onClick={() => setMenuAberto(false)}>
+            Quem somos
           </Link>
           <div className="w-full">
             <BarraBusca />
