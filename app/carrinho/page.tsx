@@ -5,6 +5,7 @@ import { idVarianteProduto } from "@/lib/produtos";
 import { formatarPreco } from "@/lib/formato";
 import { useEffect, useState } from "react";
 import CalculoFrete, { type OpcaoFrete, type ConfigLojaFrete } from "@/components/CalculoFrete";
+import AvisoFreteGratis from "@/components/AvisoFreteGratis";
 import { ehRetirada } from "@/lib/frete";
 import { rastrearIniciarCheckout } from "@/lib/tracking";
 import { validarCpf, formatarCpf } from "@/lib/cpf";
@@ -122,7 +123,7 @@ export default function PaginaCarrinho() {
       const resposta = await fetch("/api/cupom/validar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ codigo: codigoCupom, subtotal: total })
+        body: JSON.stringify({ codigo: codigoCupom, subtotal: total, cpf })
       });
       const dados = (await resposta.json()) as ResultadoCupom;
       setCupomAplicado(dados);
@@ -202,8 +203,9 @@ export default function PaginaCarrinho() {
 
   return (
     <section className="py-8 max-w-xl">
-      <p className="font-serif text-3xl mb-6">Carrinho</p>
-      <div className="divide-y divide-black/10">
+      <p className="font-serif text-3xl mb-2">Carrinho</p>
+      <AvisoFreteGratis limiar={configLoja?.freteGratisAcimaDe ?? null} subtotal={totalComDesconto} />
+      <div className="divide-y divide-black/10 mt-6">
         {itens.map((item) => (
           <div
             key={`${item.produto.id}-${item.cor}-${item.tamanho}`}
