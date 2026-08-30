@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { createHmac, timingSafeEqual } from "crypto";
 import { criarPedidoVendaBling, type ItemPedidoBling } from "@/lib/bling";
 import type { PedidoMetadata } from "@/lib/mercadopago";
+import { CUPONS } from "@/lib/cupons";
+import { clientePublico } from "@/lib/supabase/publico";
+import { SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
 
 // O Mercado Pago chama essa rota automaticamente quando o status de um pagamento muda.
 // Documentacao: mercadopago.com.br/developers/pt/docs/checkout-pro/additional-content/notifications/webhooks
@@ -14,6 +17,10 @@ import type { PedidoMetadata } from "@/lib/mercadopago";
 // 3. Se aprovado, le o pedido resolvido que a gente mesmo guardou no metadata da preferencia
 //    (ver PedidoMetadata em lib/mercadopago.ts - itens ja' com o id BLING certo, cliente,
 //    frete) e cria o pedido de venda no Bling.
+// 4. Se um cupom de USO UNICO POR CPF (ex: primeira compra) foi usado nesse pedido, registra
+//    esse uso agora - so' aqui, com o pagamento ja aprovado de verdade, nunca no momento em
+//    que o cliente so' aplicou o cupom no carrinho (carrinho abandonado nao pode "gastar" o
+//    cupom - pedido do Brunno em 30/08/2026, ver lib/cupom.ts).
 //
 // Idempotencia: o Mercado Pago pode chamar esse webhook mais de uma vez pro MESMO pagamento
 // (reenvio em caso de timeout, por exemplo). Sem um banco proprio pra marcar "ja processado",
@@ -21,6 +28,8 @@ import type { PedidoMetadata } from "@/lib/mercadopago";
 // external_reference sempre) e tratar esse erro especifico como sucesso silencioso. Se no
 // futuro isso causar pedido duplicado na pratica, o proximo passo e' guardar o pedido numa
 // tabela (Supabase) na hora de criar a preferencia e checar o status ali antes de criar de novo.
+// O registro de uso do cupom (passo 4) e' idempotente por natureza (ON CONFLICT DO NOTHING na
+// funcao registrar_uso_cupom), entao chamar duas vezes pro mesmo pagamento nao causa problema.
 function validarAssinatura(request: NextRequest, corpoBruto: string): boolean {
   const secret = process.env.MERCADOPAGO_WEBHOOK_SECRET;
   if (!secret) {
@@ -59,6 +68,26 @@ type PagamentoMercadoPago = {
   payer?: { email?: string };
   metadata?: Record<string, unknown>;
 };
+
+// So' registra uso pra cupom marcado usoUnicoPorCpf (ver lib/cupons.ts) - cupom de promocao
+// comum nao precisa de nenhum registro, pode ser usado quantas vezes quiser. Nunca lanca erro
+// pra fora: se isso falhar, o pior cenario e' alguem conseguir reusar um cupom de primeira
+// compra, o que e' bem menos grave que travar um pedido cujo pagamento ja foi aprovado.
+async function registrarUsoCupomSeNecessario(codigoCupom: string | undefined, cpf: string): Promise<void> {
+  if (!codigoCupom || !SUPABASE_CONFIGURADO) return;
+  const cupom = CUPONS.find((c) => c.codigo.toUpperCase() === codigoCupom.toUpperCase());
+  if (!cupom?.usoUnicoPorCpf) return;
+  try {
+    const supabase = clientePublico();
+    const { error } = await supabase.rpc("registrar_uso_cupom", {
+      p_cupom_codigo: cupom.codigo,
+      p_cpf: cpf
+    });
+    if (error) throw error;
+  } catch (erro) {
+    console.error(`Webhook Mercado Pago: erro ao registrar uso do cupom ${codigoCupom}:`, erro);
+  }
+}
 
 export async function POST(request: NextRequest) {
   const corpoBruto = await request.text();
@@ -117,6 +146,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ erro: "metadata invalida" }, { status: 200 });
   }
 
+  const codigoCupomUsado = typeof pagamento.metadata?.cupom === "string" ? pagamento.metadata.cupom : undefined;
+
   const itensBling: ItemPedidoBling[] = pedido.itens
     .filter((item) => item.id > 0) // id 0 = item "frete" (nao e' produto no Bling)
     .map((item) => ({ produtoId: item.id, quantidade: item.qtd, valor: item.valor }));
@@ -136,12 +167,14 @@ export async function POST(request: NextRequest) {
     });
 
     console.log(`Webhook Mercado Pago: pedido de venda criado no Bling pro pagamento ${paymentId}`, resultado);
+    await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
   } catch (erro) {
     const mensagem = erro instanceof Error ? erro.message : String(erro);
     // numeroLoja duplicado = provavelmente reenvio do mesmo webhook (ver comentario de
     // idempotencia acima) - trata como sucesso silencioso em vez de erro.
     if (/numeroLoja|duplicad/i.test(mensagem)) {
       console.warn(`Webhook Mercado Pago: pedido do pagamento ${paymentId} parece ja existir no Bling - ignorando`);
+      await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
       return NextResponse.json({ recebido: true, duplicado: true });
     }
     console.error(`Webhook Mercado Pago: erro ao criar pedido no Bling pro pagamento ${paymentId}:`, mensagem);
