@@ -154,7 +154,7 @@ export async function criarPreferenciaPagamento(
   let fatorDesconto = 1;
   let codigoCupomAplicado: string | undefined;
   if (cupomCodigo && subtotal > 0) {
-    const resultado = validarCupom(cupomCodigo, subtotal);
+    const resultado = await validarCupom(cupomCodigo, subtotal, cliente.cpf);
     if (resultado.valido) {
       fatorDesconto = (subtotal - resultado.desconto) / subtotal;
       codigoCupomAplicado = resultado.cupom.codigo;
