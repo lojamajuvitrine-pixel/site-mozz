@@ -7,6 +7,7 @@ import { clientePublico } from "@/lib/supabase/publico";
 import { SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
 import { usarCredito, concederCashback } from "@/lib/creditos";
 import { comprarEGerarEtiqueta } from "@/lib/melhorEnvio";
+import { enviarEmailConfirmacaoPedido } from "@/lib/emailPedido";
 
 // O Mercado Pago chama essa rota automaticamente quando o status de um pagamento muda.
 // Documentacao: mercadopago.com.br/developers/pt/docs/checkout-pro/additional-content/notifications/webhooks
@@ -112,15 +113,16 @@ async function processarCreditoSeNecessario(pedido: PedidoMetadata, numeroPedido
 // Salva o registro do pedido na tabela 'pedidos' (historico real pra "Minha conta", ver
 // migration criar_pedidos_e_rastreio) e, so' na PRIMEIRA vez que esse pedido e' salvo de
 // verdade (nunca num reenvio do webhook - ver salvar_pedido, que devolve true so' quando
-// insere), compra e gera a etiqueta automaticamente no Melhor Envio quando o envio for por
-// Correios. Se a compra da etiqueta falhar (saldo insuficiente, Melhor Envio fora do ar,
-// autorizacao ainda pendente etc), marca falha_etiqueta e segue em frente - o pedido ja esta'
-// criado no Bling de qualquer jeito, o Brunno so' precisa gerar a etiqueta na mao nesse caso
-// (combinado com ele em 31/08/2026).
+// insere): manda o e-mail de confirmacao pro cliente, e - so' quando o envio for por Correios -
+// compra e gera a etiqueta automaticamente no Melhor Envio. Se a compra da etiqueta falhar
+// (saldo insuficiente, Melhor Envio fora do ar, autorizacao ainda pendente etc), marca
+// falha_etiqueta e segue em frente - o pedido ja esta' criado no Bling de qualquer jeito, o
+// Brunno so' precisa gerar a etiqueta na mao nesse caso (combinado com ele em 31/08/2026).
 async function salvarPedidoEComprarEtiquetaSeNecessario(
   pedido: PedidoMetadata,
   numeroPedidoLoja: string,
-  cupomCodigo: string | undefined
+  cupomCodigo: string | undefined,
+  emailCliente: string
 ): Promise<void> {
   if (!SUPABASE_CONFIGURADO) return;
 
@@ -151,7 +153,26 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
     return;
   }
 
-  if (!inseriuAgora || formaEnvio !== "correios" || !pedido.envio?.servicoId) return;
+  if (!inseriuAgora) return;
+
+  // So' manda o e-mail na PRIMEIRA vez (mesmo raciocinio do resto dessa funcao) - nunca em
+  // dobro se o Mercado Pago reenviar o mesmo webhook. Vale pras duas formas de envio
+  // (Correios ou retirada), diferente da compra de etiqueta abaixo que e' so' Correios.
+  await enviarEmailConfirmacaoPedido({
+    emailCliente,
+    nomeCliente: pedido.nome,
+    numeroPedido: numeroPedidoLoja,
+    itens: pedido.itens,
+    subtotal,
+    frete: pedido.frete,
+    valorTotal,
+    creditoAplicado: pedido.creditoAplicado,
+    cupomCodigo,
+    formaEnvio,
+    endereco: pedido.endereco
+  });
+
+  if (formaEnvio !== "correios" || !pedido.envio?.servicoId) return;
 
   try {
     const resultado = await comprarEGerarEtiqueta({
@@ -268,7 +289,7 @@ export async function POST(request: NextRequest) {
     console.log(`Webhook Mercado Pago: pedido de venda criado no Bling pro pagamento ${paymentId}`, resultado);
     await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
     await processarCreditoSeNecessario(pedido, numeroPedidoLoja);
-    await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado);
+    await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado, pagamento.payer?.email ?? "");
   } catch (erro) {
     const mensagem = erro instanceof Error ? erro.message : String(erro);
     // numeroLoja duplicado = provavelmente reenvio do mesmo webhook (ver comentario de
@@ -277,7 +298,7 @@ export async function POST(request: NextRequest) {
       console.warn(`Webhook Mercado Pago: pedido do pagamento ${paymentId} parece ja existir no Bling - ignorando`);
       await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
       await processarCreditoSeNecessario(pedido, numeroPedidoLoja);
-      await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado);
+      await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado, pagamento.payer?.email ?? "");
       return NextResponse.json({ recebido: true, duplicado: true });
     }
     console.error(`Webhook Mercado Pago: erro ao criar pedido no Bling pro pagamento ${paymentId}:`, mensagem);
