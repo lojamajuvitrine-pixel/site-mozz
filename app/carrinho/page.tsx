@@ -21,6 +21,11 @@ type ResultadoCupom =
 // navegador, pra mostrar pra cliente. O valor de verdade e' sempre revalidado no servidor (ver
 // lib/mercadopago.ts) na hora de criar a preferencia de pagamento.
 const PERCENTUAL_MAXIMO_CREDITO = 0.3;
+// Mesmo valor de PERCENTUAL_CASHBACK em lib/creditos.ts - duplicado aqui pelo mesmo motivo
+// acima, so' pra mostrar quanto de cashback essa compra vai gerar (ver aviso perto do topo do
+// carrinho, abaixo). O valor concedido de verdade e' calculado so' no webhook, depois do
+// pagamento aprovado (ver lib/creditos.ts -> concederCashback).
+const PERCENTUAL_CASHBACK = 0.15;
 
 export default function PaginaCarrinho() {
   const { itens, remover, atualizarQuantidade, total } = useCart();
@@ -247,6 +252,17 @@ export default function PaginaCarrinho() {
     <section className="py-8 max-w-xl">
       <p className="font-serif text-3xl mb-2">Carrinho</p>
       <AvisoFreteGratis limiar={configLoja?.freteGratisAcimaDe ?? null} subtotal={totalComDesconto} />
+      {totalFinal > 0 && (
+        <div className="flex items-center gap-2 text-[13px] px-3 py-2 border mt-3 bg-mozz-stone border-black/10 text-mozz-black">
+          <span>
+            Você ganha {formatarPreco(Math.round(totalFinal * PERCENTUAL_CASHBACK * 100) / 100)} de
+            cashback nessa compra.{" "}
+            <a href="/cashback" className="underline">
+              Como funciona
+            </a>
+          </span>
+        </div>
+      )}
       <div className="divide-y divide-black/10 mt-6">
         {itens.map((item) => (
           <div
