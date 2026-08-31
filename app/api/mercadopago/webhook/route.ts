@@ -5,6 +5,7 @@ import type { PedidoMetadata } from "@/lib/mercadopago";
 import { CUPONS } from "@/lib/cupons";
 import { clientePublico } from "@/lib/supabase/publico";
 import { SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
+import { usarCredito, concederCashback } from "@/lib/creditos";
 
 // O Mercado Pago chama essa rota automaticamente quando o status de um pagamento muda.
 // Documentacao: mercadopago.com.br/developers/pt/docs/checkout-pro/additional-content/notifications/webhooks
@@ -89,6 +90,24 @@ async function registrarUsoCupomSeNecessario(codigoCupom: string | undefined, cp
   }
 }
 
+// Consome o credito de loja aplicado nesse pedido (se houver) e concede o cashback dessa
+// compra - so' chamado depois do pagamento aprovado e do pedido criado no Bling, mesmo
+// racional de registrarUsoCupomSeNecessario acima (carrinho abandonado nao "gasta" nem "gera"
+// credito). O valor base do cashback e' o que a cliente REALMENTE pagou (itens + frete, ja'
+// com qualquer desconto de cupom e credito aplicados - ver PedidoMetadata em
+// lib/mercadopago.ts), nunca o subtotal cheio antes de descontos: se fosse sobre o valor cheio,
+// aplicar credito reduziria o preco pago sem reduzir o cashback da proxima compra, dando pra
+// "reciclar" credito sem nunca gastar de verdade. Ambas as chamadas sao idempotentes por
+// natureza (usar_credito e conceder_credito - ver migration criar_sistema_creditos_cashback),
+// entao chamar de novo pro mesmo pedido (reenvio de webhook) nao causa problema.
+async function processarCreditoSeNecessario(pedido: PedidoMetadata, numeroPedidoLoja: string): Promise<void> {
+  if (pedido.creditoAplicado > 0) {
+    await usarCredito(pedido.cpf, pedido.creditoAplicado, numeroPedidoLoja);
+  }
+  const valorPago = pedido.itens.reduce((soma, item) => soma + item.valor * item.qtd, 0) + pedido.frete;
+  await concederCashback(pedido.cpf, valorPago, numeroPedidoLoja);
+}
+
 export async function POST(request: NextRequest) {
   const corpoBruto = await request.text();
 
@@ -152,9 +171,11 @@ export async function POST(request: NextRequest) {
     .filter((item) => item.id > 0) // id 0 = item "frete" (nao e' produto no Bling)
     .map((item) => ({ produtoId: item.id, quantidade: item.qtd, valor: item.valor }));
 
+  const numeroPedidoLoja = pagamento.external_reference ?? `MP-${paymentId}`;
+
   try {
     const resultado = await criarPedidoVendaBling({
-      numeroPedidoLoja: pagamento.external_reference ?? `MP-${paymentId}`,
+      numeroPedidoLoja,
       cliente: {
         nome: pedido.nome,
         cpf: pedido.cpf,
@@ -168,6 +189,7 @@ export async function POST(request: NextRequest) {
 
     console.log(`Webhook Mercado Pago: pedido de venda criado no Bling pro pagamento ${paymentId}`, resultado);
     await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
+    await processarCreditoSeNecessario(pedido, numeroPedidoLoja);
   } catch (erro) {
     const mensagem = erro instanceof Error ? erro.message : String(erro);
     // numeroLoja duplicado = provavelmente reenvio do mesmo webhook (ver comentario de
@@ -175,6 +197,7 @@ export async function POST(request: NextRequest) {
     if (/numeroLoja|duplicad/i.test(mensagem)) {
       console.warn(`Webhook Mercado Pago: pedido do pagamento ${paymentId} parece ja existir no Bling - ignorando`);
       await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
+      await processarCreditoSeNecessario(pedido, numeroPedidoLoja);
       return NextResponse.json({ recebido: true, duplicado: true });
     }
     console.error(`Webhook Mercado Pago: erro ao criar pedido no Bling pro pagamento ${paymentId}:`, mensagem);
