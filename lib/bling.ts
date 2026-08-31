@@ -265,26 +265,16 @@ export async function buscarProdutoDetalheBling(id: number) {
   return blingFetch<{ data: unknown }>(`/produtos/${id}`);
 }
 
-// GET /Api/v3/situacoes/modulos/{idModuloSistema} - lista as situacoes (status) configuradas
-// pra um modulo do Bling (cada conta pode ter os ids das situacoes diferentes, mesmo com os
-// mesmos NOMES padrao - "Em aberto", "Em andamento" etc - por isso nao da' pra so' hardcodar
-// um numero sem confirmar contra a conta de verdade). So' usado uma vez, via a rota de
-// diagnostico temporaria (app/api/bling/diagnostico-situacoes), pra descobrir o id de "Em
-// andamento" no modulo de Pedido de Venda - depois disso o id vira uma constante fixa em
-// criarPedidoVendaBling, igual ID_FORMA_PAGAMENTO_MERCADO_PAGO e ID_VENDEDOR_PADRAO_SITE.
-export async function listarSituacoesModuloBling(idModuloSistema: number) {
-  return blingFetch<{ data: Array<{ id: number; nome?: string; idHerdado?: string }> }>(
-    `/situacoes/modulos/${idModuloSistema}`
-  );
-}
-
 // GET /Api/v3/pedidos/vendas - lista os pedidos de venda mais recentes, com o campo "situacao"
-// de cada um (id + nome/descricao). Tentativa 1 (varrer /situacoes/modulos/1..20) nao achou
-// nada - ou o id do modulo "Pedido de Venda" e' um numero fora dessa faixa, ou a permissao do
-// app nao cobre esse endpoint. Caminho mais confiavel: o Brunno muda manualmente UM pedido de
-// teste pra "Em andamento" direto na tela do Bling, e a gente le' o id de volta aqui, no proprio
-// pedido - sem precisar acertar o id do modulo. So' devolve o JSON cru (sem filtrar campos) pra
-// nao arriscar errar o nome exato do campo "situacao" tambem.
+// de cada um (id + nome/descricao). Tentativa 1 foi varrer GET /situacoes/modulos/1..30 pra
+// listar as situacoes direto - a maioria voltou 429 (o Bling so' libera 3 chamadas/segundo, e
+// o loop tentava rapido demais) e o resto voltou 404 de verdade, sugerindo que o id do modulo
+// "Pedido de Venda" nem esta' nessa faixa pequena de numeros (removido - ver historico do
+// arquivo se precisar). Caminho mais confiavel: o Brunno muda manualmente UM pedido de teste
+// pra "Em andamento" direto na tela do Bling, e a gente le' o id de volta aqui, no proprio
+// pedido - sem precisar acertar nenhum numero de modulo, e numa chamada so' (sem risco de
+// limite). So' devolve o JSON cru (sem filtrar campos) pra nao arriscar errar o nome exato do
+// campo "situacao" tambem.
 export async function listarPedidosVendaBling(pagina = 1) {
   return blingFetch<{ data: unknown[] }>(`/pedidos/vendas?pagina=${pagina}&limite=50`);
 }
