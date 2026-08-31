@@ -68,7 +68,6 @@ function validarAssinatura(request: NextRequest, corpoBruto: string): boolean {
 type PagamentoMercadoPago = {
   status: string;
   external_reference?: string;
-  payer?: { email?: string };
   metadata?: Record<string, unknown>;
 };
 
@@ -121,8 +120,7 @@ async function processarCreditoSeNecessario(pedido: PedidoMetadata, numeroPedido
 async function salvarPedidoEComprarEtiquetaSeNecessario(
   pedido: PedidoMetadata,
   numeroPedidoLoja: string,
-  cupomCodigo: string | undefined,
-  emailCliente: string
+  cupomCodigo: string | undefined
 ): Promise<void> {
   if (!SUPABASE_CONFIGURADO) return;
 
@@ -144,7 +142,8 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
       p_cupom_codigo: cupomCodigo ?? null,
       p_valor_total: valorTotal,
       p_forma_envio: formaEnvio,
-      p_endereco: pedido.endereco
+      p_endereco: pedido.endereco,
+      p_email: pedido.email
     });
     if (error) throw error;
     inseriuAgora = data === true;
@@ -158,8 +157,12 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
   // So' manda o e-mail na PRIMEIRA vez (mesmo raciocinio do resto dessa funcao) - nunca em
   // dobro se o Mercado Pago reenviar o mesmo webhook. Vale pras duas formas de envio
   // (Correios ou retirada), diferente da compra de etiqueta abaixo que e' so' Correios.
+  //
+  // Usa pedido.email (digitado pela propria cliente no checkout, obrigatorio desde
+  // 31/08/2026) em vez do e-mail que o Mercado Pago devolve depois do pagamento - esse pode
+  // vir mascarado ("XXXXXXXXXXX", visto em producao) e nao da' mais pra confiar nele.
   await enviarEmailConfirmacaoPedido({
-    emailCliente,
+    emailCliente: pedido.email,
     nomeCliente: pedido.nome,
     numeroPedido: numeroPedidoLoja,
     itens: pedido.itens,
@@ -181,6 +184,7 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
       servico: pedido.envio.servico,
       nomeCliente: pedido.nome,
       cpfLimpo: pedido.cpf,
+      telefone: pedido.telefone,
       endereco: pedido.endereco,
       itens: pedido.itens.map((item) => ({ nome: item.nome, quantidade: item.qtd, valor: item.valor })),
       numeroPedidoLoja
@@ -278,7 +282,10 @@ export async function POST(request: NextRequest) {
       cliente: {
         nome: pedido.nome,
         cpf: pedido.cpf,
-        email: pagamento.payer?.email ?? "",
+        // pedido.email (digitado pela cliente no checkout) em vez de pagamento.payer?.email -
+        // esse ultimo pode vir mascarado pelo Mercado Pago ("XXXXXXXXXXX", visto em producao
+        // em 31/08/2026), o que sujava o cadastro do cliente no Bling tambem.
+        email: pedido.email,
         telefone: pedido.telefone
       },
       endereco: pedido.endereco,
@@ -289,7 +296,7 @@ export async function POST(request: NextRequest) {
     console.log(`Webhook Mercado Pago: pedido de venda criado no Bling pro pagamento ${paymentId}`, resultado);
     await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
     await processarCreditoSeNecessario(pedido, numeroPedidoLoja);
-    await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado, pagamento.payer?.email ?? "");
+    await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado);
   } catch (erro) {
     const mensagem = erro instanceof Error ? erro.message : String(erro);
     // numeroLoja duplicado = provavelmente reenvio do mesmo webhook (ver comentario de
@@ -298,7 +305,7 @@ export async function POST(request: NextRequest) {
       console.warn(`Webhook Mercado Pago: pedido do pagamento ${paymentId} parece ja existir no Bling - ignorando`);
       await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
       await processarCreditoSeNecessario(pedido, numeroPedidoLoja);
-      await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado, pagamento.payer?.email ?? "");
+      await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado);
       return NextResponse.json({ recebido: true, duplicado: true });
     }
     console.error(`Webhook Mercado Pago: erro ao criar pedido no Bling pro pagamento ${paymentId}:`, mensagem);
