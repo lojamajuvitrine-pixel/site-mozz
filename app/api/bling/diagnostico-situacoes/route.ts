@@ -1,43 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
-import { listarSituacoesModuloBling, listarPedidosVendaBling } from "@/lib/bling";
+import { listarPedidosVendaBling } from "@/lib/bling";
 
 export const dynamic = "force-dynamic";
 
 // Rota TEMPORARIA (apagar depois de usar, igual as de diagnostico do Melhor Envio em 31/08/2026)
 // - so' serve pra descobrir, na conta REAL de Bling da MOZZ, o id numerico da situacao "Em
-// andamento" pra pedido de venda (esse id e' especifico da conta, nao da' pra advinhar - ver
-// comentario em listarSituacoesModuloBling em lib/bling.ts). So' faz GET (leitura), nao muda
-// nada no Bling. Protegida por chave pra nao ficar aberta pra qualquer um.
+// andamento" pra pedido de venda. So' faz GET (leitura), nao muda nada no Bling.
 //
-// v2 (31/08/2026): a v1 so' tentava /situacoes/modulos/1..20 e voltou tudo vazio - ou o id do
-// modulo "Pedido de Venda" nao esta' nessa faixa, ou o app nao tem permissao pra esse endpoint.
-// Agora tambem lista os pedidos de venda recentes com a situacao de cada um - se o Brunno mudar
-// manualmente UM pedido de teste pra "Em andamento" na tela do Bling antes de chamar essa rota,
-// da' pra ler o id certo direto do pedido, sem precisar acertar o id do modulo.
+// v3 (31/08/2026): as v1/v2 tentavam GET /situacoes/modulos/1..30 pra listar as situacoes
+// direto - a maioria voltou "429 limite de requisicoes atingido" (o Bling so' libera 3
+// chamadas por segundo, e o loop tentava rapido demais em sequencia) e o resto voltou "404 nao
+// encontrado" de verdade, sugerindo que o id do modulo "Pedido de Venda" nem esta' nessa faixa
+// pequena de numeros. Trocado pelo caminho mais confiavel: o Brunno muda manualmente UM pedido
+// de teste pra "Em andamento" direto na tela do Bling, e essa rota so' LISTA os pedidos de
+// venda recentes (uma chamada so', sem risco de limite) - a gente le' o id da situacao direto
+// desse pedido, sem precisar acertar nenhum numero de modulo.
 export async function GET(request: NextRequest) {
   const chave = request.nextUrl.searchParams.get("chave");
   if (chave !== "mozz-diagnostico-situacoes") {
     return NextResponse.json({ erro: "nao autorizado" }, { status: 401 });
   }
 
-  const modulos: Record<string, { ok: boolean; dados?: unknown; erro?: string }> = {};
-  for (let idModulo = 1; idModulo <= 30; idModulo++) {
-    try {
-      const resposta = await listarSituacoesModuloBling(idModulo);
-      modulos[idModulo] = { ok: true, dados: resposta.data };
-    } catch (erro) {
-      modulos[idModulo] = { ok: false, erro: erro instanceof Error ? erro.message : String(erro) };
-    }
-  }
-
-  let pedidos: unknown = null;
-  let erroPedidos: string | null = null;
   try {
     const resposta = await listarPedidosVendaBling(1);
-    pedidos = resposta.data;
+    return NextResponse.json({ ok: true, pedidos: resposta.data });
   } catch (erro) {
-    erroPedidos = erro instanceof Error ? erro.message : String(erro);
+    return NextResponse.json(
+      { ok: false, erro: erro instanceof Error ? erro.message : String(erro) },
+      { status: 500 }
+    );
   }
-
-  return NextResponse.json({ ok: true, modulos, pedidos, erroPedidos });
 }
