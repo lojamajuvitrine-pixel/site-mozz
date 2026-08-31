@@ -14,6 +14,7 @@ export async function POST(request: NextRequest) {
       cupomCodigo?: string;
       cliente: ClienteCheckout;
       frete?: FreteEscolhido;
+      creditoSolicitado?: number;
     };
 
     if (!body.itens || body.itens.length === 0) {
@@ -29,7 +30,8 @@ export async function POST(request: NextRequest) {
       numeroPedido,
       body.cliente,
       body.frete,
-      body.cupomCodigo
+      body.cupomCodigo,
+      body.creditoSolicitado
     );
 
     return NextResponse.json({
