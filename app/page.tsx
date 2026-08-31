@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import BannerHero, { type BannerItem } from "@/components/BannerHero";
+import FaixaCashback from "@/components/FaixaCashback";
 import { listarPorMarca, produtosComFoto } from "@/lib/produtos";
 
 // Quantos produtos aparecem na vitrine "Novidades" da home - o catalogo completo (com todos
@@ -59,6 +60,7 @@ export default async function Home() {
   return (
     <div>
       <BannerHero banners={bannersFinal} />
+      <FaixaCashback />
 
       {bannerProduto?.imagem && (
         <section className="grid md:grid-cols-2 -mx-6 border-b border-black/10">
