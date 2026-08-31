@@ -29,7 +29,7 @@ function obterCliente() {
 
 export type ItemCarrinho = { produto: Produto; cor: string; tamanho: string; quantidade: number };
 
-export type FreteEscolhido = { servico: string; transportadora: string; preco: number };
+export type FreteEscolhido = { servico: string; transportadora: string; preco: number; servicoId?: number };
 
 export type EnderecoCheckout = {
   cep: string;
@@ -63,6 +63,11 @@ export type PedidoMetadata = {
   // (ver calcularCreditoAplicavel abaixo) - o webhook usa esse valor pra consumir o credito
   // (lib/creditos.ts -> usarCredito) so' depois do pagamento aprovado de verdade.
   creditoAplicado: number;
+  // Dados do envio - o webhook usa isso pra salvar o pedido (lib/creditos.ts nao, isso e'
+  // novo) e, quando nao for retirada, comprar a etiqueta automaticamente no Melhor Envio (ver
+  // lib/melhorEnvio.ts). servicoId undefined quando e' retirada na loja.
+  envio: { transportadora: string; servico: string; servicoId?: number } | null;
+  quantidadeItens: number;
 };
 
 // Nunca confia no preco de frete que veio do carrinho (o mesmo raciocinio do preco dos
@@ -82,18 +87,13 @@ async function revalidarFrete(
     return { servico: freteEscolhido.servico, transportadora: freteEscolhido.transportadora, preco: 0 };
   }
 
-  // Frete gratis a partir de um valor minimo (configuravel em /admin/produtos, ver
-  // lib/configLoja.ts) - se o carrinho bateu o valor, cobra zero independente do que o Melhor
-  // Envio cotaria pra essa transportadora.
-  const configuracaoLoja = await buscarConfiguracaoLoja();
-  if (configuracaoLoja.freteGratisAcimaDe !== null && subtotalComDesconto >= configuracaoLoja.freteGratisAcimaDe) {
-    return { servico: freteEscolhido.servico, transportadora: freteEscolhido.transportadora, preco: 0 };
-  }
-
   // Frete pago de verdade - cota de novo no Melhor Envio com o CEP de entrega e usa o preco
   // que ELE devolve agora pra essa transportadora/servico, nunca o numero que veio do
   // carrinho. Se a opcao escolhida nao aparecer mais (cotacao mudou, servico saiu do ar), pede
-  // pro cliente calcular de novo em vez de aceitar um preco nao verificado.
+  // pro cliente calcular de novo em vez de aceitar um preco nao verificado. Precisa disso
+  // AQUI (mesmo quando o frete vai sair gratis pelo valor minimo abaixo) pra conseguir o
+  // servicoId real - e' ele que a compra da etiqueta usa depois (ver lib/melhorEnvio.ts),
+  // nao o nome do servico.
   const opcoesReais = await calcularFrete(cepDestino, quantidadeItens);
   const opcaoReal = opcoesReais.find(
     (o) => o.transportadora === freteEscolhido.transportadora && o.servico === freteEscolhido.servico
@@ -103,7 +103,26 @@ async function revalidarFrete(
       "A opção de frete escolhida não está mais disponível - calcule o frete de novo antes de continuar"
     );
   }
-  return { servico: opcaoReal.servico, transportadora: opcaoReal.transportadora, preco: opcaoReal.preco };
+
+  // Frete gratis a partir de um valor minimo (configuravel em /admin/produtos, ver
+  // lib/configLoja.ts) - se o carrinho bateu o valor, cobra zero independente do que o Melhor
+  // Envio cotou pra essa transportadora (mas mantem servicoId real pra compra da etiqueta).
+  const configuracaoLoja = await buscarConfiguracaoLoja();
+  if (configuracaoLoja.freteGratisAcimaDe !== null && subtotalComDesconto >= configuracaoLoja.freteGratisAcimaDe) {
+    return {
+      servico: opcaoReal.servico,
+      transportadora: opcaoReal.transportadora,
+      preco: 0,
+      servicoId: opcaoReal.servicoId
+    };
+  }
+
+  return {
+    servico: opcaoReal.servico,
+    transportadora: opcaoReal.transportadora,
+    preco: opcaoReal.preco,
+    servicoId: opcaoReal.servicoId
+  };
 }
 
 export async function criarPreferenciaPagamento(
@@ -231,6 +250,10 @@ export async function criarPreferenciaPagamento(
     cpf: cpfLimpo,
     telefone: cliente.telefone,
     creditoAplicado,
+    envio: freteSeguro
+      ? { transportadora: freteSeguro.transportadora, servico: freteSeguro.servico, servicoId: freteSeguro.servicoId }
+      : null,
+    quantidadeItens: quantidadeTotalItens,
     endereco: {
       cep: end.cep.replace(/\D/g, ""),
       rua: end.rua.trim(),
