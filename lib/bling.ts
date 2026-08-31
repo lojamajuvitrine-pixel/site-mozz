@@ -264,6 +264,19 @@ export async function listarSaldosEstoqueBling(idsProdutos: number[]) {
 export async function buscarProdutoDetalheBling(id: number) {
   return blingFetch<{ data: unknown }>(`/produtos/${id}`);
 }
+
+// GET /Api/v3/situacoes/modulos/{idModuloSistema} - lista as situacoes (status) configuradas
+// pra um modulo do Bling (cada conta pode ter os ids das situacoes diferentes, mesmo com os
+// mesmos NOMES padrao - "Em aberto", "Em andamento" etc - por isso nao da' pra so' hardcodar
+// um numero sem confirmar contra a conta de verdade). So' usado uma vez, via a rota de
+// diagnostico temporaria (app/api/bling/diagnostico-situacoes), pra descobrir o id de "Em
+// andamento" no modulo de Pedido de Venda - depois disso o id vira uma constante fixa em
+// criarPedidoVendaBling, igual ID_FORMA_PAGAMENTO_MERCADO_PAGO e ID_VENDEDOR_PADRAO_SITE.
+export async function listarSituacoesModuloBling(idModuloSistema: number) {
+  return blingFetch<{ data: Array<{ id: number; nome?: string; idHerdado?: string }> }>(
+    `/situacoes/modulos/${idModuloSistema}`
+  );
+}
  
 // POST /Api/v3/pedidos/vendas - cria um pedido de venda no Bling a partir de um pedido
 // aprovado no site. O mapeamento exato de campos (deposito, categoria, forma de pagamento,
@@ -317,6 +330,26 @@ async function buscarOuCriarContatoBling(params: {
   // GET /contatos) - que filtra por CPF/CNPJ exato no proprio servidor, entao usamos ele em vez
   // de "pesquisa". Mesmo assim mantemos a conferencia client-side como cinto-de-seguranca, caso
   // o filtro do servidor um dia se comporte como busca parcial tambem.
+  const end = params.endereco;
+  const corpoContato = {
+    nome: params.nome,
+    tipo: "F",
+    numeroDocumento: cpfLimpo,
+    email: params.email || undefined,
+    celular: params.telefone,
+    endereco: {
+      geral: {
+        endereco: end.rua,
+        numero: end.numero,
+        complemento: end.complemento ?? "",
+        bairro: end.bairro,
+        cep: end.cep,
+        municipio: end.cidade,
+        uf: end.uf
+      }
+    }
+  };
+
   if (cpfLimpo) {
     const busca = await blingFetch<{ data: Array<{ id: number; numeroDocumento?: string }> }>(
       `/contatos?numeroDocumento=${encodeURIComponent(cpfLimpo)}&limite=10`
@@ -324,31 +357,35 @@ async function buscarOuCriarContatoBling(params: {
     const encontrado =
       busca.data?.find((c) => (c.numeroDocumento ?? "").replace(/\D/g, "") === cpfLimpo) ?? busca.data?.[0];
     if (encontrado) {
+      // Achado um contato ja' cadastrado com esse CPF - ATUALIZA com os dados de agora (PUT,
+      // corpo completo) em vez de so' devolver o id como estava antes. Bug encontrado em
+      // 31/08/2026, numa venda de teste real: o Bling acusou "pendencias cadastrais" (Numero/
+      // Bairro/CEP/Cidade/UF do Cliente ausentes) numa compra que, do lado do site, mandou
+      // esses dados certinho - o contato da cliente ja' existia no Bling de uma compra
+      // ANTERIOR (de antes do checkout coletar endereco completo, ou criado so' com nome/CPF),
+      // e como so' devolviamos o id sem nunca atualizar o cadastro, o endereco antigo (vazio)
+      // ficava pra sempre, mesmo em compras novas com tudo preenchido. Se o PUT falhar (ex:
+      // Bling fora do ar), so' loga e segue com o id encontrado - melhor criar o pedido com o
+      // cadastro desatualizado (mesmo problema de antes) do que travar a venda inteira por
+      // isso, ja' que a pendencia so' bloqueia a emissao da nota fiscal, nao a venda em si.
+      try {
+        await blingFetch(`/contatos/${encontrado.id}`, {
+          method: "PUT",
+          body: JSON.stringify(corpoContato)
+        });
+      } catch (erro) {
+        console.warn(
+          `Bling: falha ao atualizar cadastro do contato ${encontrado.id} (CPF ${cpfLimpo}) - seguindo com o cadastro antigo:`,
+          erro instanceof Error ? erro.message : erro
+        );
+      }
       return encontrado.id;
     }
   }
- 
-  const end = params.endereco;
+
   const criado = await blingFetch<{ data: { id: number } }>("/contatos", {
     method: "POST",
-    body: JSON.stringify({
-      nome: params.nome,
-      tipo: "F",
-      numeroDocumento: cpfLimpo,
-      email: params.email || undefined,
-      celular: params.telefone,
-      endereco: {
-        geral: {
-          endereco: end.rua,
-          numero: end.numero,
-          complemento: end.complemento ?? "",
-          bairro: end.bairro,
-          cep: end.cep,
-          municipio: end.cidade,
-          uf: end.uf
-        }
-      }
-    })
+    body: JSON.stringify(corpoContato)
   });
   return criado.data.id;
 }
