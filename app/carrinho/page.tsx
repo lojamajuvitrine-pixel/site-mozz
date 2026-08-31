@@ -61,6 +61,11 @@ export default function PaginaCarrinho() {
   // login (compra como visitante e' permitida - ver middleware.ts).
   const [nomeCompleto, setNomeCompleto] = useState("");
   const [cpf, setCpf] = useState("");
+  // E-mail e telefone sao OBRIGATORIOS desde 31/08/2026 (pedido do Brunno) - antes o site
+  // dependia so' do e-mail que o Mercado Pago devolvia depois do pagamento, que pode vir
+  // mascarado ("XXXXXXXXXXX", visto em producao) e o telefone nunca chegava na etiqueta de
+  // envio (ficava um numero falso fixo - ver lib/melhorEnvio.ts).
+  const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
 
   // Endereco de entrega - sem isso o pedido aprovado nao tem pra onde ser enviado (bug
@@ -82,6 +87,7 @@ export default function PaginaCarrinho() {
     const supabase = createClient();
     supabase.auth.getUser().then(({ data }) => {
       const meta = data.user?.user_metadata ?? {};
+      if (data.user?.email) setEmail(data.user.email);
       if (meta.nome_completo) setNomeCompleto(meta.nome_completo);
       if (meta.cpf) setCpf(meta.cpf);
       if (meta.telefone) setTelefone(meta.telefone);
@@ -156,11 +162,18 @@ export default function PaginaCarrinho() {
   const totalFinal = Math.max(0, totalComFrete - creditoAplicado);
 
   const cpfValido = validarCpf(cpf);
+  const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  const telefoneValido = telefone.trim().length > 0;
   const enderecoCompleto =
     rua.trim().length > 2 && numero.trim().length > 0 && bairro.trim().length > 1 &&
     cidade.trim().length > 1 && uf.trim().length === 2;
   const podeFinalizar =
-    nomeCompleto.trim().length > 3 && cpfValido && freteSelecionado !== null && enderecoCompleto;
+    nomeCompleto.trim().length > 3 &&
+    cpfValido &&
+    emailValido &&
+    telefoneValido &&
+    freteSelecionado !== null &&
+    enderecoCompleto;
 
   async function aplicarCupom() {
     if (!codigoCupom.trim()) return;
@@ -187,7 +200,11 @@ export default function PaginaCarrinho() {
           ? "Calcule o frete pelo CEP e escolha uma opção de entrega antes de continuar"
           : !enderecoCompleto
             ? "Preencha o endereço de entrega completo (rua, número, bairro, cidade e UF)"
-            : "Preencha nome completo e CPF válidos"
+            : !emailValido
+              ? "Preencha um e-mail válido"
+              : !telefoneValido
+                ? "Preencha o telefone"
+                : "Preencha nome completo e CPF válidos"
       );
       return;
     }
@@ -214,7 +231,8 @@ export default function PaginaCarrinho() {
           cliente: {
             nomeCompleto: nomeCompleto.trim(),
             cpf,
-            telefone: telefone || undefined,
+            email: email.trim(),
+            telefone: telefone.trim(),
             endereco: {
               cep: cepEndereco,
               rua: rua.trim(),
@@ -366,9 +384,16 @@ export default function PaginaCarrinho() {
           />
           {cpf.length === 14 && !cpfValido && <p className="text-[13px] text-red-600">CPF inválido</p>}
           <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="E-mail"
+            className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
+          />
+          <input
             value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
-            placeholder="Telefone (opcional)"
+            placeholder="Telefone"
             className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
           />
         </div>
