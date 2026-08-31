@@ -129,19 +129,26 @@ export type ResultadoEtiqueta = {
 // Nome/documento/contato de quem ENVIA (a MOZZ) - exigido pelo Melhor Envio em toda etiqueta,
 // igual apareceria numa etiqueta comprada na mao. Vem de variavel de ambiente (nunca
 // hardcoded no codigo) - configuravel na Vercel, mesmo padrao de MELHOR_ENVIO_CEP_ORIGEM.
+//
+// IMPORTANTE (descoberto testando em producao em 31/08/2026): o campo "document" do Melhor
+// Envio exige especificamente um CPF, mesmo pra remetente pessoa juridica - o CNPJ vai so' no
+// campo separado "company_document". Por isso sao DUAS variaveis de documento aqui: o CPF do
+// responsavel pela empresa (MELHOR_ENVIO_REMETENTE_CPF_RESPONSAVEL) e o CNPJ da MOZZ
+// (MELHOR_ENVIO_REMETENTE_DOCUMENTO, ja existia antes desse ajuste).
 function remetente() {
-  const documento = process.env.MELHOR_ENVIO_REMETENTE_DOCUMENTO;
+  const cnpj = process.env.MELHOR_ENVIO_REMETENTE_DOCUMENTO;
+  const cpfResponsavel = process.env.MELHOR_ENVIO_REMETENTE_CPF_RESPONSAVEL;
   const email = process.env.MELHOR_ENVIO_REMETENTE_EMAIL;
   const cepOrigem = process.env.MELHOR_ENVIO_CEP_ORIGEM;
-  if (!documento || !email || !cepOrigem) {
+  if (!cnpj || !cpfResponsavel || !email || !cepOrigem) {
     throw new Error(
-      "Dados do remetente ausentes no .env (MELHOR_ENVIO_REMETENTE_DOCUMENTO, MELHOR_ENVIO_REMETENTE_EMAIL, MELHOR_ENVIO_CEP_ORIGEM)"
+      "Dados do remetente ausentes no .env (MELHOR_ENVIO_REMETENTE_DOCUMENTO, MELHOR_ENVIO_REMETENTE_CPF_RESPONSAVEL, MELHOR_ENVIO_REMETENTE_EMAIL, MELHOR_ENVIO_CEP_ORIGEM)"
     );
   }
   return {
     name: "MOZZ",
-    document: documento.replace(/\D/g, ""),
-    company_document: documento.replace(/\D/g, ""),
+    document: cpfResponsavel.replace(/\D/g, ""),
+    company_document: cnpj.replace(/\D/g, ""),
     phone: "42988351888",
     email,
     address: "Avenida Coronel Rogério Borba",
