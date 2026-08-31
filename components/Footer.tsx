@@ -45,6 +45,9 @@ export default function Footer() {
           <Link href="/trocas" className={linkClasse}>
             Trocas e devoluções
           </Link>
+          <Link href="/cashback" className={linkClasse}>
+            Cashback
+          </Link>
         </div>
 
         <div>
