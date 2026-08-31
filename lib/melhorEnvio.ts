@@ -161,11 +161,15 @@ function remetente() {
   };
 }
 
-function destinatario(nome: string, cpfLimpo: string, endereco: EnderecoCheckout) {
+// telefone: ate 31/08/2026 esse campo ia sempre fixo como "00000000000" (numero falso),
+// mesmo quando a cliente preenchia um telefone real no checkout - a transportadora nao tinha
+// nenhum jeito de contatar a cliente numa entrega com problema. Corrigido pra usar o telefone
+// de verdade, que agora e' obrigatorio no checkout (ver ClienteCheckout em lib/mercadopago.ts).
+function destinatario(nome: string, cpfLimpo: string, telefoneLimpo: string, endereco: EnderecoCheckout) {
   return {
     name: nome,
     document: cpfLimpo,
-    phone: "00000000000",
+    phone: telefoneLimpo,
     address: endereco.rua,
     complement: endereco.complemento ?? "",
     number: endereco.numero,
@@ -178,15 +182,13 @@ function destinatario(nome: string, cpfLimpo: string, endereco: EnderecoCheckout
 }
 
 // Passo 1: adiciona o frete escolhido (ja revalidado em lib/mercadopago.ts) no carrinho do
-// Melhor Envio - NAO cobra nada ainda, so' cria a "ordem" pendente. E' esse passo que da' pra
-// testar em producao sem gastar saldo (ver conversa com o Brunno em 31/08/2026). Exportada
-// (so' essa, nao pagarCarrinho/gerarEtiqueta) pra rota de teste em
-// app/api/melhorenvio/teste/route.ts poder chamar so' o passo seguro - apagar essa rota depois
-// que o teste passar nao exige desfazer esse export, ele so' fica sem nenhum outro chamador.
+// Melhor Envio - NAO cobra nada ainda, so' cria a "ordem" pendente. Exportada pra permitir
+// testar so' esse passo (que nao gasta saldo) isoladamente se precisar de novo no futuro.
 export async function adicionarAoCarrinho(params: {
   servicoId: number;
   nomeCliente: string;
   cpfLimpo: string;
+  telefone: string;
   endereco: EnderecoCheckout;
   itens: ItemPedidoParaEnvio[];
   numeroPedidoLoja: string;
@@ -201,7 +203,7 @@ export async function adicionarAoCarrinho(params: {
     body: JSON.stringify({
       service: params.servicoId,
       from: remetente(),
-      to: destinatario(params.nomeCliente, params.cpfLimpo, params.endereco),
+      to: destinatario(params.nomeCliente, params.cpfLimpo, params.telefone.replace(/\D/g, ""), params.endereco),
       products: params.itens.map((item, indice) => ({
         name: item.nome,
         quantity: item.quantidade,
@@ -298,6 +300,7 @@ export async function comprarEGerarEtiqueta(params: {
   servico: string;
   nomeCliente: string;
   cpfLimpo: string;
+  telefone: string;
   endereco: EnderecoCheckout;
   itens: ItemPedidoParaEnvio[];
   numeroPedidoLoja: string;
