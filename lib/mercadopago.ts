@@ -44,7 +44,12 @@ export type EnderecoCheckout = {
 export type ClienteCheckout = {
   nomeCompleto: string;
   cpf: string;
-  telefone?: string;
+  // E-mail e telefone sao OBRIGATORIOS desde 31/08/2026 (pedido do Brunno) - antes o site
+  // dependia do e-mail que o Mercado Pago devolvia depois do pagamento, que pode vir mascarado
+  // ("XXXXXXXXXXX", visto em producao) e nunca era usado pra nada de verdade. Validado tanto
+  // aqui no servidor (ver criarPreferenciaPagamento abaixo) quanto no formulario do carrinho.
+  email: string;
+  telefone: string;
   endereco: EnderecoCheckout;
 };
 
@@ -57,7 +62,9 @@ export type PedidoMetadata = {
   frete: number;
   nome: string;
   cpf: string;
-  telefone?: string;
+  // Obrigatorios desde 31/08/2026 - ver comentario em ClienteCheckout acima.
+  email: string;
+  telefone: string;
   endereco: EnderecoCheckout;
   // Credito de loja (cashback) efetivamente aplicado nesse pedido, ja' revalidado no servidor
   // (ver calcularCreditoAplicavel abaixo) - o webhook usa esse valor pra consumir o credito
@@ -135,6 +142,13 @@ export async function criarPreferenciaPagamento(
 ) {
   if (!cliente.nomeCompleto.trim() || !validarCpf(cliente.cpf)) {
     throw new ErroValidacaoPedido("Nome completo e CPF válidos são obrigatórios pra finalizar a compra");
+  }
+  // E-mail e telefone obrigatorios desde 31/08/2026 - ver comentario em ClienteCheckout.
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cliente.email.trim())) {
+    throw new ErroValidacaoPedido("E-mail válido é obrigatório pra finalizar a compra");
+  }
+  if (!cliente.telefone.trim()) {
+    throw new ErroValidacaoPedido("Telefone é obrigatório pra finalizar a compra");
   }
   const end = cliente.endereco;
   if (!end?.rua?.trim() || !end?.numero?.trim() || !end?.bairro?.trim() || !end?.cidade?.trim() || !end?.uf?.trim()) {
@@ -248,7 +262,8 @@ export async function criarPreferenciaPagamento(
     frete: freteSeguro ? Math.round(freteSeguro.preco * fatorCredito * 100) / 100 : 0,
     nome: cliente.nomeCompleto.trim(),
     cpf: cpfLimpo,
-    telefone: cliente.telefone,
+    email: cliente.email.trim(),
+    telefone: cliente.telefone.trim(),
     creditoAplicado,
     envio: freteSeguro
       ? { transportadora: freteSeguro.transportadora, servico: freteSeguro.servico, servicoId: freteSeguro.servicoId }
@@ -275,6 +290,7 @@ export async function criarPreferenciaPagamento(
       },
       payer: {
         name: cliente.nomeCompleto.trim().split(" ")[0],
+        email: pedidoMetadata.email,
         identification: { type: "CPF", number: pedidoMetadata.cpf },
         address: {
           zip_code: pedidoMetadata.endereco.cep,
