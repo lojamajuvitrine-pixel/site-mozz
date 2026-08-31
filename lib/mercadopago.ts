@@ -11,6 +11,7 @@ import { validarCupom } from "@/lib/cupom";
 import { validarCpf } from "@/lib/cpf";
 import { calcularFrete, ehRetirada } from "@/lib/frete";
 import { buscarConfiguracaoLoja } from "@/lib/configLoja";
+import { buscarSaldoCredito, calcularCreditoAplicavel } from "@/lib/creditos";
 
 // Erro "esperado" (o pedido em si nao pode seguir por um motivo que o cliente precisa saber -
 // endereco incompleto, tamanho sem estoque, etc.) - diferente de um erro tecnico inesperado
@@ -58,6 +59,10 @@ export type PedidoMetadata = {
   cpf: string;
   telefone?: string;
   endereco: EnderecoCheckout;
+  // Credito de loja (cashback) efetivamente aplicado nesse pedido, ja' revalidado no servidor
+  // (ver calcularCreditoAplicavel abaixo) - o webhook usa esse valor pra consumir o credito
+  // (lib/creditos.ts -> usarCredito) so' depois do pagamento aprovado de verdade.
+  creditoAplicado: number;
 };
 
 // Nunca confia no preco de frete que veio do carrinho (o mesmo raciocinio do preco dos
@@ -106,7 +111,8 @@ export async function criarPreferenciaPagamento(
   numeroPedido: string,
   cliente: ClienteCheckout,
   frete?: FreteEscolhido,
-  cupomCodigo?: string
+  cupomCodigo?: string,
+  creditoSolicitado?: number
 ) {
   if (!cliente.nomeCompleto.trim() || !validarCpf(cliente.cpf)) {
     throw new ErroValidacaoPedido("Nome completo e CPF válidos são obrigatórios pra finalizar a compra");
@@ -168,6 +174,20 @@ export async function criarPreferenciaPagamento(
   const quantidadeTotalItens = itens.reduce((soma, item) => soma + item.quantidade, 0);
   const freteSeguro = await revalidarFrete(frete, subtotalComDesconto, end.cep, quantidadeTotalItens);
 
+  // Credito de loja (cashback) - revalidado aqui no servidor pelos mesmos motivos do cupom
+  // acima: nunca confia no valor calculado no carrinho no navegador. O teto de uso (30% do
+  // pedido) e' calculado em cima do valor JA com desconto de cupom + frete, a mesma base
+  // "incluindo frete" usada pra conceder o cashback (ver lib/creditos.ts).
+  const cpfLimpo = cliente.cpf.replace(/\D/g, "");
+  const totalAntesCredito = Math.round((subtotalComDesconto + (freteSeguro?.preco ?? 0)) * 100) / 100;
+  const saldoCredito = await buscarSaldoCredito(cpfLimpo);
+  const creditoAplicado = calcularCreditoAplicavel(saldoCredito, creditoSolicitado ?? 0, totalAntesCredito);
+  // Assim como o cupom, a Preference API do Mercado Pago nao aceita item com preco negativo -
+  // o credito tambem entra como uma reducao proporcional, dessa vez em cima de TODOS os itens
+  // (produtos ja' com o desconto do cupom, e o frete) pra poder cobrir ate' o valor do frete se
+  // precisar, nao so' o valor dos produtos.
+  const fatorCredito = totalAntesCredito > 0 ? Math.max(0, (totalAntesCredito - creditoAplicado) / totalAntesCredito) : 1;
+
   const itensPreferencia = itensValidados.map(({ item, produtoReal }) => ({
     id: produtoReal.id,
     title:
@@ -175,7 +195,7 @@ export async function criarPreferenciaPagamento(
         ? `${produtoReal.nome} (${item.cor}, ${item.tamanho})`
         : `${produtoReal.nome} (${item.tamanho})`,
     quantity: item.quantidade,
-    unit_price: Math.round(produtoReal.preco * fatorDesconto * 100) / 100,
+    unit_price: Math.round(produtoReal.preco * fatorDesconto * fatorCredito * 100) / 100,
     currency_id: "BRL",
     // resolvido AGORA (nao no webhook) pra nao depender do catalogo nao ter mudado ate' o
     // pagamento ser confirmado - ver resolverProdutoIdBling em lib/produtos.ts.
@@ -190,7 +210,7 @@ export async function criarPreferenciaPagamento(
       id: "frete",
       title: `Frete - ${freteSeguro.transportadora} ${freteSeguro.servico}`,
       quantity: 1,
-      unit_price: Math.round(freteSeguro.preco * 100) / 100,
+      unit_price: Math.round(freteSeguro.preco * fatorCredito * 100) / 100,
       currency_id: "BRL",
       _idBling: 0
     });
@@ -203,10 +223,14 @@ export async function criarPreferenciaPagamento(
       qtd: item.quantidade,
       valor: itensPreferencia[indice].unit_price
     })),
-    frete: freteSeguro?.preco ?? 0,
+    // Reflete o frete JA' com a reducao do credito aplicado (fatorCredito) - assim o valor
+    // que vai pro Bling (totalFrete do pedido de venda) bate com o que foi realmente cobrado
+    // do cliente via Mercado Pago, mesmo raciocinio ja' usado pro preco dos itens acima.
+    frete: freteSeguro ? Math.round(freteSeguro.preco * fatorCredito * 100) / 100 : 0,
     nome: cliente.nomeCompleto.trim(),
-    cpf: cliente.cpf.replace(/\D/g, ""),
+    cpf: cpfLimpo,
     telefone: cliente.telefone,
+    creditoAplicado,
     endereco: {
       cep: end.cep.replace(/\D/g, ""),
       rua: end.rua.trim(),
