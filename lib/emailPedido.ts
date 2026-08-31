@@ -29,9 +29,21 @@ export async function enviarEmailConfirmacaoPedido(params: {
   endereco: EnderecoCheckout;
 }): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey || !params.emailCliente) {
+  if (!apiKey) {
+    console.warn("E-mail de confirmação: RESEND_API_KEY ausente - pulando envio.");
+    return;
+  }
+
+  // Validacao simples de formato antes de mandar pro Resend - o Mercado Pago as vezes devolve
+  // o e-mail do pagador vazio ou num formato que o Resend recusa (visto em producao em
+  // 31/08/2026: pedido MOZZ-1788202687495 falhou com "Invalid `to` field", sem log do valor
+  // bruto pra investigar). Loga o valor recebido quando invalido, pra descobrir a causa se
+  // acontecer de novo, em vez de so' saber que falhou.
+  const emailLimpo = params.emailCliente.trim();
+  const formatoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailLimpo);
+  if (!formatoValido) {
     console.warn(
-      "E-mail de confirmação: RESEND_API_KEY ausente ou pedido sem e-mail do cliente - pulando envio."
+      `E-mail de confirmação do pedido ${params.numeroPedido}: e-mail do cliente ausente ou em formato inválido (valor recebido: "${params.emailCliente}") - pulando envio.`
     );
     return;
   }
@@ -91,7 +103,7 @@ export async function enviarEmailConfirmacaoPedido(params: {
       headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         from: REMETENTE,
-        to: [params.emailCliente],
+        to: [emailLimpo],
         subject: `Pedido confirmado - MOZZ ${params.numeroPedido}`,
         html
       })
