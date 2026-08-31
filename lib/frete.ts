@@ -14,15 +14,35 @@
 // isso aqui em vez do padrao.
 const PESO_MEDIO_POR_PECA_KG = 0.3;
 const PESO_MINIMO_KG = 0.3;
-const PACOTE_PADRAO = { width: 30, height: 8, length: 40 }; // cm - caixa media de roupa dobrada
+export const PACOTE_PADRAO = { width: 30, height: 8, length: 40 }; // cm - caixa media de roupa dobrada
 
-function hostMelhorEnvio(): string {
-  return process.env.MELHOR_ENVIO_SANDBOX === "true"
-    ? "https://sandbox.melhorenvio.com.br/api/v2"
-    : "https://www.melhorenvio.com.br/api/v2";
+// Exportado pra lib/melhorEnvio.ts (compra/geracao de etiqueta) reusar o mesmo switch
+// sandbox/producao em vez de duplicar essa logica - MELHOR_ENVIO_SANDBOX controla os dois.
+export function hostMelhorEnvio(base: "api" | "auth" = "api"): string {
+  const sandbox = process.env.MELHOR_ENVIO_SANDBOX === "true";
+  if (base === "auth") {
+    return sandbox ? "https://sandbox.melhorenvio.com.br" : "https://www.melhorenvio.com.br";
+  }
+  return sandbox ? "https://sandbox.melhorenvio.com.br/api/v2" : "https://www.melhorenvio.com.br/api/v2";
 }
 
-export type OpcaoFrete = { servico: string; transportadora: string; preco: number; prazoDias: number };
+// Peso estimado do pacote pra uma quantidade de itens - mesma conta usada internamente por
+// calcularFrete, exportada pra lib/melhorEnvio.ts montar o mesmo pacote na hora de comprar a
+// etiqueta (o volume declarado na compra precisa bater com o que foi cotado).
+export function pesoParaQuantidade(quantidadeItens: number): number {
+  return Math.max(PESO_MINIMO_KG, quantidadeItens * PESO_MEDIO_POR_PECA_KG);
+}
+
+export type OpcaoFrete = {
+  servico: string;
+  transportadora: string;
+  preco: number;
+  prazoDias: number;
+  // id numerico do SERVICO no Melhor Envio (ex: 1 = PAC, 2 = SEDEX) - undefined pra retirada
+  // na loja (FRETE_RETIRADA, nao vem do Melhor Envio). Necessario pra comprar a etiqueta
+  // depois (POST /me/cart usa esse id, nao o nome) - ver lib/melhorEnvio.ts.
+  servicoId?: number;
+};
 
 // Opcao especial de "retirar na loja" - nao vem do Melhor Envio, e' oferecida direto no
 // carrinho quando habilitada em /admin/produtos (ver lib/configLoja.ts). transportadora
@@ -55,6 +75,7 @@ function simplificarOpcoes(opcoesPorPreco: OpcaoFrete[]): OpcaoFrete[] {
 }
 
 type RespostaMelhorEnvio = Array<{
+  id?: number;
   name?: string;
   price?: string;
   delivery_time?: number;
@@ -116,7 +137,8 @@ export async function calcularFrete(cepDestino: string, quantidadeItens: number)
       servico: opcao.name ?? "Entrega",
       transportadora: opcao.company?.name ?? "",
       preco: Number(opcao.price),
-      prazoDias: opcao.delivery_time ?? 0
+      prazoDias: opcao.delivery_time ?? 0,
+      servicoId: opcao.id
     }))
     .sort((a, b) => a.preco - b.preco);
 
