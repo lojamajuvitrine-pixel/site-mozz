@@ -10,6 +10,7 @@ import { corAproximada } from "@/lib/cor";
 import CalculoFrete from "@/components/CalculoFrete";
 import AvisoEstoque from "@/components/AvisoEstoque";
 import AvisoFreteGratis from "@/components/AvisoFreteGratis";
+import AvisoCashback from "@/components/AvisoCashback";
 
 function IconeLupa() {
   return (
@@ -223,6 +224,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
           <p className="text-[13.5px] text-mozz-gray mt-1">{formatarParcelamento(produto.preco)}</p>
         )}
         <AvisoFreteGratis limiar={freteGratisAcimaDe} subtotal={produto.preco} />
+        <AvisoCashback />
 
         <div className="mt-6">
           {cores.length > 1 && (
