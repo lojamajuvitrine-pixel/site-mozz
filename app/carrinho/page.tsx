@@ -16,6 +16,12 @@ type ResultadoCupom =
   | { valido: true; cupom: { codigo: string; tipo: "percentual" | "fixo"; valor: number }; desconto: number }
   | { valido: false; motivo: string };
 
+// Mesmo valor de PERCENTUAL_MAXIMO_USO em lib/creditos.ts - duplicado aqui (em vez de importar
+// aquele arquivo, que puxa o cliente Supabase) so' pra calcular o teto de credito aplicavel no
+// navegador, pra mostrar pra cliente. O valor de verdade e' sempre revalidado no servidor (ver
+// lib/mercadopago.ts) na hora de criar a preferencia de pagamento.
+const PERCENTUAL_MAXIMO_CREDITO = 0.3;
+
 export default function PaginaCarrinho() {
   const { itens, remover, atualizarQuantidade, total } = useCart();
   const [carregando, setCarregando] = useState(false);
@@ -24,6 +30,13 @@ export default function PaginaCarrinho() {
   const [codigoCupom, setCodigoCupom] = useState("");
   const [cupomAplicado, setCupomAplicado] = useState<ResultadoCupom | null>(null);
   const [validandoCupom, setValidandoCupom] = useState(false);
+
+  // Credito de loja (cashback) - saldo buscado automaticamente assim que o CPF digitado fica
+  // valido (ver useEffect abaixo), mesmo padrao do preenchimento automatico via login. O valor
+  // solicitado fica num campo separado (nao aplicado automaticamente por inteiro) pra cliente
+  // poder guardar parte do credito pra outra compra, se quiser.
+  const [creditoDisponivel, setCreditoDisponivel] = useState(0);
+  const [valorCreditoUsar, setValorCreditoUsar] = useState("");
 
   const [freteSelecionado, setFreteSelecionado] = useState<OpcaoFrete | null>(null);
   // Frete gratis a partir de X e retirada na loja - configuraveis em /admin/produtos (ver
@@ -77,6 +90,25 @@ export default function PaginaCarrinho() {
     });
   }, []);
 
+  // Busca o saldo de credito de loja assim que o CPF digitado vira valido (ver
+  // app/api/creditos/saldo/route.ts) - some de novo se a cliente apagar/trocar o CPF pra um
+  // invalido, pra nao mostrar um saldo que nao bate mais com o CPF no campo.
+  useEffect(() => {
+    if (!validarCpf(cpf)) {
+      setCreditoDisponivel(0);
+      setValorCreditoUsar("");
+      return;
+    }
+    fetch("/api/creditos/saldo", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cpf })
+    })
+      .then((r) => r.json())
+      .then((d) => setCreditoDisponivel(Number(d.saldo) || 0))
+      .catch(() => setCreditoDisponivel(0));
+  }, [cpf]);
+
   async function aoCalcularFrete(cepLimpo: string) {
     setCepEndereco(cepLimpo);
     setBuscandoCep(true);
@@ -108,6 +140,15 @@ export default function PaginaCarrinho() {
       : freteSelecionado.preco
     : 0;
   const totalComFrete = totalComDesconto + precoFreteEfetivo;
+
+  // Teto de credito aplicavel: 30% do valor do pedido (produtos com desconto de cupom + frete
+  // - mesma base "incluindo frete" usada pra conceder o cashback, ver lib/creditos.ts). O
+  // credito de fato aplicado nunca passa do saldo disponivel nem do que a cliente pediu pra
+  // usar. Revalidado de novo no servidor ao criar a preferencia (ver lib/mercadopago.ts).
+  const tetoCredito = Math.round(totalComFrete * PERCENTUAL_MAXIMO_CREDITO * 100) / 100;
+  const creditoMaximoAplicavel = Math.min(creditoDisponivel, tetoCredito);
+  const creditoAplicado = Math.min(creditoMaximoAplicavel, Math.max(0, Number(valorCreditoUsar) || 0));
+  const totalFinal = Math.max(0, totalComFrete - creditoAplicado);
 
   const cpfValido = validarCpf(cpf);
   const enderecoCompleto =
@@ -185,7 +226,8 @@ export default function PaginaCarrinho() {
                 transportadora: freteSelecionado.transportadora,
                 preco: precoFreteEfetivo
               }
-            : undefined
+            : undefined,
+          creditoSolicitado: creditoAplicado > 0 ? creditoAplicado : undefined
         })
       });
       const dados = await resposta.json();
@@ -315,6 +357,35 @@ export default function PaginaCarrinho() {
           />
         </div>
 
+        {cpfValido && creditoDisponivel > 0 && (
+          <div className="mt-4">
+            <p className="text-[13.5px] text-mozz-gray mb-2">
+              Você tem {formatarPreco(creditoDisponivel)} de crédito de loja disponível
+            </p>
+            <div className="flex gap-2">
+              <input
+                type="number"
+                min={0}
+                max={creditoMaximoAplicavel}
+                step="0.01"
+                value={valorCreditoUsar}
+                onChange={(e) => setValorCreditoUsar(e.target.value)}
+                placeholder={`Até ${formatarPreco(creditoMaximoAplicavel)}`}
+                className="flex-1 border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
+              />
+              <button
+                onClick={() => setValorCreditoUsar(String(creditoMaximoAplicavel))}
+                className="text-[13.5px] px-4 border border-mozz-black hover:bg-mozz-black hover:text-white transition-colors"
+              >
+                Usar máximo
+              </button>
+            </div>
+            <p className="text-[13px] text-mozz-gray mt-1">
+              Dá pra usar até 30% do valor deste pedido em crédito.
+            </p>
+          </div>
+        )}
+
         <p className="text-[13.5px] text-mozz-gray mt-4 mb-2">
           Endereço de entrega {buscandoCep && "· buscando pelo CEP..."}
         </p>
@@ -380,9 +451,15 @@ export default function PaginaCarrinho() {
           <span>Frete</span>
           <span>{freteSelecionado ? formatarPreco(precoFreteEfetivo) : "a calcular"}</span>
         </div>
+        {creditoAplicado > 0 && (
+          <div className="flex justify-between py-1 text-[14.5px] text-green-700">
+            <span>Crédito de loja</span>
+            <span>-{formatarPreco(creditoAplicado)}</span>
+          </div>
+        )}
         <div className="flex justify-between py-4 text-[16px] border-t border-black/10 mt-2">
           <span>Total</span>
-          <span>{formatarPreco(totalComFrete)}</span>
+          <span>{formatarPreco(totalFinal)}</span>
         </div>
       </div>
 
