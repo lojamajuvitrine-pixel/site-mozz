@@ -23,6 +23,12 @@ export async function POST(request: NextRequest) {
     if (!body.cliente?.nomeCompleto || !body.cliente?.cpf) {
       return NextResponse.json({ erro: "Nome completo e CPF são obrigatórios" }, { status: 400 });
     }
+    // E-mail e telefone obrigatorios desde 31/08/2026 - ver comentario em ClienteCheckout
+    // (lib/mercadopago.ts). Revalidado com mais rigor (formato/CPF) la' dentro de
+    // criarPreferenciaPagamento - essa checagem aqui e' so' a primeira barreira.
+    if (!body.cliente?.email || !body.cliente?.telefone) {
+      return NextResponse.json({ erro: "E-mail e telefone são obrigatórios" }, { status: 400 });
+    }
 
     const numeroPedido = `MOZZ-${Date.now()}`;
     const preferencia = await criarPreferenciaPagamento(
