@@ -172,8 +172,11 @@ function destinatario(nome: string, cpfLimpo: string, endereco: EnderecoCheckout
 
 // Passo 1: adiciona o frete escolhido (ja revalidado em lib/mercadopago.ts) no carrinho do
 // Melhor Envio - NAO cobra nada ainda, so' cria a "ordem" pendente. E' esse passo que da' pra
-// testar em producao sem gastar saldo (ver conversa com o Brunno em 31/08/2026).
-async function adicionarAoCarrinho(params: {
+// testar em producao sem gastar saldo (ver conversa com o Brunno em 31/08/2026). Exportada
+// (so' essa, nao pagarCarrinho/gerarEtiqueta) pra rota de teste em
+// app/api/melhorenvio/teste/route.ts poder chamar so' o passo seguro - apagar essa rota depois
+// que o teste passar nao exige desfazer esse export, ele so' fica sem nenhum outro chamador.
+export async function adicionarAoCarrinho(params: {
   servicoId: number;
   nomeCliente: string;
   cpfLimpo: string;
