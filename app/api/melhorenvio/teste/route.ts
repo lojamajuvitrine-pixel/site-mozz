@@ -19,10 +19,16 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ erro: "MELHOR_ENVIO_CEP_ORIGEM ausente no .env" }, { status: 500 });
   }
 
+  // CEP de destino FICTICIO (Av. Paulista, SP) so' pra esse teste - precisa ser diferente do
+  // CEP de origem da loja, senao o Melhor Envio recusa com "remetente e destinatario nao podem
+  // ser iguais" (erro visto testando em 31/08/2026, quando o teste usava o endereco da propria
+  // loja dos dois lados).
+  const CEP_DESTINO_TESTE = "01310100";
+
   try {
     // Passo A: cotacao real (mesma chamada que ja funciona no site hoje) so' pra pegar um
     // servicoId numerico valido e atual - evita chutar um id fixo que pode ter mudado.
-    const opcoes = await calcularFrete(cepOrigem, 1);
+    const opcoes = await calcularFrete(CEP_DESTINO_TESTE, 1);
     const servicoId = opcoes[0]?.servicoId;
     if (!servicoId) {
       return NextResponse.json({ erro: "cotacao nao devolveu nenhum servico com id" }, { status: 502 });
@@ -30,19 +36,19 @@ export async function GET(request: NextRequest) {
     const opcaoEscolhida = opcoes[0];
 
     // Passo B: o unico passo que estamos testando de verdade - adiciona ao carrinho do
-    // Melhor Envio (OAuth), sem pagar. Cliente e endereco sao fake (dados da propria loja),
-    // so' pra existir uma "ordem" de teste no carrinho.
+    // Melhor Envio (OAuth), sem pagar. Cliente e endereco sao fake (endereco generico, so'
+    // diferente do endereco da loja), so' pra existir uma "ordem" de teste no carrinho.
     const resultado = await adicionarAoCarrinho({
       servicoId,
       nomeCliente: "Teste Mozz",
       cpfLimpo: "11144477735", // CPF valido (digito verificador correto), so' pra teste
       endereco: {
-        cep: cepOrigem,
-        rua: "Avenida Coronel Rogério Borba",
-        numero: "480",
-        bairro: "Centro",
-        cidade: "Reserva",
-        uf: "PR"
+        cep: CEP_DESTINO_TESTE,
+        rua: "Avenida Paulista",
+        numero: "1000",
+        bairro: "Bela Vista",
+        cidade: "São Paulo",
+        uf: "SP"
       },
       itens: [{ nome: "Produto de teste (nao e um pedido real)", quantidade: 1, valor: 10 }],
       numeroPedidoLoja: `TESTE-${Date.now()}`
