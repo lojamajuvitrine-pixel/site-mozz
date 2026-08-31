@@ -277,6 +277,17 @@ export async function listarSituacoesModuloBling(idModuloSistema: number) {
     `/situacoes/modulos/${idModuloSistema}`
   );
 }
+
+// GET /Api/v3/pedidos/vendas - lista os pedidos de venda mais recentes, com o campo "situacao"
+// de cada um (id + nome/descricao). Tentativa 1 (varrer /situacoes/modulos/1..20) nao achou
+// nada - ou o id do modulo "Pedido de Venda" e' um numero fora dessa faixa, ou a permissao do
+// app nao cobre esse endpoint. Caminho mais confiavel: o Brunno muda manualmente UM pedido de
+// teste pra "Em andamento" direto na tela do Bling, e a gente le' o id de volta aqui, no proprio
+// pedido - sem precisar acertar o id do modulo. So' devolve o JSON cru (sem filtrar campos) pra
+// nao arriscar errar o nome exato do campo "situacao" tambem.
+export async function listarPedidosVendaBling(pagina = 1) {
+  return blingFetch<{ data: unknown[] }>(`/pedidos/vendas?pagina=${pagina}&limite=50`);
+}
  
 // POST /Api/v3/pedidos/vendas - cria um pedido de venda no Bling a partir de um pedido
 // aprovado no site. O mapeamento exato de campos (deposito, categoria, forma de pagamento,
