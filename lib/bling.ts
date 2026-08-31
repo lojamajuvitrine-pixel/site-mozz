@@ -265,20 +265,6 @@ export async function buscarProdutoDetalheBling(id: number) {
   return blingFetch<{ data: unknown }>(`/produtos/${id}`);
 }
 
-// GET /Api/v3/pedidos/vendas - lista os pedidos de venda mais recentes, com o campo "situacao"
-// de cada um (id + nome/descricao). Tentativa 1 foi varrer GET /situacoes/modulos/1..30 pra
-// listar as situacoes direto - a maioria voltou 429 (o Bling so' libera 3 chamadas/segundo, e
-// o loop tentava rapido demais) e o resto voltou 404 de verdade, sugerindo que o id do modulo
-// "Pedido de Venda" nem esta' nessa faixa pequena de numeros (removido - ver historico do
-// arquivo se precisar). Caminho mais confiavel: o Brunno muda manualmente UM pedido de teste
-// pra "Em andamento" direto na tela do Bling, e a gente le' o id de volta aqui, no proprio
-// pedido - sem precisar acertar nenhum numero de modulo, e numa chamada so' (sem risco de
-// limite). So' devolve o JSON cru (sem filtrar campos) pra nao arriscar errar o nome exato do
-// campo "situacao" tambem.
-export async function listarPedidosVendaBling(pagina = 1) {
-  return blingFetch<{ data: unknown[] }>(`/pedidos/vendas?pagina=${pagina}&limite=50`);
-}
- 
 // POST /Api/v3/pedidos/vendas - cria um pedido de venda no Bling a partir de um pedido
 // aprovado no site. O mapeamento exato de campos (deposito, categoria, forma de pagamento,
 // numeracao) depende de como a conta Bling da MOZZ esta configurada hoje - o formato abaixo
@@ -427,7 +413,17 @@ export async function criarPedidoVendaBling(params: {
   // obrigatorio nos pedidos de vendas" ativado, entao sem isso o POST falha assim que o
   // contato deixa de ser o generico "Consumo Interno".
   const ID_VENDEDOR_PADRAO_SITE = 15596528457;
- 
+
+  // Id da situacao "Em andamento" NESSA conta especifica de Bling (cada conta tem ids
+  // diferentes pros mesmos nomes de situacao - ver historico de tentativas em versoes
+  // anteriores desse arquivo). Descoberto em 31/08/2026: o Brunno mudou manualmente os pedidos
+  // 3501 (MOZZ-1788202687495) e 3499 (MOZZ-1788197945083) pra "Em andamento" na tela do Bling,
+  // e os dois voltaram com situacao {id: 15, valor: 3} na API - confirmado por ele. Decisao do
+  // Brunno: toda venda que vem do site ja' nasce "Em andamento" (nao mais "Em aberto", que e' o
+  // padrao do Bling pra pedido novo), porque o pagamento ja' foi aprovado no Mercado Pago antes
+  // desse pedido ser criado - ela nunca esta' de fato "em aberto"/pendente de decisao.
+  const ID_SITUACAO_EM_ANDAMENTO = 15;
+
   return blingFetch<{ data: unknown }>("/pedidos/vendas", {
     method: "POST",
     body: JSON.stringify({
@@ -439,6 +435,7 @@ export async function criarPedidoVendaBling(params: {
         id: contatoId,
         nome: params.cliente.nome
       },
+      situacao: { id: ID_SITUACAO_EM_ANDAMENTO },
       vendedor: { id: ID_VENDEDOR_PADRAO_SITE },
       itens: params.itens.map((item) => ({
         produto: { id: item.produtoId },
