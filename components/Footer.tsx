@@ -35,6 +35,38 @@ export default function Footer() {
         </div>
 
         <div>
+          <TituloColuna>Minha conta</TituloColuna>
+          <Link href="/conta" className={linkClasse}>
+            Minha conta
+          </Link>
+          <Link href="/favoritos" className={linkClasse}>
+            Meus favoritos
+          </Link>
+        </div>
+
+        <div>
+          <TituloColuna>Políticas</TituloColuna>
+          <Link href="/termos-de-uso" className={linkClasse}>
+            Termos de uso
+          </Link>
+          <Link href="/trocas" className={linkClasse}>
+            Trocas e devoluções
+          </Link>
+          <Link href="/parcelamento" className={linkClasse}>
+            Formas de parcelamento
+          </Link>
+          <Link href="/entrega" className={linkClasse}>
+            Formas de entrega
+          </Link>
+          <Link href="/cashback" className={linkClasse}>
+            Cashback
+          </Link>
+          <Link href="/privacidade" className={linkClasse}>
+            Aviso de privacidade
+          </Link>
+        </div>
+
+        <div>
           <TituloColuna>Atendimento</TituloColuna>
           <a href={LINK_WHATSAPP} target="_blank" rel="noopener noreferrer" className={linkClasse}>
             WhatsApp
@@ -42,23 +74,9 @@ export default function Footer() {
           <a href={LINK_MAPS} target="_blank" rel="noopener noreferrer" className={linkClasse}>
             {ENDERECO_LOJA}
           </a>
-          <Link href="/trocas" className={linkClasse}>
-            Trocas e devoluções
+          <Link href="/conta" className={linkClasse}>
+            Status do pedido
           </Link>
-          <Link href="/cashback" className={linkClasse}>
-            Cashback
-          </Link>
-        </div>
-
-        <div>
-          <TituloColuna>Pagamento</TituloColuna>
-          <p>Cartão de crédito em até 3x sem juros</p>
-          <p>Pix</p>
-          <p>Boleto</p>
-        </div>
-
-        <div>
-          <TituloColuna>Redes sociais</TituloColuna>
           <a href={LINK_INSTAGRAM} target="_blank" rel="noopener noreferrer" className={linkClasse}>
             Instagram {INSTAGRAM_HANDLE}
           </a>
