@@ -60,6 +60,17 @@ export function ehRetirada(opcao: Pick<OpcaoFrete, "transportadora">): boolean {
   return opcao.transportadora === FRETE_RETIRADA.transportadora;
 }
 
+// Transportadoras que a gente NAO oferece no site, mesmo que o Melhor Envio cote preco pra
+// elas - descoberto testando em producao em 31/08/2026: a Jadlog recusa etiquetas com o erro
+// "Esta transportadora nao aceita envios nao-comerciais partindo deste estado", porque a MOZZ
+// ainda nao anexa nota fiscal eletronica (NF-e) na etiqueta (so' faria isso integrando emissao
+// de NF-e no Bling, nao existe hoje) - toda etiqueta da loja e' tratada como "nao comercial", e
+// como o Parana (origem de todo envio da MOZZ) esta' nessa lista de restricao da Jadlog, TODO
+// pedido que caisse nela ia falhar, nao so' alguns. Por isso excluida aqui na cotacao (nunca
+// aparece nem como opcao pro cliente), em vez de so' tentar e falhar depois na compra da
+// etiqueta.
+const TRANSPORTADORAS_EXCLUIDAS = new Set(["jadlog"]);
+
 // O Melhor Envio costuma devolver bastante opcao (Correios PAC/SEDEX, Jadlog .Package/.Com
 // etc) - o Brunno achou que isso confunde o cliente na hora de escolher (pedido de
 // 29/08/2026). Reduz pra no maximo 2: a mais barata, e a mais rapida entre as que chegam MAIS
@@ -140,6 +151,7 @@ export async function calcularFrete(cepDestino: string, quantidadeItens: number)
       prazoDias: opcao.delivery_time ?? 0,
       servicoId: opcao.id
     }))
+    .filter((opcao) => !TRANSPORTADORAS_EXCLUIDAS.has(opcao.transportadora.toLowerCase()))
     .sort((a, b) => a.preco - b.preco);
 
   return simplificarOpcoes(opcoesPorPreco);
