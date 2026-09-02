@@ -3300,9 +3300,8 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "44",
-          "40",
-          "36"
+          "36",
+          "40"
         ]
       }
     ],
@@ -6077,13 +6076,11 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": [
-          "P"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16629177084",
@@ -6991,13 +6988,11 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16627940309",
