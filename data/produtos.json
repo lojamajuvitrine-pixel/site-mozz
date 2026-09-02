@@ -8815,13 +8815,11 @@
           "44",
           "46"
         ],
-        "tamanhosDisponiveis": [
-          "44"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16595584099",
