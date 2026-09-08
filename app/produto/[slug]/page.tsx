@@ -46,6 +46,7 @@ export default async function PaginaProduto({ params }: { params: { slug: string
     "@context": "https://schema.org",
     "@type": "Product",
     name: produto.nome,
+    sku: produto.id,
     brand: { "@type": "Brand", name: produto.marca },
     description: textoDescricao(produto),
     image: produto.imagem ? `${siteUrl}${produto.imagem}` : undefined,
