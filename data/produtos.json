@@ -913,6 +913,7 @@
           "42"
         ],
         "tamanhosDisponiveis": [
+          "34",
           "38",
           "42"
         ]
@@ -2420,11 +2421,13 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "P"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16638721869",
