@@ -24,6 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const imagemDestaque = comFoto.find((p) => p.imagem)?.imagem;
 
   return {
+    alternates: { canonical: siteUrl },
     openGraph: {
       type: "website",
       locale: "pt_BR",
