@@ -9,7 +9,7 @@ const config: Config = {
           black: "#111111",
           white: "#ffffff",
           stone: "#f4f3f1",
-          gray: "#8a8a86"
+          gray: "#6b6b67"
         }
       },
       fontFamily: {
