@@ -329,9 +329,12 @@ export default function PaginaCarrinho() {
       </div>
 
       <div className="mt-4">
-        <p className="text-[13.5px] text-mozz-gray mb-2">Cupom de desconto</p>
+        <label htmlFor="cupom-codigo" className="text-[13.5px] text-mozz-gray mb-2 block">
+          Cupom de desconto
+        </label>
         <div className="flex gap-2">
           <input
+            id="cupom-codigo"
             value={codigoCupom}
             onChange={(e) => setCodigoCupom(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && aplicarCupom()}
@@ -369,13 +372,21 @@ export default function PaginaCarrinho() {
       <div className="mt-6 pt-6 border-t border-black/10">
         <p className="text-[13.5px] text-mozz-gray mb-2">Dados pra entrega e nota fiscal</p>
         <div className="flex flex-col gap-2">
+          <label htmlFor="checkout-nome" className="sr-only">
+            Nome completo
+          </label>
           <input
+            id="checkout-nome"
             value={nomeCompleto}
             onChange={(e) => setNomeCompleto(e.target.value)}
             placeholder="Nome completo"
             className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
           />
+          <label htmlFor="checkout-cpf" className="sr-only">
+            CPF
+          </label>
           <input
+            id="checkout-cpf"
             value={cpf}
             onChange={(e) => setCpf(formatarCpf(e.target.value))}
             placeholder="CPF"
@@ -383,14 +394,22 @@ export default function PaginaCarrinho() {
             className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
           />
           {cpf.length === 14 && !cpfValido && <p className="text-[13px] text-red-600">CPF inválido</p>}
+          <label htmlFor="checkout-email" className="sr-only">
+            E-mail
+          </label>
           <input
+            id="checkout-email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="E-mail"
             className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
           />
+          <label htmlFor="checkout-telefone" className="sr-only">
+            Telefone
+          </label>
           <input
+            id="checkout-telefone"
             value={telefone}
             onChange={(e) => setTelefone(e.target.value)}
             placeholder="Telefone"
@@ -404,7 +423,11 @@ export default function PaginaCarrinho() {
               Você tem {formatarPreco(creditoDisponivel)} de crédito de loja disponível
             </p>
             <div className="flex gap-2">
+              <label htmlFor="checkout-credito" className="sr-only">
+                Valor de crédito a usar
+              </label>
               <input
+                id="checkout-credito"
                 type="number"
                 min={0}
                 max={creditoMaximoAplicavel}
@@ -432,39 +455,63 @@ export default function PaginaCarrinho() {
         </p>
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
+            <label htmlFor="checkout-rua" className="sr-only">
+              Rua
+            </label>
             <input
+              id="checkout-rua"
               value={rua}
               onChange={(e) => setRua(e.target.value)}
               placeholder="Rua"
               className="flex-[3] border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
             />
+            <label htmlFor="checkout-numero" className="sr-only">
+              Número
+            </label>
             <input
+              id="checkout-numero"
               value={numero}
               onChange={(e) => setNumero(e.target.value)}
               placeholder="Número"
               className="flex-1 border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
             />
           </div>
+          <label htmlFor="checkout-complemento" className="sr-only">
+            Complemento
+          </label>
           <input
+            id="checkout-complemento"
             value={complemento}
             onChange={(e) => setComplemento(e.target.value)}
             placeholder="Complemento (opcional)"
             className="border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
           />
           <div className="flex gap-2">
+            <label htmlFor="checkout-bairro" className="sr-only">
+              Bairro
+            </label>
             <input
+              id="checkout-bairro"
               value={bairro}
               onChange={(e) => setBairro(e.target.value)}
               placeholder="Bairro"
               className="flex-[2] border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
             />
+            <label htmlFor="checkout-cidade" className="sr-only">
+              Cidade
+            </label>
             <input
+              id="checkout-cidade"
               value={cidade}
               onChange={(e) => setCidade(e.target.value)}
               placeholder="Cidade"
               className="flex-[2] border border-black/20 px-3 py-2 text-[14.5px] focus:outline-none focus:border-mozz-black"
             />
+            <label htmlFor="checkout-uf" className="sr-only">
+              UF
+            </label>
             <input
+              id="checkout-uf"
               value={uf}
               onChange={(e) => setUf(e.target.value.toUpperCase().slice(0, 2))}
               placeholder="UF"
