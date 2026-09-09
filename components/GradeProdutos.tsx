@@ -1,11 +1,18 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
 import { coresDoProduto, tamanhosDisponiveisDoColor, compararTamanhos, type Produto } from "@/lib/produtos";
 import { familiaDaCor, normalizarTexto } from "@/lib/cor";
 
 type Ordenacao = "relevancia" | "menor-preco" | "maior-preco";
+
+// Quantidade de pecas mostradas por vez - o resto so' aparece clicando "Carregar mais pecas".
+// Evita renderizar/baixar a imagem de centenas de produtos de uma vez na entrada da pagina
+// (pesava no Core Web Vitals - ver auditoria de UX de 29/08/2026), sem mexer na logica de
+// busca/filtro/ordenacao abaixo, que continua rodando sobre a lista INTEIRA - so' o que e'
+// EXIBIDO que e' limitado.
+const QUANTIDADE_POR_PAGINA = 24;
 
 // Grade de produtos com busca por nome/marca, filtro de marca (opcional - so' aparece se a
 // lista de marcas for passada), filtro de tamanho e cor (derivados dinamicamente dos produtos
@@ -26,6 +33,7 @@ export default function GradeProdutos({
   const [tamanhoSelecionado, setTamanhoSelecionado] = useState<string>("todos");
   const [corSelecionada, setCorSelecionada] = useState<string>("todas");
   const [ordenacao, setOrdenacao] = useState<Ordenacao>("relevancia");
+  const [quantidadeVisivel, setQuantidadeVisivel] = useState(QUANTIDADE_POR_PAGINA);
 
   // So' oferece no filtro tamanho/cor que EXISTE de verdade (e tem saldo) entre os produtos
   // recebidos - evita filtro fantasma que sempre devolve lista vazia.
@@ -82,6 +90,16 @@ export default function GradeProdutos({
       return 0; // relevancia - mantem a ordem original (produtos ja vem com foto priorizada)
     });
   }, [produtos, marcaSelecionada, tamanhoSelecionado, corSelecionada, ordenacao, busca]);
+
+  // Volta pra 24 sempre que o filtro/busca/ordenacao muda - senao "carregar mais" ficaria com
+  // uma contagem que nao faz mais sentido pra lista nova (ou escondendo produto que deveria
+  // aparecer de cara depois de trocar o filtro).
+  useEffect(() => {
+    setQuantidadeVisivel(QUANTIDADE_POR_PAGINA);
+  }, [marcaSelecionada, tamanhoSelecionado, corSelecionada, ordenacao, busca]);
+
+  const produtosVisiveis = listaFiltrada.slice(0, quantidadeVisivel);
+  const temMaisPraCarregar = quantidadeVisivel < listaFiltrada.length;
 
   return (
     <div>
@@ -153,11 +171,23 @@ export default function GradeProdutos({
           Nenhuma peca encontrada com esse filtro.
         </p>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {listaFiltrada.map((produto) => (
-            <ProductCard key={produto.id} produto={produto} />
-          ))}
-        </div>
+        <>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {produtosVisiveis.map((produto) => (
+              <ProductCard key={produto.id} produto={produto} />
+            ))}
+          </div>
+          {temMaisPraCarregar && (
+            <div className="flex justify-center mt-8">
+              <button
+                onClick={() => setQuantidadeVisivel((atual) => atual + QUANTIDADE_POR_PAGINA)}
+                className="text-[14.5px] px-6 py-3 border border-mozz-black hover:bg-mozz-black hover:text-white transition-colors"
+              >
+                Carregar mais peças
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
