@@ -64,11 +64,30 @@ export default async function PaginaProduto({ params }: { params: { slug: string
     }
   };
 
+  // Trilha de navegacao (Home > Marca > Nome do produto) - mostra esse caminho direto no
+  // resultado de busca do Google em vez do link cru da URL. O slug da marca usa a mesma
+  // conversao (toLowerCase) que o Nav.tsx ja usa pros links /marca/[slug].
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: produto.marca,
+        item: `${siteUrl}/marca/${produto.marca.toLowerCase()}`
+      },
+      { "@type": "ListItem", position: 3, name: produto.nome, item: `${siteUrl}/produto/${produto.id}` }
+    ]
+  };
+
   return (
     // pb-20 no celular: espaco pra barra fixa de compra (ver SeletorProduto.tsx) nao cobrir
     // o final da pagina (relacionados/rodape) enquanto rola
     <div className="pb-20 md:pb-0">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }} />
       <SeletorProduto produto={produto} />
       <DetalhesProduto produto={produto} />
       <ProdutosRelacionados produto={produto} />
