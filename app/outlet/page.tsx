@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import GradeProdutos from "@/components/GradeProdutos";
 import { listarOutlet } from "@/lib/produtos";
+import { SITE_URL as siteUrl } from "@/lib/site";
 
 // Aba "Outlet" - curadoria manual (feita no painel /admin/produtos) que reune pecas de
 // QUALQUER marca ativa num so' lugar, sem tirar elas de suas paginas de marca de origem (uma
@@ -8,7 +9,8 @@ import { listarOutlet } from "@/lib/produtos";
 // e' um recorte extra, nao uma mudanca de catalogo).
 export const metadata: Metadata = {
   title: "Outlet",
-  description: "Peças selecionadas com condição especial na MOZZ."
+  description: "Peças selecionadas com condição especial na MOZZ.",
+  alternates: { canonical: `${siteUrl}/outlet` }
 };
 
 export const revalidate = 30;
@@ -18,7 +20,7 @@ export default async function PaginaOutlet() {
 
   return (
     <section className="py-8">
-      <p className="font-serif text-3xl mb-1">Outlet</p>
+      <h1 className="font-serif text-3xl mb-1">Outlet</h1>
       <p className="text-[14.5px] text-mozz-gray mb-6">
         {produtos.length > 0
           ? `${produtos.length} peca(s) com condicao especial`
