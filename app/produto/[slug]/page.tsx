@@ -18,14 +18,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
   const descricao = textoDescricao(produto).slice(0, 160);
   const imagem = produto.imagem ? [`${siteUrl}${produto.imagem}`] : undefined;
+  const url = `${siteUrl}/produto/${produto.id}`;
 
   return {
     title: `${produto.nome} — ${produto.marca}`,
     description: descricao,
+    alternates: { canonical: url },
     openGraph: {
       title: `${produto.nome} — ${produto.marca}`,
       description: descricao,
       images: imagem,
+      url,
       type: "website"
     }
   };
