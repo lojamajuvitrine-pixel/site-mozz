@@ -7,9 +7,45 @@ export const metadata: Metadata = {
   description: "Prazo e condições pra trocar ou devolver uma peça comprada na MOZZ."
 };
 
+// FAQPage - os 3 titulos da pagina viraram pergunta (antes eram so' "Condições", "Como
+// solicitar", "Reembolso") pra virar Q&A de verdade sem inventar conteudo: a resposta usa o
+// mesmo texto que ja estava escrito, so' reorganizado. A frase de abertura da pagina entrou
+// dentro da resposta da primeira pergunta.
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Quais são as condições pra troca ou devolução?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Você tem até 30 dias corridos a partir do recebimento do pedido pra solicitar troca ou devolução. A peça não pode ter sido usada, lavada ou alterada, precisa estar com a etiqueta original presa à peça, e é preciso enviar junto a nota fiscal ou o número do pedido."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Como eu solicito uma troca ou devolução?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Chama a gente no WhatsApp com o número do pedido e o motivo da troca ou devolução (tamanho, cor, arrependimento etc.) — a gente explica os próximos passos, incluindo o envio da peça de volta."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Como funciona o reembolso?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Depois que a peça devolvida chega e passa pela conferência, o reembolso é feito no mesmo método de pagamento usado na compra. Em caso de troca por outro tamanho ou cor, o envio da nova peça sai assim que a original é recebida."
+      }
+    }
+  ]
+};
+
 export default function PaginaTrocas() {
   return (
     <section className="py-8 max-w-2xl">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }} />
       <p className="font-serif text-3xl mb-6">Trocas e devoluções</p>
 
       <div className="space-y-5 text-[14.5px] text-mozz-black/80 leading-relaxed">
@@ -19,7 +55,7 @@ export default function PaginaTrocas() {
         </p>
 
         <div>
-          <p className="text-mozz-black font-medium mb-1">Condições</p>
+          <p className="text-mozz-black font-medium mb-1">Quais são as condições pra troca ou devolução?</p>
           <ul className="list-disc pl-4 space-y-1">
             <li>A peça não pode ter sido usada, lavada ou alterada.</li>
             <li>Precisa estar com a etiqueta original presa à peça.</li>
@@ -28,7 +64,7 @@ export default function PaginaTrocas() {
         </div>
 
         <div>
-          <p className="text-mozz-black font-medium mb-1">Como solicitar</p>
+          <p className="text-mozz-black font-medium mb-1">Como eu solicito uma troca ou devolução?</p>
           <p>
             Chama a gente no WhatsApp com o número do pedido e o motivo da troca ou devolução
             (tamanho, cor, arrependimento etc.) — a gente explica os próximos passos, incluindo
@@ -37,7 +73,7 @@ export default function PaginaTrocas() {
         </div>
 
         <div>
-          <p className="text-mozz-black font-medium mb-1">Reembolso</p>
+          <p className="text-mozz-black font-medium mb-1">Como funciona o reembolso?</p>
           <p>
             Depois que a peça devolvida chega e passa pela conferência, o reembolso é feito no
             mesmo método de pagamento usado na compra. Em caso de troca por outro tamanho ou
