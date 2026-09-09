@@ -23270,13 +23270,11 @@
           "38",
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "38"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16595364872--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorTamanho": {
       "38": [
         "16595364872"
