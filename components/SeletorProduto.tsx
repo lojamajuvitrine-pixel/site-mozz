@@ -11,6 +11,7 @@ import CalculoFrete from "@/components/CalculoFrete";
 import AvisoEstoque from "@/components/AvisoEstoque";
 import AvisoFreteGratis from "@/components/AvisoFreteGratis";
 import AvisoCashback from "@/components/AvisoCashback";
+import { rastrearVisualizarProduto } from "@/lib/tracking";
 
 function IconeLupa() {
   return (
@@ -44,6 +45,20 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   const [adicionado, setAdicionado] = useState(false);
   const { adicionar } = useCart();
   const tamanhoEstaDisponivel = disponiveisAtual.includes(tamanho);
+
+  // Dispara ViewContent/view_item UMA vez, quando a pagina desse produto abre - ver
+  // lib/tracking.ts. So' depende do produto.id (nao da cor/tamanho escolhido), pra nao
+  // disparar de novo so' porque o cliente trocou de cor na mesma pagina.
+  useEffect(() => {
+    rastrearVisualizarProduto({
+      id: produto.id,
+      nome: produto.nome,
+      marca: produto.marca,
+      preco: produto.preco,
+      quantidade: 1
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [produto.id]);
 
   // Limite do frete gratis (configuravel em /admin/produtos, ver lib/configLoja.ts) - buscado
   // aqui so' pra mostrar o aviso (ver AvisoFreteGratis abaixo); null enquanto carrega, nesse
