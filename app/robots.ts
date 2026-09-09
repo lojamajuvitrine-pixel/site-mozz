@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: "/",
+      allow: ["/", "/api/google-feed", "/api/meta-feed"],
       disallow: ["/api/", "/carrinho", "/checkout/"]
     },
     sitemap: `${siteUrl}/sitemap.xml`
