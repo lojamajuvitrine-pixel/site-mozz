@@ -1,15 +1,39 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import BannerHero, { type BannerItem } from "@/components/BannerHero";
 import FaixaCashback from "@/components/FaixaCashback";
 import { listarPorMarca, produtosComFoto } from "@/lib/produtos";
+import { SITE_URL as siteUrl } from "@/lib/site";
 
 // Quantos produtos aparecem na vitrine "Novidades" da home - o catalogo completo (com todos
 // os produtos, com ou sem foto) fica em /produtos.
 const QTD_VITRINE = 8;
 
 export const revalidate = 30;
+
+// Repete os mesmos titulo/descricao do metadata base (app/layout.tsx) porque o Next.js NAO
+// faz merge campo a campo dentro de "openGraph" - se a pagina define openGraph, ele substitui
+// o objeto inteiro do layout pai, entao title/description precisam vir de novo aqui, senao
+// somem do preview de compartilhamento da home. So' a home precisava disso (as paginas de
+// produto ja tem generateMetadata proprio - ver app/produto/[slug]/page.tsx); as demais
+// paginas continuam herdando o openGraph do layout normalmente.
+export async function generateMetadata(): Promise<Metadata> {
+  const comFoto = await produtosComFoto();
+  const imagemDestaque = comFoto.find((p) => p.imagem)?.imagem;
+
+  return {
+    openGraph: {
+      type: "website",
+      locale: "pt_BR",
+      siteName: "MOZZ",
+      title: "MOZZ — Animale, NV, Reserva e Foxton em um só lugar",
+      description: "Loja multimarcas com peças da Animale, NV, Reserva e Foxton.",
+      images: imagemDestaque ? [`${siteUrl}${imagemDestaque}`] : undefined
+    }
+  };
+}
 
 export default async function Home() {
   const comFoto = await produtosComFoto();
@@ -75,11 +99,11 @@ export default async function Home() {
             />
           </div>
           <div className="flex flex-col items-start justify-center px-8 py-12 md:px-14">
-            <p className="font-serif text-[29px] md:text-[33px] leading-tight mb-4">
+            <h1 className="font-serif text-[29px] md:text-[33px] leading-tight mb-4">
               Quatro marcas,
               <br />
               um só lugar
-            </p>
+            </h1>
             <p className="text-[14.5px] text-mozz-gray max-w-xs mb-6">
               Curadoria Animale, NV, Reserva e Foxton reunida na MOZZ, com entrega pra todo o
               Brasil.
