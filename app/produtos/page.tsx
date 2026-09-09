@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import GradeProdutos from "@/components/GradeProdutos";
 import { listarProdutos, marcasDisponiveis } from "@/lib/produtos";
+import { SITE_URL as siteUrl } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "Todos os produtos",
+  description: "Catálogo completo da MOZZ - Animale, NV, Reserva e Foxton em um só lugar, com frete para todo o Brasil.",
+  alternates: { canonical: `${siteUrl}/produtos` }
+};
 
 // Catalogo completo - a home mostra so' uma vitrine curada, aqui e' tudo que tem estoque.
 // searchParams.busca vem da barra de busca do menu (Nav > BarraBusca), que manda pra ca'
@@ -12,7 +20,7 @@ export default async function PaginaProdutos({ searchParams }: { searchParams?: 
 
   return (
     <section className="py-8">
-      <p className="font-serif text-3xl mb-1">Todos os produtos</p>
+      <h1 className="font-serif text-3xl mb-1">Todos os produtos</h1>
       <p className="text-[14.5px] text-mozz-gray mb-6">{produtos.length} pecas disponiveis</p>
       <GradeProdutos produtos={produtos} marcas={marcas} buscaInicial={searchParams?.busca} />
     </section>
