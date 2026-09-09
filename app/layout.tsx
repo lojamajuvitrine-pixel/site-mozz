@@ -32,9 +32,6 @@ export const metadata: Metadata = {
   }
 };
 
-// IDs de rastreamento (Meta Pixel / Google Analytics / Microsoft Clarity) - so' carrega o
-// script quando a variavel de ambiente correspondente estiver preenchida, pra nunca quebrar
-// o site antes desses cadastros existirem (ver PROXIMOS_PASSOS.md pra como obter cada ID).
 const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_ID;
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
@@ -43,11 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR">
       <head>
-        {/* Fontes via <link> pro Google Fonts, carregadas pelo NAVEGADOR de quem visita o
-            site - em vez de next/font/google, que baixa a fonte durante o BUILD na Vercel e
-            quebrou o deploy quando essa etapa falhou (erro "Failed to collect page data for
-            /_not-found" em 23/08/2026). Esse jeito classico nao depende de rede no momento
-            de publicar, so' no momento de visitar o site (bem mais confiavel). */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -55,6 +47,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "ClothingStore", name: "MOZZ", url: SITE_URL, telephone: "+5542988351888", address: { "@type": "PostalAddress", streetAddress: "Avenida Coronel Rogério Borba, 480", addressLocality: "Reserva", addressRegion: "PR", postalCode: "84320-000", addressCountry: "BR" }, openingHoursSpecification: [{ "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "09:00", closes: "18:00" }, { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "09:00", closes: "12:00" }] }) }} />
+        {/* WebSite + SearchAction: habilita a caixa de busca do site direto no resultado do
+            Google (sitelinks search box). O template aponta pra busca de verdade do catalogo -
+            /produtos?busca=termo ja funciona (GradeProdutos usa isso como valor inicial do
+            campo), nao e' so' decorativo. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "MOZZ",
+              url: SITE_URL,
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: `${SITE_URL}/produtos?busca={search_term_string}`
+                },
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
       </head>
       <body className="font-sans">
         {metaPixelId && (
