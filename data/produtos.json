@@ -11550,11 +11550,13 @@
           "42",
           "44"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "42"
+        ]
       }
     ],
     "imagem": "/produtos/16553570557--unico--0.jpg",
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16553572203",
