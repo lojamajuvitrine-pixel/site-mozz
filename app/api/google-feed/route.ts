@@ -70,10 +70,7 @@ function corValidaParaFeed(cor: string): string {
 }
 
 function corasMescladas(produto: Produto): Array<{ cor: string; imagens: string[]; tamanhos: string[]; disponiveis: Set<string> }> {
-  const porChave = new Map
-    string,
-    { cor: string; imagens: string[]; tamanhos: string[]; disponiveis: Set<string> }
-  >();
+  const porChave = new Map<string, { cor: string; imagens: string[]; tamanhos: string[]; disponiveis: Set<string> }>();
 
   for (const cor of coresDoProduto(produto)) {
     const chave = corValidaParaFeed(cor.cor) ? cor.cor.trim().toLowerCase() : "";
