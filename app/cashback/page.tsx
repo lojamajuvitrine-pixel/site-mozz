@@ -11,9 +11,52 @@ export const metadata: Metadata = {
   description: "Como funciona o crédito de loja da MOZZ: 15% de volta em toda compra aprovada, válido por 30 dias."
 };
 
+// FAQPage - as 4 perguntas abaixo sao as mesmas que ja aparecem na pagina (texto identico,
+// nao inventado), so' embrulhadas em JSON-LD pra o Google poder mostrar direto no resultado
+// de busca.
+const jsonLdFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Quando o crédito fica disponível?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Assim que o seu pagamento é aprovado — não precisa esperar o pedido chegar."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Por quanto tempo vale?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "O crédito fica disponível por 30 dias a partir da data em que foi gerado."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Quanto eu posso usar de uma vez?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "O crédito cobre até 30% do valor da nova compra (também incluindo o frete). Exemplo: uma compra de R$300 gera R$45 de cashback; pra usar esses R$45 inteiros numa próxima compra, ela precisa ser de pelo menos R$150."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Como eu confiro meu saldo?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Só digitar seu CPF no carrinho — o saldo disponível aparece automaticamente, com a opção de aplicar na compra. Não precisa criar conta nem fazer login."
+      }
+    }
+  ]
+};
+
 export default function PaginaCashback() {
   return (
     <section className="py-8 max-w-2xl">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }} />
       <p className="font-serif text-3xl mb-6">Cashback MOZZ</p>
 
       <div className="space-y-5 text-[14.5px] text-mozz-black/80 leading-relaxed">
