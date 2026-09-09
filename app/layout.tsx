@@ -32,11 +32,12 @@ export const metadata: Metadata = {
   }
 };
 
-// IDs de rastreamento (Meta Pixel / Google Analytics) - so' carrega o script quando a
-// variavel de ambiente correspondente estiver preenchida, pra nunca quebrar o site antes
-// desses cadastros existirem (ver PROXIMOS_PASSOS.md pra como obter cada ID).
+// IDs de rastreamento (Meta Pixel / Google Analytics / Microsoft Clarity) - so' carrega o
+// script quando a variavel de ambiente correspondente estiver preenchida, pra nunca quebrar
+// o site antes desses cadastros existirem (ver PROXIMOS_PASSOS.md pra como obter cada ID).
 const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_ID;
+const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -84,6 +85,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               `}
             </Script>
           </>
+        )}
+        {clarityId && (
+          <Script id="microsoft-clarity" strategy="afterInteractive">
+            {`
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "${clarityId}");
+            `}
+          </Script>
         )}
 
         <CartProvider>
