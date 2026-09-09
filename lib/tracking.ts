@@ -2,10 +2,10 @@
 
 // Eventos de ecommerce pro Meta Pixel e Google Analytics - sem isso, o pixel so' sabe que
 // alguem visitou o site (PageView), mas nao sabe quem colocou peca na sacola, quem chegou
-// perto de comprar ou quem comprou de fato. Sao esses 3 eventos (AddToCart,
-// InitiateCheckout, Purchase) que permitem: reengajar quem abandonou o carrinho com
-// anuncio, otimizar campanha pra gente parecida com quem realmente compra (nao so' quem
-// clica), e medir o retorno de cada campanha (ROAS) direito.
+// perto de comprar ou quem comprou de fato. Sao esses 4 eventos (ViewContent, AddToCart,
+// InitiateCheckout, Purchase) que permitem: reengajar quem viu uma peca ou abandonou o
+// carrinho com anuncio, otimizar campanha pra gente parecida com quem realmente compra (nao
+// so' quem clica), e medir o retorno de cada campanha (ROAS) direito.
 //
 // window.fbq/gtag so' existem se o Pixel/GA estiverem configurados (ver NEXT_PUBLIC_META_
 // PIXEL_ID/NEXT_PUBLIC_GA_ID em app/layout.tsx) - por isso todo disparo aqui usa "?." e
@@ -39,6 +39,25 @@ function itensParaGA(itens: ItemRastreado[]) {
     price: i.preco,
     quantity: i.quantidade
   }));
+}
+
+// Disparado ao ABRIR a pagina de um produto (ver SeletorProduto.tsx) - e' o primeiro passo
+// do funil, o que faltava pra completar ViewContent -> AddToCart -> InitiateCheckout ->
+// Purchase. Sem isso, o Pixel nao consegue montar publico de remarketing de "quem viu peca
+// X mas nao comprou", nem otimizar campanha por quem tem intencao real de compra.
+export function rastrearVisualizarProduto(item: ItemRastreado) {
+  window.fbq?.("track", "ViewContent", {
+    content_ids: [item.id],
+    content_name: item.nome,
+    content_type: "product",
+    value: item.preco,
+    currency: "BRL"
+  });
+  window.gtag?.("event", "view_item", {
+    currency: "BRL",
+    value: item.preco,
+    items: itensParaGA([item])
+  });
 }
 
 export function rastrearAdicionarAoCarrinho(item: ItemRastreado) {
