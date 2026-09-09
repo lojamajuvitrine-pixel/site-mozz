@@ -2308,11 +2308,13 @@
         "tamanhos": [
           "36"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "36"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16638745848",
