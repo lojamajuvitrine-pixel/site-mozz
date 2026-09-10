@@ -5383,7 +5383,9 @@
           "M",
           "G"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "M"
+        ]
       },
       {
         "cor": "MARROM",
