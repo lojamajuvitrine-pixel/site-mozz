@@ -5008,13 +5008,11 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": [
-          "Único"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16637173798",
@@ -7653,7 +7651,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
           "G"
         ]
       },
@@ -7714,7 +7711,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
           "G",
           "M",
           "P"
