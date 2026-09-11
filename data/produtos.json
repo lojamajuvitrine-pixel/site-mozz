@@ -2651,13 +2651,11 @@
           "36",
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "40"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16638621663--vermelho-wing--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16638621492",
@@ -3090,13 +3088,11 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16628446857",
