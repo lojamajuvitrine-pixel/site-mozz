@@ -2164,11 +2164,13 @@
           "38",
           "40"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "38"
+        ]
       }
     ],
     "imagem": "/produtos/16638750285--07612--0.jpg",
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16638749724",
@@ -13658,11 +13660,13 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "P"
+        ]
       }
     ],
     "imagem": "/produtos/16573796122--preto--0.jpg",
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16573796148",
