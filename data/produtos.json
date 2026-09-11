@@ -3069,8 +3069,7 @@
         ],
         "tamanhosDisponiveis": [
           "P",
-          "PP",
-          "M"
+          "PP"
         ]
       }
     ],
@@ -5383,9 +5382,7 @@
           "M",
           "G"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "MARROM",
