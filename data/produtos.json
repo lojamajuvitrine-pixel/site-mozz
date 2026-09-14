@@ -1241,7 +1241,6 @@
         ],
         "tamanhosDisponiveis": [
           "M",
-          "PP",
           "P"
         ]
       }
@@ -2219,10 +2218,9 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "44",
-          "40",
           "38",
-          "36"
+          "40",
+          "44"
         ]
       }
     ],
@@ -3790,13 +3788,11 @@
           "36",
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "40"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16638322984",
@@ -4111,7 +4107,6 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
           "PP"
         ]
       }
@@ -9838,13 +9833,11 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16434038294",
@@ -12264,9 +12257,7 @@
           "42",
           "44"
         ],
-        "tamanhosDisponiveis": [
-          "38"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Branco",
@@ -12288,7 +12279,7 @@
       }
     ],
     "imagem": "/produtos/16561232629--azul-claro--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16561232640",
