@@ -2528,11 +2528,13 @@
         "tamanhos": [
           "44"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "44"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16638618697",
@@ -2554,11 +2556,13 @@
           "36",
           "40"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "40"
+        ]
       }
     ],
     "imagem": "/produtos/16638618697--vermelho-wing-laranja-veludo--0.jpg",
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16638718273",
@@ -2734,13 +2738,11 @@
           "38",
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "38"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16638620328",
