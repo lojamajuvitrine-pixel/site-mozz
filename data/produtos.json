@@ -910,7 +910,6 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "34",
           "38",
           "42"
         ]
@@ -2531,13 +2530,11 @@
         "tamanhos": [
           "44"
         ],
-        "tamanhosDisponiveis": [
-          "44"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16638618697",
@@ -2559,13 +2556,11 @@
           "36",
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "40"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16638618697--vermelho-wing-laranja-veludo--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16638718273",
@@ -5474,13 +5469,11 @@
         "tamanhos": [
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "40"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16630962980--marrom-dries--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16630962299",
