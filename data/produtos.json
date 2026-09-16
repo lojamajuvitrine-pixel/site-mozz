@@ -727,13 +727,11 @@
         "tamanhos": [
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "40"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16659595285--marrom-dries--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16658774141",
@@ -3719,13 +3717,11 @@
           "38",
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "38"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16629058177",
@@ -5190,13 +5186,11 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": [
-          "Único"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16637173708",
@@ -8123,9 +8117,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
           "G",
-          "M"
+          "GG"
         ]
       }
     ],
