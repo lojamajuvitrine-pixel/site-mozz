@@ -5806,13 +5806,11 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": [
-          "GG"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16629052622",
@@ -15668,13 +15666,11 @@
           "42",
           "44"
         ],
-        "tamanhosDisponiveis": [
-          "44"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16569843613",
