@@ -1309,7 +1309,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "M",
           "P",
           "PP"
         ]
@@ -5561,9 +5560,8 @@
         ],
         "tamanhosDisponiveis": [
           "36",
-          "42",
-          "40",
-          "38"
+          "38",
+          "42"
         ]
       }
     ],
