@@ -3500,13 +3500,11 @@
           "36",
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "40"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16638359755",
@@ -19469,9 +19467,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "M",
           "G",
+          "M",
           "P"
         ]
       },
