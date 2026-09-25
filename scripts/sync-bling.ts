@@ -51,6 +51,7 @@ import {
   extrairCor,
   extrairTamanho,
   extrairTamanhoDoNomeProduto,
+  extrairCorTamanhoDoNomeProduto,
   limparNomeBase,
   tamanhosDisponiveisDaCor
 } from "../lib/blingParse";
@@ -274,6 +275,10 @@ type ProdutoSaida = {
   imagem: string | null;
   temEstoque: boolean;
   gruposBlingPorTamanho?: Record<string, string[]>;
+  // So' presente em produtos fundidos por COR+tamanho (ver fundirVariantesPorCorETamanho
+  // abaixo) - equivalente a gruposBlingPorTamanho, mas com mais um nivel (cor -> tamanho ->
+  // ids Bling), porque agora um produto fundido pode ter mais de uma cor de verdade.
+  gruposBlingPorCorTamanho?: Record<string, Record<string, string[]>>;
 };
 
 // Ordem de exibicao dos tamanhos-letra (numero e' sempre ordenado numericamente, nao precisa
@@ -285,6 +290,106 @@ function compararTamanhos(a: string, b: string): number {
   const numB = Number(b);
   if (!Number.isNaN(numA) && !Number.isNaN(numB)) return numA - numB;
   return ORDEM_TAMANHOS_LETRA.indexOf(a) - ORDEM_TAMANHOS_LETRA.indexOf(b);
+}
+
+// Funde produtos que sao a MESMA peca cadastrada como produtos-pai SEPARADOS por cor E
+// tamanho no Bling - convencao adotada pro cadastro novo da colecao VER26 (ver
+// extrairCorTamanhoDoNomeProduto, lib/blingParse.ts, e convencao-cadastro-produtos-bling-
+// ver26.md). Roda ANTES de fundirVariantesPorTamanho: um nome como "Camisa ML Linho Lumiar
+// VER26 - 0013 - GG" tambem bateria no padrao de UM sufixo so' (base+tamanho, tratando
+// "- 0013" como parte do nome-base) se essa fusao aqui nao rodasse primeiro - por isso a
+// ordem das duas chamadas em main() importa.
+// So' funde quando ha' 2+ produtos com a mesma marca+nome-base (mesma cautela de
+// fundirVariantesPorTamanho); um nome sozinho, sem "irmao", fica como esta' - nao da' pra
+// ter certeza que nao e' so' uma coincidencia de nome.
+function fundirVariantesPorCorETamanho(produtos: ProdutoSaida[]): ProdutoSaida[] {
+  type Membro = ProdutoSaida & { _corCodigo: string; _tamanho: string; _base: string };
+  const grupos = new Map<string, Membro[]>();
+  const resultado: ProdutoSaida[] = [];
+
+  for (const p of produtos) {
+    const extraido = p.cores.length === 1 ? extrairCorTamanhoDoNomeProduto(p.nome) : null;
+    if (!extraido) {
+      resultado.push(p);
+      continue;
+    }
+    const chave = `${p.marca}||${extraido.base}`;
+    if (!grupos.has(chave)) grupos.set(chave, []);
+    grupos.get(chave)!.push({
+      ...p,
+      _corCodigo: extraido.corCodigo,
+      _tamanho: extraido.tamanho,
+      _base: extraido.base
+    });
+  }
+
+  for (const membros of grupos.values()) {
+    if (membros.length === 1) {
+      resultado.push(membros[0]);
+      continue;
+    }
+
+    // Separa por cor primeiro, e dentro de cada cor junta os tamanhos (mesmo tamanho podendo
+    // aparecer duplicado por cadastro em duplicidade no Bling, igual ja acontece na fusao por
+    // tamanho de fundirVariantesPorTamanho).
+    const porCor = new Map<string, Membro[]>();
+    for (const m of membros) {
+      if (!porCor.has(m._corCodigo)) porCor.set(m._corCodigo, []);
+      porCor.get(m._corCodigo)!.push(m);
+    }
+
+    const cores: VarianteCorSaida[] = [];
+    const gruposBlingPorCorTamanho: Record<string, Record<string, string[]>> = {};
+
+    for (const [corCodigo, membrosDaCor] of porCor) {
+      const porTamanho = new Map<string, Membro[]>();
+      for (const m of membrosDaCor) {
+        if (!porTamanho.has(m._tamanho)) porTamanho.set(m._tamanho, []);
+        porTamanho.get(m._tamanho)!.push(m);
+      }
+      const tamanhos = Array.from(porTamanho.keys()).sort(compararTamanhos);
+      const tamanhosDisponiveis = tamanhos.filter((t) => porTamanho.get(t)!.some((m) => m.temEstoque));
+      const membroComFoto = membrosDaCor.find((m) => m.cores[0]?.imagens.length > 0) ?? membrosDaCor[0];
+
+      cores.push({
+        cor: corCodigo,
+        imagens: membroComFoto.cores[0]?.imagens ?? [],
+        tamanhos,
+        tamanhosDisponiveis
+      });
+
+      gruposBlingPorCorTamanho[corCodigo] = {};
+      for (const [tamanho, ms] of porTamanho) gruposBlingPorCorTamanho[corCodigo][tamanho] = ms.map((m) => m.id);
+    }
+
+    // preco: mesmo criterio de fundirVariantesPorTamanho - o da(s) unidade(s) em estoque
+    // agora (menor valor), ou o menor preco geral se nada tiver saldo no momento.
+    const precosEmEstoque = membros.filter((m) => m.temEstoque).map((m) => m.preco);
+    const preco =
+      precosEmEstoque.length > 0 ? Math.min(...precosEmEstoque) : Math.min(...membros.map((m) => m.preco));
+
+    const membroComDescricao = membros.find((m) => m.descricao) ?? membros[0];
+    // id estavel: o menor id numerico entre os membros atuais - mesmo criterio de
+    // fundirVariantesPorTamanho.
+    const idEstavel = [...membros].sort((a, b) => Number(a.id) - Number(b.id))[0].id;
+    const imagemCapa = cores.find((c) => c.imagens.length > 0)?.imagens[0] ?? null;
+
+    resultado.push({
+      id: idEstavel,
+      nome: membros[0]._base,
+      marca: membros[0].marca,
+      preco,
+      novo: false,
+      descricao: membroComDescricao.descricao,
+      composicao: membroComDescricao.composicao,
+      cores,
+      imagem: imagemCapa,
+      temEstoque: membros.some((m) => m.temEstoque),
+      gruposBlingPorCorTamanho
+    });
+  }
+
+  return resultado;
 }
 
 // Funde produtos que sao a MESMA peca cadastrada como um produto-pai SEPARADO por tamanho no
@@ -641,11 +746,16 @@ async function main() {
     }
   }
 
-  // PASSO EXTRA (24/08/2026): funde produtos que na verdade sao a MESMA peca cadastrada como
-  // um produto-pai SEPARADO por tamanho no Bling (ver comentario completo em
+  // PASSO EXTRA 1 (25/09/2026): funde produtos separados por COR e tamanho (convencao nova da
+  // colecao VER26 - ver extrairCorTamanhoDoNomeProduto, lib/blingParse.ts). Roda ANTES da
+  // fusao por tamanho abaixo, de proposito (ver comentario em fundirVariantesPorCorETamanho).
+  const produtosPosCor = fundirVariantesPorCorETamanho(produtosMapeados);
+
+  // PASSO EXTRA 2 (24/08/2026): funde produtos separados so' por tamanho (ver
   // extrairTamanhoDoNomeProduto, lib/blingParse.ts) - reconhece pelo nome, nao mexe em nada
-  // do lado do Bling.
-  const produtosFinais = fundirVariantesPorTamanho(produtosMapeados);
+  // do lado do Bling. So' pega o que sobrou sem cor (produto fundido por cor acima ja sai com
+  // cores.length > 1 e fica de fora automaticamente).
+  const produtosFinais = fundirVariantesPorTamanho(produtosPosCor);
   const qtdFundidos = produtosMapeados.length - produtosFinais.length;
 
   writeFileSync("data/produtos.json", JSON.stringify(produtosFinais, null, 2));
