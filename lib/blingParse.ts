@@ -64,6 +64,41 @@ export function extrairTamanhoDoNomeProduto(nome: string): { base: string; taman
   return TAMANHOS_LETRA.has(tokenMaiusculo) ? { base, tamanho: tokenMaiusculo } : null;
 }
 
+// Cor+tamanho no NOME DO PRODUTO - convencao adotada pro cadastro novo da colecao VER26
+// (documentado em 25/09/2026): como o Somaplace so' sincroniza produto SIMPLES (ver
+// convencao-cadastro-produtos-bling-ver26.md), cada combinacao de cor+tamanho vira um
+// produto-pai separado no Bling, com o nome no padrao:
+//   "{Nome base} VER26 - {codigo da cor} - {tamanho}"
+// Exemplos reais: "Camisa ML Linho Lumiar VER26 - 0013 - GG", "Tshirt Pima Flex Fit VER26 -
+// 0001 - P". O codigo da cor e' um numero de 3-4 digitos, sem nome associado por enquanto -
+// o site mostra o proprio codigo ate' existir uma tabela codigo->nome de verdade.
+// So' reconhece o padrao (nao decide se funde - responsabilidade de quem chama, igual
+// extrairTamanhoDoNomeProduto acima. Precisa rodar ANTES dela na fusao, ver sync-bling.ts,
+// senao "- 0013 - GG" seria lido como um sufixo so' e o "- 0013" ficaria preso no nome-base).
+export function extrairCorTamanhoDoNomeProduto(
+  nome: string
+): { base: string; corCodigo: string; tamanho: string } | null {
+  const m = nome.match(/^(.*)\s-\s*(\d{3,4})\s-\s*([A-Za-zÀ-ú0-9]{1,4})$/);
+  if (!m) return null;
+
+  const tokenBruto = m[3].trim();
+  const tokenMaiusculo = tokenBruto.toUpperCase();
+  let tamanho: string | null = null;
+  if (/^\d{2}$/.test(tokenBruto)) {
+    const numero = Number(tokenBruto);
+    tamanho = numero >= 30 && numero <= 56 ? tokenBruto : null;
+  } else if (TAMANHOS_LETRA.has(tokenMaiusculo)) {
+    tamanho = tokenMaiusculo;
+  }
+  if (!tamanho) return null;
+
+  return {
+    base: limparNomeBase(m[1]),
+    corCodigo: m[2].trim(),
+    tamanho
+  };
+}
+
 export type SkuComEstoque = { nome: string; estoque?: { saldoVirtualTotal: number } };
 
 // Pra uma cor especifica de um produto, calcula quais tamanhos tem saldo em estoque AGORA,
