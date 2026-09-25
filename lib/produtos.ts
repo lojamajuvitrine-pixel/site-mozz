@@ -87,20 +87,24 @@ function normalizarNomeDoProduto(produto: Produto): Produto {
   return { ...produto, nome: capitalizarNomeProduto(produto.nome) };
 }
 
-// Devolve o id do produto NO BLING (numerico) que corresponde a um tamanho especifico -
+// Devolve o id do produto NO BLING (numerico) que corresponde a uma cor+tamanho especificos -
 // necessario pra criar o pedido de venda no Bling (ver lib/mercadopago.ts e o webhook do
-// Mercado Pago) porque produtos "fundidos" no sync (ver gruposBlingPorTamanho em
-// lib/blingParse.ts) nao tem mais um produto.id proprio por tamanho: o produto.id do site e'
-// so' um id "representante" do grupo fundido. Pra peca NAO fundida (sem gruposBlingPorTamanho),
-// produto.id ja e' o id real do Bling. Resolvido no momento da compra (nao no webhook, que
-// pode rodar bem depois) pra garantir que o pedido no Bling aponta pro produto certo mesmo se
-// o catalogo mudar entre a compra e a confirmacao do pagamento.
-export function resolverProdutoIdBling(produto: Produto, tamanho: string): number {
-  const idsDoTamanho = produto.gruposBlingPorTamanho?.[tamanho];
+// Mercado Pago) porque produtos "fundidos" no sync (ver gruposBlingPorTamanho e
+// gruposBlingPorCorTamanho em lib/blingParse.ts/scripts/sync-bling.ts) nao tem mais um
+// produto.id proprio por cor/tamanho: o produto.id do site e' so' um id "representante" do
+// grupo fundido. Pra peca NAO fundida (sem nenhum dos dois mapas), produto.id ja e' o id real
+// do Bling. Resolvido no momento da compra (nao no webhook, que pode rodar bem depois) pra
+// garantir que o pedido no Bling aponta pro produto certo mesmo se o catalogo mudar entre a
+// compra e a confirmacao do pagamento.
+export function resolverProdutoIdBling(produto: Produto, cor: string, tamanho: string): number {
+  const idsPorCorTamanho = produto.gruposBlingPorCorTamanho?.[cor]?.[tamanho];
+  const idsDoTamanho = idsPorCorTamanho ?? produto.gruposBlingPorTamanho?.[tamanho];
   const idBruto = idsDoTamanho && idsDoTamanho.length > 0 ? idsDoTamanho[0] : produto.id;
   const id = Number(idBruto);
   if (!Number.isFinite(id)) {
-    throw new Error(`Nao foi possivel resolver o id Bling do produto ${produto.id} (tamanho ${tamanho})`);
+    throw new Error(
+      `Nao foi possivel resolver o id Bling do produto ${produto.id} (cor ${cor}, tamanho ${tamanho})`
+    );
   }
   return id;
 }
@@ -132,6 +136,11 @@ export type Produto = {
   // saldo/preco atualizado de cada tamanho, ja que nao existe mais um produto.id proprio por
   // tamanho depois da fusao.
   gruposBlingPorTamanho?: Record<string, string[]>;
+  // Mesma ideia de gruposBlingPorTamanho, mas pra produtos fundidos por COR+tamanho
+  // (convencao VER26, ver extrairCorTamanhoDoNomeProduto em lib/blingParse.ts) - um nivel a
+  // mais (cor -> tamanho -> ids Bling), porque esses produtos podem ter mais de uma cor de
+  // verdade. So' um dos dois campos vem preenchido por produto, nunca os dois.
+  gruposBlingPorCorTamanho?: Record<string, Record<string, string[]>>;
   // Preco de venda ORIGINAL do Bling - so' vem preenchido quando "preco" acima foi
   // substituido por um preco especial cadastrado no painel /admin/produtos (ver
   // lib/produtoConfig.ts). Usado pra mostrar o "de/por" riscado no card e na pagina do
