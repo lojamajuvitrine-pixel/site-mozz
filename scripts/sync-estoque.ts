@@ -128,6 +128,65 @@ function atualizarProdutoFundido(
   return mudou;
 }
 
+// Equivalente a atualizarProdutoFundido acima, mas pra produtos fundidos por COR+tamanho
+// (gruposBlingPorCorTamanho, convencao VER26 - ver scripts/sync-bling.ts). Atualiza CADA cor
+// separadamente (o caminho antigo so' mexia em produto.cores[0], que bastava enquanto todo
+// produto fundido tinha uma cor so' - aqui pode ter mais de uma, entao teria deixado as
+// outras cores com estoque desatualizado se reusasse a funcao de cima sem adaptar).
+function atualizarProdutoFundidoPorCor(
+  produto: Produto,
+  grupos: Map<number, ProdutoBlingLista[]>,
+  novosDisponiveis: Map<string, Set<string>>
+): boolean {
+  let mudou = false;
+  const gruposPorCor = produto.gruposBlingPorCorTamanho ?? {};
+  const precosEmEstoqueGeral: number[] = [];
+  const precosTodosGeral: number[] = [];
+
+  for (const cor of produto.cores ?? []) {
+    const gruposPorTamanho = gruposPorCor[cor.cor] ?? {};
+    const disponiveisNovo: string[] = [];
+
+    for (const tamanho of Object.keys(gruposPorTamanho)) {
+      const skusDoTamanho = gruposPorTamanho[tamanho].flatMap((id) => grupos.get(Number(id)) ?? []);
+      for (const s of skusDoTamanho) precosTodosGeral.push(s.preco);
+
+      const temEstoqueTamanho = skusDoTamanho.some((s) => (s.estoque?.saldoVirtualTotal ?? 0) > 0);
+      if (temEstoqueTamanho) {
+        disponiveisNovo.push(tamanho);
+        precosEmEstoqueGeral.push(skusDoTamanho[0].preco);
+      }
+    }
+
+    const disponivelAtual = [...(cor.tamanhosDisponiveis ?? cor.tamanhos)].sort();
+    const disponivelOrdenado = [...disponiveisNovo].sort();
+    if (JSON.stringify(disponivelAtual) !== JSON.stringify(disponivelOrdenado)) {
+      registrarNovosDisponiveis(novosDisponiveis, produto.id, disponivelAtual, disponivelOrdenado);
+      cor.tamanhosDisponiveis = disponiveisNovo;
+      mudou = true;
+    }
+  }
+
+  const temEstoqueNovo = (produto.cores ?? []).some((c) => (c.tamanhosDisponiveis ?? []).length > 0);
+  const precoNovo =
+    precosEmEstoqueGeral.length > 0
+      ? Math.min(...precosEmEstoqueGeral)
+      : precosTodosGeral.length > 0
+        ? Math.min(...precosTodosGeral)
+        : produto.preco;
+
+  if (produto.preco !== precoNovo) {
+    produto.preco = precoNovo;
+    mudou = true;
+  }
+  if (produto.temEstoque !== temEstoqueNovo) {
+    produto.temEstoque = temEstoqueNovo;
+    mudou = true;
+  }
+
+  return mudou;
+}
+
 async function main() {
   console.log("Sync rapido de preco/estoque (sem fotos/marca/descricao)...");
 
@@ -151,6 +210,10 @@ async function main() {
   const novosDisponiveis = new Map<string, Set<string>>();
 
   for (const produto of atual) {
+    if (produto.gruposBlingPorCorTamanho) {
+      if (atualizarProdutoFundidoPorCor(produto, grupos, novosDisponiveis)) atualizados++;
+      continue;
+    }
     if (produto.gruposBlingPorTamanho) {
       if (atualizarProdutoFundido(produto, grupos, novosDisponiveis)) atualizados++;
       continue;
