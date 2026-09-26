@@ -7573,7 +7573,10 @@
     "cores": [
       {
         "cor": "Branco",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16623407384--branco--0.jpg",
+          "/produtos/16623407384--branco--1.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -7590,7 +7593,10 @@
       },
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16623407384--preto--0.jpg",
+          "/produtos/16623407384--preto--1.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -7606,7 +7612,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16623407384--branco--0.jpg",
     "temEstoque": true
   },
   {
@@ -24893,7 +24899,7 @@
     "marca": "Foxton",
     "preco": 448,
     "novo": false,
-    "descricao": "",
+    "descricao": "A Bermuda Masculina Chino Casual é uma peça de sarja tinturada com elastano que possui modelagem casual em  corte de alfaiataria.  Com bolsos frontais faca e bolsos traseiros de alfaiataria com abotoamento externo, esta bermuda combina funcionalidade e estilo. O fecho frontal com zíper de metal e botão, juntamente com os passadores de cinto no cós, garantem um ajuste seguro e personalizado. Essa peça é funcional, versátil e indispensável no guarda-roupa do homem urbano contemporâneo, , ideal para combinar com  &lt;a href=\"https://www.foxtonbrasil.com.br/moda-masculina/camisas?O=OrderByscoreDESC\" style=\"max-width: 100%; font-family: __FONT_0649b7, __FONT_Fallback_0649b7; text-decoration: none; font-size: 13px;\"&gt;camisas&lt;/a&gt;  de botão.",
     "cores": [
       {
         "cor": "Aveia",
@@ -24927,7 +24933,14 @@
       },
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708159273--unico--0.jpg",
+          "/produtos/16708159273--unico--1.jpg",
+          "/produtos/16708159273--unico--2.jpg",
+          "/produtos/16708159273--unico--3.jpg",
+          "/produtos/16708159273--unico--4.jpg",
+          "/produtos/16708159273--unico--5.jpg"
+        ],
         "tamanhos": [
           "40",
           "42",
@@ -24940,7 +24953,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708159273--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Aveia": {
@@ -24987,7 +25000,8 @@
     "marca": "Foxton",
     "preco": 298,
     "novo": false,
-    "descricao": "",
+    "descricao": "O Short Praia Calor apresenta uma modelagem clássica para os dias de praia e lazer. O elástico na cintura estabelece uma solução simples de ajuste, enquanto as opções de cor permitem escolher a leitura que melhor conversa com o restante da produção. O desenho essencial mantém o foco em praticidade e leveza visual\nA composição reúne 93% de poliéster e 7% de elastano. Essa base acompanha a proposta de um short de água e adiciona flexibilidade à construção. A cintura elástica reforça o caráter descomplicado da peça, criando uma forma fácil de vestir e adequada a momentos em que mobilidade e conforto são prioridades\nEstilo e uso\nDetalhes:\nShort de água para praia\nModelagem clássica\nElástico na cintura\nDisponível em opções de cor\n93% poliéster e 7% elastano",
+    "composicao": "reúne 93% de poliéster e 7% de elastano. Essa base acompanha a proposta de um short de água e adiciona flexibilidade à construção. A cintura elástica reforça o caráter descomplicado da peça, criando uma forma fácil de vestir e adequada a momentos em que mobilidade e conforto são prioridades",
     "cores": [
       {
         "cor": "Caqui",
@@ -25007,7 +25021,14 @@
       },
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708157520--unico--0.jpg",
+          "/produtos/16708157520--unico--1.jpg",
+          "/produtos/16708157520--unico--2.jpg",
+          "/produtos/16708157520--unico--3.jpg",
+          "/produtos/16708157520--unico--4.jpg",
+          "/produtos/16708157520--unico--5.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -25023,7 +25044,14 @@
       },
       {
         "cor": "Azul Marinho",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708157221--unico--0.jpg",
+          "/produtos/16708157221--unico--1.jpg",
+          "/produtos/16708157221--unico--2.jpg",
+          "/produtos/16708157221--unico--3.jpg",
+          "/produtos/16708157221--unico--4.jpg",
+          "/produtos/16708157221--unico--5.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -25038,7 +25066,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708157520--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Caqui": {
@@ -25238,11 +25266,15 @@
     "marca": "Foxton",
     "preco": 128,
     "novo": false,
-    "descricao": "",
+    "descricao": "A Cueca Pima reúne a modelagem boxer tradicional e o toque leve do algodão pima. A presença de elastano complementa a composição e favorece uma peça preparada para acompanhar o corpo com conforto. Sua proposta é essencial e refinada: uma roupa íntima de linhas conhecidas, valorizada pela maciez característica do material informado\nCom 97% de algodão e 3% de elastano, a peça combina predominância de fibra natural com uma pequena parcela elástica. Essa relação sustenta a sensação suave mencionada para o algodão pima e acrescenta flexibilidade ao uso. A modelagem boxer oferece cobertura tradicional e uma leitura discreta para o dia a dia\nEstilo e uso\nDetalhes:\nCueca em algodão pima\nModelagem boxer tradicional\nToque leve e macio\n97% algodão e 3% elastano",
+    "composicao": "e favorece uma peça preparada para acompanhar o corpo com conforto. Sua proposta é essencial e refinada: uma roupa íntima de linhas conhecidas, valorizada pela maciez característica do material informado",
     "cores": [
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708080093--unico--0.jpg",
+          "/produtos/16708080093--unico--1.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -25258,7 +25290,10 @@
       },
       {
         "cor": "Branco",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708078765--unico--0.jpg",
+          "/produtos/16708078765--unico--1.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -25273,7 +25308,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708080093--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Preto": {
@@ -25312,11 +25347,15 @@
     "marca": "Foxton",
     "preco": 59,
     "novo": false,
-    "descricao": "",
+    "descricao": "A Meia Invisível Foxton foi desenhada para proteger os pés sem aparecer no calçado. Sua construção sem cano atende a produções que pedem tornozelos livres visualmente, mantendo a função de uma meia em uma forma reduzida. É uma solução discreta para composições leves, especialmente quando o calçado deve permanecer em evidência\nA peça é composta por 97% de algodão e 3% de elastano. A predominância do algodão orienta sua identidade material, enquanto o elastano complementa a estrutura com flexibilidade. O formato invisível é o elemento central do produto e deve ser considerado na escolha de calçados que acomodem esse tipo de meia\nEstilo e uso\nDetalhes:\nMeia sem cano\nFormato invisível no calçado\nCriada para proteger os pés sem aparecer\n97% algodão e 3% elastano",
     "cores": [
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708077230--unico--0.jpg",
+          "/produtos/16708077230--unico--1.jpg",
+          "/produtos/16708077230--unico--2.jpg"
+        ],
         "tamanhos": [
           "U"
         ],
@@ -25335,7 +25374,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708077230--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Preto": {
@@ -27081,7 +27120,7 @@
           "38"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "38"
         ]
       }
     ],
@@ -27108,7 +27147,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "M"
         ]
       }
     ],
@@ -27136,7 +27175,7 @@
           "U"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "U"
         ]
       }
     ],
@@ -27584,7 +27623,7 @@
           "36"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "36"
         ]
       }
     ],
@@ -27804,7 +27843,7 @@
           "38"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "38"
         ]
       }
     ],
@@ -27826,7 +27865,7 @@
           "U"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "U"
         ]
       }
     ],
@@ -27854,7 +27893,7 @@
           "U"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "U"
         ]
       }
     ],
@@ -28184,7 +28223,7 @@
           "34"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "34"
         ]
       }
     ],
@@ -28206,7 +28245,7 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "P"
         ]
       }
     ],
@@ -28228,7 +28267,7 @@
           "34"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "34"
         ]
       }
     ],
@@ -28303,7 +28342,7 @@
           "U"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "U"
         ]
       }
     ],
@@ -28520,11 +28559,17 @@
     "marca": "Foxton",
     "preco": 298,
     "novo": false,
-    "descricao": "",
+    "descricao": "A  camisa Manga Curta Buzios  é confeccionada em  malha de algodão com superfície texturizada sem elasticidade . A peça solta ao corpo possui colarinho clássico, mangas curtas, logo da marca bordado na altura do tórax, recorte posterior e fechamento frontal por botões. - Superfície texturizada - Colarinho clássico - Mangas curtas - Logo bordado - Fechamento por botões",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708215449--unico--0.jpg",
+          "/produtos/16708215449--unico--1.jpg",
+          "/produtos/16708215449--unico--2.jpg",
+          "/produtos/16708215449--unico--3.jpg",
+          "/produtos/16708215449--unico--4.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -28539,7 +28584,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708215449--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "GG": [
@@ -28571,7 +28616,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "G"
         ]
       }
     ],
@@ -28736,7 +28781,7 @@
           "36"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "36"
         ]
       }
     ],
@@ -29007,7 +29052,7 @@
           "U"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "U"
         ]
       }
     ],
@@ -29307,7 +29352,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "M"
         ]
       }
     ],
@@ -29361,20 +29406,25 @@
     "marca": "NV",
     "preco": 1398,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionado em alfaiataria com toque de lã\nModelagem regular\nGola regular com lapela\nFechamento transpassado com botões\nManga longa\nBolsos frontais com lapela\nBolso embutido no peito\nBarra reta\nO Blazer Zoe é um clássico com jeito atual. Com shape regular e um toque de lã, o caimento é impecável. Uma peça versátil que transita em qualquer ocasião com muita elegância.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706665860--unico--0.jpg",
+          "/produtos/16706665860--unico--1.jpg",
+          "/produtos/16706665860--unico--2.jpg",
+          "/produtos/16706665860--unico--3.jpg"
+        ],
         "tamanhos": [
           "M"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "M"
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706665860--unico--0.jpg",
     "temEstoque": true
   },
   {
@@ -29462,11 +29512,16 @@
     "marca": "NV",
     "preco": 1598,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionado em alfaiataria\nCom modelagem regular\nGola regular\nFechamento com botões\nManga longa\nBolsos embutidos\nBarra reta\nCom caimento impecável, o blazer Esther é sofisticado e clássico. Em acetato e viscose, tem um toque suave e estrutura elegante. É um indispensável para o seu closet.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706664494--unico--0.jpg",
+          "/produtos/16706664494--unico--1.jpg",
+          "/produtos/16706664494--unico--2.jpg",
+          "/produtos/16706664494--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -29479,7 +29534,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706664494--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "PP": [
@@ -29531,11 +29586,16 @@
     "marca": "NV",
     "preco": 998,
     "novo": false,
-    "descricao": "",
+    "descricao": "Feito em tecido alfaiatado\nModelagem reta\nComprimento longo\nCintura alta\nCós com passantes\nCom cinto e fivela metálica\nPossui pregas frontais\nBolsos faca\nBarra reta\nA Calça Lovani, é um clássico da NV, feita com um tecido alfaiatado. Ela tem toque suave e caimento impecável. Sua modelagem reta e cintura alta esculpem a silhueta com sofisticação. Com pregas frontais e cinto ajustável com fivela metálica, é a peça-chave do closet.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706523482--unico--0.jpg",
+          "/produtos/16706523482--unico--1.jpg",
+          "/produtos/16706523482--unico--2.jpg",
+          "/produtos/16706523482--unico--3.jpg"
+        ],
         "tamanhos": [
           "32",
           "34",
@@ -29552,7 +29612,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706523482--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "32": [
@@ -29809,7 +29869,7 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "P"
         ]
       }
     ],
@@ -30157,11 +30217,16 @@
     "marca": "NV",
     "preco": 998,
     "novo": false,
-    "descricao": "",
+    "descricao": "Feito em tecido alfaiatado\nModelagem reta\nComprimento longo\nCintura alta\nCós com passantes\nCom cinto e fivela metálica\nPossui pregas frontais\nBolsos faca\nBarra reta\nA Calça Lovani, é um clássico da NV, feita com um tecido alfaiatado. Ela tem toque suave e caimento impecável. Sua modelagem reta e cintura alta esculpem a silhueta com sofisticação. Com pregas frontais e cinto ajustável com fivela metálica, é a peça-chave do closet.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706336126--unico--0.jpg",
+          "/produtos/16706336126--unico--1.jpg",
+          "/produtos/16706336126--unico--2.jpg",
+          "/produtos/16706336126--unico--3.jpg"
+        ],
         "tamanhos": [
           "32",
           "34",
@@ -30175,7 +30240,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706336126--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "32": [
@@ -30349,7 +30414,7 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "P"
         ]
       }
     ],
@@ -30532,7 +30597,7 @@
           "36"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "36"
         ]
       }
     ],
@@ -30676,11 +30741,15 @@
     "marca": "NV",
     "preco": 1398,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionado em alfaiataria com toque de lã\nModelagem regular\nGola regular com lapela\nFechamento transpassado com botões\nManga longa\nBolsos frontais com lapela\nBolso embutido no peito\nBarra reta\nO Blazer Zoe é um clássico com jeito atual. Com shape regular e um toque de lã, o caimento é impecável. Uma peça versátil que transita em qualquer ocasião com muita elegância.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706194718--unico--0.jpg",
+          "/produtos/16706194718--unico--1.jpg",
+          "/produtos/16706194718--unico--2.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -30693,7 +30762,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706194718--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "M": [
@@ -30873,7 +30942,7 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "40"
         ]
       }
     ],
@@ -31126,7 +31195,7 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "P"
         ]
       }
     ],
@@ -31148,7 +31217,7 @@
           "34"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "34"
         ]
       }
     ],
@@ -31275,7 +31344,7 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "P"
         ]
       }
     ],
@@ -31406,9 +31475,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "P",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -31643,7 +31712,7 @@
           "PP"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "PP"
         ]
       }
     ],
@@ -31665,7 +31734,7 @@
           "36"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "36"
         ]
       }
     ],
@@ -31687,7 +31756,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "M"
         ]
       }
     ],
@@ -31987,7 +32056,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "M"
         ]
       }
     ],
@@ -32009,7 +32078,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "M"
         ]
       }
     ],
@@ -32083,7 +32152,7 @@
           "32"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "32"
         ]
       }
     ],
@@ -35067,7 +35136,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "G"
         ]
       }
     ],
@@ -36151,7 +36220,7 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "40"
         ]
       }
     ],
@@ -36221,7 +36290,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "G"
         ]
       }
     ],
@@ -36269,7 +36338,7 @@
           "U"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "U"
         ]
       }
     ],
@@ -36292,7 +36361,7 @@
           "PP"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "PP"
         ]
       }
     ],
@@ -36315,7 +36384,7 @@
           "36"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "36"
         ]
       }
     ],
@@ -36359,7 +36428,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "G"
         ]
       }
     ],
@@ -36382,7 +36451,7 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "40"
         ]
       }
     ],
@@ -36405,7 +36474,7 @@
           "34"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "34"
         ]
       }
     ],
@@ -36470,7 +36539,7 @@
           "U"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "U"
         ]
       }
     ],
@@ -36493,7 +36562,7 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "42"
         ]
       }
     ],
