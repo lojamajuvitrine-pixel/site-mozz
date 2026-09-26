@@ -99,6 +99,36 @@ export function extrairCorTamanhoDoNomeProduto(
   };
 }
 
+// Tabela codigo->nome de cor, por marca (fonte de verdade: doc "codigos-cor-produtos.md" no
+// projeto ADM MOZZ - atualizar os dois juntos quando o Brunno mandar codigo novo). Usada por
+// fundirVariantesPorCorETamanho (sync-bling.ts) pra trocar o codigo cru extraido do nome (ex:
+// "0013") pelo nome real da cor (ex: "Preto") antes de salvar em data/produtos.json - e' esse
+// nome que aparece pro cliente (texto "Cor: ___" e bolinha de cor em SeletorProduto.tsx, via
+// corAproximada em lib/cor.ts) em vez do codigo cru. Mesmo numero pode significar cores
+// diferentes em marcas diferentes, por isso a chave e' sempre marca+codigo, nunca so' codigo.
+// Um codigo que ainda nao esta' aqui simplesmente nao e' trocado (nomeCorPorCodigo devolve o
+// proprio codigo de volta) - nao quebra nada, so' continua mostrando o codigo cru ate' alguem
+// completar a tabela.
+const CODIGOS_COR_POR_MARCA: Record<string, Record<string, string>> = {
+  Foxton: {
+    "0001": "Branco",
+    "5179": "Grafite",
+    "0013": "Preto",
+    "00409": "Mogno",
+    "2119": "Verde Oliva",
+    "0278": "Caqui",
+    "1605": "Eucalipto",
+    "8213": "Aveia",
+    "32325": "Vermelho Outono",
+    "00416": "Azul Ink",
+    "0184": "Azul Marinho"
+  }
+};
+
+export function nomeCorPorCodigo(marca: string, codigo: string): string {
+  return CODIGOS_COR_POR_MARCA[marca]?.[codigo] ?? codigo;
+}
+
 export type SkuComEstoque = { nome: string; estoque?: { saldoVirtualTotal: number } };
 
 // Pra uma cor especifica de um produto, calcula quais tamanhos tem saldo em estoque AGORA,
