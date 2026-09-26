@@ -70,15 +70,21 @@ export function extrairTamanhoDoNomeProduto(nome: string): { base: string; taman
 // produto-pai separado no Bling, com o nome no padrao:
 //   "{Nome base} VER26 - {codigo da cor} - {tamanho}"
 // Exemplos reais: "Camisa ML Linho Lumiar VER26 - 0013 - GG", "Tshirt Pima Flex Fit VER26 -
-// 0001 - P". O codigo da cor e' um numero de 3-4 digitos, sem nome associado por enquanto -
-// o site mostra o proprio codigo ate' existir uma tabela codigo->nome de verdade.
+// 0001 - P". O codigo da cor e' um numero de 3 a 6 digitos (a Foxton usa tanto codigo de 4
+// digitos, tipo "0013", quanto de 5, tipo "00409" ou "32320" - ver
+// codigos-cor-produtos.md), sem nome associado por enquanto - o site mostra o proprio codigo
+// ate' existir uma tabela codigo->nome de verdade.
 // So' reconhece o padrao (nao decide se funde - responsabilidade de quem chama, igual
 // extrairTamanhoDoNomeProduto acima. Precisa rodar ANTES dela na fusao, ver sync-bling.ts,
 // senao "- 0013 - GG" seria lido como um sufixo so' e o "- 0013" ficaria preso no nome-base).
+// Bug encontrado em 26/09/2026: o limite original era so' 3-4 digitos, e' por isso que
+// "Camisa ML Linho Lumiar VER26 - 32320 - GG" (codigo de 5 digitos) nao fundia com as outras
+// cores da mesma peca - o "- 32320" caia pro nome-base em vez de virar cor, e essa peca
+// virava um produto separado no site (bug reportado pelo Brunno em 26/09/2026).
 export function extrairCorTamanhoDoNomeProduto(
   nome: string
 ): { base: string; corCodigo: string; tamanho: string } | null {
-  const m = nome.match(/^(.*)\s-\s*(\d{3,4})\s-\s*([A-Za-zÀ-ú0-9]{1,4})$/);
+  const m = nome.match(/^(.*)\s-\s*(\d{3,6})\s-\s*([A-Za-zÀ-ú0-9]{1,4})$/);
   if (!m) return null;
 
   const tokenBruto = m[3].trim();
