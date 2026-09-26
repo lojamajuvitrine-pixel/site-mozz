@@ -96,6 +96,7 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
   const [busca, setBusca] = useState("");
   const [soSemFoto, setSoSemFoto] = useState(false);
   const [soDesativadas, setSoDesativadas] = useState(false);
+  const [marcaFiltro, setMarcaFiltro] = useState("");
   const [estados, setEstados] = useState<Record<string, EstadoLinha>>(() =>
     Object.fromEntries(produtosIniciais.map((p) => [p.id, estadoInicial(p)]))
   );
@@ -103,15 +104,26 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
   const totalSemFoto = useMemo(() => produtosIniciais.filter((p) => !p.imagem).length, [produtosIniciais]);
   const totalDesativadas = useMemo(() => produtosIniciais.filter((p) => !p.ativo).length, [produtosIniciais]);
 
+  // Lista de marcas presentes no catalogo agora, com quantas pecas cada uma tem - pra montar o
+  // filtro abaixo e o Brunno ver de cara onde tem mais peca pra revisar. Ordem alfabetica.
+  const marcasDisponiveis = useMemo(() => {
+    const contagem = new Map<string, number>();
+    for (const p of produtosIniciais) {
+      contagem.set(p.marca, (contagem.get(p.marca) ?? 0) + 1);
+    }
+    return Array.from(contagem.entries()).sort((a, b) => a[0].localeCompare(b[0], "pt-BR"));
+  }, [produtosIniciais]);
+
   const listaFiltrada = useMemo(() => {
     const termo = normalizarTexto(busca.trim());
     return produtosIniciais.filter((p) => {
+      if (marcaFiltro && p.marca !== marcaFiltro) return false;
       if (soSemFoto && p.imagem) return false;
       if (soDesativadas && p.ativo) return false;
       if (!termo) return true;
       return normalizarTexto(p.nome).includes(termo) || normalizarTexto(p.marca).includes(termo);
     });
-  }, [produtosIniciais, busca, soSemFoto, soDesativadas]);
+  }, [produtosIniciais, busca, soSemFoto, soDesativadas, marcaFiltro]);
 
   function atualizarEstado(id: string, alteracao: Partial<EstadoLinha>) {
     setEstados((atual) => ({ ...atual, [id]: { ...atual[id], ...alteracao, salvoAgora: false, erro: null } }));
@@ -216,6 +228,18 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
           placeholder="Buscar por nome ou marca..."
           className="border border-black/20 px-3 py-2 text-[14.5px] w-full max-w-sm"
         />
+        <select
+          value={marcaFiltro}
+          onChange={(e) => setMarcaFiltro(e.target.value)}
+          className="border border-black/20 px-3 py-2 text-[13.5px] bg-white"
+        >
+          <option value="">Todas as marcas ({produtosIniciais.length})</option>
+          {marcasDisponiveis.map(([marca, quantidade]) => (
+            <option key={marca} value={marca}>
+              {marca} ({quantidade})
+            </option>
+          ))}
+        </select>
         <label className="flex items-center gap-1.5 text-[13.5px] text-mozz-gray cursor-pointer">
           <input
             type="checkbox"
