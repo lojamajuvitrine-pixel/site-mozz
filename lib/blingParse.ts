@@ -121,7 +121,8 @@ const CODIGOS_COR_POR_MARCA: Record<string, Record<string, string>> = {
     "8213": "Aveia",
     "32325": "Vermelho Outono",
     "00416": "Azul Ink",
-    "0184": "Azul Marinho"
+    "0184": "Azul Marinho",
+    "0830": "Verde Oliva"
   }
 };
 
