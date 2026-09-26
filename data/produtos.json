@@ -18550,7 +18550,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
           "P"
         ]
       }
@@ -23191,7 +23190,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "0184",
+        "cor": "Azul Marinho",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -23206,7 +23205,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0184": {
+      "Azul Marinho": {
         "M": [
           "16710125526"
         ],
@@ -23222,11 +23221,18 @@
     "marca": "Foxton",
     "preco": 548,
     "novo": false,
-    "descricao": "",
+    "descricao": "Entre precisão casual e facilidade de uso, a Bermuda Flexus foi pensada para dar consistência às escolhas do dia a dia. Sua proposta valoriza uma imagem cuidada sem excessos, fazendo da bermuda um ponto de equilíbrio entre conforto, presença e versatilidade\nA malha compactada reúne durabilidade e conforto, com meio cós elástico e pregas frontais desenhadas sem adicionar volume. A escolha valoriza a categoria da peça e preserva uma leitura coerente, sem elementos gratuitos, para que forma e material tenham protagonismo no visual\nMais do que responder a uma única ocasião, a peça foi concebida para ampliar combinações. Seu desenho permite repetir o uso com novas leituras, favorecendo escolhas conscientes e um armário coeso. É essa capacidade de adaptação que transforma um item casual em presença recorrente",
     "cores": [
       {
-        "cor": "0184",
-        "imagens": [],
+        "cor": "Azul Marinho",
+        "imagens": [
+          "/produtos/16710121291--unico--0.jpg",
+          "/produtos/16710121291--unico--1.jpg",
+          "/produtos/16710121291--unico--2.jpg",
+          "/produtos/16710121291--unico--3.jpg",
+          "/produtos/16710121291--unico--4.jpg",
+          "/produtos/16710121291--unico--5.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -23239,8 +23245,15 @@
         ]
       },
       {
-        "cor": "0278",
-        "imagens": [],
+        "cor": "Caqui",
+        "imagens": [
+          "/produtos/16710120710--unico--0.jpg",
+          "/produtos/16710120710--unico--1.jpg",
+          "/produtos/16710120710--unico--2.jpg",
+          "/produtos/16710120710--unico--3.jpg",
+          "/produtos/16710120710--unico--4.jpg",
+          "/produtos/16710120710--unico--5.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -23254,7 +23267,14 @@
       },
       {
         "cor": "0830",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16710120134--unico--0.jpg",
+          "/produtos/16710120134--unico--1.jpg",
+          "/produtos/16710120134--unico--2.jpg",
+          "/produtos/16710120134--unico--3.jpg",
+          "/produtos/16710120134--unico--4.jpg",
+          "/produtos/16710120134--unico--5.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -23267,10 +23287,10 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16710121291--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0184": {
+      "Azul Marinho": {
         "G": [
           "16710121291"
         ],
@@ -23281,7 +23301,7 @@
           "16710121136"
         ]
       },
-      "0278": {
+      "Caqui": {
         "G": [
           "16710120710"
         ],
@@ -23315,7 +23335,7 @@
     "composicao": "declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
     "cores": [
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [
           "/produtos/16710112712--unico--0.jpg",
           "/produtos/16710112712--unico--1.jpg",
@@ -23339,7 +23359,7 @@
     "imagem": "/produtos/16710112712--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0013": {
+      "Preto": {
         "GG": [
           "16710112712"
         ],
@@ -23358,11 +23378,18 @@
     "marca": "Foxton",
     "preco": 448,
     "novo": false,
-    "descricao": "",
+    "descricao": "A Polo Piquet Pima explora a textura característica da malha piquet em uma construção de algodão pima com elastano. A estrutura respirável facilita a secagem, enquanto a composição flexível acompanha os movimentos. É uma polo de manga curta que reúne aparência clássica, conforto e praticidade para diferentes momentos do cotidiano\nA modelagem regular preserva uma proporção familiar e facilita a inclusão da peça em combinações variadas. Com 96% de algodão e 4% de elastano, a polo mantém a predominância da fibra natural e ganha mobilidade. O relevo do piquet acrescenta profundidade visual sem depender de estampas ou excessos",
+    "composicao": "flexível acompanha os movimentos. É uma polo de manga curta que reúne aparência clássica, conforto e praticidade para diferentes momentos do cotidiano",
     "cores": [
       {
-        "cor": "0001",
-        "imagens": [],
+        "cor": "Branco",
+        "imagens": [
+          "/produtos/16710105273--unico--0.jpg",
+          "/produtos/16710105273--unico--1.jpg",
+          "/produtos/16710105273--unico--2.jpg",
+          "/produtos/16710105273--unico--3.jpg",
+          "/produtos/16710105273--unico--4.jpg"
+        ],
         "tamanhos": [
           "G",
           "GG"
@@ -23373,8 +23400,14 @@
         ]
       },
       {
-        "cor": "2119",
-        "imagens": [],
+        "cor": "Verde Oliva",
+        "imagens": [
+          "/produtos/16708211921--unico--0.jpg",
+          "/produtos/16708211921--unico--1.jpg",
+          "/produtos/16708211921--unico--2.jpg",
+          "/produtos/16708211921--unico--3.jpg",
+          "/produtos/16708211921--unico--4.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -23389,8 +23422,14 @@
         ]
       },
       {
-        "cor": "0013",
-        "imagens": [],
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16708158612--unico--0.jpg",
+          "/produtos/16708158612--unico--1.jpg",
+          "/produtos/16708158612--unico--2.jpg",
+          "/produtos/16708158612--unico--3.jpg",
+          "/produtos/16708158612--unico--4.jpg"
+        ],
         "tamanhos": [
           "M",
           "G",
@@ -23405,10 +23444,18 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16710105273--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "2119": {
+      "Branco": {
+        "GG": [
+          "16710105273"
+        ],
+        "G": [
+          "16710105063"
+        ]
+      },
+      "Verde Oliva": {
         "GG": [
           "16708211921"
         ],
@@ -23422,15 +23469,7 @@
           "16708211892"
         ]
       },
-      "0001": {
-        "GG": [
-          "16710105273"
-        ],
-        "G": [
-          "16710105063"
-        ]
-      },
-      "0013": {
+      "Preto": {
         "XG": [
           "16708158612"
         ],
@@ -23455,7 +23494,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "1605",
+        "cor": "Eucalipto",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -23471,7 +23510,7 @@
         ]
       },
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -23490,7 +23529,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "1605": {
+      "Eucalipto": {
         "GG": [
           "16708997478"
         ],
@@ -23504,7 +23543,7 @@
           "16708997246"
         ]
       },
-      "0013": {
+      "Preto": {
         "GG": [
           "16708997058"
         ],
@@ -23526,11 +23565,19 @@
     "marca": "Foxton",
     "preco": 648,
     "novo": false,
-    "descricao": "",
+    "descricao": "Com desenho direcionado ao uso urbano, a Calça Puro Linho Pier ganha identidade por meio de modelagem regular. O resultado é uma calça que organiza a produção com clareza e permite explorar diferentes graus de formalidade. Seu perfil parte de características objetivas do produto, criando uma alternativa relevante para renovar combinações cotidianas sem abandonar uma estética precisa\nOs atributos confirmados reforçam essa proposta: cós de elástico com cadarço, bolsos faca frontais e bolsos traseiros com botões, 100% linho. Em conjunto, essas informações ajudam a entender tanto a sensação esperada no uso quanto a forma de inserir a peça no guarda-roupa. A composição deve ser considerada como parte essencial da escolha, especialmente para quem valoriza materiais declarados com transparência e uma modelagem coerente com a identidade do produto",
+    "composicao": "deve ser considerada como parte essencial da escolha, especialmente para quem valoriza materiais declarados com transparência e uma modelagem coerente com a identidade do produto",
     "cores": [
       {
-        "cor": "0013",
-        "imagens": [],
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16708973813--unico--0.jpg",
+          "/produtos/16708973813--unico--1.jpg",
+          "/produtos/16708973813--unico--2.jpg",
+          "/produtos/16708973813--unico--3.jpg",
+          "/produtos/16708973813--unico--4.jpg",
+          "/produtos/16708973813--unico--5.jpg"
+        ],
         "tamanhos": [
           "P",
           "G",
@@ -23543,7 +23590,7 @@
         ]
       },
       {
-        "cor": "0278",
+        "cor": "Caqui",
         "imagens": [],
         "tamanhos": [
           "M",
@@ -23555,10 +23602,10 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708973813--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0013": {
+      "Preto": {
         "GG": [
           "16708973813"
         ],
@@ -23569,7 +23616,7 @@
           "16708973676"
         ]
       },
-      "0278": {
+      "Caqui": {
         "GG": [
           "16708213784"
         ],
@@ -23589,7 +23636,7 @@
     "composicao": "divide-se igualmente entre algodão e acrílico. Essa base sustenta o trabalho do tricot e permite que o quadrilê apareça como principal assinatura estética. As opções de cor ampliam as possibilidades de coordenação, mas a força da peça permanece na superfície trabalhada e na maneira como ela atualiza a gola polo",
     "cores": [
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [
           "/produtos/16708972685--unico--0.jpg",
           "/produtos/16708972685--unico--1.jpg",
@@ -23615,7 +23662,7 @@
     "imagem": "/produtos/16708972685--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0013": {
+      "Preto": {
         "G": [
           "16708972685"
         ],
@@ -23640,7 +23687,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "0278",
+        "cor": "Caqui",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -23656,7 +23703,7 @@
         ]
       },
       {
-        "cor": "0001",
+        "cor": "Branco",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -23675,7 +23722,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0278": {
+      "Caqui": {
         "GG": [
           "16708970266"
         ],
@@ -23689,7 +23736,7 @@
           "16708969602"
         ]
       },
-      "0001": {
+      "Branco": {
         "GG": [
           "16708217927"
         ],
@@ -23714,7 +23761,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "0001",
+        "cor": "Branco",
         "imagens": [],
         "tamanhos": [
           "M",
@@ -23742,7 +23789,7 @@
         ]
       },
       {
-        "cor": "2119",
+        "cor": "Verde Oliva",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -23758,7 +23805,7 @@
         ]
       },
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -23773,7 +23820,7 @@
         ]
       },
       {
-        "cor": "8213",
+        "cor": "Aveia",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -23790,7 +23837,29 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "2119": {
+      "2216": {
+        "G": [
+          "16708216486"
+        ],
+        "P": [
+          "16708216475"
+        ],
+        "M": [
+          "16708154503"
+        ]
+      },
+      "Branco": {
+        "GG": [
+          "16708968693"
+        ],
+        "G": [
+          "16708216754"
+        ],
+        "M": [
+          "16708216739"
+        ]
+      },
+      "Verde Oliva": {
         "GG": [
           "16708213239"
         ],
@@ -23804,40 +23873,7 @@
           "16708213222"
         ]
       },
-      "2216": {
-        "G": [
-          "16708216486"
-        ],
-        "P": [
-          "16708216475"
-        ],
-        "M": [
-          "16708154503"
-        ]
-      },
-      "8213": {
-        "G": [
-          "16707862153"
-        ],
-        "M": [
-          "16707862138"
-        ],
-        "P": [
-          "16707862042"
-        ]
-      },
-      "0001": {
-        "GG": [
-          "16708968693"
-        ],
-        "G": [
-          "16708216754"
-        ],
-        "M": [
-          "16708216739"
-        ]
-      },
-      "0013": {
+      "Preto": {
         "GG": [
           "16708212760"
         ],
@@ -23849,6 +23885,17 @@
         ],
         "P": [
           "16708212719"
+        ]
+      },
+      "Aveia": {
+        "G": [
+          "16707862153"
+        ],
+        "M": [
+          "16707862138"
+        ],
+        "P": [
+          "16707862042"
         ]
       }
     }
@@ -24491,7 +24538,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "2119",
+        "cor": "Verde Oliva",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24509,7 +24556,7 @@
         ]
       },
       {
-        "cor": "0001",
+        "cor": "Branco",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24527,7 +24574,7 @@
         ]
       },
       {
-        "cor": "1605",
+        "cor": "Eucalipto",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24545,7 +24592,7 @@
         ]
       },
       {
-        "cor": "0278",
+        "cor": "Caqui",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24563,7 +24610,7 @@
         ]
       },
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24581,7 +24628,7 @@
         ]
       },
       {
-        "cor": "5179",
+        "cor": "Grafite",
         "imagens": [],
         "tamanhos": [
           "M",
@@ -24598,24 +24645,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "1605": {
-        "GG": [
-          "16708216866"
-        ],
-        "M": [
-          "16708216862"
-        ],
-        "P": [
-          "16708216847"
-        ],
-        "XG": [
-          "16708212588"
-        ],
-        "G": [
-          "16708159124"
-        ]
-      },
-      "2119": {
+      "Verde Oliva": {
         "G": [
           "16708266191"
         ],
@@ -24632,18 +24662,7 @@
           "16707364428"
         ]
       },
-      "5179": {
-        "GG": [
-          "16707858352"
-        ],
-        "G": [
-          "16707858317"
-        ],
-        "M": [
-          "16707858296"
-        ]
-      },
-      "0001": {
+      "Branco": {
         "M": [
           "16708264480"
         ],
@@ -24660,7 +24679,24 @@
           "16707359085"
         ]
       },
-      "0278": {
+      "Eucalipto": {
+        "GG": [
+          "16708216866"
+        ],
+        "M": [
+          "16708216862"
+        ],
+        "P": [
+          "16708216847"
+        ],
+        "XG": [
+          "16708212588"
+        ],
+        "G": [
+          "16708159124"
+        ]
+      },
+      "Caqui": {
         "XG": [
           "16708152860"
         ],
@@ -24677,7 +24713,7 @@
           "16708152800"
         ]
       },
-      "0013": {
+      "Preto": {
         "GG": [
           "16708081564"
         ],
@@ -24693,6 +24729,17 @@
         "P": [
           "16707360128"
         ]
+      },
+      "Grafite": {
+        "GG": [
+          "16707858352"
+        ],
+        "G": [
+          "16707858317"
+        ],
+        "M": [
+          "16707858296"
+        ]
       }
     }
   },
@@ -24705,7 +24752,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24721,7 +24768,7 @@
         ]
       },
       {
-        "cor": "0278",
+        "cor": "Caqui",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24737,7 +24784,7 @@
         ]
       },
       {
-        "cor": "0001",
+        "cor": "Branco",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24755,7 +24802,7 @@
         ]
       },
       {
-        "cor": "2119",
+        "cor": "Verde Oliva",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24776,24 +24823,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "2119": {
-        "XG": [
-          "16708250530"
-        ],
-        "GG": [
-          "16708250524"
-        ],
-        "G": [
-          "16708250508"
-        ],
-        "M": [
-          "16708250499"
-        ],
-        "P": [
-          "16708250487"
-        ]
-      },
-      "0013": {
+      "Preto": {
         "GG": [
           "16708259696"
         ],
@@ -24807,7 +24837,7 @@
           "16708259615"
         ]
       },
-      "0278": {
+      "Caqui": {
         "GG": [
           "16708253609"
         ],
@@ -24821,7 +24851,7 @@
           "16708253583"
         ]
       },
-      "0001": {
+      "Branco": {
         "XG": [
           "16708251988"
         ],
@@ -24837,6 +24867,23 @@
         "P": [
           "16708251948"
         ]
+      },
+      "Verde Oliva": {
+        "XG": [
+          "16708250530"
+        ],
+        "GG": [
+          "16708250524"
+        ],
+        "G": [
+          "16708250508"
+        ],
+        "M": [
+          "16708250499"
+        ],
+        "P": [
+          "16708250487"
+        ]
       }
     }
   },
@@ -24849,7 +24896,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "8213",
+        "cor": "Aveia",
         "imagens": [],
         "tamanhos": [
           "38",
@@ -24865,7 +24912,7 @@
         ]
       },
       {
-        "cor": "2119",
+        "cor": "Verde Oliva",
         "imagens": [],
         "tamanhos": [
           "40",
@@ -24879,7 +24926,7 @@
         ]
       },
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "40",
@@ -24896,18 +24943,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "2119": {
-        "40": [
-          "16708159922"
-        ],
-        "42": [
-          "16708159926"
-        ],
-        "44": [
-          "16708159932"
-        ]
-      },
-      "8213": {
+      "Aveia": {
         "38": [
           "16708214155"
         ],
@@ -24921,7 +24957,18 @@
           "16708159705"
         ]
       },
-      "0013": {
+      "Verde Oliva": {
+        "40": [
+          "16708159922"
+        ],
+        "42": [
+          "16708159926"
+        ],
+        "44": [
+          "16708159932"
+        ]
+      },
+      "Preto": {
         "40": [
           "16708159262"
         ],
@@ -24943,7 +24990,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "0278",
+        "cor": "Caqui",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24959,7 +25006,7 @@
         ]
       },
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24975,7 +25022,7 @@
         ]
       },
       {
-        "cor": "0184",
+        "cor": "Azul Marinho",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24994,7 +25041,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0278": {
+      "Caqui": {
         "GG": [
           "16708157924"
         ],
@@ -25008,7 +25055,7 @@
           "16708157911"
         ]
       },
-      "0013": {
+      "Preto": {
         "GG": [
           "16708157520"
         ],
@@ -25022,7 +25069,7 @@
           "16708157498"
         ]
       },
-      "0184": {
+      "Azul Marinho": {
         "GG": [
           "16708157221"
         ],
@@ -25047,7 +25094,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "G"
@@ -25057,7 +25104,7 @@
         ]
       },
       {
-        "cor": "2119",
+        "cor": "Verde Oliva",
         "imagens": [],
         "tamanhos": [
           "M",
@@ -25073,7 +25120,12 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "2119": {
+      "Preto": {
+        "G": [
+          "16708152564"
+        ]
+      },
+      "Verde Oliva": {
         "GG": [
           "16706316863"
         ],
@@ -25082,11 +25134,6 @@
         ],
         "M": [
           "16706316715"
-        ]
-      },
-      "0013": {
-        "G": [
-          "16708152564"
         ]
       }
     }
@@ -25100,7 +25147,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "0278",
+        "cor": "Caqui",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -25116,7 +25163,7 @@
         ]
       },
       {
-        "cor": "0001",
+        "cor": "Branco",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -25130,7 +25177,7 @@
         ]
       },
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -25147,7 +25194,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0278": {
+      "Caqui": {
         "GG": [
           "16708080794"
         ],
@@ -25161,7 +25208,7 @@
           "16708080651"
         ]
       },
-      "0001": {
+      "Branco": {
         "G": [
           "16708080569"
         ],
@@ -25172,7 +25219,7 @@
           "16708080459"
         ]
       },
-      "0013": {
+      "Preto": {
         "G": [
           "16707860620"
         ],
@@ -25194,7 +25241,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -25210,7 +25257,7 @@
         ]
       },
       {
-        "cor": "0001",
+        "cor": "Branco",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -25229,7 +25276,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0013": {
+      "Preto": {
         "GG": [
           "16708080093"
         ],
@@ -25243,7 +25290,7 @@
           "16708079162"
         ]
       },
-      "0001": {
+      "Branco": {
         "GG": [
           "16708078765"
         ],
@@ -25268,7 +25315,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "U"
@@ -25278,7 +25325,7 @@
         ]
       },
       {
-        "cor": "0001",
+        "cor": "Branco",
         "imagens": [],
         "tamanhos": [
           "U"
@@ -25291,12 +25338,12 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0013": {
+      "Preto": {
         "U": [
           "16708077230"
         ]
       },
-      "0001": {
+      "Branco": {
         "U": [
           "16708076724"
         ]
@@ -25312,7 +25359,7 @@
     "descricao": "A Tshirt Malha Pima combina estilo e funcionalidade em uma proposta versátil para o dia a dia.\nO Cinto Couro Verona é o detalhe que transforma produções, unindo funcionalidade e estilo atemporal.\nDesenvolvido em materiais nobres, garante durabilidade e acabamento premium. Cinto de couro clássico.\nFinalize seu look com peças da &lt;a href=\"https://www.foxtonbrasil.com.br/roupas\" style=\"max-width: 100%; text-decoration: none; color: #000000;\"&gt;coleção Foxton&lt;/a&gt; e adicione personalidade ao visual.\nDetalhes:\nCós com passadores para uso de cinto, adicionando versatilidade ao look",
     "cores": [
       {
-        "cor": "8213",
+        "cor": "Aveia",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -25344,7 +25391,7 @@
         ]
       },
       {
-        "cor": "2119",
+        "cor": "Verde Oliva",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -25360,7 +25407,7 @@
         ]
       },
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -25378,18 +25425,20 @@
         ]
       },
       {
-        "cor": "0001",
+        "cor": "Branco",
         "imagens": [],
         "tamanhos": [
           "P",
           "M",
           "G",
+          "GG",
           "XG"
         ],
         "tamanhosDisponiveis": [
           "P",
           "M",
           "G",
+          "GG",
           "XG"
         ]
       }
@@ -25397,20 +25446,6 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "2119": {
-        "GG": [
-          "16707358309"
-        ],
-        "G": [
-          "16707358272"
-        ],
-        "M": [
-          "16707358237"
-        ],
-        "P": [
-          "16707358176"
-        ]
-      },
       "2216": {
         "GG": [
           "16707859985"
@@ -25425,7 +25460,7 @@
           "16707859904"
         ]
       },
-      "8213": {
+      "Aveia": {
         "GG": [
           "16708075982"
         ],
@@ -25439,7 +25474,21 @@
           "16707860296"
         ]
       },
-      "0013": {
+      "Verde Oliva": {
+        "GG": [
+          "16707358309"
+        ],
+        "G": [
+          "16707358272"
+        ],
+        "M": [
+          "16707358237"
+        ],
+        "P": [
+          "16707358176"
+        ]
+      },
+      "Preto": {
         "XG": [
           "16707354646"
         ],
@@ -25456,9 +25505,12 @@
           "16707354416"
         ]
       },
-      "0001": {
+      "Branco": {
         "XG": [
           "16707353785"
+        ],
+        "GG": [
+          "16707353738"
         ],
         "G": [
           "16707353688"
@@ -25687,7 +25739,7 @@
     "descricao": "A Camiseta Pima Flex Fit combina  conforto e elasticidade  em uma peça essencial para o dia a dia. Confeccionada com  tecido de alta qualidade , ela oferece ajuste perfeito ao corpo e liberdade de movimento, tornando-se a escolha ideal para ser usada sozinha ou como camada base em produções mais elaboradas.\nCom modelagem regular de t-shirt e logo Foxton em silk nas costas, essa peça garante versatilidade e um caimento impecável, seja em combinações casuais ou por baixo de camisas para um visual mais alinhado.",
     "cores": [
       {
-        "cor": "2119",
+        "cor": "Verde Oliva",
         "imagens": [
           "/produtos/16707859451--unico--0.jpg",
           "/produtos/16707859451--unico--1.jpg",
@@ -25712,7 +25764,7 @@
         ]
       },
       {
-        "cor": "0013",
+        "cor": "Preto",
         "imagens": [
           "/produtos/16707858714--unico--0.jpg",
           "/produtos/16707858714--unico--1.jpg",
@@ -25737,7 +25789,7 @@
         ]
       },
       {
-        "cor": "0001",
+        "cor": "Branco",
         "imagens": [
           "/produtos/16707366048--unico--0.jpg",
           "/produtos/16707366048--unico--1.jpg",
@@ -25765,7 +25817,7 @@
     "imagem": "/produtos/16707859451--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "2119": {
+      "Verde Oliva": {
         "XG": [
           "16707859451"
         ],
@@ -25782,7 +25834,7 @@
           "16707366983"
         ]
       },
-      "0013": {
+      "Preto": {
         "XG": [
           "16707858714"
         ],
@@ -25799,7 +25851,7 @@
           "16707858619"
         ]
       },
-      "0001": {
+      "Branco": {
         "XG": [
           "16707366048"
         ],
@@ -25919,11 +25971,13 @@
         "imagens": [],
         "tamanhos": [
           "36",
-          "38"
+          "38",
+          "40"
         ],
         "tamanhosDisponiveis": [
           "36",
-          "38"
+          "38",
+          "40"
         ]
       }
     ],
@@ -25936,6 +25990,9 @@
         ],
         "38": [
           "16707252677"
+        ],
+        "40": [
+          "16707252826"
         ]
       }
     }
@@ -26030,7 +26087,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
+          "PP",
           "M"
         ]
       }
@@ -27039,11 +27096,16 @@
     "marca": "Animale",
     "preco": 2298,
     "novo": false,
-    "descricao": "",
+    "descricao": "Cardigan em tricot com modelagem ampla e decote em V. Os bordados florais aplicados valorizam a construção da peça, enquanto o fechamento frontal por botões complementa o design. Uma proposta versátil para sobreposições contemporâneas.  DETALHES – Tricot – Modelagem ampla – Decote em V – Bordados florais aplicados – Fechamento frontal por botões – Mangas longas – Punhos e barra canelados",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16710524791--unico--0.jpg",
+          "/produtos/16710524791--unico--1.jpg",
+          "/produtos/16710524791--unico--2.jpg",
+          "/produtos/16710524791--unico--3.jpg"
+        ],
         "tamanhos": [
           "M"
         ],
@@ -27052,7 +27114,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16710524791--unico--0.jpg",
     "temEstoque": true
   },
   {
@@ -27094,10 +27156,10 @@
       {
         "cor": "Único",
         "imagens": [
-          "/produtos/16706320820--unico--0.jpg",
-          "/produtos/16706320820--unico--1.jpg",
-          "/produtos/16706320820--unico--2.jpg",
-          "/produtos/16706320820--unico--3.jpg"
+          "/produtos/16710504391--unico--0.jpg",
+          "/produtos/16710504391--unico--1.jpg",
+          "/produtos/16710504391--unico--2.jpg",
+          "/produtos/16710504391--unico--3.jpg"
         ],
         "tamanhos": [
           "PP",
@@ -27111,7 +27173,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16706320820--unico--0.jpg",
+    "imagem": "/produtos/16710504391--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "P": [
@@ -27157,11 +27219,16 @@
     "marca": "NV",
     "preco": 298,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionada em algodão\nModelagem regular\nComprimento regular\nDecote V com detalhe delicado\nAlças finas\nFechamento frontal com botões\nBarra reta\nA Regata Dulce, em algodão, tem toque macio e conforto para seus looks. Com decote V e alcinhas, seu design atemporal,é prática e fácil de combinar em diferentes looks.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16710496807--unico--0.jpg",
+          "/produtos/16710496807--unico--1.jpg",
+          "/produtos/16710496807--unico--2.jpg",
+          "/produtos/16710496807--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -27174,7 +27241,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16710496807--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "P": [
@@ -27231,11 +27298,16 @@
     "marca": "NV",
     "preco": 2398,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionada em alfaiataria\nCom modelagem regular\nPadronagem xadrez\nGola alta\nFechamento com zíper\nDetalhe de martingale removível na gola\nBarra com elástico embutido\nManga longa\nPeça dupla face\nA Jaqueta Augusta, em alfaiataria xadrez, é aquela peça que muda o look. Dupla face, com gola alta e martingale removível, torna a peça ainda mais especial e versátil. Sua barra com elástico embutido e o fechamento em zíper completam o shape impecável. É uma peça que transita com elegância em diferentes ocasiões.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16710492917--unico--0.jpg",
+          "/produtos/16710492917--unico--1.jpg",
+          "/produtos/16710492917--unico--2.jpg",
+          "/produtos/16710492917--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -27248,7 +27320,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16710492917--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "M": [
@@ -28891,6 +28963,38 @@
     }
   },
   {
+    "id": "16705626796",
+    "nome": "Vestido Slip Floral Botanico - 57770",
+    "marca": "Animale",
+    "preco": 1998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16705626796"
+      ],
+      "42": [
+        "16707345704"
+      ]
+    }
+  },
+  {
     "id": "16707319145",
     "nome": "Garrafa Zebrado Terroso - 57753",
     "marca": "Animale",
@@ -28987,7 +29091,7 @@
     }
   },
   {
-    "id": "16707236833",
+    "id": "16707236135",
     "nome": "Vestido Slip Rendinha - 07717",
     "marca": "Animale",
     "preco": 1198,
@@ -28998,10 +29102,12 @@
         "cor": "Único",
         "imagens": [],
         "tamanhos": [
+          "36",
           "38",
           "40"
         ],
         "tamanhosDisponiveis": [
+          "36",
           "38"
         ]
       }
@@ -29009,6 +29115,9 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorTamanho": {
+      "36": [
+        "16707236135"
+      ],
       "38": [
         "16707236833"
       ],
@@ -29043,11 +29152,16 @@
     "marca": "NV",
     "preco": 2748,
     "novo": false,
-    "descricao": "",
+    "descricao": "Feito em tecido alfaiatado\nDetalhes em couro\nModelagem regular alongada\nGola clássica\nFechamento frontal por botões\nBolsos laterais embutidos\nPadronagem vichy\nO Trench Coat Maria é um clássico atualizado. Com modelagem regular e comprimento longo, é confeccionado em tecido alfaiatado para um caimento impecável. Os detalhes em couro e a padronagem vichy deixam a peça ainda mais sofisticada e atemporal.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706697069--unico--0.jpg",
+          "/produtos/16706697069--unico--1.jpg",
+          "/produtos/16706697069--unico--2.jpg",
+          "/produtos/16706697069--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -29058,7 +29172,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706697069--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "M": [
@@ -29075,11 +29189,17 @@
     "marca": "NV",
     "preco": 2298,
     "novo": false,
-    "descricao": "",
+    "descricao": "Trench Coat Longo Georgia",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706691478--unico--0.jpg",
+          "/produtos/16706691478--unico--1.jpg",
+          "/produtos/16706691478--unico--2.jpg",
+          "/produtos/16706691478--unico--3.jpg",
+          "/produtos/16706691478--unico--4.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P"
@@ -29090,7 +29210,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706691478--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "P": [
@@ -29202,11 +29322,16 @@
     "marca": "NV",
     "preco": 2198,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionada em tweed\nModelagem reta\nComprimento midi\nCintura média\nTecido texturizado\nFechamento frontal com botões\nBarra a fio\nCós reto\nA Saia Lorenza é aquela peça clássica com um toque atual. Em tweed, tem caimento impecável com sua modelagem reta e comprimento midi. A cintura média e barra a fio desenham uma silhueta elegante e contemporânea.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706674942--unico--0.jpg",
+          "/produtos/16706674942--unico--1.jpg",
+          "/produtos/16706674942--unico--2.jpg",
+          "/produtos/16706674942--unico--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -29218,7 +29343,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706674942--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "34": [
@@ -29260,11 +29385,16 @@
     "marca": "NV",
     "preco": 698,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionado em tricot\nCom modelagem regular\nComprimento regular\nGola careca\nFechamento frontal com botões de metal\nManga longa\nPadronagem em trama de tweed\nBarra reta\nO Cardigan Tricot Cleo é clássico reinventado com sua trama de tweed. Confeccionado em tricot, tem o caimento certo e conforto para seus dias. Versátil e elegante, é a peça ideal para transitar entre estações.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706665214--unico--0.jpg",
+          "/produtos/16706665214--unico--1.jpg",
+          "/produtos/16706665214--unico--2.jpg",
+          "/produtos/16706665214--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -29279,7 +29409,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706665214--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "PP": [
@@ -30235,11 +30365,16 @@
     "marca": "NV",
     "preco": 2948,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionado em tweed\nModelagem regular\nComprimento regular\nGola regular\nFechamento com botões aparentes\nBarra desfiada com franjas\nManga longa\nO Casaqueto Lorenza é aquela peça que traduz elegância com um toque vibrante. Em tweed, ele tem um caimento impecável e único. Sua modelagem regular ganha ainda mais personalidade com a textura marcante do tweed. A barra desfiada com franjas dá movimento e modernidade. O clássico que vai bem em qualquer ocasião.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706319450--unico--0.jpg",
+          "/produtos/16706319450--unico--1.jpg",
+          "/produtos/16706319450--unico--2.jpg",
+          "/produtos/16706319450--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -30252,7 +30387,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706319450--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "P": [
@@ -31061,11 +31196,16 @@
     "marca": "NV",
     "preco": 298,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionada em algodão\nModelagem regular\nComprimento regular\nDecote V com detalhe delicado\nAlças finas\nFechamento frontal com botões\nBarra reta\nA Regata Dulce, em algodão, tem toque macio e conforto para seus looks. Com decote V e alcinhas, seu design atemporal,é prática e fácil de combinar em diferentes looks.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706014216--unico--0.jpg",
+          "/produtos/16706014216--unico--1.jpg",
+          "/produtos/16706014216--unico--2.jpg",
+          "/produtos/16706014216--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -31078,7 +31218,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706014216--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "M": [
@@ -31219,11 +31359,17 @@
     "marca": "NV",
     "preco": 1198,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionado em tecido alfaiatado\nModelagem ampla com pregas\nComprimento curto\nCintura alta\nPadronagem vichy\nDetalhe em couro com fivela de metal\nFechamento lateral\nCós reto\nBarra reta\nUm short que une sofisticação e versatilidade. Com caimento impecável, sua composição de tecido alfaiatado dá conforto e caimento certo. O detalhe em couro com fivela metálica, cintura alta e padronagem vichy elevam a peça.",
+    "composicao": "de tecido alfaiatado dá conforto e caimento certo. O detalhe em couro com fivela metálica, cintura alta e padronagem vichy elevam a peça.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705989756--unico--0.jpg",
+          "/produtos/16705989756--unico--1.jpg",
+          "/produtos/16705989756--unico--2.jpg",
+          "/produtos/16705989756--unico--3.jpg"
+        ],
         "tamanhos": [
           "38",
           "40"
@@ -31234,7 +31380,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705989756--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "38": [
@@ -31924,38 +32070,21 @@
     }
   },
   {
-    "id": "16705626796",
-    "nome": "Vestido Slip Floral Botanico - 57770",
-    "marca": "Animale",
-    "preco": 1998,
-    "novo": false,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "36"
-        ],
-        "tamanhosDisponiveis": [
-          "36"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true
-  },
-  {
     "id": "16705478494",
     "nome": "Calça Sarja Clarissa - Khaki",
     "marca": "NV",
     "preco": 648,
     "novo": false,
-    "descricao": "",
+    "descricao": "Confeccionada em sarja\nModelagem reta\nComprimento longo\nCom barra reta\nCintura baixa\nCós reto\nLavagem especial\nFechamento frontal com botão de metal\nBolsos frontais e bolsos costas\nA calça Clarissa, em sarja, é confortável e tem um toque cool com sua modelagem reta, lavagem especial e a barra reta. Uma peça versátil que transita em diferentes looks.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705478494--unico--0.jpg",
+          "/produtos/16705478494--unico--1.jpg",
+          "/produtos/16705478494--unico--2.jpg",
+          "/produtos/16705478494--unico--3.jpg"
+        ],
         "tamanhos": [
           "32"
         ],
@@ -31964,7 +32093,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705478494--unico--0.jpg",
     "temEstoque": true
   },
   {
