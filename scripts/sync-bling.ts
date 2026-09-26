@@ -29,7 +29,11 @@
 //
 // Uso: npm run sync:bling                    -> roda o catalogo inteiro. Da segunda vez em
 //        diante e' RAPIDO: so' busca marca/nome/foto de produto NOVO ou cor sem foto local
-//        (preco/estoque/tamanho sempre atualizam, isso vem de graca na lista).
+//        (preco/estoque/tamanho sempre atualizam, isso vem de graca na lista) - isso inclui
+//        produto de marca que o site nao usa, gracas ao data/produtos-marcas-cache.json (ver
+//        carregarCacheMarcas mais abaixo - sem ele, o sync completo ficava cada vez mais lento
+//        conforme o catalogo geral do Bling cresce, porque redescobria a marca de todo mundo
+//        de fora toda vez. Bug reportado pelo Brunno em 26/09/2026).
 //      npm run sync:bling -- --limite=20      -> roda só os 20 primeiros grupos, pra testar
 //      npm run sync:bling -- --completo       -> ignora o cache, busca marca/nome de TODOS de
 //        novo (use se corrigiu marca de varios produtos direto no Bling)
@@ -146,6 +150,27 @@ function carregarCache(): Map<string, CacheProduto> {
     // primeira vez rodando, ou arquivo corrompido - sem problema, so' processa tudo do zero
   }
   return cache;
+}
+
+// Cache LEVE (so' id -> marca), separado do cache principal acima - guarda TODO produto que
+// o script ja' viu no Bling, mesmo os de marca FORA de MARCAS_ATIVAS. O cache principal
+// (carregarCache, acima) so' guarda os produtos que ENTRAM no catalogo do site
+// (data/produtos.json = produtosFinais, ja' filtrado por marca - ver o `if
+// (!MARCAS_ATIVAS.has(marcaFinal)) continue` mais abaixo), entao um produto de outra marca
+// NUNCA ficava "lembrado" - o unico jeito de saber a marca de um produto e' chamando o
+// detalhe (GET /produtos/{id}), e sem esse arquivo, TODO produto de fora das 4 marcas tinha
+// que perguntar de novo pra API em TODO sync completo, pra sempre (nunca tinha como aprender
+// "isso aqui nao e' nosso" so' uma vez). Bug reportado pelo Brunno em 26/09/2026: sync
+// completo levando quase 2h por causa disso, com o catalogo geral do Bling crescendo.
+const ARQUIVO_CACHE_MARCAS = "data/produtos-marcas-cache.json";
+function carregarCacheMarcas(): Map<string, string> {
+  try {
+    const bruto = JSON.parse(readFileSync(ARQUIVO_CACHE_MARCAS, "utf-8")) as Record<string, string>;
+    return new Map(Object.entries(bruto));
+  } catch {
+    // primeira vez rodando, ou arquivo corrompido - sem problema, so' reaprende com o tempo
+    return new Map();
+  }
 }
 
 // O Bling guarda a descricao do produto como HTML livre (o texto que o time digita na tela
@@ -530,6 +555,16 @@ async function main() {
         ` de produtos novos (use --completo pra ignorar o cache e buscar tudo de novo).`
     );
   }
+  // marcasCache: cache separado (ver carregarCacheMarcas acima) - --completo tambem zera esse,
+  // pra cobrir o caso de voce ter corrigido a marca de algum produto direto no Bling (sem ele
+  // zerado, um produto que antes era "fora das 4 marcas" ficaria preso nesse status pra sempre).
+  const marcasCache = completo ? new Map<string, string>() : carregarCacheMarcas();
+  if (marcasCache.size > 0) {
+    console.log(
+      `Cache de marca de ${marcasCache.size} produto(s) (inclusive fora do catalogo do site)` +
+        ` carregado - isso e' o que evita perguntar a marca de novo pra API em todo sync completo.`
+    );
+  }
 
   console.log("Buscando lista completa de produtos no Bling...");
   const todos = await listarTodosProdutos();
@@ -609,9 +644,14 @@ async function main() {
     // cache OU falta foto local de alguma cor - as duas coisas vem do mesmo endpoint.
     const precisaDetalhe = !doCache || coresSemFoto.length > 0;
 
-    // Fora da lista de marcas ativas (produto ja conhecido do cache)? pula sem nem chamar a
-    // API - nao precisa gastar chamada de detalhe pra confirmar marca que a gente ja sabe.
-    if (doCache && !MARCAS_ATIVAS.has(doCache.marca)) {
+    // Marca ja conhecida de ALGUM sync anterior (doCache, so' das 4 marcas ativas, OU
+    // marcasCache, de QUALQUER marca - ver carregarCacheMarcas acima) e nao e' uma marca que a
+    // gente usa? pula sem nem chamar a API - e' essa segunda opcao (marcasCache) que faz um
+    // produto de outra marca parar de pedir chamada de detalhe TODA VEZ que o sync completo
+    // roda (antes, so' doCache era checado aqui, e doCache nunca tem produto de fora - ver
+    // comentario em carregarCacheMarcas).
+    const marcaConhecida = doCache?.marca ?? marcasCache.get(idStr);
+    if (marcaConhecida && !MARCAS_ATIVAS.has(marcaConhecida)) {
       marcasFiltradas++;
       continue;
     }
@@ -642,6 +682,10 @@ async function main() {
         // ANTES de baixar qualquer foto (a parte lenta) - so' a chamada de detalhe acima (que
         // era o unico jeito de descobrir a marca) foi gasta.
         const marcaNormalizadaAgora = marcaJaNormalizada ? marca : normalizarMarca(marca);
+        // guarda no cache leve JA' aqui, antes mesmo de decidir se e' marca ativa - e' esse
+        // registro que faz esse produto nunca mais precisar de chamada de detalhe so' pra
+        // confirmar a marca dele (ver carregarCacheMarcas no topo do arquivo).
+        marcasCache.set(idStr, marcaNormalizadaAgora);
         if (!MARCAS_ATIVAS.has(marcaNormalizadaAgora)) {
           marcasFiltradas++;
           await dormir(PAUSA_ENTRE_CHAMADAS_MS);
@@ -704,6 +748,7 @@ async function main() {
       marcasFiltradas++;
       continue;
     }
+    marcasCache.set(idStr, marcaFinal);
 
     // monta a lista final de cores com tamanhos + fotos - cor com foto vem primeiro, pra foto
     // de capa (card de vitrine) ser sempre de uma cor que tem foto quando possivel.
@@ -766,12 +811,17 @@ async function main() {
   const qtdFundidos = produtosMapeados.length - produtosFinais.length;
 
   writeFileSync("data/produtos.json", JSON.stringify(produtosFinais, null, 2));
+  writeFileSync(ARQUIVO_CACHE_MARCAS, JSON.stringify(Object.fromEntries(marcasCache), null, 2));
   const comFoto = produtosFinais.filter((p) => p.imagem).length;
   const totalCores = produtosFinais.reduce((soma, p) => soma + p.cores.length, 0);
   console.log(`\nPronto! data/produtos.json atualizado com ${produtosFinais.length} produtos.`);
   console.log(
     `Fora do catalogo por marca (so' trabalhamos com ${Array.from(MARCAS_ATIVAS).join(", ")} por` +
       ` enquanto): ${marcasFiltradas} produto(s).`
+  );
+  console.log(
+    `Cache de marcas salvo com ${marcasCache.size} produto(s) conhecidos (ativos e fora do` +
+      ` catalogo) - proximo sync completo so' chama a API pra produto genuinamente novo.`
   );
   console.log(`Produtos novos (buscaram marca na API agora): ${novos}.`);
   console.log(
