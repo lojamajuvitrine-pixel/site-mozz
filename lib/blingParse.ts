@@ -170,7 +170,10 @@ const CODIGOS_COR_POR_MARCA: Record<string, Record<string, string>> = {
     "NV1189": "Bege Camel",
     "NV1219": "Bege Creme",
     "NV1262": "Bege Estonado",
-    "NV032": "Cinza Mescla"
+    "NV032": "Cinza Mescla",
+    "NV952": "Xadrez Multicolor",
+    "NV067": "Marinho",
+    "NV1185": "Verde Harbor"
   }
 };
 
