@@ -1,5 +1,45 @@
 [
   {
+    "id": "16710762922",
+    "nome": "Jaqueta Jeans Balone -",
+    "marca": "Animale",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16706291454",
+    "nome": "Top com Renda e Strass -",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
     "id": "16698139295",
     "nome": "TOP AMARRAÇÃO FIG FLY",
     "marca": "Animale",
@@ -453,11 +493,16 @@
     "marca": "Animale",
     "preco": 1198,
     "novo": false,
-    "descricao": "",
+    "descricao": "Short Xadrez com shape reto, cintura alta, bolsos, pregas frontais, passadores no cós e fechamento interno. O modelo traz uma proposta urbana e moderna para os looks da estação. Detalhes: - Shape reto; - Cintura alta; - Bolsos; - Pregas frontais; - Fechamento interno no cós; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
     "cores": [
       {
         "cor": "XADREZ BEGE",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16628432939--xadrez-bege--0.jpg",
+          "/produtos/16628432939--xadrez-bege--1.jpg",
+          "/produtos/16628432939--xadrez-bege--2.jpg",
+          "/produtos/16628432939--xadrez-bege--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -471,7 +516,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16628432939--xadrez-bege--0.jpg",
     "temEstoque": true
   },
   {
@@ -833,8 +878,8 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "40",
-          "42"
+          "42",
+          "40"
         ]
       }
     ],
@@ -1274,11 +1319,17 @@
     "marca": "Animale",
     "preco": 1598,
     "novo": false,
-    "descricao": "",
+    "descricao": "Vestido midi liso com alças finas, decote reto com amarração regulável, shape fluido, fendas na barra e detalhes em renda na pala sobreposta no busto. Uma escolha easy chic para a estação. Detalhes: - Alças finas; - Detalhes em renda; - Decote reto com amarração regulável; - Comprimento midi; - Shape fluido com fendas; - A cor do produto nas fotos pode sofrer alteração em decorrência do uso de flash.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16649326643--unico--0.jpg",
+          "/produtos/16649326643--unico--1.jpg",
+          "/produtos/16649326643--unico--2.jpg",
+          "/produtos/16649326643--unico--3.jpg",
+          "/produtos/16649326643--unico--4.jpg"
+        ],
         "tamanhos": [
           "36",
           "40"
@@ -1286,7 +1337,7 @@
         "tamanhosDisponiveis": []
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16649326643--unico--0.jpg",
     "temEstoque": false
   },
   {
@@ -2212,9 +2263,9 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "38",
+          "44",
           "40",
-          "44"
+          "38"
         ]
       }
     ],
@@ -3280,8 +3331,8 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "36",
-          "40"
+          "40",
+          "36"
         ]
       }
     ],
@@ -5554,8 +5605,8 @@
         ],
         "tamanhosDisponiveis": [
           "36",
-          "38",
-          "42"
+          "42",
+          "38"
         ]
       }
     ],
@@ -6420,7 +6471,12 @@
     "cores": [
       {
         "cor": "DEMERARA",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16628465490--demerara--0.jpg",
+          "/produtos/16628465490--demerara--1.jpg",
+          "/produtos/16628465490--demerara--2.jpg",
+          "/produtos/16628465490--demerara--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -6433,7 +6489,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16628465490--demerara--0.jpg",
     "temEstoque": true
   },
   {
@@ -10197,10 +10253,10 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "40",
+          "46",
           "44",
-          "46"
+          "40",
+          "38"
         ]
       }
     ],
@@ -10853,8 +10909,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "GG"
+          "GG",
+          "G"
         ]
       },
       {
@@ -17107,8 +17163,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "P"
         ]
       },
@@ -19462,8 +19518,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "M",
+          "G",
           "P"
         ]
       },
@@ -22891,6 +22947,9091 @@
     "temEstoque": false
   },
   {
+    "id": "16707237587",
+    "nome": "Bata Manga Longa Babados Cosmos",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0003",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0003": {
+        "P": [
+          "16710529440"
+        ],
+        "M": [
+          "16707237587"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707239097",
+    "nome": "Camisa Manga Longa Bordado Camadas Color",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "Camisa em tecido leve com bordados vazados e mangas longas. A pala sobreposta cria efeito de camadas. Os detalhes bordados e a barra trabalhada valorizam o acabamento da peça.  DETALHES – Tecido leve – Bordados vazados – Pala sobreposta – Gola padre – Manga longa – Punhos com abotoamento – Fechamento frontal embutido por botões – Barra bordada",
+    "cores": [
+      {
+        "cor": "0200",
+        "imagens": [
+          "/produtos/16710528542--unico--0.jpg",
+          "/produtos/16710528542--unico--1.jpg",
+          "/produtos/16710528542--unico--2.jpg",
+          "/produtos/16710528542--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16710528542--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0200": {
+        "36": [
+          "16707239097"
+        ],
+        "40": [
+          "16710528542"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708927755",
+    "nome": "Blusa Ombro a Ombro",
+    "marca": "Animale",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "P": [
+          "16710527587"
+        ],
+        "M": [
+          "16708928412"
+        ],
+        "PP": [
+          "16708927755"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16710518112",
+    "nome": "Camisa Bordada Listra Mostarda",
+    "marca": "Animale",
+    "preco": 1498,
+    "novo": false,
+    "descricao": "Camisa em tricoline com padronagem listrada. Apresenta bordados com pedrarias, bolso frontal e vivos contrastantes. Uma peça sofisticada e feminina. DETALHES - Padronagem listrada - Caimento amplo - Comprimento alongado - Bordados com pedrarias em desenhos de insetos - Gola com lapela - Bolso frontal - Vivos contrastantes - Mangas longas - Punhos largos com botões - Pala posterior - Pregas nas costas - Barra arredondada - Fechamento frontal por botões",
+    "cores": [
+      {
+        "cor": "1807",
+        "imagens": [
+          "/produtos/16710518749--unico--0.jpg",
+          "/produtos/16710518749--unico--1.jpg",
+          "/produtos/16710518749--unico--2.jpg",
+          "/produtos/16710518749--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16710518749--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1807": {
+        "G": [
+          "16710518749"
+        ],
+        "M": [
+          "16710518112"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16710513934",
+    "nome": "Blusa Gola Alta Rendinhas",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "Blusa de modelagem leve com gola alta. As aplicações de renda, os entremeios e os bordados vazados imprimem textura e sofisticação natural à peça.  DETALHES – Gola alta – Mangas 3/4 – Aplicações de renda – Entremeios – Bordados vazados – Barra recortada – Fechamento posterior por botões",
+    "cores": [
+      {
+        "cor": "0003",
+        "imagens": [
+          "/produtos/16710515310--unico--0.jpg",
+          "/produtos/16710515310--unico--1.jpg",
+          "/produtos/16710515310--unico--2.jpg",
+          "/produtos/16710515310--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16710515310--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0003": {
+        "36": [
+          "16710513934"
+        ],
+        "40": [
+          "16710515212"
+        ],
+        "42": [
+          "16710515310"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16710498221",
+    "nome": "T-shirt Manu",
+    "marca": "NV",
+    "preco": 848,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0080",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      },
+      {
+        "cor": "0089",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0080": {
+        "P": [
+          "16710498869"
+        ]
+      },
+      "0089": {
+        "P": [
+          "16710498221"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16710124967",
+    "nome": "Short Praia Basic",
+    "marca": "Foxton",
+    "preco": 348,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0184",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0184": {
+        "M": [
+          "16710125526"
+        ],
+        "P": [
+          "16710124967"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16710119601",
+    "nome": "Bermuda Flexus",
+    "marca": "Foxton",
+    "preco": 548,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0184",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "0278",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "0830",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0184": {
+        "G": [
+          "16710121291"
+        ],
+        "M": [
+          "16710121209"
+        ],
+        "P": [
+          "16710121136"
+        ]
+      },
+      "0278": {
+        "G": [
+          "16710120710"
+        ],
+        "M": [
+          "16710120635"
+        ],
+        "P": [
+          "16710120591"
+        ]
+      },
+      "0830": {
+        "G": [
+          "16710120134"
+        ],
+        "M": [
+          "16710120102"
+        ],
+        "P": [
+          "16710119601"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16710112563",
+    "nome": "Camisa ML Linho Lumiar",
+    "marca": "Foxton",
+    "preco": 698,
+    "novo": false,
+    "descricao": "A Camisa Manga Longa Linho Lumiar leva uma interpretação contemporânea à camisa, combinando cambraia de linho com a identidade própria de uma peça de manga longa. A construção cria uma presença clara no visual e favorece composições em que textura, proporção e material aparecem de forma natural, sem perder a elegância descontraída característica da Foxton\nSua ficha reúne ainda cores exclusivas Foxton e corantes nativos que preservam o brilho das cores e o acabamento do linho, proposta urbana, manga longa, 100% linho. Esses elementos não aparecem como detalhes isolados: juntos, formam a linguagem da peça e orientam sua utilização. A composição declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
+    "composicao": "declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [
+          "/produtos/16710112712--unico--0.jpg",
+          "/produtos/16710112712--unico--1.jpg",
+          "/produtos/16710112712--unico--2.jpg",
+          "/produtos/16710112712--unico--3.jpg",
+          "/produtos/16710112712--unico--4.jpg",
+          "/produtos/16710112712--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16710112712--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "GG": [
+          "16710112712"
+        ],
+        "G": [
+          "16710112651"
+        ],
+        "M": [
+          "16710112563"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708158558",
+    "nome": "Polo Piquet Pima",
+    "marca": "Foxton",
+    "preco": 448,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "2119",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "2119": {
+        "GG": [
+          "16708211921"
+        ],
+        "G": [
+          "16708211914"
+        ],
+        "M": [
+          "16708211901"
+        ],
+        "P": [
+          "16708211892"
+        ]
+      },
+      "0001": {
+        "GG": [
+          "16710105273"
+        ],
+        "G": [
+          "16710105063"
+        ]
+      },
+      "0013": {
+        "XG": [
+          "16708158612"
+        ],
+        "GG": [
+          "16708158604"
+        ],
+        "G": [
+          "16708158600"
+        ],
+        "M": [
+          "16708158558"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708974480",
+    "nome": "Camisa Manga Curta Buzios New",
+    "marca": "Foxton",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "1605",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1605": {
+        "GG": [
+          "16708997478"
+        ],
+        "G": [
+          "16708997443"
+        ],
+        "M": [
+          "16708997395"
+        ],
+        "P": [
+          "16708997246"
+        ]
+      },
+      "0013": {
+        "GG": [
+          "16708997058"
+        ],
+        "G": [
+          "16708996971"
+        ],
+        "M": [
+          "16708974536"
+        ],
+        "P": [
+          "16708974480"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708213642",
+    "nome": "Calça Puro Linho",
+    "marca": "Foxton",
+    "preco": 648,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0278",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "GG": [
+          "16708973813"
+        ],
+        "G": [
+          "16708973761"
+        ],
+        "P": [
+          "16708973676"
+        ]
+      },
+      "0278": {
+        "GG": [
+          "16708213784"
+        ],
+        "M": [
+          "16708213642"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706317190",
+    "nome": "Polo Tricot Saint Michel",
+    "marca": "Foxton",
+    "preco": 648,
+    "novo": false,
+    "descricao": "A Polo Tricot Saint Michel é construída no ponto quadrilê, uma trama exclusiva que acrescenta textura e sofisticação a uma forma clássica. A combinação equilibrada de algodão e acrílico estrutura a peça, enquanto o desenho do ponto cria uma presença visual própria. É uma polo de manga curta voltada a composições casuais modernas\nA composição divide-se igualmente entre algodão e acrílico. Essa base sustenta o trabalho do tricot e permite que o quadrilê apareça como principal assinatura estética. As opções de cor ampliam as possibilidades de coordenação, mas a força da peça permanece na superfície trabalhada e na maneira como ela atualiza a gola polo\nEstilo e uso",
+    "composicao": "divide-se igualmente entre algodão e acrílico. Essa base sustenta o trabalho do tricot e permite que o quadrilê apareça como principal assinatura estética. As opções de cor ampliam as possibilidades de coordenação, mas a força da peça permanece na superfície trabalhada e na maneira como ela atualiza a gola polo",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [
+          "/produtos/16708972685--unico--0.jpg",
+          "/produtos/16708972685--unico--1.jpg",
+          "/produtos/16708972685--unico--2.jpg",
+          "/produtos/16708972685--unico--3.jpg",
+          "/produtos/16708972685--unico--4.jpg",
+          "/produtos/16708972685--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708972685--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "G": [
+          "16708972685"
+        ],
+        "M": [
+          "16708972608"
+        ],
+        "P": [
+          "16708972537"
+        ],
+        "GG": [
+          "16706317190"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708217854",
+    "nome": "Tshirt Interlock New",
+    "marca": "Foxton",
+    "preco": 278,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0278",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0278": {
+        "GG": [
+          "16708970266"
+        ],
+        "G": [
+          "16708970102"
+        ],
+        "M": [
+          "16708969855"
+        ],
+        "P": [
+          "16708969602"
+        ]
+      },
+      "0001": {
+        "GG": [
+          "16708217927"
+        ],
+        "G": [
+          "16708217917"
+        ],
+        "M": [
+          "16708217906"
+        ],
+        "P": [
+          "16708217854"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707862042",
+    "nome": "Short Puro Linho Pier",
+    "marca": "Foxton",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "2216",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "2119",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "8213",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "2119": {
+        "GG": [
+          "16708213239"
+        ],
+        "G": [
+          "16708213235"
+        ],
+        "M": [
+          "16708213230"
+        ],
+        "P": [
+          "16708213222"
+        ]
+      },
+      "2216": {
+        "G": [
+          "16708216486"
+        ],
+        "P": [
+          "16708216475"
+        ],
+        "M": [
+          "16708154503"
+        ]
+      },
+      "8213": {
+        "G": [
+          "16707862153"
+        ],
+        "M": [
+          "16707862138"
+        ],
+        "P": [
+          "16707862042"
+        ]
+      },
+      "0001": {
+        "GG": [
+          "16708968693"
+        ],
+        "G": [
+          "16708216754"
+        ],
+        "M": [
+          "16708216739"
+        ]
+      },
+      "0013": {
+        "GG": [
+          "16708212760"
+        ],
+        "G": [
+          "16708212737"
+        ],
+        "M": [
+          "16708212729"
+        ],
+        "P": [
+          "16708212719"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708476806",
+    "nome": "Colete Chevron",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "Colete em alfaiataria com padronagem chevron. Possui decote em V, lapela, fechamento transpassado com botões duplos, bolsos com lapela e recortes que estruturam o caimento. A padronagem chevron atualiza a alfaiataria clássica com uma leitura contemporânea e elegante. DETALHES - Padronagem chevron - Comprimento clássico - Decote em V - Lapela - Fechamento transpassado com botões duplos - Bolsos com lapela - Recortes estruturados",
+    "cores": [
+      {
+        "cor": "0022",
+        "imagens": [
+          "/produtos/16708962033--unico--0.jpg",
+          "/produtos/16708962033--unico--1.jpg",
+          "/produtos/16708962033--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708962033--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0022": {
+        "36": [
+          "16708476806"
+        ],
+        "38": [
+          "16708477366"
+        ],
+        "40": [
+          "16708962033"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708918905",
+    "nome": "Camisa Decote Jabour",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "Camisa com decote jabour e transparência sutil. Os babados aplicados na parte frontal trazem textura e personalidade à peça. As pregas nos ombros valorizam o caimento e completam o design.  DETALHES – Decote jabour com babados – Transparência sutil – Pregas nos ombros – Mangas longas – Punhos com amarração – Fechamento frontal por botões",
+    "cores": [
+      {
+        "cor": "5457",
+        "imagens": [
+          "/produtos/16708919302--unico--0.jpg",
+          "/produtos/16708919302--unico--1.jpg",
+          "/produtos/16708919302--unico--2.jpg",
+          "/produtos/16708919302--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708919302--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "5457": {
+        "36": [
+          "16708918905"
+        ],
+        "38": [
+          "16708919302"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708470481",
+    "nome": "Calça Chevron Cinza",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "Calça de alfaiataria com modelagem reta, cintura média e padronagem chevron. Possui pregas frontais, cós com passantes e bolsos cargo nas laterais. Uma peça sofisticada e atemporal. DETALHES - Padronagem chevron - Modelagem reta - Cintura média - Comprimento longo - Cós com passantes - Pregas frontais - Bolsos laterais - Bolsos cargo com lapela - Bolso posterior embutido - Fechamento frontal",
+    "cores": [
+      {
+        "cor": "0022",
+        "imagens": [
+          "/produtos/16708913658--unico--0.jpg",
+          "/produtos/16708913658--unico--1.jpg",
+          "/produtos/16708913658--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708913658--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0022": {
+        "36": [
+          "16708913602"
+        ],
+        "38": [
+          "16708913658"
+        ],
+        "40": [
+          "16708470481"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708903244",
+    "nome": "Vestido Midi Manga Curta Recortes",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "M": [
+          "16708903571"
+        ],
+        "PP": [
+          "16708903244"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706021377",
+    "nome": "Vestido Midi Pala Reta",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "PP"
+        ],
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
+      },
+      {
+        "cor": "0003",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "PP": [
+          "16708899654"
+        ]
+      },
+      "0003": {
+        "M": [
+          "16706032370"
+        ],
+        "PP": [
+          "16706021377"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708898736",
+    "nome": "Vestido Midi Jersey Costas Degage Metal",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "M": [
+          "16708899170"
+        ],
+        "P": [
+          "16708898736"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708897118",
+    "nome": "Vestido Puro Linho Natural",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0149",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0149": {
+        "36": [
+          "16708897118"
+        ],
+        "38": [
+          "16708897562"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708482722",
+    "nome": "Macacão Pala Franzido Frente",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "Macacão em malha com modelagem ampla e decotes em V na frente e nas costas. A pala franzida destaca a construção da peça e valoriza a silhueta, complementada pelas pernas amplas com caimento fluido. DETALHES – Desenvolvido em malha – Decote em V na frente e nas costas – Pala frontal franzida – Modelagem ampla – Pernas amplas",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [
+          "/produtos/16708483490--unico--0.jpg",
+          "/produtos/16708483490--unico--1.jpg",
+          "/produtos/16708483490--unico--2.jpg",
+          "/produtos/16708483490--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708483490--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "M": [
+          "16708483490"
+        ],
+        "P": [
+          "16708483424"
+        ],
+        "PP": [
+          "16708482722"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708481122",
+    "nome": "Calça Cos Esportivo Bege",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "parte posterior do cós acrescenta um detalhe especial à peça. Uma proposta casual com sofisticação leve.  DETALHES – Modelagem reta – Cós esportivo com elástico – Babado aplicado na parte posterior do cós – Bolsos frontais embutidos – Caimento amplo – Sem zíper",
+    "cores": [
+      {
+        "cor": "1566",
+        "imagens": [
+          "/produtos/16708481643--unico--0.jpg",
+          "/produtos/16708481643--unico--1.jpg",
+          "/produtos/16708481643--unico--2.jpg",
+          "/produtos/16708481643--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "38",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "42"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708481643--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1566": {
+        "38": [
+          "16708481122"
+        ],
+        "42": [
+          "16708481643"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708478186",
+    "nome": "Macacão Jeans Perna Reta",
+    "marca": "Animale",
+    "preco": 1698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0105",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0105": {
+        "36": [
+          "16708478907"
+        ],
+        "38": [
+          "16708478186"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706034607",
+    "nome": "Short Casual Listrado Marrom Taupe",
+    "marca": "Animale",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "1195",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1195": {
+        "P": [
+          "16708469986"
+        ],
+        "M": [
+          "16706034607"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708445276",
+    "nome": "Calça Jeans Reta Lavagem Clara",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "Calça Jeans com cintura alta, modelagem reta, bolsos funcionais e fechamento frontal por zíper e botão. A lavagem clara e o caimento reto traduzem versatilidade para diferentes produções. DETALHES – Cintura alta – Modelagem reta – Lavagem clara – Bolsos frontais e posteriores – Fechamento por zíper e botão – Passantes no cós",
+    "cores": [
+      {
+        "cor": "1530",
+        "imagens": [
+          "/produtos/16708446209--unico--0.jpg",
+          "/produtos/16708446209--unico--1.jpg",
+          "/produtos/16708446209--unico--2.jpg",
+          "/produtos/16708446209--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "42",
+          "44"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708446209--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1530": {
+        "34": [
+          "16708445276"
+        ],
+        "36": [
+          "16708445908"
+        ],
+        "38": [
+          "16708445984"
+        ],
+        "40": [
+          "16708446060"
+        ],
+        "42": [
+          "16708446146"
+        ],
+        "44": [
+          "16708446209"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708437182",
+    "nome": "Camisa Rolotes Cropped Azul",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0011",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0011": {
+        "36": [
+          "16708437182"
+        ],
+        "40": [
+          "16708437596"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708415086",
+    "nome": "Saia Midi de Algodão Azul",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0011",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0011": {
+        "34": [
+          "16708436429"
+        ],
+        "40": [
+          "16708415086"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708428281",
+    "nome": "Vestido Slip Desconstruido Azul Nautico",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "6002",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "6002": {
+        "34": [
+          "16708428281"
+        ],
+        "38": [
+          "16708429341"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708407119",
+    "nome": "Macacão Busto Arredondado Off",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0003",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0003": {
+        "34": [
+          "16708407119"
+        ],
+        "36": [
+          "16708407631"
+        ],
+        "38": [
+          "16708407676"
+        ],
+        "40": [
+          "16708407728"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707359085",
+    "nome": "Tshirt Suedine Pima Classic",
+    "marca": "Foxton",
+    "preco": 348,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "2119",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      },
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      },
+      {
+        "cor": "1605",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      },
+      {
+        "cor": "0278",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      },
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      },
+      {
+        "cor": "5179",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1605": {
+        "GG": [
+          "16708216866"
+        ],
+        "M": [
+          "16708216862"
+        ],
+        "P": [
+          "16708216847"
+        ],
+        "XG": [
+          "16708212588"
+        ],
+        "G": [
+          "16708159124"
+        ]
+      },
+      "2119": {
+        "G": [
+          "16708266191"
+        ],
+        "XG": [
+          "16707364623"
+        ],
+        "GG": [
+          "16707364547"
+        ],
+        "M": [
+          "16707364489"
+        ],
+        "P": [
+          "16707364428"
+        ]
+      },
+      "5179": {
+        "GG": [
+          "16707858352"
+        ],
+        "G": [
+          "16707858317"
+        ],
+        "M": [
+          "16707858296"
+        ]
+      },
+      "0001": {
+        "M": [
+          "16708264480"
+        ],
+        "XG": [
+          "16707359573"
+        ],
+        "GG": [
+          "16707359517"
+        ],
+        "G": [
+          "16707359476"
+        ],
+        "P": [
+          "16707359085"
+        ]
+      },
+      "0278": {
+        "XG": [
+          "16708152860"
+        ],
+        "GG": [
+          "16708152845"
+        ],
+        "G": [
+          "16708152830"
+        ],
+        "M": [
+          "16708152816"
+        ],
+        "P": [
+          "16708152800"
+        ]
+      },
+      "0013": {
+        "GG": [
+          "16708081564"
+        ],
+        "XG": [
+          "16707360293"
+        ],
+        "G": [
+          "16707360233"
+        ],
+        "M": [
+          "16707360184"
+        ],
+        "P": [
+          "16707360128"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708250487",
+    "nome": "M/M Logo",
+    "marca": "Foxton",
+    "preco": 148,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0278",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      },
+      {
+        "cor": "2119",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "2119": {
+        "XG": [
+          "16708250530"
+        ],
+        "GG": [
+          "16708250524"
+        ],
+        "G": [
+          "16708250508"
+        ],
+        "M": [
+          "16708250499"
+        ],
+        "P": [
+          "16708250487"
+        ]
+      },
+      "0013": {
+        "GG": [
+          "16708259696"
+        ],
+        "G": [
+          "16708259684"
+        ],
+        "M": [
+          "16708259669"
+        ],
+        "P": [
+          "16708259615"
+        ]
+      },
+      "0278": {
+        "GG": [
+          "16708253609"
+        ],
+        "G": [
+          "16708253598"
+        ],
+        "M": [
+          "16708253590"
+        ],
+        "P": [
+          "16708253583"
+        ]
+      },
+      "0001": {
+        "XG": [
+          "16708251988"
+        ],
+        "GG": [
+          "16708251980"
+        ],
+        "G": [
+          "16708251975"
+        ],
+        "M": [
+          "16708251959"
+        ],
+        "P": [
+          "16708251948"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708159262",
+    "nome": "Bermuda Chino",
+    "marca": "Foxton",
+    "preco": 448,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "8213",
+        "imagens": [],
+        "tamanhos": [
+          "38",
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40",
+          "42",
+          "44"
+        ]
+      },
+      {
+        "cor": "2119",
+        "imagens": [],
+        "tamanhos": [
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "40",
+          "42",
+          "44"
+        ]
+      },
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "40",
+          "42",
+          "44"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "2119": {
+        "40": [
+          "16708159922"
+        ],
+        "42": [
+          "16708159926"
+        ],
+        "44": [
+          "16708159932"
+        ]
+      },
+      "8213": {
+        "38": [
+          "16708214155"
+        ],
+        "40": [
+          "16708159661"
+        ],
+        "42": [
+          "16708159686"
+        ],
+        "44": [
+          "16708159705"
+        ]
+      },
+      "0013": {
+        "40": [
+          "16708159262"
+        ],
+        "42": [
+          "16708159271"
+        ],
+        "44": [
+          "16708159273"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708157163",
+    "nome": "Short Praia Calor",
+    "marca": "Foxton",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0278",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0184",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0278": {
+        "GG": [
+          "16708157924"
+        ],
+        "G": [
+          "16708157918"
+        ],
+        "M": [
+          "16708157916"
+        ],
+        "P": [
+          "16708157911"
+        ]
+      },
+      "0013": {
+        "GG": [
+          "16708157520"
+        ],
+        "G": [
+          "16708157515"
+        ],
+        "M": [
+          "16708157505"
+        ],
+        "P": [
+          "16708157498"
+        ]
+      },
+      "0184": {
+        "GG": [
+          "16708157221"
+        ],
+        "G": [
+          "16708157217"
+        ],
+        "M": [
+          "16708157211"
+        ],
+        "P": [
+          "16708157163"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706316715",
+    "nome": "Tshirt Tricot Saint Michel",
+    "marca": "Foxton",
+    "preco": 578,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      },
+      {
+        "cor": "2119",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "2119": {
+        "GG": [
+          "16706316863"
+        ],
+        "G": [
+          "16706316854"
+        ],
+        "M": [
+          "16706316715"
+        ]
+      },
+      "0013": {
+        "G": [
+          "16708152564"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707860474",
+    "nome": "Short Casual Pier",
+    "marca": "Foxton",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0278",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0278": {
+        "GG": [
+          "16708080794"
+        ],
+        "G": [
+          "16708080737"
+        ],
+        "M": [
+          "16708080722"
+        ],
+        "P": [
+          "16708080651"
+        ]
+      },
+      "0001": {
+        "G": [
+          "16708080569"
+        ],
+        "M": [
+          "16708080530"
+        ],
+        "P": [
+          "16708080459"
+        ]
+      },
+      "0013": {
+        "G": [
+          "16707860620"
+        ],
+        "M": [
+          "16707860602"
+        ],
+        "P": [
+          "16707860474"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708078298",
+    "nome": "Cueca Pima",
+    "marca": "Foxton",
+    "preco": 128,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "GG": [
+          "16708080093"
+        ],
+        "G": [
+          "16708080065"
+        ],
+        "M": [
+          "16708079595"
+        ],
+        "P": [
+          "16708079162"
+        ]
+      },
+      "0001": {
+        "GG": [
+          "16708078765"
+        ],
+        "G": [
+          "16708078754"
+        ],
+        "M": [
+          "16708078699"
+        ],
+        "P": [
+          "16708078298"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708076724",
+    "nome": "Meia Invisível",
+    "marca": "Foxton",
+    "preco": 59,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      },
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "U": [
+          "16708077230"
+        ]
+      },
+      "0001": {
+        "U": [
+          "16708076724"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707353061",
+    "nome": "Tshirt Malha Pima",
+    "marca": "Foxton",
+    "preco": 298,
+    "novo": false,
+    "descricao": "A Tshirt Malha Pima combina estilo e funcionalidade em uma proposta versátil para o dia a dia.\nO Cinto Couro Verona é o detalhe que transforma produções, unindo funcionalidade e estilo atemporal.\nDesenvolvido em materiais nobres, garante durabilidade e acabamento premium. Cinto de couro clássico.\nFinalize seu look com peças da &lt;a href=\"https://www.foxtonbrasil.com.br/roupas\" style=\"max-width: 100%; text-decoration: none; color: #000000;\"&gt;coleção Foxton&lt;/a&gt; e adicione personalidade ao visual.\nDetalhes:\nCós com passadores para uso de cinto, adicionando versatilidade ao look",
+    "cores": [
+      {
+        "cor": "8213",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "2216",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "2119",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      },
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "XG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "2119": {
+        "GG": [
+          "16707358309"
+        ],
+        "G": [
+          "16707358272"
+        ],
+        "M": [
+          "16707358237"
+        ],
+        "P": [
+          "16707358176"
+        ]
+      },
+      "2216": {
+        "GG": [
+          "16707859985"
+        ],
+        "G": [
+          "16707859960"
+        ],
+        "M": [
+          "16707859948"
+        ],
+        "P": [
+          "16707859904"
+        ]
+      },
+      "8213": {
+        "GG": [
+          "16708075982"
+        ],
+        "G": [
+          "16708075961"
+        ],
+        "P": [
+          "16708075924"
+        ],
+        "M": [
+          "16707860296"
+        ]
+      },
+      "0013": {
+        "XG": [
+          "16707354646"
+        ],
+        "GG": [
+          "16707354587"
+        ],
+        "G": [
+          "16707354533"
+        ],
+        "M": [
+          "16707354485"
+        ],
+        "P": [
+          "16707354416"
+        ]
+      },
+      "0001": {
+        "XG": [
+          "16707353785"
+        ],
+        "G": [
+          "16707353688"
+        ],
+        "M": [
+          "16707353650"
+        ],
+        "P": [
+          "16707353061"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708074000",
+    "nome": "Cueca Algodão Boxer",
+    "marca": "Foxton",
+    "preco": 78,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0003",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0002",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0003": {
+        "GG": [
+          "16708075177"
+        ],
+        "G": [
+          "16708075121"
+        ],
+        "M": [
+          "16708075057"
+        ],
+        "P": [
+          "16708075019"
+        ]
+      },
+      "0002": {
+        "GG": [
+          "16708074380"
+        ],
+        "G": [
+          "16708074331"
+        ],
+        "M": [
+          "16708074295"
+        ],
+        "P": [
+          "16708074000"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708067980",
+    "nome": "Calça Bootcut Jeans Paris Dark",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "1531",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1531": {
+        "34": [
+          "16708067980"
+        ],
+        "36": [
+          "16708068838"
+        ],
+        "38": [
+          "16708068893"
+        ],
+        "40": [
+          "16708069011"
+        ],
+        "42": [
+          "16708069087"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708064225",
+    "nome": "Calça Jeans Recortes Bolso",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "1530",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1530": {
+        "34": [
+          "16708064225"
+        ],
+        "38": [
+          "16708064911"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707861246",
+    "nome": "Calça Jeans Slim Onda Média",
+    "marca": "Foxton",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0011",
+        "imagens": [],
+        "tamanhos": [
+          "38",
+          "40",
+          "42",
+          "44",
+          "46"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40",
+          "42",
+          "44",
+          "46"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0011": {
+        "38": [
+          "16707861246"
+        ],
+        "40": [
+          "16707861298"
+        ],
+        "42": [
+          "16707861344"
+        ],
+        "44": [
+          "16707861371"
+        ],
+        "46": [
+          "16707861387"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707365547",
+    "nome": "Tshirt Pima Flex Fit",
+    "marca": "Foxton",
+    "preco": 348,
+    "novo": false,
+    "descricao": "A Camiseta Pima Flex Fit combina  conforto e elasticidade  em uma peça essencial para o dia a dia. Confeccionada com  tecido de alta qualidade , ela oferece ajuste perfeito ao corpo e liberdade de movimento, tornando-se a escolha ideal para ser usada sozinha ou como camada base em produções mais elaboradas.\nCom modelagem regular de t-shirt e logo Foxton em silk nas costas, essa peça garante versatilidade e um caimento impecável, seja em combinações casuais ou por baixo de camisas para um visual mais alinhado.",
+    "cores": [
+      {
+        "cor": "2119",
+        "imagens": [
+          "/produtos/16707859451--unico--0.jpg",
+          "/produtos/16707859451--unico--1.jpg",
+          "/produtos/16707859451--unico--2.jpg",
+          "/produtos/16707859451--unico--3.jpg",
+          "/produtos/16707859451--unico--4.jpg",
+          "/produtos/16707859451--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      },
+      {
+        "cor": "0013",
+        "imagens": [
+          "/produtos/16707858714--unico--0.jpg",
+          "/produtos/16707858714--unico--1.jpg",
+          "/produtos/16707858714--unico--2.jpg",
+          "/produtos/16707858714--unico--3.jpg",
+          "/produtos/16707858714--unico--4.jpg",
+          "/produtos/16707858714--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      },
+      {
+        "cor": "0001",
+        "imagens": [
+          "/produtos/16707366048--unico--0.jpg",
+          "/produtos/16707366048--unico--1.jpg",
+          "/produtos/16707366048--unico--2.jpg",
+          "/produtos/16707366048--unico--3.jpg",
+          "/produtos/16707366048--unico--4.jpg",
+          "/produtos/16707366048--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16707859451--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "2119": {
+        "XG": [
+          "16707859451"
+        ],
+        "GG": [
+          "16707859431"
+        ],
+        "G": [
+          "16707367087"
+        ],
+        "M": [
+          "16707367040"
+        ],
+        "P": [
+          "16707366983"
+        ]
+      },
+      "0013": {
+        "XG": [
+          "16707858714"
+        ],
+        "GG": [
+          "16707858682"
+        ],
+        "G": [
+          "16707858667"
+        ],
+        "M": [
+          "16707858650"
+        ],
+        "P": [
+          "16707858619"
+        ]
+      },
+      "0001": {
+        "XG": [
+          "16707366048"
+        ],
+        "GG": [
+          "16707365995"
+        ],
+        "G": [
+          "16707365941"
+        ],
+        "M": [
+          "16707365875"
+        ],
+        "P": [
+          "16707365547"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705634738",
+    "nome": "Camisa Listrada Com Renda",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0200",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0200": {
+        "G": [
+          "16707367740"
+        ],
+        "P": [
+          "16707367732"
+        ],
+        "M": [
+          "16705634738"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707323110",
+    "nome": "Calça Jeans Slim Onda Clara",
+    "marca": "Foxton",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0580",
+        "imagens": [],
+        "tamanhos": [
+          "38",
+          "40",
+          "42",
+          "44",
+          "46"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40",
+          "42",
+          "44",
+          "46"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0580": {
+        "38": [
+          "16707323110"
+        ],
+        "40": [
+          "16707323354"
+        ],
+        "42": [
+          "16707323373"
+        ],
+        "44": [
+          "16707323411"
+        ],
+        "46": [
+          "16707323452"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707252013",
+    "nome": "Calça Listra Rosa",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0702",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0702": {
+        "36": [
+          "16707252013"
+        ],
+        "38": [
+          "16707252677"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707245013",
+    "nome": "Kaftan de Voil Listrada",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "1239",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1239": {
+        "G": [
+          "16707245609"
+        ],
+        "P": [
+          "16707245013"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707233206",
+    "nome": "Cinto de Couro Dupla Face",
+    "marca": "Animale",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0600",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0600": {
+        "PP": [
+          "16707234284"
+        ],
+        "M": [
+          "16707234132"
+        ],
+        "P": [
+          "16707233206"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706507825",
+    "nome": "Top Cropped Pala Sobreposta",
+    "marca": "Animale",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "M": [
+          "16706508628"
+        ],
+        "P": [
+          "16706508544"
+        ],
+        "PP": [
+          "16706507825"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706480422",
+    "nome": "Calça de Tricot Estampa Folhas",
+    "marca": "Animale",
+    "preco": 1998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0001": {
+        "M": [
+          "16706480872"
+        ],
+        "P": [
+          "16706480422"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706459093",
+    "nome": "T-shirt Malha Pima",
+    "marca": "Animale",
+    "preco": 198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "0003",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "G": [
+          "16706478128"
+        ],
+        "M": [
+          "16706478092"
+        ],
+        "P": [
+          "16706478016"
+        ],
+        "PP": [
+          "16706477945"
+        ]
+      },
+      "0003": {
+        "M": [
+          "16706459907"
+        ],
+        "P": [
+          "16706459862"
+        ],
+        "PP": [
+          "16706459093"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706467485",
+    "nome": "Calça Over Riscas Preta",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "34": [
+          "16706467485"
+        ],
+        "38": [
+          "16706468190"
+        ],
+        "40": [
+          "16706468309"
+        ],
+        "42": [
+          "16706468413"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706456867",
+    "nome": "Camisa Punho",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0200",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0200": {
+        "G": [
+          "16706457760"
+        ],
+        "M": [
+          "16706457710"
+        ],
+        "P": [
+          "16706456867"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706288308",
+    "nome": "T-shirt Fun Carta",
+    "marca": "Animale",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0003",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0003": {
+        "M": [
+          "16706456195"
+        ],
+        "P": [
+          "16706288707"
+        ],
+        "PP": [
+          "16706288308"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706295374",
+    "nome": "Calça Listras Marrom",
+    "marca": "Animale",
+    "preco": 1498,
+    "novo": false,
+    "descricao": "Calça com modelagem ampla, cintura alta, pregas frontais e padronagem listrada. O caimento fluido e as listras verticais valorizam a silhueta e imprimem elegância à produção. DETALHES – Cintura alta – Modelagem ampla – Pregas frontais – Bolsos laterais – Padronagem listrada – Fechamento frontal",
+    "cores": [
+      {
+        "cor": "0600",
+        "imagens": [
+          "/produtos/16706295903--unico--0.jpg",
+          "/produtos/16706295903--unico--1.jpg",
+          "/produtos/16706295903--unico--2.jpg",
+          "/produtos/16706295903--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16706295903--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0600": {
+        "34": [
+          "16706295374"
+        ],
+        "36": [
+          "16706295775"
+        ],
+        "38": [
+          "16706295806"
+        ],
+        "40": [
+          "16706295840"
+        ],
+        "42": [
+          "16706295903"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706293004",
+    "nome": "Short Alfaiataria Melange",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0800",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0800": {
+        "36": [
+          "16706293004"
+        ],
+        "38": [
+          "16706293231"
+        ],
+        "40": [
+          "16706293256"
+        ],
+        "42": [
+          "16706293279"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706292098",
+    "nome": "Camisa Cropped Listra Azul e Bege",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0201",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0201": {
+        "G": [
+          "16706292434"
+        ],
+        "M": [
+          "16706292416"
+        ],
+        "P": [
+          "16706292098"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706289989",
+    "nome": "Top Peplum de Algodão Bege",
+    "marca": "Animale",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "1566",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1566": {
+        "34": [
+          "16706289989"
+        ],
+        "36": [
+          "16706290179"
+        ],
+        "38": [
+          "16706290213"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706264381",
+    "nome": "Camisa Cambraia de Linho Color",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0003",
+        "imagens": [],
+        "tamanhos": [
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "40",
+          "42"
+        ]
+      },
+      {
+        "cor": "0200",
+        "imagens": [],
+        "tamanhos": [
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0003": {
+        "40": [
+          "16706264938"
+        ],
+        "42": [
+          "16706264996"
+        ]
+      },
+      "0200": {
+        "38": [
+          "16706264381"
+        ],
+        "40": [
+          "16706264447"
+        ],
+        "42": [
+          "16706264512"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706256432",
+    "nome": "Macaquinho Alfaiataria Cosmos",
+    "marca": "Animale",
+    "preco": 1998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "5457",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "5457": {
+        "36": [
+          "16706256432"
+        ],
+        "40": [
+          "16706256984"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706254537",
+    "nome": "Vestido Sem Manga Gola Alta Tricot",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "6223",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "6223": {
+        "M": [
+          "16706254937"
+        ],
+        "P": [
+          "16706254537"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706031485",
+    "nome": "Camisa Bordado Rafia",
+    "marca": "Animale",
+    "preco": 1498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0600",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0600": {
+        "G": [
+          "16706031781"
+        ],
+        "M": [
+          "16706031735"
+        ],
+        "P": [
+          "16706031485"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706030146",
+    "nome": "Saia Midi Bordado Rafia",
+    "marca": "Animale",
+    "preco": 1998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0600",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0600": {
+        "G": [
+          "16706030577"
+        ],
+        "M": [
+          "16706030146"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706024988",
+    "nome": "Mini Saia Listra Rosa",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0702",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0702": {
+        "34": [
+          "16706024988"
+        ],
+        "36": [
+          "16706025564"
+        ],
+        "38": [
+          "16706025705"
+        ],
+        "40": [
+          "16706025872"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706023292",
+    "nome": "Calça Listra Azul Vivo Lateral",
+    "marca": "Animale",
+    "preco": 1498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0200",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0200": {
+        "36": [
+          "16706023292"
+        ],
+        "38": [
+          "16706023864"
+        ],
+        "40": [
+          "16706023893"
+        ],
+        "42": [
+          "16706023920"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705936477",
+    "nome": "Colete Longo Riscas Preta",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "36": [
+          "16705936477"
+        ],
+        "38": [
+          "16705937302"
+        ],
+        "40": [
+          "16705937415"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705636332",
+    "nome": "Camisa Listrada Azul e Verde",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0200",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0200": {
+        "P": [
+          "16705933953"
+        ],
+        "M": [
+          "16705933856"
+        ],
+        "G": [
+          "16705636332"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705930470",
+    "nome": "Calça Branco Nata Listra Caramelo",
+    "marca": "Animale",
+    "preco": 1498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "5457",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "5457": {
+        "36": [
+          "16705930470"
+        ],
+        "38": [
+          "16705931037"
+        ],
+        "40": [
+          "16705931223"
+        ],
+        "42": [
+          "16705931369"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705926115",
+    "nome": "Short Saia Listras Marrom",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0600",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0600": {
+        "34": [
+          "16705926115"
+        ],
+        "36": [
+          "16705927222"
+        ],
+        "38": [
+          "16705927371"
+        ],
+        "40": [
+          "16705927500"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705767944",
+    "nome": "Blazer Listras Marrom",
+    "marca": "Animale",
+    "preco": 2398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0600",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0600": {
+        "34": [
+          "16705767944"
+        ],
+        "36": [
+          "16705768949"
+        ],
+        "38": [
+          "16705769084"
+        ],
+        "40": [
+          "16705769173"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705704559",
+    "nome": "Vestido de Couro Midi Básico Clássico",
+    "marca": "Animale",
+    "preco": 5998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "36": [
+          "16705704559"
+        ],
+        "40": [
+          "16705708075"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705648373",
+    "nome": "Regata de Tricot Lurex Prata Decote V",
+    "marca": "Animale",
+    "preco": 328,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "1100",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1100": {
+        "M": [
+          "16705648897"
+        ],
+        "P": [
+          "16705648373"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16710526649",
+    "nome": "Tunica Est Orquidea - 61938",
+    "marca": "Animale",
+    "preco": 1498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16710524791",
+    "nome": "Cardigan Bordado Gola V de Tricot - 07509",
+    "marca": "Animale",
+    "preco": 2298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16710508678",
+    "nome": "Garrafa Onça Classica Color - 57771",
+    "marca": "Animale",
+    "preco": 198,
+    "novo": false,
+    "descricao": "Garrafa térmica de 750 ml com estampa Onça Clássica e tampa rosqueável. Parte da linha Animale Soul. DETALHES - Capacidade: 750 ml - Mantém bebidas quentes por até 8h e geladas por até 12h - Estampa Onça Clássica - Tampa rosqueável - Logo Animale frontal",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16710508678--unico--0.jpg",
+          "/produtos/16710508678--unico--1.jpg",
+          "/produtos/16710508678--unico--2.jpg",
+          "/produtos/16710508678--unico--3.jpg",
+          "/produtos/16710508678--unico--4.jpg"
+        ],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16710508678--unico--0.jpg",
+    "temEstoque": true
+  },
+  {
+    "id": "16706320753",
+    "nome": "Jaqueta Dafne - NV329",
+    "marca": "NV",
+    "preco": 2898,
+    "novo": false,
+    "descricao": "Confeccionada em tweed\nCom modelagem regular\nManga longa\nDecote profundo\nFechamento frontal com zíper de cursor duplo\nBarra com elástico embutido\nTextura de tweed\nA Jaqueta Dafne, em tweed, redefine a elegância casual. Sua a textura rica traz personalidade única a qualquer look. Com modelagem regular, tem caimento impecável, já o decote profundo e o fechamento frontal com zíper de cursor duplo dão um toque moderno. A barra com elástico embutido arremata o shape, deixando a peça única.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16706320820--unico--0.jpg",
+          "/produtos/16706320820--unico--1.jpg",
+          "/produtos/16706320820--unico--2.jpg",
+          "/produtos/16706320820--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16706320820--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16710504391"
+      ],
+      "M": [
+        "16706320820"
+      ],
+      "PP": [
+        "16706320753"
+      ]
+    }
+  },
+  {
+    "id": "16710501215",
+    "nome": "Vestido Emily - NV080",
+    "marca": "NV",
+    "preco": 0,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16710501623",
+        "16710501215"
+      ]
+    }
+  },
+  {
+    "id": "16706015780",
+    "nome": "Regata Dulce - NV089",
+    "marca": "NV",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16710496807"
+      ],
+      "M": [
+        "16706055662"
+      ],
+      "PP": [
+        "16706015780"
+      ]
+    }
+  },
+  {
+    "id": "16706015494",
+    "nome": "Body Tricot Vilma - NV1185",
+    "marca": "NV",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "PP": [
+        "16710495422"
+      ],
+      "M": [
+        "16706342957"
+      ],
+      "P": [
+        "16706015494"
+      ]
+    }
+  },
+  {
+    "id": "16706320117",
+    "nome": "Jaqueta Augusta - NV1170",
+    "marca": "NV",
+    "preco": 2398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16710492917"
+      ],
+      "P": [
+        "16710492821"
+      ],
+      "PP": [
+        "16706320117"
+      ]
+    }
+  },
+  {
+    "id": "16710110558",
+    "nome": "Camisa ML Linho Lumiar - 32320",
+    "marca": "Foxton",
+    "preco": 698,
+    "novo": false,
+    "descricao": "A Camisa Manga Longa Linho Lumiar leva uma interpretação contemporânea à camisa, combinando cambraia de linho com a identidade própria de uma peça de manga longa. A construção cria uma presença clara no visual e favorece composições em que textura, proporção e material aparecem de forma natural, sem perder a elegância descontraída característica da Foxton\nSua ficha reúne ainda cores exclusivas Foxton e corantes nativos que preservam o brilho das cores e o acabamento do linho, proposta urbana, manga longa, 100% linho. Esses elementos não aparecem como detalhes isolados: juntos, formam a linguagem da peça e orientam sua utilização. A composição declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
+    "composicao": "declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16710110690--unico--0.jpg",
+          "/produtos/16710110690--unico--1.jpg",
+          "/produtos/16710110690--unico--2.jpg",
+          "/produtos/16710110690--unico--3.jpg",
+          "/produtos/16710110690--unico--4.jpg",
+          "/produtos/16710110690--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16710110690--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16710110690"
+      ],
+      "M": [
+        "16710110640"
+      ],
+      "P": [
+        "16710110558"
+      ]
+    }
+  },
+  {
+    "id": "16710108326",
+    "nome": "Camisa ML Linho Lumiar - 00409",
+    "marca": "Foxton",
+    "preco": 698,
+    "novo": false,
+    "descricao": "A Camisa Manga Longa Linho Lumiar leva uma interpretação contemporânea à camisa, combinando cambraia de linho com a identidade própria de uma peça de manga longa. A construção cria uma presença clara no visual e favorece composições em que textura, proporção e material aparecem de forma natural, sem perder a elegância descontraída característica da Foxton\nSua ficha reúne ainda cores exclusivas Foxton e corantes nativos que preservam o brilho das cores e o acabamento do linho, proposta urbana, manga longa, 100% linho. Esses elementos não aparecem como detalhes isolados: juntos, formam a linguagem da peça e orientam sua utilização. A composição declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
+    "composicao": "declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16710108899--unico--0.jpg",
+          "/produtos/16710108899--unico--1.jpg",
+          "/produtos/16710108899--unico--2.jpg",
+          "/produtos/16710108899--unico--3.jpg",
+          "/produtos/16710108899--unico--4.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16710108899--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "GG": [
+        "16710108899"
+      ],
+      "M": [
+        "16710108752"
+      ],
+      "P": [
+        "16710108326"
+      ]
+    }
+  },
+  {
+    "id": "16708219699",
+    "nome": "Tshirt Interlock New - 32325",
+    "marca": "Foxton",
+    "preco": 278,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "GG": [
+        "16708970890"
+      ],
+      "G": [
+        "16708970786"
+      ],
+      "M": [
+        "16708970685"
+      ],
+      "P": [
+        "16708219699"
+      ]
+    }
+  },
+  {
+    "id": "16708929371",
+    "nome": "Top Alcinhas Babado Azul - 07703",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "Top com caimento leve, botões frontais delicados e babados aplicados, que trazem movimento e textura à peça. O decote em V valoriza o colo e reforça a feminilidade da silhueta. DETALHES – Tecido leve – Cor azul bruma – Modelagem solta – Alças finas – Decote V – Babados aplicados na frente e nas costas – Fechamento frontal por botões",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708929988--unico--0.jpg",
+          "/produtos/16708929988--unico--1.jpg",
+          "/produtos/16708929988--unico--2.jpg",
+          "/produtos/16708929988--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708929988--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16708929371"
+      ],
+      "38": [
+        "16708929988"
+      ]
+    }
+  },
+  {
+    "id": "16708926338",
+    "nome": "Batinha de Voil Onça Manchas - 27170",
+    "marca": "Animale",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16708926338"
+      ],
+      "38": [
+        "16708926810"
+      ]
+    }
+  },
+  {
+    "id": "16708925290",
+    "nome": "Top com Renda e Strass - 07717",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "Top Com Renda E Strass, Animale. O  top roxo  é confeccionado em  seda com sem elasticidade . A peça solta ao corpo possui decote frontal e posterior em V profundo com aplicação de renda, alças finas reguláveis, cavas alongadas e aplicação de strass por toda a superfície. - Seda - Sem elasticidade - Decote em V - Alças finas reguláveis - Aplicação de renda no decote - Aplicação de strass - Caimento solto",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708925452--unico--0.jpg",
+          "/produtos/16708925452--unico--1.jpg",
+          "/produtos/16708925452--unico--2.jpg",
+          "/produtos/16708925452--unico--3.jpg",
+          "/produtos/16708925452--unico--4.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708925452--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16708925290"
+      ],
+      "38": [
+        "16708925452"
+      ]
+    }
+  },
+  {
+    "id": "16708923432",
+    "nome": "T-shirt Gola Rib - 07708",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16708920682",
+    "nome": "T-shirt Fio Tinto Marrom - 07509",
+    "marca": "Animale",
+    "preco": 258,
+    "novo": false,
+    "descricao": "T-shirt em malha fio tinto com padronagem listrada, modelagem ampla e comprimento cropped. Possui detalhe de tag aplicada nas costas.  DETALHES – Desenvolvida em malha fio tinto – Padronagem listrada – Gola careca – Mangas curtas – Ombros deslocados – Modelagem ampla – Comprimento cropped – Tag aplicada nas costas",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708921615--unico--0.jpg",
+          "/produtos/16708921615--unico--1.jpg",
+          "/produtos/16708921615--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708921615--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16708921615"
+      ],
+      "P": [
+        "16708920682"
+      ]
+    }
+  },
+  {
+    "id": "16708915916",
+    "nome": "Camisa Seda Basica Marrom Taupe - 07710",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "Camisa em seda com gola clássica, fechamento frontal por botões e mangas longas. Uma peça sofisticada e atemporal. DETALHES - Caimento fluido - Gola clássica - Mangas longas - Punhos com botões - Comprimento clássico - Pala posterior - Prega nas costas - Barra arredondada - Fechamento frontal por botões",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708916862--unico--0.jpg",
+          "/produtos/16708916862--unico--1.jpg",
+          "/produtos/16708916862--unico--2.jpg",
+          "/produtos/16708916862--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708916862--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16708915916"
+      ],
+      "40": [
+        "16708916862"
+      ]
+    }
+  },
+  {
+    "id": "16708912728",
+    "nome": "Saia Midi Fio TInto - 07509",
+    "marca": "Animale",
+    "preco": 498,
+    "novo": false,
+    "descricao": "Saia em malha fio tinto com modelagem reta e comprimento midi. As listras em cores contrastantes percorrem a peça, imprimindo personalidade à composição. O cós elástico garante ajuste confortável à cintura. Uma proposta casual e contemporânea.  DETALHES – Malha fio tinto – Modelagem reta – Comprimento midi – Padronagem listrada – Cós elástico – Tag aplicada na barra",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708913182--unico--0.jpg",
+          "/produtos/16708913182--unico--1.jpg",
+          "/produtos/16708913182--unico--2.jpg",
+          "/produtos/16708913182--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708913182--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16708913182"
+      ],
+      "PP": [
+        "16708912728"
+      ]
+    }
+  },
+  {
+    "id": "16706291105",
+    "nome": "Saia Renda e Strass - 07717",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708911493--unico--0.jpg",
+          "/produtos/16708911493--unico--1.jpg",
+          "/produtos/16708911493--unico--2.jpg",
+          "/produtos/16708911493--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708911493--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16708911000"
+      ],
+      "38": [
+        "16708911493"
+      ],
+      "40": [
+        "16706291105"
+      ]
+    }
+  },
+  {
+    "id": "16708908168",
+    "nome": "Vestido Curto Renda Bordada Marrom Casta - 07708",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "O  vestido marrom  é confeccionado em  tecido leve sem elasticidade . A peça solta ao corpo possui decote reto, alças finas, bordado floral aplicado por toda a peça, recorte com franzidos na barra, forro e comprimento curto. - Tecido leve - Sem elasticidade - Decote reto com acabamento em renda - Alças finas - Bordado floral em toda a peça - Caimento solto - Recorte com franzidos na barra - Forro",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708909251--unico--0.jpg",
+          "/produtos/16708909251--unico--1.jpg",
+          "/produtos/16708909251--unico--2.jpg",
+          "/produtos/16708909251--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708909251--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16708908168"
+      ],
+      "36": [
+        "16708909040"
+      ],
+      "38": [
+        "16708909148"
+      ],
+      "40": [
+        "16708909251"
+      ]
+    }
+  },
+  {
+    "id": "16708641603",
+    "nome": "Blusa Utilitaria Off - Off White",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16708480214",
+    "nome": "Shopper Bag Leopard Color",
+    "marca": "Animale",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16708479326",
+    "nome": "Necessaire Liberty Seeds - 57561",
+    "marca": "Animale",
+    "preco": 248,
+    "novo": false,
+    "descricao": "Nécessaire com formato estruturado e estampa Liberty Seeds. Apresenta alça lateral contrastante e fechamento superior por zíper duplo. Parte da linha Animale Soul. DETALHES - Formato estruturado - Cantos arredondados - Alça lateral contrastante - Puxadores metálicos - Fechamento superior por zíper duplo - Estampa Liberty Seeds",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708479326--unico--0.jpg",
+          "/produtos/16708479326--unico--1.jpg",
+          "/produtos/16708479326--unico--2.jpg",
+          "/produtos/16708479326--unico--3.jpg",
+          "/produtos/16708479326--unico--4.jpg"
+        ],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708479326--unico--0.jpg",
+    "temEstoque": true
+  },
+  {
+    "id": "16706033815",
+    "nome": "Macacão Stopper Micro Cosmos - 57571",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16708061726"
+      ],
+      "36": [
+        "16706033815"
+      ],
+      "38": [
+        "16708469540"
+      ]
+    }
+  },
+  {
+    "id": "16708468644",
+    "nome": "Vestido Slip Jacquard Marrom Taupe - 07710",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "42"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16708466829",
+    "nome": "Macacão Amarração Liberty - 58651",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16708466829"
+      ],
+      "38": [
+        "16708467756"
+      ]
+    }
+  },
+  {
+    "id": "16707250690",
+    "nome": "Macacao Ombro So Camuflado Mata Color - 57538",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16708464787"
+      ],
+      "38": [
+        "16708464888"
+      ],
+      "40": [
+        "16707250690"
+      ]
+    }
+  },
+  {
+    "id": "16708461545",
+    "nome": "T-shirt Fun Flor Oliva - 07711",
+    "marca": "Animale",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16708462850"
+      ],
+      "P": [
+        "16708461545"
+      ]
+    }
+  },
+  {
+    "id": "16708459789",
+    "nome": "Saia Enviesada Geo Flow Bronze - 58229",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "Saia Enviesada Geo Flow, Animale. A  saia rosa  é confeccionada em  tecido leve sem elasticidade.  A peça possui cós aplicado, estampa geométrica em tons contrastantes, modelagem evasê, comprimento longo, barra ampla com acabamento simples, sem forro e fechamento lateral por zíper invisível. - Tecido leve - Sem elasticidade - Estampa geométrica - Cós aplicado - Modelagem evasê - Comprimento longo - Sem forro - Fechamento lateral por zíper invisível",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708460466--unico--0.jpg",
+          "/produtos/16708460466--unico--1.jpg",
+          "/produtos/16708460466--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "38",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "38",
+          "42"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708460466--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16708459789"
+      ],
+      "38": [
+        "16708460330"
+      ],
+      "42": [
+        "16708460466"
+      ]
+    }
+  },
+  {
+    "id": "16707240687",
+    "nome": "Camisa Bossa Bege Petala - 07705",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16707240687"
+      ],
+      "38": [
+        "16708438302"
+      ],
+      "42": [
+        "16708438394"
+      ]
+    }
+  },
+  {
+    "id": "16708435247",
+    "nome": "Regata Rib Nadador - 07708",
+    "marca": "Animale",
+    "preco": 198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16708435689"
+      ],
+      "P": [
+        "16708435626"
+      ],
+      "PP": [
+        "16708435247"
+      ]
+    }
+  },
+  {
+    "id": "16708433888",
+    "nome": "Segunda Pele Tule Liberty - 57561",
+    "marca": "Animale",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16708434444"
+      ],
+      "P": [
+        "16708434350"
+      ],
+      "PP": [
+        "16708433888"
+      ]
+    }
+  },
+  {
+    "id": "16708426225",
+    "nome": "Vestido Longuete Açaí - 07715",
+    "marca": "Animale",
+    "preco": 1498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34"
+        ],
+        "tamanhosDisponiveis": [
+          "34"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16708424039",
+    "nome": "Trench Coat Seda - 07755",
+    "marca": "Animale",
+    "preco": 2598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16708411766",
+    "nome": "Calça Ampla Bordada Marrom Castanha - 07708",
+    "marca": "Animale",
+    "preco": 2298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34"
+        ],
+        "tamanhosDisponiveis": [
+          "34"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16708409586",
+    "nome": "Calça Alladin Liberty Seeds - 57560",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "Calça estampada com modelagem aladdin. Apresenta punho com elástico, bolsos laterais e caimento fluido. Uma proposta leve, feminina e sofisticada. DETALHES – Estampa Liberty Seeds – Modelagem aladdin – Cós com elástico – Bolsos laterais – Punhos com elástico",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708410488--unico--0.jpg",
+          "/produtos/16708410488--unico--1.jpg",
+          "/produtos/16708410488--unico--2.jpg",
+          "/produtos/16708410488--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708410488--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16708409586"
+      ],
+      "36": [
+        "16708410189"
+      ],
+      "38": [
+        "16708410345"
+      ],
+      "40": [
+        "16708410488"
+      ]
+    }
+  },
+  {
+    "id": "16708403562",
+    "nome": "Necessaire Pequena Leopard Color - 58881",
+    "marca": "Animale",
+    "preco": 198,
+    "novo": false,
+    "descricao": "Nécessaire pequena com estampa Leopard Color e formato retangular. Apresenta fechamento superior por zíper, forro interno e logo Animale aplicada na parte frontal. Parte da linha Animale Soul. DETALHES - Tamanho pequeno - Formato retangular - Estampa Leopard Color - Fechamento superior por zíper - Forro interno - Logo Animale na parte frontal",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708403562--unico--0.jpg",
+          "/produtos/16708403562--unico--1.jpg",
+          "/produtos/16708403562--unico--2.jpg",
+          "/produtos/16708403562--unico--3.jpg",
+          "/produtos/16708403562--unico--4.jpg"
+        ],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708403562--unico--0.jpg",
+    "temEstoque": true
+  },
+  {
+    "id": "16708265404",
+    "nome": "Tshirt Suedine Pima Classic - 00416",
+    "marca": "Foxton",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "GG": [
+        "16708265475"
+      ],
+      "G": [
+        "16708265439"
+      ],
+      "M": [
+        "16708265423"
+      ],
+      "P": [
+        "16708265404"
+      ]
+    }
+  },
+  {
+    "id": "16708255238",
+    "nome": "M/M Logo - 32321",
+    "marca": "Foxton",
+    "preco": 148,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "GG": [
+        "16708255261"
+      ],
+      "G": [
+        "16708255257"
+      ],
+      "M": [
+        "16708255254"
+      ],
+      "P": [
+        "16708255238"
+      ]
+    }
+  },
+  {
+    "id": "16708247854",
+    "nome": "M/M Logo - 32325",
+    "marca": "Foxton",
+    "preco": 148,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "GG": [
+        "16708248233"
+      ],
+      "G": [
+        "16708248157"
+      ],
+      "M": [
+        "16708248001"
+      ],
+      "P": [
+        "16708247854"
+      ]
+    }
+  },
+  {
+    "id": "16708219366",
+    "nome": "Tshirt Interlock New - 32321",
+    "marca": "Foxton",
+    "preco": 278,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "GG": [
+        "16708219386"
+      ],
+      "G": [
+        "16708219380"
+      ],
+      "M": [
+        "16708219375"
+      ],
+      "P": [
+        "16708219366"
+      ]
+    }
+  },
+  {
+    "id": "16708216137",
+    "nome": "Short Puro Linho Pier - 32320",
+    "marca": "Foxton",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16708216150"
+      ],
+      "M": [
+        "16708216143"
+      ],
+      "P": [
+        "16708216137"
+      ]
+    }
+  },
+  {
+    "id": "16708215303",
+    "nome": "Camisa Manga Curta Buzios New - 32321",
+    "marca": "Foxton",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "GG": [
+        "16708215449"
+      ],
+      "G": [
+        "16708215445"
+      ],
+      "M": [
+        "16708215432"
+      ],
+      "P": [
+        "16708215303"
+      ]
+    }
+  },
+  {
+    "id": "16708213527",
+    "nome": "Short Puro Linho Pier - 32321",
+    "marca": "Foxton",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16706316503",
+    "nome": "Short Casual Pier - 00416",
+    "marca": "Foxton",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16708211396"
+      ],
+      "P": [
+        "16708211387"
+      ],
+      "M": [
+        "16706316503"
+      ]
+    }
+  },
+  {
+    "id": "16708158396",
+    "nome": "Bermuda Chino - 00416",
+    "marca": "Foxton",
+    "preco": 448,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "40",
+          "42",
+          "44"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "40": [
+        "16708158396"
+      ],
+      "42": [
+        "16708158425"
+      ],
+      "44": [
+        "16708158428"
+      ]
+    }
+  },
+  {
+    "id": "16708070192",
+    "nome": "Batinha Textura Massas - 57580",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "38",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "38",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16708070192"
+      ],
+      "38": [
+        "16708070510"
+      ],
+      "42": [
+        "16708070552"
+      ]
+    }
+  },
+  {
+    "id": "16706036651",
+    "nome": "Top Painel com Renda Marrom Biscoito - 10056",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "38": [
+        "16706036651"
+      ],
+      "40": [
+        "16708069611"
+      ]
+    }
+  },
+  {
+    "id": "16708060496",
+    "nome": "Macacão com Bolsos - 03362",
+    "marca": "Animale",
+    "preco": 2398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16707859257",
+    "nome": "Tshirt Pima Flex Fit - 00409",
+    "marca": "Foxton",
+    "preco": 348,
+    "novo": false,
+    "descricao": "A Camiseta Pima Flex Fit combina  conforto e elasticidade  em uma peça essencial para o dia a dia. Confeccionada com  tecido de alta qualidade , ela oferece ajuste perfeito ao corpo e liberdade de movimento, tornando-se a escolha ideal para ser usada sozinha ou como camada base em produções mais elaboradas.\nCom modelagem regular de t-shirt e logo Foxton em silk nas costas, essa peça garante versatilidade e um caimento impecável, seja em combinações casuais ou por baixo de camisas para um visual mais alinhado.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16707859312--unico--0.jpg",
+          "/produtos/16707859312--unico--1.jpg",
+          "/produtos/16707859312--unico--2.jpg",
+          "/produtos/16707859312--unico--3.jpg",
+          "/produtos/16707859312--unico--4.jpg",
+          "/produtos/16707859312--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "GG",
+          "XG"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16707859312--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "XG": [
+        "16707859312"
+      ],
+      "GG": [
+        "16707859283"
+      ],
+      "M": [
+        "16707859267"
+      ],
+      "P": [
+        "16707859257"
+      ]
+    }
+  },
+  {
+    "id": "16707362594",
+    "nome": "Tshirt Suedine Pima Classic - 00409",
+    "marca": "Foxton",
+    "preco": 348,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "XG": [
+        "16707362990"
+      ],
+      "GG": [
+        "16707362886"
+      ],
+      "G": [
+        "16707362805"
+      ],
+      "M": [
+        "16707362725"
+      ],
+      "P": [
+        "16707362594"
+      ]
+    }
+  },
+  {
+    "id": "16707357509",
+    "nome": "Tshirt Malha Pima - 00735",
+    "marca": "Foxton",
+    "preco": 298,
+    "novo": false,
+    "descricao": "A Tshirt Malha Pima combina estilo e funcionalidade em uma proposta versátil para o dia a dia.\nO Cinto Couro Verona é o detalhe que transforma produções, unindo funcionalidade e estilo atemporal.\nDesenvolvido em materiais nobres, garante durabilidade e acabamento premium. Cinto de couro clássico.\nFinalize seu look com peças da &lt;a href=\"https://www.foxtonbrasil.com.br/roupas\" style=\"max-width: 100%; text-decoration: none; color: #000000;\"&gt;coleção Foxton&lt;/a&gt; e adicione personalidade ao visual.\nDetalhes:\nCós com passadores para uso de cinto, adicionando versatilidade ao look",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "GG": [
+        "16707357785"
+      ],
+      "G": [
+        "16707357717"
+      ],
+      "M": [
+        "16707357567"
+      ],
+      "P": [
+        "16707357509"
+      ]
+    }
+  },
+  {
+    "id": "16707355635",
+    "nome": "Tshirt Malha Pima - 00416",
+    "marca": "Foxton",
+    "preco": 298,
+    "novo": false,
+    "descricao": "A Tshirt Malha Pima combina estilo e funcionalidade em uma proposta versátil para o dia a dia.\nO Cinto Couro Verona é o detalhe que transforma produções, unindo funcionalidade e estilo atemporal.\nDesenvolvido em materiais nobres, garante durabilidade e acabamento premium. Cinto de couro clássico.\nFinalize seu look com peças da &lt;a href=\"https://www.foxtonbrasil.com.br/roupas\" style=\"max-width: 100%; text-decoration: none; color: #000000;\"&gt;coleção Foxton&lt;/a&gt; e adicione personalidade ao visual.\nDetalhes:\nCós com passadores para uso de cinto, adicionando versatilidade ao look",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG",
+          "XG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "XG": [
+        "16707355903"
+      ],
+      "GG": [
+        "16707355835"
+      ],
+      "G": [
+        "16707355790"
+      ],
+      "M": [
+        "16707355726"
+      ],
+      "P": [
+        "16707355635"
+      ]
+    }
+  },
+  {
+    "id": "16705628727",
+    "nome": "Vestido Recortes Branco - Branco",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16707350576"
+      ],
+      "38": [
+        "16705628727"
+      ]
+    }
+  },
+  {
+    "id": "16707319145",
+    "nome": "Garrafa Zebrado Terroso - 57753",
+    "marca": "Animale",
+    "preco": 198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16707248749",
+    "nome": "Macacao Babados Floral Ninfea - 58592",
+    "marca": "Animale",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16707248749"
+      ],
+      "36": [
+        "16707249347"
+      ],
+      "38": [
+        "16707249427"
+      ]
+    }
+  },
+  {
+    "id": "16707246436",
+    "nome": "T-shirt Flor Vinho - 07717",
+    "marca": "Animale",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16707247392"
+      ],
+      "P": [
+        "16707247272"
+      ],
+      "PP": [
+        "16707246436"
+      ]
+    }
+  },
+  {
+    "id": "16707236833",
+    "nome": "Vestido Slip Rendinha - 07717",
+    "marca": "Animale",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "38": [
+        "16707236833"
+      ],
+      "40": [
+        "16707236914"
+      ]
+    }
+  },
+  {
+    "id": "16707219157",
+    "nome": "Blusa Tricot Aurora - NV1258",
+    "marca": "NV",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16706696373",
+    "nome": "Trench Coat Maria - NV952",
+    "marca": "NV",
+    "preco": 2748,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706697069"
+      ],
+      "P": [
+        "16706696373"
+      ]
+    }
+  },
+  {
+    "id": "16706690516",
+    "nome": "Trench Coat Longo Gerogia - NV952",
+    "marca": "NV",
+    "preco": 2298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16706691478"
+      ],
+      "PP": [
+        "16706690516"
+      ]
+    }
+  },
+  {
+    "id": "16706011910",
+    "nome": "Calça Natalia - NV080",
+    "marca": "NV",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16706686292"
+      ],
+      "M": [
+        "16706328842"
+      ],
+      "PP": [
+        "16706011910"
+      ]
+    }
+  },
+  {
+    "id": "16705981692",
+    "nome": "T-shirt Pima Lira - NV089",
+    "marca": "NV",
+    "preco": 348,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16706683756"
+      ],
+      "M": [
+        "16706343821"
+      ],
+      "P": [
+        "16705981692"
+      ]
+    }
+  },
+  {
+    "id": "16706679444",
+    "nome": "Blusa Clarice - NV080",
+    "marca": "NV",
+    "preco": 748,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16706673793",
+    "nome": "Saia Lorenza - NV067",
+    "marca": "NV",
+    "preco": 2198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16706673793"
+      ],
+      "36": [
+        "16706674857"
+      ],
+      "38": [
+        "16706674942"
+      ]
+    }
+  },
+  {
+    "id": "16706665860",
+    "nome": "Blazer Zoe - NV032",
+    "marca": "NV",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16705896403",
+    "nome": "Cardigan Tricot Cleo - NV1176",
+    "marca": "NV",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "PP": [
+        "16706665214"
+      ],
+      "P": [
+        "16706051421"
+      ],
+      "G": [
+        "16705896980"
+      ],
+      "M": [
+        "16705896403"
+      ]
+    }
+  },
+  {
+    "id": "16706331971",
+    "nome": "Saia Marta - NV954",
+    "marca": "NV",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16706664965"
+      ],
+      "40": [
+        "16706331971"
+      ]
+    }
+  },
+  {
+    "id": "16706318495",
+    "nome": "Blazer Esther - NV1192",
+    "marca": "NV",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "PP": [
+        "16706664494"
+      ],
+      "M": [
+        "16706318838"
+      ],
+      "P": [
+        "16706318495"
+      ]
+    }
+  },
+  {
+    "id": "16706199930",
+    "nome": "Blusa Aurora - NV1261",
+    "marca": "NV",
+    "preco": 1148,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16706524635"
+      ],
+      "M": [
+        "16706199930"
+      ]
+    }
+  },
+  {
+    "id": "16706200859",
+    "nome": "Calça Lovani Alfa - NV439",
+    "marca": "NV",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "32",
+          "34",
+          "36",
+          "38",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "32",
+          "34",
+          "36",
+          "38",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "32": [
+        "16706523482"
+      ],
+      "34": [
+        "16706523429"
+      ],
+      "36": [
+        "16706200859"
+      ],
+      "38": [
+        "16706200961"
+      ],
+      "42": [
+        "16706201033"
+      ]
+    }
+  },
+  {
+    "id": "16706198890",
+    "nome": "Twin Set Tricot Aura - NV032",
+    "marca": "NV",
+    "preco": 1148,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706520738"
+      ],
+      "G": [
+        "16706198986"
+      ],
+      "P": [
+        "16706198941"
+      ],
+      "PP": [
+        "16706198890"
+      ]
+    }
+  },
+  {
+    "id": "16706518261",
+    "nome": "Regata Gabriella - NV1235",
+    "marca": "NV",
+    "preco": 248,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16706518481"
+      ],
+      "M": [
+        "16706518405"
+      ],
+      "P": [
+        "16706518311"
+      ],
+      "PP": [
+        "16706518261"
+      ]
+    }
+  },
+  {
+    "id": "16706514902",
+    "nome": "Blazer Zoe - NV1185",
+    "marca": "NV",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706515147"
+      ],
+      "P": [
+        "16706515063"
+      ],
+      "PP": [
+        "16706514902"
+      ]
+    }
+  },
+  {
+    "id": "16705637921",
+    "nome": "T-shirt Malha Fio Tinto Cinza - 07706",
+    "marca": "Animale",
+    "preco": 358,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706504662"
+      ],
+      "P": [
+        "16705638534"
+      ],
+      "PP": [
+        "16705637921"
+      ]
+    }
+  },
+  {
+    "id": "16706502586",
+    "nome": "Vestido Listrado com Lurex Decote V Gola - 58040",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706503101"
+      ],
+      "P": [
+        "16706502586"
+      ]
+    }
+  },
+  {
+    "id": "16706474781",
+    "nome": "Calça Lenço Listras PB - 57567",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "38": [
+        "16706474781"
+      ],
+      "40": [
+        "16706475146"
+      ]
+    }
+  },
+  {
+    "id": "16706472169",
+    "nome": "Vestido de Tricot Listra Bicolor Com Lur - 07732",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16706464482",
+    "nome": "Vestido Curva Decote Midi Tricot Lurex - 07708",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706465406"
+      ],
+      "P": [
+        "16706464482"
+      ]
+    }
+  },
+  {
+    "id": "16706462513",
+    "nome": "Vestido Longo Geo Flow Bronze - 58229",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16706462513"
+      ],
+      "40": [
+        "16706462821"
+      ]
+    }
+  },
+  {
+    "id": "16706008510",
+    "nome": "Blusa Manga Curta Tricot Isabel - NV1192",
+    "marca": "NV",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16706347605"
+      ],
+      "M": [
+        "16706008991"
+      ],
+      "PP": [
+        "16706008510"
+      ]
+    }
+  },
+  {
+    "id": "16705974790",
+    "nome": "Regata Dani - NV1263",
+    "marca": "NV",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706346030"
+      ],
+      "P": [
+        "16706345920"
+      ],
+      "G": [
+        "16706185369"
+      ],
+      "PP": [
+        "16705974790"
+      ]
+    }
+  },
+  {
+    "id": "16705970365",
+    "nome": "Regata Dani - NV1262",
+    "marca": "NV",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706345795"
+      ],
+      "G": [
+        "16705971201"
+      ],
+      "P": [
+        "16705971152"
+      ],
+      "PP": [
+        "16705970365"
+      ]
+    }
+  },
+  {
+    "id": "16706016141",
+    "nome": "T-shirt Pima Lira - NV080",
+    "marca": "NV",
+    "preco": 348,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16706343673"
+      ],
+      "M": [
+        "16706016141"
+      ]
+    }
+  },
+  {
+    "id": "16706012677",
+    "nome": "Body Tricot Vilma - NV080",
+    "marca": "NV",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "PP": [
+        "16706342447"
+      ],
+      "M": [
+        "16706012753"
+      ],
+      "P": [
+        "16706012677"
+      ]
+    }
+  },
+  {
+    "id": "16706007128",
+    "nome": "Camisa Sasha - NV080",
+    "marca": "NV",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16706340342"
+      ],
+      "M": [
+        "16706340240"
+      ],
+      "P": [
+        "16706007238"
+      ],
+      "PP": [
+        "16706007128"
+      ]
+    }
+  },
+  {
+    "id": "16706005967",
+    "nome": "Camisa Sasha - NV010",
+    "marca": "NV",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16706339838"
+      ],
+      "PP": [
+        "16706054998"
+      ],
+      "M": [
+        "16706006561"
+      ],
+      "P": [
+        "16706005967"
+      ]
+    }
+  },
+  {
+    "id": "16706002463",
+    "nome": "Calça Lovani Alfa - NV032",
+    "marca": "NV",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "32",
+          "34",
+          "36",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "32",
+          "34",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "32": [
+        "16706002463"
+      ],
+      "34": [
+        "16706002858"
+      ],
+      "36": [
+        "16706336087"
+      ],
+      "40": [
+        "16706336126"
+      ]
+    }
+  },
+  {
+    "id": "16705993143",
+    "nome": "Blusa Cashmere Marcela - NV610",
+    "marca": "NV",
+    "preco": 2148,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16706334792"
+      ],
+      "M": [
+        "16705993143"
+      ]
+    }
+  },
+  {
+    "id": "16706329456",
+    "nome": "Calça Jeans Nadini - NV880",
+    "marca": "NV",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16706329456"
+      ],
+      "36": [
+        "16706329563"
+      ],
+      "38": [
+        "16706329661"
+      ]
+    }
+  },
+  {
+    "id": "16706328062",
+    "nome": "T-shirt Nati - NV1168",
+    "marca": "NV",
+    "preco": 378,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706328116"
+      ],
+      "P": [
+        "16706328113"
+      ],
+      "PP": [
+        "16706328062"
+      ]
+    }
+  },
+  {
+    "id": "16706325929",
+    "nome": "Body Tricot Vilma - NV089",
+    "marca": "NV",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706326245"
+      ],
+      "P": [
+        "16706326105"
+      ],
+      "PP": [
+        "16706325929"
+      ]
+    }
+  },
+  {
+    "id": "16706323004",
+    "nome": "Calça Legging Emily - NV089",
+    "marca": "NV",
+    "preco": 398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16706045080",
+    "nome": "Casaqueto Lorenza - NV067",
+    "marca": "NV",
+    "preco": 2948,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16706319450"
+      ],
+      "PP": [
+        "16706319439"
+      ],
+      "M": [
+        "16706045080"
+      ]
+    }
+  },
+  {
+    "id": "16706294319",
+    "nome": "Calça de Sarja Prega Bolso Sepia - 07509",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "Calça de Sarja com modelagem ampla, cintura alta, bolsos e pregas. A peça traz versatilidade e conforto para diferentes ocasiões. DETALHES – Modelagem ampla – Cintura alta – Bolsos frontais e posteriores – Pregas – Passantes no cós – Fechamento frontal por zíper e botão – Confeccionada em sarja",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16706294634--unico--0.jpg",
+          "/produtos/16706294634--unico--1.jpg",
+          "/produtos/16706294634--unico--2.jpg",
+          "/produtos/16706294634--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16706294634--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16706294319"
+      ],
+      "36": [
+        "16706294551"
+      ],
+      "38": [
+        "16706294572"
+      ],
+      "40": [
+        "16706294596"
+      ],
+      "42": [
+        "16706294634"
+      ]
+    }
+  },
+  {
+    "id": "16706035214",
+    "nome": "Calça Roxo Açai - 07715",
+    "marca": "Animale",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16706035214"
+      ],
+      "38": [
+        "16706287727"
+      ],
+      "40": [
+        "16706287801"
+      ]
+    }
+  },
+  {
+    "id": "16706285847",
+    "nome": "Vestido Longo Camuflado Mata Color - 57538",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16706285847"
+      ],
+      "38": [
+        "16706286440"
+      ]
+    }
+  },
+  {
+    "id": "16706284636",
+    "nome": "Vestido Manga Longa com Bordado - 07509",
+    "marca": "Animale",
+    "preco": 3998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16706266507",
+    "nome": "Blusa Polo Listras Tricot - 07708",
+    "marca": "Animale",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
+    "id": "16706262739",
+    "nome": "Camisa Cambraia de Linho Color - 01016",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "40": [
+        "16706262739"
+      ],
+      "42": [
+        "16706263559"
+      ]
+    }
+  },
+  {
+    "id": "16706252778",
+    "nome": "Vestido de Tricot Halter - 07717",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706253646"
+      ],
+      "P": [
+        "16706252778"
+      ]
+    }
+  },
+  {
+    "id": "16706248425",
+    "nome": "Blazer Slim Brumas Color - 07708",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16706248425"
+      ],
+      "36": [
+        "16706248973"
+      ],
+      "38": [
+        "16706249044"
+      ],
+      "40": [
+        "16706249083"
+      ],
+      "42": [
+        "16706249155"
+      ]
+    }
+  },
+  {
+    "id": "16706194209",
+    "nome": "Blazer Zoe - NV439",
+    "marca": "NV",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706194718"
+      ],
+      "P": [
+        "16706194660"
+      ],
+      "PP": [
+        "16706194209"
+      ]
+    }
+  },
+  {
+    "id": "16706188232",
+    "nome": "Vestido Zoe - NV1185",
+    "marca": "NV",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16706191720"
+      ],
+      "M": [
+        "16706188735"
+      ],
+      "PP": [
+        "16706188232"
+      ]
+    }
+  },
+  {
+    "id": "16706184343",
+    "nome": "Jaqueta Over Jeans Luna - NV054",
+    "marca": "NV",
+    "preco": 3498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16706185046"
+      ],
+      "PP": [
+        "16706184343"
+      ]
+    }
+  },
+  {
+    "id": "16706179576",
+    "nome": "Calça Jeans Nadini - NV1070",
+    "marca": "NV",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "32",
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "32": [
+        "16706179576"
+      ],
+      "34": [
+        "16706180959"
+      ],
+      "36": [
+        "16706181053"
+      ],
+      "38": [
+        "16706181139"
+      ],
+      "40": [
+        "16706181202"
+      ]
+    }
+  },
+  {
+    "id": "16705898427",
+    "nome": "Body Tricot Mury - NV1192",
+    "marca": "NV",
+    "preco": 648,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706178240"
+      ],
+      "P": [
+        "16706178091"
+      ],
+      "PP": [
+        "16706177960"
+      ],
+      "G": [
+        "16705898427"
+      ]
+    }
+  },
+  {
+    "id": "16706056173",
+    "nome": "Saia Marta - NV089",
+    "marca": "NV",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16706053778",
+    "nome": "Regata Gabriella - NV032",
+    "marca": "NV",
+    "preco": 248,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16706053971"
+      ],
+      "M": [
+        "16706053909"
+      ],
+      "P": [
+        "16706053843"
+      ],
+      "PP": [
+        "16706053778"
+      ]
+    }
+  },
+  {
+    "id": "16705986311",
+    "nome": "T-shirt Pima Luzia - NV436",
+    "marca": "NV",
+    "preco": 348,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706053414"
+      ],
+      "P": [
+        "16705986897"
+      ],
+      "PP": [
+        "16705986311"
+      ]
+    }
+  },
+  {
+    "id": "16706052659",
+    "nome": "T-shirt Nati - NV080",
+    "marca": "NV",
+    "preco": 378,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16706052803"
+      ],
+      "PP": [
+        "16706052759"
+      ],
+      "P": [
+        "16706052719"
+      ],
+      "M": [
+        "16706052659"
+      ]
+    }
+  },
+  {
+    "id": "16706052050",
+    "nome": "T-shirt Nati - NV089",
+    "marca": "NV",
+    "preco": 378,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706052306"
+      ],
+      "P": [
+        "16706052199"
+      ],
+      "PP": [
+        "16706052050"
+      ]
+    }
+  },
+  {
+    "id": "16706050137",
+    "nome": "Saia Marta - NV1192",
+    "marca": "NV",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16706050137"
+      ],
+      "36": [
+        "16706050396"
+      ],
+      "38": [
+        "16706050417"
+      ],
+      "40": [
+        "16706050470"
+      ]
+    }
+  },
+  {
+    "id": "16706049081",
+    "nome": "Twin Set Tricot Aura - NV329",
+    "marca": "NV",
+    "preco": 1148,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706049427"
+      ],
+      "PP": [
+        "16706049081"
+      ]
+    }
+  },
+  {
+    "id": "16706044287",
+    "nome": "Jaqueta Couro Kate - NV089",
+    "marca": "NV",
+    "preco": 6598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16706036149",
+    "nome": "Calça Seda Renda Marrom Taupe - 07710",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34"
+        ],
+        "tamanhosDisponiveis": [
+          "34"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16706014834",
+    "nome": "Camisa Seda Antonia - NV089",
+    "marca": "NV",
+    "preco": 1998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706014908"
+      ],
+      "P": [
+        "16706014834"
+      ]
+    }
+  },
+  {
+    "id": "16706013567",
+    "nome": "Regata Dulce - NV080",
+    "marca": "NV",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16706014216"
+      ],
+      "P": [
+        "16706014180"
+      ],
+      "PP": [
+        "16706013567"
+      ]
+    }
+  },
+  {
+    "id": "16706010614",
+    "nome": "Blusa Suelen - NV1286",
+    "marca": "NV",
+    "preco": 348,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16706010976"
+      ],
+      "PP": [
+        "16706010614"
+      ]
+    }
+  },
+  {
+    "id": "16706003910",
+    "nome": "Macacão Adriane - NV952",
+    "marca": "NV",
+    "preco": 2248,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16705996197",
+    "nome": "Camisa Seda Antonia - NV080",
+    "marca": "NV",
+    "preco": 1998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16705997036"
+      ],
+      "PP": [
+        "16705996197"
+      ]
+    }
+  },
+  {
+    "id": "16705990782",
+    "nome": "Blusa Cashmere Marcela - NV978",
+    "marca": "NV",
+    "preco": 2148,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16705991836"
+      ],
+      "P": [
+        "16705991692"
+      ],
+      "PP": [
+        "16705990782"
+      ]
+    }
+  },
+  {
+    "id": "16705989390",
+    "nome": "Short Maria - NV952",
+    "marca": "NV",
+    "preco": 1198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "38": [
+        "16705989390"
+      ],
+      "40": [
+        "16705989756"
+      ]
+    }
+  },
+  {
+    "id": "16705987940",
+    "nome": "T-shirt Nati - NV032",
+    "marca": "NV",
+    "preco": 378,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16705988145"
+      ],
+      "M": [
+        "16705988100"
+      ],
+      "P": [
+        "16705988052"
+      ],
+      "PP": [
+        "16705987940"
+      ]
+    }
+  },
+  {
+    "id": "16705983676",
+    "nome": "T-shirt Pima Luzia - NV080",
+    "marca": "NV",
+    "preco": 348,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16705984640"
+      ],
+      "P": [
+        "16705984467"
+      ],
+      "PP": [
+        "16705983676"
+      ]
+    }
+  },
+  {
+    "id": "16705978835",
+    "nome": "T-shirt Nati - NV1185",
+    "marca": "NV",
+    "preco": 378,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16705979957"
+      ],
+      "P": [
+        "16705978835"
+      ]
+    }
+  },
+  {
+    "id": "16705975999",
+    "nome": "Body Tricot Vilma - NV1100",
+    "marca": "NV",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16705977323"
+      ],
+      "PP": [
+        "16705975999"
+      ]
+    }
+  },
+  {
+    "id": "16705941714",
+    "nome": "Blusa Couro Ayla - NV089",
+    "marca": "NV",
+    "preco": 3898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16705942590"
+      ],
+      "M": [
+        "16705941714"
+      ]
+    }
+  },
+  {
+    "id": "16705932623",
+    "nome": "Camisa Oversized Listra Bordada - 58040",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16705932623"
+      ],
+      "38": [
+        "16705933253"
+      ]
+    }
+  },
+  {
+    "id": "16705929043",
+    "nome": "Saia Longa Pala Lastex Liberty Brumas - 57558",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16705929636"
+      ],
+      "38": [
+        "16705929043"
+      ],
+      "42": [
+        "16705929681"
+      ]
+    }
+  },
+  {
+    "id": "16705914118",
+    "nome": "Vestido SIlvie - NV1308",
+    "marca": "NV",
+    "preco": 1848,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP"
+        ],
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16705913054",
+    "nome": "Saia Laysa - NV1305",
+    "marca": "NV",
+    "preco": 2148,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16705912712",
+    "nome": "Regata Seda Ella - NV1182",
+    "marca": "NV",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16705911989",
+    "nome": "Regata Seda Ella - NV089",
+    "marca": "NV",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16705912396"
+      ],
+      "M": [
+        "16705912361"
+      ],
+      "P": [
+        "16705911989"
+      ]
+    }
+  },
+  {
+    "id": "16705909460",
+    "nome": "Regata Gabriella - NV594",
+    "marca": "NV",
+    "preco": 248,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16705910624"
+      ],
+      "P": [
+        "16705910484"
+      ],
+      "PP": [
+        "16705909460"
+      ]
+    }
+  },
+  {
+    "id": "16705905880",
+    "nome": "T-shirt Nalu - NV534",
+    "marca": "NV",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16705907843"
+      ],
+      "M": [
+        "16705907287"
+      ],
+      "P": [
+        "16705907089"
+      ],
+      "PP": [
+        "16705905880"
+      ]
+    }
+  },
+  {
+    "id": "16705902650",
+    "nome": "T-shirt Pima Karina - NV089",
+    "marca": "NV",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16705903522"
+      ],
+      "M": [
+        "16705903432"
+      ],
+      "P": [
+        "16705903290"
+      ],
+      "PP": [
+        "16705902650"
+      ]
+    }
+  },
+  {
+    "id": "16705900253",
+    "nome": "T-shirt Pima Karina - NV080",
+    "marca": "NV",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16705901322"
+      ],
+      "P": [
+        "16705901193"
+      ],
+      "PP": [
+        "16705900253"
+      ]
+    }
+  },
+  {
+    "id": "16705646796",
+    "nome": "Blusa Regata Decote Quadrado Azul - 07703",
+    "marca": "Animale",
+    "preco": 198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16705647650"
+      ],
+      "M": [
+        "16705647558"
+      ],
+      "P": [
+        "16705647500"
+      ],
+      "PP": [
+        "16705646796"
+      ]
+    }
+  },
+  {
+    "id": "16705645369",
+    "nome": "Bata Raglan Babados Liberty Brumas - 57558",
+    "marca": "Animale",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "36": [
+        "16705645369"
+      ],
+      "38": [
+        "16705645876"
+      ],
+      "40": [
+        "16705645938"
+      ],
+      "42": [
+        "16705645988"
+      ]
+    }
+  },
+  {
+    "id": "16705643931",
+    "nome": "Blusa Tricot Decote X Costas Vazado - 07708",
+    "marca": "Animale",
+    "preco": 358,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16705642481",
+    "nome": "Regata Intimates Renda - 07717",
+    "marca": "Animale",
+    "preco": 298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16705632783",
+    "nome": "Calça Reta Brumas Color - 07708",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16705632783"
+      ],
+      "36": [
+        "16705633326"
+      ],
+      "38": [
+        "16705633412"
+      ],
+      "40": [
+        "16705633518"
+      ],
+      "42": [
+        "16705633673"
+      ]
+    }
+  },
+  {
+    "id": "16705626796",
+    "nome": "Vestido Slip Floral Botanico - 57770",
+    "marca": "Animale",
+    "preco": 1998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16705478494",
+    "nome": "Calça Sarja Clarissa - Khaki",
+    "marca": "NV",
+    "preco": 648,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "32"
+        ],
+        "tamanhosDisponiveis": [
+          "32"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16705455138",
+    "nome": "Blusa Regata Decote Quadrado - Off White",
+    "marca": "Animale",
+    "preco": 198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "P": [
+        "16705458185"
+      ],
+      "PP": [
+        "16705455138"
+      ]
+    }
+  },
+  {
+    "id": "16705450592",
+    "nome": "Calça Jeans Folga Bolso - Jeans Escuro",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "42",
+          "44"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "42": [
+        "16705450592"
+      ],
+      "44": [
+        "16705453480"
+      ]
+    }
+  },
+  {
     "id": "16535245227",
     "nome": "Calça De Algodão Listras Brick Marinho / Laranja",
     "marca": "Animale",
@@ -25803,7 +34944,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "Único"
+          "G"
         ]
       }
     ],
@@ -26871,5 +36012,397 @@
     ],
     "imagem": "/produtos/16433818660--unico--0.jpg",
     "temEstoque": false
+  },
+  {
+    "id": "16710522625",
+    "nome": "Vestido Tule Midi e Renda - 0540",
+    "marca": "Animale",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "0540"
+  },
+  {
+    "id": "16710520546",
+    "nome": "Camisa Jeans Fenda Lateral - 2153",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": false,
+    "descricao": "Camisa jeans com modelagem reta e mangas longas. Possui bolsos frontais com lapela, fechamento por botões metálicos, costuras contrastantes e fendas laterais. Uma peça versátil e contemporânea para produções do dia a dia. DETALHES – Modelagem reta – Mangas longas – Bolsos frontais com lapela – Fechamento frontal por botões metálicos – Costuras contrastantes – Fendas laterais – Punhos com fechamento por botões",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16710520546--unico--0.jpg",
+          "/produtos/16710520546--unico--1.jpg",
+          "/produtos/16710520546--unico--2.jpg",
+          "/produtos/16710520546--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16710520546--unico--0.jpg",
+    "temEstoque": true,
+    "_corCodigo": "2153"
+  },
+  {
+    "id": "16710160665",
+    "nome": "Vestido Midi Camada Azul Denin - 1640",
+    "marca": "Animale",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "40"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "1640"
+  },
+  {
+    "id": "16710114853",
+    "nome": "Camisa MC Puro Linho Estival - 0580",
+    "marca": "Foxton",
+    "preco": 598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "0580"
+  },
+  {
+    "id": "16709765053",
+    "nome": "T-shirt Orquídea - 0005",
+    "marca": "Animale",
+    "preco": 358,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "0005"
+  },
+  {
+    "id": "16708914859",
+    "nome": "Pulseira Mix Madeira e Metal - 0600",
+    "marca": "Animale",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16708914859--unico--0.jpg",
+          "/produtos/16708914859--unico--1.jpg",
+          "/produtos/16708914859--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708914859--unico--0.jpg",
+    "temEstoque": true,
+    "_corCodigo": "0600"
+  },
+  {
+    "id": "16708483969",
+    "nome": "Cinto de Couro Metal Batido - 0005",
+    "marca": "Animale",
+    "preco": 498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP"
+        ],
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "0005"
+  },
+  {
+    "id": "16708432311",
+    "nome": "Macacão Jeans Raw Cinto - 1531",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "1531"
+  },
+  {
+    "id": "16708416451",
+    "nome": "Bolsa de Couro Metais Borla - 0005",
+    "marca": "Animale",
+    "preco": 2798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "0005"
+  },
+  {
+    "id": "16708154143",
+    "nome": "Polo Piquet Basica Rio - 2119",
+    "marca": "Foxton",
+    "preco": 228,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "2119"
+  },
+  {
+    "id": "16707940408",
+    "nome": "Vestido Midi Tule e Renda - 0005",
+    "marca": "Animale",
+    "preco": 1398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "0005"
+  },
+  {
+    "id": "16707347871",
+    "nome": "Jaqueta de Couro Ampla Costas Recortes - 6223",
+    "marca": "Animale",
+    "preco": 7998,
+    "novo": false,
+    "descricao": "Jaqueta em couro legítimo com modelagem ampla e comprimento médio. A gola alta, os bolsos frontais com lapela e o fechamento por zíper completam o design. O recorte sobreposto nas costas acrescenta volume e personalidade à peça. DETALHES – Desenvolvida em couro legítimo – Modelagem ampla – Comprimento médio – Gola alta – Fechamento frontal por zíper – Bolsos frontais com lapela – Recorte sobreposto nas costas – Punhos com ajuste por botão de pressão – Forro interno DICAS DE STYLING – Combine com calças de alfaiataria para equilibrar a modelagem ampla. – Use sobre vestidos leves para criar contraste de texturas. – Finalize com botas ou mocassins para produções contemporâneas.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34"
+        ],
+        "tamanhosDisponiveis": [
+          "34"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "6223"
+  },
+  {
+    "id": "16707319660",
+    "nome": "Camisa Jeans Cintura Costas - 0105",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "0105"
+  },
+  {
+    "id": "16707234721",
+    "nome": "Calça Coes Esportivo Bege - 1566",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34"
+        ],
+        "tamanhosDisponiveis": [
+          "34"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "1566"
+  },
+  {
+    "id": "16706296552",
+    "nome": "Shopping Bag de Camurça Listras - 1802",
+    "marca": "Animale",
+    "preco": 3498,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "1802"
+  },
+  {
+    "id": "16705921545",
+    "nome": "Trench Curto Bege - 0030",
+    "marca": "Animale",
+    "preco": 2398,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "0030"
+  },
+  {
+    "id": "16705631288",
+    "nome": "Bolsa de Couro e Camurça Listras - 1802",
+    "marca": "Animale",
+    "preco": 2598,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "1802"
   }
 ]
