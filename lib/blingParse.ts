@@ -173,7 +173,11 @@ const CODIGOS_COR_POR_MARCA: Record<string, Record<string, string>> = {
     "NV032": "Cinza Mescla",
     "NV952": "Xadrez Multicolor",
     "NV067": "Marinho",
-    "NV1185": "Verde Harbor"
+    "NV1185": "Verde Harbor",
+    // Regata Dulce (reportado pelo Brunno em 26/09/2026) - o codigo real no Bling tem um zero
+    // na frente ("NV089"/"NV080"), diferente do "NV89"/"NV80" que ele passou de cabeca.
+    "NV089": "Preto",
+    "NV080": "Branco"
   }
 };
 
