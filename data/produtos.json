@@ -496,7 +496,6 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "P"
         ]
       }
@@ -8104,7 +8103,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG"
         ]
       }
@@ -16795,13 +16793,11 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": [
-          "Único"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16541824597--unico--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16539242251",
