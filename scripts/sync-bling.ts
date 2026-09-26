@@ -52,6 +52,7 @@ import {
   extrairTamanho,
   extrairTamanhoDoNomeProduto,
   extrairCorTamanhoDoNomeProduto,
+  nomeCorPorCodigo,
   limparNomeBase,
   tamanhosDisponiveisDaCor
 } from "../lib/blingParse";
@@ -350,16 +351,22 @@ function fundirVariantesPorCorETamanho(produtos: ProdutoSaida[]): ProdutoSaida[]
       const tamanhos = Array.from(porTamanho.keys()).sort(compararTamanhos);
       const tamanhosDisponiveis = tamanhos.filter((t) => porTamanho.get(t)!.some((m) => m.temEstoque));
       const membroComFoto = membrosDaCor.find((m) => m.cores[0]?.imagens.length > 0) ?? membrosDaCor[0];
+      // troca o codigo cru pelo nome real da cor (tabela em lib/blingParse.ts) - usa esse
+      // nome tanto na cor exibida (cores[]) quanto na chave de gruposBlingPorCorTamanho, pra
+      // resolverProdutoIdBling (lib/produtos.ts) e atualizarProdutoFundidoPorCor (sync-
+      // estoque.ts) continuarem batendo certo (eles procuram por esse mapa usando o mesmo
+      // valor guardado em cor.cor). Codigo sem nome cadastrado ainda vira o proprio codigo.
+      const nomeCor = nomeCorPorCodigo(membrosDaCor[0].marca, corCodigo);
 
       cores.push({
-        cor: corCodigo,
+        cor: nomeCor,
         imagens: membroComFoto.cores[0]?.imagens ?? [],
         tamanhos,
         tamanhosDisponiveis
       });
 
-      gruposBlingPorCorTamanho[corCodigo] = {};
-      for (const [tamanho, ms] of porTamanho) gruposBlingPorCorTamanho[corCodigo][tamanho] = ms.map((m) => m.id);
+      gruposBlingPorCorTamanho[nomeCor] = {};
+      for (const [tamanho, ms] of porTamanho) gruposBlingPorCorTamanho[nomeCor][tamanho] = ms.map((m) => m.id);
     }
 
     // preco: mesmo criterio de fundirVariantesPorTamanho - o da(s) unidade(s) em estoque
