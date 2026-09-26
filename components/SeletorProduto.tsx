@@ -77,8 +77,13 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   const [fotoIndex, setFotoIndex] = useState(0);
   const fotoAtual = corAtual.imagens[fotoIndex] ?? null;
 
-  // Zoom com lupa: ao passar o mouse na foto, ela amplia seguindo a posicao do cursor -
-  // so' funciona com mouse (desktop), em touch o toque normal continua indo pra galeria.
+  // Zoom com lupa: um CLIQUE na foto ativa (clica de novo, ou tira o mouse de cima, desativa)
+  // e o zoom acompanha a posicao do cursor enquanto ativo - so' funciona com mouse (desktop),
+  // em touch o toque normal continua indo pra galeria/swipe. Antes o zoom ativava so' de
+  // passar o mouse por cima (hover), o que incluia sem querer passar por cima das setinhas de
+  // trocar foto (bug reportado pelo Brunno em 26/09/2026 - "quando vou clicar na flecha ativa
+  // o zoom"); agora precisa de um clique de verdade na foto, e as setinhas tem seu proprio
+  // clique isolado (stopPropagation) pra nao mexer no zoom.
   const [zoomAtivo, setZoomAtivo] = useState(false);
   const [origemZoom, setOrigemZoom] = useState({ x: 50, y: 50 });
 
@@ -86,9 +91,10 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   // "fantasma" ao tocar na tela, o que ativava o zoom bem na hora que o cliente tentava
   // arrastar o dedo pra trocar de foto (bug reportado pelo Brunno em 24/08/2026 - "quando
   // passo o dedo pra rolar a foto ele acaba dando zoom"). PointerEvent tem `pointerType`, que
-  // diz com certeza se veio do mouse ou do dedo - só ativa zoom quando for realmente mouse.
-  function aoEntrarPonteiro(evento: React.PointerEvent<HTMLDivElement>) {
-    if (evento.pointerType === "mouse") setZoomAtivo(true);
+  // diz com certeza se veio do mouse ou do dedo - so' reage a clique/saida quando for mouse.
+  function aoClicarNaFoto(evento: React.MouseEvent<HTMLDivElement>) {
+    if (!fotoAtual) return;
+    setZoomAtivo((atual) => !atual);
   }
 
   function aoSairPonteiro(evento: React.PointerEvent<HTMLDivElement>) {
@@ -148,9 +154,9 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
       <div>
         <div
           className={`relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden touch-pan-y ${
-            fotoAtual ? "cursor-zoom-in" : ""
+            fotoAtual ? (zoomAtivo ? "cursor-zoom-out" : "cursor-zoom-in") : ""
           }`}
-          onPointerEnter={aoEntrarPonteiro}
+          onClick={aoClicarNaFoto}
           onPointerLeave={aoSairPonteiro}
           onPointerMove={moverPonteiroNaFoto}
           onTouchStart={aoTocarNaFoto}
@@ -182,20 +188,28 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
               {corAtual.imagens.length > 1 && (
                 <>
                   <button
-                    onClick={fotoAnterior}
+                    onClick={(evento) => {
+                      // stopPropagation: sem isso, o clique tambem borbulhava pro container
+                      // e ligava/desligava o zoom junto com trocar de foto (o bug reportado).
+                      evento.stopPropagation();
+                      fotoAnterior();
+                    }}
                     aria-label="Foto anterior"
                     className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 text-mozz-black flex items-center justify-center hover:bg-white"
                   >
                     <IconeSeta direcao="esquerda" />
                   </button>
                   <button
-                    onClick={proximaFoto}
+                    onClick={(evento) => {
+                      evento.stopPropagation();
+                      proximaFoto();
+                    }}
                     aria-label="Proxima foto"
                     className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 text-mozz-black flex items-center justify-center hover:bg-white"
                   >
                     <IconeSeta direcao="direita" />
                   </button>
-                  <span className="absolute top-3 right-3 text-[12.5px] bg-black/60 text-white px-2 py-0.5 rounded-full">
+                  <span className="absolute top-3 right-3 text-[12.5px] bg-black/60 text-white px-2 py-0.5 rounded-full pointer-events-none">
                     {fotoIndex + 1}/{corAtual.imagens.length}
                   </span>
                 </>
