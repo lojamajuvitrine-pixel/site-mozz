@@ -84,6 +84,16 @@ export default function Nav() {
         </Link>
 
         <nav className="flex items-center gap-6 text-[14.5px] text-mozz-gray">
+          {/* Feminino/Masculino na frente das marcas, igual ao menu do oqvestir (referencia
+              que o Brunno mandou em 27/09/2026: "NOVIDADES | FEMININO | MASCULINO | MARCAS |
+              ..."). Genero e' por marca inteira (ver generoDaMarca em lib/produtos.ts) -
+              Feminino = Animale+NV, Masculino = Reserva+Foxton. */}
+          <Link href="/feminino" className="hover:text-mozz-black transition-colors">
+            Feminino
+          </Link>
+          <Link href="/masculino" className="hover:text-mozz-black transition-colors">
+            Masculino
+          </Link>
           {marcas.map((marca) => (
             <Link key={marca} href={`/marca/${marca.toLowerCase()}`} className="hover:text-mozz-black transition-colors">
               {marca}
@@ -149,6 +159,12 @@ export default function Nav() {
             menuAberto ? "flex" : "hidden"
           } flex-col items-center gap-4 px-4 pb-4 text-[13.5px] text-mozz-gray`}
         >
+          <Link href="/feminino" onClick={() => setMenuAberto(false)}>
+            Feminino
+          </Link>
+          <Link href="/masculino" onClick={() => setMenuAberto(false)}>
+            Masculino
+          </Link>
           {marcas.map((marca) => (
             <Link key={marca} href={`/marca/${marca.toLowerCase()}`} onClick={() => setMenuAberto(false)}>
               {marca}
