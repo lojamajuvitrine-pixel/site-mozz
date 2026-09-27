@@ -6228,10 +6228,10 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "40",
+          "44",
           "42",
-          "44"
+          "40",
+          "38"
         ]
       }
     ],
@@ -6578,9 +6578,9 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "38",
+          "42",
           "40",
-          "42"
+          "38"
         ]
       }
     ],
@@ -10169,8 +10169,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "40"
+          "40",
+          "38"
         ]
       },
       {
@@ -10192,8 +10192,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "40"
+          "40",
+          "38"
         ]
       },
       {
@@ -16351,8 +16351,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "44",
-          "46"
+          "46",
+          "44"
         ]
       }
     ],
@@ -16385,8 +16385,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "44",
-          "46"
+          "46",
+          "44"
         ]
       }
     ],
@@ -18934,8 +18934,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "40"
+          "40",
+          "38"
         ]
       }
     ],
@@ -22995,8 +22995,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -23107,7 +23107,7 @@
     "descricao": "Confeccionada em tweed\nCom modelagem regular\nManga longa\nDecote profundo\nFechamento frontal com zíper de cursor duplo\nBarra com elástico embutido\nTextura de tweed\nA Jaqueta Dafne, em tweed, redefine a elegância casual. Sua a textura rica traz personalidade única a qualquer look. Com modelagem regular, tem caimento impecável, já o decote profundo e o fechamento frontal com zíper de cursor duplo dão um toque moderno. A barra com elástico embutido arremata o shape, deixando a peça única.",
     "cores": [
       {
-        "cor": "NV329",
+        "cor": "Multicolors",
         "imagens": [
           "/produtos/16710504391--unico--0.jpg",
           "/produtos/16710504391--unico--1.jpg",
@@ -23129,7 +23129,7 @@
     "imagem": "/produtos/16710504391--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV329": {
+      "Multicolors": {
         "P": [
           "16710504391"
         ],
@@ -23176,11 +23176,16 @@
     "marca": "NV",
     "preco": 848,
     "novo": false,
-    "descricao": "",
+    "descricao": "A T-Shirt Manu é um casual cheio de atitude. Feita em algodão para toque macio e conforto, a peça abraça a silhueta com modelagem regular. O charme da corrente de metal dourada na barra arremata o look com sofisticação, perfeita para usar de diferentes jeitos.",
     "cores": [
       {
         "cor": "0080",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16710498869--unico--0.jpg",
+          "/produtos/16710498869--unico--1.jpg",
+          "/produtos/16710498869--unico--2.jpg",
+          "/produtos/16710498869--unico--3.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
@@ -23190,7 +23195,12 @@
       },
       {
         "cor": "0089",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16710498221--unico--0.jpg",
+          "/produtos/16710498221--unico--1.jpg",
+          "/produtos/16710498221--unico--2.jpg",
+          "/produtos/16710498221--unico--3.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
@@ -23199,7 +23209,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16710498869--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0080": {
@@ -23294,11 +23304,16 @@
     "marca": "NV",
     "preco": 898,
     "novo": false,
-    "descricao": "",
+    "descricao": "O body em tricot traz modelagem slip ajustada ao corpo e design regata com decote quadrado. Com fechamento por botão de pressão, é uma peça versátil que une conforto e estilo em uma proposta minimalista e atemporal. Perfeita para combinar com todo closet.",
     "cores": [
       {
         "cor": "Verde Harbor",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16710495422--unico--0.jpg",
+          "/produtos/16710495422--unico--1.jpg",
+          "/produtos/16710495422--unico--2.jpg",
+          "/produtos/16710495422--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -23312,33 +23327,47 @@
       },
       {
         "cor": "Branco",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706342447--unico--0.jpg",
+          "/produtos/16706342447--unico--1.jpg",
+          "/produtos/16706342447--unico--2.jpg",
+          "/produtos/16706342447--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       },
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706326245--unico--0.jpg",
+          "/produtos/16706326245--unico--1.jpg",
+          "/produtos/16706326245--unico--2.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       },
       {
         "cor": "Azul Sailor",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705977323--unico--0.jpg",
+          "/produtos/16705977323--unico--1.jpg",
+          "/produtos/16705977323--unico--2.jpg",
+          "/produtos/16705977323--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P"
@@ -23346,7 +23375,7 @@
         "tamanhosDisponiveis": []
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16710495422--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Verde Harbor": {
@@ -23401,7 +23430,7 @@
     "descricao": "Confeccionada em alfaiataria\nCom modelagem regular\nPadronagem xadrez\nGola alta\nFechamento com zíper\nDetalhe de martingale removível na gola\nBarra com elástico embutido\nManga longa\nPeça dupla face\nA Jaqueta Augusta, em alfaiataria xadrez, é aquela peça que muda o look. Dupla face, com gola alta e martingale removível, torna a peça ainda mais especial e versátil. Sua barra com elástico embutido e o fechamento em zíper completam o shape impecável. É uma peça que transita com elegância em diferentes ocasiões.",
     "cores": [
       {
-        "cor": "NV1170",
+        "cor": "Bege Grain",
         "imagens": [
           "/produtos/16710492917--unico--0.jpg",
           "/produtos/16710492917--unico--1.jpg",
@@ -23414,15 +23443,15 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
     "imagem": "/produtos/16710492917--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV1170": {
+      "Bege Grain": {
         "M": [
           "16710492917"
         ],
@@ -23810,9 +23839,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "M",
           "G",
-          "M"
+          "GG"
         ]
       },
       {
@@ -23825,9 +23854,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "M",
           "G",
-          "M"
+          "GG"
         ]
       },
       {
@@ -23925,8 +23954,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G"
+          "G",
+          "GG"
         ]
       },
       {
@@ -24956,8 +24985,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -27413,8 +27442,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
@@ -27611,8 +27640,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -27720,8 +27749,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -27825,11 +27854,16 @@
     "marca": "NV",
     "preco": 698,
     "novo": false,
-    "descricao": "",
+    "descricao": "A Calça Natalia, feita em malha, é uma peça atualizada para o closet. Com sua modelagem barrel e cintura média, ela transforma um clássico confortável em uma peça que muda qualquer composição. Os bolsos faca e o cós com elástico dão ainda mais praticidade e um ajuste impecável para seus looks.",
     "cores": [
       {
         "cor": "Branco",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706686292--unico--0.jpg",
+          "/produtos/16706686292--unico--1.jpg",
+          "/produtos/16706686292--unico--2.jpg",
+          "/produtos/16706686292--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -27841,7 +27875,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706686292--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Branco": {
@@ -27863,11 +27897,16 @@
     "marca": "NV",
     "preco": 348,
     "novo": false,
-    "descricao": "",
+    "descricao": "Essencial no closet, a T-Shirt Pima Lira é confortável e prática, feita em algodão Pima. O toque é macio e o caimento é impecável. Uma peça versátil para cada momento do seu dia.",
     "cores": [
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706683756--unico--0.jpg",
+          "/produtos/16706683756--unico--1.jpg",
+          "/produtos/16706683756--unico--2.jpg",
+          "/produtos/16706683756--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -27880,7 +27919,12 @@
       },
       {
         "cor": "Branco",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706343673--unico--0.jpg",
+          "/produtos/16706343673--unico--1.jpg",
+          "/produtos/16706343673--unico--2.jpg",
+          "/produtos/16706343673--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -27890,7 +27934,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706683756--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Preto": {
@@ -28011,8 +28055,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -28057,7 +28101,7 @@
     "descricao": "Confeccionado em tricot\nCom modelagem regular\nComprimento regular\nGola careca\nFechamento frontal com botões de metal\nManga longa\nPadronagem em trama de tweed\nBarra reta\nO Cardigan Tricot Cleo é clássico reinventado com sua trama de tweed. Confeccionado em tricot, tem o caimento certo e conforto para seus dias. Versátil e elegante, é a peça ideal para transitar entre estações.",
     "cores": [
       {
-        "cor": "NV1176",
+        "cor": "Cinza Onix",
         "imagens": [
           "/produtos/16706665214--unico--0.jpg",
           "/produtos/16706665214--unico--1.jpg",
@@ -28080,7 +28124,7 @@
     "imagem": "/produtos/16706665214--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV1176": {
+      "Cinza Onix": {
         "PP": [
           "16706665214"
         ],
@@ -28137,7 +28181,7 @@
         ]
       },
       {
-        "cor": "NV1192",
+        "cor": "Cinza Forest",
         "imagens": [
           "/produtos/16706050470--unico--0.jpg",
           "/produtos/16706050470--unico--1.jpg",
@@ -28174,7 +28218,7 @@
           "16706056173"
         ]
       },
-      "NV1192": {
+      "Cinza Forest": {
         "34": [
           "16706050137"
         ],
@@ -28199,7 +28243,7 @@
     "descricao": "Confeccionado em alfaiataria\nCom modelagem regular\nGola regular\nFechamento com botões\nManga longa\nBolsos embutidos\nBarra reta\nCom caimento impecável, o blazer Esther é sofisticado e clássico. Em acetato e viscose, tem um toque suave e estrutura elegante. É um indispensável para o seu closet.",
     "cores": [
       {
-        "cor": "NV1192",
+        "cor": "Cinza Forest",
         "imagens": [
           "/produtos/16706664494--unico--0.jpg",
           "/produtos/16706664494--unico--1.jpg",
@@ -28221,7 +28265,7 @@
     "imagem": "/produtos/16706664494--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV1192": {
+      "Cinza Forest": {
         "PP": [
           "16706664494"
         ],
@@ -28361,11 +28405,16 @@
     "marca": "NV",
     "preco": 1148,
     "novo": false,
-    "descricao": "",
+    "descricao": "O Twin Set Aura, em tricot com toque macio e confortável, é sinônimo de versatilidade com uma elegância descomplicada. A padronagem lisa traz personalidade ao conjunto de regata e cardigan de comprimento regular, perfeito para looks que transitam do casual chic ao mais elaborado. Perfeito para usar junto ou as peças separadas, é um novo essencial no closet.",
     "cores": [
       {
         "cor": "Cinza Mescla",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706520738--unico--0.jpg",
+          "/produtos/16706520738--unico--1.jpg",
+          "/produtos/16706520738--unico--2.jpg",
+          "/produtos/16706520738--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -28373,14 +28422,20 @@
           "G"
         ],
         "tamanhosDisponiveis": [
+          "P",
           "M",
-          "G",
-          "P"
+          "G"
         ]
       },
       {
-        "cor": "NV329",
-        "imagens": [],
+        "cor": "Multicolors",
+        "imagens": [
+          "/produtos/16706049427--unico--0.jpg",
+          "/produtos/16706049427--unico--1.jpg",
+          "/produtos/16706049427--unico--2.jpg",
+          "/produtos/16706049427--unico--3.jpg",
+          "/produtos/16706049427--unico--4.jpg"
+        ],
         "tamanhos": [
           "PP",
           "M"
@@ -28390,7 +28445,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706520738--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Cinza Mescla": {
@@ -28407,7 +28462,7 @@
           "16706198890"
         ]
       },
-      "NV329": {
+      "Multicolors": {
         "M": [
           "16706049427"
         ],
@@ -28423,11 +28478,16 @@
     "marca": "NV",
     "preco": 248,
     "novo": false,
-    "descricao": "",
+    "descricao": "A regata Gabriella é uma peça essencial que combina o conforto da malha de algodão com a atemporalidade. Com toque de elastano, ela tem um ajuste impecável ao corpo. Perfeita para um look descomplicado, é um verdadeiro must-have em seu closet.",
     "cores": [
       {
-        "cor": "NV1235",
-        "imagens": [],
+        "cor": "Vermelho Cabernet",
+        "imagens": [
+          "/produtos/16706518481--unico--0.jpg",
+          "/produtos/16706518481--unico--1.jpg",
+          "/produtos/16706518481--unico--2.jpg",
+          "/produtos/16706518481--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -28435,14 +28495,19 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       },
       {
         "cor": "Cinza Mescla",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706053971--unico--0.jpg",
+          "/produtos/16706053971--unico--1.jpg",
+          "/produtos/16706053971--unico--2.jpg",
+          "/produtos/16706053971--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -28457,23 +28522,28 @@
         ]
       },
       {
-        "cor": "NV594",
-        "imagens": [],
+        "cor": "Rosa Sienna",
+        "imagens": [
+          "/produtos/16705910624--unico--0.jpg",
+          "/produtos/16705910624--unico--1.jpg",
+          "/produtos/16705910624--unico--2.jpg",
+          "/produtos/16705910624--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706518481--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV1235": {
+      "Vermelho Cabernet": {
         "G": [
           "16706518481"
         ],
@@ -28501,7 +28571,7 @@
           "16706053778"
         ]
       },
-      "NV594": {
+      "Rosa Sienna": {
         "M": [
           "16705910624"
         ],
@@ -28951,7 +29021,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "NV1192",
+        "cor": "Cinza Forest",
         "imagens": [],
         "tamanhos": [
           "PP",
@@ -28966,7 +29036,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV1192": {
+      "Cinza Forest": {
         "P": [
           "16706347605"
         ],
@@ -28985,11 +29055,16 @@
     "marca": "NV",
     "preco": 398,
     "novo": false,
-    "descricao": "",
+    "descricao": "Regata Dani em malha de algodão com lavagem washed e textura sutil é aquela peça básica que foge do óbvio. Modelagem regular e comprimento cropped, com bossa descomplicada que vai do dia a dia a looks mais elaborados. Uma peça versátil para compor com atitude.",
     "cores": [
       {
-        "cor": "NV1263",
-        "imagens": [],
+        "cor": "Denim Estonado",
+        "imagens": [
+          "/produtos/16706346030--unico--0.jpg",
+          "/produtos/16706346030--unico--1.jpg",
+          "/produtos/16706346030--unico--2.jpg",
+          "/produtos/16706346030--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -28997,14 +29072,19 @@
           "G"
         ],
         "tamanhosDisponiveis": [
+          "PP",
           "M",
-          "G",
-          "PP"
+          "G"
         ]
       },
       {
         "cor": "Bege Estonado",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706345795--unico--0.jpg",
+          "/produtos/16706345795--unico--1.jpg",
+          "/produtos/16706345795--unico--2.jpg",
+          "/produtos/16706345795--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -29018,10 +29098,10 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706346030--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV1263": {
+      "Denim Estonado": {
         "M": [
           "16706346030"
         ],
@@ -29094,8 +29174,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -29138,10 +29218,10 @@
     "marca": "NV",
     "preco": 2148,
     "novo": false,
-    "descricao": "",
+    "descricao": "Em puro cashmere, a Blusa Marcela é sofisticada e confortável. Sua modelagem regular, com gola polo e botões, tem a versatilidade que você busca nos looks do dia a dia. Uma peça atemporal para aquecer seus dias.",
     "cores": [
       {
-        "cor": "NV610",
+        "cor": "Azul Denim",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -29152,8 +29232,14 @@
         ]
       },
       {
-        "cor": "NV978",
-        "imagens": [],
+        "cor": "Bege Mescla",
+        "imagens": [
+          "/produtos/16705991836--unico--0.jpg",
+          "/produtos/16705991836--unico--1.jpg",
+          "/produtos/16705991836--unico--2.jpg",
+          "/produtos/16705991836--unico--3.jpg",
+          "/produtos/16705991836--unico--4.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -29164,10 +29250,10 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705991836--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV610": {
+      "Azul Denim": {
         "P": [
           "16706334792"
         ],
@@ -29175,7 +29261,7 @@
           "16705993143"
         ]
       },
-      "NV978": {
+      "Bege Mescla": {
         "M": [
           "16705991836"
         ],
@@ -29197,7 +29283,7 @@
     "descricao": "Um essencial no closet, a Calça Jeans Nadini traz o shape barrel e o comprimento cropped, que termina acima do tornozelo, versátil. A cintura média dá um caimento impecável e mais solto, ideal para diferentes produções. Com a lavagem especial, esta peça em jeans deixa o look com um toque descontraído e muita personalidade.\nCom modelagem semi barrel\nComprimento cropped\nCintura média\nCós regular\nBarra reta\nCom lavagem\nFechamento frontal\nBolso relógio",
     "cores": [
       {
-        "cor": "NV880",
+        "cor": "Jeans Escuro Vintage",
         "imagens": [
           "/produtos/16706329661--unico--0.jpg",
           "/produtos/16706329661--unico--1.jpg",
@@ -29214,8 +29300,12 @@
         ]
       },
       {
-        "cor": "NV1070",
-        "imagens": [],
+        "cor": "Jeans Médio",
+        "imagens": [
+          "/produtos/16706181202--unico--0.jpg",
+          "/produtos/16706181202--unico--1.jpg",
+          "/produtos/16706181202--unico--2.jpg"
+        ],
         "tamanhos": [
           "32",
           "34",
@@ -29231,7 +29321,7 @@
     "imagem": "/produtos/16706329661--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV880": {
+      "Jeans Escuro Vintage": {
         "34": [
           "16706329456"
         ],
@@ -29242,7 +29332,7 @@
           "16706329661"
         ]
       },
-      "NV1070": {
+      "Jeans Médio": {
         "32": [
           "16706179576"
         ],
@@ -29270,7 +29360,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "NV1168",
+        "cor": "Marrom Cognac",
         "imagens": [],
         "tamanhos": [
           "PP",
@@ -29278,8 +29368,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       },
       {
@@ -29322,8 +29412,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       },
       {
@@ -29341,7 +29431,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV1168": {
+      "Marrom Cognac": {
         "M": [
           "16706328116"
         ],
@@ -30018,11 +30108,16 @@
     "marca": "NV",
     "preco": 3498,
     "novo": false,
-    "descricao": "",
+    "descricao": "A Jaqueta Over Jeans Luna reinterpreta o clássico com um toque moderno. Sua modelagem oversized em jeans tem o caimento impecável e design único. O decote transpassado e o fechamento com zíper de metal dão personalidade, enquanto os bolsos embutidos completam o design.",
     "cores": [
       {
         "cor": "NV054",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706185046--unico--0.jpg",
+          "/produtos/16706185046--unico--1.jpg",
+          "/produtos/16706185046--unico--2.jpg",
+          "/produtos/16706185046--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P"
@@ -30033,7 +30128,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706185046--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "NV054": {
@@ -30052,11 +30147,16 @@
     "marca": "NV",
     "preco": 648,
     "novo": false,
-    "descricao": "",
+    "descricao": "Em tricot, o body tem o toque macio e caimento impecável, ideal para looks versáteis. A gola polo e o zíper frontal dão um charme único.",
     "cores": [
       {
-        "cor": "NV1192",
-        "imagens": [],
+        "cor": "Cinza Forest",
+        "imagens": [
+          "/produtos/16706178240--unico--0.jpg",
+          "/produtos/16706178240--unico--1.jpg",
+          "/produtos/16706178240--unico--2.jpg",
+          "/produtos/16706178240--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -30068,10 +30168,10 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706178240--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV1192": {
+      "Cinza Forest": {
         "M": [
           "16706178240"
         ],
@@ -30096,7 +30196,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "NV436",
+        "cor": "Rosa Ballet",
         "imagens": [],
         "tamanhos": [
           "PP",
@@ -30124,7 +30224,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV436": {
+      "Rosa Ballet": {
         "M": [
           "16706053414"
         ],
@@ -30437,11 +30537,16 @@
     "marca": "NV",
     "preco": 3898,
     "novo": false,
-    "descricao": "",
+    "descricao": "A Blusa Ayla tem caimento impecável, aliado ao decote quadrado e à modelagem slim, desenha uma silhueta elegante. Tudo feito em um couro com elastano para você que busca versatilidade e personalidade, esta regata com fechamento posterior por zíper de metal é uma peça desejo para seu closet.",
     "cores": [
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705942590--unico--0.jpg",
+          "/produtos/16705942590--unico--1.jpg",
+          "/produtos/16705942590--unico--2.jpg",
+          "/produtos/16705942590--unico--3.jpg"
+        ],
         "tamanhos": [
           "M",
           "G"
@@ -30451,7 +30556,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705942590--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Preto": {
@@ -30705,11 +30810,16 @@
     "marca": "NV",
     "preco": 998,
     "novo": false,
-    "descricao": "",
+    "descricao": "Uma elegância descomplicada em cada look, a Regata Ella é feita em seda e tem um caimento impecável. Sua modelagem slim e o decote V valorizam a silhueta, ideal para composições versáteis.",
     "cores": [
       {
-        "cor": "NV1182",
-        "imagens": [],
+        "cor": "Vermelho Rock",
+        "imagens": [
+          "/produtos/16705912712--unico--0.jpg",
+          "/produtos/16705912712--unico--1.jpg",
+          "/produtos/16705912712--unico--2.jpg",
+          "/produtos/16705912712--unico--3.jpg"
+        ],
         "tamanhos": [
           "M"
         ],
@@ -30717,22 +30827,27 @@
       },
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705912396--unico--0.jpg",
+          "/produtos/16705912396--unico--1.jpg",
+          "/produtos/16705912396--unico--2.jpg",
+          "/produtos/16705912396--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705912712--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV1182": {
+      "Vermelho Rock": {
         "M": [
           "16705912712"
         ]
@@ -30759,7 +30874,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "NV534",
+        "cor": "Marrom Expresso",
         "imagens": [],
         "tamanhos": [
           "PP",
@@ -30768,16 +30883,16 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV534": {
+      "Marrom Expresso": {
         "G": [
           "16705907843"
         ],
@@ -30989,9 +31104,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -35872,18 +35987,23 @@
     "marca": "NV",
     "preco": 798,
     "novo": false,
-    "descricao": "",
+    "descricao": "O design transita entre um delicado Tie-Dye e a atemporalidade de uma peça versátil em tricot. Com gola alta e o toque prático do zíper, esta peça, de modelagem regular, abraça sua silhueta com leveza.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707219157--unico--0.jpg",
+          "/produtos/16707219157--unico--1.jpg",
+          "/produtos/16707219157--unico--2.jpg",
+          "/produtos/16707219157--unico--3.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
         "tamanhosDisponiveis": []
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707219157--unico--0.jpg",
     "temEstoque": false,
     "_corCodigo": "NV1258"
   },
@@ -35893,18 +36013,23 @@
     "marca": "NV",
     "preco": 748,
     "novo": false,
-    "descricao": "",
+    "descricao": "A Blusa Clarice, em renda delicada, redefine a sofisticação com um toque moderno. Sua modelagem regular e comprimento curto dão versatilidade para looks casuais ou mais elaborados. Com gola careca e mangas longas com leve evasê, esta peça traz uma personalidade única e perfeita para o seu closet.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706679444--unico--0.jpg",
+          "/produtos/16706679444--unico--1.jpg",
+          "/produtos/16706679444--unico--2.jpg",
+          "/produtos/16706679444--unico--3.jpg"
+        ],
         "tamanhos": [
           "M"
         ],
         "tamanhosDisponiveis": []
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706679444--unico--0.jpg",
     "temEstoque": false,
     "_corCodigo": "NV080"
   },
@@ -36027,11 +36152,16 @@
     "marca": "NV",
     "preco": 6598,
     "novo": false,
-    "descricao": "",
+    "descricao": "A Jaqueta Kate é um ícone de sofisticação e personalidade. Confeccionada em couro, possui recortes em chamois, que dão um textura toda especial para a peça. Com gola alta e fechamento com botões, o design impecável realça a silhueta para um look que transita entre ocasiões, sempre com um toque de elegância.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706044287--unico--0.jpg",
+          "/produtos/16706044287--unico--1.jpg",
+          "/produtos/16706044287--unico--2.jpg",
+          "/produtos/16706044287--unico--3.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
@@ -36040,7 +36170,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706044287--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "NV089"
   },
