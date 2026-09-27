@@ -7,8 +7,11 @@ import FaixaCashback from "@/components/FaixaCashback";
 import { listarPorMarca, produtosComFoto } from "@/lib/produtos";
 import { SITE_URL as siteUrl } from "@/lib/site";
 
-// Quantos produtos aparecem na vitrine "Novidades" da home - o catalogo completo (com todos
-// os produtos, com ou sem foto) fica em /produtos.
+// So' limita quantidade quando CAI NO FALLBACK automatico (nenhuma peca marcada como destaque
+// no painel /admin/produtos ainda) - o catalogo completo (com todos os produtos, com ou sem
+// foto) fica em /produtos. Quando existem destaques marcados, a vitrine mostra TODOS eles, sem
+// cortar (pedido do Brunno em 27/09/2026 - antes cortava nos 8 primeiros da lista mesmo com
+// mais peca marcada, entao destaque adicionado depois da 8a posicao nunca aparecia na home).
 const QTD_VITRINE = 8;
 
 export const revalidate = 30;
@@ -78,9 +81,12 @@ export default async function Home() {
 
   // Vitrine "Novidades": prioriza pecas marcadas como destaque no painel /admin/produtos - se
   // o Brunno ainda nao marcou nenhuma, cai no comportamento automatico de sempre (primeiros
-  // produtos com foto, na ordem do Bling), pra home nunca ficar vazia.
+  // QTD_VITRINE produtos com foto, na ordem do Bling), pra home nunca ficar vazia. Mostra TODOS
+  // os destaques marcados, sem cortar em QTD_VITRINE - antes cortava nos 8 primeiros mesmo
+  // com mais peca marcada, entao destaque adicionado depois da 8a posicao nunca aparecia
+  // (bug reportado pelo Brunno em 27/09/2026).
   const destaques = comFoto.filter((p) => p.destaque);
-  const vitrine = (destaques.length > 0 ? destaques : comFoto).slice(0, QTD_VITRINE);
+  const vitrine = destaques.length > 0 ? destaques : comFoto.slice(0, QTD_VITRINE);
 
   return (
     <div>
