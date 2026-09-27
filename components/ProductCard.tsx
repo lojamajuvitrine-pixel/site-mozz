@@ -53,7 +53,19 @@ function IconeCoracao({ preenchido }: { preenchido: boolean }) {
 // marca e em "quem viu tambem gostou". No estilo das grandes lojas de moda (ex: Foxton): da'
 // pra escolher cor e tamanho e adicionar direto na sacola sem sair do mosaico - so' entra na
 // pagina do produto quem quiser ver mais detalhe (fotos extras, medidas, composicao...).
-export default function ProductCard({ produto }: { produto: Produto }) {
+export default function ProductCard({
+  produto,
+  mostrarCarrosselFoto = true
+}: {
+  produto: Produto;
+  // Desliga so' as setinhas de trocar foto dentro do card (nao mexe nas bolinhas de cor
+  // abaixo) - pedido do Brunno em 27/09/2026 pra nao ter esse carrossel dentro de cada peca
+  // nos blocos "vitrine por marca" da home (ja tem seta pra navegar o carrossel inteiro la',
+  // ficava carrossel dentro de carrossel). Continua ligado por padrao no catalogo, nas
+  // paginas de marca e em "quem viu tambem gostou" - so' a home passa false explicitamente
+  // (ver VitrineDeMarca.tsx).
+  mostrarCarrosselFoto?: boolean;
+}) {
   const { adicionar } = useCart();
   const { ehFavorito, alternarFavorito } = useFavoritos();
   const favoritado = ehFavorito(produto.id);
@@ -138,14 +150,6 @@ export default function ProductCard({ produto }: { produto: Produto }) {
           </button>
 
           {corAtual.imagens.length > 0 ? (
-            // Todas as fotos da cor atual ficam montadas ao mesmo tempo (uma por cima da
-            // outra, controladas por opacidade) em vez de so' a foto do indice atual. Antes,
-            // trocar de foto no carrossel (setinha) desmontava e remontava o <Image> do zero -
-            // isso disparava um pedido novo pro otimizador de imagem da Next a cada clique, e
-            // por isso a troca "demorava" (bug reportado pelo Brunno em 29/08/2026). Assim, o
-            // navegador ja' carrega as fotos da cor selecionada em segundo plano assim que o
-            // card entra na tela (mesmo comportamento de lazy-load de antes, so' que pra todas
-            // de uma vez), e trocar de foto vira so' uma troca de opacidade - instantaneo.
             corAtual.imagens.map((imagem, i) => (
               <Image
                 key={imagem}
@@ -153,9 +157,6 @@ export default function ProductCard({ produto }: { produto: Produto }) {
                 alt={`${produto.marca} ${produto.nome}`}
                 fill
                 sizes="(max-width: 768px) 50vw, 25vw"
-                // card pequeno do mosaico - qualidade mais baixa (o olho nao percebe nesse
-                // tamanho) pra carregar rapido mesmo com varios produtos na tela ao mesmo tempo.
-                // A foto grande da pagina do produto usa qualidade alta (ver SeletorProduto.tsx).
                 quality={60}
                 className={`object-cover transition-all duration-300 ${
                   i === fotoIndex ? "opacity-100 group-hover:scale-105" : "opacity-0 pointer-events-none"
@@ -169,7 +170,7 @@ export default function ProductCard({ produto }: { produto: Produto }) {
           {/* Setinhas do carrossel - sempre visiveis (nao so' no hover, diferente do overlay de
               tamanho abaixo) pra funcionar tambem no toque do celular, ja' que sao pequenas e
               ficam nas bordas, sem "roubar" o toque de quem quer abrir a pagina do produto. */}
-          {corAtual.imagens.length > 1 && (
+          {mostrarCarrosselFoto && corAtual.imagens.length > 1 && (
             <>
               <button
                 onClick={fotoAnterior}
@@ -188,12 +189,6 @@ export default function ProductCard({ produto }: { produto: Produto }) {
             </>
           )}
 
-          {/* Overlay de tamanhos - so' desktop, e so' aparece ao passar o mouse (pra escolher e
-              adicionar sem abrir a pagina do produto). Escondido no touch/mobile: la' nao tem
-              hover pra "revelar" o overlay so' quando o cliente quer - ele ficava sempre visivel
-              cobrindo a parte de baixo da foto inteira, e roubava o toque de quem so' queria
-              abrir os detalhes da peca (bug reportado em 23/08/2026). No celular o fluxo normal
-              e' abrir a pagina do produto e escolher tamanho la', como em qualquer loja. */}
           {corAtual.tamanhos.length > 0 && (
             <div className="hidden md:flex absolute inset-x-0 bottom-0 p-2 flex-wrap gap-1 justify-center bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
               {disponiveisAtual.length === 0 ? (
