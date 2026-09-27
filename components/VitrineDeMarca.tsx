@@ -13,20 +13,7 @@ type Props = {
   headline: string;
   descricao: string;
   produtos: Produto[];
-  // Foto grande de campanha do bloco - agora escolhida a dedo pelo Brunno (arquivo em
-  // public/, ex: "/capa-animale.jpg") em vez de pegar automaticamente a foto da primeira peca
-  // destaque, que muitas vezes nao ficava com cara de campanha (pedido do Brunno em
-  // 27/09/2026: "vamos melhorar essas imagens escolhidas para cada marca"). Enquanto o
-  // arquivo ainda nao foi enviado, cai de volta na foto do primeiro produto pra nao ficar sem
-  // nenhuma imagem (ver "foto" abaixo).
   fotoCapa?: string;
-  // Cor de destaque extraida da propria foto de campanha (pedido do Brunno em 27/09/2026:
-  // "pegar a cor predominante da foto do banner e jogar um efeito atras das outras fotos") -
-  // vira um brilho colorido suave atras do carrossel de produtos, criando uma ligacao visual
-  // com a foto de campanha ao lado. Nao e' literalmente a cor MAIS comum da foto (isso quase
-  // sempre da' um cinza ou preto sem graca, ja que fundo neutro costuma dominar a foto em
-  // contagem de pixel) - e' a cor mais marcante/saturada dela, do jeito que uma pessoa
-  // apontaria "essa e' a cor dessa foto".
   corDestaque?: string;
 };
 
@@ -93,10 +80,6 @@ export default function VitrineDeMarca({
 
           <div className="relative">
             {corDestaque && (
-              // Brilho decorativo - fica atras de tudo (-z-10), borrado bem forte (blur-3xl) e
-              // com opacidade baixa pra so' dar um "clima" atras dos cards, sem competir com as
-              // fotos dos produtos. "aria-hidden" porque e' so' decoracao, nao tem informacao
-              // nenhuma pra quem usa leitor de tela.
               <div
                 aria-hidden
                 className="pointer-events-none absolute -inset-x-4 -inset-y-6 -z-10 rounded-[40px] blur-3xl opacity-40"
@@ -109,7 +92,7 @@ export default function VitrineDeMarca({
             >
               {produtos.slice(0, 8).map((produto) => (
                 <div key={produto.id} className="w-[46%] md:w-[200px] shrink-0 snap-start">
-                  <ProductCard produto={produto} mostrarCarrosselFoto={false} />
+                  <ProductCard produto={produto} mostrarCarrosselFoto={false} mostrarBadgeNovidade={false} />
                 </div>
               ))}
             </div>
