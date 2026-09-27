@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import BannerHero, { type BannerItem } from "@/components/BannerHero";
 import FaixaCashback from "@/components/FaixaCashback";
 import SecaoMarcas from "@/components/SecaoMarcas";
@@ -68,11 +66,6 @@ export default async function Home() {
     ? [{ imagem: comFoto[0].imagem, marca: comFoto[0].marca, label: "", href: "/produtos" }]
     : [];
 
-  // pra nao repetir a MESMA foto do hero rotativo aqui embaixo (a marca pode repetir, ja que
-  // agora as 4 marcas ativas ja aparecem todas no hero - mas a foto do produto e' diferente)
-  const imagensDoHero = new Set(bannersFinal.map((b) => b.imagem));
-  const bannerProduto = comFoto.find((p) => p.imagem && !imagensDoHero.has(p.imagem)) ?? comFoto[2] ?? comFoto[1];
-
   // Vitrines por marca (carrossel + texto/CTA do lado) - inspiradas no site oqvestir (print
   // mandado pelo Brunno em 27/09/2026). Reaproveita as listas de cada marca ja' buscadas acima
   // pro banner, filtrando so' as marcadas como destaque no painel - marca sem nenhuma destaque
@@ -86,35 +79,6 @@ export default async function Home() {
     <div>
       <BannerHero banners={bannersFinal} />
       <FaixaCashback />
-
-      {bannerProduto?.imagem && (
-        <section className="grid md:grid-cols-2 -mx-6 border-b border-black/10">
-          <div className="relative aspect-[4/5] md:aspect-auto">
-            <Image
-              src={bannerProduto.imagem}
-              alt={bannerProduto.nome}
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              quality={85}
-              className="object-cover"
-            />
-          </div>
-          <div className="flex flex-col items-start justify-center px-8 py-12 md:px-14">
-            <h1 className="font-serif text-[29px] md:text-[33px] leading-tight mb-4">
-              Quatro marcas,
-              <br />
-              um só lugar
-            </h1>
-            <p className="text-[14.5px] text-mozz-gray max-w-xs mb-6">
-              Curadoria Animale, NV, Reserva e Foxton reunida na MOZZ, com entrega pra todo o
-              Brasil.
-            </p>
-            <Link href="/produtos" className="text-[14.5px] underline">
-              Explorar catálogo
-            </Link>
-          </div>
-        </section>
-      )}
 
       <SecaoMarcas />
 
