@@ -55,7 +55,8 @@ function IconeCoracao({ preenchido }: { preenchido: boolean }) {
 // pagina do produto quem quiser ver mais detalhe (fotos extras, medidas, composicao...).
 export default function ProductCard({
   produto,
-  mostrarCarrosselFoto = true
+  mostrarCarrosselFoto = true,
+  mostrarBadgeNovidade = true
 }: {
   produto: Produto;
   // Desliga so' as setinhas de trocar foto dentro do card (nao mexe nas bolinhas de cor
@@ -65,6 +66,12 @@ export default function ProductCard({
   // paginas de marca e em "quem viu tambem gostou" - so' a home passa false explicitamente
   // (ver VitrineDeMarca.tsx).
   mostrarCarrosselFoto?: boolean;
+  // Desliga a etiqueta "NOVIDADE" - pedido do Brunno em 27/09/2026 ("tire da primeira pagina
+  // todas as NOVIDADE") enquanto a gente nao resolve direito o criterio de quando uma peca e'
+  // realmente novidade (ver conversa sobre "campeao de vendas" x novidade repetida de colecao
+  // passada). So' a home passa false - catalogo, paginas de marca e "quem viu tambem gostou"
+  // continuam mostrando normalmente.
+  mostrarBadgeNovidade?: boolean;
 }) {
   const { adicionar } = useCart();
   const { ehFavorito, alternarFavorito } = useFavoritos();
@@ -131,7 +138,7 @@ export default function ProductCard({
       <Link href={`/produto/${produto.id}`} className="block">
         <div className="relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden">
           <div className="absolute top-2 left-2 z-10 flex flex-col gap-1 items-start">
-            {produto.novo && (
+            {mostrarBadgeNovidade && produto.novo && (
               <span className="text-[11.5px] bg-mozz-black text-white px-2 py-0.5">NOVIDADE</span>
             )}
             {percentualDesconto !== null && percentualDesconto > 0 && (
@@ -167,9 +174,6 @@ export default function ProductCard({
             <span className="text-mozz-gray text-xs">foto do produto</span>
           )}
 
-          {/* Setinhas do carrossel - sempre visiveis (nao so' no hover, diferente do overlay de
-              tamanho abaixo) pra funcionar tambem no toque do celular, ja' que sao pequenas e
-              ficam nas bordas, sem "roubar" o toque de quem quer abrir a pagina do produto. */}
           {mostrarCarrosselFoto && corAtual.imagens.length > 1 && (
             <>
               <button
