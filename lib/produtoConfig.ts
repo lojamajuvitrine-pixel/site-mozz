@@ -18,6 +18,13 @@ export type ConfigProduto = {
   // pra poder tirar uma peca do ar sem precisar mexer em nada no Bling - ex: peca com defeito,
   // fora de linha, ou que ele quer segurar a venda por um tempo).
   ativo: boolean;
+  // Escolha manual de qual foto vem PRIMEIRO no carrossel de cada cor (painel
+  // /admin/produtos, pedido do Brunno em 26/09/2026 - ex: sempre a foto de corpo inteiro da
+  // modelo na frente das fotos de detalhe). Mapa "nome da cor" -> caminho da imagem escolhida
+  // (o mesmo caminho que ja aparece em cor.imagens, ex: "/produtos/123--preto--2.jpg"). So'
+  // reordena - nunca remove foto nenhuma. Cor sem entrada aqui continua na ordem normal que
+  // vem do Bling. Aplicado em lib/produtos.ts (aplicarCapaPorCor).
+  capaPorCor: Record<string, string> | null;
 };
 
 type LinhaProdutoSite = {
@@ -28,7 +35,21 @@ type LinhaProdutoSite = {
   medidas_customizadas?: unknown;
   composicao_customizada?: string | null;
   ativo?: boolean;
+  capa_por_cor?: unknown;
 };
+
+// Confere que o jsonb salvo e' mesmo um mapa "cor -> caminho de imagem" antes de usar -
+// protege contra linha antiga (coluna ainda nao existia), null, array, ou qualquer coisa fora
+// do formato esperado. Se nao bater (ou vier vazio), trata como "sem escolha nenhuma" (usa a
+// ordem normal do Bling) em vez de quebrar a pagina do produto.
+function validarCapaPorCor(valor: unknown): Record<string, string> | null {
+  if (!valor || typeof valor !== "object" || Array.isArray(valor)) return null;
+  const entradas = Object.entries(valor as Record<string, unknown>).filter(
+    (par): par is [string, string] =>
+      typeof par[0] === "string" && par[0].trim() !== "" && typeof par[1] === "string" && par[1].trim() !== ""
+  );
+  return entradas.length > 0 ? Object.fromEntries(entradas) : null;
+}
 
 // Confere que o jsonb salvo tem mesmo a cara de uma TabelaMedidas antes de usar - protege
 // contra linha antiga (coluna ainda nao existia), null, ou qualquer coisa fora do formato
@@ -57,7 +78,9 @@ export async function buscarConfigProdutos(): Promise<Map<string, ConfigProduto>
     const supabase = clientePublico();
     const { data, error } = await supabase
       .from("produtos_site")
-      .select("produto_id, preco_especial, destaque, outlet, medidas_customizadas, composicao_customizada, ativo");
+      .select(
+        "produto_id, preco_especial, destaque, outlet, medidas_customizadas, composicao_customizada, ativo, capa_por_cor"
+      );
     if (error || !data) return new Map();
 
     return new Map(
@@ -71,7 +94,8 @@ export async function buscarConfigProdutos(): Promise<Map<string, ConfigProduto>
           composicaoCustomizada: linha.composicao_customizada?.trim() || null,
           // so' false quando explicitamente desativado - linha antiga sem essa coluna, ou
           // qualquer valor que nao seja exatamente false, conta como ativa.
-          ativo: linha.ativo !== false
+          ativo: linha.ativo !== false,
+          capaPorCor: validarCapaPorCor(linha.capa_por_cor)
         }
       ])
     );
