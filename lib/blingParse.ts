@@ -138,9 +138,15 @@ const CODIGOS_COR_POR_MARCA: Record<string, Record<string, string>> = {
     "1605": "Eucalipto",
     "8213": "Aveia",
     "32325": "Vermelho Outono",
+    // Confirmado pelo Brunno em 27/09/2026 - antes ficava pendente (ver
+    // codigos-cor-produtos.md), nao confundir com "32325" (Vermelho Outono), que e' outro codigo.
+    "32320": "Azul Aurora",
     "00416": "Azul Ink",
     "0184": "Azul Marinho",
-    "0830": "Verde Oliva"
+    "0830": "Verde Oliva",
+    // Passados pelo Brunno em 27/09/2026.
+    "00735": "Azul Mármore",
+    "2216": "Caramelo"
   },
   // Tabela passada pelo Brunno em 26/09/2026 (ver codigos-cor-produtos.md). O "NV" na frente
   // do numero e' parte do proprio codigo (assim que aparece no nome do produto no Bling, ex:
