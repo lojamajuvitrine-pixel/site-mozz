@@ -23633,7 +23633,7 @@
         ]
       },
       {
-        "cor": "32320",
+        "cor": "Azul Aurora",
         "imagens": [
           "/produtos/16710110690--unico--0.jpg",
           "/produtos/16710110690--unico--1.jpg",
@@ -23673,17 +23673,6 @@
     "imagem": "/produtos/16710112712--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "32320": {
-        "G": [
-          "16710110690"
-        ],
-        "M": [
-          "16710110640"
-        ],
-        "P": [
-          "16710110558"
-        ]
-      },
       "Preto": {
         "GG": [
           "16710112712"
@@ -23693,6 +23682,17 @@
         ],
         "M": [
           "16710112563"
+        ]
+      },
+      "Azul Aurora": {
+        "G": [
+          "16710110690"
+        ],
+        "M": [
+          "16710110640"
+        ],
+        "P": [
+          "16710110558"
         ]
       },
       "Mogno": {
@@ -24208,7 +24208,7 @@
         ]
       },
       {
-        "cor": "2216",
+        "cor": "Caramelo",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24222,7 +24222,7 @@
         ]
       },
       {
-        "cor": "32320",
+        "cor": "Azul Aurora",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -24293,28 +24293,6 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "2216": {
-        "G": [
-          "16708216486"
-        ],
-        "P": [
-          "16708216475"
-        ],
-        "M": [
-          "16708154503"
-        ]
-      },
-      "32320": {
-        "G": [
-          "16708216150"
-        ],
-        "M": [
-          "16708216143"
-        ],
-        "P": [
-          "16708216137"
-        ]
-      },
       "32321": {
         "G": [
           "16708213527"
@@ -24329,6 +24307,28 @@
         ],
         "M": [
           "16708216739"
+        ]
+      },
+      "Caramelo": {
+        "G": [
+          "16708216486"
+        ],
+        "P": [
+          "16708216475"
+        ],
+        "M": [
+          "16708154503"
+        ]
+      },
+      "Azul Aurora": {
+        "G": [
+          "16708216150"
+        ],
+        "M": [
+          "16708216143"
+        ],
+        "P": [
+          "16708216137"
         ]
       },
       "Verde Oliva": {
@@ -26716,7 +26716,7 @@
     "marca": "Foxton",
     "preco": 298,
     "novo": true,
-    "descricao": "A Camiseta Malha Pima é confeccionada em 100% algodão &lt;a href=\"https://www-foxtonbrasil-com-br/pima\" style=\"max-width: 100%; text-decoration: none; font-family: var(--font-family) !important;\"&gt;Pima&lt;/a&gt;, uma fibra de alta qualidade que oferece excelência ao primeiro toque e máxima durabilidade.\nProduzida no Peru, suas fibras mais longas e finas proporcionam um  toque macio e suave à pele.  O destaque fica por conta da durabilidade da peça, suas fibras geram um  tecido resistente à deformação do uso, ao desgaste do tempo e sucessivas lavagens.  Garantindo peças com o mesmo visual, cor e caimento durante muito mais tempo.\nCom decote redondo e bainha com fendas laterais, essa peça é ideal para te acompanhar no dia a dia com máximo conforto e caimento perfeito. Combine com calças jeans ou de sarja e bermudas de nylon ou sarja, dependendo da ocasião",
+    "descricao": "Camiseta em 100% algodão Pima, fibra peruana de fibra longa que garante toque macio desde a primeira lavagem e mantém cor, forma e caimento por muito mais tempo — resiste bem ao uso do dia a dia sem desbotar ou deformar.\nModelagem com decote redondo e fendas laterais na bainha, pensada pra ir de uma produção casual a um look mais elaborado. Combina bem com jeans, sarja ou bermuda, dependendo da ocasião.",
     "cores": [
       {
         "cor": "Aveia",
@@ -26742,7 +26742,7 @@
         ]
       },
       {
-        "cor": "2216",
+        "cor": "Caramelo",
         "imagens": [
           "/produtos/16707859985--unico--0.jpg",
           "/produtos/16707859985--unico--1.jpg",
@@ -26788,8 +26788,15 @@
         ]
       },
       {
-        "cor": "00735",
-        "imagens": [],
+        "cor": "Azul Mármore",
+        "imagens": [
+          "/produtos/16707357785--unico--0.jpg",
+          "/produtos/16707357785--unico--1.jpg",
+          "/produtos/16707357785--unico--2.jpg",
+          "/produtos/16707357785--unico--3.jpg",
+          "/produtos/16707357785--unico--4.jpg",
+          "/produtos/16707357785--unico--5.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -26805,7 +26812,14 @@
       },
       {
         "cor": "Azul Ink",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707355903--unico--0.jpg",
+          "/produtos/16707355903--unico--1.jpg",
+          "/produtos/16707355903--unico--2.jpg",
+          "/produtos/16707355903--unico--3.jpg",
+          "/produtos/16707355903--unico--4.jpg",
+          "/produtos/16707355903--unico--5.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -26823,7 +26837,15 @@
       },
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707354646--unico--0.jpg",
+          "/produtos/16707354646--unico--1.jpg",
+          "/produtos/16707354646--unico--2.jpg",
+          "/produtos/16707354646--unico--3.jpg",
+          "/produtos/16707354646--unico--4.jpg",
+          "/produtos/16707354646--unico--5.jpg",
+          "/produtos/16707354646--unico--6.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -26841,7 +26863,14 @@
       },
       {
         "cor": "Branco",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707353785--unico--0.jpg",
+          "/produtos/16707353785--unico--1.jpg",
+          "/produtos/16707353785--unico--2.jpg",
+          "/produtos/16707353785--unico--3.jpg",
+          "/produtos/16707353785--unico--4.jpg",
+          "/produtos/16707353785--unico--5.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -26861,20 +26890,6 @@
     "imagem": "/produtos/16708075982--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "2216": {
-        "GG": [
-          "16707859985"
-        ],
-        "G": [
-          "16707859960"
-        ],
-        "M": [
-          "16707859948"
-        ],
-        "P": [
-          "16707859904"
-        ]
-      },
       "Aveia": {
         "GG": [
           "16708075982"
@@ -26887,6 +26902,20 @@
         ],
         "M": [
           "16707860296"
+        ]
+      },
+      "Caramelo": {
+        "GG": [
+          "16707859985"
+        ],
+        "G": [
+          "16707859960"
+        ],
+        "M": [
+          "16707859948"
+        ],
+        "P": [
+          "16707859904"
         ]
       },
       "Verde Oliva": {
@@ -26903,7 +26932,7 @@
           "16707358176"
         ]
       },
-      "00735": {
+      "Azul Mármore": {
         "GG": [
           "16707357785"
         ],
