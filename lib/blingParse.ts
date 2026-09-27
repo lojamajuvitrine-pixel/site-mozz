@@ -177,7 +177,10 @@ const CODIGOS_COR_POR_MARCA: Record<string, Record<string, string>> = {
     // Regata Dulce (reportado pelo Brunno em 26/09/2026) - o codigo real no Bling tem um zero
     // na frente ("NV089"/"NV080"), diferente do "NV89"/"NV80" que ele passou de cabeca.
     "NV089": "Preto",
-    "NV080": "Branco"
+    "NV080": "Branco",
+    // Reportado pelo Brunno em 27/09/2026 - versao jeans (duas lavagens).
+    "NV170": "Jeans Médio",
+    "NV880": "Jeans Escuro Vintage"
   }
 };
 
