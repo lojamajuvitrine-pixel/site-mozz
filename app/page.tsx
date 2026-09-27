@@ -1,20 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import ProductCard from "@/components/ProductCard";
 import BannerHero, { type BannerItem } from "@/components/BannerHero";
 import FaixaCashback from "@/components/FaixaCashback";
 import SecaoMarcas from "@/components/SecaoMarcas";
 import VitrineDeMarca from "@/components/VitrineDeMarca";
 import { listarPorMarca, produtosComFoto } from "@/lib/produtos";
 import { SITE_URL as siteUrl } from "@/lib/site";
-
-// So' limita quantidade quando CAI NO FALLBACK automatico (nenhuma peca marcada como destaque
-// no painel /admin/produtos ainda) - o catalogo completo (com todos os produtos, com ou sem
-// foto) fica em /produtos. Quando existem destaques marcados, a vitrine mostra TODOS eles, sem
-// cortar (pedido do Brunno em 27/09/2026 - antes cortava nos 8 primeiros da lista mesmo com
-// mais peca marcada, entao destaque adicionado depois da 8a posicao nunca aparecia na home).
-const QTD_VITRINE = 8;
 
 export const revalidate = 30;
 
@@ -81,15 +73,6 @@ export default async function Home() {
   const imagensDoHero = new Set(bannersFinal.map((b) => b.imagem));
   const bannerProduto = comFoto.find((p) => p.imagem && !imagensDoHero.has(p.imagem)) ?? comFoto[2] ?? comFoto[1];
 
-  // Vitrine "Novidades": prioriza pecas marcadas como destaque no painel /admin/produtos - se
-  // o Brunno ainda nao marcou nenhuma, cai no comportamento automatico de sempre (primeiros
-  // QTD_VITRINE produtos com foto, na ordem do Bling), pra home nunca ficar vazia. Mostra TODOS
-  // os destaques marcados, sem cortar em QTD_VITRINE - antes cortava nos 8 primeiros mesmo
-  // com mais peca marcada, entao destaque adicionado depois da 8a posicao nunca aparecia
-  // (bug reportado pelo Brunno em 27/09/2026).
-  const destaques = comFoto.filter((p) => p.destaque);
-  const vitrine = destaques.length > 0 ? destaques : comFoto.slice(0, QTD_VITRINE);
-
   // Vitrines por marca (carrossel + texto/CTA do lado) - inspiradas no site oqvestir (print
   // mandado pelo Brunno em 27/09/2026). Reaproveita as listas de cada marca ja' buscadas acima
   // pro banner, filtrando so' as marcadas como destaque no painel - marca sem nenhuma destaque
@@ -132,20 +115,6 @@ export default async function Home() {
           </div>
         </section>
       )}
-
-      <section id="novidades" className="py-8">
-        <div className="flex items-baseline justify-between mb-4">
-          <p className="text-[14.5px] text-mozz-gray">Novidades</p>
-          <Link href="/produtos" className="text-[13.5px] text-mozz-gray underline">
-            Ver todos os produtos
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {vitrine.map((produto) => (
-            <ProductCard key={produto.id} produto={produto} />
-          ))}
-        </div>
-      </section>
 
       <SecaoMarcas />
 
