@@ -116,7 +116,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
           <FavoritosProvider>
             <Nav />
-            <main className="max-w-6xl mx-auto px-6">{children}</main>
+            <main className="max-w-[1600px] mx-auto px-6">{children}</main>
             <Footer />
             <BotaoWhatsapp />
           </FavoritosProvider>
