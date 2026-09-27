@@ -178,6 +178,19 @@ export type Produto = {
 // alguma marca, e' so' adicionar ela nessa lista - nao precisa rodar sync de novo.
 const MARCAS_ATIVAS = new Set(["Animale", "NV", "Foxton", "Reserva"]);
 
+// Genero por marca - Reserva e Foxton sao 100% masculinas, Animale e NV sao focadas em moda
+// feminina (pesquisa confirmada com o Brunno em 23/08/2026, mesma regra ja usada nos labels
+// "Masculino"/"Feminino" do banner rotativo da home, ver app/page.tsx). Usado pra separar o
+// catalogo em /feminino e /masculino (pedido do Brunno em 27/09/2026, inspirado no menu do
+// site oqvestir - "a gente consegue separar bem o masculino do feminino, alem de separar por
+// marcas"). Se um dia entrar uma marca nova que vende os dois generos, essa regra simples
+// (por marca inteira) precisa virar por PRODUTO em vez de por marca.
+const MARCAS_MASCULINAS = new Set(["Reserva", "Foxton"]);
+
+export function generoDaMarca(marca: string): "Masculino" | "Feminino" {
+  return MARCAS_MASCULINAS.has(marca) ? "Masculino" : "Feminino";
+}
+
 // Busca as configs especiais (preco/destaque/outlet) UMA vez por requisicao - React cache()
 // dedupe chamadas identicas dentro do mesmo ciclo de renderizacao no servidor, entao mesmo
 // chamando listarProdutos() varias vezes numa mesma pagina (ex: a home chama listarPorMarca
@@ -270,6 +283,13 @@ export async function listarProdutos(opcoes?: {
 export async function listarPorMarca(marca: string): Promise<Produto[]> {
   const produtos = await listarProdutos();
   return produtos.filter((p) => p.marca.toLowerCase() === marca.toLowerCase());
+}
+
+// Catalogo filtrado por genero (ver generoDaMarca acima) - usado nas paginas /feminino e
+// /masculino (pedido do Brunno em 27/09/2026).
+export async function listarPorGenero(genero: "Masculino" | "Feminino"): Promise<Produto[]> {
+  const produtos = await listarProdutos();
+  return produtos.filter((p) => generoDaMarca(p.marca) === genero);
 }
 
 export async function buscarProduto(id: string): Promise<Produto | undefined> {
