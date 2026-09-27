@@ -13,6 +13,7 @@ type Props = {
   headline: string;
   descricao: string;
   produtos: Produto[];
+  fotoCapa?: string;
 };
 
 function IconeSetaCarrossel({ direcao }: { direcao: "esquerda" | "direita" }) {
@@ -27,29 +28,11 @@ function IconeSetaCarrossel({ direcao }: { direcao: "esquerda" | "direita" }) {
   );
 }
 
-// Bloco "vitrine por marca" pra home - REFEITO em 27/09/2026 depois do Brunno mandar o print
-// certo do site oqvestir ("Semana do Jeans"): uma FOTO GRANDE de campanha (modelo vestindo a
-// colecao) do lado esquerdo, com o texto/CTA por cima dela, e o carrossel de produtos
-// continuando a direita - bem diferente da primeira versao (que so' tinha texto solto do lado
-// do carrossel, sem foto nenhuma, o que o Brunno reclamou que ficava "peca solta na pagina").
-// A foto usada e' a foto de capa da PRIMEIRA peca destaque da marca (mesma foto que ja aparece
-// no primeiro card do carrossel) - nao e' uma foto de campanha separada, ja que nao existe
-// esse tipo de foto no catalogo hoje (so' foto de produto isolado, sem modelo em still de
-// campanha). Continua escondendo o bloco inteiro se a marca nao tiver nenhuma peca destaque.
-//
-// ATUALIZADO em 27/09/2026: trocada a barra de rolagem do carrossel por setas de clique -
-// pedido do Brunno pra nao aparecer scrollbar, so' as flechas do lado pra navegar. Por isso
-// virou "use client": precisa de uma ref pro elemento do carrossel pra chamar scrollBy() nele
-// quando clica na seta, e isso so' roda no navegador (nao da' pra fazer em componente de
-// servidor). No celular o arrastar/swipe continua funcionando normalmente - as setas ficam
-// escondidas ai' (nao tem como arrastar E ter seta ocupando espaco na tela pequena), so'
-// aparecem a partir do tablet/desktop. A barra visual de rolagem fica escondida em qualquer
-// tamanho de tela (classe "scrollbar-hide" em app/globals.css).
-export default function VitrineDeMarca({ marca, slug, categoria, headline, descricao, produtos }: Props) {
+export default function VitrineDeMarca({ marca, slug, categoria, headline, descricao, produtos, fotoCapa }: Props) {
   const carrosselRef = useRef<HTMLDivElement>(null);
 
   if (produtos.length === 0) return null;
-  const fotoCapa = produtos[0].imagem;
+  const foto = fotoCapa ?? produtos[0].imagem;
 
   function rolar(direcao: "esquerda" | "direita") {
     const elemento = carrosselRef.current;
@@ -61,10 +44,10 @@ export default function VitrineDeMarca({ marca, slug, categoria, headline, descr
   return (
     <section className="py-10 border-t border-black/10">
       <div className="flex flex-col md:flex-row gap-6">
-        {fotoCapa && (
+        {foto && (
           <div className="relative w-full aspect-[4/5] md:w-[260px] md:h-[440px] md:aspect-auto shrink-0 bg-mozz-stone">
             <Image
-              src={fotoCapa}
+              src={foto}
               alt={`Campanha ${marca}`}
               fill
               sizes="(max-width: 768px) 100vw, 260px"
@@ -92,7 +75,7 @@ export default function VitrineDeMarca({ marca, slug, categoria, headline, descr
             >
               {produtos.slice(0, 8).map((produto) => (
                 <div key={produto.id} className="w-[46%] md:w-[200px] shrink-0 snap-start">
-                  <ProductCard produto={produto} />
+                  <ProductCard produto={produto} mostrarCarrosselFoto={false} />
                 </div>
               ))}
             </div>
