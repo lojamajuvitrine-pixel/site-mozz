@@ -120,7 +120,7 @@ export default function ProductCard({ produto }: { produto: Produto }) {
         <div className="relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden">
           <div className="absolute top-2 left-2 z-10 flex flex-col gap-1 items-start">
             {produto.novo && (
-              <span className="text-[11.5px] bg-mozz-black text-white px-2 py-0.5">Novo</span>
+              <span className="text-[11.5px] bg-mozz-black text-white px-2 py-0.5">NOVIDADE</span>
             )}
             {percentualDesconto !== null && percentualDesconto > 0 && (
               <span className="text-[11.5px] bg-mozz-black text-white px-2 py-0.5">-{percentualDesconto}%</span>
@@ -256,11 +256,10 @@ export default function ProductCard({ produto }: { produto: Produto }) {
             <span>{formatarPreco(produto.preco)}</span>
           </p>
         ) : (
-          <p className="text-[14px] text-mozz-gray">{formatarPreco(produto.preco)}</p>
+          <p className="text-[14px]">{formatarPreco(produto.preco)}</p>
         )}
         {parcelamento && <p className="text-[12.5px] text-mozz-gray/80">{parcelamento}</p>}
       </Link>
     </div>
   );
 }
-
