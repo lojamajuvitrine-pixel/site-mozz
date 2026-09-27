@@ -55,12 +55,18 @@ const CORES_APROX: Array<[string, string]> = [
   ["bege", "#d8c9ae"],
   ["nude", "#c9a988"],
   ["chocolate", "#4a2f1f"],
+  // "Mogno" (cor de madeira mogno, avermelhada/escura) pedido pelo Brunno em 27/09/2026 -
+  // antes caia no cinza generico do fallback (nao tinha entrada aqui).
+  ["mogno", "#6e3b28"],
   ["marrom", "#5c4230"],
   ["caramelo", "#a9682f"],
   ["camel", "#b08355"],
   ["terracota", "#b0562f"],
   ["ferrugem", "#8a4426"],
   ["laranja", "#c9702f"],
+  // "Caqui" (verde-acastanhado esmaecido, tipo uniforme militar) pedido pelo Brunno em
+  // 27/09/2026 - antes caia no cinza generico do fallback (nao tinha entrada aqui).
+  ["caqui", "#8f7d52"],
   ["areia", "#c9b892"],
   ["dourado", "#b8963f"],
   ["dourada", "#b8963f"],
@@ -99,11 +105,13 @@ const FAMILIAS_COR: Array<[string, string]> = [
   ["nude", "Bege"],
   ["areia", "Bege"],
   ["chocolate", "Marrom"],
+  ["mogno", "Marrom"],
   ["marrom", "Marrom"],
   ["caramelo", "Marrom"],
   ["camel", "Marrom"],
   ["terracota", "Marrom"],
   ["ferrugem", "Marrom"],
+  ["caqui", "Bege"],
   ["bordo", "Vinho"],
   ["vinho", "Vinho"],
   ["laranja", "Laranja"],
