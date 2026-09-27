@@ -71,6 +71,83 @@ export function categoriaDoProduto(nomeProduto: string): CategoriaPeca {
   return (achada?.[1] as CategoriaPeca) ?? "outro";
 }
 
+// Tipo de peca ESPECIFICO (Vestido, Calça, Blusa...) pra filtro no catalogo (GradeProdutos.tsx)
+// - pedido do Brunno em 27/09/2026 pra trocar o filtro de COR (que ele achou pouco util - ver
+// familiaDaCor em lib/cor.ts, ainda usado so' na bolinha de cor da pagina do produto e do card)
+// por um filtro de TIPO de peca. Mesma tecnica de categoriaDoProduto acima (inferir pelo nome,
+// ordem importa - mais especifico antes de generico), mas com rotulo especifico em vez da
+// categoria larga "top"/"bottom" (que aqui juntaria "Calça" e "Short" num so' balde, por
+// exemplo - inutil pro cliente filtrar). Lista separada porque as duas tabelas tem objetivos
+// diferentes (uma alimenta "produtos relacionados", a outra alimenta um filtro visivel).
+//
+// Fica de fora da lista "trico"/"tricot" e "cropped" de proposito - sao tecido/corte, nao um
+// tipo de peca (ex: "Blusa de Tricot", "Camisa Cropped" continuam classificados como Blusa/
+// Camisa, nao como um tipo "Tricô"/"Cropped" que nao existiria como peca por si so).
+const TIPOS_POR_PALAVRA: Array<[string, string]> = [
+  ["macaquinho", "Macaquinho"],
+  ["macacao", "Macacão"],
+  ["vestido", "Vestido"],
+  ["slip dress", "Vestido"],
+  ["overtop", "Top"],
+  ["chemise", "Chemise"],
+  ["kaftan", "Kaftan"],
+  ["saia", "Saia"],
+  ["bermuda", "Bermuda"],
+  ["short", "Short"],
+  ["calca", "Calça"],
+  ["legging", "Legging"],
+  ["jaqueta", "Jaqueta"],
+  ["casaco", "Casaco"],
+  ["casaqueto", "Casaco"],
+  ["trench", "Casaco"],
+  ["sobretudo", "Casaco"],
+  ["blazer", "Blazer"],
+  ["cardigan", "Cardigan"],
+  ["moletom", "Moletom"],
+  ["sueter", "Suéter"],
+  ["colete", "Colete"],
+  ["polo", "Polo"],
+  ["camiseta", "Camiseta"],
+  ["t-shirt", "Camiseta"],
+  ["tshirt", "Camiseta"],
+  ["camisa", "Camisa"],
+  ["cueca", "Cueca"],
+  ["blusa", "Blusa"],
+  ["batinha", "Blusa"],
+  ["bata", "Blusa"],
+  ["tunica", "Blusa"],
+  ["regata", "Regata"],
+  ["body", "Body"],
+  ["top", "Top"],
+  ["conjunto", "Conjunto"],
+  ["twin set", "Conjunto"],
+  ["biquini", "Biquíni"],
+  ["maio", "Maiô"],
+  ["sandalia", "Sandália"],
+  ["tenis", "Tênis"],
+  ["sapato", "Sapato"],
+  ["bota", "Bota"],
+  ["cinto", "Cinto"],
+  ["bolsa", "Bolsa"],
+  ["oculos", "Óculos"],
+  ["lenco", "Lenço"],
+  ["chapeu", "Chapéu"],
+  ["boina", "Boina"],
+  ["carteira", "Carteira"],
+  // Ultima tentativa, de proposito: pega so' peca chamada literalmente so' de "Tricot ___"
+  // sem nenhuma palavra de FORMATO (ex: "Tricot Básico Gola Careca") - qualquer produto com
+  // "tricot" JUNTO de um formato reconhecido (ex: "Casaco De Tricot", "Regata de Tricot") ja
+  // caiu num tipo mais especifico antes de chegar aqui, porque essas chaves vem antes na lista.
+  ["trico", "Tricô"],
+  ["tricot", "Tricô"]
+];
+
+export function tipoDoProduto(nomeProduto: string): string {
+  const normalizado = normalizarTexto(nomeProduto);
+  const achado = TIPOS_POR_PALAVRA.find(([chave]) => normalizado.includes(chave));
+  return achado?.[1] ?? "Outros";
+}
+
 // Tabela de medidas em cm - referencia padrao de mercado por numeracao BR, usada quando o
 // produto nao tem medida propria cadastrada (ver medidasCustomizadas em lib/produtos.ts e o
 // painel /admin/produtos, onde o Brunno pode cadastrar a medida REAL de uma peca especifica -
