@@ -4,6 +4,8 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import BannerHero, { type BannerItem } from "@/components/BannerHero";
 import FaixaCashback from "@/components/FaixaCashback";
+import SecaoMarcas from "@/components/SecaoMarcas";
+import VitrineDeMarca from "@/components/VitrineDeMarca";
 import { listarPorMarca, produtosComFoto } from "@/lib/produtos";
 import { SITE_URL as siteUrl } from "@/lib/site";
 
@@ -88,6 +90,15 @@ export default async function Home() {
   const destaques = comFoto.filter((p) => p.destaque);
   const vitrine = destaques.length > 0 ? destaques : comFoto.slice(0, QTD_VITRINE);
 
+  // Vitrines por marca (carrossel + texto/CTA do lado) - inspiradas no site oqvestir (print
+  // mandado pelo Brunno em 27/09/2026). Reaproveita as listas de cada marca ja' buscadas acima
+  // pro banner, filtrando so' as marcadas como destaque no painel - marca sem nenhuma destaque
+  // marcada (ex: Reserva, em 27/09/2026) simplesmente nao mostra o bloco (ver VitrineDeMarca).
+  const destaquesAnimale = animale.filter((p) => p.destaque && p.imagem);
+  const destaquesNV = nv.filter((p) => p.destaque && p.imagem);
+  const destaquesReserva = reserva.filter((p) => p.destaque && p.imagem);
+  const destaquesFoxton = foxton.filter((p) => p.destaque && p.imagem);
+
   return (
     <div>
       <BannerHero banners={bannersFinal} />
@@ -135,6 +146,41 @@ export default async function Home() {
           ))}
         </div>
       </section>
+
+      <SecaoMarcas />
+
+      <VitrineDeMarca
+        marca="Animale"
+        slug="animale"
+        categoria="Animale"
+        headline="Elegância que atravessa estações"
+        descricao="Alfaiataria e tecidos nobres pra quem não abre mão de sofisticação no dia a dia."
+        produtos={destaquesAnimale}
+      />
+      <VitrineDeMarca
+        marca="NV"
+        slug="nv"
+        categoria="NV"
+        headline="Conforto com design autoral"
+        descricao="Modelagens exclusivas e tecidos selecionados, pensados pra acompanhar a rotina real da mulher."
+        produtos={destaquesNV}
+      />
+      <VitrineDeMarca
+        marca="Reserva"
+        slug="reserva"
+        categoria="Reserva"
+        headline="Essenciais com atitude"
+        descricao="Camisetas, jaquetas e calças que resolvem o guarda-roupa masculino sem esforço."
+        produtos={destaquesReserva}
+      />
+      <VitrineDeMarca
+        marca="Foxton"
+        slug="foxton"
+        categoria="Foxton"
+        headline="Básicos premium, sem enrolação"
+        descricao="Algodão Pima e cortes atuais pra um visual limpo em qualquer ocasião."
+        produtos={destaquesFoxton}
+      />
     </div>
   );
 }
