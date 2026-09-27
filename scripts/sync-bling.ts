@@ -116,6 +116,35 @@ async function baixarImagem(url: string, idArquivo: string): Promise<string | nu
   }
 }
 
+// Baixa varias fotos ao mesmo tempo (em vez de uma de cada vez) - a foto vem do S3 do Bling,
+// NAO da API dele, entao nao tem o limite de requisicao por segundo que obriga a pausa de
+// PAUSA_ENTRE_CHAMADAS_MS entre as chamadas de detalhe (essa pausa continua existindo, sem
+// mudanca nenhuma, so' pra API mesmo). Antes disso, um cadastro grande de produto/foto nova
+// (ex: lote da VER26) baixava as fotos uma atras da outra e o sync completo passava de 15
+// minutos so' esperando rede - agora ate' LIMITE_DOWNLOADS_PARALELOS fotos baixam ao mesmo
+// tempo, o que deve cortar bastante esse tempo sem sobrecarregar o runner do GitHub Actions
+// (pedido do Brunno em 27/09/2026, sync completo levando ~16min em media).
+const LIMITE_DOWNLOADS_PARALELOS = 6;
+
+async function baixarImagensEmParalelo(
+  itens: { url: string; idArquivo: string }[]
+): Promise<Map<string, string>> {
+  const resultados = new Map<string, string>();
+  let proximoIndice = 0;
+  async function worker() {
+    for (;;) {
+      const minhaVez = proximoIndice++;
+      if (minhaVez >= itens.length) return;
+      const item = itens[minhaVez];
+      const caminho = await baixarImagem(item.url, item.idArquivo);
+      if (caminho) resultados.set(item.idArquivo, caminho);
+    }
+  }
+  const quantidadeWorkers = Math.min(LIMITE_DOWNLOADS_PARALELOS, itens.length);
+  await Promise.all(Array.from({ length: quantidadeWorkers }, () => worker()));
+  return resultados;
+}
+
 // Vira parte de nome de arquivo: sem acento, minusculo, so' letra/numero/hifen.
 function corSlug(cor: string): string {
   const limpo = cor
@@ -708,6 +737,10 @@ async function main() {
         const linksFallbackProduto = (detalhe.data.midia?.imagens?.internas ?? [])
           .map((im) => im.link)
           .filter((l): l is string => !!l);
+        // monta a lista de TODAS as fotos que faltam desse produto (de todas as cores sem
+        // foto) antes de baixar - assim da' pra baixar todas em paralelo de uma vez (ver
+        // baixarImagensEmParalelo acima) em vez de uma cor/foto de cada vez.
+        const linksPorCor = new Map<string, string[]>();
         for (const cor of coresSemFoto) {
           const match = variacoesDetalhe.find((v) => {
             const corDaVariacao = extrairCor(v.variacao?.nome ?? "") ?? "Único";
@@ -716,11 +749,17 @@ async function main() {
           const linksVariacao = (match?.midia?.imagens?.internas ?? [])
             .map((im) => im.link)
             .filter((l): l is string => !!l);
-          const links = linksVariacao.length > 0 ? linksVariacao : linksFallbackProduto;
-
+          linksPorCor.set(cor, linksVariacao.length > 0 ? linksVariacao : linksFallbackProduto);
+        }
+        const itensParaBaixar = Array.from(linksPorCor.entries()).flatMap(([cor, links]) =>
+          links.map((url, i) => ({ url, idArquivo: `${idStr}--${corSlug(cor)}--${i}` }))
+        );
+        const baixadas = await baixarImagensEmParalelo(itensParaBaixar);
+        for (const cor of coresSemFoto) {
+          const links = linksPorCor.get(cor) ?? [];
           const caminhosBaixados: string[] = [];
           for (let i = 0; i < links.length; i++) {
-            const caminho = await baixarImagem(links[i], `${idStr}--${corSlug(cor)}--${i}`);
+            const caminho = baixadas.get(`${idStr}--${corSlug(cor)}--${i}`);
             if (caminho) caminhosBaixados.push(caminho);
           }
           if (caminhosBaixados.length > 0) {
