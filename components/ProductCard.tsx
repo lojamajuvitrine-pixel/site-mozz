@@ -185,14 +185,6 @@ export default function ProductCard({ produto }: { produto: Produto }) {
               >
                 <IconeSeta direcao="direita" />
               </button>
-              <div className="absolute top-2 left-1/2 -translate-x-1/2 z-10 flex gap-1">
-                {corAtual.imagens.map((_, i) => (
-                  <span
-                    key={i}
-                    className={`w-1 h-1 rounded-full ${i === fotoIndex ? "bg-white" : "bg-white/50"}`}
-                  />
-                ))}
-              </div>
             </>
           )}
 
