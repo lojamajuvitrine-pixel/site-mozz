@@ -25,7 +25,7 @@ const linkClasse = "block hover:text-mozz-black transition-colors";
 export default function Footer() {
   return (
     <footer className="border-t border-black/10 mt-16 text-[12.5px] text-mozz-gray">
-      <div className="max-w-6xl mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-[1600px] mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
         <div>
           <p className="font-serif text-xl text-mozz-black mb-2">MOZZ</p>
           <p className="leading-relaxed">Animale · NV · Reserva · Foxton, num só lugar.</p>
