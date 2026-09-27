@@ -77,7 +77,7 @@ export default function Nav() {
   return (
     <header className="border-b border-black/10">
       {/* --- Desktop --- */}
-      <div className="hidden md:flex items-center gap-8 px-6 py-4 max-w-6xl mx-auto">
+      <div className="hidden md:flex items-center gap-8 px-6 py-4 max-w-[1600px] mx-auto">
         <Link href="/" className="text-center shrink-0 -ml-2">
           <div className="font-serif text-3xl leading-none">M</div>
           <div className="font-serif text-[14.5px] tracking-widest2">MOZZ</div>
