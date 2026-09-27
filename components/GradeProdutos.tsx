@@ -7,6 +7,34 @@ import { normalizarTexto } from "@/lib/cor";
 import { tipoDoProduto } from "@/lib/detalhesProduto";
 
 type Ordenacao = "relevancia" | "menor-preco" | "maior-preco";
+// Quantas colunas por linha no desktop - pedido do Brunno em 27/09/2026, inspirado no seletor
+// de densidade que a Animale usa (icone de 4 quadrados vs 6 quadrados no canto da vitrine). No
+// celular continua sempre 2 colunas nos dois casos - a tela e' estreita demais pra 3.
+type Densidade = 4 | 6;
+
+function IconeGrade4({ ativo }: { ativo: boolean }) {
+  return (
+    <svg viewBox="0 0 20 20" width="17" height="17" fill={ativo ? "white" : "currentColor"}>
+      <rect x="1" y="1" width="8" height="8" />
+      <rect x="11" y="1" width="8" height="8" />
+      <rect x="1" y="11" width="8" height="8" />
+      <rect x="11" y="11" width="8" height="8" />
+    </svg>
+  );
+}
+
+function IconeGrade6({ ativo }: { ativo: boolean }) {
+  return (
+    <svg viewBox="0 0 20 20" width="17" height="17" fill={ativo ? "white" : "currentColor"}>
+      <rect x="1" y="1" width="5" height="8" />
+      <rect x="7.5" y="1" width="5" height="8" />
+      <rect x="14" y="1" width="5" height="8" />
+      <rect x="1" y="11" width="5" height="8" />
+      <rect x="7.5" y="11" width="5" height="8" />
+      <rect x="14" y="11" width="5" height="8" />
+    </svg>
+  );
+}
 
 // Quantidade de pecas mostradas por vez - o resto so' aparece clicando "Carregar mais pecas".
 // Evita renderizar/baixar a imagem de centenas de produtos de uma vez na entrada da pagina
@@ -37,6 +65,7 @@ export default function GradeProdutos({
   const [tamanhoSelecionado, setTamanhoSelecionado] = useState<string>("todos");
   const [tipoSelecionado, setTipoSelecionado] = useState<string>("todos");
   const [ordenacao, setOrdenacao] = useState<Ordenacao>("relevancia");
+  const [densidade, setDensidade] = useState<Densidade>(4);
   const [quantidadeVisivel, setQuantidadeVisivel] = useState(QUANTIDADE_POR_PAGINA);
 
   // So' oferece no filtro tamanho que EXISTE de verdade (e tem saldo) entre os produtos
@@ -168,6 +197,31 @@ export default function GradeProdutos({
         <span className="text-[13.5px] text-mozz-gray ml-auto">
           {listaFiltrada.length} peça(s)
         </span>
+
+        {/* Seletor de densidade - so' faz diferenca no desktop (md:), ver Densidade acima.
+            Escondido no celular (hidden md:flex) porque la' as duas opcoes dao na mesma. */}
+        <div className="hidden md:flex border border-black/20">
+          <button
+            onClick={() => setDensidade(4)}
+            aria-label="Mostrar 4 peças por linha"
+            aria-pressed={densidade === 4}
+            className={`w-8 h-8 flex items-center justify-center ${
+              densidade === 4 ? "bg-mozz-black text-white" : "text-mozz-black"
+            }`}
+          >
+            <IconeGrade4 ativo={densidade === 4} />
+          </button>
+          <button
+            onClick={() => setDensidade(6)}
+            aria-label="Mostrar 6 peças por linha"
+            aria-pressed={densidade === 6}
+            className={`w-8 h-8 flex items-center justify-center border-l border-black/20 ${
+              densidade === 6 ? "bg-mozz-black text-white" : "text-mozz-black"
+            }`}
+          >
+            <IconeGrade6 ativo={densidade === 6} />
+          </button>
+        </div>
       </div>
 
       {listaFiltrada.length === 0 ? (
@@ -176,7 +230,13 @@ export default function GradeProdutos({
         </p>
       ) : (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div
+            className={
+              densidade === 6
+                ? "grid grid-cols-2 md:grid-cols-6 gap-3 md:gap-4"
+                : "grid grid-cols-2 md:grid-cols-4 gap-6"
+            }
+          >
             {produtosVisiveis.map((produto) => (
               <ProductCard key={produto.id} produto={produto} />
             ))}
