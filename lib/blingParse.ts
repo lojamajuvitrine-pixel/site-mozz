@@ -28,6 +28,15 @@ export function limparNomeBase(nome: string): string {
     .trim();
 }
 
+// Confere se o NOME CRU (antes de qualquer limpeza) tem o codigo da colecao VER26 colado -
+// usado pra marcar a peca com o selo "NOVIDADE" na vitrine (ver produto.novo em lib/produtos.ts
+// e o badge em components/ProductCard.tsx). Pedido do Brunno em 27/09/2026, inspirado no selo
+// que a Animale usa na loja deles. Tem que rodar em cima do nome CRU, ANTES de limparNomeBase -
+// depois de limpo o codigo ja foi removido (ver CODIGO_COLECAO acima) e nao da' mais pra saber.
+export function ehColecaoVer26(nomeCru: string): boolean {
+  return /\bVER26\b/i.test(nomeCru);
+}
+
 // Tamanhos "letra" reconhecidos no final do NOME DO PRODUTO (diferente de extrairTamanho
 // acima, que le "Tamanho:Y" dentro do nome de um SKU/variacao) - ver comentario completo em
 // extrairTamanhoDoNomeProduto logo abaixo.
