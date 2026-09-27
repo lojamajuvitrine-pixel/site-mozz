@@ -16,7 +16,7 @@ carregarEnv({ path: ".env.local" });
 
 import { readFileSync, writeFileSync } from "fs";
 import { listarProdutosBling } from "../lib/bling";
-import { tamanhosDisponiveisDaCor } from "../lib/blingParse";
+import { extrairTamanho, tamanhosDisponiveisDaCor } from "../lib/blingParse";
 import type { Produto } from "../lib/produtos";
 import { notificarAvisosDeEstoque } from "./avisoEstoque";
 
@@ -246,7 +246,26 @@ async function main() {
     // recalcula, por cor, quais tamanhos ainda tem saldo - e' isso que impede o site de
     // deixar escolher um tamanho que acabou de esgotar entre um sync e outro.
     for (const cor of produto.cores ?? []) {
-      const disponivelNovo = tamanhosDisponiveisDaCor(cor.cor, skus).sort();
+      // Peca "simples" cujo tamanho de verdade veio do NOME do produto no sync completo (ex:
+      // "Calça Sarja Clarissa - Khaki - 32" virou tamanho "32" mesmo sem nenhuma
+      // variacao/SKU com "Cor:X;Tamanho:Y" embutido - ver fundirVariantesPorTamanho em
+      // scripts/sync-bling.ts) - nesse caso tamanhosDisponiveisDaCor NUNCA acha o padrao
+      // "Tamanho:" no nome do SKU (ele nunca existiu) e sempre devolve o valor de reserva
+      // "Único", sobrescrevendo o tamanho certo a cada sync rapido (bug reportado pelo Brunno
+      // em 26/09/2026 - a Calça Sarja Clarissa, entre outras 35 pecas, aparecia esgotada no
+      // site mesmo com saldo real no Bling). Detecta esse caso (cor com UM tamanho so',
+      // diferente de "Único", e nenhum SKU do grupo com "Tamanho:" no nome) e usa o saldo
+      // GERAL do produto pra decidir disponibilidade desse tamanho, em vez de tentar reconhecer
+      // um padrao que essa peca nunca teve.
+      const tamanhoUnicoDoNome =
+        cor.tamanhos.length === 1 && cor.tamanhos[0] !== "Único" && !skus.some((s) => !!extrairTamanho(s.nome))
+          ? cor.tamanhos[0]
+          : null;
+      const disponivelNovo = tamanhoUnicoDoNome
+        ? skus.some((s) => (s.estoque?.saldoVirtualTotal ?? 0) > 0)
+          ? [tamanhoUnicoDoNome]
+          : []
+        : tamanhosDisponiveisDaCor(cor.cor, skus).sort();
       const disponivelAtual = [...(cor.tamanhosDisponiveis ?? cor.tamanhos)].sort();
       if (JSON.stringify(disponivelAtual) !== JSON.stringify(disponivelNovo)) {
         registrarNovosDisponiveis(novosDisponiveis, produto.id, disponivelAtual, disponivelNovo);
