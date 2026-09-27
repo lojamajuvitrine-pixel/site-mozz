@@ -163,6 +163,12 @@ export type Produto = {
   // (ver listarProdutos abaixo), mesmo com estoque/foto no Bling. Espelha o campo "ativo" de
   // ConfigProduto (lib/produtoConfig.ts); ausente/undefined conta como ativa.
   ativo?: boolean;
+  // Escolha manual de qual foto vem PRIMEIRO no carrossel de cada cor, cadastrada no painel
+  // /admin/produtos (pedido do Brunno em 26/09/2026 - ex: sempre a foto de corpo inteiro da
+  // modelo NV na frente das fotos de detalhe). Mapa "nome da cor" -> caminho da imagem
+  // escolhida. So' guarda a ESCOLHA aqui - quem realmente reordena cor.imagens (e recalcula a
+  // capa do card/vitrine) e' aplicarCapaPorCor logo abaixo, chamada dentro de listarProdutos.
+  capaPorCor?: Record<string, string>;
 };
 
 // Decisao do Brunno em 23/08/2026: por enquanto o site trabalha SO' com essas 4 marcas
@@ -186,12 +192,33 @@ function aplicarConfigEspecial(produto: Produto, config: ConfigProduto | undefin
     outlet: config.outlet,
     ativo: config.ativo,
     medidasCustomizadas: config.medidasCustomizadas ?? undefined,
-    composicaoCustomizada: config.composicaoCustomizada ?? undefined
+    composicaoCustomizada: config.composicaoCustomizada ?? undefined,
+    capaPorCor: config.capaPorCor ?? undefined
   };
   if (config.precoEspecial !== null && config.precoEspecial !== produto.preco) {
     return { ...comFlags, preco: config.precoEspecial, precoOriginal: produto.preco };
   }
   return comFlags;
+}
+
+// Aplica a escolha manual de "1a foto" por cor (painel /admin/produtos, campo capaPorCor,
+// ver aplicarConfigEspecial acima) - so' REORDENA, nunca apaga nenhuma foto: a escolhida vai
+// pro inicio do array de imagens daquela cor, o resto continua atras dela na mesma ordem que
+// veio do Bling. Tambem recalcula a foto de capa do card/vitrine (produto.imagem) do mesmo
+// jeito que o sync faz originalmente (primeira cor com foto, primeira imagem dela) - assim a
+// escolha aparece tanto na pagina do produto quanto no card da vitrine.
+// Se a foto escolhida nao existir mais nessa cor (ex: fotos trocadas num sync novo do Bling),
+// ignora a escolha silenciosamente pra essa cor e mantem a ordem normal do Bling - nunca
+// quebra a pagina nem deixa buraco no carrossel so' por causa de uma escolha antiga.
+function aplicarCapaPorCor(produto: Produto): Produto {
+  if (!produto.capaPorCor || !produto.cores || produto.cores.length === 0) return produto;
+  const cores = produto.cores.map((cor) => {
+    const escolhida = produto.capaPorCor?.[cor.cor];
+    if (!escolhida || cor.imagens[0] === escolhida || !cor.imagens.includes(escolhida)) return cor;
+    return { ...cor, imagens: [escolhida, ...cor.imagens.filter((img) => img !== escolhida)] };
+  });
+  const imagemCapa = cores.find((c) => c.imagens.length > 0)?.imagens[0] ?? produto.imagem;
+  return { ...produto, cores, imagem: imagemCapa };
 }
 
 // Fonte de dados hoje: data/produtos.json (seed manual, so' pra desenvolvimento).
@@ -229,6 +256,7 @@ export async function listarProdutos(opcoes?: {
     .filter((p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca))
     .filter((p) => opcoes?.incluirSemFoto || !!p.imagem)
     .map((p) => aplicarConfigEspecial(p, config.get(p.id)))
+    .map(aplicarCapaPorCor)
     .filter((p) => opcoes?.incluirInativos || p.ativo !== false)
     .filter((p) => p.preco > 0)
     .map(ordenarTamanhosDoProduto)
