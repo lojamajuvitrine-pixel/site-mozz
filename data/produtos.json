@@ -29222,7 +29222,12 @@
     "cores": [
       {
         "cor": "Azul Denim",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706334792--unico--0.jpg",
+          "/produtos/16706334792--unico--1.jpg",
+          "/produtos/16706334792--unico--2.jpg",
+          "/produtos/16706334792--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -29250,7 +29255,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16705991836--unico--0.jpg",
+    "imagem": "/produtos/16706334792--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Azul Denim": {
@@ -29357,11 +29362,16 @@
     "marca": "NV",
     "preco": 378,
     "novo": false,
-    "descricao": "",
+    "descricao": "A T-Shirt Nati, é um essencial pensado para combinar com todos os seus dias. Confeccionada em puro algodão, tem um toque macio e conforto inigualável. Sua modelagem regular, com manga curta e gola careca, tem o caimento perfeito. Um item essencial para o seu closet.",
     "cores": [
       {
         "cor": "Marrom Cognac",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706328116--unico--0.jpg",
+          "/produtos/16706328116--unico--1.jpg",
+          "/produtos/16706328116--unico--2.jpg",
+          "/produtos/16706328116--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -29428,7 +29438,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706328116--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Marrom Cognac": {
@@ -30413,11 +30423,16 @@
     "marca": "NV",
     "preco": 1998,
     "novo": false,
-    "descricao": "",
+    "descricao": "A Camisa Antonia, em 100% seda, combina fluidez e sofisticação em uma única peça. Sua modelagem cachecouer e o decote transpassado realçam a silhueta, enquanto a amarração lateral dão um charme único e versátil. As mangas longas, com um franzido sutil, deixam essa peça ainda mais delicada.",
     "cores": [
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706014908--unico--0.jpg",
+          "/produtos/16706014908--unico--1.jpg",
+          "/produtos/16706014908--unico--2.jpg",
+          "/produtos/16706014908--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -30429,7 +30444,12 @@
       },
       {
         "cor": "Branco",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705997036--unico--0.jpg",
+          "/produtos/16705997036--unico--1.jpg",
+          "/produtos/16705997036--unico--2.jpg",
+          "/produtos/16705997036--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P"
@@ -30439,7 +30459,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706014908--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Preto": {
