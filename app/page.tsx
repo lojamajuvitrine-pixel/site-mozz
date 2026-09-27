@@ -76,6 +76,7 @@ export default async function Home() {
         descricao="Alfaiataria e tecidos nobres pra quem não abre mão de sofisticação no dia a dia."
         produtos={destaquesAnimale}
         fotoCapa="/capa-animale.jpg"
+        corDestaque="#b29ea3"
       />
       <VitrineDeMarca
         marca="NV"
@@ -85,6 +86,7 @@ export default async function Home() {
         descricao="Modelagens exclusivas e tecidos selecionados, pensados pra acompanhar a rotina real da mulher."
         produtos={destaquesNV}
         fotoCapa="/capa-nv.jpg"
+        corDestaque="#86583a"
       />
       <VitrineDeMarca
         marca="Reserva"
@@ -94,6 +96,7 @@ export default async function Home() {
         descricao="Camisetas, jaquetas e calças que resolvem o guarda-roupa masculino sem esforço."
         produtos={destaquesReserva}
         fotoCapa="/capa-reserva.jpg"
+        corDestaque="#64492e"
       />
       <VitrineDeMarca
         marca="Foxton"
@@ -103,6 +106,7 @@ export default async function Home() {
         descricao="Algodão Pima e cortes atuais pra um visual limpo em qualquer ocasião."
         produtos={destaquesFoxton}
         fotoCapa="/capa-foxton.jpg"
+        corDestaque="#4aa8ce"
       />
     </div>
   );
