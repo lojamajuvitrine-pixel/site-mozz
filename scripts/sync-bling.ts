@@ -58,6 +58,7 @@ import {
   extrairCorTamanhoDoNomeProduto,
   nomeCorPorCodigo,
   limparNomeBase,
+  ehColecaoVer26,
   tamanhosDisponiveisDaCor
 } from "../lib/blingParse";
 
@@ -440,7 +441,10 @@ function fundirVariantesPorCorETamanho(produtos: ProdutoSaida[]): ProdutoSaida[]
       nome: membros[0]._base,
       marca: membros[0].marca,
       preco,
-      novo: false,
+      // selo "NOVIDADE" - basta UM dos membros fundidos ser da VER26 pra peca toda levar o
+      // selo (todos os membros de um mesmo grupo cor+tamanho sao sempre da mesma colecao na
+      // pratica, mas o "some" cobre qualquer caso raro de mistura sem quebrar nada).
+      novo: membros.some((m) => m.novo),
       descricao: membroComDescricao.descricao,
       composicao: membroComDescricao.composicao,
       cores,
@@ -540,7 +544,7 @@ function fundirVariantesPorTamanho(produtos: ProdutoSaida[]): ProdutoSaida[] {
       nome: membros[0]._base,
       marca: membros[0].marca,
       preco,
-      novo: false,
+      novo: membros.some((m) => m.novo),
       descricao: membroComDescricao.descricao,
       composicao: membroComDescricao.composicao,
       cores: [
@@ -632,6 +636,9 @@ async function main() {
     processados++;
     const idStr = String(chaveGrupo);
     let nomeBase = limparNomeBase(skus[0].nome);
+    // selo "NOVIDADE" na vitrine (ver ehColecaoVer26, lib/blingParse.ts) - calculado em cima do
+    // nome CRU, antes de limparNomeBase tirar o "VER26" dele.
+    let ehVer26 = ehColecaoVer26(skus[0].nome);
 
     // cada SKU da lista ja traz "Cor:X;Tamanho:Y" no nome - agrupa por cor sem precisar de
     // chamada extra. Produto sem cor cadastrada cai tudo numa cor so' ("Único").
@@ -704,7 +711,10 @@ async function main() {
         if (!doCache) {
           marca = detalhe.data.marca ?? "";
           marcaJaNormalizada = false;
-          if (detalhe.data.nome) nomeBase = limparNomeBase(detalhe.data.nome);
+          if (detalhe.data.nome) {
+            nomeBase = limparNomeBase(detalhe.data.nome);
+            ehVer26 = ehColecaoVer26(detalhe.data.nome);
+          }
         }
 
         // produto NOVO de marca fora da lista ativa: agora que a gente sabe a marca, pula
@@ -824,7 +834,7 @@ async function main() {
       nome: nomeBase,
       marca: marcaFinal,
       preco: skus[0].preco,
-      novo: false,
+      novo: ehVer26,
       descricao: descricaoFinal,
       composicao: composicaoFinal,
       cores,
