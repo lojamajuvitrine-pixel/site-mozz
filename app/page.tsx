@@ -8,12 +8,6 @@ import { SITE_URL as siteUrl } from "@/lib/site";
 
 export const revalidate = 30;
 
-// Repete os mesmos titulo/descricao do metadata base (app/layout.tsx) porque o Next.js NAO
-// faz merge campo a campo dentro de "openGraph" - se a pagina define openGraph, ele substitui
-// o objeto inteiro do layout pai, entao title/description precisam vir de novo aqui, senao
-// somem do preview de compartilhamento da home. So' a home precisava disso (as paginas de
-// produto ja tem generateMetadata proprio - ver app/produto/[slug]/page.tsx); as demais
-// paginas continuam herdando o openGraph do layout normalmente.
 export async function generateMetadata(): Promise<Metadata> {
   const comFoto = await produtosComFoto();
   const imagemDestaque = comFoto.find((p) => p.imagem)?.imagem;
@@ -34,9 +28,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const comFoto = await produtosComFoto();
 
-  // Banner principal rotativo: uma foto de cada uma das 4 marcas ativas, alternando
-  // masculino/feminino - Reserva e Foxton sao 100% masculinas, Animale e NV sao focadas em
-  // moda feminina (confirmado por pesquisa em 23/08/2026, ver PROXIMOS_PASSOS.md).
   const [reserva, animale, foxton, nv] = await Promise.all([
     listarPorMarca("Reserva"),
     listarPorMarca("Animale"),
@@ -61,15 +52,10 @@ export default async function Home() {
       ? { imagem: produtoNV.imagem, marca: "NV", label: "Feminino", href: "/marca/nv" }
       : null
   ].filter((b): b is BannerItem => !!b);
-  // fallback se por algum motivo nenhuma das quatro tiver foto ainda (ex: sync incompleto)
   const bannersFinal = banners.length > 0 ? banners : comFoto[0]?.imagem
     ? [{ imagem: comFoto[0].imagem, marca: comFoto[0].marca, label: "", href: "/produtos" }]
     : [];
 
-  // Vitrines por marca (carrossel + texto/CTA do lado) - inspiradas no site oqvestir (print
-  // mandado pelo Brunno em 27/09/2026). Reaproveita as listas de cada marca ja' buscadas acima
-  // pro banner, filtrando so' as marcadas como destaque no painel - marca sem nenhuma destaque
-  // marcada (ex: Reserva, em 27/09/2026) simplesmente nao mostra o bloco (ver VitrineDeMarca).
   const destaquesAnimale = animale.filter((p) => p.destaque && p.imagem);
   const destaquesNV = nv.filter((p) => p.destaque && p.imagem);
   const destaquesReserva = reserva.filter((p) => p.destaque && p.imagem);
@@ -89,6 +75,7 @@ export default async function Home() {
         headline="Elegância que atravessa estações"
         descricao="Alfaiataria e tecidos nobres pra quem não abre mão de sofisticação no dia a dia."
         produtos={destaquesAnimale}
+        fotoCapa="/capa-animale.jpg"
       />
       <VitrineDeMarca
         marca="NV"
@@ -97,6 +84,7 @@ export default async function Home() {
         headline="Conforto com design autoral"
         descricao="Modelagens exclusivas e tecidos selecionados, pensados pra acompanhar a rotina real da mulher."
         produtos={destaquesNV}
+        fotoCapa="/capa-nv.jpg"
       />
       <VitrineDeMarca
         marca="Reserva"
@@ -105,6 +93,7 @@ export default async function Home() {
         headline="Essenciais com atitude"
         descricao="Camisetas, jaquetas e calças que resolvem o guarda-roupa masculino sem esforço."
         produtos={destaquesReserva}
+        fotoCapa="/capa-reserva.jpg"
       />
       <VitrineDeMarca
         marca="Foxton"
@@ -113,6 +102,7 @@ export default async function Home() {
         headline="Básicos premium, sem enrolação"
         descricao="Algodão Pima e cortes atuais pra um visual limpo em qualquer ocasião."
         produtos={destaquesFoxton}
+        fotoCapa="/capa-foxton.jpg"
       />
     </div>
   );
