@@ -21,6 +21,7 @@ type PayloadProduto = {
   ativo?: boolean;
   medidasCustomizadas?: TabelaMedidasPayload | null;
   composicaoCustomizada?: string | null;
+  capaPorCor?: Record<string, string> | null;
 };
 
 function medidasValidas(valor: unknown): valor is TabelaMedidasPayload {
@@ -38,6 +39,13 @@ function medidasValidas(valor: unknown): valor is TabelaMedidasPayload {
   );
 }
 
+function capaPorCorValida(valor: unknown): valor is Record<string, string> {
+  if (!valor || typeof valor !== "object" || Array.isArray(valor)) return false;
+  return Object.entries(valor as Record<string, unknown>).every(
+    ([cor, caminho]) => typeof cor === "string" && cor.trim() !== "" && typeof caminho === "string" && caminho.trim() !== ""
+  );
+}
+
 export async function POST(request: NextRequest) {
   const supabase = await clienteSeAdmin();
   if (!supabase) return NextResponse.json({ erro: "Não autorizado" }, { status: 401 });
@@ -52,6 +60,9 @@ export async function POST(request: NextRequest) {
   if (body.medidasCustomizadas != null && !medidasValidas(body.medidasCustomizadas)) {
     return NextResponse.json({ erro: "Tabela de medidas em formato inválido" }, { status: 400 });
   }
+  if (body.capaPorCor != null && !capaPorCorValida(body.capaPorCor)) {
+    return NextResponse.json({ erro: "Escolha de foto em formato inválido" }, { status: 400 });
+  }
 
   const precoEspecial = body.precoEspecial ?? null;
   const destaque = !!body.destaque;
@@ -61,11 +72,20 @@ export async function POST(request: NextRequest) {
   const ativo = body.ativo !== false;
   const medidasCustomizadas = body.medidasCustomizadas ?? null;
   const composicaoCustomizada = body.composicaoCustomizada?.trim() || null;
+  const capaPorCor = body.capaPorCor && Object.keys(body.capaPorCor).length > 0 ? body.capaPorCor : null;
 
   // So' apaga a linha (volta tudo pro padrao do Bling) quando NENHUM campo tem valor
   // diferente do padrao - "ativo" tambem entra nessa conta, senao uma peca desativada com
   // mais nada customizado seria removida da tabela e voltaria a aparecer no catalogo.
-  if (precoEspecial === null && !destaque && !outlet && ativo && !medidasCustomizadas && !composicaoCustomizada) {
+  if (
+    precoEspecial === null &&
+    !destaque &&
+    !outlet &&
+    ativo &&
+    !medidasCustomizadas &&
+    !composicaoCustomizada &&
+    !capaPorCor
+  ) {
     const { error } = await supabase.from("produtos_site").delete().eq("produto_id", body.produtoId);
     if (error) return NextResponse.json({ erro: error.message }, { status: 500 });
     return NextResponse.json({ ok: true, removido: true });
@@ -79,6 +99,7 @@ export async function POST(request: NextRequest) {
     ativo,
     medidas_customizadas: medidasCustomizadas,
     composicao_customizada: composicaoCustomizada,
+    capa_por_cor: capaPorCor,
     atualizado_em: new Date().toISOString()
   });
 
