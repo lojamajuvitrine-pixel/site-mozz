@@ -14,3 +14,14 @@ body {
   color: #111111;
   background: #ffffff;
 }
+
+/* Esconde a barra de rolagem visual do carrossel de "vitrine por marca" na home - o scroll em
+   si continua funcionando (arrastar no celular, ou as setas de clique no desktop), so' a
+   barrinha cinza aparecendo embaixo do carrossel que some. Pedido do Brunno em 27/09/2026. */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
