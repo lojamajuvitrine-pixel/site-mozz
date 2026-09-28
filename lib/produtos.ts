@@ -171,12 +171,16 @@ export type Produto = {
   capaPorCor?: Record<string, string>;
 };
 
-// Decisao do Brunno em 23/08/2026: por enquanto o site trabalha SO' com essas 4 marcas
+// Decisao do Brunno em 23/08/2026: por enquanto o site trabalha SO' com essas marcas
 // (as "principais" do portfolio) - as marcas menores (Slywear, Puramania, Iodice, My Place,
 // Open, Ents, etc.) ficam de fora do catalogo publico ate' segunda ordem, mesmo que ja
 // tenham produtos sincronizados do Bling em data/produtos.json. Pra voltar a mostrar
 // alguma marca, e' so' adicionar ela nessa lista - nao precisa rodar sync de novo.
-const MARCAS_ATIVAS = new Set(["Animale", "NV", "Foxton", "Reserva"]);
+// Farm adicionada em 28/09/2026 (pedido do Brunno - pecas ja chegaram na loja e estao
+// cadastradas no Bling, ver claude/controle-pedidos-verao.md). "Farm Beachwear" nao entra
+// aqui: e' a mesma marca pro site, so' tem cadastro separado no Bling - o sync ja funde as
+// duas em "Farm" antes de gravar em produtos.json (ver MARCAS_APELIDOS em scripts/sync-bling.ts).
+const MARCAS_ATIVAS = new Set(["Animale", "NV", "Foxton", "Reserva", "Farm"]);
 
 // Genero por marca - Reserva e Foxton sao 100% masculinas, Animale e NV sao focadas em moda
 // feminina (pesquisa confirmada com o Brunno em 23/08/2026, mesma regra ja usada nos labels
