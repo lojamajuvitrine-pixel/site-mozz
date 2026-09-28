@@ -43,12 +43,14 @@ const COLUNAS = [
 type Coluna = (typeof COLUNAS)[number];
 
 // Bling nao guarda genero/faixa etaria por peca - mesmo mapa por marca usado no feed da Meta
-// (confirmado pelo Brunno em 27/08/2026).
+// (confirmado pelo Brunno em 27/08/2026). Farm adicionada em 28/09/2026; "Farm Beachwear" nao
+// precisa de entrada propria aqui - o sync ja funde ela em "Farm" (mesma marca pro site).
 const GENERO_POR_MARCA: Record<string, "female" | "male" | "unisex"> = {
   Animale: "female",
   Reserva: "male",
   Foxton: "male",
-  NV: "female"
+  NV: "female",
+  Farm: "female"
 };
 
 function csvEscape(valor: string): string {
