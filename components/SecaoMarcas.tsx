@@ -7,12 +7,15 @@ import Link from "next/link";
 // solido quando cortado em circulo (object-cover), em vez de logo pequena flutuando dentro de
 // um circulo branco generico. Pedido do Brunno em 27/09/2026: "quero todas redondas na mesma
 // proporção" - as 4 logos foram recortadas e escaladas pro mesmo tamanho relativo antes de
-// virar arquivo, entao aqui e' so' um w/h igual pra cada uma.
+// virar arquivo, entao aqui e' so' um w/h igual pra cada uma. Farm adicionada em 28/09/2026
+// (mesmo tratamento: fundo branco, logo centralizada) - "Farm Beachwear" nao entra aqui de
+// proposito, e' a mesma marca no site (ver lib/produtos.ts).
 const MARCAS = [
   { nome: "Animale", slug: "animale", logo: "/logo-animale.png" },
   { nome: "NV", slug: "nv", logo: "/logo-nv.png" },
   { nome: "Reserva", slug: "reserva", logo: "/logo-reserva.png" },
-  { nome: "Foxton", slug: "foxton", logo: "/logo-foxton.png" }
+  { nome: "Foxton", slug: "foxton", logo: "/logo-foxton.png" },
+  { nome: "Farm", slug: "farm", logo: "/logo-farm.png" }
 ];
 
 export default function SecaoMarcas() {
