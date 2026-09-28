@@ -56,7 +56,6 @@ function IconeCoracao({ preenchido }: { preenchido: boolean }) {
 export default function ProductCard({
   produto,
   mostrarCarrosselFoto = true,
-  mostrarBadgeNovidade = true,
   mostrarFavorito = true
 }: {
   produto: Produto;
@@ -67,12 +66,6 @@ export default function ProductCard({
   // paginas de marca e em "quem viu tambem gostou" - so' a home passa false explicitamente
   // (ver VitrineDeMarca.tsx).
   mostrarCarrosselFoto?: boolean;
-  // Desliga a etiqueta "NOVIDADE" - pedido do Brunno em 27/09/2026 ("tire da primeira pagina
-  // todas as NOVIDADE") enquanto a gente nao resolve direito o criterio de quando uma peca e'
-  // realmente novidade (ver conversa sobre "campeao de vendas" x novidade repetida de colecao
-  // passada). So' a home passa false - catalogo, paginas de marca e "quem viu tambem gostou"
-  // continuam mostrando normalmente.
-  mostrarBadgeNovidade?: boolean;
   // Desliga o coracao de favoritar - pedido do Brunno em 27/09/2026 ("tire o coracao das fotos
   // das pecas apenas da pagina inicial"). So' a home passa false - catalogo, paginas de marca e
   // "quem viu tambem gostou" continuam com o coracao normalmente.
@@ -143,9 +136,9 @@ export default function ProductCard({
       <Link href={`/produto/${produto.id}`} className="block">
         <div className="relative aspect-[3/4] bg-mozz-stone flex items-center justify-center overflow-hidden">
           <div className="absolute top-2 left-2 z-10 flex flex-col gap-1 items-start">
-            {mostrarBadgeNovidade && produto.novo && (
-              <span className="text-[11.5px] bg-mozz-black text-white px-2 py-0.5">NOVIDADE</span>
-            )}
+            {/* Etiqueta "NOVIDADE" removida em 28/09/2026 (pedido do Brunno: "vamos tirar esse
+                simbolo de novidade de toda as fotos") - antes so' tinha sumido da home, agora
+                fica fora em todas as paginas (catalogo, marca, quem viu tambem gostou). */}
             {percentualDesconto !== null && percentualDesconto > 0 && (
               <span className="text-[11.5px] bg-mozz-black text-white px-2 py-0.5">-{percentualDesconto}%</span>
             )}
