@@ -22906,6 +22906,40 @@
     "temEstoque": false
   },
   {
+    "id": "16711804562",
+    "nome": "Calça Cargo Textura Massas",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57580",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57580": {
+        "M": [
+          "16711805154"
+        ],
+        "P": [
+          "16711804562"
+        ]
+      }
+    }
+  },
+  {
     "id": "16707237587",
     "nome": "Bata Manga Longa Babados Cosmos",
     "marca": "Animale",
@@ -35427,6 +35461,83 @@
     ],
     "imagem": "/produtos/16433818660--unico--0.jpg",
     "temEstoque": false
+  },
+  {
+    "id": "16711806757",
+    "nome": "Calça Harem Textura Pena - 57584",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57584"
+  },
+  {
+    "id": "16711797220",
+    "nome": "Bolsa Térmica Leopard Color - 58881",
+    "marca": "Animale",
+    "preco": 248,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16711797220--unico--0.jpg",
+          "/produtos/16711797220--unico--1.jpg",
+          "/produtos/16711797220--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16711797220--unico--0.jpg",
+    "temEstoque": true,
+    "_corCodigo": "58881"
+  },
+  {
+    "id": "16711792124",
+    "nome": "Bolsa Térmica Zebrado Terroso - 57753",
+    "marca": "Animale",
+    "preco": 248,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16711792124--unico--0.jpg",
+          "/produtos/16711792124--unico--1.jpg",
+          "/produtos/16711792124--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": [
+          "U"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16711792124--unico--0.jpg",
+    "temEstoque": true,
+    "_corCodigo": "57753"
   },
   {
     "id": "16710526649",
