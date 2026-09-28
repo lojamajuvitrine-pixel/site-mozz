@@ -298,7 +298,12 @@ const MARCAS_APELIDOS: Record<string, string> = {
   // erros de digitacao encontrados no sync de 22/08/2026 (catalogo com 1.966 produtos)
   iodioce: "Iodice",
   animalet: "Animale",
-  animaleq: "Animale"
+  animaleq: "Animale",
+  // Farm Beachwear e' a mesma marca que Farm no SITE - so' tem cadastro separado no Bling
+  // (confirmado pelo Brunno em 28/09/2026: "farm e farm beachwear é a mesma coisa no site, so
+  // temos diferencas nos cadastros do bling mesmo"). Funde os dois num so' "Farm" aqui, junto
+  // com "Sly"/"Slywear" acima.
+  "farm beachwear": "Farm"
 };
 function normalizarMarca(marca: string): string {
   const limpo = marca.trim();
@@ -309,13 +314,16 @@ function normalizarMarca(marca: string): string {
   return limpo.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
 }
 
-// Decisao do Brunno em 23/08/2026: por enquanto o site trabalha SO' com essas 4 marcas -
+// Decisao do Brunno em 23/08/2026: por enquanto o site trabalha SO' com essas marcas -
 // mesma lista de lib/produtos.ts (nao da' pra importar direto de la' porque esse script roda
 // fora do Next.js). Produto de marca fora dessa lista e' pulado ANTES de baixar foto (a parte
 // mais lenta do sync) - ainda gasta 1 chamada de detalhe pra produto NOVO (e' o unico jeito de
 // descobrir a marca dele), mas produto ja conhecido do cache nem chega a chamar a API.
 // Pra voltar a sincronizar alguma marca, e' so' adicionar ela aqui E em lib/produtos.ts.
-const MARCAS_ATIVAS = new Set(["Animale", "NV", "Foxton", "Reserva"]);
+// Farm adicionada em 28/09/2026 (pedido do Brunno) - "Farm Beachwear" NAO entra aqui de
+// proposito: e' fundida em "Farm" pelo MARCAS_APELIDOS acima antes de chegar nesse filtro
+// (mesma marca pro site, cadastro separado so' no Bling).
+const MARCAS_ATIVAS = new Set(["Animale", "NV", "Foxton", "Reserva", "Farm"]);
 
 type VarianteCorSaida = { cor: string; imagens: string[]; tamanhos: string[]; tamanhosDisponiveis: string[] };
 
