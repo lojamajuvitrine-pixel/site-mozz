@@ -56,7 +56,8 @@ function IconeCoracao({ preenchido }: { preenchido: boolean }) {
 export default function ProductCard({
   produto,
   mostrarCarrosselFoto = true,
-  mostrarBadgeNovidade = true
+  mostrarBadgeNovidade = true,
+  mostrarFavorito = true
 }: {
   produto: Produto;
   // Desliga so' as setinhas de trocar foto dentro do card (nao mexe nas bolinhas de cor
@@ -72,6 +73,10 @@ export default function ProductCard({
   // passada). So' a home passa false - catalogo, paginas de marca e "quem viu tambem gostou"
   // continuam mostrando normalmente.
   mostrarBadgeNovidade?: boolean;
+  // Desliga o coracao de favoritar - pedido do Brunno em 27/09/2026 ("tire o coracao das fotos
+  // das pecas apenas da pagina inicial"). So' a home passa false - catalogo, paginas de marca e
+  // "quem viu tambem gostou" continuam com o coracao normalmente.
+  mostrarFavorito?: boolean;
 }) {
   const { adicionar } = useCart();
   const { ehFavorito, alternarFavorito } = useFavoritos();
@@ -146,15 +151,17 @@ export default function ProductCard({
             )}
           </div>
 
-          <button
-            onClick={alternarFavoritoClick}
-            aria-label={favoritado ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-            className="absolute top-2 right-2 z-20 w-7 h-7 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors"
-          >
-            <span className={favoritado ? "text-mozz-black" : "text-mozz-gray"}>
-              <IconeCoracao preenchido={favoritado} />
-            </span>
-          </button>
+          {mostrarFavorito && (
+            <button
+              onClick={alternarFavoritoClick}
+              aria-label={favoritado ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+              className="absolute top-2 right-2 z-20 w-7 h-7 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors"
+            >
+              <span className={favoritado ? "text-mozz-black" : "text-mozz-gray"}>
+                <IconeCoracao preenchido={favoritado} />
+              </span>
+            </button>
+          )}
 
           {corAtual.imagens.length > 0 ? (
             corAtual.imagens.map((imagem, i) => (
