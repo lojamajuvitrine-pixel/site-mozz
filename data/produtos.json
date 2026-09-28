@@ -15290,9 +15290,7 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": [
-          "3G"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Preto",
@@ -15425,9 +15423,7 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": [
-          "3G"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Cinza Lua",
@@ -15467,7 +15463,7 @@
       }
     ],
     "imagem": "/produtos/16443977912--verde-escuro--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16443989698",
@@ -19892,7 +19888,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "3G",
           "P"
         ]
       }
@@ -20023,7 +20018,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "3G",
           "G"
         ]
       },
@@ -36095,13 +36089,11 @@
         "tamanhos": [
           "M"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16706679444--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "_corCodigo": "NV080"
   },
   {
