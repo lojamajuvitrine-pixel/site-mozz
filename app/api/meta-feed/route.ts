@@ -56,14 +56,18 @@ const COLUNAS = [
 type Coluna = (typeof COLUNAS)[number];
 
 // Bling nao guarda genero/faixa etaria por peca - o catalogo sincronizado nao tem esse
-// campo. Mapa por marca CONFIRMADO pelo Brunno em 27/08/2026 - esses 4 sao as unicas marcas
-// ativas (MARCAS_ATIVAS em lib/produtos.ts). Só mexer aqui se ele avisar de mudanca de marca
-// ativa ou linha de produto (ex: Reserva lancar uma linha feminina de verdade).
+// campo. Mapa por marca CONFIRMADO pelo Brunno em 27/08/2026 - essas sao as marcas ativas
+// (MARCAS_ATIVAS em lib/produtos.ts). Farm adicionada em 28/09/2026 (100% moda feminina);
+// "Farm Beachwear" nao precisa de entrada propria aqui porque o sync ja funde ela em "Farm"
+// antes de gravar o catalogo (mesma marca pro site, so' cadastro separado no Bling). Só mexer
+// aqui se ele avisar de mudanca de marca ativa ou linha de produto (ex: Reserva lancar uma
+// linha feminina de verdade).
 const GENERO_POR_MARCA: Record<string, "female" | "male" | "unisex"> = {
   Animale: "female",
   Reserva: "male",
   Foxton: "male",
-  NV: "female"
+  NV: "female",
+  Farm: "female"
 };
 
 function csvEscape(valor: string): string {
@@ -97,7 +101,7 @@ function corValidaParaFeed(cor: string): string {
 // (Title Case) pra mostrar no campo color, e faz a UNIAO dos tamanhos/disponibilidade das
 // duas entradas (mais correto que escolher uma e descartar a outra).
 function corasMescladas(produto: Produto): Array<{ cor: string; imagens: string[]; tamanhos: string[]; disponiveis: Set<string> }> {
-  const porChave = new Map<
+  const porChave = new Map
     string,
     { cor: string; imagens: string[]; tamanhos: string[]; disponiveis: Set<string> }
   >();
