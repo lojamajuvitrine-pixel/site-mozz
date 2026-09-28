@@ -7,7 +7,8 @@ import { useFavoritos } from "@/lib/favoritos-context";
 
 const MARCAS_FEMININO = [
   { nome: "Animale", slug: "animale" },
-  { nome: "NV", slug: "nv" }
+  { nome: "NV", slug: "nv" },
+  { nome: "Farm", slug: "farm" }
 ];
 const MARCAS_MASCULINO = [
   { nome: "Reserva", slug: "reserva" },
