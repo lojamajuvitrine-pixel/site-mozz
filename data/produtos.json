@@ -23121,8 +23121,7 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "P",
-          "M"
+          "P"
         ]
       }
     ],
@@ -24434,13 +24433,11 @@
           "36",
           "38"
         ],
-        "tamanhosDisponiveis": [
-          "38"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16708929988--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorCorTamanho": {
       "07703": {
         "36": [
@@ -24621,7 +24618,6 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "36",
           "40"
         ]
       }
@@ -24945,8 +24941,7 @@
           "38"
         ],
         "tamanhosDisponiveis": [
-          "36",
-          "38"
+          "36"
         ]
       }
     ],
@@ -25095,7 +25090,6 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "M"
         ]
       }
@@ -25130,6 +25124,7 @@
           "38"
         ],
         "tamanhosDisponiveis": [
+          "36",
           "38"
         ]
       }
@@ -25412,8 +25407,7 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "36",
-          "40"
+          "36"
         ]
       }
     ],
@@ -25446,7 +25440,6 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "34",
           "40"
         ]
       }
@@ -25554,6 +25547,7 @@
           "38"
         ],
         "tamanhosDisponiveis": [
+          "34",
           "38"
         ]
       }
@@ -27090,7 +27084,6 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "34",
           "38",
           "42"
         ]
@@ -27210,7 +27203,6 @@
           "38"
         ],
         "tamanhosDisponiveis": [
-          "34",
           "38"
         ]
       }
@@ -27471,7 +27463,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
+          "M",
           "G"
         ]
       }
@@ -27741,6 +27733,7 @@
           "40"
         ],
         "tamanhosDisponiveis": [
+          "36",
           "38"
         ]
       }
@@ -27778,7 +27771,6 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "M"
         ]
       }
@@ -28146,7 +28138,8 @@
         "tamanhosDisponiveis": [
           "PP",
           "P",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -28365,6 +28358,7 @@
           "42"
         ],
         "tamanhosDisponiveis": [
+          "32",
           "34",
           "36",
           "38",
@@ -28564,7 +28558,6 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "M"
         ]
       }
@@ -28915,11 +28908,13 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "P"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false,
+    "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07708": {
         "M": [
@@ -29047,22 +29042,28 @@
     "marca": "NV",
     "preco": 498,
     "novo": true,
-    "descricao": "",
+    "descricao": "A Blusa Manga Longa Tricot Isabel traz uma textura especial e shape impecável. É essencial para combinar com diversos looks e é uma blusa que vai bem em qualquer estação. Com manga longa e gola careca, é uma escolha atemporal no closet.",
     "cores": [
       {
         "cor": "Cinza Forest",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706347605--unico--0.jpg",
+          "/produtos/16706347605--unico--1.jpg",
+          "/produtos/16706347605--unico--2.jpg",
+          "/produtos/16706347605--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706347605--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Cinza Forest": {
@@ -29121,7 +29122,6 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "M",
           "G"
         ]
@@ -29329,9 +29329,7 @@
           "36",
           "38"
         ],
-        "tamanhosDisponiveis": [
-          "36"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Jeans Médio",
@@ -29777,7 +29775,8 @@
           "38"
         ],
         "tamanhosDisponiveis": [
-          "34"
+          "34",
+          "36"
         ]
       }
     ],
@@ -29851,7 +29850,8 @@
           "38"
         ],
         "tamanhosDisponiveis": [
-          "34"
+          "34",
+          "38"
         ]
       }
     ],
@@ -30232,11 +30232,16 @@
     "marca": "NV",
     "preco": 348,
     "novo": true,
-    "descricao": "",
+    "descricao": "A T-shirt Pima Luzia é um essencial para seu closet. Feita com algodão Pima, ela tem um toque macio e o conforto térmico para usar no dia a dia. Sua modelagem regular e comprimento cropped são versáteis em qualquer look, do casual ao mais elaborado. Uma peça que traduz a leveza da rotina e a elegância dos dias, perfeita para renovar seu estilo.",
     "cores": [
       {
         "cor": "Rosa Ballet",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706053414--unico--0.jpg",
+          "/produtos/16706053414--unico--1.jpg",
+          "/produtos/16706053414--unico--2.jpg",
+          "/produtos/16706053414--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -30248,7 +30253,12 @@
       },
       {
         "cor": "Branco",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705984640--unico--0.jpg",
+          "/produtos/16705984640--unico--1.jpg",
+          "/produtos/16705984640--unico--2.jpg",
+          "/produtos/16705984640--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -30260,7 +30270,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706053414--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Rosa Ballet": {
@@ -30376,7 +30386,6 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "34",
           "36",
           "38",
           "40"
@@ -30467,7 +30476,6 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "M"
         ]
       },
@@ -30601,6 +30609,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
+          "M",
           "G"
         ]
       }
@@ -30788,6 +30797,7 @@
           "42"
         ],
         "tamanhosDisponiveis": [
+          "36",
           "38",
           "42"
         ]
@@ -30963,11 +30973,16 @@
     "marca": "NV",
     "preco": 298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Essencial no seu closet, a T-shirt Karina, em malha de algodão, tem o toque macio e conforto inigualáveis. Sua modelagem slim abraça a silhueta com elegância, enquanto a gola careca e as mangas curtas com babado dão um charme descomplicado e sofisticado ao look.",
     "cores": [
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705903522--unico--0.jpg",
+          "/produtos/16705903522--unico--1.jpg",
+          "/produtos/16705903522--unico--2.jpg",
+          "/produtos/16705903522--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -30983,7 +30998,12 @@
       },
       {
         "cor": "Branco",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705901322--unico--0.jpg",
+          "/produtos/16705901322--unico--1.jpg",
+          "/produtos/16705901322--unico--2.jpg",
+          "/produtos/16705901322--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -30995,7 +31015,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705903522--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Preto": {
@@ -31386,13 +31406,11 @@
           "PP",
           "P"
         ],
-        "tamanhosDisponiveis": [
-          "P"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorTamanho": {
       "P": [
         "16705458185"
@@ -35770,11 +35788,13 @@
         "tamanhos": [
           "34"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "34"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false,
+    "temEstoque": true,
     "_corCodigo": "07715"
   },
   {
@@ -36075,11 +36095,13 @@
         "tamanhos": [
           "M"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "M"
+        ]
       }
     ],
     "imagem": "/produtos/16706679444--unico--0.jpg",
-    "temEstoque": false,
+    "temEstoque": true,
     "_corCodigo": "NV080"
   },
   {
@@ -36142,13 +36164,11 @@
         "tamanhos": [
           "U"
         ],
-        "tamanhosDisponiveis": [
-          "U"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true,
+    "temEstoque": false,
     "_corCodigo": "1802"
   },
   {
@@ -36319,11 +36339,16 @@
     "marca": "NV",
     "preco": 2148,
     "novo": true,
-    "descricao": "",
+    "descricao": "Um convite à leveza e personalidade, a Saia Laysa, em pura viscose, tem um caimento fluido e toque suave para o seu dia a dia. Com estampa exclusiva, esta peça de cintura baixa e comprimento longo inspira looks autênticos.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705913054--unico--0.jpg",
+          "/produtos/16705913054--unico--1.jpg",
+          "/produtos/16705913054--unico--2.jpg",
+          "/produtos/16705913054--unico--3.jpg"
+        ],
         "tamanhos": [
           "36"
         ],
@@ -36332,7 +36357,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705913054--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "NV1305"
   },
