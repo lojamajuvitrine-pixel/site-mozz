@@ -101,10 +101,7 @@ function corValidaParaFeed(cor: string): string {
 // (Title Case) pra mostrar no campo color, e faz a UNIAO dos tamanhos/disponibilidade das
 // duas entradas (mais correto que escolher uma e descartar a outra).
 function corasMescladas(produto: Produto): Array<{ cor: string; imagens: string[]; tamanhos: string[]; disponiveis: Set<string> }> {
-  const porChave = new Map
-    string,
-    { cor: string; imagens: string[]; tamanhos: string[]; disponiveis: Set<string> }
-  >();
+  const porChave = new Map<string, { cor: string; imagens: string[]; tamanhos: string[]; disponiveis: Set<string> }>();
 
   for (const cor of coresDoProduto(produto)) {
     const chave = corValidaParaFeed(cor.cor) ? cor.cor.trim().toLowerCase() : "";
