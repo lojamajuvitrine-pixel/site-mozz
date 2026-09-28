@@ -5,7 +5,30 @@ import Link from "next/link";
 import BarraBusca from "@/components/BarraBusca";
 import { useFavoritos } from "@/lib/favoritos-context";
 
-const marcas = ["Animale", "NV", "Reserva", "Foxton"];
+const MARCAS_FEMININO = [
+  { nome: "Animale", slug: "animale" },
+  { nome: "NV", slug: "nv" }
+];
+const MARCAS_MASCULINO = [
+  { nome: "Reserva", slug: "reserva" },
+  { nome: "Foxton", slug: "foxton" }
+];
+
+function IconeChevron({ aberto }: { aberto: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      width="11"
+      height="11"
+      className={`transition-transform ${aberto ? "rotate-180" : ""}`}
+    >
+      <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
 
 function IconeMenu({ aberto }: { aberto: boolean }) {
   return (
@@ -53,7 +76,6 @@ function IconeCoracaoNav() {
   );
 }
 
-// Badge numerico (contagem de favoritos) - mesma posicao/estilo nos dois layouts.
 function BadgeContagem({ valor }: { valor: number }) {
   if (valor === 0) return null;
   return (
@@ -63,15 +85,10 @@ function BadgeContagem({ valor }: { valor: number }) {
   );
 }
 
-// Dois layouts BEM diferentes (desktop vs mobile), cada um so' visivel no seu breakpoint
-// (md:hidden / hidden md:flex) - mais simples de manter do que forcar a mesma grade nos
-// dois tamanhos de tela.
-//
-// Desktop: tudo numa linha so' (logo, marcas, busca, conta, carrinho), estilo Reserva/grandes
-// sites de moda - a busca fica so' o icone, clica pra abrir o campo (ver BarraBusca).
-// Mobile: logo central + hamburguer + conta/carrinho, marcas e busca ficam atras do menu.
 export default function Nav() {
   const [menuAberto, setMenuAberto] = useState(false);
+  const [femininoAberto, setFemininoAberto] = useState(false);
+  const [masculinoAberto, setMasculinoAberto] = useState(false);
   const { favoritos } = useFavoritos();
 
   return (
@@ -84,21 +101,44 @@ export default function Nav() {
         </Link>
 
         <nav className="flex items-center gap-6 text-[14.5px] text-mozz-gray">
-          {/* Feminino/Masculino na frente das marcas, igual ao menu do oqvestir (referencia
-              que o Brunno mandou em 27/09/2026: "NOVIDADES | FEMININO | MASCULINO | MARCAS |
-              ..."). Genero e' por marca inteira (ver generoDaMarca em lib/produtos.ts) -
-              Feminino = Animale+NV, Masculino = Reserva+Foxton. */}
-          <Link href="/feminino" className="hover:text-mozz-black transition-colors">
-            Feminino
-          </Link>
-          <Link href="/masculino" className="hover:text-mozz-black transition-colors">
-            Masculino
-          </Link>
-          {marcas.map((marca) => (
-            <Link key={marca} href={`/marca/${marca.toLowerCase()}`} className="hover:text-mozz-black transition-colors">
-              {marca}
+          <div className="relative group">
+            <Link href="/feminino" className="hover:text-mozz-black transition-colors">
+              Feminino
             </Link>
-          ))}
+            <div className="absolute left-0 top-full hidden group-hover:block pt-3 z-30">
+              <div className="flex flex-col min-w-[140px] bg-white border border-black/10 shadow-sm py-2">
+                {MARCAS_FEMININO.map((marca) => (
+                  <Link
+                    key={marca.slug}
+                    href={`/marca/${marca.slug}`}
+                    className="px-4 py-2 text-[14px] hover:bg-mozz-stone transition-colors"
+                  >
+                    {marca.nome}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="relative group">
+            <Link href="/masculino" className="hover:text-mozz-black transition-colors">
+              Masculino
+            </Link>
+            <div className="absolute left-0 top-full hidden group-hover:block pt-3 z-30">
+              <div className="flex flex-col min-w-[140px] bg-white border border-black/10 shadow-sm py-2">
+                {MARCAS_MASCULINO.map((marca) => (
+                  <Link
+                    key={marca.slug}
+                    href={`/marca/${marca.slug}`}
+                    className="px-4 py-2 text-[14px] hover:bg-mozz-stone transition-colors"
+                  >
+                    {marca.nome}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
           <Link href="/outlet" className="hover:text-mozz-black transition-colors">
             Outlet
           </Link>
@@ -159,17 +199,54 @@ export default function Nav() {
             menuAberto ? "flex" : "hidden"
           } flex-col items-center gap-4 px-4 pb-4 text-[13.5px] text-mozz-gray`}
         >
-          <Link href="/feminino" onClick={() => setMenuAberto(false)}>
-            Feminino
-          </Link>
-          <Link href="/masculino" onClick={() => setMenuAberto(false)}>
-            Masculino
-          </Link>
-          {marcas.map((marca) => (
-            <Link key={marca} href={`/marca/${marca.toLowerCase()}`} onClick={() => setMenuAberto(false)}>
-              {marca}
-            </Link>
-          ))}
+          <div className="flex flex-col items-center gap-3 w-full">
+            <button
+              type="button"
+              onClick={() => setFemininoAberto((v) => !v)}
+              className="flex items-center gap-1.5"
+              aria-expanded={femininoAberto}
+            >
+              Feminino
+              <IconeChevron aberto={femininoAberto} />
+            </button>
+            {femininoAberto && (
+              <div className="flex flex-col items-center gap-3 pb-1 text-mozz-black">
+                {MARCAS_FEMININO.map((marca) => (
+                  <Link key={marca.slug} href={`/marca/${marca.slug}`} onClick={() => setMenuAberto(false)}>
+                    {marca.nome}
+                  </Link>
+                ))}
+                <Link href="/feminino" onClick={() => setMenuAberto(false)} className="text-[12.5px] text-mozz-gray underline">
+                  Ver tudo
+                </Link>
+              </div>
+            )}
+          </div>
+
+          <div className="flex flex-col items-center gap-3 w-full">
+            <button
+              type="button"
+              onClick={() => setMasculinoAberto((v) => !v)}
+              className="flex items-center gap-1.5"
+              aria-expanded={masculinoAberto}
+            >
+              Masculino
+              <IconeChevron aberto={masculinoAberto} />
+            </button>
+            {masculinoAberto && (
+              <div className="flex flex-col items-center gap-3 pb-1 text-mozz-black">
+                {MARCAS_MASCULINO.map((marca) => (
+                  <Link key={marca.slug} href={`/marca/${marca.slug}`} onClick={() => setMenuAberto(false)}>
+                    {marca.nome}
+                  </Link>
+                ))}
+                <Link href="/masculino" onClick={() => setMenuAberto(false)} className="text-[12.5px] text-mozz-gray underline">
+                  Ver tudo
+                </Link>
+              </div>
+            )}
+          </div>
+
           <Link href="/outlet" onClick={() => setMenuAberto(false)}>
             Outlet
           </Link>
