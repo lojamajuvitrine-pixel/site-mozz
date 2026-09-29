@@ -20,6 +20,28 @@
     "temEstoque": false
   },
   {
+    "id": "16708394533",
+    "nome": "Vestido Cropped Chita Pintada - M - 58920",
+    "marca": "Farm",
+    "preco": 429,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
     "id": "16706291454",
     "nome": "Top com Renda e Strass -",
     "marca": "Animale",
@@ -18765,6 +18787,26 @@
     "temEstoque": true
   },
   {
+    "id": "16458360690",
+    "nome": "SHORT COS ELASTICO NATURAL",
+    "marca": "Farm",
+    "preco": 329,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
     "id": "16458308293",
     "nome": "Calça Jeans Regular Indiarama",
     "marca": "Reserva",
@@ -23849,6 +23891,37 @@
     }
   },
   {
+    "id": "16707200251",
+    "nome": "Jaqueta Jeans Basica",
+    "marca": "Farm",
+    "preco": 498,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0101",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "gruposBlingPorCorTamanho": {
+      "0101": {
+        "M": [
+          "16709763607"
+        ],
+        "G": [
+          "16707200251"
+        ]
+      }
+    }
+  },
+  {
     "id": "16708215303",
     "nome": "Camisa Manga Curta Buzios New",
     "marca": "Foxton",
@@ -25685,6 +25758,303 @@
     }
   },
   {
+    "id": "16706268169",
+    "nome": "Saia Pontas Ciana",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57872",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57872": {
+        "M": [
+          "16708394107"
+        ],
+        "P": [
+          "16706268477"
+        ],
+        "G": [
+          "16706268169"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708392284",
+    "nome": "Calça Flor do Deserto",
+    "marca": "Farm",
+    "preco": 439,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57798",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57798": {
+        "G": [
+          "16708393477"
+        ],
+        "M": [
+          "16708393413"
+        ],
+        "P": [
+          "16708392284"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708390248",
+    "nome": "Short Bandana Jardim",
+    "marca": "Farm",
+    "preco": 329,
+    "novo": true,
+    "descricao": "Short estampado bandana jardim da farm traz a fusão perfeita entre conforto e estilo. com cintura média e cós ajustável por cordão com tassel, permite um ajuste personalizado. o tecido leve e fluido garante liberdade de movimento, ideal para momentos casuais. destaque para a estampa única que eleva qualquer look.",
+    "cores": [
+      {
+        "cor": "58693",
+        "imagens": [
+          "/produtos/16708390941--unico--0.jpg",
+          "/produtos/16708390941--unico--1.jpg",
+          "/produtos/16708390941--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16708390941--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58693": {
+        "G": [
+          "16708390941"
+        ],
+        "M": [
+          "16708390905"
+        ],
+        "P": [
+          "16708390248"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705788550",
+    "nome": "Short Listra Gabi",
+    "marca": "Farm",
+    "preco": 329,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "59100",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "59100": {
+        "G": [
+          "16708389782"
+        ],
+        "P": [
+          "16705788808"
+        ],
+        "M": [
+          "16705788743"
+        ],
+        "PP": [
+          "16705788550"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706161127",
+    "nome": "Vestido Cropped Decote Costas",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      },
+      {
+        "cor": "07806",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "P": [
+          "16708389404"
+        ],
+        "M": [
+          "16706161821"
+        ],
+        "PP": [
+          "16706161127"
+        ]
+      },
+      "07806": {
+        "G": [
+          "16706203663"
+        ],
+        "P": [
+          "16706203604"
+        ],
+        "PP": [
+          "16706203495"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706164175",
+    "nome": "Vestido Tshirt Big Lenço Riviera",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57883",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "M",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57883": {
+        "PP": [
+          "16708387142"
+        ],
+        "GG": [
+          "16706164844"
+        ],
+        "M": [
+          "16706164175"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705470740",
+    "nome": "Vestido Longo Manga Floral Leni",
+    "marca": "Farm",
+    "preco": 599,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57826",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57826": {
+        "M": [
+          "16708381585"
+        ],
+        "P": [
+          "16705470740"
+        ]
+      }
+    }
+  },
+  {
     "id": "16707359085",
     "nome": "Tshirt Suedine Pima Classic",
     "marca": "Foxton",
@@ -27474,6 +27844,454 @@
     }
   },
   {
+    "id": "16705800628",
+    "nome": "Vestido Curto Alça Romance",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "58934",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58934": {
+        "P": [
+          "16707612052"
+        ],
+        "PP": [
+          "16705800628"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707611379",
+    "nome": "Vestido Ombro So Jardim Real",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "58927",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58927": {
+        "G": [
+          "16707611883"
+        ],
+        "M": [
+          "16707611813"
+        ],
+        "P": [
+          "16707611379"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707610483",
+    "nome": "Macaquinho Jardim Real E",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "58927",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58927": {
+        "M": [
+          "16707610844"
+        ],
+        "P": [
+          "16707610483"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705695892",
+    "nome": "Macaquinho Jardim de Azaleias",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "58916",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58916": {
+        "PP": [
+          "16707609946"
+        ],
+        "M": [
+          "16705696540"
+        ],
+        "P": [
+          "16705695892"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707609447",
+    "nome": "Macacão Pilha de Pranchas",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "07448",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07448": {
+        "G": [
+          "16707609747"
+        ],
+        "M": [
+          "16707609699"
+        ],
+        "P": [
+          "16707609447"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705683005",
+    "nome": "Vestido Curto Posto 6",
+    "marca": "Farm",
+    "preco": 498,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57776",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57776": {
+        "P": [
+          "16707608031"
+        ],
+        "M": [
+          "16705683005"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705788100",
+    "nome": "Vestido Longo Ombro So",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "07742",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      },
+      {
+        "cor": "07708",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07742": {
+        "P": [
+          "16707607896"
+        ]
+      },
+      "07708": {
+        "P": [
+          "16705788100"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707607175",
+    "nome": "Vestido Midi Tapete de Flor",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "42205",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "42205": {
+        "G": [
+          "16707607520"
+        ],
+        "M": [
+          "16707607458"
+        ],
+        "P": [
+          "16707607175"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706276567",
+    "nome": "Vestido Longo Manga Tapete de Flor",
+    "marca": "Farm",
+    "preco": 698,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57837",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57837": {
+        "P": [
+          "16707606629"
+        ],
+        "PP": [
+          "16707606602"
+        ],
+        "M": [
+          "16706276567"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707606036",
+    "nome": "Vestido Curto Manga Flor Nana",
+    "marca": "Farm",
+    "preco": 479.2,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57787",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57787": {
+        "G": [
+          "16707606284"
+        ],
+        "M": [
+          "16707606255"
+        ],
+        "P": [
+          "16707606036"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707605177",
+    "nome": "Macacão Manga Flor Nana",
+    "marca": "Farm",
+    "preco": 598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57787",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57787": {
+        "M": [
+          "16707605467"
+        ],
+        "P": [
+          "16707605177"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705656665",
+    "nome": "Macacão Luz do Luar",
+    "marca": "Farm",
+    "preco": 498,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57794",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57794": {
+        "M": [
+          "16707603934"
+        ],
+        "G": [
+          "16705658121"
+        ],
+        "P": [
+          "16705656665"
+        ]
+      }
+    }
+  },
+  {
     "id": "16705634738",
     "nome": "Camisa Listrada Com Renda",
     "marca": "Animale",
@@ -27814,6 +28632,79 @@
         ],
         "P": [
           "16707233206"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705690524",
+    "nome": "Vestido Curto Bordado Surf Tucano",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "02542",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "02542": {
+        "P": [
+          "16707198368"
+        ],
+        "M": [
+          "16705691509"
+        ],
+        "PP": [
+          "16705690524"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707195388",
+    "nome": "Vestido Longo Corselet",
+    "marca": "Farm",
+    "preco": 479,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "M": [
+          "16707196752"
+        ],
+        "P": [
+          "16707195388"
         ]
       }
     }
@@ -29896,6 +30787,289 @@
     }
   },
   {
+    "id": "16706282014",
+    "nome": "Blusa Manga Curta Bordada",
+    "marca": "Farm",
+    "preco": 198,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "M": [
+          "16706282498"
+        ],
+        "P": [
+          "16706282461"
+        ],
+        "PP": [
+          "16706282014"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705798778",
+    "nome": "Regata Pescando Sonhos",
+    "marca": "Farm",
+    "preco": 198,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "07448",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07448": {
+        "G": [
+          "16706280621"
+        ],
+        "PP": [
+          "16706280558"
+        ],
+        "P": [
+          "16706280523"
+        ],
+        "M": [
+          "16705798778"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706279065",
+    "nome": "Tshirt Media Arara em Flores",
+    "marca": "Farm",
+    "preco": 198,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "07740",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07740": {
+        "GG": [
+          "16706279379"
+        ],
+        "G": [
+          "16706279348"
+        ],
+        "M": [
+          "16706279286"
+        ],
+        "P": [
+          "16706279065"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706277879",
+    "nome": "Kimono Leveza Romantica",
+    "marca": "Farm",
+    "preco": 429,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "58926",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58926": {
+        "M": [
+          "16706278346"
+        ],
+        "P": [
+          "16706277879"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706170846",
+    "nome": "Short Prega Curto",
+    "marca": "Farm",
+    "preco": 249,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "10066",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      },
+      {
+        "cor": "07806",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "10066": {
+        "P": [
+          "16706275971"
+        ]
+      },
+      "07806": {
+        "P": [
+          "16706171581"
+        ],
+        "PP": [
+          "16706170846"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706270291",
+    "nome": "Tshirt Media Rio de Renda",
+    "marca": "Farm",
+    "preco": 198,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "09040",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "09040": {
+        "M": [
+          "16706271264"
+        ],
+        "P": [
+          "16706270291"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706268960",
+    "nome": "Calça Albania",
+    "marca": "Farm",
+    "preco": 459,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57797",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57797": {
+        "G": [
+          "16706269244"
+        ],
+        "M": [
+          "16706269209"
+        ],
+        "P": [
+          "16706269189"
+        ],
+        "PP": [
+          "16706268960"
+        ]
+      }
+    }
+  },
+  {
     "id": "16706262739",
     "nome": "Camisa Cambraia de Linho Color",
     "marca": "Animale",
@@ -30126,6 +31300,364 @@
     }
   },
   {
+    "id": "16705512662",
+    "nome": "Vestido Cropped Romance E",
+    "marca": "Farm",
+    "preco": 479,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57824",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "gruposBlingPorCorTamanho": {
+      "57824": {
+        "P": [
+          "16706239910"
+        ],
+        "PP": [
+          "16705513029"
+        ],
+        "M": [
+          "16705512662"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706237068",
+    "nome": "Blusa Decote Degage E",
+    "marca": "Farm",
+    "preco": 269,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "59093",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "59093": {
+        "M": [
+          "16706237531"
+        ],
+        "P": [
+          "16706237068"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706234344",
+    "nome": "Vestido Franzido Cafe da Tarde E",
+    "marca": "Farm",
+    "preco": 479,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "5784",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "5784": {
+        "M": [
+          "16706234925"
+        ],
+        "P": [
+          "16706234344"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706231457",
+    "nome": "Vestido Tule Ciana",
+    "marca": "Farm",
+    "preco": 469,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57796",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57796": {
+        "G": [
+          "16706232251"
+        ],
+        "M": [
+          "16706232105"
+        ],
+        "P": [
+          "16706231949"
+        ],
+        "PP": [
+          "16706231457"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705794330",
+    "nome": "Calça Pregas",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "01071",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "01071": {
+        "GG": [
+          "16706229397"
+        ],
+        "G": [
+          "16705794707"
+        ],
+        "P": [
+          "16705794330"
+        ]
+      },
+      "0013": {
+        "GG": [
+          "16706208735"
+        ],
+        "G": [
+          "16706208663"
+        ],
+        "M": [
+          "16706208611"
+        ],
+        "P": [
+          "16706208527"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706219918",
+    "nome": "Vestido Cropped Alça Bicolor",
+    "marca": "Farm",
+    "preco": 349,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "02542",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "02542": {
+        "G": [
+          "16706220944"
+        ],
+        "M": [
+          "16706220883"
+        ],
+        "P": [
+          "16706220752"
+        ],
+        "PP": [
+          "16706219918"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706216612",
+    "nome": "Vestido Longo Coqueiro Sereno",
+    "marca": "Farm",
+    "preco": 429,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57808",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57808": {
+        "M": [
+          "16706217742"
+        ],
+        "P": [
+          "16706216612"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706210426",
+    "nome": "Calça Brisa de Flor",
+    "marca": "Farm",
+    "preco": 459,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57835",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57835": {
+        "P": [
+          "16706210886"
+        ],
+        "PP": [
+          "16706210426"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706205334",
+    "nome": "Blusa Fauna Noturna E",
+    "marca": "Farm",
+    "preco": 329,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57839",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57839": {
+        "M": [
+          "16706206794"
+        ],
+        "P": [
+          "16706205334"
+        ]
+      }
+    }
+  },
+  {
     "id": "16706188232",
     "nome": "Vestido Zoe",
     "marca": "NV",
@@ -30249,6 +31781,331 @@
         ],
         "G": [
           "16705898427"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706167301",
+    "nome": "Vestido Longo Lenço Petra E",
+    "marca": "Farm",
+    "preco": 498,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57874",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57874": {
+        "M": [
+          "16706168815"
+        ],
+        "P": [
+          "16706167301"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706150535",
+    "nome": "Vestido Cropped Ombro So Bicolor",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "07806",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "G": [
+          "16706159307"
+        ],
+        "M": [
+          "16706159255"
+        ],
+        "P": [
+          "16706159121"
+        ],
+        "PP": [
+          "16706158971"
+        ]
+      },
+      "07806": {
+        "M": [
+          "16706151130"
+        ],
+        "P": [
+          "16706151087"
+        ],
+        "PP": [
+          "16706150535"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706152815",
+    "nome": "Saia Alfaiataria",
+    "marca": "Farm",
+    "preco": 229,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "07821",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "G": [
+          "16706155848"
+        ],
+        "M": [
+          "16706155749"
+        ],
+        "P": [
+          "16706155632"
+        ],
+        "PP": [
+          "16706155479"
+        ]
+      },
+      "07821": {
+        "M": [
+          "16706153638"
+        ],
+        "P": [
+          "16706153523"
+        ],
+        "PP": [
+          "16706152815"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706147595",
+    "nome": "Saia Midi Tule Jardim de Amora",
+    "marca": "Farm",
+    "preco": 349,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57792",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57792": {
+        "G": [
+          "16706148011"
+        ],
+        "M": [
+          "16706147982"
+        ],
+        "P": [
+          "16706147938"
+        ],
+        "PP": [
+          "16706147595"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706141664",
+    "nome": "Moletom Mescla Pedalinho",
+    "marca": "Farm",
+    "preco": 498,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0195",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0195": {
+        "G": [
+          "16706145145"
+        ],
+        "M": [
+          "16706143943"
+        ],
+        "P": [
+          "16706143787"
+        ],
+        "PP": [
+          "16706141664"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706138991",
+    "nome": "Saia Floral Delicado",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57809",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57809": {
+        "P": [
+          "16706139787"
+        ],
+        "PP": [
+          "16706138991"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706060537",
+    "nome": "Bata Floral Delicado",
+    "marca": "Farm",
+    "preco": 349,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57809",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57809": {
+        "G": [
+          "16706137793"
+        ],
+        "M": [
+          "16706060537"
         ]
       }
     }
@@ -31073,6 +32930,188 @@
     }
   },
   {
+    "id": "16705800220",
+    "nome": "Vestido Cropped Flor do Deserto",
+    "marca": "Farm",
+    "preco": 559,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "58923",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58923": {
+        "M": [
+          "16705800331"
+        ],
+        "P": [
+          "16705800220"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705795765",
+    "nome": "Tshirt Fit Arara em Flores",
+    "marca": "Farm",
+    "preco": 198,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "07448",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07448": {
+        "M": [
+          "16705797679"
+        ],
+        "G": [
+          "16705796229"
+        ],
+        "P": [
+          "16705796175"
+        ],
+        "PP": [
+          "16705795765"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705791856",
+    "nome": "Regata Bordada Coqueiro",
+    "marca": "Farm",
+    "preco": 179,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "07448",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07448": {
+        "M": [
+          "16705792648"
+        ],
+        "P": [
+          "16705791856"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705790233",
+    "nome": "Vestido Longo Lenço Riviera",
+    "marca": "Farm",
+    "preco": 479,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "07448",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07448": {
+        "M": [
+          "16705790389"
+        ],
+        "P": [
+          "16705790233"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705788993",
+    "nome": "Vestido Curto Manga Albania",
+    "marca": "Farm",
+    "preco": 479,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57797",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57797": {
+        "G": [
+          "16705789710"
+        ],
+        "P": [
+          "16705789610"
+        ],
+        "M": [
+          "16705788993"
+        ]
+      }
+    }
+  },
+  {
     "id": "16705767944",
     "nome": "Blazer Listras Marrom",
     "marca": "Animale",
@@ -31144,6 +33183,268 @@
         ],
         "40": [
           "16705708075"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705699669",
+    "nome": "Vestido Curto Manga Longa Flor Celeste",
+    "marca": "Farm",
+    "preco": 479,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "58930",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58930": {
+        "G": [
+          "16705700542"
+        ],
+        "M": [
+          "16705700489"
+        ],
+        "P": [
+          "16705699669"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705693424",
+    "nome": "Short Floral Luma E",
+    "marca": "Farm",
+    "preco": 349,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57807",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57807": {
+        "M": [
+          "16705694400"
+        ],
+        "P": [
+          "16705693424"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705676283",
+    "nome": "Regata Botões Assimétrica",
+    "marca": "Farm",
+    "preco": 179,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0013",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      },
+      {
+        "cor": "07448",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0013": {
+        "G": [
+          "16705687068"
+        ],
+        "M": [
+          "16705686910"
+        ],
+        "P": [
+          "16705686743"
+        ],
+        "PP": [
+          "16705685689"
+        ]
+      },
+      "07448": {
+        "M": [
+          "16705677263"
+        ],
+        "P": [
+          "16705677183"
+        ],
+        "PP": [
+          "16705676283"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705680653",
+    "nome": "Vestido Mangas Coqueiro Sereno",
+    "marca": "Farm",
+    "preco": 598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57808",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57808": {
+        "G": [
+          "16705681458"
+        ],
+        "M": [
+          "16705681376"
+        ],
+        "P": [
+          "16705680653"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705677876",
+    "nome": "Vestido Reto Amor de Pantera",
+    "marca": "Farm",
+    "preco": 498,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "60341",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "60341": {
+        "G": [
+          "16705678740"
+        ],
+        "M": [
+          "16705678620"
+        ],
+        "P": [
+          "16705678503"
+        ],
+        "PP": [
+          "16705677876"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705659471",
+    "nome": "Saia Reta Plissada Glow",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57873",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57873": {
+        "G": [
+          "16705660422"
+        ],
+        "M": [
+          "16705660356"
+        ],
+        "P": [
+          "16705660302"
+        ],
+        "PP": [
+          "16705659471"
         ]
       }
     }
@@ -31318,6 +33619,698 @@
     }
   },
   {
+    "id": "16705611555",
+    "nome": "Saia Cropped Aurora E",
+    "marca": "Farm",
+    "preco": 429,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "58925",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58925": {
+        "P": [
+          "16705614594"
+        ],
+        "M": [
+          "16705614432"
+        ],
+        "G": [
+          "16705611555"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705608243",
+    "nome": "Calça Encanto Boho",
+    "marca": "Farm",
+    "preco": 379,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "59024",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "59024": {
+        "G": [
+          "16705610100"
+        ],
+        "M": [
+          "16705609753"
+        ],
+        "PP": [
+          "16705608243"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705605954",
+    "nome": "Vestido Longo Manga Petra",
+    "marca": "Farm",
+    "preco": 559,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57875",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57875": {
+        "GG": [
+          "16705607218"
+        ],
+        "G": [
+          "16705607133"
+        ],
+        "M": [
+          "16705607004"
+        ],
+        "P": [
+          "16705606808"
+        ],
+        "PP": [
+          "16705605954"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705598702",
+    "nome": "Bata Manga Longa Lenço Riviera",
+    "marca": "Farm",
+    "preco": 429,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57883",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57883": {
+        "G": [
+          "16705600233"
+        ],
+        "P": [
+          "16705598702"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705511553",
+    "nome": "Saia Cropped Bordada Bandanas Jardim",
+    "marca": "Farm",
+    "preco": 998,
+    "novo": true,
+    "descricao": "Saia cropped bordada bandanas jardim. confeccionada em tecido leve, a peça apresenta bordados que destacam sua originalidade e adicionam um toque especial ao design. com modelagem evasê fluida e cintura alta, é perfeita para eventos casuais e momentos de lazer. aproveite para combiná-la com tops leves em dias ensolarados.",
+    "cores": [
+      {
+        "cor": "07738",
+        "imagens": [
+          "/produtos/16705512066--unico--0.jpg",
+          "/produtos/16705512066--unico--1.jpg",
+          "/produtos/16705512066--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16705512066--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07738": {
+        "G": [
+          "16705512066"
+        ],
+        "M": [
+          "16705511995"
+        ],
+        "P": [
+          "16705511553"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705508163",
+    "nome": "Vestido Tshirt Big Lenço Rio Paraiso",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57799",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57799": {
+        "G": [
+          "16705509120"
+        ],
+        "M": [
+          "16705508621"
+        ],
+        "P": [
+          "16705508163"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705506901",
+    "nome": "Camisa Bordada Bandanas Jardim",
+    "marca": "Farm",
+    "preco": 698,
+    "novo": true,
+    "descricao": "Camisa bordada bandanas jardim é uma peça cheia de charme e delicadeza. com um colarinho clássico e mangas amplas, seu diferencial está nos bordados detalhados e no acabamento recortado na barra, que trazem um toque artesanal e único. perfeita para um almoço casual ou um passeio ao ar livre, garante leveza e estilo em qualquer ocasião.",
+    "cores": [
+      {
+        "cor": "07738",
+        "imagens": [
+          "/produtos/16705507297--unico--0.jpg",
+          "/produtos/16705507297--unico--1.jpg",
+          "/produtos/16705507297--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16705507297--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07738": {
+        "G": [
+          "16705507297"
+        ],
+        "M": [
+          "16705507211"
+        ],
+        "P": [
+          "16705506901"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705504126",
+    "nome": "Maxi Kimono Coqueiro Sereno",
+    "marca": "Farm",
+    "preco": 498,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57808",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57808": {
+        "G": [
+          "16705504620"
+        ],
+        "M": [
+          "16705504534"
+        ],
+        "P": [
+          "16705504126"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705502531",
+    "nome": "Calça Coqueiro Sereno",
+    "marca": "Farm",
+    "preco": 439,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57808",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "gruposBlingPorCorTamanho": {
+      "57808": {
+        "P": [
+          "16705503095"
+        ],
+        "PP": [
+          "16705502531"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705497926",
+    "nome": "Tshirt Lenço Rio Paraiso",
+    "marca": "Farm",
+    "preco": 279,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57799",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57799": {
+        "G": [
+          "16705499303"
+        ],
+        "P": [
+          "16705499216"
+        ],
+        "PP": [
+          "16705497926"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705492321",
+    "nome": "Biquini Lacinho Double Floral Leni",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57806",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57806": {
+        "G": [
+          "16705492992"
+        ],
+        "M": [
+          "16705492910"
+        ],
+        "P": [
+          "16705492321"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705488135",
+    "nome": "Camisa Artesanal Coqueiro",
+    "marca": "Farm",
+    "preco": 749,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "07742",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07742": {
+        "M": [
+          "16705488633"
+        ],
+        "P": [
+          "16705488135"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705482711",
+    "nome": "Calça Praia Crinckle",
+    "marca": "Farm",
+    "preco": 429,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "02542",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "02542": {
+        "G": [
+          "16705486225"
+        ],
+        "M": [
+          "16705486111"
+        ],
+        "P": [
+          "16705485947"
+        ],
+        "PP": [
+          "16705482711"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705426322",
+    "nome": "Biquini Lacinho Floral Romance",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "58369",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58369": {
+        "M": [
+          "16705440780"
+        ],
+        "G": [
+          "16705426322"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705434293",
+    "nome": "Biquini Lacinho Textura Flor",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "02345",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "02345": {
+        "G": [
+          "16705436125"
+        ],
+        "P": [
+          "16705434293"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705430508",
+    "nome": "Short Tricot Babadinho",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0295",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0295": {
+        "G": [
+          "16705431729"
+        ],
+        "M": [
+          "16705431630"
+        ],
+        "P": [
+          "16705430508"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705428405",
+    "nome": "Jaqueta Nylon Bandana Jardim",
+    "marca": "Farm",
+    "preco": 498,
+    "novo": true,
+    "descricao": "Jaqueta nylon bandana jardim. com modelagem casual, possui capuz ajustável e fechamento frontal por zíper. os punhos são alinhados por elástico confortável, proporcionando um caimento impecável. perfeita para dias descontraídos ou uma saída noturna, garante estilo em qualquer ocasião.",
+    "cores": [
+      {
+        "cor": "58577",
+        "imagens": [
+          "/produtos/16705429544--unico--0.jpg",
+          "/produtos/16705429544--unico--1.jpg",
+          "/produtos/16705429544--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16705429544--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58577": {
+        "G": [
+          "16705429544"
+        ],
+        "PP": [
+          "16705428405"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705424230",
+    "nome": "Caftan Bandana Jardim",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "58577",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58577": {
+        "G": [
+          "16705425125"
+        ],
+        "M": [
+          "16705425029"
+        ],
+        "P": [
+          "16705424230"
+        ]
+      }
+    }
+  },
+  {
     "id": "16708641603",
     "nome": "Blusa Utilitaria Off - Off White",
     "marca": "Animale",
@@ -31390,6 +34383,48 @@
       ],
       "38": [
         "16705628727"
+      ]
+    }
+  },
+  {
+    "id": "16705602438",
+    "nome": "Calça Pregas - Caramelo Salgado",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "G": [
+        "16705604478"
+      ],
+      "M": [
+        "16705604276"
+      ],
+      "P": [
+        "16705603994"
+      ],
+      "PP": [
+        "16705602438"
       ]
     }
   },
@@ -31476,6 +34511,60 @@
       ],
       "44": [
         "16705453480"
+      ]
+    }
+  },
+  {
+    "id": "16705419048",
+    "nome": "Regata Richilieu Peixe - Off White",
+    "marca": "Farm",
+    "preco": 229,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP"
+        ],
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
+  },
+  {
+    "id": "16705412559",
+    "nome": "Maio Textura Borboleta - Branco",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16705413529"
+      ],
+      "P": [
+        "16705412559"
       ]
     }
   },
@@ -35998,6 +39087,96 @@
     "_corCodigo": "58881"
   },
   {
+    "id": "16708395632",
+    "nome": "Vestido Longo Sol de Coqueiro - 58928",
+    "marca": "Farm",
+    "preco": 498,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "58928"
+  },
+  {
+    "id": "16708385475",
+    "nome": "Vestido Longo Manga Floral Delicado - 57809",
+    "marca": "Farm",
+    "preco": 598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57809"
+  },
+  {
+    "id": "16708383191",
+    "nome": "Vestido Midi Flor Nana - 57787",
+    "marca": "Farm",
+    "preco": 579,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57787"
+  },
+  {
+    "id": "16708380306",
+    "nome": "Vestido Longo Boho do Amor - 57867",
+    "marca": "Farm",
+    "preco": 479,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57867"
+  },
+  {
     "id": "16708154143",
     "nome": "Polo Piquet Basica Rio - 2119",
     "marca": "Foxton",
@@ -36065,6 +39244,29 @@
     "imagem": null,
     "temEstoque": true,
     "_corCodigo": "0005"
+  },
+  {
+    "id": "16707608595",
+    "nome": "Blusa Lenço Pelicano E - 57805",
+    "marca": "Farm",
+    "preco": 329,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57805"
   },
   {
     "id": "16707347871",
@@ -36179,6 +39381,27 @@
     "imagem": "/produtos/16707219157--unico--0.jpg",
     "temEstoque": false,
     "_corCodigo": "NV1258"
+  },
+  {
+    "id": "16707201020",
+    "nome": "Vestido Longo Floral Maite - 57911",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "57911"
   },
   {
     "id": "16706679444",
@@ -36316,6 +39539,71 @@
     "imagem": null,
     "temEstoque": false,
     "_corCodigo": "07708"
+  },
+  {
+    "id": "16706238491",
+    "nome": "Vestido Curto Alcinha Chita Pintada - 57833",
+    "marca": "Farm",
+    "preco": 349,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "57833"
+  },
+  {
+    "id": "16706225109",
+    "nome": "Casaco Tricot Listra Nautica - 57779",
+    "marca": "Farm",
+    "preco": 598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "57779"
+  },
+  {
+    "id": "16706146459",
+    "nome": "Blusa Listra Nautica - 57780",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57780"
   },
   {
     "id": "16706044287",
@@ -36464,6 +39752,52 @@
     "_corCodigo": "NV1305"
   },
   {
+    "id": "16705799397",
+    "nome": "Saia Cropped Florabela - 58914",
+    "marca": "Farm",
+    "preco": 479,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP"
+        ],
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "58914"
+  },
+  {
+    "id": "16705697402",
+    "nome": "Vestido Tshirt Big Patch Tropical - 57810",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57810"
+  },
+  {
     "id": "16705643931",
     "nome": "Blusa Tricot Decote X Costas Vazado - 07708",
     "marca": "Animale",
@@ -36529,5 +39863,229 @@
     "imagem": null,
     "temEstoque": false,
     "_corCodigo": "1802"
+  },
+  {
+    "id": "16705609600",
+    "nome": "Calça Encanto Boho VRE26 - 59024",
+    "marca": "Farm",
+    "preco": 379,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "59024"
+  },
+  {
+    "id": "16705596524",
+    "nome": "Blusa Cropped Iguarias do Litoral - 57782",
+    "marca": "Farm",
+    "preco": 229,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "57782"
+  },
+  {
+    "id": "16705513864",
+    "nome": "Kimono Luna - 58921",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "58921"
+  },
+  {
+    "id": "16705510010",
+    "nome": "Bolsa Lenço Mini Pelicano - 58378",
+    "marca": "Farm",
+    "preco": 419,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "U"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "58378"
+  },
+  {
+    "id": "16705506029",
+    "nome": "Regata Lenço Coqueiro Sereno - 57808",
+    "marca": "Farm",
+    "preco": 229,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false,
+    "_corCodigo": "57808"
+  },
+  {
+    "id": "16705490885",
+    "nome": "Biquini Lacinho Encanto Floral - 57905",
+    "marca": "Farm",
+    "preco": 279,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57905"
+  },
+  {
+    "id": "16705489556",
+    "nome": "Camisa Richilieu Bandana Jardim - 04346",
+    "marca": "Farm",
+    "preco": 698,
+    "novo": true,
+    "descricao": "Camisa richilieu bandana jardim. traz um charme autêntico com seu tecido leve e rica padronagem vazada. a modelagem solta com mangas amplas e comprimento médio oferece conforto e um toque especial para diversas ocasiões. perfeita para um look casual e cheio de personalidade.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16705489556--unico--0.jpg",
+          "/produtos/16705489556--unico--1.jpg",
+          "/produtos/16705489556--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16705489556--unico--0.jpg",
+    "temEstoque": true,
+    "_corCodigo": "04346"
+  },
+  {
+    "id": "16705474430",
+    "nome": "Vestido Longo Manga Jardim De Azaleias - 59025",
+    "marca": "Farm",
+    "preco": 598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "59025"
+  },
+  {
+    "id": "16705472941",
+    "nome": "Bata Rosa Rio E - 58935",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "58935"
+  },
+  {
+    "id": "16705437508",
+    "nome": "Biquini Meia Teca Textura Flor - 07742",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "07742"
   }
 ]
