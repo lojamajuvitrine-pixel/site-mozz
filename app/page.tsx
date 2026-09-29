@@ -28,11 +28,12 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const comFoto = await produtosComFoto();
 
-  const [reserva, animale, foxton, nv] = await Promise.all([
+  const [reserva, animale, foxton, nv, farm] = await Promise.all([
     listarPorMarca("Reserva"),
     listarPorMarca("Animale"),
     listarPorMarca("Foxton"),
-    listarPorMarca("NV")
+    listarPorMarca("NV"),
+    listarPorMarca("Farm")
   ]);
   const produtoReserva = reserva.find((p) => p.imagem);
   const produtoAnimale = animale.find((p) => p.imagem);
@@ -60,6 +61,15 @@ export default async function Home() {
   const destaquesNV = nv.filter((p) => p.destaque && p.imagem);
   const destaquesReserva = reserva.filter((p) => p.destaque && p.imagem);
   const destaquesFoxton = foxton.filter((p) => p.destaque && p.imagem);
+  // Farm e' marca nova (adicionada em 28/09/2026) - ainda ninguem marcou peca como "destaque"
+  // dela no painel /admin/produtos, entao filtrar so' por destaque deixaria a vitrine vazia
+  // (e ela some da home nesse caso, ver VitrineDeMarca). Enquanto isso, mostra qualquer peca
+  // da Farm que já tenha foto; assim que existir destaque de verdade essa lista passa a
+  // priorizar ele automaticamente, sem precisar mexer aqui.
+  const comFotoFarm = farm.filter((p) => p.imagem);
+  const destaquesFarm = comFotoFarm.some((p) => p.destaque)
+    ? comFotoFarm.filter((p) => p.destaque)
+    : comFotoFarm;
 
   return (
     <div>
@@ -107,6 +117,19 @@ export default async function Home() {
         produtos={destaquesFoxton}
         fotoCapa="/capa-foxton.jpg"
         corDestaque="#4aa8ce"
+      />
+      {/* Farm ainda nao tem foto de campanha propria (nenhuma em public/, so' fotos de peca
+          individual vindas do Bling) - sem passar fotoCapa, VitrineDeMarca cai sozinha no
+          fallback de usar a foto do primeiro produto da lista (ver componente). Troca por
+          "/capa-farm.jpg" se um dia existir uma foto de campanha de verdade da marca. */}
+      <VitrineDeMarca
+        marca="Farm"
+        slug="farm"
+        categoria="Farm"
+        headline="Estampas que contam histórias"
+        descricao="Peças com estampas autorais e muita cor pra um verão com personalidade, sem abrir mão do conforto."
+        produtos={destaquesFarm}
+        corDestaque="#6f8f52"
       />
     </div>
   );
