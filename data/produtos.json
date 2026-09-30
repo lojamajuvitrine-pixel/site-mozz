@@ -39349,11 +39349,13 @@
         "tamanhos": [
           "34"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "34"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false,
+    "temEstoque": true,
     "_corCodigo": "1566"
   },
   {
