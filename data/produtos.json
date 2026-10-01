@@ -23086,11 +23086,15 @@
     "marca": "Farm",
     "preco": 449,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido curto estampado romance boho. com alças finas e decote reto, transmite frescor nas produções de verão. a barra rodada e os detalhes cuidadosamente costurados garantem suavidade e movimento. perfeito para momentos casuais e encontros especiais, levando a essência boho a cada passo.",
     "cores": [
       {
         "cor": "57866",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712931547--unico--0.jpg",
+          "/produtos/16712931547--unico--1.jpg",
+          "/produtos/16712931547--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -23101,7 +23105,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712931547--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57866": {
@@ -24806,8 +24810,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G"
+          "G",
+          "GG"
         ]
       },
       {
@@ -24826,9 +24830,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "P",
           "G",
-          "P"
+          "GG"
         ]
       }
     ],
@@ -29801,8 +29805,8 @@
         ],
         "tamanhosDisponiveis": [
           "P",
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -31950,11 +31954,14 @@
     "marca": "Farm",
     "preco": 479,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido cropped estampado romance. traz decote reto com alças finas, revelando sutilmente os ombros. confeccionado em tecido leve e fresco, é perfeito para dias quentes. o caimento fluido e a estampa exclusiva garantem um toque de originalidade nas mais diversas ocasiões, do casual ao sofisticado.",
     "cores": [
       {
         "cor": "57824",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706239910--unico--0.jpg",
+          "/produtos/16706239910--unico--1.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -31963,7 +31970,7 @@
         "tamanhosDisponiveis": []
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706239910--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorCorTamanho": {
       "57824": {
@@ -32205,11 +32212,14 @@
     "marca": "Farm",
     "preco": 429,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido longo estampado coqueiro sereno. com modelagem sem alças e detalhe de amarração no pescoço, traz um toque casual ao visual. seu comprimento longo e corte fluido são perfeitos para um passeio à beira-mar ou um dia ensolarado. acabamento impecável é ideal para aproveitar o verão com estilo.",
     "cores": [
       {
         "cor": "57808",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706217742--unico--0.jpg",
+          "/produtos/16706217742--unico--1.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -32220,7 +32230,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706217742--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57808": {
@@ -33513,9 +33523,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       },
       {
@@ -33648,11 +33658,15 @@
     "marca": "Farm",
     "preco": 179,
     "novo": true,
-    "descricao": "",
+    "descricao": "Regata bordada coqueiro destaca-se pelo charme do bordado sutil no centro. com alças largas e corte ajustado, proporciona conforto e estilo em qualquer ocasião casual. uma peça única para complementar visuais com naturalidade e leveza, é perfeita para os dias ensolarados em que o frescor é essencial.",
     "cores": [
       {
         "cor": "07448",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705792648--unico--0.jpg",
+          "/produtos/16705792648--unico--1.jpg",
+          "/produtos/16705792648--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -33663,7 +33677,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705792648--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07448": {
@@ -33727,8 +33741,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
@@ -33968,11 +33982,14 @@
     "marca": "Farm",
     "preco": 598,
     "novo": true,
-    "descricao": "",
+    "descricao": "O vestido mangas estampado coqueiro sereno destaca-se pelo decote quadrado com acabamento delicado. Suas mangas 3/4 bufantes oferecem um toque especial, enquanto a cintura suavemente marcada e o comprimento midi proporcionam um caimento casual e sofisticado. Ideal para momentos descontraídos ou ocasiões que pedem um look autêntico.",
     "cores": [
       {
         "cor": "57808",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705681458--unico--0.jpg",
+          "/produtos/16705681458--unico--1.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -33984,7 +34001,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705681458--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57808": {
@@ -34060,8 +34077,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -34541,11 +34558,15 @@
     "marca": "Farm",
     "preco": 498,
     "novo": true,
-    "descricao": "",
+    "descricao": "Maxi kimono estampado coqueiro sereno. destacando-se pelo design original, sua modelagem ampla e fluida traz conforto e estilo. com mangas longas e acabamento em viés, é perfeito para compor looks casuais ou sofisticados. aposte nesta peça versátil para qualquer ocasião, do dia à noite.",
     "cores": [
       {
         "cor": "57808",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705504620--unico--0.jpg",
+          "/produtos/16705504620--unico--1.jpg",
+          "/produtos/16705504620--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -34558,7 +34579,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705504620--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57808": {
@@ -34580,11 +34601,14 @@
     "marca": "Farm",
     "preco": 439,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça estampada coqueiro sereno. com cintura elástica ajustável, o caimento amplo e fluido proporciona conforto e movimento. a estampa única traz um toque de originalidade, enquanto o tecido leve é ideal para dias ensolarados. perfeita para passeios casuais ou um jantar ao ar livre.",
     "cores": [
       {
         "cor": "57808",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705503095--unico--0.jpg",
+          "/produtos/16705503095--unico--1.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P"
@@ -34592,7 +34616,7 @@
         "tamanhosDisponiveis": []
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705503095--unico--0.jpg",
     "temEstoque": false,
     "gruposBlingPorCorTamanho": {
       "57808": {
@@ -34689,11 +34713,15 @@
     "marca": "Farm",
     "preco": 749,
     "novo": true,
-    "descricao": "",
+    "descricao": "Camisa artesanal coqueiro. com modelagem confortável e corte delicado, essa peça traz detalhes encantadores, como os acabamentos minuciosos nos ombros e barra. suas mangas curtas complementam o design casual, tornando-a perfeita para um passeio à beira-mar ou um almoço ao ar livre.",
     "cores": [
       {
         "cor": "07742",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705488633--unico--0.jpg",
+          "/produtos/16705488633--unico--1.jpg",
+          "/produtos/16705488633--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -34704,7 +34732,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705488633--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07742": {
@@ -39221,11 +39249,14 @@
     "marca": "Farm",
     "preco": 398,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido longo estampado jardim sereno. um charme com alças finas e decote reto, exalando leveza e casualidade. a modelagem fluida garante conforto e elegância para momentos distintos. perfeito para passeios ao ar livre ou eventos descontraídos, sua estampa traz um toque de natureza ao visual.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712944855--unico--0.jpg",
+          "/produtos/16712944855--unico--1.jpg"
+        ],
         "tamanhos": [
           "M"
         ],
@@ -39234,7 +39265,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712944855--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "58924"
   },
@@ -39244,11 +39275,15 @@
     "marca": "Farm",
     "preco": 429,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido curto estampado jardim sereno. exibe decote em v, alças finas ajustáveis e costas à mostra. confeccionado em tecido leve, traz modelagem fluida que se adapta ao corpo. a peça perfeita para um passeio no parque ou um almoço casual. toque de originalidade e frescor para o seu guarda-roupa.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712943119--unico--0.jpg",
+          "/produtos/16712943119--unico--1.jpg",
+          "/produtos/16712943119--unico--2.jpg"
+        ],
         "tamanhos": [
           "M"
         ],
@@ -39257,7 +39292,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712943119--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "58924"
   },
@@ -40690,18 +40725,22 @@
     "marca": "Farm",
     "preco": 229,
     "novo": true,
-    "descricao": "",
+    "descricao": "Regata lenço estampada coqueiro sereno. confeccionada em tecido leve, com modelagem solta e corte fluido, traz um ar casual para os dias ensolarados. as alças finas destacam os ombros, enquanto o decote reto oferece um toque moderno. ideal para passeios à beira-mar ou para um almoço descontraído com amigos.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705506029--unico--0.jpg",
+          "/produtos/16705506029--unico--1.jpg",
+          "/produtos/16705506029--unico--2.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
         "tamanhosDisponiveis": []
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705506029--unico--0.jpg",
     "temEstoque": false,
     "_corCodigo": "57808"
   },
