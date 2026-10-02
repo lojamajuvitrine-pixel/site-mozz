@@ -19263,8 +19263,7 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "46",
-          "38"
+          "46"
         ]
       },
       {
@@ -24489,11 +24488,13 @@
           "36",
           "40"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "40"
+        ]
       }
     ],
     "imagem": "/produtos/16710528542--unico--0.jpg",
-    "temEstoque": false,
+    "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0200": {
         "36": [
