@@ -23717,11 +23717,15 @@
     "marca": "Animale",
     "preco": 598,
     "novo": true,
-    "descricao": "",
+    "descricao": "Top Feminino Cachecouer Geo Flow Bronze, Animale O  top rosa  é confeccionado em  tecido leve sem elasticidade.  A peça possui decote halter com transpasse frontal formando decote em V, alças alongadas para amarração no pescoço, modelagem cachecouer com faixas amplas para transpasse e amarração na cintura, costas abertas, estampa geométrica em tons contrastantes e fechamento por amarração.",
     "cores": [
       {
         "cor": "58229",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712912599--unico--0.jpg",
+          "/produtos/16712912599--unico--1.jpg",
+          "/produtos/16712912599--unico--2.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -23734,7 +23738,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712912599--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "58229": {
@@ -23756,11 +23760,15 @@
     "marca": "Animale",
     "preco": 698,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça Aladim de Voil Listrada com cós de elástico, amarração para ajuste, bolsos laterais e barra com elástico. A padronagem listrada e o caimento leve imprimem personalidade e movimento para diferentes ocasiões.",
     "cores": [
       {
         "cor": "1194",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712909001--unico--0.jpg",
+          "/produtos/16712909001--unico--1.jpg",
+          "/produtos/16712909001--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -23771,7 +23779,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712909001--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "1194": {
@@ -24657,7 +24665,7 @@
     "descricao": "A T-Shirt Manu é um casual cheio de atitude. Feita em algodão para toque macio e conforto, a peça abraça a silhueta com modelagem regular. O charme da corrente de metal dourada na barra arremata o look com sofisticação, perfeita para usar de diferentes jeitos.",
     "cores": [
       {
-        "cor": "0080",
+        "cor": "Off White",
         "imagens": [
           "/produtos/16710498869--unico--0.jpg",
           "/produtos/16710498869--unico--1.jpg",
@@ -24672,7 +24680,7 @@
         ]
       },
       {
-        "cor": "0089",
+        "cor": "Preto",
         "imagens": [
           "/produtos/16710498221--unico--0.jpg",
           "/produtos/16710498221--unico--1.jpg",
@@ -24690,12 +24698,12 @@
     "imagem": "/produtos/16710498869--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "0080": {
+      "Off White": {
         "P": [
           "16710498869"
         ]
       },
-      "0089": {
+      "Preto": {
         "P": [
           "16710498221"
         ]
@@ -30332,7 +30340,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "NV1261",
+        "cor": "Rosa/Vermelho",
         "imagens": [],
         "tamanhos": [
           "P",
@@ -30347,7 +30355,7 @@
     "imagem": null,
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV1261": {
+      "Rosa/Vermelho": {
         "P": [
           "16706524635"
         ],
@@ -32762,7 +32770,7 @@
     "descricao": "A Jaqueta Over Jeans Luna reinterpreta o clássico com um toque moderno. Sua modelagem oversized em jeans tem o caimento impecável e design único. O decote transpassado e o fechamento com zíper de metal dão personalidade, enquanto os bolsos embutidos completam o design.",
     "cores": [
       {
-        "cor": "NV054",
+        "cor": "Jeans Índigo",
         "imagens": [
           "/produtos/16706185046--unico--0.jpg",
           "/produtos/16706185046--unico--1.jpg",
@@ -32782,7 +32790,7 @@
     "imagem": "/produtos/16706185046--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "NV054": {
+      "Jeans Índigo": {
         "P": [
           "16706185046"
         ],
@@ -33470,7 +33478,7 @@
     "descricao": "",
     "cores": [
       {
-        "cor": "NV1286",
+        "cor": "Bandana Rosa",
         "imagens": [],
         "tamanhos": [
           "PP",
@@ -33482,7 +33490,7 @@
     "imagem": null,
     "temEstoque": false,
     "gruposBlingPorCorTamanho": {
-      "NV1286": {
+      "Bandana Rosa": {
         "P": [
           "16706010976"
         ],
@@ -35084,11 +35092,15 @@
     "marca": "Farm",
     "preco": 298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Biquíni lacinho double floral leni. a peça une praticidade e originalidade, com top triangular e alças finas ajustáveis que proporcionam conforto. a calcinha com amarração lateral permite ajuste perfeito, garantindo liberdade em movimento. ideal para um dia de sol, trazendo frescor em momentos de lazer.",
     "cores": [
       {
         "cor": "57806",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705492992--unico--0.jpg",
+          "/produtos/16705492992--unico--1.jpg",
+          "/produtos/16705492992--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -35101,7 +35113,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705492992--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57806": {
@@ -35242,11 +35254,15 @@
     "marca": "Farm",
     "preco": 298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Biquíni lacinho textura flor. apresenta top triangular com alças finas ajustáveis e amarração nas costas, oferecendo conforto e estilo. a calcinha possui laços laterais decorados com peças metálicas, valorizando o charme e a praticidade para ajuste perfeito. ideal para dias de sol e momentos à beira-mar.",
     "cores": [
       {
         "cor": "02345",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705436125--unico--0.jpg",
+          "/produtos/16705436125--unico--1.jpg",
+          "/produtos/16705436125--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "G"
@@ -35257,7 +35273,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705436125--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "02345": {
@@ -39767,11 +39783,16 @@
     "marca": "Animale",
     "preco": 228,
     "novo": true,
-    "descricao": "",
+    "descricao": "Esteira em trama estruturada com padronagem floral. Apresenta aplicação de logo.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712953745--unico--0.jpg",
+          "/produtos/16712953745--unico--1.jpg",
+          "/produtos/16712953745--unico--2.jpg",
+          "/produtos/16712953745--unico--3.jpg"
+        ],
         "tamanhos": [
           "U"
         ],
@@ -39780,7 +39801,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712953745--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "07732"
   },
