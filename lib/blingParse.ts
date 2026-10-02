@@ -214,7 +214,16 @@ const CODIGOS_COR_POR_MARCA: Record<string, Record<string, string>> = {
     "NV1176": "Cinza Onix",
     "NV1182": "Vermelho Rock",
     "NV1192": "Cinza Forest",
-    "NV1235": "Vermelho Cabernet"
+    "NV1235": "Vermelho Cabernet",
+    // Levantamento de 02/10/2026: codigos sem traducao no site, completados pelo Brunno.
+    // A T-shirt Manu foi cadastrada no Bling sem o prefixo "NV" (0080/0089), por isso
+    // a chave aqui fica sem prefixo mesmo. Atencao: "0080" = Off White, mas "NV080" = Branco
+    // (confirmado pelo Brunno - sao cores diferentes, nao unificar).
+    "NV054": "Jeans Índigo",
+    "NV1261": "Rosa/Vermelho",
+    "NV1286": "Bandana Rosa",
+    "0080": "Off White",
+    "0089": "Preto"
   }
 };
 
