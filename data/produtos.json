@@ -22951,6 +22951,422 @@
     "temEstoque": false
   },
   {
+    "id": "16708920682",
+    "nome": "T-shirt Fio Tinto Marrom",
+    "marca": "Animale",
+    "preco": 258,
+    "novo": true,
+    "descricao": "T-shirt em malha fio tinto com padronagem listrada, modelagem ampla e comprimento cropped. Possui detalhe de tag aplicada nas costas.  DETALHES – Desenvolvida em malha fio tinto – Padronagem listrada – Gola careca – Mangas curtas – Ombros deslocados – Modelagem ampla – Comprimento cropped – Tag aplicada nas costas",
+    "cores": [
+      {
+        "cor": "07509",
+        "imagens": [
+          "/produtos/16713901690--unico--0.jpg",
+          "/produtos/16713901690--unico--1.jpg",
+          "/produtos/16713901690--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16713901690--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07509": {
+        "PP": [
+          "16713901690"
+        ],
+        "M": [
+          "16708921615"
+        ],
+        "P": [
+          "16708920682"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16713896268",
+    "nome": "Regata de Tricot Gola U Color",
+    "marca": "Animale",
+    "preco": 358,
+    "novo": true,
+    "descricao": "Regata de tricot com comprimento clássico, decote em U e trama canelada. Uma peça versátil e atemporal.",
+    "cores": [
+      {
+        "cor": "07717",
+        "imagens": [
+          "/produtos/16713898997--unico--0.jpg",
+          "/produtos/16713898997--unico--1.jpg",
+          "/produtos/16713898997--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16713898997--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07717": {
+        "G": [
+          "16713898997"
+        ],
+        "M": [
+          "16713898882"
+        ],
+        "P": [
+          "16713896268"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16713893307",
+    "nome": "Short Praia Preto",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "36": [
+          "16713893307"
+        ],
+        "38": [
+          "16713894646"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706036149",
+    "nome": "Calça Seda Renda Marrom Taupe",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "07710",
+        "imagens": [
+          "/produtos/16713889677--unico--0.jpg",
+          "/produtos/16713889677--unico--1.jpg",
+          "/produtos/16713889677--unico--2.jpg",
+          "/produtos/16713889677--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "38"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16713889677--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07710": {
+        "34": [
+          "16706036149"
+        ],
+        "38": [
+          "16713889677"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16713885182",
+    "nome": "Calça de Voil Listrada Marrom Taupe",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": true,
+    "descricao": "Calça em voil com padronagem listrada e modelagem ampla. O cós com elástico e o ajuste por amarração proporcionam conforto ao vestir. Uma peça leve e versátil para composições da estação.",
+    "cores": [
+      {
+        "cor": "1195",
+        "imagens": [
+          "/produtos/16713887846--unico--0.jpg",
+          "/produtos/16713887846--unico--1.jpg",
+          "/produtos/16713887846--unico--2.jpg",
+          "/produtos/16713887846--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16713887846--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1195": {
+        "G": [
+          "16713887846"
+        ],
+        "M": [
+          "16713887801"
+        ],
+        "P": [
+          "16713887746"
+        ],
+        "PP": [
+          "16713885182"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16713875602",
+    "nome": "Calça de Couro Bolso Tresset",
+    "marca": "Animale",
+    "preco": 6598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0600",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0600": {
+        "36": [
+          "16713875602"
+        ],
+        "38": [
+          "16713877225"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16713854059",
+    "nome": "Jaqueta de Couro Perfecto Metais",
+    "marca": "Animale",
+    "preco": 8998,
+    "novo": true,
+    "descricao": "Jaqueta em couro com modelagem perfecto e comprimento cropped. A gola ampla e o fechamento frontal por zíper reforçam o design clássico da peça, enquanto os metais aplicados acrescentam destaque ao acabamento.",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [
+          "/produtos/16713873424--unico--0.jpg",
+          "/produtos/16713873424--unico--1.jpg",
+          "/produtos/16713873424--unico--2.jpg",
+          "/produtos/16713873424--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16713873424--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "34": [
+          "16713854059"
+        ],
+        "36": [
+          "16713873424"
+        ],
+        "38": [
+          "16713856525"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16713859503",
+    "nome": "Vestido de Couro Stretch Midi Diagonal",
+    "marca": "Animale",
+    "preco": 9998,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "38",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "38": [
+          "16713859503"
+        ],
+        "42": [
+          "16713861807"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16713843306",
+    "nome": "Camisa Chiffon Liberty Babados",
+    "marca": "Animale",
+    "preco": 1398,
+    "novo": true,
+    "descricao": "Camisa em chiffon com estampa liberty, mangas longas e transparência. Os babados aplicados na parte frontal acrescentam movimento à peça.",
+    "cores": [
+      {
+        "cor": "57560",
+        "imagens": [
+          "/produtos/16713845179--unico--0.jpg",
+          "/produtos/16713845179--unico--1.jpg",
+          "/produtos/16713845179--unico--2.jpg",
+          "/produtos/16713845179--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16713845179--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57560": {
+        "36": [
+          "16713843306"
+        ],
+        "40": [
+          "16713845179"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16713835082",
+    "nome": "Bermuda Jeans Cós Duplo",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": true,
+    "descricao": "Bermuda jeans com modelagem reta e cintura média. O cós duplo cria um efeito sobreposto que atualiza o clássico denim, complementado pelo acabamento desfiado na barra.",
+    "cores": [
+      {
+        "cor": "1530",
+        "imagens": [
+          "/produtos/16713840294--unico--0.jpg",
+          "/produtos/16713840294--unico--1.jpg",
+          "/produtos/16713840294--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42",
+          "44"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16713840294--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1530": {
+        "34": [
+          "16713835082"
+        ],
+        "36": [
+          "16713840009"
+        ],
+        "38": [
+          "16713840059"
+        ],
+        "40": [
+          "16713840123"
+        ],
+        "42": [
+          "16713840230"
+        ],
+        "44": [
+          "16713840294"
+        ]
+      }
+    }
+  },
+  {
     "id": "16712949123",
     "nome": "Vestido Longo Diana",
     "marca": "Farm",
@@ -23124,11 +23540,15 @@
     "marca": "Farm",
     "preco": 479.2,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido cropped estampado vento de flor. alças finas e decote suave garantem leveza ao visual, enquanto o corte casual e a saia fluida proporcionam conforto e liberdade. confeccionado em tecido leve, é perfeito para encontros ao ar livre ou passeios descontraídos, sempre com originalidade.",
     "cores": [
       {
         "cor": "57840",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712930149--unico--0.jpg",
+          "/produtos/16712930149--unico--1.jpg",
+          "/produtos/16712930149--unico--2.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -23141,7 +23561,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712930149--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57840": {
@@ -23202,11 +23622,15 @@
     "marca": "Farm",
     "preco": 529,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça jeans babado, da FARM, traz um toque divertido ao seu guarda-roupa. com caimento solto e babados charmosos na barra, essa peça é perfeita para ocasiões casuais ou encontros especiais. a modelagem clássica se eleva com detalhes sutis, garantindo conforto e estilo em qualquer situação.",
     "cores": [
       {
         "cor": "0101",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712926440--unico--0.jpg",
+          "/produtos/16712926440--unico--1.jpg",
+          "/produtos/16712926440--unico--2.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -23221,7 +23645,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712926440--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0101": {
@@ -23246,11 +23670,14 @@
     "marca": "Farm",
     "preco": 369,
     "novo": true,
-    "descricao": "",
+    "descricao": "Saia estampada emily tem design envolvente que une conforto e estilo. a cintura alta e o comprimento longo trazem um caimento fluido, perfeito para momentos casuais ou um passeio ao ar livre. confeccionada em tecido leve, ela complementa qualquer look com charme e personalidade.",
     "cores": [
       {
         "cor": "57847",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712923743--unico--0.jpg",
+          "/produtos/16712923743--unico--1.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -23265,7 +23692,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712923743--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57847": {
@@ -23609,7 +24036,12 @@
     "cores": [
       {
         "cor": "Marrom Cognac",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712900833--unico--0.jpg",
+          "/produtos/16712900833--unico--1.jpg",
+          "/produtos/16712900833--unico--2.jpg",
+          "/produtos/16712900833--unico--3.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
@@ -23637,7 +24069,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16706664494--unico--0.jpg",
+    "imagem": "/produtos/16712900833--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Marrom Cognac": {
@@ -25475,44 +25907,6 @@
     }
   },
   {
-    "id": "16708920682",
-    "nome": "T-shirt Fio Tinto Marrom",
-    "marca": "Animale",
-    "preco": 258,
-    "novo": true,
-    "descricao": "T-shirt em malha fio tinto com padronagem listrada, modelagem ampla e comprimento cropped. Possui detalhe de tag aplicada nas costas.  DETALHES – Desenvolvida em malha fio tinto – Padronagem listrada – Gola careca – Mangas curtas – Ombros deslocados – Modelagem ampla – Comprimento cropped – Tag aplicada nas costas",
-    "cores": [
-      {
-        "cor": "07509",
-        "imagens": [
-          "/produtos/16708921615--unico--0.jpg",
-          "/produtos/16708921615--unico--1.jpg",
-          "/produtos/16708921615--unico--2.jpg"
-        ],
-        "tamanhos": [
-          "P",
-          "M"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16708921615--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "07509": {
-        "M": [
-          "16708921615"
-        ],
-        "P": [
-          "16708920682"
-        ]
-      }
-    }
-  },
-  {
     "id": "16708918905",
     "nome": "Camisa Decote Jabour",
     "marca": "Animale",
@@ -26798,11 +27192,14 @@
     "marca": "Farm",
     "preco": 599,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido longo manga estampado floral leni. possui decote em v profundo que valoriza a região do colo e costas, mangas bufantes que trazem movimento e um toque especial, além de amarração na cintura que define a peça com charme. ideal para eventos casuais e saídas especiais.",
     "cores": [
       {
         "cor": "57826",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708381585--unico--0.jpg",
+          "/produtos/16708381585--unico--1.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -26813,7 +27210,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708381585--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57826": {
@@ -28931,11 +29328,14 @@
     "marca": "Farm",
     "preco": 698,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido longo manga estampado tapete de flor. com decote em v e delicadas mangas amplas, abraça a leveza e o frescor. a cintura levemente ajustada eleva a peça, enquanto os babados adicionam movimento ao caminhar. perfeito para um passeio ao ar livre ou um evento casual.",
     "cores": [
       {
         "cor": "57837",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707606629--unico--0.jpg",
+          "/produtos/16707606629--unico--1.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -28948,7 +29348,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707606629--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57837": {
@@ -32546,11 +32946,15 @@
     "marca": "Farm",
     "preco": 229,
     "novo": true,
-    "descricao": "",
+    "descricao": "Saia alfaiataria. destacando um design limpo e atemporal, essa saia traz a sofisticação da alfaiataria em um corte reto e minimalista. perfeita para ocasiões casuais e dias ensolarados, ela se adapta facilmente a diversas combinações e estilos, proporcionando um visual moderno e versátil.",
     "cores": [
       {
         "cor": "0013",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706155848--unico--0.jpg",
+          "/produtos/16706155848--unico--1.jpg",
+          "/produtos/16706155848--unico--2.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -32566,7 +32970,10 @@
       },
       {
         "cor": "07821",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706153638--unico--0.jpg",
+          "/produtos/16706153638--unico--1.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -32579,7 +32986,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706155848--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0013": {
@@ -32615,11 +33022,14 @@
     "marca": "Farm",
     "preco": 349,
     "novo": true,
-    "descricao": "",
+    "descricao": "Saia midi tule estampada jardim de amora. confeccionada em tecido fluido, revela um charme único com sua modelagem evasê que proporciona leveza e movimento. o toque especial fica por conta do tule delicado, ideal para um visual casual em eventos ao ar livre ou encontros descontraídos.",
     "cores": [
       {
         "cor": "57792",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706148011--unico--0.jpg",
+          "/produtos/16706148011--unico--1.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -32632,7 +33042,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706148011--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57792": {
@@ -34794,11 +35204,15 @@
     "marca": "Farm",
     "preco": 298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Biquíni lacinho floral romance. confeccionado em tecido leve, o top possui modelagem fixada com laços ajustáveis, garantindo conforto e encaixe perfeito. a calcinha com amarração lateral e acabamento delicado eleva qualquer dia de praia ou piscina. o floral exclusivo traz frescor e originalidade, ideal para momentos de lazer ao sol.",
     "cores": [
       {
         "cor": "58369",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705440780--unico--0.jpg",
+          "/produtos/16705440780--unico--1.jpg",
+          "/produtos/16705440780--unico--2.jpg"
+        ],
         "tamanhos": [
           "M",
           "G"
@@ -34809,7 +35223,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705440780--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "58369": {
@@ -39221,6 +39635,133 @@
     "temEstoque": false
   },
   {
+    "id": "16713909215",
+    "nome": "T-shirt Tricot Basica Gola Alta Color - 6223",
+    "marca": "Animale",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "6223"
+  },
+  {
+    "id": "16713906239",
+    "nome": "Bata Peplum com Renda Textura Selva - 57586",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57586"
+  },
+  {
+    "id": "16713902181",
+    "nome": "Calça Bordada Listra Mostarda - 1807",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16713902181--unico--0.jpg",
+          "/produtos/16713902181--unico--1.jpg",
+          "/produtos/16713902181--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16713902181--unico--0.jpg",
+    "temEstoque": true,
+    "_corCodigo": "1807"
+  },
+  {
+    "id": "16713865562",
+    "nome": "Calça de Couro Cos Virado - 07707",
+    "marca": "Animale",
+    "preco": 8998,
+    "novo": true,
+    "descricao": "Calça em couro legítimo. Possui cós virado com amarração, recortes, bolsos frontais com zíper e barras ajustáveis. Uma peça sofisticada e contemporânea.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16713865562--unico--0.jpg",
+          "/produtos/16713865562--unico--1.jpg",
+          "/produtos/16713865562--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "36"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16713865562--unico--0.jpg",
+    "temEstoque": true,
+    "_corCodigo": "07707"
+  },
+  {
+    "id": "16713849438",
+    "nome": "Trench Couro Edith Curto - NV089",
+    "marca": "NV",
+    "preco": 11998,
+    "novo": true,
+    "descricao": "O Trench Couro Edith Curto reinventa a sofisticação com um toque atual. Comprimento curto e modelagem oversized valorizam a silhueta, enquanto a faixa cinto permite um ajuste perfeito. O transpasse duplo e a gola, que pode ser usada alta, dão essa versatilidade e personalidade.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16713849438--unico--0.jpg",
+          "/produtos/16713849438--unico--1.jpg",
+          "/produtos/16713849438--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16713849438--unico--0.jpg",
+    "temEstoque": true,
+    "_corCodigo": "NV089"
+  },
+  {
     "id": "16712953745",
     "nome": "Esteira de Praia Floral - 07732",
     "marca": "Animale",
@@ -40405,27 +40946,6 @@
     "imagem": "/produtos/16706044287--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "NV089"
-  },
-  {
-    "id": "16706036149",
-    "nome": "Calça Seda Renda Marrom Taupe - 07710",
-    "marca": "Animale",
-    "preco": 1298,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "34"
-        ],
-        "tamanhosDisponiveis": []
-      }
-    ],
-    "imagem": null,
-    "temEstoque": false,
-    "_corCodigo": "07710"
   },
   {
     "id": "16706003910",
