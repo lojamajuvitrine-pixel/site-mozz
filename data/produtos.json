@@ -222,8 +222,8 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "36",
-          "40"
+          "40",
+          "36"
         ]
       },
       {
@@ -1067,10 +1067,10 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "34",
-          "36",
+          "44",
           "42",
-          "44"
+          "34",
+          "36"
         ]
       },
       {
@@ -1607,8 +1607,8 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "40",
-          "44"
+          "44",
+          "40"
         ]
       }
     ],
@@ -1657,8 +1657,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "M"
         ]
       }
@@ -2077,9 +2077,9 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "40",
+          "44",
           "42",
-          "44"
+          "40"
         ]
       }
     ],
@@ -10245,9 +10245,9 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
+          "44",
           "40",
-          "44"
+          "38"
         ]
       }
     ],
@@ -17288,8 +17288,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "M",
           "P"
         ]
@@ -22926,6 +22926,852 @@
     "temEstoque": false
   },
   {
+    "id": "16714609433",
+    "nome": "Top Ziper Pate Cobertade Algodao Azul",
+    "marca": "Animale",
+    "preco": 498,
+    "novo": true,
+    "descricao": "Top com modelagem estruturada, decote reto, alças largas e fechamento frontal por zíper. O lastex nas costas complementa a construção da peça, proporcionando conforto ao vestir.",
+    "cores": [
+      {
+        "cor": "0011",
+        "imagens": [
+          "/produtos/16714610367--unico--0.jpg",
+          "/produtos/16714610367--unico--1.jpg",
+          "/produtos/16714610367--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714610367--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0011": {
+        "36": [
+          "16714609433"
+        ],
+        "38": [
+          "16714610367"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16714607384",
+    "nome": "Vestido Decote Cruzado Tricot",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": true,
+    "descricao": "Vestido em tricot canelado com modelagem ajustada e comprimento midi. Possui decote cruzado, costas com torção no decote e fenda posterior na barra. Uma peça versátil e atemporal.",
+    "cores": [
+      {
+        "cor": "07705",
+        "imagens": [
+          "/produtos/16714608312--unico--0.jpg",
+          "/produtos/16714608312--unico--1.jpg",
+          "/produtos/16714608312--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714608312--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07705": {
+        "M": [
+          "16714608312"
+        ],
+        "P": [
+          "16714607384"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707319660",
+    "nome": "Camisa Jeans Cintura Costas",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": true,
+    "descricao": "Camisa Jeans com modelagem reta, mangas longas e lavagem média. Os bolsos frontais e as aberturas laterais trazem um toque contemporâneo à peça, enquanto o denim garante versatilidade para diferentes ocasiões.",
+    "cores": [
+      {
+        "cor": "0105",
+        "imagens": [
+          "/produtos/16714606634--unico--0.jpg",
+          "/produtos/16714606634--unico--1.jpg",
+          "/produtos/16714606634--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714606634--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0105": {
+        "M": [
+          "16714606634"
+        ],
+        "P": [
+          "16714606601"
+        ],
+        "G": [
+          "16707319660"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16713909215",
+    "nome": "T-shirt Tricot Basica Gola Alta Color",
+    "marca": "Animale",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "02322",
+        "imagens": [
+          "/produtos/16714604678--unico--0.jpg",
+          "/produtos/16714604678--unico--1.jpg",
+          "/produtos/16714604678--unico--2.jpg",
+          "/produtos/16714604678--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      },
+      {
+        "cor": "07708",
+        "imagens": [
+          "/produtos/16714602224--unico--0.jpg",
+          "/produtos/16714602224--unico--1.jpg",
+          "/produtos/16714602224--unico--2.jpg",
+          "/produtos/16714602224--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "6260",
+        "imagens": [
+          "/produtos/16714593558--unico--0.jpg",
+          "/produtos/16714593558--unico--1.jpg",
+          "/produtos/16714593558--unico--2.jpg",
+          "/produtos/16714593558--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      },
+      {
+        "cor": "6223",
+        "imagens": [
+          "/produtos/16714590246--unico--0.jpg",
+          "/produtos/16714590246--unico--1.jpg",
+          "/produtos/16714590246--unico--2.jpg",
+          "/produtos/16714590246--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714604678--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "6223": {
+        "G": [
+          "16714590246"
+        ],
+        "M": [
+          "16714590191"
+        ],
+        "PP": [
+          "16714590136"
+        ],
+        "P": [
+          "16713909215"
+        ]
+      },
+      "6260": {
+        "M": [
+          "16714593558"
+        ],
+        "P": [
+          "16714593437"
+        ],
+        "PP": [
+          "16714592279"
+        ]
+      },
+      "02322": {
+        "M": [
+          "16714604678"
+        ],
+        "P": [
+          "16714604636"
+        ],
+        "PP": [
+          "16714603941"
+        ]
+      },
+      "07708": {
+        "G": [
+          "16714602224"
+        ],
+        "M": [
+          "16714602047"
+        ],
+        "P": [
+          "16714601845"
+        ],
+        "PP": [
+          "16714599800"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16714582797",
+    "nome": "Jaqueta Jeans Mabe",
+    "marca": "NV",
+    "preco": 1598,
+    "novo": true,
+    "descricao": "A Jaqueta Jeans Mabe é a peça que traduz modernidade e personalidade em cada detalhe. Em jeans e pelo, possui mangas e costas em algodão, dando um toque macio. A frente e gola destacam o visual. Essencial para transformar seu look com personalidade e versatilidade.",
+    "cores": [
+      {
+        "cor": "NV1169",
+        "imagens": [
+          "/produtos/16714584686--unico--0.jpg",
+          "/produtos/16714584686--unico--1.jpg",
+          "/produtos/16714584686--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714584686--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "NV1169": {
+        "M": [
+          "16714584686"
+        ],
+        "P": [
+          "16714584619"
+        ],
+        "PP": [
+          "16714582797"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705941714",
+    "nome": "Blusa Couro Ayla",
+    "marca": "NV",
+    "preco": 3898,
+    "novo": true,
+    "descricao": "A Blusa Ayla tem caimento impecável, aliado ao decote quadrado e à modelagem slim, desenha uma silhueta elegante. Tudo feito em um couro com elastano para você que busca versatilidade e personalidade, esta regata com fechamento posterior por zíper de metal é uma peça desejo para seu closet.",
+    "cores": [
+      {
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16714575394--unico--0.jpg",
+          "/produtos/16714575394--unico--1.jpg",
+          "/produtos/16714575394--unico--2.jpg",
+          "/produtos/16714575394--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714575394--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Preto": {
+        "P": [
+          "16714575394"
+        ],
+        "G": [
+          "16705942590"
+        ],
+        "M": [
+          "16705941714"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706194209",
+    "nome": "Blazer Zoe",
+    "marca": "NV",
+    "preco": 1398,
+    "novo": true,
+    "descricao": "O Blazer Zoe é um clássico com jeito atual. Com shape regular e um toque de lã, o caimento é impecável. Uma peça versátil que transita em qualquer ocasião com muita elegância.\nConfeccionado em alfaiataria com toque de lã\nModelagem regular\nGola regular com lapela\nFechamento transpassado com botões\nManga longa\nBolsos frontais com lapela\nBolso embutido no peito\nBarra reta",
+    "cores": [
+      {
+        "cor": "Azul Denim",
+        "imagens": [
+          "/produtos/16714575180--unico--0.jpg",
+          "/produtos/16714575180--unico--1.jpg",
+          "/produtos/16714575180--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      },
+      {
+        "cor": "Cinza Mescla",
+        "imagens": [
+          "/produtos/16706665860--unico--0.jpg",
+          "/produtos/16706665860--unico--1.jpg",
+          "/produtos/16706665860--unico--2.jpg",
+          "/produtos/16706665860--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      },
+      {
+        "cor": "Verde Harbor",
+        "imagens": [
+          "/produtos/16706515147--unico--0.jpg",
+          "/produtos/16706515147--unico--1.jpg",
+          "/produtos/16706515147--unico--2.jpg",
+          "/produtos/16706515147--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      },
+      {
+        "cor": "Azul Navy",
+        "imagens": [
+          "/produtos/16706194718--unico--0.jpg",
+          "/produtos/16706194718--unico--1.jpg",
+          "/produtos/16706194718--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714575180--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Azul Denim": {
+        "M": [
+          "16714575180"
+        ],
+        "P": [
+          "16714575098"
+        ],
+        "PP": [
+          "16714573250"
+        ]
+      },
+      "Cinza Mescla": {
+        "M": [
+          "16706665860"
+        ]
+      },
+      "Verde Harbor": {
+        "M": [
+          "16706515147"
+        ],
+        "P": [
+          "16706515063"
+        ],
+        "PP": [
+          "16706514902"
+        ]
+      },
+      "Azul Navy": {
+        "M": [
+          "16706194718"
+        ],
+        "P": [
+          "16706194660"
+        ],
+        "PP": [
+          "16706194209"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706050137",
+    "nome": "Saia Marta",
+    "marca": "NV",
+    "preco": 898,
+    "novo": true,
+    "descricao": "Em acetato e viscose, com toque suave e caimento impecável, a Saia Marta é um clássico no closet. Sua modelagem reta e comprimento mini dá versatilidade para looks do dia a dia ou eventos especiais. A cintura alta alonga a figura, enquanto os passantes permitem adicionar um cinto e personalizar o look.",
+    "cores": [
+      {
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16714572775--unico--0.jpg",
+          "/produtos/16714572775--unico--1.jpg",
+          "/produtos/16714572775--unico--2.jpg",
+          "/produtos/16714572775--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "40"
+        ]
+      },
+      {
+        "cor": "Bege Sugar",
+        "imagens": [
+          "/produtos/16706664965--unico--0.jpg",
+          "/produtos/16706664965--unico--1.jpg",
+          "/produtos/16706664965--unico--2.jpg",
+          "/produtos/16706664965--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "40"
+        ]
+      },
+      {
+        "cor": "Cinza Forest",
+        "imagens": [
+          "/produtos/16706050470--unico--0.jpg",
+          "/produtos/16706050470--unico--1.jpg",
+          "/produtos/16706050470--unico--2.jpg",
+          "/produtos/16706050470--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714572775--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Preto": {
+        "34": [
+          "16714572775"
+        ],
+        "40": [
+          "16706056173"
+        ]
+      },
+      "Bege Sugar": {
+        "34": [
+          "16706664965"
+        ],
+        "40": [
+          "16706331971"
+        ]
+      },
+      "Cinza Forest": {
+        "34": [
+          "16706050137"
+        ],
+        "36": [
+          "16706050396"
+        ],
+        "38": [
+          "16706050417"
+        ],
+        "40": [
+          "16706050470"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16714567668",
+    "nome": "Calça de Couro Ampla Cos Fivelas",
+    "marca": "Animale",
+    "preco": 7598,
+    "novo": true,
+    "descricao": "Calça em couro legítimo com modelagem ampla. O cós largo com fivelas laterais e os recortes com pespontos destacam a construção. O couro e os acabamentos metálicos trazem uma proposta sofisticada e contemporânea.",
+    "cores": [
+      {
+        "cor": "10056",
+        "imagens": [
+          "/produtos/16714569748--unico--0.jpg",
+          "/produtos/16714569748--unico--1.jpg",
+          "/produtos/16714569748--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714569748--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "10056": {
+        "36": [
+          "16714567668"
+        ],
+        "38": [
+          "16714569657"
+        ],
+        "40": [
+          "16714569748"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16714561753",
+    "nome": "Biquini Asa Delta Textura Lurex",
+    "marca": "Farm",
+    "preco": 329,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "07708",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07708": {
+        "G": [
+          "16714562500"
+        ],
+        "M": [
+          "16714562443"
+        ],
+        "P": [
+          "16714561753"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16714555890",
+    "nome": "Maio Localizado Romance",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57824",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57824": {
+        "G": [
+          "16714557506"
+        ],
+        "M": [
+          "16714557333"
+        ],
+        "P": [
+          "16714555890"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16714550820",
+    "nome": "Calça Floral Romance",
+    "marca": "Farm",
+    "preco": 429,
+    "novo": true,
+    "descricao": "Calça estampada floral romance. confeccionada em tecido leve, possui modelagem ampla e cintura elástica ajustável com amarração discreta. o caimento fluido garante conforto, enquanto o toque floral confere charme único à peça. ideal para um passeio casual ou uma saída descontraída.",
+    "cores": [
+      {
+        "cor": "58369",
+        "imagens": [
+          "/produtos/16714553729--unico--0.jpg",
+          "/produtos/16714553729--unico--1.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714553729--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58369": {
+        "M": [
+          "16714553729"
+        ],
+        "P": [
+          "16714553660"
+        ],
+        "PP": [
+          "16714550820"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16714537533",
+    "nome": "Biquini Bandeau Encanto Floral",
+    "marca": "Farm",
+    "preco": 349,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57905",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57905": {
+        "M": [
+          "16714538347"
+        ],
+        "P": [
+          "16714537533"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705426322",
+    "nome": "Biquini Lacinho Floral Romance",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "Biquíni lacinho floral romance. confeccionado em tecido leve, o top possui modelagem fixada com laços ajustáveis, garantindo conforto e encaixe perfeito. a calcinha com amarração lateral e acabamento delicado eleva qualquer dia de praia ou piscina. o floral exclusivo traz frescor e originalidade, ideal para momentos de lazer ao sol.",
+    "cores": [
+      {
+        "cor": "58369",
+        "imagens": [
+          "/produtos/16714534915--unico--0.jpg",
+          "/produtos/16714534915--unico--1.jpg",
+          "/produtos/16714534915--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16714534915--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "58369": {
+        "P": [
+          "16714534915"
+        ],
+        "M": [
+          "16705440780"
+        ],
+        "G": [
+          "16705426322"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16714532016",
+    "nome": "Biquini Meia Taça Textura Borboleta",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "10066",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "10066": {
+        "G": [
+          "16714533917"
+        ],
+        "M": [
+          "16714533761"
+        ],
+        "P": [
+          "16714532016"
+        ]
+      }
+    }
+  },
+  {
     "id": "16708920682",
     "nome": "T-shirt Fio Tinto Marrom",
     "marca": "Animale",
@@ -23390,8 +24236,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -23564,8 +24410,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -23653,9 +24499,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
+          "PP",
           "M",
-          "G",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -24698,8 +25544,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       },
       {
@@ -26701,8 +27547,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       }
     ],
@@ -26945,8 +27791,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -27552,10 +28398,10 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG"
         ]
       },
       {
@@ -30047,98 +30893,6 @@
     }
   },
   {
-    "id": "16706194209",
-    "nome": "Blazer Zoe",
-    "marca": "NV",
-    "preco": 1398,
-    "novo": true,
-    "descricao": "O Blazer Zoe é um clássico com jeito atual. Com shape regular e um toque de lã, o caimento é impecável. Uma peça versátil que transita em qualquer ocasião com muita elegância.\nConfeccionado em alfaiataria com toque de lã\nModelagem regular\nGola regular com lapela\nFechamento transpassado com botões\nManga longa\nBolsos frontais com lapela\nBolso embutido no peito\nBarra reta",
-    "cores": [
-      {
-        "cor": "Cinza Mescla",
-        "imagens": [
-          "/produtos/16706665860--unico--0.jpg",
-          "/produtos/16706665860--unico--1.jpg",
-          "/produtos/16706665860--unico--2.jpg",
-          "/produtos/16706665860--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "M"
-        ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
-      },
-      {
-        "cor": "Verde Harbor",
-        "imagens": [
-          "/produtos/16706515147--unico--0.jpg",
-          "/produtos/16706515147--unico--1.jpg",
-          "/produtos/16706515147--unico--2.jpg",
-          "/produtos/16706515147--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "PP",
-          "P",
-          "M"
-        ],
-        "tamanhosDisponiveis": [
-          "PP",
-          "P",
-          "M"
-        ]
-      },
-      {
-        "cor": "Azul Navy",
-        "imagens": [
-          "/produtos/16706194718--unico--0.jpg",
-          "/produtos/16706194718--unico--1.jpg",
-          "/produtos/16706194718--unico--2.jpg"
-        ],
-        "tamanhos": [
-          "PP",
-          "P",
-          "M"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16706665860--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Cinza Mescla": {
-        "M": [
-          "16706665860"
-        ]
-      },
-      "Verde Harbor": {
-        "M": [
-          "16706515147"
-        ],
-        "P": [
-          "16706515063"
-        ],
-        "PP": [
-          "16706514902"
-        ]
-      },
-      "Azul Navy": {
-        "M": [
-          "16706194718"
-        ],
-        "P": [
-          "16706194660"
-        ],
-        "PP": [
-          "16706194209"
-        ]
-      }
-    }
-  },
-  {
     "id": "16705896403",
     "nome": "Cardigan Tricot Cleo",
     "marca": "NV",
@@ -30182,100 +30936,6 @@
         ],
         "M": [
           "16705896403"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16706050137",
-    "nome": "Saia Marta",
-    "marca": "NV",
-    "preco": 898,
-    "novo": true,
-    "descricao": "Em acetato e viscose, com toque suave e caimento impecável, a Saia Marta é um clássico no closet. Sua modelagem reta e comprimento mini dá versatilidade para looks do dia a dia ou eventos especiais. A cintura alta alonga a figura, enquanto os passantes permitem adicionar um cinto e personalizar o look.",
-    "cores": [
-      {
-        "cor": "Bege Sugar",
-        "imagens": [
-          "/produtos/16706664965--unico--0.jpg",
-          "/produtos/16706664965--unico--1.jpg",
-          "/produtos/16706664965--unico--2.jpg",
-          "/produtos/16706664965--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "34",
-          "40"
-        ],
-        "tamanhosDisponiveis": [
-          "34",
-          "40"
-        ]
-      },
-      {
-        "cor": "Preto",
-        "imagens": [
-          "/produtos/16706056173--unico--0.jpg",
-          "/produtos/16706056173--unico--1.jpg",
-          "/produtos/16706056173--unico--2.jpg",
-          "/produtos/16706056173--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "40"
-        ],
-        "tamanhosDisponiveis": [
-          "40"
-        ]
-      },
-      {
-        "cor": "Cinza Forest",
-        "imagens": [
-          "/produtos/16706050470--unico--0.jpg",
-          "/produtos/16706050470--unico--1.jpg",
-          "/produtos/16706050470--unico--2.jpg",
-          "/produtos/16706050470--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "34",
-          "36",
-          "38",
-          "40"
-        ],
-        "tamanhosDisponiveis": [
-          "34",
-          "36",
-          "38",
-          "40"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16706664965--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Bege Sugar": {
-        "34": [
-          "16706664965"
-        ],
-        "40": [
-          "16706331971"
-        ]
-      },
-      "Preto": {
-        "40": [
-          "16706056173"
-        ]
-      },
-      "Cinza Forest": {
-        "34": [
-          "16706050137"
-        ],
-        "36": [
-          "16706050396"
-        ],
-        "38": [
-          "16706050417"
-        ],
-        "40": [
-          "16706050470"
         ]
       }
     }
@@ -30639,8 +31299,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -32396,11 +33056,14 @@
     "marca": "Farm",
     "preco": 469,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido tule ciana traz frescor e originalidade com seu design inovador. confeccionado em tule, possui decote alto e mangas curtas, conferindo leveza. o caimento delicado é ideal para ocasiões casuais ou eventos mais especiais, destacando a essência única da peça.",
     "cores": [
       {
         "cor": "57796",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706232251--unico--0.jpg",
+          "/produtos/16706232251--unico--1.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -32412,7 +33075,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706232251--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57796": {
@@ -32463,8 +33126,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G"
+          "G",
+          "GG"
         ]
       }
     ],
@@ -32817,8 +33480,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       },
       {
@@ -32886,9 +33549,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "P",
-          "PP"
+          "G"
         ]
       },
       {
@@ -33002,9 +33665,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "M",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -33066,11 +33729,16 @@
     "marca": "Farm",
     "preco": 349,
     "novo": true,
-    "descricao": "",
+    "descricao": "Bata estampada floral delicado. revelando o charme de um decote em v e mangas curtas com um toque fluido, esta peça traz frescor e originalidade. a modelagem ampla oferece conforto, enquanto a estampa floral acrescenta um toque especial ao visual. ideal para um passeio descontraído ou um almoço ao ar livre.",
     "cores": [
       {
         "cor": "57809",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706137793--unico--0.jpg",
+          "/produtos/16706137793--unico--1.jpg",
+          "/produtos/16706137793--unico--2.jpg",
+          "/produtos/16706137793--unico--3.jpg"
+        ],
         "tamanhos": [
           "M",
           "G"
@@ -33081,7 +33749,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706137793--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57809": {
@@ -33454,45 +34122,6 @@
     }
   },
   {
-    "id": "16705941714",
-    "nome": "Blusa Couro Ayla",
-    "marca": "NV",
-    "preco": 3898,
-    "novo": true,
-    "descricao": "A Blusa Ayla tem caimento impecável, aliado ao decote quadrado e à modelagem slim, desenha uma silhueta elegante. Tudo feito em um couro com elastano para você que busca versatilidade e personalidade, esta regata com fechamento posterior por zíper de metal é uma peça desejo para seu closet.",
-    "cores": [
-      {
-        "cor": "Preto",
-        "imagens": [
-          "/produtos/16705942590--unico--0.jpg",
-          "/produtos/16705942590--unico--1.jpg",
-          "/produtos/16705942590--unico--2.jpg",
-          "/produtos/16705942590--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "M",
-          "G"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16705942590--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Preto": {
-        "G": [
-          "16705942590"
-        ],
-        "M": [
-          "16705941714"
-        ]
-      }
-    }
-  },
-  {
     "id": "16705936477",
     "nome": "Colete Longo Riscas Preta",
     "marca": "Animale",
@@ -33853,8 +34482,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       },
       {
@@ -34180,8 +34809,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
@@ -34471,8 +35100,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
@@ -34963,8 +35592,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
@@ -35005,8 +35634,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -35101,44 +35730,6 @@
         ],
         "PP": [
           "16705482711"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16705426322",
-    "nome": "Biquini Lacinho Floral Romance",
-    "marca": "Farm",
-    "preco": 298,
-    "novo": true,
-    "descricao": "Biquíni lacinho floral romance. confeccionado em tecido leve, o top possui modelagem fixada com laços ajustáveis, garantindo conforto e encaixe perfeito. a calcinha com amarração lateral e acabamento delicado eleva qualquer dia de praia ou piscina. o floral exclusivo traz frescor e originalidade, ideal para momentos de lazer ao sol.",
-    "cores": [
-      {
-        "cor": "58369",
-        "imagens": [
-          "/produtos/16705440780--unico--0.jpg",
-          "/produtos/16705440780--unico--1.jpg",
-          "/produtos/16705440780--unico--2.jpg"
-        ],
-        "tamanhos": [
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "M",
-          "G"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16705440780--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "58369": {
-        "M": [
-          "16705440780"
-        ],
-        "G": [
-          "16705426322"
         ]
       }
     }
@@ -35396,9 +35987,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "M",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -39540,10 +40131,10 @@
     "temEstoque": false
   },
   {
-    "id": "16713909215",
-    "nome": "T-shirt Tricot Basica Gola Alta Color - 6223",
-    "marca": "Animale",
-    "preco": 398,
+    "id": "16714577732",
+    "nome": "Blusa Laysa - NV1305",
+    "marca": "NV",
+    "preco": 1148,
     "novo": true,
     "descricao": "",
     "cores": [
@@ -39560,7 +40151,122 @@
     ],
     "imagem": null,
     "temEstoque": true,
-    "_corCodigo": "6223"
+    "_corCodigo": "NV1305"
+  },
+  {
+    "id": "16714576668",
+    "nome": "Calça Jeans Julia Cós Transpassado - NV058",
+    "marca": "NV",
+    "preco": 798,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "34"
+        ],
+        "tamanhosDisponiveis": [
+          "34"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "NV058"
+  },
+  {
+    "id": "16714560967",
+    "nome": "Regata Richilieu Peixe - 02542",
+    "marca": "Farm",
+    "preco": 229,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP"
+        ],
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "02542"
+  },
+  {
+    "id": "16714560549",
+    "nome": "Maio Localizado Floral Luma - 57807",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57807"
+  },
+  {
+    "id": "16714545399",
+    "nome": "Camisa Ml Linho Estival - 0278",
+    "marca": "Foxton",
+    "preco": 698,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "0278"
+  },
+  {
+    "id": "16714535919",
+    "nome": "Biquini Lenço Maravilha - 57870",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "57870"
   },
   {
     "id": "16713906239",
@@ -40508,27 +41214,6 @@
     "_corCodigo": "6223"
   },
   {
-    "id": "16707319660",
-    "nome": "Camisa Jeans Cintura Costas - 0105",
-    "marca": "Animale",
-    "preco": 998,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "G"
-        ],
-        "tamanhosDisponiveis": []
-      }
-    ],
-    "imagem": null,
-    "temEstoque": false,
-    "_corCodigo": "0105"
-  },
-  {
     "id": "16707319145",
     "nome": "Garrafa Zebrado Terroso - 57753",
     "marca": "Animale",
@@ -40975,11 +41660,14 @@
     "marca": "Farm",
     "preco": 298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido T-Shirt Big Estampado Patch Tropical. com design leve e moderno, este vestido apresenta corte solto com mangas amplas e decote redondo, ideal para um visual casual e sofisticado. os acabamentos refinados e a estampa exclusiva elevam a peça, perfeita para encontros descontraídos ou passeios no fim de semana.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705697402--unico--0.jpg",
+          "/produtos/16705697402--unico--1.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
@@ -40988,7 +41676,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705697402--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "57810"
   },
@@ -41243,11 +41931,15 @@
     "marca": "Farm",
     "preco": 449,
     "novo": true,
-    "descricao": "",
+    "descricao": "Bata estampada rosa rio é perfeita para um dia ensolarado e casual. com decote em v ajustável por cordinha e mangas três quartos levemente bufantes, ela traz um charme especial. a modelagem ampla proporciona leveza e movimento, destacando a autenticidade da peça. ideal para passeios à beira-mar ou encontros descontraídos.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705472941--unico--0.jpg",
+          "/produtos/16705472941--unico--1.jpg",
+          "/produtos/16705472941--unico--2.jpg"
+        ],
         "tamanhos": [
           "G"
         ],
@@ -41256,7 +41948,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705472941--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "58935"
   },
