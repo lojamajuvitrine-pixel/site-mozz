@@ -53,6 +53,90 @@ const GENERO_POR_MARCA: Record<string, "female" | "male" | "unisex"> = {
   Farm: "female"
 };
 
+// Titulo do Google (09/10/2026, aprovado pelo Brunno): "Nome da peca + Marca + Cor + Feminino/Masculino".
+// So muda o titulo que vai pro Google - o nome no site, no Bling e no feed da Meta continua igual.
+// Tira tamanho e codigo de cor cru do nome ("- M - 58920", "- Nv089", "Preto:44"), corrige
+// grafias comuns do Bling (Calca -> Calça, Tshirt -> T-shirt, Ml -> Manga Longa), poe a cor da
+// variacao (sem repetir se o nome ja tem a cor) e o genero concordando com a peca.
+const PALAVRAS_MINUSCULAS = new Set(["de", "da", "do", "das", "dos", "e", "com", "em", "na", "no", "para"]);
+const CORRECOES_NOME: Record<string, string> = {
+  calca: "Calça",
+  basica: "Básica",
+  basico: "Básico",
+  classica: "Clássica",
+  classico: "Clássico",
+  algodao: "Algodão",
+  tshirt: "T-shirt",
+  "t-shirt": "T-shirt",
+  ml: "Manga Longa",
+  mc: "Manga Curta"
+};
+const PALAVRAS_FEMININAS_EXTRA = new Set(["t-shirt", "tshirt", "necessaire"]);
+
+function semAcento(texto: string): string {
+  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+function limparNomeParaTitulo(nome: string): string {
+  const limpo = nome
+    .replace(/:\s*\d+\b/g, "")
+    .replace(/\s+-\s+[A-Za-z]{0,3}\d{3,6}\b/g, "")
+    .replace(/\s+-\s+(PP|P|M|G|GG|XG|XGG|EG|U|UN|Único|Unico|\d{2})\s*$/i, "")
+    .replace(/\b(VER|INV)\s?\d{2}\b/gi, "")
+    .replace(/\s+-\s+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return limpo
+    .split(" ")
+    .map((palavra, i) => {
+      const minuscula = palavra.toLowerCase();
+      if (CORRECOES_NOME[minuscula]) return CORRECOES_NOME[minuscula];
+      if (i > 0 && PALAVRAS_MINUSCULAS.has(minuscula)) return minuscula;
+      return palavra;
+    })
+    .join(" ");
+}
+
+function corEmTitulo(cor: string): string {
+  return cor
+    .toLowerCase()
+    .split(" ")
+    .map((palavra, i) =>
+      i > 0 && PALAVRAS_MINUSCULAS.has(palavra)
+        ? palavra
+        : palavra
+            .split("/")
+            .map((parte) => parte.charAt(0).toUpperCase() + parte.slice(1))
+            .join("/")
+    )
+    .join(" ");
+}
+
+function montarTitulo(produto: Produto, corDaVariacao: string): string {
+  let nome = limparNomeParaTitulo(produto.nome);
+  const palavras = nome.split(" ");
+  let palavraBase = palavras[0] ?? "";
+  if (/^(maxi|mini)$/i.test(palavraBase) && palavras[1]) palavraBase = palavras[1];
+  const base = semAcento(palavraBase);
+  const feminina = base.endsWith("a") || PALAVRAS_FEMININAS_EXTRA.has(base);
+  if (palavras[0] === "T-shirt") nome = `Camiseta ${nome}`;
+
+  let cor = corDaVariacao ? corEmTitulo(corDaVariacao) : "";
+  if (cor) {
+    const nomeSemAcento = semAcento(nome);
+    const palavrasCor = semAcento(cor)
+      .split(/[\s/]+/)
+      .filter((p) => p.length > 2);
+    if (palavrasCor.length > 0 && palavrasCor.every((p) => nomeSemAcento.includes(p))) cor = "";
+  }
+
+  const genero = GENERO_POR_MARCA[produto.marca] ?? "unisex";
+  const generoTexto =
+    genero === "female" ? (feminina ? "Feminina" : "Feminino") : genero === "male" ? (feminina ? "Masculina" : "Masculino") : "";
+
+  return limparTexto([nome, produto.marca, cor, generoTexto].filter(Boolean).join(" "), 150);
+}
+
 function csvEscape(valor: string): string {
   if (/[",\n\r]/.test(valor)) {
     return `"${valor.replace(/"/g, '""')}"`;
@@ -122,7 +206,7 @@ function linhasDoProduto(produto: Produto): Array<Record<Coluna, string>> {
       linhas.push({
         id,
         item_group_id: produto.id,
-        title: limparTexto(`${produto.nome} — ${produto.marca}`, 150),
+        title: montarTitulo(produto, corParaFeed),
         description: descricao,
         availability: disponiveisAgora.has(tamanho) ? "in stock" : "out of stock",
         condition: "new",
