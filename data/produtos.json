@@ -23084,7 +23084,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M"
+          "M",
+          "P"
         ]
       },
       {
@@ -23966,7 +23967,8 @@
         ],
         "tamanhosDisponiveis": [
           "G",
-          "M"
+          "M",
+          "PP"
         ]
       }
     ],
@@ -24384,6 +24386,7 @@
         ],
         "tamanhosDisponiveis": [
           "M",
+          "P",
           "PP"
         ]
       }
@@ -24712,6 +24715,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "P",
           "PP"
         ]
       }
@@ -25637,6 +25641,7 @@
         ],
         "tamanhosDisponiveis": [
           "M",
+          "P",
           "PP"
         ]
       }
@@ -27089,6 +27094,7 @@
           "38"
         ],
         "tamanhosDisponiveis": [
+          "36",
           "38"
         ]
       }
@@ -30381,6 +30387,7 @@
           "42"
         ],
         "tamanhosDisponiveis": [
+          "36",
           "42"
         ]
       }
@@ -30504,6 +30511,7 @@
         ],
         "tamanhosDisponiveis": [
           "34",
+          "36",
           "38"
         ]
       }
@@ -32471,11 +32479,13 @@
           "36",
           "38"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "36"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false,
+    "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "1566": {
         "34": [
@@ -35377,7 +35387,8 @@
         ],
         "tamanhosDisponiveis": [
           "G",
-          "M"
+          "M",
+          "PP"
         ]
       }
     ],
@@ -41370,11 +41381,13 @@
         "tamanhos": [
           "34"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "34"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false,
+    "temEstoque": true,
     "_corCodigo": "1566"
   },
   {
@@ -41765,11 +41778,13 @@
         "tamanhos": [
           "PP"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false,
+    "temEstoque": true,
     "_corCodigo": "58914"
   },
   {
