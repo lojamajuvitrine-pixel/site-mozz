@@ -288,6 +288,7 @@ export async function listarProdutos(opcoes?: {
   return [...produtos].sort(
     (a, b) => (a.imagem ? 0 : 1) - (b.imagem ? 0 : 1) || Number(b.id) - Number(a.id)
   );
+}
 
 export async function listarPorMarca(marca: string): Promise<Produto[]> {
   const produtos = await listarProdutos();
