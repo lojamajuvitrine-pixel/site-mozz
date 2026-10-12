@@ -279,10 +279,15 @@ export async function listarProdutos(opcoes?: {
     .map(ordenarTamanhosDoProduto)
     .map(normalizarNomeDoProduto);
   // prioriza quem tem foto - so' importa mais quando incluirSemFoto=true (no catalogo publico
-  // normal ninguem mais chega aqui sem foto); sort e' estavel, entao dentro de cada grupo a
-  // ordem original do Bling e' mantida.
-  return [...produtos].sort((a, b) => (a.imagem ? 0 : 1) - (b.imagem ? 0 : 1));
-}
+  // normal ninguem mais chega aqui sem foto).
+  // 12/10/2026 (pedido do Brunno): dentro de cada grupo (com foto / sem foto), SKU do Bling
+  // mais alto primeiro = peca cadastrada mais recentemente aparece antes (novidades no topo).
+  // O site nao guarda o SKU, mas o id do produto no Bling e o SKU crescem juntos a cada
+  // cadastro (conferido em 12/10/2026 no relatorio de marcas: mesma ordem em 100% dos casos),
+  // entao ordenar pelo id da o mesmo resultado sem mexer no sync.
+  return [...produtos].sort(
+    (a, b) => (a.imagem ? 0 : 1) - (b.imagem ? 0 : 1) || Number(b.id) - Number(a.id)
+  );
 
 export async function listarPorMarca(marca: string): Promise<Produto[]> {
   const produtos = await listarProdutos();
