@@ -70,9 +70,9 @@ export default function BannerHero({ banners }: { banners: BannerItem[] }) {
       <div className="absolute inset-0 flex flex-col items-center justify-end text-center pb-16 px-6">
         <p className="text-[13px] text-white/80 tracking-widest2 uppercase mb-2">{atual.label}</p>
         <p className="font-serif text-white text-[44px] md:text-[58px] tracking-wide leading-none">
-          Primavera 26
+          Verão 27
         </p>
-        <p className="text-[14.5px] text-white/80 mt-3 mb-7">Animale · NV · Reserva · Foxton</p>
+        <p className="text-[14.5px] text-white/80 mt-3 mb-7">Animale · NV · Farm · Foxton</p>
         <Link
           href={atual.href}
           className="inline-block text-[14.5px] px-7 py-2.5 bg-white text-mozz-black hover:bg-mozz-stone transition-colors"
