@@ -3195,8 +3195,7 @@
         ],
         "tamanhosDisponiveis": [
           "G",
-          "M",
-          "P"
+          "M"
         ]
       }
     ],
@@ -24893,7 +24892,6 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "PP",
           "P"
         ]
       }
@@ -25168,7 +25166,12 @@
       },
       {
         "cor": "0005",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708899654--unico--0.jpg",
+          "/produtos/16708899654--unico--1.jpg",
+          "/produtos/16708899654--unico--2.jpg",
+          "/produtos/16708899654--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP"
         ],
@@ -25177,7 +25180,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708899654--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0003": {
@@ -34539,11 +34542,16 @@
     "marca": "Animale",
     "preco": 698,
     "novo": true,
-    "descricao": "",
+    "descricao": "Camisa em tricoline com padronagem listrada e modelagem ampla. A gola clássica, o bolso frontal e os punhos estruturados reforçam o design atemporal da peça.",
     "cores": [
       {
         "cor": "0200",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705933953--unico--0.jpg",
+          "/produtos/16705933953--unico--1.jpg",
+          "/produtos/16705933953--unico--2.jpg",
+          "/produtos/16705933953--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -34556,7 +34564,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705933953--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0200": {
@@ -40566,11 +40574,17 @@
     "marca": "NV",
     "preco": 1148,
     "novo": true,
-    "descricao": "",
+    "descricao": "A blusa Laysa, em viscose, abraça sua silhueta com leveza e caimento fluido. Com estampa exclusiva, tem um toque de personalidade nos detalhes. Do decote gota com amarração à manga longa, cada ponto é pensado para deixar seus looks mais interessantes.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16714577732--unico--0.jpg",
+          "/produtos/16714577732--unico--1.jpg",
+          "/produtos/16714577732--unico--2.jpg",
+          "/produtos/16714577732--unico--3.jpg",
+          "/produtos/16714577732--unico--4.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
@@ -40579,7 +40593,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16714577732--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "NV1305"
   },
@@ -41972,11 +41986,16 @@
     "marca": "NV",
     "preco": 2248,
     "novo": true,
-    "descricao": "",
+    "descricao": "O Macacão Adriane, uma peça statement da alfaiataria NV. Confeccionado com toque de lã e elastano, sua modelagem reta e comprimento longo, em xadrez sofisticado, criam uma silhueta imponente e caimento impecável. O decote V e o bolso com lapela trazem charme único e a cintura alta, marcada pelo cinto, valoriza a silhueta.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706003910--unico--0.jpg",
+          "/produtos/16706003910--unico--1.jpg",
+          "/produtos/16706003910--unico--2.jpg",
+          "/produtos/16706003910--unico--3.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
@@ -41985,7 +42004,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706003910--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "NV952"
   },
