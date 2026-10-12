@@ -904,8 +904,8 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "40",
-          "42"
+          "42",
+          "40"
         ]
       }
     ],
@@ -1109,11 +1109,13 @@
         "tamanhos": [
           "36"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "36"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16649365530",
@@ -1380,6 +1382,7 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
+          "P",
           "PP"
         ]
       }
@@ -2034,8 +2037,8 @@
           "38"
         ],
         "tamanhosDisponiveis": [
-          "34",
-          "38"
+          "38",
+          "34"
         ]
       }
     ],
@@ -2084,11 +2087,11 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "36",
-          "38",
-          "40",
+          "44",
           "42",
-          "44"
+          "40",
+          "38",
+          "36"
         ]
       }
     ],
@@ -3990,11 +3993,13 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
       }
     ],
     "imagem": "/produtos/16637675561--unico--0.jpg",
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16637672722",
@@ -4135,11 +4140,13 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "M"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16637564709",
@@ -5240,11 +5247,13 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16637173708",
@@ -5436,7 +5445,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M"
+          "M",
+          "P"
         ]
       }
     ],
@@ -5459,11 +5469,13 @@
           "M",
           "G"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "P"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16630963582",
@@ -6250,10 +6262,11 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "40",
+          "44",
           "42",
-          "44"
+          "40",
+          "38",
+          "36"
         ]
       }
     ],
@@ -6400,11 +6413,13 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "P"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16629051750",
@@ -6512,7 +6527,8 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "40"
+          "40",
+          "36"
         ]
       }
     ],
@@ -6602,7 +6618,8 @@
         "tamanhosDisponiveis": [
           "42",
           "40",
-          "38"
+          "38",
+          "36"
         ]
       }
     ],
@@ -7557,8 +7574,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "GG"
+          "GG",
+          "G"
         ]
       }
     ],
@@ -7708,8 +7725,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "M",
           "P"
         ]
@@ -7998,8 +8015,8 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "M",
           "P"
         ]
@@ -10190,9 +10207,9 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
+          "44",
           "40",
-          "44"
+          "38"
         ]
       },
       {
@@ -10256,9 +10273,9 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
+          "46",
           "44",
-          "46"
+          "38"
         ]
       }
     ],
@@ -13080,8 +13097,8 @@
         ],
         "tamanhosDisponiveis": [
           "3G",
-          "G",
           "GG",
+          "G",
           "M",
           "P"
         ]
@@ -14890,8 +14907,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "40"
+          "40",
+          "38"
         ]
       }
     ],
@@ -15536,8 +15553,8 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "XG"
+          "XG",
+          "M"
         ]
       },
       {
@@ -16217,8 +16234,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "44"
+          "44",
+          "38"
         ]
       }
     ],
@@ -16372,10 +16389,10 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "40",
+          "46",
           "44",
-          "46"
+          "40",
+          "38"
         ]
       }
     ],
@@ -16408,9 +16425,9 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
+          "46",
           "44",
-          "46"
+          "38"
         ]
       }
     ],
@@ -17309,8 +17326,8 @@
         ],
         "tamanhosDisponiveis": [
           "3G",
-          "G",
           "GG",
+          "G",
           "M",
           "P"
         ]
@@ -19064,8 +19081,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "40",
-          "44"
+          "44",
+          "40"
         ]
       }
     ],
@@ -19134,8 +19151,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "46"
+          "46",
+          "38"
         ]
       },
       {
@@ -22803,11 +22820,13 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
       }
     ],
     "imagem": "/produtos/16433829582--unico--0.jpg",
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16433829072",
@@ -22956,6 +22975,134 @@
     "temEstoque": false
   },
   {
+    "id": "16715491882",
+    "nome": "Blusa Cropped Gola Alta Tricot Color",
+    "marca": "Animale",
+    "preco": 298,
+    "novo": true,
+    "descricao": "Blusa de Tricot sem mangas, com gola alta e comprimento cropped. Uma escolha atemporal e versátil, perfeita para compor os looks da estação.",
+    "cores": [
+      {
+        "cor": "03017",
+        "imagens": [
+          "/produtos/16715504364--unico--0.jpg",
+          "/produtos/16715504364--unico--1.jpg",
+          "/produtos/16715504364--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      },
+      {
+        "cor": "07716",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      },
+      {
+        "cor": "07021",
+        "imagens": [
+          "/produtos/16715499633--unico--0.jpg",
+          "/produtos/16715499633--unico--1.jpg",
+          "/produtos/16715499633--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "09041",
+        "imagens": [
+          "/produtos/16715495110--unico--0.jpg",
+          "/produtos/16715495110--unico--1.jpg",
+          "/produtos/16715495110--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16715504364--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "03017": {
+        "M": [
+          "16715504364"
+        ],
+        "P": [
+          "16715504318"
+        ],
+        "PP": [
+          "16715503370"
+        ]
+      },
+      "07716": {
+        "M": [
+          "16715502424"
+        ],
+        "P": [
+          "16715502373"
+        ],
+        "PP": [
+          "16715501624"
+        ]
+      },
+      "07021": {
+        "G": [
+          "16715499633"
+        ],
+        "M": [
+          "16715499608"
+        ],
+        "P": [
+          "16715499518"
+        ],
+        "PP": [
+          "16715498061"
+        ]
+      },
+      "09041": {
+        "M": [
+          "16715495110"
+        ],
+        "P": [
+          "16715495064"
+        ],
+        "PP": [
+          "16715491882"
+        ]
+      }
+    }
+  },
+  {
     "id": "16714609433",
     "nome": "Top Ziper Pate Cobertade Algodao Azul",
     "marca": "Animale",
@@ -23092,8 +23239,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       },
       {
@@ -23111,10 +23258,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       },
       {
@@ -23131,9 +23278,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       },
       {
@@ -23151,8 +23298,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       }
     ],
@@ -23233,7 +23380,6 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "P",
           "M"
         ]
       }
@@ -23276,7 +23422,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -23317,8 +23464,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "PP",
+          "P",
+          "M"
         ]
       },
       {
@@ -23368,9 +23516,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -23858,8 +24006,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -23918,7 +24066,8 @@
     "marca": "Animale",
     "preco": 1298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça com modelagem reta e caimento fluido. Possui renda aplicada na altura dos joelhos e barras ajustadas, criando uma composição sofisticada e feminina.",
+    "composicao": "sofisticada e feminina.",
     "cores": [
       {
         "cor": "07710",
@@ -23974,10 +24123,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       }
     ],
@@ -24006,11 +24155,17 @@
     "marca": "Animale",
     "preco": 6598,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça em chamois com modelagem reta. Os bolsos traseiros em couro tresset valorizam a composição, criando um contraste sofisticado de texturas. Uma peça autêntica com estética contemporânea.",
     "cores": [
       {
         "cor": "0600",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16713877225--unico--0.jpg",
+          "/produtos/16713877225--unico--1.jpg",
+          "/produtos/16713877225--unico--2.jpg",
+          "/produtos/16713877225--unico--3.jpg",
+          "/produtos/16713877225--unico--4.jpg"
+        ],
         "tamanhos": [
           "36",
           "38"
@@ -24021,7 +24176,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16713877225--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0600": {
@@ -24088,7 +24243,11 @@
     "cores": [
       {
         "cor": "0005",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16713861807--unico--0.jpg",
+          "/produtos/16713861807--unico--1.jpg",
+          "/produtos/16713861807--unico--2.jpg"
+        ],
         "tamanhos": [
           "38",
           "42"
@@ -24099,7 +24258,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16713861807--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0005": {
@@ -24256,8 +24415,8 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -24296,8 +24455,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       },
       {
@@ -24308,8 +24467,8 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -24354,8 +24513,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -24393,9 +24552,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -24432,9 +24591,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -24522,10 +24681,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "G",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       }
     ],
@@ -24679,11 +24838,16 @@
     "marca": "Animale",
     "preco": 1398,
     "novo": true,
-    "descricao": "",
+    "descricao": "Bermuda de alfaiataria com cintura média. Apresenta pregas frontais e bordados vazados nas laterais. Uma peça sofisticada e contemporânea.",
     "cores": [
       {
         "cor": "0003",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712906395--unico--0.jpg",
+          "/produtos/16712906395--unico--1.jpg",
+          "/produtos/16712906395--unico--2.jpg",
+          "/produtos/16712906395--unico--3.jpg"
+        ],
         "tamanhos": [
           "38",
           "42"
@@ -24694,7 +24858,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712906395--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0003": {
@@ -24717,19 +24881,24 @@
     "cores": [
       {
         "cor": "0003",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712903389--unico--0.jpg",
+          "/produtos/16712903389--unico--1.jpg",
+          "/produtos/16712903389--unico--2.jpg",
+          "/produtos/16712903389--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712903389--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0003": {
@@ -24767,8 +24936,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       },
       {
@@ -24786,8 +24955,8 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       },
       {
@@ -24805,8 +24974,8 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       },
       {
@@ -24822,9 +24991,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -24914,8 +25083,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "PP",
+          "P",
+          "M"
         ]
       }
     ],
@@ -25111,11 +25281,16 @@
     "marca": "Animale",
     "preco": 1298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Macacão Jeans Raw com decote profundo, frente única, bolsos e faixa para ajuste na cintura. Os detalhes utilitários complementam a proposta contemporânea da peça.",
     "cores": [
       {
         "cor": "1531",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712892632--unico--0.jpg",
+          "/produtos/16712892632--unico--1.jpg",
+          "/produtos/16712892632--unico--2.jpg",
+          "/produtos/16712892632--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "40"
@@ -25126,7 +25301,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712892632--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "1531": {
@@ -25156,7 +25331,8 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "36"
+          "36",
+          "38"
         ]
       }
     ],
@@ -25250,11 +25426,16 @@
     "marca": "Animale",
     "preco": 798,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça estampada com modelagem ampla. Os bolsos cargo laterais trazem um toque utilitário, enquanto o cós elástico com ajuste por cordão proporciona conforto.",
     "cores": [
       {
         "cor": "57580",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16711805154--unico--0.jpg",
+          "/produtos/16711805154--unico--1.jpg",
+          "/produtos/16711805154--unico--2.jpg",
+          "/produtos/16711805154--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -25265,7 +25446,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16711805154--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57580": {
@@ -25364,8 +25545,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -25450,9 +25631,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "PP",
           "P",
-          "M",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -25476,7 +25657,7 @@
     "id": "16710501215",
     "nome": "Vestido Emily",
     "marca": "NV",
-    "preco": 0,
+    "preco": 789,
     "novo": true,
     "descricao": "",
     "cores": [
@@ -25536,7 +25717,9 @@
         "tamanhos": [
           "P"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "P"
+        ]
       }
     ],
     "imagem": "/produtos/16710498869--unico--0.jpg",
@@ -25576,9 +25759,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "PP",
           "P",
-          "M",
-          "PP"
+          "M"
         ]
       },
       {
@@ -25650,9 +25833,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -25748,9 +25931,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       },
       {
@@ -25769,8 +25952,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -25858,9 +26041,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       },
       {
@@ -25878,9 +26061,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "P",
           "M",
-          "P"
+          "GG"
         ]
       }
     ],
@@ -25965,9 +26148,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "P",
           "M",
-          "P"
+          "GG"
         ]
       },
       {
@@ -26083,10 +26266,10 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG"
         ]
       },
       {
@@ -26099,9 +26282,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "P",
           "G",
-          "P"
+          "GG"
         ]
       },
       {
@@ -26120,9 +26303,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "M",
           "G",
-          "M"
+          "GG"
         ]
       }
     ],
@@ -26198,9 +26381,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "P",
           "G",
-          "P"
+          "GG"
         ]
       },
       {
@@ -27035,8 +27218,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       }
     ],
@@ -27143,9 +27326,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -27171,11 +27354,16 @@
     "marca": "Animale",
     "preco": 1698,
     "novo": true,
-    "descricao": "",
+    "descricao": "Macacão jeans com lavagem média, modelagem reta e pernas amplas. Possui bolso utilitário frontal e alças ajustáveis, que permitem diferentes formas de uso.",
     "cores": [
       {
         "cor": "0105",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708478907--unico--0.jpg",
+          "/produtos/16708478907--unico--1.jpg",
+          "/produtos/16708478907--unico--2.jpg",
+          "/produtos/16708478907--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38"
@@ -27185,7 +27373,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708478907--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0105": {
@@ -27360,7 +27548,6 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
           "P"
         ]
       }
@@ -27484,11 +27671,16 @@
     "marca": "Animale",
     "preco": 1198,
     "novo": true,
-    "descricao": "",
+    "descricao": "Camisa com caimento fluido e mangas longas. Apresenta bolso frontal e barra com renda aplicada. Uma peça sofisticada e contemporânea.",
     "cores": [
       {
         "cor": "07705",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708438394--unico--0.jpg",
+          "/produtos/16708438394--unico--1.jpg",
+          "/produtos/16708438394--unico--2.jpg",
+          "/produtos/16708438394--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -27501,7 +27693,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708438394--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07705": {
@@ -27602,9 +27794,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -27806,8 +27998,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
           "P",
+          "M",
           "G"
         ]
       }
@@ -27849,9 +28041,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -27932,9 +28124,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "M",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -27974,8 +28166,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       },
       {
@@ -28406,10 +28598,10 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG"
         ]
       },
       {
@@ -28422,10 +28614,10 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG"
         ]
       },
       {
@@ -28439,11 +28631,11 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "XG",
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG",
+          "XG"
         ]
       },
       {
@@ -28457,11 +28649,11 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "XG",
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG",
+          "XG"
         ]
       },
       {
@@ -28474,10 +28666,10 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG"
         ]
       }
     ],
@@ -29583,11 +29775,16 @@
     "marca": "Animale",
     "preco": 798,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça jeans em lavagem dark, com modelagem reta, cintura média e pernas amplas. A peça possui bolsos frontais e posteriores, recortes aparentes, acabamento pespontado contrastante e barra a fio.",
     "cores": [
       {
         "cor": "1531",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708069087--unico--0.jpg",
+          "/produtos/16708069087--unico--1.jpg",
+          "/produtos/16708069087--unico--2.jpg",
+          "/produtos/16708069087--unico--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -29603,7 +29800,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708069087--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "1531": {
@@ -29900,8 +30097,8 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -29939,8 +30136,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -29979,8 +30176,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -30212,8 +30409,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "PP",
+          "P",
           "M"
         ]
       }
@@ -30251,9 +30448,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -30323,9 +30520,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
+          "P",
           "M",
-          "G",
-          "P"
+          "G"
         ]
       }
     ],
@@ -30351,24 +30548,29 @@
     "marca": "Animale",
     "preco": 1298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Camisa listrada com mangas longas e modelagem cropped. A barra com aplicação de renda e o ajuste frontal por amarração atualizam a camisaria clássica com leveza e feminilidade.",
     "cores": [
       {
         "cor": "0200",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707367740--unico--0.jpg",
+          "/produtos/16707367740--unico--1.jpg",
+          "/produtos/16707367740--unico--2.jpg",
+          "/produtos/16707367740--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "P",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707367740--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0200": {
@@ -30390,11 +30592,15 @@
     "marca": "Animale",
     "preco": 1998,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido estampado em modelagem slip. O decote com leve drapeado e as alças finas reforçam a proposta da peça, que transita com sofisticação entre diferentes ocasiões.",
     "cores": [
       {
         "cor": "57770",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707345704--unico--0.jpg",
+          "/produtos/16707345704--unico--1.jpg",
+          "/produtos/16707345704--unico--2.jpg"
+        ],
         "tamanhos": [
           "36",
           "42"
@@ -30405,7 +30611,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707345704--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57770": {
@@ -30473,11 +30679,16 @@
     "marca": "Animale",
     "preco": 1298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça com caimento reto e padronagem listrada. Possui pregas frontais, passantes no cós, bolsos laterais e bolsos posteriores embutidos. Uma proposta leve e sofisticada.",
     "cores": [
       {
         "cor": "0702",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707252826--unico--0.jpg",
+          "/produtos/16707252826--unico--1.jpg",
+          "/produtos/16707252826--unico--2.jpg",
+          "/produtos/16707252826--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -30490,7 +30701,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707252826--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0702": {
@@ -30512,11 +30723,16 @@
     "marca": "Animale",
     "preco": 1398,
     "novo": true,
-    "descricao": "",
+    "descricao": "Macacão estampado com caimento amplo. Apresenta alças finas e decote profundo com babados aplicados. O elástico na cintura define a silhueta e o ajuste na barra traz um volume sutil.",
     "cores": [
       {
         "cor": "58592",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707249427--unico--0.jpg",
+          "/produtos/16707249427--unico--1.jpg",
+          "/produtos/16707249427--unico--2.jpg",
+          "/produtos/16707249427--unico--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -30529,7 +30745,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707249427--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "58592": {
@@ -30562,8 +30778,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -30672,8 +30888,8 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -30793,8 +31009,8 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -30876,9 +31092,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       },
       {
@@ -30991,8 +31207,8 @@
         "tamanhosDisponiveis": [
           "PP",
           "P",
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -31073,6 +31289,7 @@
           "42"
         ],
         "tamanhosDisponiveis": [
+          "32",
           "34",
           "36",
           "38",
@@ -31159,10 +31376,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "G",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       },
       {
@@ -31179,8 +31396,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       }
     ],
@@ -31234,9 +31451,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "P",
-          "PP"
+          "G"
         ]
       },
       {
@@ -31274,9 +31491,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -31376,9 +31593,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -31414,8 +31631,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -31438,22 +31655,27 @@
     "marca": "Animale",
     "preco": 1998,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça em tricot com modelagem ampla, estampa exclusiva e cós em ribana. As fendas na barra ampliam o movimento da peça e destacam o caimento fluido da trama.",
     "cores": [
       {
         "cor": "0001",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706480872--unico--0.jpg",
+          "/produtos/16706480872--unico--1.jpg",
+          "/produtos/16706480872--unico--2.jpg",
+          "/produtos/16706480872--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706480872--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0001": {
@@ -31484,8 +31706,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       },
       {
@@ -31497,8 +31719,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -31569,11 +31791,14 @@
     "marca": "Animale",
     "preco": 1298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça de alfaiataria com padronagem risca de giz e caimento amplo. Os recortes laterais criam volume na silhueta e trazem listras em diferentes direções, acrescentando contraste e personalidade à construção. O cós largo e o comprimento cropped completam o design contemporâneo da peça.",
     "cores": [
       {
         "cor": "0005",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706468413--unico--0.jpg",
+          "/produtos/16706468413--unico--1.jpg"
+        ],
         "tamanhos": [
           "34",
           "38",
@@ -31587,7 +31812,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706468413--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0005": {
@@ -31770,9 +31995,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "PP",
           "P",
-          "M",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -31815,10 +32040,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "G",
-          "PP"
+          "M",
+          "G"
         ]
       },
       {
@@ -31836,9 +32061,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
+          "P",
           "M",
-          "G",
-          "P"
+          "G"
         ]
       }
     ],
@@ -31898,9 +32123,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "M",
-          "PP"
+          "G"
         ]
       },
       {
@@ -31918,10 +32143,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "PP",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -31979,8 +32204,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M"
+          "P"
         ]
       },
       {
@@ -31998,8 +32222,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -32124,9 +32348,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       },
       {
@@ -32169,9 +32393,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "P",
-          "PP"
+          "G"
         ]
       },
       {
@@ -32271,8 +32495,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "PP",
+          "P",
           "M"
         ]
       }
@@ -32607,8 +32831,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       }
     ],
@@ -32690,8 +32914,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G"
+          "G",
+          "GG"
         ]
       }
     ],
@@ -32730,8 +32954,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -32764,8 +32988,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -32800,9 +33024,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "M",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -33179,8 +33403,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       }
     ],
@@ -33220,9 +33444,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "P",
           "G",
-          "P"
+          "GG"
         ]
       },
       {
@@ -33287,10 +33511,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       }
     ],
@@ -33332,8 +33556,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -33366,8 +33590,8 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -33400,8 +33624,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -33440,9 +33664,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "PP",
           "P",
-          "M",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -33596,9 +33820,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       },
       {
@@ -33610,8 +33834,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       }
     ],
@@ -33741,9 +33965,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -33784,10 +34008,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       }
     ],
@@ -33864,8 +34088,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -33904,8 +34128,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       },
       {
@@ -33959,11 +34183,15 @@
     "marca": "Animale",
     "preco": 1498,
     "novo": true,
-    "descricao": "",
+    "descricao": "Camisa listrada com modelagem ampla e bordados aplicados em ráfia. A combinação entre a padronagem e os bordados em relevo confere textura e riqueza de detalhes à peça.",
     "cores": [
       {
         "cor": "0600",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706031781--unico--0.jpg",
+          "/produtos/16706031781--unico--1.jpg",
+          "/produtos/16706031781--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -33974,7 +34202,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706031781--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0600": {
@@ -33996,11 +34224,16 @@
     "marca": "Animale",
     "preco": 1998,
     "novo": true,
-    "descricao": "",
+    "descricao": "Saia com modelagem evasê e comprimento midi. A padronagem listrada e os bordados em ráfia valorizam o design da peça, trazendo textura e destaque à construção.",
     "cores": [
       {
         "cor": "0600",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706030577--unico--0.jpg",
+          "/produtos/16706030577--unico--1.jpg",
+          "/produtos/16706030577--unico--2.jpg",
+          "/produtos/16706030577--unico--3.jpg"
+        ],
         "tamanhos": [
           "M",
           "G"
@@ -34011,7 +34244,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706030577--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0600": {
@@ -34030,11 +34263,16 @@
     "marca": "Animale",
     "preco": 1198,
     "novo": true,
-    "descricao": "",
+    "descricao": "Mini saia listrada com modelagem reta e cintura média. O cós largo apresenta listras em diferentes direções, acrescentando contraste à padronagem. O bolso aplicado com aba traz uma referência utilitária à peça. Uma proposta contemporânea e feminina.",
     "cores": [
       {
         "cor": "0702",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706025872--unico--0.jpg",
+          "/produtos/16706025872--unico--1.jpg",
+          "/produtos/16706025872--unico--2.jpg",
+          "/produtos/16706025872--unico--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -34048,7 +34286,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706025872--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0702": {
@@ -34073,11 +34311,16 @@
     "marca": "Animale",
     "preco": 1498,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça de linho com modelagem ampla e padronagem listrada. Apresenta vivos laterais e cós com amarração. A peça traduz sofisticação leve e contemporânea, ideal para produções descomplicadas.",
     "cores": [
       {
         "cor": "0200",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706023920--unico--0.jpg",
+          "/produtos/16706023920--unico--1.jpg",
+          "/produtos/16706023920--unico--2.jpg",
+          "/produtos/16706023920--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -34092,7 +34335,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706023920--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0200": {
@@ -34132,8 +34375,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       },
       {
@@ -34149,8 +34392,8 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -34252,11 +34495,16 @@
     "marca": "Animale",
     "preco": 1298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Colete de alfaiataria com modelagem alongada e padronagem risca de giz. Apresenta lapela clássica, pences e fechamento frontal por botão único.",
     "cores": [
       {
         "cor": "0005",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705937415--unico--0.jpg",
+          "/produtos/16705937415--unico--1.jpg",
+          "/produtos/16705937415--unico--2.jpg",
+          "/produtos/16705937415--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -34269,7 +34517,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705937415--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0005": {
@@ -34330,11 +34578,16 @@
     "marca": "Animale",
     "preco": 1298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Camisa com modelagem oversized e estampa listrada. Possui bolso frontal, mangas longas e fechamento frontal por botões. A transparência sutil reforça o visual leve e contemporâneo da peça.",
     "cores": [
       {
         "cor": "58040",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705933253--unico--0.jpg",
+          "/produtos/16705933253--unico--1.jpg",
+          "/produtos/16705933253--unico--2.jpg",
+          "/produtos/16705933253--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38"
@@ -34345,7 +34598,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705933253--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "58040": {
@@ -34364,11 +34617,16 @@
     "marca": "Animale",
     "preco": 1498,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça de alfaiataria com modelagem pantalona e cintura média. O vivo contrastante aplicado nas laterais destaca o acabamento da peça, enquanto a barra com abertura lateral acrescenta movimento ao caimento.",
     "cores": [
       {
         "cor": "5457",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705931223--unico--0.jpg",
+          "/produtos/16705931223--unico--1.jpg",
+          "/produtos/16705931223--unico--2.jpg",
+          "/produtos/16705931223--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -34383,7 +34641,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705931223--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "5457": {
@@ -34446,11 +34704,16 @@
     "marca": "Animale",
     "preco": 1298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Short Saia com transpasse frontal, comprimento curto, cintura alta, amarração lateral e padronagem listrada. A modelagem traz feminilidade e estética moderna em uma proposta para diferentes ocasiões.",
     "cores": [
       {
         "cor": "0600",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705927500--unico--0.jpg",
+          "/produtos/16705927500--unico--1.jpg",
+          "/produtos/16705927500--unico--2.jpg",
+          "/produtos/16705927500--unico--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -34465,7 +34728,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705927500--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0600": {
@@ -34521,9 +34784,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -34566,10 +34829,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       }
     ],
@@ -34615,10 +34878,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       },
       {
@@ -34635,9 +34898,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -34722,8 +34985,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "PP"
+          "PP",
+          "G"
         ]
       }
     ],
@@ -34766,8 +35029,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -34835,8 +35098,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
@@ -34951,9 +35214,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -34989,8 +35252,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -35172,9 +35435,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "M",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -35248,10 +35511,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       }
     ],
@@ -35421,9 +35684,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "M",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -35462,11 +35725,11 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G",
+          "GG"
         ]
       }
     ],
@@ -35546,9 +35809,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -35585,9 +35848,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -35628,9 +35891,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -35744,9 +36007,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "P",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -35787,9 +36050,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -35865,9 +36128,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "P",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -35910,8 +36173,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
@@ -35945,8 +36208,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
@@ -35986,8 +36249,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "PP"
+          "PP",
+          "G"
         ]
       }
     ],
@@ -36021,9 +36284,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -36147,10 +36410,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       }
     ],
@@ -41899,18 +42162,25 @@
     "marca": "Animale",
     "preco": 2598,
     "novo": true,
-    "descricao": "",
+    "descricao": "Bolsa desenvolvida em couro e camurça com padronagem listrada. O contraste entre as texturas cria um visual sofisticado. O fechamento por armação metálica completa o design.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705631288--unico--0.jpg",
+          "/produtos/16705631288--unico--1.jpg",
+          "/produtos/16705631288--unico--2.jpg",
+          "/produtos/16705631288--unico--3.jpg",
+          "/produtos/16705631288--unico--4.jpg",
+          "/produtos/16705631288--unico--5.jpg"
+        ],
         "tamanhos": [
           "U"
         ],
         "tamanhosDisponiveis": []
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705631288--unico--0.jpg",
     "temEstoque": false,
     "_corCodigo": "1802"
   },
