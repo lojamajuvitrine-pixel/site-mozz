@@ -31531,13 +31531,11 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": [
-          "PP"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorCorTamanho": {
       "0005": {
         "M": [
