@@ -1661,7 +1661,6 @@
         ],
         "tamanhosDisponiveis": [
           "GG",
-          "G",
           "M"
         ]
       }
@@ -5156,11 +5155,13 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16637173727",
@@ -19423,8 +19424,7 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G"
+          "GG"
         ]
       },
       {
@@ -25931,8 +25931,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M"
+          "P"
         ]
       }
     ],
@@ -28784,7 +28783,6 @@
         ],
         "tamanhosDisponiveis": [
           "40",
-          "42",
           "44"
         ]
       },
@@ -32248,9 +32246,7 @@
           "36",
           "38"
         ],
-        "tamanhosDisponiveis": [
-          "36"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Jeans Médio",
@@ -32270,7 +32266,7 @@
       }
     ],
     "imagem": "/produtos/16706329661--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorCorTamanho": {
       "Jeans Escuro Vintage": {
         "34": [
@@ -33422,9 +33418,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "G",
-          "GG"
+          "GG",
+          "G"
         ]
       },
       {
