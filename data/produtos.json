@@ -297,9 +297,7 @@
           "M",
           "G"
         ],
-        "tamanhosDisponiveis": [
-          "G"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "LARANJA VELUDO",
@@ -1086,9 +1084,7 @@
           "42",
           "44"
         ],
-        "tamanhosDisponiveis": [
-          "44"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
@@ -3041,13 +3037,11 @@
           "38",
           "42"
         ],
-        "tamanhosDisponiveis": [
-          "42"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16638616658",
@@ -4462,13 +4456,11 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": [
-          "Único"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16637174031",
@@ -24832,8 +24824,7 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "42"
+          "38"
         ]
       }
     ],
@@ -25524,6 +25515,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "P",
           "PP"
         ]
       }
@@ -27228,6 +27220,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "M",
           "P"
         ]
       }
@@ -27609,8 +27602,7 @@
         "tamanhosDisponiveis": [
           "36",
           "38",
-          "42",
-          "44"
+          "42"
         ]
       }
     ],
@@ -31063,9 +31055,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "M",
-          "G"
+          "P"
         ]
       },
       {
@@ -31263,8 +31254,7 @@
           "32",
           "34",
           "36",
-          "38",
-          "42"
+          "38"
         ]
       },
       {
@@ -32096,9 +32086,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
-          "M",
-          "G"
+          "G",
+          "PP"
         ]
       },
       {
@@ -32656,9 +32645,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "M",
-          "G"
+          "P"
         ]
       }
     ],
@@ -33223,8 +33211,7 @@
           "34",
           "36",
           "38",
-          "40",
-          "42"
+          "40"
         ]
       }
     ],
@@ -35576,8 +35563,7 @@
           "34",
           "36",
           "38",
-          "40",
-          "42"
+          "40"
         ]
       }
     ],
@@ -35745,13 +35731,11 @@
           "P",
           "G"
         ],
-        "tamanhosDisponiveis": [
-          "G"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorCorTamanho": {
       "57883": {
         "G": [
@@ -41801,13 +41785,11 @@
         "tamanhos": [
           "U"
         ],
-        "tamanhosDisponiveis": [
-          "U"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true,
+    "temEstoque": false,
     "_corCodigo": "1802"
   },
   {
@@ -42318,13 +42300,11 @@
         "tamanhos": [
           "G"
         ],
-        "tamanhosDisponiveis": [
-          "G"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16705489556--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "_corCodigo": "04346"
   },
   {
