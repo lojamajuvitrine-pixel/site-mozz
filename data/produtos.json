@@ -23937,7 +23937,8 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "M"
+          "M",
+          "P"
         ]
       }
     ],
@@ -24608,6 +24609,7 @@
         ],
         "tamanhosDisponiveis": [
           "34",
+          "36",
           "38",
           "40"
         ]
@@ -25301,7 +25303,6 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "36",
           "38"
         ]
       }
@@ -27060,7 +27061,8 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "P"
+          "P",
+          "PP"
         ]
       }
     ],
@@ -31730,11 +31732,13 @@
           "38",
           "40"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "38"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false,
+    "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57567": {
         "38": [
@@ -33405,7 +33409,8 @@
         ],
         "tamanhosDisponiveis": [
           "GG",
-          "G"
+          "G",
+          "P"
         ]
       },
       {
