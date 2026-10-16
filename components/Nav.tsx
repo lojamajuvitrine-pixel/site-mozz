@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import BarraBusca from "@/components/BarraBusca";
 import { useFavoritos } from "@/lib/favoritos-context";
+import { useCart } from "@/lib/cart-context";
 
 const MARCAS_FEMININO = [
   { nome: "Animale", slug: "animale" },
@@ -47,11 +48,39 @@ function IconeMenu({ aberto }: { aberto: boolean }) {
   );
 }
 
-function IconeSacola() {
+// Sacola do topo (16/10/2026, pedido do Brunno - "como em todos os sites"): vazia fica so' o
+// contorno; com pecas, fica preta com o numero de pecas em branco dentro.
+function IconeSacola({ quantidade }: { quantidade: number }) {
+  if (quantidade <= 0) {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="19" height="19">
+        <path d="M6 8h12l-1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z" />
+        <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+      </svg>
+    );
+  }
+  const texto = quantidade > 99 ? "99+" : String(quantidade);
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="19" height="19">
-      <path d="M6 8h12l-1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z" />
-      <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+    <svg viewBox="0 0 24 24" width="21" height="21" className="text-mozz-black">
+      <path
+        d="M6 8h12l-1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+      <path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" strokeWidth="1.5" />
+      <text
+        x="12"
+        y="17.4"
+        textAnchor="middle"
+        fontSize={texto.length > 1 ? 7 : 8.5}
+        fontWeight={600}
+        fill="#fff"
+        fontFamily="Inter, Arial, sans-serif"
+      >
+        {texto}
+      </text>
     </svg>
   );
 }
@@ -91,6 +120,9 @@ export default function Nav() {
   const [femininoAberto, setFemininoAberto] = useState(false);
   const [masculinoAberto, setMasculinoAberto] = useState(false);
   const { favoritos } = useFavoritos();
+  const { itens } = useCart();
+  const pecasNaSacola = itens.reduce((soma, item) => soma + item.quantidade, 0);
+  const rotuloSacola = pecasNaSacola > 0 ? `Carrinho com ${pecasNaSacola} ${pecasNaSacola === 1 ? "peça" : "peças"}` : "Carrinho";
 
   return (
     <header className="border-b border-black/10">
@@ -159,8 +191,8 @@ export default function Nav() {
             <IconeCoracaoNav />
             <BadgeContagem valor={favoritos.length} />
           </Link>
-          <Link href="/carrinho" aria-label="Carrinho" className="p-1">
-            <IconeSacola />
+          <Link href="/carrinho" aria-label={rotuloSacola} className="p-1">
+            <IconeSacola quantidade={pecasNaSacola} />
           </Link>
         </div>
       </div>
@@ -189,8 +221,8 @@ export default function Nav() {
               <IconeCoracaoNav />
               <BadgeContagem valor={favoritos.length} />
             </Link>
-            <Link href="/carrinho" aria-label="Carrinho" className="p-1 -mr-1">
-              <IconeSacola />
+            <Link href="/carrinho" aria-label={rotuloSacola} className="p-1 -mr-1">
+              <IconeSacola quantidade={pecasNaSacola} />
             </Link>
           </div>
         </div>
