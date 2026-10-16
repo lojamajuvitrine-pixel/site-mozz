@@ -273,7 +273,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
                   >
                     <span
                       className="block w-full h-full rounded-full border border-black/15"
-                      style={{ backgroundColor: corAproximada(c.cor) }}
+                      style={{ background: corAproximada(c.cor) }}
                     />
                   </button>
                 ))}
