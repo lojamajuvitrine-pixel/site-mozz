@@ -45,7 +45,12 @@ export default async function PaginaAdminProdutos() {
 
   return (
     <section className="py-8">
-      <p className="font-serif text-3xl mb-1">Painel de produtos</p>
+      <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+        <p className="font-serif text-3xl">Painel de produtos</p>
+        <a href="/admin/carrinhos-abandonados" className="text-[14px] underline">
+          Carrinhos abandonados →
+        </a>
+      </div>
       <p className="text-[14.5px] text-mozz-gray mb-6">
         Preço especial, destaque na home, outlet, ativar/desativar, composição, tabela de
         medidas e qual foto vem primeiro no carrossel de cada cor - tudo isso é só do site, não
