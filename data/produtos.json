@@ -224,8 +224,9 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "40",
-          "36"
+          "36",
+          "38",
+          "40"
         ]
       },
       {
@@ -924,11 +925,13 @@
         "tamanhos": [
           "38"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "38"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16651706791",
@@ -1066,10 +1069,11 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "44",
-          "42",
           "34",
-          "36"
+          "36",
+          "38",
+          "42",
+          "44"
         ]
       },
       {
@@ -1375,11 +1379,13 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16647422080",
@@ -1605,8 +1611,9 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "44",
-          "40"
+          "36",
+          "40",
+          "44"
         ]
       }
     ],
@@ -9946,11 +9953,13 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "Único"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false
+    "temEstoque": true
   },
   {
     "id": "16442980862",
@@ -23547,8 +23556,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
+          "G",
           "P",
-          "G"
+          "M"
         ]
       }
     ],
@@ -24443,7 +24453,8 @@
           "38"
         ],
         "tamanhosDisponiveis": [
-          "36"
+          "36",
+          "38"
         ]
       }
     ],
@@ -24519,7 +24530,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M"
+          "M",
+          "P"
         ]
       }
     ],
@@ -26371,6 +26383,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "M",
           "P"
         ]
       }
@@ -26774,7 +26787,7 @@
     "id": "16710501215",
     "nome": "Vestido Emily",
     "marca": "NV",
-    "preco": 789,
+    "preco": 0,
     "novo": true,
     "descricao": "",
     "cores": [
@@ -29004,9 +29017,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
+          "G",
+          "P",
           "M",
-          "G"
+          "PP"
         ]
       }
     ],
@@ -29046,8 +29060,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "PP",
-          "P"
+          "P",
+          "M",
+          "PP"
         ]
       },
       {
@@ -31061,7 +31076,9 @@
         "tamanhos": [
           "P"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "P"
+        ]
       },
       {
         "cor": "07708",
@@ -31069,11 +31086,13 @@
         "tamanhos": [
           "P"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "P"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false,
+    "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07742": {
         "P": [
@@ -31107,7 +31126,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G"
+          "G",
+          "M"
         ]
       }
     ],
@@ -31224,6 +31244,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "M",
           "P"
         ]
       }
@@ -31833,7 +31854,6 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "M"
         ]
       },
@@ -32295,11 +32315,13 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "M"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false,
+    "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0005": {
         "M": [
@@ -32460,7 +32482,6 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
           "G"
         ]
       },
@@ -33964,7 +33985,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M"
+          "M",
+          "P"
         ]
       }
     ],
@@ -33997,7 +34019,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M"
+          "M",
+          "P"
         ]
       }
     ],
@@ -34249,7 +34272,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG"
+          "GG",
+          "G"
         ]
       }
     ],
@@ -34536,11 +34560,13 @@
           "M",
           "G"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "PP"
+        ]
       }
     ],
     "imagem": "/produtos/16706178240--unico--0.jpg",
-    "temEstoque": false,
+    "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "Cinza Forest": {
         "M": [
@@ -34680,9 +34706,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
+          "G",
+          "M",
           "P",
-          "G"
+          "PP"
         ]
       },
       {
@@ -35673,10 +35700,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
+          "G",
           "P",
-          "M",
-          "G"
+          "PP"
         ]
       },
       {
@@ -35693,9 +35719,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "PP",
-          "P",
-          "M"
+          "M",
+          "PP"
         ]
       }
     ],
@@ -35892,8 +35917,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
+          "G",
           "P",
-          "G"
+          "M"
         ]
       }
     ],
@@ -36094,7 +36120,9 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "M"
+        ]
       }
     ],
     "imagem": null,
@@ -36269,6 +36297,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "M",
           "P"
         ]
       }
@@ -37003,8 +37032,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "G"
+          "G",
+          "M",
+          "P"
         ]
       }
     ],
@@ -42963,11 +42993,13 @@
         "tamanhos": [
           "M"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "M"
+        ]
       }
     ],
     "imagem": null,
-    "temEstoque": false,
+    "temEstoque": true,
     "_corCodigo": "07708"
   },
   {
