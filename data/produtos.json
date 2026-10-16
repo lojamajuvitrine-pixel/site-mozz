@@ -25388,7 +25388,6 @@
           "38"
         ],
         "tamanhosDisponiveis": [
-          "36",
           "38"
         ]
       }
@@ -26775,7 +26774,7 @@
     "id": "16710501215",
     "nome": "Vestido Emily",
     "marca": "NV",
-    "preco": 0,
+    "preco": 789,
     "novo": true,
     "descricao": "",
     "cores": [
@@ -28265,11 +28264,16 @@
     "marca": "Animale",
     "preco": 498,
     "novo": true,
-    "descricao": "",
+    "descricao": "Short em voil de algodão com modelagem reta e padronagem listrada. Apresenta cós com elástico e ajuste por amarração, bolsos e leve babado aplicado na parte posterior.",
     "cores": [
       {
         "cor": "1195",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708469986--unico--0.jpg",
+          "/produtos/16708469986--unico--1.jpg",
+          "/produtos/16708469986--unico--2.jpg",
+          "/produtos/16708469986--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -28280,7 +28284,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708469986--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "1195": {
@@ -32700,11 +32704,16 @@
     "marca": "Animale",
     "preco": 398,
     "novo": true,
-    "descricao": "",
+    "descricao": "T-Shirt com gola careca, mangas curtas e estampa localizada na parte frontal e posterior. A combinação de elementos gráficos e florais traz um ponto de destaque para produções casuais.",
     "cores": [
       {
         "cor": "0003",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706456195--unico--0.jpg",
+          "/produtos/16706456195--unico--1.jpg",
+          "/produtos/16706456195--unico--2.jpg",
+          "/produtos/16706456195--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -32716,7 +32725,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706456195--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0003": {
