@@ -2,6 +2,7 @@ import { cache } from "react";
 import produtosData from "@/data/produtos.json";
 import { categoriaDoProduto, type TabelaMedidas } from "@/lib/detalhesProduto";
 import { buscarConfigProdutos, type ConfigProduto } from "@/lib/produtoConfig";
+import { UNIFICACOES, idPrincipalUnificado } from "@/lib/unificacoes";
 
 // Uma variacao de COR do produto - cada cor tem suas proprias fotos (pode ser mais de uma,
 // quando cadastradas no Bling) e sua propria lista de tamanhos disponiveis.
@@ -238,6 +239,94 @@ function aplicarCapaPorCor(produto: Produto): Produto {
   return { ...produto, cores, imagem: imagemCapa };
 }
 
+// Junta cadastros diferentes do Bling num anuncio so' (ver lib/unificacoes.ts - pedido do
+// Brunno em 16/10/2026). Roda em cima do catalogo cru (data/produtos.json), antes de qualquer
+// filtro: os cadastros absorvidos somem da lista e as cores com estoque deles viram cores do
+// anuncio principal. Cada cor/tamanho absorvido ganha uma entrada em gruposBlingPorCorTamanho
+// apontando pro id do cadastro de origem - e' isso que faz o pedido no Bling sair pro produto
+// certo (ver resolverProdutoIdBling acima).
+function aplicarUnificacoes(produtos: Produto[]): Produto[] {
+  if (UNIFICACOES.length === 0) return produtos;
+  const porId = new Map(produtos.map((p) => [p.id, p]));
+  const absorvidos = new Set<string>();
+  const unificados = new Map<string, Produto>();
+
+  for (const regra of UNIFICACOES) {
+    const principal = porId.get(regra.principal);
+    if (!principal) continue;
+    const cores: VarianteCor[] = coresDoProduto(principal).map((c) => ({
+      ...c,
+      tamanhos: [...c.tamanhos],
+      tamanhosDisponiveis: [...tamanhosDisponiveisDoColor(c)]
+    }));
+    const grupos: Record<string, Record<string, string[]>> = JSON.parse(
+      JSON.stringify(principal.gruposBlingPorCorTamanho ?? {})
+    );
+    // cores do principal que ainda nao tem mapa de id (cadastro nao fundido): ficam sem
+    // entrada e caem no produto.id do principal, igual hoje (ver resolverProdutoIdBling).
+    let temEstoque = principal.temEstoque !== false;
+
+    for (const item of regra.absorver) {
+      const origem = porId.get(item.id);
+      if (!origem) continue;
+      absorvidos.add(item.id);
+      for (const cor of coresDoProduto(origem)) {
+        const disponiveis = tamanhosDisponiveisDoColor(cor);
+        if (origem.temEstoque === false || disponiveis.length === 0) continue; // cor esgotada: nao entra
+        const nome = item.nomeCor?.[cor.cor] ?? cor.cor;
+        const idsDoTamanho = (t: string) =>
+          origem.gruposBlingPorCorTamanho?.[cor.cor]?.[t] ?? origem.gruposBlingPorTamanho?.[t] ?? [origem.id];
+        let destino = cores.find((c) => c.cor.toLowerCase() === nome.toLowerCase());
+        if (!destino) {
+          destino = { cor: nome, imagens: item.semFotos ? [] : [...cor.imagens], tamanhos: [], tamanhosDisponiveis: [] };
+          cores.push(destino);
+        } else if (destino.imagens.length === 0 && !item.semFotos) {
+          destino.imagens = [...cor.imagens];
+        }
+        for (const t of disponiveis) {
+          if (!destino.tamanhos.includes(t)) destino.tamanhos.push(t);
+          if (!destino.tamanhosDisponiveis!.includes(t)) {
+            // o principal nao tem esse tamanho em estoque nessa cor - vende o do cadastro absorvido
+            destino.tamanhosDisponiveis!.push(t);
+            grupos[destino.cor] = { ...(grupos[destino.cor] ?? {}), [t]: idsDoTamanho(t) };
+          }
+        }
+        temEstoque = true;
+      }
+    }
+
+    const imagem = principal.imagem ?? cores.find((c) => c.imagens.length > 0)?.imagens[0] ?? null;
+    unificados.set(principal.id, {
+      ...principal,
+      cores,
+      imagem,
+      temEstoque,
+      gruposBlingPorCorTamanho: Object.keys(grupos).length > 0 ? grupos : undefined
+    });
+  }
+
+  return produtos.filter((p) => !absorvidos.has(p.id)).map((p) => unificados.get(p.id) ?? p);
+}
+
+const catalogoUnificado = aplicarUnificacoes(produtosData as Produto[]);
+
+// Cor com estoque sempre na frente (16/10/2026, pedido do Brunno: "acho muito ruim a primeira
+// estar como esgotado") - o card do mosaico e a pagina do produto abrem na PRIMEIRA cor da
+// lista, entao isso garante que a cliente sempre ve primeiro uma cor que da' pra comprar. Entre
+// as cores com estoque (e entre as esgotadas) a ordem original do Bling continua igual. A foto
+// de capa do card/vitrine passa a ser a da primeira cor com estoque que tenha foto (cai em
+// qualquer cor com foto so' se nenhuma disponivel tiver).
+function ordenarCoresDisponiveisPrimeiro(produto: Produto): Produto {
+  if (!produto.cores || produto.cores.length < 2) return produto;
+  const temEstoque = (c: VarianteCor) => tamanhosDisponiveisDoColor(c).length > 0;
+  const cores = [...produto.cores.filter(temEstoque), ...produto.cores.filter((c) => !temEstoque(c))];
+  const capa =
+    cores.find((c) => temEstoque(c) && c.imagens.length > 0)?.imagens[0] ??
+    cores.find((c) => c.imagens.length > 0)?.imagens[0] ??
+    produto.imagem;
+  return { ...produto, cores, imagem: capa };
+}
+
 // Fonte de dados hoje: data/produtos.json (seed manual, so' pra desenvolvimento).
 // Em producao, npm run sync:bling sobrescreve esse arquivo com o catalogo real do Bling.
 //
@@ -269,11 +358,12 @@ export async function listarProdutos(opcoes?: {
   incluirInativos?: boolean;
 }): Promise<Produto[]> {
   const config = await buscarConfigProdutosCache();
-  const produtos = (produtosData as Produto[])
+  const produtos = catalogoUnificado
     .filter((p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca))
     .filter((p) => opcoes?.incluirSemFoto || !!p.imagem)
     .map((p) => aplicarConfigEspecial(p, config.get(p.id)))
     .map(aplicarCapaPorCor)
+    .map(ordenarCoresDisponiveisPrimeiro)
     .filter((p) => opcoes?.incluirInativos || p.ativo !== false)
     .filter((p) => p.preco > 0)
     .map(ordenarTamanhosDoProduto)
@@ -304,7 +394,10 @@ export async function listarPorGenero(genero: "Masculino" | "Feminino"): Promise
 
 export async function buscarProduto(id: string): Promise<Produto | undefined> {
   const produtos = await listarProdutos();
-  return produtos.find((p) => p.id === id);
+  // id de um cadastro que foi unificado em outro anuncio (lib/unificacoes.ts) -> abre o
+  // anuncio principal, pra link/carrinho/anuncio antigo nao dar "produto nao encontrado".
+  const idFinal = idPrincipalUnificado(id) ?? id;
+  return produtos.find((p) => p.id === idFinal);
 }
 
 export async function marcasDisponiveis(): Promise<string[]> {
@@ -354,55 +447,4 @@ export async function produtosRelacionados(produto: Produto, quantidade = 8): Pr
     ...mesmaCategoria.filter((p) => p.marca !== produto.marca)
   ];
 
-  if (mesmaMarcaPrimeiro.length >= quantidade) return mesmaMarcaPrimeiro.slice(0, quantidade);
-
-  // nao teve o suficiente na mesma categoria - completa com outros produtos da mesma marca
-  const jaEscolhidos = new Set(mesmaMarcaPrimeiro.map((p) => p.id));
-  const complemento = candidatos.filter((p) => p.marca === produto.marca && !jaEscolhidos.has(p.id));
-  return [...mesmaMarcaPrimeiro, ...complemento].slice(0, quantidade);
-}
-
-export function coresDoProduto(produto: Produto): VarianteCor[] {
-  if (produto.cores && produto.cores.length > 0) return produto.cores;
-  const legado = produto as unknown as { tamanhos?: string[] };
-  const tamanhos = legado.tamanhos && legado.tamanhos.length > 0 ? legado.tamanhos : ["Único"];
-  return [
-    {
-      cor: "Único",
-      imagens: produto.imagem ? [produto.imagem] : [],
-      tamanhos,
-      tamanhosDisponiveis: tamanhos
-    }
-  ];
-}
-
-// Vira parte de id/nome de arquivo: sem acento, minusculo, so' letra/numero/hifen - mesma
-// regra do corSlug() em scripts/sync-bling.ts (usado pra nome de arquivo de foto), repetida
-// aqui pra nao criar dependencia de app/ em cima de scripts/. Mantida sincronizada de proposito
-// (mesma logica, mesmo resultado) - se um dia mudar uma, mudar a outra junto.
-function normalizarParaId(valor: string): string {
-  const limpo = valor
-    .normalize("NFD")
-    .replace(new RegExp("[\\u0300-\\u036f]", "g"), "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-+|-+$)/g, "");
-  return limpo || "unico";
-}
-
-// Id ESTAVEL por variacao (cor+tamanho) de um produto - usado no feed da Meta (uma linha por
-// variacao vendavel, ver app/api/meta-feed/route.ts) E nos eventos do Pixel (ver
-// lib/tracking.ts e os 3 lugares que chamam rastrear*), pra garantir que os dois sempre
-// mandem o MESMO id pra mesma combinacao de produto+cor+tamanho (exigencia da Meta pra
-// Dynamic Ads/Advantage+ Catalog Ads funcionar - ver analise de 27/08/2026 com o Brunno).
-//
-// IMPORTANTE: isso NAO e' o id real da variacao no Bling (esse dado nao existe mais depois
-// do sync - ver resolverProdutoIdBling acima, que so' resolve id real do Bling pra produtos
-// "fundidos", com gruposBlingPorTamanho). E' um id CONSTRUIDO, deterministico e estavel
-// enquanto o nome da cor/tamanho nao mudar no Bling - decisao consciente pra nao precisar
-// mexer no pipeline de sync (scripts/sync-bling.ts e scripts/sync-estoque.ts) nem rodar sync
-// completo de novo so' pra isso. Se um dia precisar do id real do Bling por variacao, essa
-// funcao e' o unico lugar a trocar.
-export function idVarianteProduto(produtoId: string, cor: string, tamanho: string): string {
-  return `${produtoId}--${normalizarParaId(cor)}--${normalizarParaId(tamanho)}`;
-}
+  if
