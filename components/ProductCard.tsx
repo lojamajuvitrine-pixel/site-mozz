@@ -236,7 +236,7 @@ export default function ProductCard({
               className={`w-4 h-4 rounded-full border ${i === corIndex ? "border-mozz-black" : "border-black/15"}`}
               style={{ padding: 1.5 }}
             >
-              <span className="block w-full h-full rounded-full" style={{ backgroundColor: corAproximada(c.cor) }} />
+              <span className="block w-full h-full rounded-full" style={{ background: corAproximada(c.cor) }} />
             </button>
           ))}
         </div>
