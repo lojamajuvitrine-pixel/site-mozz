@@ -3,8 +3,15 @@
 // redirecionado pro ambiente do Mercado Pago (init_point) -> ele paga -> o Mercado Pago
 // chama nosso webhook (app/api/mercadopago/webhook) pra avisar o status real do pagamento.
 // Documentacao: mercadopago.com.br/developers/pt/docs/checkout-pro/overview
+//
+// Desde 16/10/2026 tambem existe o pagamento DENTRO do site (Checkout Transparente): Pix com QR
+// Code na propria pagina e cartao pelo Card Payment Brick (ver criarPagamentoPix /
+// criarPagamentoCartao abaixo e app/api/mercadopago/pagar). Os dois caminhos usam a MESMA
+// montagem/validacao do pedido (prepararPedido) e o MESMO metadata (pedido_json/cupom) - por
+// isso o webhook continua igual pros dois: ele so' busca o pagamento e le o metadata.
 
-import { MercadoPagoConfig, Preference } from "mercadopago";
+import { MercadoPagoConfig, Payment, Preference } from "mercadopago";
+import { randomUUID } from "crypto";
 import type { Produto } from "@/lib/produtos";
 import { resolverProdutoIdBling, buscarProduto, coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { validarCupom } from "@/lib/cupom";
@@ -132,9 +139,11 @@ async function revalidarFrete(
   };
 }
 
-export async function criarPreferenciaPagamento(
+// Valida e monta o pedido (estoque, preco real do catalogo, cupom, frete, credito) - usado
+// tanto pelo Checkout Pro (preferencia) quanto pelo pagamento dentro do site (Pix/cartao).
+// Nunca confia em preco/frete/desconto que veio do navegador.
+async function prepararPedido(
   itens: ItemCarrinho[],
-  numeroPedido: string,
   cliente: ClienteCheckout,
   frete?: FreteEscolhido,
   cupomCodigo?: string,
@@ -179,10 +188,6 @@ export async function criarPreferenciaPagamento(
       return { item, produtoReal };
     })
   );
-
-  const client = obterCliente();
-  const preference = new Preference(client);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
   // O desconto do cupom (se houver) e' revalidado aqui no servidor - nunca confia no valor
   // calculado no carrinho no navegador. A Preference API do Mercado Pago nao aceita um item
@@ -280,14 +285,43 @@ export async function criarPreferenciaPagamento(
     }
   };
 
+  // Valor total cobrado = soma exata dos itens ja' arredondados (o mesmo numero que o
+  // Mercado Pago soma na preferencia) - e' esse valor que vai no transaction_amount do Pix/cartao.
+  const valorTotal =
+    Math.round(itensPreferencia.reduce((soma, item) => soma + item.unit_price * item.quantity, 0) * 100) / 100;
+
+  return { itensPreferencia, pedidoMetadata, codigoCupomAplicado, valorTotal };
+}
+
+function metadataPedido(pedido: Awaited<ReturnType<typeof prepararPedido>>) {
+  return {
+    ...(pedido.codigoCupomAplicado ? { cupom: pedido.codigoCupomAplicado } : {}),
+    pedido_json: JSON.stringify(pedido.pedidoMetadata)
+  };
+}
+
+function urlSite() {
+  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+}
+
+export async function criarPreferenciaPagamento(
+  itens: ItemCarrinho[],
+  numeroPedido: string,
+  cliente: ClienteCheckout,
+  frete?: FreteEscolhido,
+  cupomCodigo?: string,
+  creditoSolicitado?: number
+) {
+  const pedido = await prepararPedido(itens, cliente, frete, cupomCodigo, creditoSolicitado);
+  const { itensPreferencia, pedidoMetadata } = pedido;
+  const preference = new Preference(obterCliente());
+  const siteUrl = urlSite();
+
   const resposta = await preference.create({
     body: {
       external_reference: numeroPedido,
       items: itensPreferencia.map(({ _idBling, ...item }) => item),
-      metadata: {
-        ...(codigoCupomAplicado ? { cupom: codigoCupomAplicado } : {}),
-        pedido_json: JSON.stringify(pedidoMetadata)
-      },
+      metadata: metadataPedido(pedido),
       payer: {
         name: cliente.nomeCompleto.trim().split(" ")[0],
         email: pedidoMetadata.email,
@@ -309,4 +343,225 @@ export async function criarPreferenciaPagamento(
   });
 
   return resposta;
+}
+
+// ---------------------------------------------------------------------------------------
+// Pagamento DENTRO do site (Checkout Transparente) - 16/10/2026
+// ---------------------------------------------------------------------------------------
+
+// Quantas parcelas aceitar no cartao - o mesmo teto mostrado no site (MAX_PARCELAS_SEM_JUROS
+// em lib/formato.ts). Revalidado aqui porque o numero de parcelas vem do navegador.
+const MAX_PARCELAS_CARTAO = 3;
+// Tempo pra pagar o Pix antes do QR Code expirar.
+const MINUTOS_EXPIRACAO_PIX = 30;
+
+export type DadosCartao = {
+  token: string;
+  paymentMethodId: string;
+  issuerId?: number | string;
+  parcelas: number;
+  // documento do TITULAR do cartao (pode nao ser o mesmo CPF da nota fiscal)
+  identificacao?: { tipo: string; numero: string };
+};
+
+function separarNome(nomeCompleto: string) {
+  const partes = nomeCompleto.trim().split(/\s+/);
+  return { first_name: partes[0] ?? "", last_name: partes.slice(1).join(" ") || partes[0] || "" };
+}
+
+function telefoneSeparado(telefone: string) {
+  const d = telefone.replace(/\D/g, "").replace(/^55(?=\d{10,11}$)/, "");
+  return { area_code: d.slice(0, 2), number: d.slice(2) };
+}
+
+// Data no formato que o Mercado Pago aceita (yyyy-MM-ddTHH:mm:ss.SSS-03:00), horario de Brasilia.
+function dataExpiracao(minutos: number) {
+  const brasilia = new Date(Date.now() + minutos * 60_000 - 3 * 3_600_000);
+  return brasilia.toISOString().replace("Z", "-03:00");
+}
+
+// Corpo comum aos dois metodos: valor, referencia, metadata (o webhook depende disso), dados
+// do comprador e "additional_info" - itens/endereco/telefone ajudam o antifraude do Mercado
+// Pago a aprovar mais cartoes.
+function corpoBasePagamento(
+  pedido: Awaited<ReturnType<typeof prepararPedido>>,
+  numeroPedido: string,
+  cliente: ClienteCheckout
+) {
+  const { pedidoMetadata, itensPreferencia, valorTotal } = pedido;
+  const nome = separarNome(pedidoMetadata.nome);
+  return {
+    transaction_amount: valorTotal,
+    description: `Pedido ${numeroPedido} - MOZZ`,
+    external_reference: numeroPedido,
+    statement_descriptor: "MOZZ",
+    notification_url: `${urlSite()}/api/mercadopago/webhook`,
+    metadata: metadataPedido(pedido),
+    additional_info: {
+      items: itensPreferencia.map(({ _idBling, currency_id, ...item }) => ({
+        ...item,
+        id: String(item.id),
+        category_id: item.id === "frete" ? "shipping" : "fashion"
+      })),
+      payer: {
+        ...nome,
+        phone: telefoneSeparado(cliente.telefone),
+        address: {
+          zip_code: pedidoMetadata.endereco.cep,
+          street_name: pedidoMetadata.endereco.rua,
+          street_number: pedidoMetadata.endereco.numero
+        }
+      },
+      shipments: {
+        receiver_address: {
+          zip_code: pedidoMetadata.endereco.cep,
+          street_name: pedidoMetadata.endereco.rua,
+          street_number: pedidoMetadata.endereco.numero,
+          apartment: pedidoMetadata.endereco.complemento,
+          city_name: pedidoMetadata.endereco.cidade,
+          state_name: pedidoMetadata.endereco.uf
+        }
+      }
+    }
+  };
+}
+
+// Se o total calculado agora no servidor nao bate com o que a cliente viu na tela (frete
+// mudou, preco mudou no sync, cupom expirou), NAO cobra - pede pra ela conferir. Assim nunca
+// sai uma cobranca de valor diferente do que estava escrito no botao.
+// Tolerancia de R$ 1: o desconto de cupom/credito e' rateado item a item e arredondado em
+// centavos, entao o total do servidor pode diferir uns centavos da tela - isso nao e' mudanca
+// de verdade. Mudanca de frete/preco/cupom passa disso facil.
+function conferirValorEsperado(valorTotal: number, valorEsperado: number | undefined) {
+  if (typeof valorEsperado === "number" && Math.abs(valorTotal - valorEsperado) > 1) {
+    throw new ErroValidacaoPedido(
+      `O total do pedido foi atualizado para ${valorTotal.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      })}. Recarregue a página para conferir antes de pagar.`
+    );
+  }
+}
+
+export async function criarPagamentoPix(
+  itens: ItemCarrinho[],
+  numeroPedido: string,
+  cliente: ClienteCheckout,
+  frete?: FreteEscolhido,
+  cupomCodigo?: string,
+  creditoSolicitado?: number,
+  valorEsperado?: number
+) {
+  const pedido = await prepararPedido(itens, cliente, frete, cupomCodigo, creditoSolicitado);
+  conferirValorEsperado(pedido.valorTotal, valorEsperado);
+  const base = corpoBasePagamento(pedido, numeroPedido, cliente);
+
+  const pagamento = await new Payment(obterCliente()).create({
+    body: {
+      ...base,
+      payment_method_id: "pix",
+      date_of_expiration: dataExpiracao(MINUTOS_EXPIRACAO_PIX),
+      payer: {
+        email: pedido.pedidoMetadata.email,
+        ...separarNome(pedido.pedidoMetadata.nome),
+        identification: { type: "CPF", number: pedido.pedidoMetadata.cpf }
+      }
+    },
+    requestOptions: { idempotencyKey: randomUUID() }
+  });
+
+  const dadosPix = pagamento.point_of_interaction?.transaction_data;
+  if (!pagamento.id || !dadosPix?.qr_code) {
+    throw new Error(`Mercado Pago nao devolveu o QR Code do Pix (status ${pagamento.status})`);
+  }
+  return {
+    pagamentoId: String(pagamento.id),
+    status: pagamento.status ?? "pending",
+    qrCode: dadosPix.qr_code,
+    qrCodeBase64: dadosPix.qr_code_base64 ?? null,
+    expiraEm: Date.now() + MINUTOS_EXPIRACAO_PIX * 60_000,
+    valorTotal: pedido.valorTotal
+  };
+}
+
+export async function criarPagamentoCartao(
+  itens: ItemCarrinho[],
+  numeroPedido: string,
+  cliente: ClienteCheckout,
+  cartao: DadosCartao,
+  frete?: FreteEscolhido,
+  cupomCodigo?: string,
+  creditoSolicitado?: number,
+  valorEsperado?: number,
+  sessaoDispositivo?: string
+) {
+  if (!cartao?.token || !cartao.paymentMethodId) {
+    throw new ErroValidacaoPedido("Confira os dados do cartão e tente de novo");
+  }
+  const parcelas = Math.round(Number(cartao.parcelas) || 1);
+  if (parcelas < 1 || parcelas > MAX_PARCELAS_CARTAO) {
+    throw new ErroValidacaoPedido(`Parcelamento disponível em até ${MAX_PARCELAS_CARTAO}x`);
+  }
+
+  const pedido = await prepararPedido(itens, cliente, frete, cupomCodigo, creditoSolicitado);
+  conferirValorEsperado(pedido.valorTotal, valorEsperado);
+  const base = corpoBasePagamento(pedido, numeroPedido, cliente);
+
+  const documentoTitular = cartao.identificacao?.numero?.replace(/\D/g, "");
+  const pagamento = await new Payment(obterCliente()).create({
+    body: {
+      ...base,
+      token: cartao.token,
+      payment_method_id: cartao.paymentMethodId,
+      issuer_id: cartao.issuerId ? Number(cartao.issuerId) : undefined,
+      installments: parcelas,
+      payer: {
+        email: pedido.pedidoMetadata.email,
+        ...separarNome(pedido.pedidoMetadata.nome),
+        identification: documentoTitular
+          ? { type: cartao.identificacao?.tipo || "CPF", number: documentoTitular }
+          : { type: "CPF", number: pedido.pedidoMetadata.cpf }
+      }
+    },
+    requestOptions: {
+      idempotencyKey: randomUUID(),
+      ...(sessaoDispositivo ? { meliSessionId: sessaoDispositivo } : {})
+    }
+  });
+
+  return {
+    pagamentoId: String(pagamento.id ?? ""),
+    status: pagamento.status ?? "rejected",
+    statusDetalhe: pagamento.status_detail ?? "",
+    valorTotal: pedido.valorTotal
+  };
+}
+
+// So' o status (pra tela do Pix saber quando o pagamento caiu) - confere que o pagamento e'
+// mesmo desse pedido, pra ninguem consultar pagamento dos outros pelo id.
+export async function consultarStatusPagamento(pagamentoId: string, numeroPedido: string) {
+  const pagamento = await new Payment(obterCliente()).get({ id: pagamentoId });
+  if (pagamento.external_reference !== numeroPedido) return null;
+  return pagamento.status ?? null;
+}
+
+// Motivo de recusa do cartao em linguagem de gente (os codigos sao do Mercado Pago:
+// mercadopago.com.br/developers/pt/docs/checkout-api/response-handling/collection-results)
+export function mensagemRecusaCartao(statusDetalhe: string): string {
+  const mensagens: Record<string, string> = {
+    cc_rejected_bad_filled_card_number: "Confira o número do cartão.",
+    cc_rejected_bad_filled_date: "Confira a data de validade do cartão.",
+    cc_rejected_bad_filled_security_code: "Confira o código de segurança (CVV).",
+    cc_rejected_bad_filled_other: "Confira os dados do cartão.",
+    cc_rejected_insufficient_amount: "O cartão não tem limite suficiente. Tente outro cartão ou pague com Pix.",
+    cc_rejected_call_for_authorize: "O banco pediu autorização. Ligue para o seu banco liberar a compra e tente de novo.",
+    cc_rejected_card_disabled: "O cartão está bloqueado para compras online. Ligue para o seu banco ou use outro cartão.",
+    cc_rejected_duplicated_payment: "Já existe um pagamento igual a esse. Se precisar pagar de novo, use outro cartão ou Pix.",
+    cc_rejected_high_risk: "O pagamento foi recusado pela análise de segurança. Tente com Pix ou outro cartão.",
+    cc_rejected_max_attempts: "Muitas tentativas com esse cartão. Use outro cartão ou pague com Pix.",
+    cc_rejected_invalid_installments: "Esse cartão não aceita esse número de parcelas.",
+    cc_rejected_blacklist: "Não foi possível processar esse cartão. Tente com Pix ou outro cartão.",
+    cc_rejected_card_error: "Não foi possível processar o pagamento. Tente de novo ou use Pix."
+  };
+  return mensagens[statusDetalhe] ?? "O pagamento não foi aprovado. Tente outro cartão ou pague com Pix.";
 }
