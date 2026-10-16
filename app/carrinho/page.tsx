@@ -4,6 +4,8 @@ import { useCart } from "@/lib/cart-context";
 import { idVarianteProduto } from "@/lib/produtos";
 import { formatarPreco, calcularParcelamento } from "@/lib/formato";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import CalculoFrete, { type OpcaoFrete, type ConfigLojaFrete } from "@/components/CalculoFrete";
 import AvisoFreteGratis from "@/components/AvisoFreteGratis";
 import { ehRetirada } from "@/lib/frete";
@@ -77,6 +79,11 @@ function formatarTelefone(valor: string): string {
   if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
   if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
   return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+}
+
+// Foto da peca na cor que a cliente escolheu (cai na capa do produto se essa cor nao tiver foto)
+function fotoDoItem(item: { produto: { imagem: string | null; cores?: { cor: string; imagens: string[] }[] }; cor: string }) {
+  return item.produto.cores?.find((c) => c.cor === item.cor)?.imagens?.[0] ?? item.produto.imagem;
 }
 
 const classeCampo =
@@ -309,7 +316,7 @@ export default function PaginaCarrinho() {
         tamanho: i.tamanho,
         quantidade: i.quantidade,
         preco: i.produto.preco,
-        imagem: i.produto.cores?.find((c) => c.cor === i.cor)?.imagens?.[0] ?? i.produto.imagem
+        imagem: fotoDoItem(i)
       })),
       subtotal: totalComDesconto,
       total: etapa === "dados" ? totalComDesconto : totalFinal,
@@ -484,10 +491,29 @@ export default function PaginaCarrinho() {
         {itens.map((item) => (
           <div
             key={`${item.produto.id}-${item.cor}-${item.tamanho}`}
-            className="flex justify-between py-4 text-[14.5px]"
+            className="flex gap-3 py-4 text-[14.5px]"
           >
-            <div>
-              <p>{item.produto.nome}</p>
+            {/* Foto da peca na COR escolhida (16/10/2026, pedido do Brunno) - toca e abre a
+                pagina do produto. Sem foto da cor, cai na foto de capa do produto. */}
+            <Link
+              href={`/produto/${item.produto.id}`}
+              className="relative w-[72px] h-[96px] shrink-0 bg-mozz-stone overflow-hidden"
+              aria-label={`Ver ${item.produto.nome}`}
+            >
+              {fotoDoItem(item) && (
+                <Image
+                  src={fotoDoItem(item) as string}
+                  alt={item.produto.nome}
+                  fill
+                  sizes="72px"
+                  className="object-cover"
+                />
+              )}
+            </Link>
+            <div className="flex-1 min-w-0">
+              <Link href={`/produto/${item.produto.id}`} className="block hover:underline">
+                {item.produto.nome}
+              </Link>
               <p className="text-mozz-gray mb-2">
                 {item.cor && item.cor !== "Único" ? `Cor ${item.cor} · ` : ""}
                 Tam. {item.tamanho}
