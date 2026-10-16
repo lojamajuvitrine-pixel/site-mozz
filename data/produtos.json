@@ -823,8 +823,7 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "36",
-          "40"
+          "36"
         ]
       }
     ],
@@ -7922,8 +7921,8 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "M"
         ]
       },
@@ -15680,8 +15679,8 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "P"
         ]
       }
@@ -22955,6 +22954,1351 @@
     "temEstoque": false
   },
   {
+    "id": "16719516091",
+    "nome": "Regata Luciana",
+    "marca": "NV",
+    "preco": 348,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Preto",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "Branco",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Preto": {
+        "G": [
+          "16719518933"
+        ],
+        "M": [
+          "16719518876"
+        ],
+        "P": [
+          "16719518797"
+        ],
+        "PP": [
+          "16719518731"
+        ]
+      },
+      "Branco": {
+        "G": [
+          "16719516992"
+        ],
+        "M": [
+          "16719516865"
+        ],
+        "P": [
+          "16719516695"
+        ],
+        "PP": [
+          "16719516091"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16719512023",
+    "nome": "Saia Jeans Liza",
+    "marca": "NV",
+    "preco": 698,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "NV875",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "NV875": {
+        "34": [
+          "16719512023"
+        ],
+        "36": [
+          "16719512768"
+        ],
+        "38": [
+          "16719512932"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16719489665",
+    "nome": "Short Vicky",
+    "marca": "NV",
+    "preco": 998,
+    "novo": true,
+    "descricao": "No Short Vicky, a sofisticação encontra a versatilidade. Em crepe patou, ele tem um caimento impecável e confortável. Com cintura alta e modelagem regular curta, suas pregas e passantes complementam a peça com perfeição. Um essencial do closet.",
+    "cores": [
+      {
+        "cor": "Marrom Cognac",
+        "imagens": [
+          "/produtos/16719507249--unico--0.jpg",
+          "/produtos/16719507249--unico--1.jpg",
+          "/produtos/16719507249--unico--2.jpg",
+          "/produtos/16719507249--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "32",
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "32",
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      },
+      {
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16719494257--unico--0.jpg",
+          "/produtos/16719494257--unico--1.jpg",
+          "/produtos/16719494257--unico--2.jpg",
+          "/produtos/16719494257--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "32",
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "32",
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16719507249--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Marrom Cognac": {
+        "32": [
+          "16719503536"
+        ],
+        "34": [
+          "16719506926"
+        ],
+        "36": [
+          "16719506984"
+        ],
+        "38": [
+          "16719507066"
+        ],
+        "40": [
+          "16719507146"
+        ],
+        "42": [
+          "16719507249"
+        ]
+      },
+      "Preto": {
+        "32": [
+          "16719489665"
+        ],
+        "34": [
+          "16719493914"
+        ],
+        "36": [
+          "16719494023"
+        ],
+        "38": [
+          "16719494126"
+        ],
+        "40": [
+          "16719494202"
+        ],
+        "42": [
+          "16719494257"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706050137",
+    "nome": "Saia Marta",
+    "marca": "NV",
+    "preco": 898,
+    "novo": true,
+    "descricao": "Em acetato e viscose, com toque suave e caimento impecável, a Saia Marta é um clássico no closet. Sua modelagem reta e comprimento mini dá versatilidade para looks do dia a dia ou eventos especiais. A cintura alta alonga a figura, enquanto os passantes permitem adicionar um cinto e personalizar o look.",
+    "cores": [
+      {
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16718921295--unico--0.jpg",
+          "/produtos/16718921295--unico--1.jpg",
+          "/produtos/16718921295--unico--2.jpg",
+          "/produtos/16718921295--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "38",
+          "40"
+        ]
+      },
+      {
+        "cor": "Bege Sugar",
+        "imagens": [
+          "/produtos/16706664965--unico--0.jpg",
+          "/produtos/16706664965--unico--1.jpg",
+          "/produtos/16706664965--unico--2.jpg",
+          "/produtos/16706664965--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "40"
+        ]
+      },
+      {
+        "cor": "Cinza Forest",
+        "imagens": [
+          "/produtos/16706050470--unico--0.jpg",
+          "/produtos/16706050470--unico--1.jpg",
+          "/produtos/16706050470--unico--2.jpg",
+          "/produtos/16706050470--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16718921295--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Preto": {
+        "34": [
+          "16714572775"
+        ],
+        "38": [
+          "16718921295"
+        ],
+        "40": [
+          "16706056173"
+        ]
+      },
+      "Bege Sugar": {
+        "34": [
+          "16706664965"
+        ],
+        "40": [
+          "16706331971"
+        ]
+      },
+      "Cinza Forest": {
+        "34": [
+          "16706050137"
+        ],
+        "36": [
+          "16706050396"
+        ],
+        "38": [
+          "16706050417"
+        ],
+        "40": [
+          "16706050470"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16718917497",
+    "nome": "Colete Mariana",
+    "marca": "NV",
+    "preco": 1048,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "NV1172",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      },
+      {
+        "cor": "Marrom Cognac",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "NV1172": {
+        "P": [
+          "16718920270"
+        ]
+      },
+      "Marrom Cognac": {
+        "G": [
+          "16718918250"
+        ],
+        "M": [
+          "16718918147"
+        ],
+        "P": [
+          "16718917497"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706318495",
+    "nome": "Blazer Esther",
+    "marca": "NV",
+    "preco": 1598,
+    "novo": true,
+    "descricao": "Confeccionado em alfaiataria\nCom modelagem regular\nGola regular\nFechamento com botões\nManga longa\nBolsos embutidos\nBarra reta\nCom caimento impecável, o blazer Esther é sofisticado e clássico. Em acetato e viscose, tem um toque suave e estrutura elegante. É um indispensável para o seu closet.",
+    "cores": [
+      {
+        "cor": "NV1172",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      },
+      {
+        "cor": "Marrom Cognac",
+        "imagens": [
+          "/produtos/16712900833--unico--0.jpg",
+          "/produtos/16712900833--unico--1.jpg",
+          "/produtos/16712900833--unico--2.jpg",
+          "/produtos/16712900833--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      },
+      {
+        "cor": "Cinza Forest",
+        "imagens": [
+          "/produtos/16706664494--unico--0.jpg",
+          "/produtos/16706664494--unico--1.jpg",
+          "/produtos/16706664494--unico--2.jpg",
+          "/produtos/16706664494--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16712900833--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "NV1172": {
+        "M": [
+          "16718913417"
+        ],
+        "P": [
+          "16718913125"
+        ]
+      },
+      "Marrom Cognac": {
+        "P": [
+          "16712900833"
+        ]
+      },
+      "Cinza Forest": {
+        "PP": [
+          "16706664494"
+        ],
+        "M": [
+          "16706318838"
+        ],
+        "P": [
+          "16706318495"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16718906593",
+    "nome": "Saia Cargo de Algodao",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "38",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "38",
+          "42"
+        ]
+      },
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "34": [
+          "16718907223"
+        ],
+        "38": [
+          "16718907299"
+        ],
+        "42": [
+          "16718907361"
+        ]
+      },
+      "0001": {
+        "34": [
+          "16718906593"
+        ],
+        "36": [
+          "16718906972"
+        ],
+        "38": [
+          "16718907015"
+        ],
+        "40": [
+          "16718907072"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16718902283",
+    "nome": "Shortinho Pesponto Off",
+    "marca": "Animale",
+    "preco": 498,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0003",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0003": {
+        "34": [
+          "16718902283"
+        ],
+        "36": [
+          "16718903066"
+        ],
+        "38": [
+          "16718903192"
+        ],
+        "40": [
+          "16718903331"
+        ],
+        "42": [
+          "16718903428"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705490885",
+    "nome": "Biquini Lacinho Encanto Floral",
+    "marca": "Farm",
+    "preco": 279,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57905",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57905": {
+        "G": [
+          "16718886960"
+        ],
+        "P": [
+          "16718886815"
+        ],
+        "M": [
+          "16705490885"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16718878608",
+    "nome": "Blusa Utilitaria Deep Blue",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0011",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0011": {
+        "34": [
+          "16718878608"
+        ],
+        "36": [
+          "16718879319"
+        ],
+        "38": [
+          "16718879420"
+        ],
+        "40": [
+          "16718879524"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16718874566",
+    "nome": "Calça Jeans Perna Torcida Aleta Costas",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0105",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0105": {
+        "34": [
+          "16718874566"
+        ],
+        "36": [
+          "16718875157"
+        ],
+        "38": [
+          "16718875323"
+        ],
+        "40": [
+          "16718875487"
+        ],
+        "42": [
+          "16718875763"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708432311",
+    "nome": "Macacão Jeans Raw Cinto",
+    "marca": "Animale",
+    "preco": 1298,
+    "novo": true,
+    "descricao": "Macacão Jeans Raw com decote profundo, frente única, bolsos e faixa para ajuste na cintura. Os detalhes utilitários complementam a proposta contemporânea da peça.",
+    "cores": [
+      {
+        "cor": "1531",
+        "imagens": [
+          "/produtos/16718873285--unico--0.jpg",
+          "/produtos/16718873285--unico--1.jpg",
+          "/produtos/16718873285--unico--2.jpg",
+          "/produtos/16718873285--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "36",
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16718873285--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1531": {
+        "36": [
+          "16708432311"
+        ],
+        "38": [
+          "16718873285"
+        ],
+        "40": [
+          "16712892632"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16718870634",
+    "nome": "Vestido Midi Tricot Canelado Recortes Pr",
+    "marca": "Animale",
+    "preco": 698,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "M": [
+          "16718871637"
+        ],
+        "P": [
+          "16718870634"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16718867732",
+    "nome": "Vestido Pontas Oncas Manchas",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "27170",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "40"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "27170": {
+        "36": [
+          "16718867732"
+        ],
+        "40": [
+          "16718868474"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16718860103",
+    "nome": "Macaquinho Lilian",
+    "marca": "NV",
+    "preco": 1898,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "NV1312",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "NV1312": {
+        "P": [
+          "16718861397"
+        ],
+        "PP": [
+          "16718860103"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708158396",
+    "nome": "Bermuda Chino",
+    "marca": "Foxton",
+    "preco": 448,
+    "novo": true,
+    "descricao": "A Bermuda Chino traduz o casual masculino por uma ótica apurada. É uma bermuda que organiza o visual com naturalidade e permite criar combinações leves, mantendo uma aparência intencional do primeiro ao último compromisso do dia\nA sarja apresenta bolsos faca, cós anatômico e modelagem regular confortável, com tingimento realizado com corante reativo. A escolha valoriza a categoria da peça e preserva uma leitura coerente, sem elementos gratuitos, para que forma e material tenham protagonismo no visual\nO acabamento visual favorece produções duradouras, livres de excessos passageiros. Ao coordenar a peça com itens essenciais, surge um resultado contemporâneo e pessoal. É uma escolha que privilegia a qualidade percebida da composição e a liberdade de adaptar o estilo",
+    "composicao": "e a liberdade de adaptar o estilo",
+    "cores": [
+      {
+        "cor": "Caqui",
+        "imagens": [
+          "/produtos/16718855429--unico--0.jpg",
+          "/produtos/16718855429--unico--1.jpg",
+          "/produtos/16718855429--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "38"
+        ]
+      },
+      {
+        "cor": "Aveia",
+        "imagens": [
+          "/produtos/16708214155--unico--0.jpg",
+          "/produtos/16708214155--unico--1.jpg",
+          "/produtos/16708214155--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "38",
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40",
+          "44"
+        ]
+      },
+      {
+        "cor": "Verde Oliva",
+        "imagens": [
+          "/produtos/16708159932--unico--0.jpg",
+          "/produtos/16708159932--unico--1.jpg",
+          "/produtos/16708159932--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "40",
+          "44"
+        ]
+      },
+      {
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16708159273--unico--0.jpg",
+          "/produtos/16708159273--unico--1.jpg",
+          "/produtos/16708159273--unico--2.jpg",
+          "/produtos/16708159273--unico--3.jpg",
+          "/produtos/16708159273--unico--4.jpg",
+          "/produtos/16708159273--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "40",
+          "42",
+          "44"
+        ]
+      },
+      {
+        "cor": "Azul Ink",
+        "imagens": [
+          "/produtos/16708158428--unico--0.jpg",
+          "/produtos/16708158428--unico--1.jpg",
+          "/produtos/16708158428--unico--2.jpg",
+          "/produtos/16708158428--unico--3.jpg",
+          "/produtos/16708158428--unico--4.jpg",
+          "/produtos/16708158428--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "40",
+          "42",
+          "44"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16718855429--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Caqui": {
+        "38": [
+          "16718855429"
+        ]
+      },
+      "Aveia": {
+        "38": [
+          "16708214155"
+        ],
+        "40": [
+          "16708159661"
+        ],
+        "42": [
+          "16708159686"
+        ],
+        "44": [
+          "16708159705"
+        ]
+      },
+      "Verde Oliva": {
+        "40": [
+          "16708159922"
+        ],
+        "42": [
+          "16708159926"
+        ],
+        "44": [
+          "16708159932"
+        ]
+      },
+      "Preto": {
+        "40": [
+          "16708159262"
+        ],
+        "42": [
+          "16708159271"
+        ],
+        "44": [
+          "16708159273"
+        ]
+      },
+      "Azul Ink": {
+        "40": [
+          "16708158396"
+        ],
+        "42": [
+          "16708158425"
+        ],
+        "44": [
+          "16708158428"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16718852728",
+    "nome": "Calça Linho Pier",
+    "marca": "Foxton",
+    "preco": 648,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "32321",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "Verde Oliva",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "32321": {
+        "G": [
+          "16718854564"
+        ],
+        "M": [
+          "16718854414"
+        ]
+      },
+      "Verde Oliva": {
+        "P": [
+          "16718852728"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708217854",
+    "nome": "Tshirt Interlock New",
+    "marca": "Foxton",
+    "preco": 278,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Preto",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      },
+      {
+        "cor": "Vermelho Outono",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Caqui",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "32321",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Branco",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "32321": {
+        "GG": [
+          "16708219386"
+        ],
+        "G": [
+          "16708219380"
+        ],
+        "M": [
+          "16708219375"
+        ],
+        "P": [
+          "16708219366"
+        ]
+      },
+      "Preto": {
+        "P": [
+          "16718851145"
+        ]
+      },
+      "Vermelho Outono": {
+        "GG": [
+          "16708970890"
+        ],
+        "G": [
+          "16708970786"
+        ],
+        "M": [
+          "16708970685"
+        ],
+        "P": [
+          "16708219699"
+        ]
+      },
+      "Caqui": {
+        "GG": [
+          "16708970266"
+        ],
+        "G": [
+          "16708970102"
+        ],
+        "M": [
+          "16708969855"
+        ],
+        "P": [
+          "16708969602"
+        ]
+      },
+      "Branco": {
+        "GG": [
+          "16708217927"
+        ],
+        "G": [
+          "16708217917"
+        ],
+        "M": [
+          "16708217906"
+        ],
+        "P": [
+          "16708217854"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16710108326",
+    "nome": "Camisa ML Linho Lumiar",
+    "marca": "Foxton",
+    "preco": 698,
+    "novo": true,
+    "descricao": "A Camisa Manga Longa Linho Lumiar leva uma interpretação contemporânea à camisa, combinando cambraia de linho com a identidade própria de uma peça de manga longa. A construção cria uma presença clara no visual e favorece composições em que textura, proporção e material aparecem de forma natural, sem perder a elegância descontraída característica da Foxton\nSua ficha reúne ainda cores exclusivas Foxton e corantes nativos que preservam o brilho das cores e o acabamento do linho, proposta urbana, manga longa, 100% linho. Esses elementos não aparecem como detalhes isolados: juntos, formam a linguagem da peça e orientam sua utilização. A composição declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
+    "composicao": "declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
+    "cores": [
+      {
+        "cor": "Verde Oliva",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16718847767--unico--0.jpg",
+          "/produtos/16718847767--unico--1.jpg",
+          "/produtos/16718847767--unico--2.jpg",
+          "/produtos/16718847767--unico--3.jpg",
+          "/produtos/16718847767--unico--4.jpg",
+          "/produtos/16718847767--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Azul Aurora",
+        "imagens": [
+          "/produtos/16710110690--unico--0.jpg",
+          "/produtos/16710110690--unico--1.jpg",
+          "/produtos/16710110690--unico--2.jpg",
+          "/produtos/16710110690--unico--3.jpg",
+          "/produtos/16710110690--unico--4.jpg",
+          "/produtos/16710110690--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "Mogno",
+        "imagens": [
+          "/produtos/16710108899--unico--0.jpg",
+          "/produtos/16710108899--unico--1.jpg",
+          "/produtos/16710108899--unico--2.jpg",
+          "/produtos/16710108899--unico--3.jpg",
+          "/produtos/16710108899--unico--4.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16718847767--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Verde Oliva": {
+        "GG": [
+          "16718849298"
+        ],
+        "M": [
+          "16718848856"
+        ]
+      },
+      "Preto": {
+        "P": [
+          "16718847767"
+        ],
+        "GG": [
+          "16710112712"
+        ],
+        "G": [
+          "16710112651"
+        ],
+        "M": [
+          "16710112563"
+        ]
+      },
+      "Azul Aurora": {
+        "G": [
+          "16710110690"
+        ],
+        "M": [
+          "16710110640"
+        ],
+        "P": [
+          "16710110558"
+        ]
+      },
+      "Mogno": {
+        "GG": [
+          "16710108899"
+        ],
+        "M": [
+          "16710108752"
+        ],
+        "P": [
+          "16710108326"
+        ]
+      }
+    }
+  },
+  {
     "id": "16715491882",
     "nome": "Blusa Cropped Gola Alta Tricot Color",
     "marca": "Animale",
@@ -23136,8 +24480,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -23233,9 +24577,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "P",
-          "PP"
+          "G"
         ]
       },
       {
@@ -23532,105 +24876,6 @@
         ],
         "PP": [
           "16706194209"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16706050137",
-    "nome": "Saia Marta",
-    "marca": "NV",
-    "preco": 898,
-    "novo": true,
-    "descricao": "Em acetato e viscose, com toque suave e caimento impecável, a Saia Marta é um clássico no closet. Sua modelagem reta e comprimento mini dá versatilidade para looks do dia a dia ou eventos especiais. A cintura alta alonga a figura, enquanto os passantes permitem adicionar um cinto e personalizar o look.",
-    "cores": [
-      {
-        "cor": "Preto",
-        "imagens": [
-          "/produtos/16714572775--unico--0.jpg",
-          "/produtos/16714572775--unico--1.jpg",
-          "/produtos/16714572775--unico--2.jpg",
-          "/produtos/16714572775--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "34",
-          "40"
-        ],
-        "tamanhosDisponiveis": [
-          "34",
-          "40"
-        ]
-      },
-      {
-        "cor": "Bege Sugar",
-        "imagens": [
-          "/produtos/16706664965--unico--0.jpg",
-          "/produtos/16706664965--unico--1.jpg",
-          "/produtos/16706664965--unico--2.jpg",
-          "/produtos/16706664965--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "34",
-          "40"
-        ],
-        "tamanhosDisponiveis": [
-          "34",
-          "40"
-        ]
-      },
-      {
-        "cor": "Cinza Forest",
-        "imagens": [
-          "/produtos/16706050470--unico--0.jpg",
-          "/produtos/16706050470--unico--1.jpg",
-          "/produtos/16706050470--unico--2.jpg",
-          "/produtos/16706050470--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "34",
-          "36",
-          "38",
-          "40"
-        ],
-        "tamanhosDisponiveis": [
-          "34",
-          "36",
-          "38",
-          "40"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16714572775--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Preto": {
-        "34": [
-          "16714572775"
-        ],
-        "40": [
-          "16706056173"
-        ]
-      },
-      "Bege Sugar": {
-        "34": [
-          "16706664965"
-        ],
-        "40": [
-          "16706331971"
-        ]
-      },
-      "Cinza Forest": {
-        "34": [
-          "16706050137"
-        ],
-        "36": [
-          "16706050396"
-        ],
-        "38": [
-          "16706050417"
-        ],
-        "40": [
-          "16706050470"
         ]
       }
     }
@@ -23936,8 +25181,8 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -25015,80 +26260,21 @@
     }
   },
   {
-    "id": "16706318495",
-    "nome": "Blazer Esther",
-    "marca": "NV",
-    "preco": 1598,
-    "novo": true,
-    "descricao": "Confeccionado em alfaiataria\nCom modelagem regular\nGola regular\nFechamento com botões\nManga longa\nBolsos embutidos\nBarra reta\nCom caimento impecável, o blazer Esther é sofisticado e clássico. Em acetato e viscose, tem um toque suave e estrutura elegante. É um indispensável para o seu closet.",
-    "cores": [
-      {
-        "cor": "Marrom Cognac",
-        "imagens": [
-          "/produtos/16712900833--unico--0.jpg",
-          "/produtos/16712900833--unico--1.jpg",
-          "/produtos/16712900833--unico--2.jpg",
-          "/produtos/16712900833--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "P"
-        ],
-        "tamanhosDisponiveis": [
-          "P"
-        ]
-      },
-      {
-        "cor": "Cinza Forest",
-        "imagens": [
-          "/produtos/16706664494--unico--0.jpg",
-          "/produtos/16706664494--unico--1.jpg",
-          "/produtos/16706664494--unico--2.jpg",
-          "/produtos/16706664494--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "PP",
-          "P",
-          "M"
-        ],
-        "tamanhosDisponiveis": [
-          "PP",
-          "P",
-          "M"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16712900833--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Marrom Cognac": {
-        "P": [
-          "16712900833"
-        ]
-      },
-      "Cinza Forest": {
-        "PP": [
-          "16706664494"
-        ],
-        "M": [
-          "16706318838"
-        ],
-        "P": [
-          "16706318495"
-        ]
-      }
-    }
-  },
-  {
     "id": "16708923432",
     "nome": "T-shirt Gola Rib",
     "marca": "Animale",
     "preco": 1198,
     "novo": true,
-    "descricao": "",
+    "descricao": "T-shirt em seda com modelagem reta e caimento leve. A gola redonda em rib contrasta com a fluidez da matéria-prima, e as pequenas fendas laterais acrescentam movimento à barra. Uma proposta sofisticada para diferentes produções.",
     "cores": [
       {
         "cor": "07708",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712896889--unico--0.jpg",
+          "/produtos/16712896889--unico--1.jpg",
+          "/produtos/16712896889--unico--2.jpg",
+          "/produtos/16712896889--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38"
@@ -25099,7 +26285,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712896889--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07708": {
@@ -25129,8 +26315,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       },
       {
@@ -25243,44 +26429,6 @@
         ],
         "M": [
           "16710518112"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16708432311",
-    "nome": "Macacão Jeans Raw Cinto",
-    "marca": "Animale",
-    "preco": 1298,
-    "novo": true,
-    "descricao": "Macacão Jeans Raw com decote profundo, frente única, bolsos e faixa para ajuste na cintura. Os detalhes utilitários complementam a proposta contemporânea da peça.",
-    "cores": [
-      {
-        "cor": "1531",
-        "imagens": [
-          "/produtos/16712892632--unico--0.jpg",
-          "/produtos/16712892632--unico--1.jpg",
-          "/produtos/16712892632--unico--2.jpg",
-          "/produtos/16712892632--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "36",
-          "40"
-        ],
-        "tamanhosDisponiveis": [
-          "40"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16712892632--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "1531": {
-        "36": [
-          "16708432311"
-        ],
-        "40": [
-          "16712892632"
         ]
       }
     }
@@ -25515,8 +26663,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -25627,7 +26775,7 @@
     "id": "16710501215",
     "nome": "Vestido Emily",
     "marca": "NV",
-    "preco": 0,
+    "preco": 789,
     "novo": true,
     "descricao": "",
     "cores": [
@@ -25841,8 +26989,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -25961,116 +27109,6 @@
         ],
         "P": [
           "16710119601"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16710108326",
-    "nome": "Camisa ML Linho Lumiar",
-    "marca": "Foxton",
-    "preco": 698,
-    "novo": true,
-    "descricao": "A Camisa Manga Longa Linho Lumiar leva uma interpretação contemporânea à camisa, combinando cambraia de linho com a identidade própria de uma peça de manga longa. A construção cria uma presença clara no visual e favorece composições em que textura, proporção e material aparecem de forma natural, sem perder a elegância descontraída característica da Foxton\nSua ficha reúne ainda cores exclusivas Foxton e corantes nativos que preservam o brilho das cores e o acabamento do linho, proposta urbana, manga longa, 100% linho. Esses elementos não aparecem como detalhes isolados: juntos, formam a linguagem da peça e orientam sua utilização. A composição declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
-    "composicao": "declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
-    "cores": [
-      {
-        "cor": "Preto",
-        "imagens": [
-          "/produtos/16710112712--unico--0.jpg",
-          "/produtos/16710112712--unico--1.jpg",
-          "/produtos/16710112712--unico--2.jpg",
-          "/produtos/16710112712--unico--3.jpg",
-          "/produtos/16710112712--unico--4.jpg",
-          "/produtos/16710112712--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "M",
-          "G",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "M",
-          "G",
-          "GG"
-        ]
-      },
-      {
-        "cor": "Azul Aurora",
-        "imagens": [
-          "/produtos/16710110690--unico--0.jpg",
-          "/produtos/16710110690--unico--1.jpg",
-          "/produtos/16710110690--unico--2.jpg",
-          "/produtos/16710110690--unico--3.jpg",
-          "/produtos/16710110690--unico--4.jpg",
-          "/produtos/16710110690--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "P",
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G"
-        ]
-      },
-      {
-        "cor": "Mogno",
-        "imagens": [
-          "/produtos/16710108899--unico--0.jpg",
-          "/produtos/16710108899--unico--1.jpg",
-          "/produtos/16710108899--unico--2.jpg",
-          "/produtos/16710108899--unico--3.jpg",
-          "/produtos/16710108899--unico--4.jpg"
-        ],
-        "tamanhos": [
-          "P",
-          "M",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "GG"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16710112712--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Preto": {
-        "GG": [
-          "16710112712"
-        ],
-        "G": [
-          "16710112651"
-        ],
-        "M": [
-          "16710112563"
-        ]
-      },
-      "Azul Aurora": {
-        "G": [
-          "16710110690"
-        ],
-        "M": [
-          "16710110640"
-        ],
-        "P": [
-          "16710110558"
-        ]
-      },
-      "Mogno": {
-        "GG": [
-          "16710108899"
-        ],
-        "M": [
-          "16710108752"
-        ],
-        "P": [
-          "16710108326"
         ]
       }
     }
@@ -26252,10 +27290,10 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG"
         ]
       },
       {
@@ -26274,8 +27312,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -26445,140 +27483,6 @@
         ],
         "GG": [
           "16706317190"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16708217854",
-    "nome": "Tshirt Interlock New",
-    "marca": "Foxton",
-    "preco": 278,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Vermelho Outono",
-        "imagens": [],
-        "tamanhos": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
-      },
-      {
-        "cor": "Caqui",
-        "imagens": [],
-        "tamanhos": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
-      },
-      {
-        "cor": "32321",
-        "imagens": [],
-        "tamanhos": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
-      },
-      {
-        "cor": "Branco",
-        "imagens": [],
-        "tamanhos": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "32321": {
-        "GG": [
-          "16708219386"
-        ],
-        "G": [
-          "16708219380"
-        ],
-        "M": [
-          "16708219375"
-        ],
-        "P": [
-          "16708219366"
-        ]
-      },
-      "Vermelho Outono": {
-        "GG": [
-          "16708970890"
-        ],
-        "G": [
-          "16708970786"
-        ],
-        "M": [
-          "16708970685"
-        ],
-        "P": [
-          "16708219699"
-        ]
-      },
-      "Caqui": {
-        "GG": [
-          "16708970266"
-        ],
-        "G": [
-          "16708970102"
-        ],
-        "M": [
-          "16708969855"
-        ],
-        "P": [
-          "16708969602"
-        ]
-      },
-      "Branco": {
-        "GG": [
-          "16708217927"
-        ],
-        "G": [
-          "16708217917"
-        ],
-        "M": [
-          "16708217906"
-        ],
-        "P": [
-          "16708217854"
         ]
       }
     }
@@ -27060,8 +27964,8 @@
           "P"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       }
     ],
@@ -27221,8 +28125,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -27716,11 +28620,16 @@
     "marca": "Animale",
     "preco": 798,
     "novo": true,
-    "descricao": "",
+    "descricao": "Saia com modelagem evasê e comprimento midi. As pregas frontais e os bolsos amplos valorizam o design da peça, criando uma construção leve e contemporânea.",
     "cores": [
       {
         "cor": "0011",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708436429--unico--0.jpg",
+          "/produtos/16708436429--unico--1.jpg",
+          "/produtos/16708436429--unico--2.jpg",
+          "/produtos/16708436429--unico--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "40"
@@ -27731,7 +28640,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708436429--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0011": {
@@ -28271,10 +29180,10 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "GG",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG"
         ]
       },
       {
@@ -28340,10 +29249,10 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG"
         ]
       },
       {
@@ -28729,146 +29638,6 @@
         ],
         "P": [
           "16708247854"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16708158396",
-    "nome": "Bermuda Chino",
-    "marca": "Foxton",
-    "preco": 448,
-    "novo": true,
-    "descricao": "A Bermuda Chino traduz o casual masculino por uma ótica apurada. É uma bermuda que organiza o visual com naturalidade e permite criar combinações leves, mantendo uma aparência intencional do primeiro ao último compromisso do dia\nA sarja apresenta bolsos faca, cós anatômico e modelagem regular confortável, com tingimento realizado com corante reativo. A escolha valoriza a categoria da peça e preserva uma leitura coerente, sem elementos gratuitos, para que forma e material tenham protagonismo no visual\nO acabamento visual favorece produções duradouras, livres de excessos passageiros. Ao coordenar a peça com itens essenciais, surge um resultado contemporâneo e pessoal. É uma escolha que privilegia a qualidade percebida da composição e a liberdade de adaptar o estilo",
-    "composicao": "e a liberdade de adaptar o estilo",
-    "cores": [
-      {
-        "cor": "Aveia",
-        "imagens": [
-          "/produtos/16708214155--unico--0.jpg",
-          "/produtos/16708214155--unico--1.jpg",
-          "/produtos/16708214155--unico--2.jpg"
-        ],
-        "tamanhos": [
-          "38",
-          "40",
-          "42",
-          "44"
-        ],
-        "tamanhosDisponiveis": [
-          "38",
-          "40",
-          "44"
-        ]
-      },
-      {
-        "cor": "Verde Oliva",
-        "imagens": [
-          "/produtos/16708159932--unico--0.jpg",
-          "/produtos/16708159932--unico--1.jpg",
-          "/produtos/16708159932--unico--2.jpg"
-        ],
-        "tamanhos": [
-          "40",
-          "42",
-          "44"
-        ],
-        "tamanhosDisponiveis": [
-          "40",
-          "44"
-        ]
-      },
-      {
-        "cor": "Preto",
-        "imagens": [
-          "/produtos/16708159273--unico--0.jpg",
-          "/produtos/16708159273--unico--1.jpg",
-          "/produtos/16708159273--unico--2.jpg",
-          "/produtos/16708159273--unico--3.jpg",
-          "/produtos/16708159273--unico--4.jpg",
-          "/produtos/16708159273--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "40",
-          "42",
-          "44"
-        ],
-        "tamanhosDisponiveis": [
-          "40",
-          "42",
-          "44"
-        ]
-      },
-      {
-        "cor": "Azul Ink",
-        "imagens": [
-          "/produtos/16708158428--unico--0.jpg",
-          "/produtos/16708158428--unico--1.jpg",
-          "/produtos/16708158428--unico--2.jpg",
-          "/produtos/16708158428--unico--3.jpg",
-          "/produtos/16708158428--unico--4.jpg",
-          "/produtos/16708158428--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "40",
-          "42",
-          "44"
-        ],
-        "tamanhosDisponiveis": [
-          "40",
-          "42",
-          "44"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16708214155--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Aveia": {
-        "38": [
-          "16708214155"
-        ],
-        "40": [
-          "16708159661"
-        ],
-        "42": [
-          "16708159686"
-        ],
-        "44": [
-          "16708159705"
-        ]
-      },
-      "Verde Oliva": {
-        "40": [
-          "16708159922"
-        ],
-        "42": [
-          "16708159926"
-        ],
-        "44": [
-          "16708159932"
-        ]
-      },
-      "Preto": {
-        "40": [
-          "16708159262"
-        ],
-        "42": [
-          "16708159271"
-        ],
-        "44": [
-          "16708159273"
-        ]
-      },
-      "Azul Ink": {
-        "40": [
-          "16708158396"
-        ],
-        "42": [
-          "16708158425"
-        ],
-        "44": [
-          "16708158428"
         ]
       }
     }
@@ -30769,11 +31538,16 @@
     "marca": "Animale",
     "preco": 798,
     "novo": true,
-    "descricao": "",
+    "descricao": "Kaftan em voil com modelagem ampla e comprimento midi. Possui padronagem listrada, decote em V, mangas amplas e recorte com franzido abaixo do busto.",
     "cores": [
       {
         "cor": "1239",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707245609--unico--0.jpg",
+          "/produtos/16707245609--unico--1.jpg",
+          "/produtos/16707245609--unico--2.jpg",
+          "/produtos/16707245609--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "G"
@@ -30784,7 +31558,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707245609--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "1239": {
@@ -30851,7 +31625,6 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "PP",
           "P",
           "M"
         ]
@@ -31056,8 +31829,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       },
       {
@@ -31543,11 +32316,17 @@
     "marca": "Animale",
     "preco": 358,
     "novo": true,
-    "descricao": "",
+    "descricao": "T-Shirt em Malha Fio Tinto com gola careca, mangas curtas e padronagem listrada. As listras destacam a composição da peça e trazem contraste ao visual.",
+    "composicao": "da peça e trazem contraste ao visual.",
     "cores": [
       {
         "cor": "07706",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706504662--unico--0.jpg",
+          "/produtos/16706504662--unico--1.jpg",
+          "/produtos/16706504662--unico--2.jpg",
+          "/produtos/16706504662--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -31560,7 +32339,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706504662--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07706": {
@@ -31582,11 +32361,16 @@
     "marca": "Animale",
     "preco": 798,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido em tricot com comprimento midi, padronagem listrada e fios de lurex. Possui gola polo, decote em V e fenda lateral. A modelagem ajustada valoriza a silhueta. DETALHES – Tricot com fios de lurex – Padronagem listrada – Modelagem ajustada – Decote V – Gola polo – Mangas longas – Comprimento midi – Fenda lateral DICAS DE STYLING – Combine com sandálias de salto para uma produção sofisticada. – Use com botas para um visual contemporâneo. – Finalize com acessórios dourados para destacar os fios de lurex.",
     "cores": [
       {
         "cor": "58040",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706503101--unico--0.jpg",
+          "/produtos/16706503101--unico--1.jpg",
+          "/produtos/16706503101--unico--2.jpg",
+          "/produtos/16706503101--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -31597,7 +32381,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706503101--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "58040": {
@@ -31655,11 +32439,16 @@
     "marca": "Animale",
     "preco": 198,
     "novo": true,
-    "descricao": "",
+    "descricao": "T-shirt em malha pima com modelagem ampla. O decote redondo, os ombros deslocados e o caimento solto definem a proposta da peça. Leve e versátil para diferentes combinações.",
     "cores": [
       {
         "cor": "0005",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706478128--unico--0.jpg",
+          "/produtos/16706478128--unico--1.jpg",
+          "/produtos/16706478128--unico--2.jpg",
+          "/produtos/16706478128--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -31673,7 +32462,12 @@
       },
       {
         "cor": "0003",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706459907--unico--0.jpg",
+          "/produtos/16706459907--unico--1.jpg",
+          "/produtos/16706459907--unico--2.jpg",
+          "/produtos/16706459907--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -31685,7 +32479,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706478128--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0005": {
@@ -32006,7 +32800,6 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "P",
           "M",
           "G"
         ]
@@ -32088,8 +32881,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "PP"
+          "PP",
+          "G"
         ]
       },
       {
@@ -32592,11 +33385,16 @@
     "marca": "Animale",
     "preco": 798,
     "novo": true,
-    "descricao": "",
+    "descricao": "Short de alfaiataria com acabamento melange e comprimento curto. Apresenta cintura média, pregas frontais, passantes no cós e bolsos laterais. Uma peça sofisticada e atemporal.",
     "cores": [
       {
         "cor": "0800",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706293279--unico--0.jpg",
+          "/produtos/16706293279--unico--1.jpg",
+          "/produtos/16706293279--unico--2.jpg",
+          "/produtos/16706293279--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -32611,7 +33409,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706293279--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0800": {
@@ -32636,23 +33434,29 @@
     "marca": "Animale",
     "preco": 598,
     "novo": true,
-    "descricao": "",
+    "descricao": "Camisa cropped com modelagem reta, mangas longas e padronagem listrada. O comprimento encurtado atualiza a alfaiataria clássica, enquanto a composição das listras reforça a construção da peça em uma proposta leve e contemporânea.",
+    "composicao": "das listras reforça a construção da peça em uma proposta leve e contemporânea.",
     "cores": [
       {
         "cor": "0201",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706292434--unico--0.jpg",
+          "/produtos/16706292434--unico--1.jpg",
+          "/produtos/16706292434--unico--2.jpg",
+          "/produtos/16706292434--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706292434--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0201": {
@@ -32712,11 +33516,17 @@
     "marca": "Animale",
     "preco": 1398,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça com modelagem reta e caimento fluido. Os vivos contrastantes nas laterais valorizam a composição da peça, enquanto as fendas na barra reforçam a leveza do modelo.",
+    "composicao": "da peça, enquanto as fendas na barra reforçam a leveza do modelo.",
     "cores": [
       {
         "cor": "07715",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706287801--unico--0.jpg",
+          "/produtos/16706287801--unico--1.jpg",
+          "/produtos/16706287801--unico--2.jpg",
+          "/produtos/16706287801--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -32728,7 +33538,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706287801--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07715": {
@@ -32750,11 +33560,16 @@
     "marca": "Animale",
     "preco": 798,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido estampado com caimento fluido e comprimento longo. Possui decote profundo, recorte abaixo do busto e saia com recortes horizontais e franzidos sutis. As costas abertas com amarração completam o design.",
     "cores": [
       {
         "cor": "57538",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706286440--unico--0.jpg",
+          "/produtos/16706286440--unico--1.jpg",
+          "/produtos/16706286440--unico--2.jpg",
+          "/produtos/16706286440--unico--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "38"
@@ -32764,7 +33579,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706286440--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57538": {
@@ -32987,7 +33802,6 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
           "M",
           "G"
         ]
@@ -33197,11 +34011,16 @@
     "marca": "Animale",
     "preco": 1598,
     "novo": true,
-    "descricao": "",
+    "descricao": "Blazer em alfaiataria com modelagem slim. Possui lapela clássica, fechamento frontal por botão, bolsos aplicados e bolso embutido no busto, além de recortes que valorizam o caimento. Uma proposta atemporal e sofisticada.",
     "cores": [
       {
         "cor": "07708",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706249155--unico--0.jpg",
+          "/produtos/16706249155--unico--1.jpg",
+          "/produtos/16706249155--unico--2.jpg",
+          "/produtos/16706249155--unico--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -33217,7 +34036,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706249155--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07708": {
@@ -33406,9 +34225,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "P",
           "G",
-          "P"
+          "GG"
         ]
       },
       {
@@ -33782,8 +34601,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       },
       {
@@ -35254,8 +36073,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       },
       {
@@ -35550,11 +36369,16 @@
     "marca": "Animale",
     "preco": 1298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça de alfaiataria com modelagem reta e cintura média. Possui cós com passantes, pregas frontais e vincos marcados ao longo das pernas, em uma proposta elegante e atemporal.",
     "cores": [
       {
         "cor": "07708",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705633673--unico--0.jpg",
+          "/produtos/16705633673--unico--1.jpg",
+          "/produtos/16705633673--unico--2.jpg",
+          "/produtos/16705633673--unico--3.jpg"
+        ],
         "tamanhos": [
           "34",
           "36",
@@ -35570,7 +36394,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705633673--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07708": {
@@ -36328,11 +37152,16 @@
     "marca": "Animale",
     "preco": 898,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido midi com recortes que estruturam a modelagem, equilibrando linhas limpas e caimento fluido. O decote reto, as alças e a saia de volume suave conferem leveza à composição, enquanto os bolsos laterais acrescentam funcionalidade. Uma proposta versátil para diferentes ocasiões.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707350576--unico--0.jpg",
+          "/produtos/16707350576--unico--1.jpg",
+          "/produtos/16707350576--unico--2.jpg",
+          "/produtos/16707350576--unico--3.jpg"
+        ],
         "tamanhos": [
           "36",
           "38"
@@ -36343,7 +37172,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707350576--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "36": [
@@ -36460,11 +37289,16 @@
     "marca": "Animale",
     "preco": 898,
     "novo": true,
-    "descricao": "",
+    "descricao": "Calça jeans com modelagem ampla e lavagem escura. Os bolsos frontais amplos e os recortes aparentes valorizam a construção da peça, enquanto as pernas largas reforçam o caimento solto e contemporâneo.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705453480--unico--0.jpg",
+          "/produtos/16705453480--unico--1.jpg",
+          "/produtos/16705453480--unico--2.jpg",
+          "/produtos/16705453480--unico--3.jpg"
+        ],
         "tamanhos": [
           "42",
           "44"
@@ -36475,7 +37309,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705453480--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorTamanho": {
       "42": [
@@ -40523,6 +41357,29 @@
     "temEstoque": false
   },
   {
+    "id": "16718845179",
+    "nome": "Camisa MC Linho Estival - 0580",
+    "marca": "Foxton",
+    "preco": 598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "_corCodigo": "0580"
+  },
+  {
     "id": "16714577732",
     "nome": "Blusa Laysa - NV1305",
     "marca": "NV",
@@ -42263,27 +43120,6 @@
     "imagem": "/produtos/16705506029--unico--0.jpg",
     "temEstoque": false,
     "_corCodigo": "57808"
-  },
-  {
-    "id": "16705490885",
-    "nome": "Biquini Lacinho Encanto Floral - 57905",
-    "marca": "Farm",
-    "preco": 279,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "M"
-        ],
-        "tamanhosDisponiveis": []
-      }
-    ],
-    "imagem": null,
-    "temEstoque": false,
-    "_corCodigo": "57905"
   },
   {
     "id": "16705489556",
