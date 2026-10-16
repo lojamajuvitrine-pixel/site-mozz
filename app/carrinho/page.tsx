@@ -11,6 +11,7 @@ import { rastrearIniciarCheckout } from "@/lib/tracking";
 import { validarCpf, formatarCpf } from "@/lib/cpf";
 import { createClient } from "@/lib/supabase/client";
 import { buscarEnderecoPorCep } from "@/lib/cep";
+import PagamentoNoSite, { CHAVE_PUBLICA_MP } from "@/components/PagamentoNoSite";
 
 type ResultadoCupom =
   | { valido: true; cupom: { codigo: string; tipo: "percentual" | "fixo"; valor: number }; desconto: number }
@@ -397,6 +398,36 @@ export default function PaginaCarrinho() {
     }
   }
 
+  // Pedido no formato que o servidor recebe (o mesmo pro Checkout Pro e pro Pix/cartao dentro
+  // do site) - precos/frete/cupom/credito sao todos recalculados de novo la' (lib/mercadopago.ts).
+  const corpoPedido = {
+    itens,
+    cupomCodigo: cupomAplicado?.valido ? cupomAplicado.cupom.codigo : undefined,
+    cliente: {
+      nomeCompleto: nomeCompleto.trim(),
+      cpf,
+      email: email.trim(),
+      telefone: telefone.trim(),
+      endereco: {
+        cep: cepEndereco,
+        rua: rua.trim(),
+        numero: numero.trim(),
+        complemento: complemento.trim() || undefined,
+        bairro: bairro.trim(),
+        cidade: cidade.trim(),
+        uf: uf.trim().toUpperCase()
+      }
+    },
+    frete: freteSelecionado
+      ? {
+          servico: freteSelecionado.servico,
+          transportadora: freteSelecionado.transportadora,
+          preco: precoFreteEfetivo
+        }
+      : undefined,
+    creditoSolicitado: creditoAplicado > 0 ? creditoAplicado : undefined
+  };
+
   async function finalizarCompra() {
     if (!podeFinalizar) {
       setErro("Confira seus dados e o endereço de entrega antes de pagar");
@@ -409,33 +440,7 @@ export default function PaginaCarrinho() {
       const resposta = await fetch("/api/mercadopago/criar-preferencia", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          itens,
-          cupomCodigo: cupomAplicado?.valido ? cupomAplicado.cupom.codigo : undefined,
-          cliente: {
-            nomeCompleto: nomeCompleto.trim(),
-            cpf,
-            email: email.trim(),
-            telefone: telefone.trim(),
-            endereco: {
-              cep: cepEndereco,
-              rua: rua.trim(),
-              numero: numero.trim(),
-              complemento: complemento.trim() || undefined,
-              bairro: bairro.trim(),
-              cidade: cidade.trim(),
-              uf: uf.trim().toUpperCase()
-            }
-          },
-          frete: freteSelecionado
-            ? {
-                servico: freteSelecionado.servico,
-                transportadora: freteSelecionado.transportadora,
-                preco: precoFreteEfetivo
-              }
-            : undefined,
-          creditoSolicitado: creditoAplicado > 0 ? creditoAplicado : undefined
-        })
+        body: JSON.stringify(corpoPedido)
       });
       const dados = await resposta.json();
       if (!resposta.ok) throw new Error(dados.erro ?? "Erro ao iniciar pagamento");
@@ -819,18 +824,37 @@ export default function PaginaCarrinho() {
           </div>
 
           {etapaAberta === "pagamento" && erro && <p className="text-[13.5px] text-red-600 mb-2">{erro}</p>}
-          <button
-            onClick={finalizarCompra}
-            disabled={carregando}
-            className="w-full text-[14.5px] py-3 bg-mozz-black text-white disabled:opacity-60"
-          >
-            {carregando ? "Abrindo o pagamento..." : "Ir para o pagamento"}
-          </button>
-          <p className="text-[12.5px] text-mozz-gray text-center mt-2">
-            Pix ou cartão
-            {parcelamentoTotal ? ` em até ${parcelamentoTotal.parcelas}x sem juros` : ""}. Você conclui no
-            ambiente seguro do Mercado Pago e volta pra Mozz.
-          </p>
+          {CHAVE_PUBLICA_MP ? (
+            // Pix e cartao DENTRO do site (16/10/2026) - ver components/PagamentoNoSite.tsx.
+            // So' monta quando a etapa 3 esta' aberta (o formulario do cartao precisa estar visivel).
+            etapaAberta === "pagamento" && (
+              <PagamentoNoSite
+                corpoPedido={corpoPedido}
+                valorTotal={Math.round(totalFinal * 100) / 100}
+                email={email.trim()}
+                pronto={podeFinalizar}
+                parcelasMaximas={parcelamentoTotal?.parcelas ?? 1}
+                onPedidoCriado={(numeroPedido) => salvarEtapa("pagamento", numeroPedido)}
+                onPagarNoMercadoPago={finalizarCompra}
+                redirecionando={carregando}
+              />
+            )
+          ) : (
+            <>
+              <button
+                onClick={finalizarCompra}
+                disabled={carregando}
+                className="w-full text-[14.5px] py-3 bg-mozz-black text-white disabled:opacity-60"
+              >
+                {carregando ? "Abrindo o pagamento..." : "Ir para o pagamento"}
+              </button>
+              <p className="text-[12.5px] text-mozz-gray text-center mt-2">
+                Pix ou cartão
+                {parcelamentoTotal ? ` em até ${parcelamentoTotal.parcelas}x sem juros` : ""}. Você conclui no
+                ambiente seguro do Mercado Pago e volta pra Mozz.
+              </p>
+            </>
+          )}
         </div>
       </div>
     </section>
