@@ -224,6 +224,14 @@ const CODIGOS_COR_POR_MARCA: Record<string, Record<string, string>> = {
     "NV1286": "Bandana Rosa",
     "0080": "Off White",
     "0089": "Preto"
+  },
+  // Animale - codigos de 5 digitos (ex: "03017"), vistos primeiro na Blusa Cropped Gola Alta
+  // Tricot Color. Passados pelo Brunno em 16/10/2026.
+  Animale: {
+    "03017": "Azul Azure",
+    "07021": "Marrom Palha",
+    "07716": "Bicolor",
+    "09041": "Bege Manhã"
   }
 };
 
