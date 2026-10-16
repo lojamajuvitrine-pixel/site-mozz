@@ -13,6 +13,16 @@
 // nao batia com a chave "preto" (o .includes exige a palavra inteira) e caia no cinza generico
 // do fallback - bug reportado pelo Brunno em 24/08/2026 (bolinha "khaki" pra uma peca preta).
 const CORES_APROX: Array<[string, string]> = [
+  // Cores da Animale passadas pelo Brunno em 16/10/2026 (tons tirados das fotos da Blusa
+  // Cropped Gola Alta Tricot Color). Ficam antes das genericas ("azul", "marrom", "bege").
+  // "Bicolor" usa um degrade dividido na diagonal (metade azul azure, metade marrom palha) -
+  // por isso as bolinhas usam style "background" (aceita degrade), nao "backgroundColor".
+  ["bicolor", "linear-gradient(135deg, #6dbdef 50%, #e0ab73 50%)"],
+  ["azul azure", "#6dbdef"],
+  ["azure", "#6dbdef"],
+  ["marrom palha", "#e0ab73"],
+  ["palha", "#e0ab73"],
+  ["bege manha", "#edc8a2"],
   ["off white", "#f5f0e6"],
   ["branco", "#ffffff"],
   ["branca", "#ffffff"],
