@@ -298,7 +298,9 @@
           "M",
           "G"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "P"
+        ]
       },
       {
         "cor": "LARANJA VELUDO",
@@ -337,7 +339,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G"
+          "G",
+          "M"
         ]
       }
     ],
@@ -1207,8 +1210,7 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "40",
-          "44"
+          "40"
         ]
       }
     ],
@@ -1380,6 +1382,7 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
+          "P",
           "PP"
         ]
       }
@@ -23763,7 +23766,6 @@
           "40"
         ],
         "tamanhosDisponiveis": [
-          "36",
           "40"
         ]
       }
@@ -24327,7 +24329,9 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "P"
+        ]
       },
       {
         "cor": "07716",
@@ -24338,7 +24342,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M"
+          "M",
+          "P"
         ]
       },
       {
@@ -24571,7 +24576,11 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "M",
+          "P",
+          "PP"
+        ]
       },
       {
         "cor": "07708",
@@ -24588,9 +24597,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
+          "G",
+          "M",
           "P",
-          "G"
+          "PP"
         ]
       },
       {
@@ -24607,6 +24617,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "M",
+          "P",
           "PP"
         ]
       },
@@ -24705,13 +24717,11 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16714584686--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorCorTamanho": {
       "NV1169": {
         "M": [
@@ -25643,7 +25653,8 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "M"
+          "M",
+          "P"
         ]
       }
     ],
@@ -26325,8 +26336,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "PP",
-          "P"
+          "P",
+          "M",
+          "PP"
         ]
       },
       {
@@ -33721,7 +33733,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG"
         ]
       }
@@ -34635,8 +34646,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
-          "M"
+          "G",
+          "M",
+          "PP"
         ]
       },
       {
