@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import BotaoWhatsapp from "@/components/BotaoWhatsapp";
+import FaixaBeneficios from "@/components/FaixaBeneficios";
 import { CartProvider } from "@/lib/cart-context";
 import { FavoritosProvider } from "@/lib/favoritos-context";
 import { SITE_URL } from "@/lib/site";
@@ -11,17 +12,17 @@ import { SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "MOZZ — Animale, NV, Reserva e Foxton em um só lugar",
+    default: "MOZZ — Animale, NV, Farm, Reserva e Foxton em um só lugar",
     template: "%s | MOZZ"
   },
   description:
-    "Loja multimarcas com peças da Animale, NV, Reserva e Foxton. Frete para todo o Brasil, troca fácil e parcelamento sem juros.",
+    "Revenda oficial de Animale, NV, Farm, Reserva e Foxton. Até 10x sem juros, troca em 30 dias e frete para todo o Brasil.",
   openGraph: {
     type: "website",
     locale: "pt_BR",
     siteName: "MOZZ",
-    title: "MOZZ — Animale, NV, Reserva e Foxton em um só lugar",
-    description: "Loja multimarcas com peças da Animale, NV, Reserva e Foxton."
+    title: "MOZZ — Animale, NV, Farm, Reserva e Foxton em um só lugar",
+    description: "Loja multimarcas com peças da Animale, NV, Farm, Reserva e Foxton."
   },
   robots: { index: true, follow: true },
   verification: {
@@ -116,6 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
           <FavoritosProvider>
             <Nav />
+            <FaixaBeneficios />
             <main className="max-w-[1600px] mx-auto px-6">{children}</main>
             <Footer />
             <BotaoWhatsapp />
