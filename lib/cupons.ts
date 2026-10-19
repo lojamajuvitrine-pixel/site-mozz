@@ -26,10 +26,11 @@ export type Cupom = {
 };
 
 export const CUPONS: Cupom[] = [
-  // Cupom de primeira compra - decidido pelo Brunno em 30/08/2026: 10% de desconto,
-  // usoUnicoPorCpf faz cada CPF conseguir usar so' uma vez (na pratica, "valido so' na
-  // primeira compra"). Sem pedidoMinimo nem validoAte por enquanto.
-  { codigo: "PRIMEIRACOMPRA", tipo: "percentual", valor: 10, usoUnicoPorCpf: true, ativo: true }
+  // Cupom de primeira compra - criado em 30/08/2026 com 10%; subiu pra 15% em 19/10/2026
+  // (decisao do Brunno, igual ao da OQVestir). usoUnicoPorCpf faz cada CPF conseguir usar so'
+  // uma vez (na pratica, "valido so' na primeira compra"). Sem pedidoMinimo nem validoAte.
+  // Nao soma com o desconto do Pix: vale o maior dos dois (ver prepararPedido).
+  { codigo: "PRIMEIRACOMPRA", tipo: "percentual", valor: 15, usoUnicoPorCpf: true, ativo: true }
 
   // exemplo de cupom de promocao comum (desativado) - qualquer pessoa pode usar, quantas
   // vezes quiser, enquanto estiver ativo:
