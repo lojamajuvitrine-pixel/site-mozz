@@ -60,6 +60,48 @@ export function ehRetirada(opcao: Pick<OpcaoFrete, "transportadora">): boolean {
   return opcao.transportadora === FRETE_RETIRADA.transportadora;
 }
 
+// Entrega expressa em Reserva-PR (19/10/2026, pedido do Brunno): so' pra CEP de Reserva, gratis,
+// feita pela propria equipe/motoboy da Mozz - nao passa pelo Melhor Envio (nao gera etiqueta),
+// mesmo raciocinio da retirada na loja. transportadora "Entrega expressa" e' o sinal que o
+// resto do codigo usa (ver ehEntregaExpressa e a revalidacao em lib/mercadopago.ts).
+export const FRETE_ENTREGA_EXPRESSA: OpcaoFrete = {
+  servico: "Entrega expressa em Reserva",
+  transportadora: "Entrega expressa",
+  preco: 0,
+  prazoDias: 0
+};
+
+export function ehEntregaExpressa(opcao: Pick<OpcaoFrete, "transportadora">): boolean {
+  return opcao.transportadora === FRETE_ENTREGA_EXPRESSA.transportadora;
+}
+
+// CEPs de Reserva-PR comecam com 84320 (o da loja e' 84320-000).
+export function cepDeReserva(cep: string): boolean {
+  return cep.replace(/\D/g, "").startsWith("84320");
+}
+
+// Quando a entrega expressa chega, conforme o horario de corte (fuso de Sao Paulo): segunda a
+// sexta, pedido pago ate' 14h sai no mesmo dia; sabado, ate' 11h (a loja fecha 12h); depois
+// disso, ou no domingo, vai pro proximo dia util. Feriado nao e' considerado.
+export function previsaoEntregaExpressa(agora: Date = new Date()): "hoje" | "amanhã" | "segunda-feira" {
+  const partes = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Sao_Paulo",
+    weekday: "short",
+    hour: "numeric",
+    minute: "numeric",
+    hourCycle: "h23"
+  }).formatToParts(agora);
+  const dia = partes.find((p) => p.type === "weekday")?.value ?? "Mon";
+  const hora = Number(partes.find((p) => p.type === "hour")?.value ?? 0);
+  const minuto = Number(partes.find((p) => p.type === "minute")?.value ?? 0);
+  const minutosDoDia = hora * 60 + minuto;
+
+  if (dia === "Sun") return "segunda-feira";
+  if (dia === "Sat") return minutosDoDia < 11 * 60 ? "hoje" : "segunda-feira";
+  if (minutosDoDia < 14 * 60) return "hoje";
+  return dia === "Fri" ? "segunda-feira" : "amanhã";
+}
+
 // Transportadoras que a gente NAO oferece no site, mesmo que o Melhor Envio cote preco pra
 // elas - descoberto testando em producao em 31/08/2026: a Jadlog recusa etiquetas com o erro
 // "Esta transportadora nao aceita envios nao-comerciais partindo deste estado", porque a MOZZ
