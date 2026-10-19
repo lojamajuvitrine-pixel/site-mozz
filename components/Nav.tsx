@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import BarraBusca from "@/components/BarraBusca";
 import { useFavoritos } from "@/lib/favoritos-context";
@@ -15,6 +15,12 @@ const MARCAS_MASCULINO = [
   { nome: "Reserva", slug: "reserva" },
   { nome: "Foxton", slug: "foxton" }
 ];
+const TODAS_AS_MARCAS = [...MARCAS_FEMININO, ...MARCAS_MASCULINO];
+
+// WhatsApp da loja (mesmo numero do botao flutuante, ver components/BotaoWhatsapp.tsx)
+const LINK_WHATSAPP = `https://wa.me/5542988351888?text=${encodeURIComponent(
+  "Olá! Vim pelo site da Mozz e gostaria de atendimento."
+)}`;
 
 function IconeChevron({ aberto }: { aberto: boolean }) {
   return (
@@ -117,12 +123,30 @@ function BadgeContagem({ valor }: { valor: number }) {
 
 export default function Nav() {
   const [menuAberto, setMenuAberto] = useState(false);
-  const [femininoAberto, setFemininoAberto] = useState(false);
-  const [masculinoAberto, setMasculinoAberto] = useState(false);
+  const [marcasAberto, setMarcasAberto] = useState(false);
   const { favoritos } = useFavoritos();
   const { itens } = useCart();
   const pecasNaSacola = itens.reduce((soma, item) => soma + item.quantidade, 0);
   const rotuloSacola = pecasNaSacola > 0 ? `Carrinho com ${pecasNaSacola} ${pecasNaSacola === 1 ? "peça" : "peças"}` : "Carrinho";
+
+  // Menu lateral do celular: com ele aberto, a pagina por tras nao rola, e a tecla Esc fecha.
+  useEffect(() => {
+    if (!menuAberto) return;
+    const overflowAnterior = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const aoApertarTecla = (evento: KeyboardEvent) => {
+      if (evento.key === "Escape") setMenuAberto(false);
+    };
+    window.addEventListener("keydown", aoApertarTecla);
+    return () => {
+      document.body.style.overflow = overflowAnterior;
+      window.removeEventListener("keydown", aoApertarTecla);
+    };
+  }, [menuAberto]);
+
+  const fecharMenu = () => setMenuAberto(false);
+  const classeItemMenu = "block py-3 text-[15px] font-bold uppercase tracking-wide text-mozz-black";
+  const classeItemMenuSecundario = "block py-2 text-[13.5px] font-semibold text-mozz-black/80";
 
   return (
     <header className="border-b border-black/10">
@@ -202,13 +226,14 @@ export default function Nav() {
         <div className="grid grid-cols-[1fr_auto_1fr] items-center px-4 py-3">
           <button
             onClick={() => setMenuAberto((v) => !v)}
-            aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
+            aria-label="Abrir menu"
+            aria-expanded={menuAberto}
             className="justify-self-start p-1 -ml-1"
           >
-            <IconeMenu aberto={menuAberto} />
+            <IconeMenu aberto={false} />
           </button>
 
-          <Link href="/" className="text-center" onClick={() => setMenuAberto(false)}>
+          <Link href="/" className="text-center" onClick={fecharMenu}>
             <div className="font-serif text-3xl leading-none">M</div>
             <div className="font-serif text-[14.5px] tracking-widest2">MOZZ</div>
           </Link>
@@ -227,68 +252,86 @@ export default function Nav() {
           </div>
         </div>
 
+        {/* Menu lateral: abre pela esquerda, so' numa faixa da tela (78% da largura, no maximo
+            320px) - o resto fica escurecido e tocar nele fecha o menu. */}
         <div
-          className={`${
-            menuAberto ? "flex" : "hidden"
-          } flex-col items-center gap-4 px-4 pb-4 text-[13.5px] text-mozz-gray`}
+          className={`fixed inset-0 z-[60] ${menuAberto ? "" : "pointer-events-none"}`}
+          aria-hidden={!menuAberto}
         >
-          <div className="flex flex-col items-center gap-3 w-full">
-            <button
-              type="button"
-              onClick={() => setFemininoAberto((v) => !v)}
-              className="flex items-center gap-1.5"
-              aria-expanded={femininoAberto}
-            >
-              Feminino
-              <IconeChevron aberto={femininoAberto} />
-            </button>
-            {femininoAberto && (
-              <div className="flex flex-col items-center gap-3 pb-1 text-mozz-black">
-                {MARCAS_FEMININO.map((marca) => (
-                  <Link key={marca.slug} href={`/marca/${marca.slug}`} onClick={() => setMenuAberto(false)}>
-                    {marca.nome}
-                  </Link>
-                ))}
-                <Link href="/feminino" onClick={() => setMenuAberto(false)} className="text-[12.5px] text-mozz-gray underline">
-                  Ver tudo
-                </Link>
-              </div>
-            )}
-          </div>
+          <div
+            onClick={fecharMenu}
+            className={`absolute inset-0 bg-black/40 transition-opacity duration-300 ${
+              menuAberto ? "opacity-100" : "opacity-0"
+            }`}
+          />
+          <nav
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
+            className={`absolute left-0 top-0 bottom-0 w-[78%] max-w-[320px] bg-white shadow-xl flex flex-col overflow-y-auto transition-transform duration-300 ease-out ${
+              menuAberto ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
+            <div className="flex items-center justify-between px-5 pt-4 pb-2">
+              <span className="font-serif text-[14.5px] tracking-widest2">MOZZ</span>
+              <button onClick={fecharMenu} aria-label="Fechar menu" className="p-1 -mr-1">
+                <IconeMenu aberto />
+              </button>
+            </div>
 
-          <div className="flex flex-col items-center gap-3 w-full">
-            <button
-              type="button"
-              onClick={() => setMasculinoAberto((v) => !v)}
-              className="flex items-center gap-1.5"
-              aria-expanded={masculinoAberto}
-            >
-              Masculino
-              <IconeChevron aberto={masculinoAberto} />
-            </button>
-            {masculinoAberto && (
-              <div className="flex flex-col items-center gap-3 pb-1 text-mozz-black">
-                {MARCAS_MASCULINO.map((marca) => (
-                  <Link key={marca.slug} href={`/marca/${marca.slug}`} onClick={() => setMenuAberto(false)}>
-                    {marca.nome}
-                  </Link>
-                ))}
-                <Link href="/masculino" onClick={() => setMenuAberto(false)} className="text-[12.5px] text-mozz-gray underline">
-                  Ver tudo
-                </Link>
-              </div>
-            )}
-          </div>
+            <div className="px-5 pb-3" onSubmitCapture={fecharMenu}>
+              <BarraBusca />
+            </div>
 
-          <Link href="/outlet" onClick={() => setMenuAberto(false)}>
-            Outlet
-          </Link>
-          <Link href="/quem-somos" onClick={() => setMenuAberto(false)}>
-            Quem somos
-          </Link>
-          <div className="w-full">
-            <BarraBusca />
-          </div>
+            <div className="px-5 divide-y divide-black/10">
+              <Link href="/feminino" onClick={fecharMenu} className={classeItemMenu}>
+                Feminino
+              </Link>
+              <Link href="/masculino" onClick={fecharMenu} className={classeItemMenu}>
+                Masculino
+              </Link>
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setMarcasAberto((v) => !v)}
+                  aria-expanded={marcasAberto}
+                  className={`${classeItemMenu} w-full flex items-center justify-between text-left`}
+                >
+                  Marcas
+                  <IconeChevron aberto={marcasAberto} />
+                </button>
+                {marcasAberto && (
+                  <div className="pb-2 pl-3">
+                    {TODAS_AS_MARCAS.map((marca) => (
+                      <Link
+                        key={marca.slug}
+                        href={`/marca/${marca.slug}`}
+                        onClick={fecharMenu}
+                        className="block py-2 text-[14.5px] font-semibold text-mozz-black/80"
+                      >
+                        {marca.nome}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <Link href="/outlet" onClick={fecharMenu} className={classeItemMenu}>
+                Outlet
+              </Link>
+            </div>
+
+            <div className="mt-auto px-5 pt-3 pb-6 border-t border-black/10">
+              <Link href="/conta" onClick={fecharMenu} className={classeItemMenuSecundario}>
+                Minha conta
+              </Link>
+              <a href={LINK_WHATSAPP} target="_blank" rel="noopener noreferrer" className={classeItemMenuSecundario}>
+                Falar no WhatsApp
+              </a>
+              <Link href="/quem-somos" onClick={fecharMenu} className={classeItemMenuSecundario}>
+                Quem somos
+              </Link>
+            </div>
+          </nav>
         </div>
       </div>
     </header>
