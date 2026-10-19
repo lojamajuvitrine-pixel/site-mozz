@@ -7,7 +7,7 @@ import { SITE_URL as siteUrl } from "@/lib/site";
 // 27/09/2026, inspirado no menu do site oqvestir (NOVIDADES | FEMININO | MASCULINO | MARCAS...).
 export const metadata: Metadata = {
   title: "Feminino",
-  description: "Moda feminina Animale e NV na MOZZ - loja multimarcas com frete para todo o Brasil.",
+  description: "Moda feminina Animale, NV e Farm na MOZZ - loja multimarcas com frete para todo o Brasil.",
   alternates: { canonical: `${siteUrl}/feminino` }
 };
 
