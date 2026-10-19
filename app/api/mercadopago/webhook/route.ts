@@ -8,6 +8,7 @@ import { SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
 import { usarCredito, concederCashback } from "@/lib/creditos";
 import { comprarEGerarEtiqueta } from "@/lib/melhorEnvio";
 import { enviarEmailConfirmacaoPedido } from "@/lib/emailPedido";
+import { ehEntregaExpressa, ehRetirada } from "@/lib/frete";
 
 // O Mercado Pago chama essa rota automaticamente quando o status de um pagamento muda.
 // Documentacao: mercadopago.com.br/developers/pt/docs/checkout-pro/additional-content/notifications/webhooks
@@ -126,7 +127,16 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
 
   const subtotal = pedido.itens.reduce((soma, item) => soma + item.valor * item.qtd, 0);
   const valorTotal = Math.round((subtotal + pedido.frete) * 100) / 100;
-  const formaEnvio = pedido.envio ? "correios" : "retirada";
+  // Retirada na loja e entrega expressa em Reserva tambem chegam com pedido.envio preenchido
+  // (transportadora "Retirada" / "Entrega expressa", sem servicoId) - antes qualquer envio era
+  // tratado como "correios", entao o e-mail de quem retirou na loja dizia "pelos Correios".
+  const formaEnvio: "correios" | "retirada" | "entrega_local" = !pedido.envio
+    ? "retirada"
+    : ehRetirada(pedido.envio)
+      ? "retirada"
+      : ehEntregaExpressa(pedido.envio)
+        ? "entrega_local"
+        : "correios";
 
   let inseriuAgora = false;
   try {
