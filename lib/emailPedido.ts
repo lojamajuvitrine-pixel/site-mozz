@@ -25,7 +25,7 @@ export async function enviarEmailConfirmacaoPedido(params: {
   valorTotal: number;
   creditoAplicado: number;
   cupomCodigo: string | undefined;
-  formaEnvio: "correios" | "retirada";
+  formaEnvio: "correios" | "retirada" | "entrega_local";
   endereco: EnderecoCheckout;
 }): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
@@ -66,7 +66,9 @@ export async function enviarEmailConfirmacaoPedido(params: {
   const blocoEntrega =
     params.formaEnvio === "correios"
       ? `<p><strong>Entrega:</strong> pelos Correios, no endereço ${enderecoCompleto}. Assim que a etiqueta for gerada, você recebe outro e-mail com o código de rastreio.</p>`
-      : `<p><strong>Retirada na loja:</strong> ${ENDERECO_LOJA}. Segunda a sexta, das 9h às 18h. Sábado, das 9h às 12h.</p>`;
+      : params.formaEnvio === "entrega_local"
+        ? `<p><strong>Entrega expressa em Reserva:</strong> vamos levar até você, no endereço ${enderecoCompleto}. Pedido pago até as 14h chega no mesmo dia (sábado, até as 11h); depois disso, no próximo dia útil. Qualquer novidade, a gente avisa no WhatsApp.</p>`
+        : `<p><strong>Retirada na loja:</strong> ${ENDERECO_LOJA}. Segunda a sexta, das 9h às 18h. Sábado, das 9h às 12h.</p>`;
 
   const html = `
     <div style="font-family:sans-serif;color:#1a1a1a;max-width:480px;">
