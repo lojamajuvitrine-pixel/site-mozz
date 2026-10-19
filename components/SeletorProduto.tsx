@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
-import { formatarParcelamento, formatarPreco } from "@/lib/formato";
+import { calcularDescontoPix, formatarParcelamento, formatarPreco, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { corAproximada } from "@/lib/cor";
 import CalculoFrete from "@/components/CalculoFrete";
@@ -264,6 +264,10 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
         {formatarParcelamento(produto.preco) && (
           <p className="text-[13.5px] text-mozz-gray mt-1">{formatarParcelamento(produto.preco)}</p>
         )}
+        <p className="text-[13.5px] text-mozz-black mt-1">
+          {formatarPreco(produto.preco - calcularDescontoPix(produto.preco))} no Pix{" "}
+          <span className="text-mozz-gray">({PERCENTUAL_DESCONTO_PIX}% OFF)</span>
+        </p>
         <AvisoFreteGratis limiar={freteGratisAcimaDe} subtotal={produto.preco} />
 
         <div className="mt-6">
