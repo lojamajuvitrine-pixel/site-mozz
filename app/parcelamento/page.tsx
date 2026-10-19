@@ -27,7 +27,11 @@ export default function PaginaParcelamento() {
 
         <div>
           <p className="text-mozz-black font-medium mb-1">Pix</p>
-          <p>Pagamento à vista, com confirmação normalmente imediata após o envio.</p>
+          <p>
+            Pagamento à vista, com confirmação normalmente imediata. Pagando com Pix você ganha{" "}
+            <strong className="text-mozz-black">10% de desconto</strong> nas peças. O desconto do
+            Pix não soma com cupom: vale o maior dos dois.
+          </p>
         </div>
 
         <p className="text-mozz-gray text-[13px]">
