@@ -30,7 +30,7 @@ export default function PaginaTermosDeUso() {
         <div>
           <p className="text-mozz-black font-medium mb-1">2. Produtos e preços</p>
           <p>
-            Vendemos peças das marcas Animale, NV, Reserva e Foxton, sujeitas à disponibilidade
+            Vendemos peças das marcas Animale, NV, Farm, Reserva e Foxton, sujeitas à disponibilidade
             de estoque. Preços e condições podem mudar sem aviso prévio até a confirmação do
             pedido. Eventuais erros de descrição ou preço podem ser corrigidos antes da
             confirmação da compra.
@@ -68,7 +68,7 @@ export default function PaginaTermosDeUso() {
         <div>
           <p className="text-mozz-black font-medium mb-1">6. Crédito de loja e cupons</p>
           <p>
-            O programa de cashback e eventuais cupons de desconto seguem as regras descritas em{" "}
+            Os créditos de cashback já concedidos (programa encerrado em 19/10/2026) e eventuais cupons de desconto seguem as regras descritas em{" "}
             <a href="/cashback" className="underline">Cashback</a>, e podem ser alterados a
             qualquer momento, sem afetar créditos já concedidos.
           </p>
