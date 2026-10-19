@@ -28,7 +28,12 @@ export default function Footer() {
       <div className="max-w-[1600px] mx-auto px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
         <div>
           <p className="font-serif text-xl text-mozz-black mb-2">MOZZ</p>
-          <p className="leading-relaxed">Animale · NV · Reserva · Foxton, num só lugar.</p>
+          <p className="leading-relaxed">Revenda oficial Animale · NV · Farm · Reserva · Foxton.</p>
+          <p className="leading-relaxed mt-2">
+            MAJU COMÉRCIO DE ROUPAS E ACESSÓRIOS LTDA
+            <br />
+            CNPJ 46.763.855/0001-75
+          </p>
           <Link href="/quem-somos" className={`${linkClasse} mt-2`}>
             Quem somos
           </Link>
@@ -58,8 +63,8 @@ export default function Footer() {
           <Link href="/entrega" className={linkClasse}>
             Formas de entrega
           </Link>
-          <Link href="/cashback" className={linkClasse}>
-            Cashback
+          <Link href="/preco-garantido" className={linkClasse}>
+            Preço garantido
           </Link>
           <Link href="/privacidade" className={linkClasse}>
             Aviso de privacidade
@@ -74,6 +79,7 @@ export default function Footer() {
           <a href={LINK_MAPS} target="_blank" rel="noopener noreferrer" className={linkClasse}>
             {ENDERECO_LOJA}
           </a>
+          <p className="mb-1">Seg a sex 9h às 18h · Sáb 9h às 12h</p>
           <Link href="/conta" className={linkClasse}>
             Status do pedido
           </Link>
@@ -84,7 +90,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-black/10 py-4 text-center text-[11.5px]">
-        © {new Date().getFullYear()} MOZZ. Todos os direitos reservados.
+        © {new Date().getFullYear()} MOZZ · MAJU COMÉRCIO DE ROUPAS E ACESSÓRIOS LTDA · CNPJ 46.763.855/0001-75. Todos os direitos reservados.
       </div>
     </footer>
   );
