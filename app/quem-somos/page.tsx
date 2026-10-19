@@ -44,7 +44,7 @@ export default function PaginaQuemSomos() {
           </p>
 
           <p>
-            Reunimos uma curadoria premium com quatro marcas de desejo: Animale, NV, Reserva e
+            Reunimos uma curadoria premium com cinco marcas de desejo: Animale, NV, Farm, Reserva e
             Foxton. Escolhemos a dedo cada peça que entra em nosso catálogo para garantir o padrão
             que você busca.
           </p>
@@ -106,7 +106,7 @@ export default function PaginaQuemSomos() {
 
         <div className="mt-8 pt-8 border-t border-black/10">
           <p className="text-mozz-black font-medium mb-2 text-[14.5px]">Marcas que trabalhamos</p>
-          <p className="text-mozz-gray text-[14.5px]">Animale · NV · Reserva · Foxton</p>
+          <p className="text-mozz-gray text-[14.5px]">Animale · NV · Farm · Reserva · Foxton</p>
         </div>
       </div>
     </section>
