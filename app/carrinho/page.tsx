@@ -2,14 +2,14 @@
 
 import { useCart } from "@/lib/cart-context";
 import { idVarianteProduto } from "@/lib/produtos";
-import { formatarPreco, calcularParcelamento } from "@/lib/formato";
+import { formatarPreco, calcularParcelamento, calcularDescontoPix, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import CalculoFrete, { type OpcaoFrete, type ConfigLojaFrete } from "@/components/CalculoFrete";
 import CompraSegura from "@/components/CompraSegura";
 import AvisoFreteGratis from "@/components/AvisoFreteGratis";
-import { ehRetirada } from "@/lib/frete";
+import { ehEntregaExpressa, ehRetirada } from "@/lib/frete";
 import { rastrearIniciarCheckout } from "@/lib/tracking";
 import { validarCpf, formatarCpf } from "@/lib/cpf";
 import { createClient } from "@/lib/supabase/client";
@@ -141,6 +141,10 @@ export default function PaginaCarrinho() {
   const [codigoCupom, setCodigoCupom] = useState("");
   const [cupomAplicado, setCupomAplicado] = useState<ResultadoCupom | null>(null);
   const [validandoCupom, setValidandoCupom] = useState(false);
+  // Cupom de primeira compra exige CPF, mas o CPF so' aparece na etapa 2 (depois deste campo).
+  // Em vez de travar com um aviso, o codigo fica "guardado" e e' aplicado sozinho assim que o
+  // CPF for preenchido (19/10/2026).
+  const [cupomPendente, setCupomPendente] = useState<string | null>(null);
 
   // Credito de loja (cashback) - saldo buscado automaticamente assim que o CPF digitado fica
   // valido (ver useEffect abaixo), mesmo padrao do preenchimento automatico via login. O valor
@@ -251,7 +255,7 @@ export default function PaginaCarrinho() {
   const freteGratisAtivo =
     configLoja?.freteGratisAcimaDe != null && totalComDesconto >= configLoja.freteGratisAcimaDe;
   const precoFreteEfetivo = freteSelecionado
-    ? ehRetirada(freteSelecionado) || freteGratisAtivo
+    ? ehRetirada(freteSelecionado) || ehEntregaExpressa(freteSelecionado) || freteGratisAtivo
       ? 0
       : freteSelecionado.preco
     : 0;
@@ -266,6 +270,19 @@ export default function PaginaCarrinho() {
   const creditoAplicado = Math.min(creditoMaximoAplicavel, Math.max(0, Number(valorCreditoUsar) || 0));
   const totalFinal = Math.max(0, totalComFrete - creditoAplicado);
   const parcelamentoTotal = calcularParcelamento(totalFinal);
+
+  // Total pagando no Pix: 10% sobre as pecas (so' as pecas, nao o frete). Nao soma com cupom:
+  // se o cupom aplicado der desconto maior, vale o cupom e o Pix fica igual ao cartao. Mesma
+  // regra de prepararPedido em lib/mercadopago.ts (o servidor refaz a conta). O frete gratis
+  // continua olhando o subtotal depois do cupom (nao tira frete gratis por causa do Pix).
+  const descontoPixBruto = calcularDescontoPix(total);
+  const descontoPixAplicado = descontoPixBruto > desconto ? descontoPixBruto : 0;
+  const subtotalPix = descontoPixAplicado > 0 ? Math.round((total - descontoPixAplicado) * 100) / 100 : totalComDesconto;
+  const totalComFretePix = subtotalPix + precoFreteEfetivo;
+  const tetoCreditoPix = Math.round(totalComFretePix * PERCENTUAL_MAXIMO_CREDITO * 100) / 100;
+  const creditoAplicadoPix = Math.min(creditoDisponivel, tetoCreditoPix, Math.max(0, Number(valorCreditoUsar) || 0));
+  const totalFinalPix = Math.max(0, totalComFretePix - creditoAplicadoPix);
+  const economiaPix = Math.max(0, Math.round((totalFinal - totalFinalPix) * 100) / 100);
 
   const nomeValido = nomeCompleto.trim().split(/\s+/).length >= 2 && nomeCompleto.trim().length > 3;
   const cpfValido = validarCpf(cpf);
@@ -383,23 +400,36 @@ export default function PaginaCarrinho() {
     setEtapaAberta("pagamento");
   }
 
-  async function aplicarCupom() {
-    if (!codigoCupom.trim()) return;
+  async function aplicarCupom(codigoForcado?: string) {
+    const codigo = (codigoForcado ?? codigoCupom).trim();
+    if (!codigo) return;
     setValidandoCupom(true);
     try {
       const resposta = await fetch("/api/cupom/validar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ codigo: codigoCupom, subtotal: total, cpf })
+        body: JSON.stringify({ codigo, subtotal: total, cpf })
       });
       const dados = (await resposta.json()) as ResultadoCupom;
-      setCupomAplicado(dados);
+      if (!dados.valido && dados.motivo.startsWith("Preencha seu CPF")) {
+        // cupom de primeira compra sem CPF ainda: guarda o codigo e aplica quando o CPF chegar
+        setCupomPendente(codigo.toUpperCase());
+        setCupomAplicado(null);
+      } else {
+        setCupomPendente(null);
+        setCupomAplicado(dados);
+      }
     } catch {
       setCupomAplicado({ valido: false, motivo: "Não foi possível validar o cupom" });
     } finally {
       setValidandoCupom(false);
     }
   }
+
+  useEffect(() => {
+    if (cupomPendente && validarCpf(cpf)) aplicarCupom(cupomPendente);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cpf, cupomPendente]);
 
   // Pedido no formato que o servidor recebe (o mesmo pro Checkout Pro e pro Pix/cartao dentro
   // do site) - precos/frete/cupom/credito sao todos recalculados de novo la' (lib/mercadopago.ts).
@@ -553,13 +583,18 @@ export default function PaginaCarrinho() {
             className="flex-1 border border-black/20 px-3 py-2 text-[14.5px] uppercase focus:outline-none focus:border-mozz-black"
           />
           <button
-            onClick={aplicarCupom}
+            onClick={() => aplicarCupom()}
             disabled={validandoCupom}
             className="text-[13.5px] px-4 border border-mozz-black hover:bg-mozz-black hover:text-white transition-colors disabled:opacity-60"
           >
             {validandoCupom ? "..." : "Aplicar"}
           </button>
         </div>
+        {cupomPendente && !cupomAplicado?.valido && (
+          <p className="text-[13.5px] text-mozz-gray mt-2">
+            Cupom {cupomPendente} guardado. Ele entra assim que você informar o CPF (etapa 2).
+          </p>
+        )}
         {cupomAplicado && !cupomAplicado.valido && (
           <p className="text-[13.5px] text-red-600 mt-2">{cupomAplicado.motivo}</p>
         )}
@@ -833,6 +868,17 @@ export default function PaginaCarrinho() {
               <span>Total</span>
               <span>{formatarPreco(totalFinal)}</span>
             </div>
+            {economiaPix > 0 && (
+              <div className="flex justify-between pb-3 text-[14.5px] text-green-700">
+                <span>No Pix ({PERCENTUAL_DESCONTO_PIX}% OFF)</span>
+                <span>{formatarPreco(totalFinalPix)}</span>
+              </div>
+            )}
+            {desconto > 0 && descontoPixAplicado === 0 && (
+              <p className="pb-3 text-[12.5px] text-mozz-gray">
+                O desconto do Pix não soma com cupom: você já está com o maior desconto.
+              </p>
+            )}
           </div>
 
           {etapaAberta === "pagamento" && erro && <p className="text-[13.5px] text-red-600 mb-2">{erro}</p>}
@@ -843,6 +889,8 @@ export default function PaginaCarrinho() {
               <PagamentoNoSite
                 corpoPedido={corpoPedido}
                 valorTotal={Math.round(totalFinal * 100) / 100}
+                valorTotalPix={Math.round(totalFinalPix * 100) / 100}
+                economiaPix={economiaPix}
                 email={email.trim()}
                 pronto={podeFinalizar}
                 parcelasMaximas={parcelamentoTotal?.parcelas ?? 1}
