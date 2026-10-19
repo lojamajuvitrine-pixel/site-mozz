@@ -39,17 +39,17 @@ const ARGUMENTOS = [
 
 export default function PorQueComprar() {
   return (
-    <section className="py-10 border-t border-black/10">
-      <p className="text-center text-[13px] tracking-widest uppercase text-mozz-gray mb-6">
+    <section className="py-8 md:py-10 border-t border-black/10">
+      <p className="text-center text-[13px] tracking-widest uppercase text-mozz-gray mb-5 md:mb-6">
         Por que comprar na Mozz
       </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
         {ARGUMENTOS.map((item) => (
-          <div key={item.titulo} className="border border-black/10 p-5">
-            <p className="font-serif text-[19px] mb-1">{item.titulo}</p>
-            <p className="text-[14px] text-mozz-gray leading-relaxed">{item.texto}</p>
+          <div key={item.titulo} className="border border-black/10 p-3 md:p-5">
+            <p className="font-serif text-[16px] md:text-[19px] leading-snug mb-1">{item.titulo}</p>
+            <p className="text-[13px] md:text-[14px] text-mozz-gray leading-relaxed">{item.texto}</p>
             {item.link && (
-              <Link href={item.link.href} className="inline-block mt-2 text-[13px] underline underline-offset-2">
+              <Link href={item.link.href} className="inline-block mt-2 text-[12.5px] md:text-[13px] underline underline-offset-2">
                 {item.link.rotulo}
               </Link>
             )}
