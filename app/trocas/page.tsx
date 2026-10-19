@@ -54,6 +54,11 @@ export default function PaginaTrocas() {
           recebimento do pedido pra solicitar troca ou devolução.
         </p>
 
+        <p>
+          <strong className="text-mozz-black">Sua primeira troca é grátis:</strong> na primeira
+          troca, a gente paga o frete de devolução.
+        </p>
+
         <div>
           <p className="text-mozz-black font-medium mb-1">Quais são as condições pra troca ou devolução?</p>
           <ul className="list-disc pl-4 space-y-1">
