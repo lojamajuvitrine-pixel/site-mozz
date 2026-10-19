@@ -92,6 +92,8 @@ function irParaResultado(pagina: "sucesso" | "pendente", numeroPedido: string, p
 export default function PagamentoNoSite({
   corpoPedido,
   valorTotal,
+  valorTotalPix,
+  economiaPix,
   email,
   pronto,
   parcelasMaximas,
@@ -101,6 +103,10 @@ export default function PagamentoNoSite({
 }: {
   corpoPedido: CorpoPedido;
   valorTotal: number;
+  // total pagando no Pix (ja' com os 10% de desconto, quando valem) e quanto a cliente economiza
+  // em relacao ao cartao - 0 quando o Pix nao tem desconto (ex.: cupom com desconto maior)
+  valorTotalPix: number;
+  economiaPix: number;
   email: string;
   pronto: boolean;
   parcelasMaximas: number;
@@ -118,18 +124,18 @@ export default function PagamentoNoSite({
   const [agora, setAgora] = useState(Date.now());
 
   useEffect(() => {
-    setPix(lerPixSalvo(valorTotal));
+    setPix(lerPixSalvo(valorTotalPix));
     // so' na entrada - se o valor mudar depois, o Pix antigo e' descartado logo abaixo
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Valor do pedido mudou (cupom, credito, frete) depois de gerar o Pix -> esse QR nao vale mais
   useEffect(() => {
-    if (pix && Math.abs(pix.valorTotal - valorTotal) > 1) {
+    if (pix && Math.abs(pix.valorTotal - valorTotalPix) > 1) {
       setPix(null);
       guardarPix(null);
     }
-  }, [valorTotal, pix]);
+  }, [valorTotalPix, pix]);
 
   // relogio da contagem regressiva + checagem do pagamento a cada 4s
   useEffect(() => {
@@ -174,7 +180,7 @@ export default function PagamentoNoSite({
       const r = await fetch("/api/mercadopago/pagar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...corpoPedido, metodo: "pix", valorEsperado: valorTotal })
+        body: JSON.stringify({ ...corpoPedido, metodo: "pix", valorEsperado: valorTotalPix })
       });
       const d = await r.json();
       if (!r.ok) throw new Error(d.erro ?? "Não foi possível gerar o Pix");
@@ -333,7 +339,7 @@ export default function PagamentoNoSite({
             }}
             className={`py-2.5 text-[14px] ${aba === opcao ? "bg-mozz-black text-white" : "text-mozz-black"}`}
           >
-            {opcao === "pix" ? "Pix" : "Cartão de crédito"}
+            {opcao === "pix" ? (economiaPix > 0 ? "Pix · 10% OFF" : "Pix") : "Cartão de crédito"}
           </button>
         ))}
       </div>
@@ -350,8 +356,13 @@ export default function PagamentoNoSite({
                 disabled={gerandoPix}
                 className="w-full text-[14.5px] py-3 bg-mozz-black text-white disabled:opacity-60"
               >
-                {gerandoPix ? "Gerando o Pix..." : `Gerar Pix de ${formatarPreco(valorTotal)}`}
+                {gerandoPix ? "Gerando o Pix..." : `Gerar Pix de ${formatarPreco(valorTotalPix)}`}
               </button>
+              {economiaPix > 0 && (
+                <p className="text-[13.5px] text-green-700 text-center mt-2">
+                  Você economiza {formatarPreco(economiaPix)} pagando com Pix
+                </p>
+              )}
               <p className="text-[12.5px] text-mozz-gray text-center mt-2">
                 Aprovação na hora. O QR Code aparece aqui mesmo.
               </p>
