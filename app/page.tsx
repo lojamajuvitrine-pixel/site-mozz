@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import BannerHero, { type BannerItem } from "@/components/BannerHero";
-import FaixaCashback from "@/components/FaixaCashback";
+import PorQueComprar from "@/components/PorQueComprar";
 import SecaoMarcas from "@/components/SecaoMarcas";
 import VitrineDeMarca from "@/components/VitrineDeMarca";
 import { listarPorMarca, produtosComFoto } from "@/lib/produtos";
@@ -18,8 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       locale: "pt_BR",
       siteName: "MOZZ",
-      title: "MOZZ — Animale, NV, Reserva e Foxton em um só lugar",
-      description: "Loja multimarcas com peças da Animale, NV, Reserva e Foxton.",
+      title: "MOZZ — Animale, NV, Farm, Reserva e Foxton em um só lugar",
+      description: "Loja multimarcas com peças da Animale, NV, Farm, Reserva e Foxton.",
       images: imagemDestaque ? [`${siteUrl}${imagemDestaque}`] : undefined
     }
   };
@@ -74,7 +74,7 @@ export default async function Home() {
   return (
     <div>
       <BannerHero banners={bannersFinal} />
-      <FaixaCashback />
+      <PorQueComprar />
 
       <SecaoMarcas />
 
