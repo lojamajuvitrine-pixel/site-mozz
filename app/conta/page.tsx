@@ -16,7 +16,7 @@ type Pedido = {
   numero_pedido: string;
   itens: { nome: string; qtd: number }[];
   valor_total: number;
-  forma_envio: "correios" | "retirada";
+  forma_envio: "correios" | "retirada" | "entrega_local";
   status_envio: string;
   codigo_rastreio: string | null;
   link_rastreio: string | null;
