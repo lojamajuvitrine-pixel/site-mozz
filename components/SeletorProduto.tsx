@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { formatarParcelamento, formatarPreco } from "@/lib/formato";
@@ -42,9 +43,17 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   // comeca no primeiro tamanho que ainda tem estoque - so' cai pro primeiro tamanho
   // qualquer (que vai aparecer esgotado) se a cor inteira estiver sem nenhum tamanho.
   const [tamanho, setTamanho] = useState(disponiveisAtual[0] ?? corAtual.tamanhos[0]);
-  const [adicionado, setAdicionado] = useState(false);
-  const { adicionar } = useCart();
+  // Guarda QUAL combinacao (cor + tamanho) acabou de ir pra sacola - o aviso "Adicionado" + o
+  // botao "Ver sacola e finalizar" ficam na tela ate' a cliente mudar de cor/tamanho (antes
+  // sumiam em 1,5s e a cliente ficava sem saber como chegar no carrinho - 17/10/2026, pedido do
+  // Brunno depois de 189 "adicionar ao carrinho" no Meta e quase nenhum carrinho aberto).
+  const [ultimoAdicionado, setUltimoAdicionado] = useState<string | null>(null);
+  const { adicionar, itens } = useCart();
+  const tamanhosRef = useRef<HTMLParagraphElement>(null);
   const tamanhoEstaDisponivel = disponiveisAtual.includes(tamanho);
+  const chaveAtual = `${corAtual.cor}|${tamanho}`;
+  const adicionado = ultimoAdicionado === chaveAtual;
+  const qtdNaSacola = itens.reduce((soma, i) => soma + i.quantidade, 0);
 
   // Dispara ViewContent/view_item UMA vez, quando a pagina desse produto abre - ver
   // lib/tracking.ts. So' depende do produto.id (nao da cor/tamanho escolhido), pra nao
@@ -118,8 +127,11 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
 
   function adicionarAoCarrinho() {
     adicionar(produto, corAtual.cor, tamanho);
-    setAdicionado(true);
-    setTimeout(() => setAdicionado(false), 1500);
+    setUltimoAdicionado(chaveAtual);
+  }
+
+  function irParaTamanhos() {
+    tamanhosRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
   function fotoAnterior() {
@@ -281,7 +293,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
             </>
           )}
 
-          <p className="text-[13.5px] text-mozz-gray mb-2">Tamanho</p>
+          <p ref={tamanhosRef} className="text-[13.5px] text-mozz-gray mb-2">Tamanho</p>
           <div className="flex gap-2 mb-6 flex-wrap">
             {corAtual.tamanhos.map((t) => {
               const disponivel = disponiveisAtual.includes(t);
@@ -323,21 +335,60 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
             {!tamanhoEstaDisponivel ? "Esgotado" : adicionado ? "Adicionado" : "Adicionar ao carrinho"}
           </button>
 
+          {adicionado && (
+            <p className="text-[13.5px] mt-3 text-mozz-black">
+              Peça adicionada à sacola.{" "}
+              <Link href="/carrinho" className="underline underline-offset-2">
+                Ver sacola e finalizar
+              </Link>
+            </p>
+          )}
+
           <CalculoFrete quantidadeItens={1} />
         </div>
       </div>
 
       {/* barra fixa so' no celular - mantem preco e botao de comprar sempre alcancaveis
-          mesmo depois de rolar pra ver descricao/composicao/medidas mais embaixo na pagina */}
-      <div className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-black/10 px-4 py-3 flex items-center gap-3 z-20">
-        <p className="text-[15px] shrink-0">{formatarPreco(produto.preco)}</p>
-        <button
-          onClick={adicionarAoCarrinho}
-          disabled={!tamanhoEstaDisponivel}
-          className="flex-1 text-[13.5px] py-3 bg-mozz-black text-white disabled:opacity-40 disabled:cursor-not-allowed"
-        >
-          {!tamanhoEstaDisponivel ? "Esgotado" : adicionado ? "Adicionado" : "Adicionar ao carrinho"}
-        </button>
+          mesmo depois de rolar pra ver descricao/composicao/medidas mais embaixo na pagina.
+          Depois de adicionar, a barra vira "Continuar vendo" + "Ver sacola e finalizar" (e
+          fica assim ate' mudar cor/tamanho) - antes so' piscava "Adicionado" por 1,5s e nao
+          levava a lugar nenhum. */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-black/10 px-4 py-3 z-20">
+        {adicionado ? (
+          <div>
+            <p className="text-[12.5px] text-mozz-gray mb-2">
+              {qtdNaSacola} {qtdNaSacola === 1 ? "peça" : "peças"} na sacola
+            </p>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setUltimoAdicionado(null)}
+                className="flex-1 text-[13.5px] py-3 border border-black/30 text-mozz-black"
+              >
+                Continuar vendo
+              </button>
+              <Link
+                href="/carrinho"
+                className="flex-[1.4] text-[13.5px] py-3 bg-mozz-black text-white text-center"
+              >
+                Ver sacola e finalizar
+              </Link>
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-center gap-3">
+            <button onClick={irParaTamanhos} className="shrink-0 text-left" aria-label="Escolher tamanho">
+              <span className="block text-[15px]">{formatarPreco(produto.preco)}</span>
+              <span className="block text-[12px] text-mozz-gray underline underline-offset-2">Tam. {tamanho}</span>
+            </button>
+            <button
+              onClick={adicionarAoCarrinho}
+              disabled={!tamanhoEstaDisponivel}
+              className="flex-1 text-[13.5px] py-3 bg-mozz-black text-white disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              {!tamanhoEstaDisponivel ? "Esgotado" : "Adicionar ao carrinho"}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
