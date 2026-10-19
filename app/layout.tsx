@@ -117,8 +117,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <CartProvider>
           <FavoritosProvider>
-            <FaixaCupom />
-            <Nav />
+            {/* faixa preta do cupom + menu ficam fixos no topo ao rolar a pagina (pedido do
+                Brunno, 19/10/2026), no celular e no desktop. A faixa de beneficios (parcelamento,
+                troca...) continua rolando junto com a pagina, pra nao comer espaco da tela. */}
+            <div className="sticky top-0 z-50 bg-white">
+              <FaixaCupom />
+              <Nav />
+            </div>
             <FaixaBeneficios />
             <main className="max-w-[1600px] mx-auto px-6">{children}</main>
             <Footer />
