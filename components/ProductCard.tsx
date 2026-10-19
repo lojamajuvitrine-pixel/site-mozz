@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { corAproximada } from "@/lib/cor";
@@ -74,6 +75,7 @@ export default function ProductCard({
   // "quem viu tambem gostou" continuam com o coracao normalmente.
   mostrarFavorito?: boolean;
 }) {
+  const router = useRouter();
   const { adicionar } = useCart();
   const { ehFavorito, alternarFavorito } = useFavoritos();
   const favoritado = ehFavorito(produto.id);
@@ -131,7 +133,15 @@ export default function ProductCard({
     if (!disponiveisAtual.includes(tamanho)) return;
     adicionar(produto, corAtual.cor, tamanho);
     setAdicionado(tamanho);
-    setTimeout(() => setAdicionado(null), 1500);
+    // fica 5s com o aviso "Adicionado · Ver sacola" (antes era so' um check por 1,5s e a cliente
+    // nao sabia como chegar no carrinho - 17/10/2026).
+    setTimeout(() => setAdicionado(null), 5000);
+  }
+
+  function irParaSacola(evento: React.MouseEvent) {
+    evento.preventDefault();
+    evento.stopPropagation();
+    router.push("/carrinho");
   }
 
   return (
@@ -197,8 +207,16 @@ export default function ProductCard({
           )}
 
           {corAtual.tamanhos.length > 0 && (
-            <div className="hidden md:flex absolute inset-x-0 bottom-0 p-2 flex-wrap gap-1 justify-center bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-              {disponiveisAtual.length === 0 ? (
+            <div className={`hidden md:flex absolute inset-x-0 bottom-0 p-2 flex-wrap gap-1 justify-center bg-gradient-to-t from-black/40 to-transparent transition-opacity ${adicionado !== null ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
+              {adicionado !== null ? (
+                <button
+                  onClick={irParaSacola}
+                  className="text-[12.5px] bg-white text-mozz-black px-3 py-1.5 flex items-center gap-1.5 hover:bg-mozz-black hover:text-white"
+                >
+                  <IconeCheck />
+                  Adicionado · Ver sacola
+                </button>
+              ) : disponiveisAtual.length === 0 ? (
                 <span className="text-[12.5px] bg-white/90 text-mozz-gray px-2 py-1">Esgotado</span>
               ) : (
                 corAtual.tamanhos.map((tamanho) => {
@@ -215,7 +233,7 @@ export default function ProductCard({
                           : "bg-white/50 text-mozz-gray/60 line-through cursor-not-allowed"
                       }`}
                     >
-                      {adicionado === tamanho ? <IconeCheck /> : tamanho}
+                      {tamanho}
                     </button>
                   );
                 })
