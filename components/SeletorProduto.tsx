@@ -11,7 +11,7 @@ import { corAproximada } from "@/lib/cor";
 import CalculoFrete from "@/components/CalculoFrete";
 import AvisoEstoque from "@/components/AvisoEstoque";
 import AvisoFreteGratis from "@/components/AvisoFreteGratis";
-import AvisoCashback from "@/components/AvisoCashback";
+import CompraSegura from "@/components/CompraSegura";
 import { rastrearVisualizarProduto } from "@/lib/tracking";
 
 function IconeLupa() {
@@ -265,7 +265,6 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
           <p className="text-[13.5px] text-mozz-gray mt-1">{formatarParcelamento(produto.preco)}</p>
         )}
         <AvisoFreteGratis limiar={freteGratisAcimaDe} subtotal={produto.preco} />
-        <AvisoCashback />
 
         <div className="mt-6">
           {cores.length > 1 && (
@@ -345,6 +344,8 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
           )}
 
           <CalculoFrete quantidadeItens={1} />
+
+          <CompraSegura />
         </div>
       </div>
 
@@ -353,7 +354,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
           Depois de adicionar, a barra vira "Continuar vendo" + "Ver sacola e finalizar" (e
           fica assim ate' mudar cor/tamanho) - antes so' piscava "Adicionado" por 1,5s e nao
           levava a lugar nenhum. */}
-      <div className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-black/10 px-4 py-3 z-20">
+      <div className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-black/10 px-4 py-3 z-30">
         {adicionado ? (
           <div>
             <p className="text-[12.5px] text-mozz-gray mb-2">
