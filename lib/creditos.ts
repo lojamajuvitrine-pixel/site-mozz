@@ -18,7 +18,7 @@ import { SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
 // escreve direto nelas com a chave publica/anon usada aqui. Todo acesso passa por funcoes
 // SECURITY DEFINER (saldo_credito_disponivel, conceder_credito, usar_credito), que devolvem
 // so' o minimo necessario (nunca a linha crua) - mesmo padrao de cupom_ja_usado/registrar_uso_cupom.
-export const PERCENTUAL_CASHBACK = 0.15; // 15% do valor da compra volta como credito
+export const PERCENTUAL_CASHBACK = 0; // cashback encerrado em 19/10/2026 (era 0.15); creditos ja concedidos continuam valendo ate vencer
 export const DIAS_VALIDADE_CREDITO = 30; // credito expira 30 dias apos ser concedido
 export const PERCENTUAL_MAXIMO_USO = 0.3; // credito cobre no maximo 30% do valor de uma compra futura
 
