@@ -60,7 +60,15 @@ export function rastrearVisualizarProduto(item: ItemRastreado) {
   });
 }
 
+// Ids (peca+cor+tamanho) que ja' dispararam AddToCart nesta visita - tocar varias vezes no mesmo
+// item soma a quantidade na sacola normalmente, mas manda UM evento so' pro Meta/GA (17/10/2026:
+// 189 "adicionar ao carrinho" no Meta com quase nenhum carrinho aberto - toque repetido inflava).
+// Zera ao recarregar a pagina (e' por visita, de proposito).
+const jaRastreadosNoCarrinho = new Set<string>();
+
 export function rastrearAdicionarAoCarrinho(item: ItemRastreado) {
+  if (jaRastreadosNoCarrinho.has(item.id)) return;
+  jaRastreadosNoCarrinho.add(item.id);
   const valor = item.preco * item.quantidade;
   window.fbq?.("track", "AddToCart", {
     content_ids: [item.id],
