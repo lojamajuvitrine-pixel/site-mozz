@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BannerHero, { type BannerItem } from "@/components/BannerHero";
+import BannerGenero, { type BannerGeneroItem } from "@/components/BannerGenero";
 import PorQueComprar from "@/components/PorQueComprar";
 import SecaoMarcas from "@/components/SecaoMarcas";
 import VitrineDeMarca from "@/components/VitrineDeMarca";
@@ -57,6 +58,15 @@ export default async function Home() {
     ? [{ imagem: comFoto[0].imagem, marca: comFoto[0].marca, label: "", href: "/produtos" }]
     : [];
 
+  // Banners FEMININO / MASCULINO do celular (ver components/BannerGenero.tsx): foto de uma peca
+  // do catalogo de cada lado, dando preferencia pra peca marcada como destaque.
+  const fotoDeDestaque = (lista: typeof reserva) =>
+    (lista.find((p) => p.destaque && p.imagem) ?? lista.find((p) => p.imagem))?.imagem ?? "";
+  const bannersGenero: BannerGeneroItem[] = [
+    { nome: "Feminino", href: "/feminino", imagem: fotoDeDestaque([...animale, ...nv]) },
+    { nome: "Masculino", href: "/masculino", imagem: fotoDeDestaque([...reserva, ...foxton]) }
+  ];
+
   const destaquesAnimale = animale.filter((p) => p.destaque && p.imagem);
   const destaquesNV = nv.filter((p) => p.destaque && p.imagem);
   const destaquesReserva = reserva.filter((p) => p.destaque && p.imagem);
@@ -73,7 +83,11 @@ export default async function Home() {
 
   return (
     <div>
-      <BannerHero banners={bannersFinal} />
+      <BannerGenero banners={bannersGenero} />
+      {/* carrossel so' no desktop - no celular os dois banners acima ocupam o lugar dele */}
+      <div className="hidden md:block">
+        <BannerHero banners={bannersFinal} />
+      </div>
       <PorQueComprar />
 
       <SecaoMarcas />
