@@ -59,9 +59,18 @@ export default async function Home() {
     : [];
 
   // Banners FEMININO / MASCULINO do celular (ver components/BannerGenero.tsx): foto de uma peca
-  // do catalogo de cada lado, dando preferencia pra peca marcada como destaque.
+  // do catalogo de cada lado. O banner e' cortado pelo topo, entao a preferencia e' por peca de
+  // PARTE DE CIMA (camisa, camiseta, polo, jaqueta, blazer, blusa...) - foto de bermuda/calca
+  // cortada no topo mostraria so' o meio do corpo. Depois, peca marcada como destaque; por
+  // ultimo, qualquer peca com foto.
+  const PARTE_DE_CIMA = /camisa|camiseta|polo|jaqueta|blazer|blusa|vestido|casaco|colete|regata|\btop\b|cropped|tricot|moletom/i;
   const fotoDeDestaque = (lista: typeof reserva) =>
-    (lista.find((p) => p.destaque && p.imagem) ?? lista.find((p) => p.imagem))?.imagem ?? "";
+    (
+      lista.find((p) => p.imagem && p.destaque && PARTE_DE_CIMA.test(p.nome)) ??
+      lista.find((p) => p.imagem && PARTE_DE_CIMA.test(p.nome)) ??
+      lista.find((p) => p.imagem && p.destaque) ??
+      lista.find((p) => p.imagem)
+    )?.imagem ?? "";
   const bannersGenero: BannerGeneroItem[] = [
     { nome: "Feminino", href: "/feminino", imagem: fotoDeDestaque([...animale, ...nv]) },
     { nome: "Masculino", href: "/masculino", imagem: fotoDeDestaque([...reserva, ...foxton]) }
