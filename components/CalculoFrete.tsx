@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import { formatarPreco } from "@/lib/formato";
-import { FRETE_RETIRADA, ehRetirada } from "@/lib/frete";
+import {
+  FRETE_ENTREGA_EXPRESSA,
+  FRETE_RETIRADA,
+  cepDeReserva,
+  ehEntregaExpressa,
+  ehRetirada,
+  previsaoEntregaExpressa
+} from "@/lib/frete";
 
 export type OpcaoFrete = { servico: string; transportadora: string; preco: number; prazoDias: number };
 
@@ -48,6 +55,10 @@ export default function CalculoFrete({
   const [opcoes, setOpcoes] = useState<OpcaoFrete[] | null>(null);
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+  // CEP (so' digitos) do ultimo calculo que deu certo - e' ele que decide se a entrega expressa
+  // em Reserva aparece (so' pra CEP de Reserva).
+  const [cepCalculado, setCepCalculado] = useState<string | null>(null);
+  const mostrarExpressa = !!opcoes && !!cepCalculado && cepDeReserva(cepCalculado);
 
   const limiarFreteGratis = configLoja?.freteGratisAcimaDe ?? null;
   const freteGratisConquistado =
@@ -57,7 +68,7 @@ export default function CalculoFrete({
   // pro onSelecionar (o que o carrinho soma no total, ver app/carrinho/page.tsx), nao o preco
   // bruto que o Melhor Envio devolveu.
   function precoEfetivo(opcao: OpcaoFrete): number {
-    if (ehRetirada(opcao)) return 0;
+    if (ehRetirada(opcao) || ehEntregaExpressa(opcao)) return 0;
     return freteGratisConquistado ? 0 : opcao.preco;
   }
 
@@ -75,6 +86,7 @@ export default function CalculoFrete({
     setErro(null);
     setCarregando(true);
     setOpcoes(null);
+    setCepCalculado(null);
     try {
       const resposta = await fetch("/api/frete/calcular", {
         method: "POST",
@@ -84,11 +96,15 @@ export default function CalculoFrete({
       const dados = await resposta.json();
       if (!resposta.ok) throw new Error(dados.erro ?? "Não foi possível calcular o frete");
       setOpcoes(dados.opcoes);
+      setCepCalculado(cepLimpo);
       // mais barato pre-selecionado automaticamente (o cliente pode trocar) - evita ele
       // esquecer de escolher e travar o botao de finalizar compra sem entender por que. So'
-      // troca a selecao automatica se ele nao tinha escolhido retirar na loja antes.
-      if (selecionavel && onSelecionar && dados.opcoes?.length > 0 && !(opcaoSelecionada && ehRetirada(opcaoSelecionada))) {
-        selecionar(dados.opcoes[0]);
+      // troca a selecao automatica se ele nao tinha escolhido retirar na loja antes. Em Reserva
+      // a entrega expressa (gratis) e' a mais barata, entao ela entra pre-selecionada.
+      const retiradaEscolhida = !!opcaoSelecionada && ehRetirada(opcaoSelecionada);
+      if (selecionavel && onSelecionar && !retiradaEscolhida) {
+        if (cepDeReserva(cepLimpo)) selecionar(FRETE_ENTREGA_EXPRESSA);
+        else if (dados.opcoes?.length > 0) selecionar(dados.opcoes[0]);
       }
       onCepCalculado?.(cepLimpo);
     } catch (e) {
@@ -99,6 +115,12 @@ export default function CalculoFrete({
   }
 
   const retiradaSelecionada = !!opcaoSelecionada && ehRetirada(opcaoSelecionada);
+  const expressaSelecionada = !!opcaoSelecionada && ehEntregaExpressa(opcaoSelecionada);
+  const previsaoExpressa = previsaoEntregaExpressa();
+  const textoPrevisaoExpressa =
+    previsaoExpressa === "hoje"
+      ? "Hoje (pedido pago até as 14h)"
+      : `${previsaoExpressa === "amanhã" ? "Amanhã" : "Segunda-feira"} (pedido pago depois das 14h)`;
 
   return (
     <div className="mt-6 pt-6 border-t border-black/10">
@@ -150,6 +172,40 @@ export default function CalculoFrete({
         </button>
       </div>
       {erro && <p className="text-[13.5px] text-red-600 mt-2">{erro}</p>}
+      {mostrarExpressa && (
+        <div className="mt-3 border border-black/10">
+          {selecionavel ? (
+            <button
+              type="button"
+              onClick={() => selecionar(FRETE_ENTREGA_EXPRESSA)}
+              className={`w-full flex justify-between items-center px-3 py-2 text-[13.5px] text-left cursor-pointer hover:bg-mozz-stone ${
+                expressaSelecionada ? "bg-mozz-stone" : ""
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <span
+                  className={`w-3.5 h-3.5 rounded-full border shrink-0 ${
+                    expressaSelecionada ? "border-mozz-black bg-mozz-black" : "border-black/30"
+                  }`}
+                />
+                <span>
+                  Entrega expressa em Reserva
+                  <span className="block text-[12.5px] text-mozz-gray">{textoPrevisaoExpressa}</span>
+                </span>
+              </span>
+              <span>Grátis</span>
+            </button>
+          ) : (
+            <div className="flex justify-between items-center px-3 py-2 text-[13.5px]">
+              <span>
+                Entrega expressa em Reserva
+                <span className="block text-[12.5px] text-mozz-gray">{textoPrevisaoExpressa}</span>
+              </span>
+              <span>Grátis</span>
+            </div>
+          )}
+        </div>
+      )}
       {opcoes && opcoes.length > 0 && (
         <div className="mt-3 divide-y divide-black/10 border border-black/10">
           {opcoes.map((opcao) => {
