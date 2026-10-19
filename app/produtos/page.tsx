@@ -5,7 +5,7 @@ import { SITE_URL as siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Todos os produtos",
-  description: "Catálogo completo da MOZZ - Animale, NV, Reserva e Foxton em um só lugar, com frete para todo o Brasil.",
+  description: "Catálogo completo da MOZZ - Animale, NV, Farm, Reserva e Foxton em um só lugar, com frete para todo o Brasil.",
   alternates: { canonical: `${siteUrl}/produtos` }
 };
 
