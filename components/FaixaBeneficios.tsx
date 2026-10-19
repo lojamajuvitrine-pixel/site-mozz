@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { formatarPreco, MAX_PARCELAS_SEM_JUROS } from "@/lib/formato";
+import { formatarPreco, MAX_PARCELAS_SEM_JUROS, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
 
 // Faixa de beneficios logo abaixo do cabecalho, em todas as paginas da loja (pedido do Brunno em
 // 19/10/2026 - mostrar parcelamento, troca, frete gratis e compra segura logo de cara, pra dar
@@ -24,7 +24,7 @@ export default function FaixaBeneficios() {
   if (pathname?.startsWith("/admin")) return null;
 
   const itens = [
-    { titulo: `Até ${MAX_PARCELAS_SEM_JUROS}x sem juros`, detalhe: "no cartão de crédito", destaque: true },
+    { titulo: `Até ${MAX_PARCELAS_SEM_JUROS}x sem juros`, detalhe: `no cartão · ${PERCENTUAL_DESCONTO_PIX}% OFF no Pix`, destaque: true },
     { titulo: "Troca em 30 dias", detalhe: "1ª troca grátis", destaque: true },
     freteGratisAcimaDe
       ? { titulo: "Frete grátis", detalhe: `acima de ${formatarPreco(freteGratisAcimaDe)}`, destaque: false }
