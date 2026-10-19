@@ -1,3 +1,7 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
 // Botao flutuante de WhatsApp - fixo no canto da tela em toda pagina do site, pro cliente
 // tirar duvida direto com a loja sem precisar procurar contato em outro lugar. Numero fixo da
 // MOZZ (informado pelo Brunno em 24/08/2026) - se um dia trocar, e' so' mudar aqui.
@@ -14,6 +18,11 @@ function IconeWhatsapp() {
 
 export default function BotaoWhatsapp() {
   const link = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(MENSAGEM_PADRAO)}`;
+  // Nas paginas de produto, no celular, ha' uma barra fixa embaixo com o botao "Adicionar ao
+  // carrinho" - o botao verde ficava em cima dela e atrapalhava o toque (17/10/2026). So' la' ele
+  // sobe (bottom-32); no resto do site e no computador continua no canto de sempre.
+  const pathname = usePathname();
+  const naPaginaDeProduto = pathname?.startsWith("/produto/") ?? false;
 
   return (
     <a
@@ -21,7 +30,7 @@ export default function BotaoWhatsapp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp"
-      className="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
+      className={`fixed right-5 z-40 ${naPaginaDeProduto ? "bottom-32 md:bottom-5" : "bottom-5"} w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-105 transition-transform`}
     >
       <IconeWhatsapp />
     </a>
