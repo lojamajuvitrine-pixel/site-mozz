@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import BotaoWhatsapp from "@/components/BotaoWhatsapp";
 import FaixaBeneficios from "@/components/FaixaBeneficios";
+import FaixaCupom from "@/components/FaixaCupom";
 import { CartProvider } from "@/lib/cart-context";
 import { FavoritosProvider } from "@/lib/favoritos-context";
 import { SITE_URL } from "@/lib/site";
@@ -116,6 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <CartProvider>
           <FavoritosProvider>
+            <FaixaCupom />
             <Nav />
             <FaixaBeneficios />
             <main className="max-w-[1600px] mx-auto px-6">{children}</main>
