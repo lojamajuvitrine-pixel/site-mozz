@@ -26,7 +26,17 @@ export default function PaginaEntrega() {
           <p className="text-mozz-black font-medium mb-1">Entrega pelo Correios</p>
           <p>
             Calculamos o frete e o prazo estimado automaticamente pelo seu CEP, direto na página
-            do produto ou no carrinho, antes de fechar a compra. Enviamos pra todo o Brasil.
+            do produto ou no carrinho, antes de fechar a compra. Enviamos pra todo o Brasil e
+            postamos seu pedido em até 1 dia útil depois da aprovação do pagamento.
+          </p>
+        </div>
+
+        <div>
+          <p className="text-mozz-black font-medium mb-1">Entrega expressa em Reserva</p>
+          <p>
+            Se o seu CEP é de Reserva (PR), a entrega é grátis e feita pela nossa equipe. Pedido
+            pago até as 14h chega no mesmo dia (aos sábados, pago até as 11h). Depois desse
+            horário, ou aos domingos, a entrega sai no próximo dia útil.
           </p>
         </div>
 
