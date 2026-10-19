@@ -16,7 +16,8 @@ import type { Produto } from "@/lib/produtos";
 import { resolverProdutoIdBling, buscarProduto, coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { validarCupom } from "@/lib/cupom";
 import { validarCpf } from "@/lib/cpf";
-import { calcularFrete, ehRetirada } from "@/lib/frete";
+import { calcularFrete, cepDeReserva, ehEntregaExpressa, ehRetirada, FRETE_ENTREGA_EXPRESSA } from "@/lib/frete";
+import { calcularDescontoPix, calcularParcelamento, MAX_PARCELAS_SEM_JUROS } from "@/lib/formato";
 import { buscarConfiguracaoLoja } from "@/lib/configLoja";
 import { buscarSaldoCredito, calcularCreditoAplicavel } from "@/lib/creditos";
 
@@ -77,6 +78,10 @@ export type PedidoMetadata = {
   // (ver calcularCreditoAplicavel abaixo) - o webhook usa esse valor pra consumir o credito
   // (lib/creditos.ts -> usarCredito) so' depois do pagamento aprovado de verdade.
   creditoAplicado: number;
+  // Desconto de 10% do Pix efetivamente aplicado (0 quando o pagamento nao e' Pix, ou quando o
+  // cupom deu desconto maior e por isso valeu o cupom) - so' informativo, o valor dos itens
+  // acima ja' vem com o desconto.
+  descontoPix?: number;
   // Dados do envio - o webhook usa isso pra salvar o pedido (lib/creditos.ts nao, isso e'
   // novo) e, quando nao for retirada, comprar a etiqueta automaticamente no Melhor Envio (ver
   // lib/melhorEnvio.ts). servicoId undefined quando e' retirada na loja.
@@ -99,6 +104,21 @@ async function revalidarFrete(
   // Retirada na loja e' sempre gratis - nao depende de cotacao nenhuma de transportadora.
   if (ehRetirada(freteEscolhido)) {
     return { servico: freteEscolhido.servico, transportadora: freteEscolhido.transportadora, preco: 0 };
+  }
+
+  // Entrega expressa em Reserva: gratis, feita pela equipe da Mozz, so' pra CEP de Reserva.
+  // Revalidado aqui porque o carrinho pode ser adulterado (CEP de outra cidade com frete 0).
+  if (ehEntregaExpressa(freteEscolhido)) {
+    if (!cepDeReserva(cepDestino)) {
+      throw new ErroValidacaoPedido(
+        "A entrega expressa vale só para CEPs de Reserva - calcule o frete de novo e escolha outra opção"
+      );
+    }
+    return {
+      servico: FRETE_ENTREGA_EXPRESSA.servico,
+      transportadora: FRETE_ENTREGA_EXPRESSA.transportadora,
+      preco: 0
+    };
   }
 
   // Frete pago de verdade - cota de novo no Melhor Envio com o CEP de entrega e usa o preco
@@ -147,7 +167,8 @@ async function prepararPedido(
   cliente: ClienteCheckout,
   frete?: FreteEscolhido,
   cupomCodigo?: string,
-  creditoSolicitado?: number
+  creditoSolicitado?: number,
+  metodo?: "pix" | "cartao"
 ) {
   if (!cliente.nomeCompleto.trim() || !validarCpf(cliente.cpf)) {
     throw new ErroValidacaoPedido("Nome completo e CPF válidos são obrigatórios pra finalizar a compra");
@@ -195,22 +216,35 @@ async function prepararPedido(
   // no preco unitario de cada item (reduz todo mundo pela mesma porcentagem), o que da' no
   // mesmo total final.
   const subtotal = itensValidados.reduce((soma, { item, produtoReal }) => soma + produtoReal.preco * item.quantidade, 0);
-  let fatorDesconto = 1;
+  let descontoCupom = 0;
   let codigoCupomAplicado: string | undefined;
   if (cupomCodigo && subtotal > 0) {
     const resultado = await validarCupom(cupomCodigo, subtotal, cliente.cpf);
     if (resultado.valido) {
-      fatorDesconto = (subtotal - resultado.desconto) / subtotal;
+      descontoCupom = resultado.desconto;
       codigoCupomAplicado = resultado.cupom.codigo;
     }
   }
+  // Desconto do Pix (10%, 19/10/2026): NAO soma com cupom - vale o maior dos dois. Se o Pix
+  // ganhar, o cupom nao e' aplicado (e por isso nao e' "gasto" no uso unico por CPF).
+  let descontoPix = metodo === "pix" ? calcularDescontoPix(subtotal) : 0;
+  let descontoAplicado = descontoCupom;
+  if (descontoPix > descontoCupom) {
+    descontoAplicado = descontoPix;
+    codigoCupomAplicado = undefined;
+  } else {
+    descontoPix = 0;
+  }
+  const fatorDesconto = subtotal > 0 ? (subtotal - descontoAplicado) / subtotal : 1;
   const subtotalComDesconto = Math.round(subtotal * fatorDesconto * 100) / 100;
 
   // Revalida o frete (retirada/frete gratis/preco real da transportadora) so' DEPOIS de saber
-  // o subtotal com desconto de verdade - o valor minimo do frete gratis compara com esse
-  // numero, nao com o subtotal cheio. Ver revalidarFrete acima.
+  // o subtotal com desconto - o valor minimo do frete gratis compara com o subtotal depois do
+  // CUPOM (o desconto do Pix nao tira o frete gratis da cliente). Ver revalidarFrete acima e
+  // o mesmo calculo em app/carrinho/page.tsx.
+  const subtotalAposCupom = Math.round((subtotal - descontoCupom) * 100) / 100;
   const quantidadeTotalItens = itens.reduce((soma, item) => soma + item.quantidade, 0);
-  const freteSeguro = await revalidarFrete(frete, subtotalComDesconto, end.cep, quantidadeTotalItens);
+  const freteSeguro = await revalidarFrete(frete, subtotalAposCupom, end.cep, quantidadeTotalItens);
 
   // Credito de loja (cashback) - revalidado aqui no servidor pelos mesmos motivos do cupom
   // acima: nunca confia no valor calculado no carrinho no navegador. O teto de uso (30% do
@@ -270,6 +304,7 @@ async function prepararPedido(
     email: cliente.email.trim(),
     telefone: cliente.telefone.trim(),
     creditoAplicado,
+    descontoPix,
     envio: freteSeguro
       ? { transportadora: freteSeguro.transportadora, servico: freteSeguro.servico, servicoId: freteSeguro.servicoId }
       : null,
@@ -350,8 +385,9 @@ export async function criarPreferenciaPagamento(
 // ---------------------------------------------------------------------------------------
 
 // Quantas parcelas aceitar no cartao - o mesmo teto mostrado no site (MAX_PARCELAS_SEM_JUROS
-// em lib/formato.ts). Revalidado aqui porque o numero de parcelas vem do navegador.
-const MAX_PARCELAS_CARTAO = 3;
+// em lib/formato.ts). Revalidado aqui porque o numero de parcelas vem do navegador. (Era
+// fixo em 3 e recusava qualquer compra em 4x ou mais - corrigido em 19/10/2026 junto com o 10x.)
+const MAX_PARCELAS_CARTAO = MAX_PARCELAS_SEM_JUROS;
 // Tempo pra pagar o Pix antes do QR Code expirar.
 const MINUTOS_EXPIRACAO_PIX = 30;
 
@@ -452,7 +488,7 @@ export async function criarPagamentoPix(
   creditoSolicitado?: number,
   valorEsperado?: number
 ) {
-  const pedido = await prepararPedido(itens, cliente, frete, cupomCodigo, creditoSolicitado);
+  const pedido = await prepararPedido(itens, cliente, frete, cupomCodigo, creditoSolicitado, "pix");
   conferirValorEsperado(pedido.valorTotal, valorEsperado);
   const base = corpoBasePagamento(pedido, numeroPedido, cliente);
 
@@ -503,8 +539,14 @@ export async function criarPagamentoCartao(
     throw new ErroValidacaoPedido(`Parcelamento disponível em até ${MAX_PARCELAS_CARTAO}x`);
   }
 
-  const pedido = await prepararPedido(itens, cliente, frete, cupomCodigo, creditoSolicitado);
+  const pedido = await prepararPedido(itens, cliente, frete, cupomCodigo, creditoSolicitado, "cartao");
   conferirValorEsperado(pedido.valorTotal, valorEsperado);
+  // Parcela minima de R$ 60: o numero de parcelas tem que caber no valor do pedido (mesma regra
+  // do site, calcularParcelamento). Folga de R$ 1 pelo mesmo motivo da tolerancia acima.
+  const parcelasPermitidas = calcularParcelamento(pedido.valorTotal + 1)?.parcelas ?? 1;
+  if (parcelas > parcelasPermitidas) {
+    throw new ErroValidacaoPedido(`Para esse valor, o parcelamento vai até ${parcelasPermitidas}x`);
+  }
   const base = corpoBasePagamento(pedido, numeroPedido, cliente);
 
   const documentoTitular = cartao.identificacao?.numero?.replace(/\D/g, "");
