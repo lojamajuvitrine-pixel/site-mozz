@@ -1,38 +1,82 @@
-// Cupons de desconto ativos na loja. Como o site ainda nao tem painel admin pra cupom, esse
-// arquivo E' o "painel" - pra criar, editar ou desativar um cupom, peca pro Claude mexer aqui
-// (ou edite direto, se preferir) e publique. Formato de cada cupom:
-// - codigo: como o cliente digita no carrinho (nao diferencia maiuscula/minuscula)
-// - tipo: "percentual" (ex: valor 10 = 10% de desconto) ou "fixo" (valor em R$ de desconto)
-// - valor: numero (percentual de 0 a 100, ou reais, conforme o tipo)
-// - validoAte: data limite opcional no formato "AAAA-MM-DD" - depois dela o cupom para de
-//   funcionar sozinho, sem precisar lembrar de desativar na mao
-// - pedidoMinimo: valor minimo do carrinho (em R$) pra poder usar o cupom (opcional)
-// - usoUnicoPorCpf: true = cada CPF so' consegue usar ESSE cupom uma vez, mesmo em navegador
-//   ou conta diferente - e' o que faz um cupom ser "de primeira compra" na pratica (pedido do
-//   Brunno em 30/08/2026). Fica registrado na tabela cupons_usados do Supabase (ver
-//   lib/cupom.ts) no momento em que o PAGAMENTO e' aprovado de verdade (nao so' quando o
-//   cliente aplica o cupom no carrinho) - carrinho abandonado ou pagamento recusado nao
-//   "gasta" o uso. Omitir ou false = cupom pode ser usado quantas vezes quiser, por qualquer
-//   pessoa (cupom de promocao comum).
-// - ativo: liga/desliga o cupom sem precisar apagar a linha
-export type Cupom = {
-  codigo: string;
-  tipo: "percentual" | "fixo";
-  valor: number;
-  validoAte?: string;
-  pedidoMinimo?: number;
-  usoUnicoPorCpf?: boolean;
-  ativo: boolean;
-};
+import { CUPONS, type Cupom } from "@/lib/cupons";
+import { clientePublico } from "@/lib/supabase/publico";
+import { SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
+import { validarCpf } from "@/lib/cpf";
 
-export const CUPONS: Cupom[] = [
-  // Cupom de primeira compra - criado em 30/08/2026 com 10%; subiu pra 15% em 19/10/2026
-  // (decisao do Brunno, igual ao da OQVestir). usoUnicoPorCpf faz cada CPF conseguir usar so'
-  // uma vez (na pratica, "valido so' na primeira compra"). Sem pedidoMinimo nem validoAte.
-  // Nao soma com o desconto do Pix: vale o maior dos dois (ver prepararPedido).
-  { codigo: "PRIMEIRACOMPRA", tipo: "percentual", valor: 15, usoUnicoPorCpf: true, ativo: true }
+export type ResultadoCupom =
+  | { valido: true; cupom: Cupom; desconto: number }
+  | { valido: false; motivo: string };
 
-  // exemplo de cupom de promocao comum (desativado) - qualquer pessoa pode usar, quantas
-  // vezes quiser, enquanto estiver ativo:
-  // { codigo: "VERAO10", tipo: "percentual", valor: 10, ativo: true }
-];
+// Checa (via funcao security definer no Supabase - ver migration cupons_usados) se esse CPF
+// ja usou esse cupom antes. Nunca le a tabela cupons_usados direto (CPF e' dado sensivel e a
+// chave usada aqui e' a publica/anon) - so' um boolean vai e volta. Se o Supabase estiver fora
+// do ar ou nao configurado, deixa passar (nao bloqueia venda por causa disso - mesmo principio
+// de buscarConfigProdutos/buscarConfiguracaoLoja).
+async function cupomJaUsadoPeloCpf(codigo: string, cpfLimpo: string): Promise<boolean> {
+  if (!SUPABASE_CONFIGURADO) return false;
+  try {
+    const supabase = clientePublico();
+    const { data, error } = await supabase.rpc("cupom_ja_usado", {
+      p_cupom_codigo: codigo,
+      p_cpf: cpfLimpo
+    });
+    if (error) return false;
+    return !!data;
+  } catch {
+    return false;
+  }
+}
+
+// Validacao sempre roda de novo no servidor na hora de criar a preferencia de pagamento
+// (ver lib/mercadopago.ts) - nunca confia so' no desconto calculado no navegador, pra nao
+// dar pra manipular o total pagado mexendo no cliente.
+//
+// cpfDigitado so' e' obrigatorio quando o cupom encontrado tem usoUnicoPorCpf: true (cupom de
+// primeira compra) - pra cupom comum, nem precisa passar. No carrinho o campo de cupom fica
+// ANTES do campo de CPF (ver app/carrinho/page.tsx), entao se o cliente tentar aplicar um
+// cupom de primeira compra antes de preencher o CPF, a mensagem pede pra preencher primeiro
+// em vez de travar sem explicar por que.
+export async function validarCupom(
+  codigoDigitado: string,
+  subtotal: number,
+  cpfDigitado?: string
+): Promise<ResultadoCupom> {
+  const codigo = codigoDigitado.trim().toUpperCase();
+  if (!codigo) return { valido: false, motivo: "Digite um código de cupom" };
+
+  const cupom = CUPONS.find((c) => c.codigo.toUpperCase() === codigo);
+  if (!cupom) return { valido: false, motivo: "Cupom não encontrado" };
+  if (!cupom.ativo) return { valido: false, motivo: "Cupom inativo" };
+
+  if (cupom.validoAte) {
+    const limite = new Date(`${cupom.validoAte}T23:59:59`);
+    if (Number.isFinite(limite.getTime()) && limite < new Date()) {
+      return { valido: false, motivo: "Cupom expirado" };
+    }
+  }
+
+  if (cupom.pedidoMinimo && subtotal < cupom.pedidoMinimo) {
+    return {
+      valido: false,
+      motivo: `Válido a partir de ${cupom.pedidoMinimo.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      })} em compras`
+    };
+  }
+
+  if (cupom.usoUnicoPorCpf) {
+    const cpfLimpo = (cpfDigitado ?? "").replace(/\D/g, "");
+    if (!validarCpf(cpfLimpo)) {
+      return { valido: false, motivo: "Preencha seu CPF antes de aplicar esse cupom" };
+    }
+    const jaUsado = await cupomJaUsadoPeloCpf(cupom.codigo, cpfLimpo);
+    if (jaUsado) {
+      return { valido: false, motivo: "Esse cupom já foi usado - válido só na primeira compra" };
+    }
+  }
+
+  const desconto = cupom.tipo === "percentual" ? subtotal * (cupom.valor / 100) : Math.min(cupom.valor, subtotal);
+
+  return { valido: true, cupom, desconto: Math.round(desconto * 100) / 100 };
+}
