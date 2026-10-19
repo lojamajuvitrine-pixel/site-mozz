@@ -8,7 +8,7 @@ export default async function ProdutosRelacionados({ produto }: { produto: Produ
 
   return (
     <section className="mt-14 pt-8 border-t border-black/10">
-      <p className="text-[14.5px] text-mozz-gray mb-4">Quem viu também gostou</p>
+      <p className="text-[14.5px] text-mozz-gray mb-4">Você também pode gostar</p>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {relacionados.map((p) => (
           <ProductCard key={p.id} produto={p} />
