@@ -432,14 +432,20 @@ export async function listarDestaques(): Promise<Produto[]> {
 // Sempre usar isso (em vez de produto.cores direto) pra ler as cores de um produto - cobre
 // o caso de dado antigo (sync anterior ao suporte a cor) devolvendo um "Unico" de fallback
 // com a foto/tamanhos que ja existiam antes.
-// "Quem viu tambem gostou" - produtos da mesma categoria de peca (blusa, calca, vestido...)
-// e prioriza a mesma marca primeiro, com foto, excluindo o produto atual. Categoria e'
-// inferida pelo nome (ver lib/detalhesProduto.ts) ja que o Bling nao devolve categoria
-// utilizavel sem chamada extra por produto.
+// Sugestoes da pagina do produto ("Voce tambem pode gostar") - produtos da mesma categoria de
+// peca (blusa, calca, vestido...) E do mesmo genero (ver generoDaMarca: uma camisa feminina
+// nunca sugere camisa masculina e vice-versa - ajuste de 19/10/2026). Prioriza a mesma marca
+// primeiro, com foto, excluindo o produto atual. Categoria e' inferida pelo nome (ver
+// lib/detalhesProduto.ts) ja que o Bling nao devolve categoria utilizavel sem chamada extra
+// por produto. Peca sem estoque nenhum ja' nao chega aqui (listarProdutos tira do catalogo).
+// Nao usa dado de navegacao: e' regra de catalogo, por isso o titulo nao diz "quem viu".
 export async function produtosRelacionados(produto: Produto, quantidade = 8): Promise<Produto[]> {
   const categoriaAtual = categoriaDoProduto(produto.nome);
+  const generoAtual = generoDaMarca(produto.marca);
   const todos = await listarProdutos();
-  const candidatos = todos.filter((p) => p.id !== produto.id && !!p.imagem);
+  const candidatos = todos.filter(
+    (p) => p.id !== produto.id && !!p.imagem && generoDaMarca(p.marca) === generoAtual
+  );
 
   const mesmaCategoria = candidatos.filter((p) => categoriaDoProduto(p.nome) === categoriaAtual);
   const mesmaMarcaPrimeiro = [
