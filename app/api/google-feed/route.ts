@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { listarProdutos, coresDoProduto, idVarianteProduto, type Produto } from "@/lib/produtos";
-import { textoDescricao } from "@/lib/detalhesProduto";
+import { textoDescricao, tipoDoProduto } from "@/lib/detalhesProduto";
 import { SITE_URL as siteUrl } from "@/lib/site";
 
 // Feed de catalogo pro Google Merchant Center (Google Shopping / listagens gratuitas) - fica
@@ -37,7 +37,18 @@ const COLUNAS = [
   "gender",
   "age_group",
   "color",
-  "size"
+  "size",
+  "size_system",
+  "size_type",
+  "additional_image_link",
+  "google_product_category",
+  "product_type",
+  "shipping_weight",
+  "custom_label_0",
+  "custom_label_1",
+  "custom_label_2",
+  "custom_label_3",
+  "custom_label_4"
 ] as const;
 
 type Coluna = (typeof COLUNAS)[number];
@@ -137,6 +148,78 @@ function montarTitulo(produto: Produto, corDaVariacao: string): string {
   return limparTexto([nome, produto.marca, cor, generoTexto].filter(Boolean).join(" "), 150);
 }
 
+// ---- Campos extras do Google Shopping (20/10/2026, aprovados pelo Brunno) ----
+
+// Categoria do Google (numero da taxonomia oficial) por tipo de peca - o tipo vem do nome, igual ao
+// filtro do catalogo (tipoDoProduto em lib/detalhesProduto.ts). Ids conferidos na taxonomia do
+// Google em 20/10/2026. Tipo desconhecido cai em "Roupas" (1604) em vez de ficar sem categoria.
+const CATEGORIA_GOOGLE_POR_TIPO: Record<string, string> = {
+  Vestido: "2271",
+  Chemise: "2271",
+  Macacão: "5250",
+  Macaquinho: "5250",
+  Saia: "1581",
+  Bermuda: "207",
+  Short: "207",
+  Calça: "204",
+  Legging: "204",
+  Jaqueta: "5598",
+  Casaco: "5598",
+  Blazer: "5598",
+  Colete: "1831",
+  Polo: "212",
+  Camiseta: "212",
+  Camisa: "212",
+  Blusa: "212",
+  Regata: "212",
+  Body: "212",
+  Top: "212",
+  Cardigan: "212",
+  Moletom: "212",
+  Suéter: "212",
+  Tricô: "212",
+  Cueca: "2562",
+  Biquíni: "211",
+  Maiô: "211",
+  Bolsa: "6551"
+};
+
+// Cor lida do NOME da peca, so' quando o cadastro nao trouxe nome de cor (codigo cru ou "Unico").
+// Lista de cores comuns; frase mais longa primeiro ("azul marinho" antes de "azul").
+// Nao inventa nada: se o nome nao tem cor, continua vazio.
+const CORES_NO_NOME = [
+  "off white", "azul marinho", "azul royal", "azul claro", "azul escuro", "verde oliva", "verde militar",
+  "verde agua", "preto", "preta", "branco", "branca", "cru", "azul", "verde", "vermelho", "vermelha",
+  "rosa", "amarelo", "amarela", "laranja", "roxo", "roxa", "lilas", "marrom", "bege", "cinza",
+  "caramelo", "nude", "dourado", "dourada", "prateado", "prateada", "vinho", "caqui", "grafite",
+  "creme", "areia", "camel", "bordo", "terracota", "mostarda", "turquesa", "marinho"
+];
+
+function corNoNomeDaPeca(nome: string): string {
+  const texto = ` ${semAcento(nome)} `;
+  for (const cor of CORES_NO_NOME) {
+    if (texto.includes(` ${cor} `)) return corEmTitulo(cor === "lilas" ? "lilás" : cor === "bordo" ? "bordô" : cor);
+  }
+  return "";
+}
+
+function faixaDePreco(preco: number): string {
+  if (preco <= 200) return "Até R$ 200";
+  if (preco <= 400) return "R$ 200 a 400";
+  if (preco <= 800) return "R$ 400 a 800";
+  if (preco <= 1500) return "R$ 800 a 1500";
+  return "Acima de R$ 1500";
+}
+
+function rotuloEstoque(tamanhosDisponiveis: number): string {
+  if (tamanhosDisponiveis <= 1) return "1 tamanho em estoque";
+  if (tamanhosDisponiveis >= 6) return "6 ou mais tamanhos em estoque";
+  return `${tamanhosDisponiveis} tamanhos em estoque`;
+}
+
+// Mesmo peso medio por peca que o site usa pra cotar o frete (PESO_MEDIO_POR_PECA_KG em lib/frete.ts).
+const PESO_ENVIO = "0.3 kg";
+
 function csvEscape(valor: string): string {
   if (/[",\n\r]/.test(valor)) {
     return `"${valor.replace(/"/g, '""')}"`;
@@ -193,12 +276,27 @@ function linhasDoProduto(produto: Produto): Array<Record<Coluna, string>> {
   const linhas: Array<Record<Coluna, string>> = [];
   const idsVistos = new Set<string>();
 
+  const tipo = tipoDoProduto(produto.nome);
+  const categoriaGoogle = CATEGORIA_GOOGLE_POR_TIPO[tipo] ?? "1604";
+  const generoTexto = genero === "male" ? "Masculino" : genero === "female" ? "Feminino" : "Unissex";
+  const tipoProduto = `${generoTexto} > ${tipo} > ${produto.marca}`;
+  const curadoria = produto.outlet ? "outlet" : produto.destaque ? "destaque" : "normal";
+
   for (const cor of corasMescladas(produto)) {
     const imagemCor = cor.imagens[0] ?? produto.imagem ?? "";
-    const corParaFeed = corValidaParaFeed(cor.cor);
+    // fotos extras da MESMA cor (ate 9 alem da capa; o Google aceita no maximo 10 no total)
+    const fotosExtras = cor.imagens
+      .slice(1, 10)
+      .map((img) => `${siteUrl}${img}`)
+      .join(",");
+    // cor do cadastro; se vier vazia/codigo cru, tenta ler do nome da peca
+    const corParaFeed = corValidaParaFeed(cor.cor) || corNoNomeDaPeca(produto.nome);
     const disponiveisAgora = cor.disponiveis;
+    const tamanhosEmEstoque = cor.tamanhos.filter((t) => disponiveisAgora.has(t)).length;
 
     for (const tamanho of cor.tamanhos) {
+      // Variacao esgotada nao vai pro feed (nao gasta clique em tamanho que nao da' pra comprar)
+      if (!disponiveisAgora.has(tamanho)) continue;
       const id = idVarianteProduto(produto.id, cor.cor, tamanho);
       if (idsVistos.has(id)) continue;
       idsVistos.add(id);
@@ -208,7 +306,7 @@ function linhasDoProduto(produto: Produto): Array<Record<Coluna, string>> {
         item_group_id: produto.id,
         title: montarTitulo(produto, corParaFeed),
         description: descricao,
-        availability: disponiveisAgora.has(tamanho) ? "in stock" : "out of stock",
+        availability: "in stock",
         condition: "new",
         price: `${precoCheio} BRL`,
         sale_price: temOferta ? `${precoAtual} BRL` : "",
@@ -221,7 +319,18 @@ function linhasDoProduto(produto: Produto): Array<Record<Coluna, string>> {
         gender: genero,
         age_group: "adult",
         color: corParaFeed,
-        size: tamanho === "Único" ? "" : tamanho
+        size: tamanho === "Único" ? "" : tamanho,
+        size_system: "BR",
+        size_type: "regular",
+        additional_image_link: fotosExtras,
+        google_product_category: categoriaGoogle,
+        product_type: tipoProduto,
+        shipping_weight: PESO_ENVIO,
+        custom_label_0: produto.marca,
+        custom_label_1: faixaDePreco(produto.preco),
+        custom_label_2: rotuloEstoque(tamanhosEmEstoque),
+        custom_label_3: curadoria,
+        custom_label_4: produto.novo ? "novidade" : "linha"
       });
     }
   }
