@@ -2834,13 +2834,11 @@
           "42",
           "44"
         ],
-        "tamanhosDisponiveis": [
-          "42"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16638620328--verde-antique--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16630958142",
