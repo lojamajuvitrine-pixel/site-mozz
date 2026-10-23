@@ -29281,11 +29281,10 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G",
           "GG",
-          "XG"
+          "M",
+          "P",
+          "G"
         ]
       },
       {
@@ -29299,7 +29298,6 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "XG",
           "GG",
           "G",
           "M",
