@@ -1666,7 +1666,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
           "M"
         ]
@@ -24239,9 +24238,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G"
+          "G",
+          "M"
         ]
       },
       {
@@ -24604,7 +24602,6 @@
         "tamanhosDisponiveis": [
           "G",
           "M",
-          "P",
           "PP"
         ]
       },
@@ -24763,8 +24760,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M"
+          "P"
         ]
       }
     ],
@@ -29280,7 +29276,6 @@
         "tamanhosDisponiveis": [
           "GG",
           "M",
-          "P",
           "G"
         ]
       },
@@ -29826,10 +29821,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
+          "GG",
           "G",
-          "GG"
+          "M"
         ]
       },
       {
@@ -29953,8 +29947,7 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "GG"
+          "M"
         ]
       }
     ],
@@ -30710,11 +30703,10 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G",
+          "XG",
           "GG",
-          "XG"
+          "M",
+          "P"
         ]
       },
       {
@@ -31563,7 +31555,6 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "PP",
           "P"
         ]
       }
@@ -32812,7 +32803,6 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "PP",
           "P",
           "M"
         ]
@@ -33355,7 +33345,6 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "34",
           "36",
           "38",
           "40",
