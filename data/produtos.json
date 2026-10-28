@@ -6013,7 +6013,6 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
           "P"
         ]
       }
@@ -30701,7 +30700,6 @@
         ],
         "tamanhosDisponiveis": [
           "XG",
-          "GG",
           "P"
         ]
       },
@@ -33736,7 +33734,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG"
+          "GG",
+          "G"
         ]
       }
     ],
@@ -34339,10 +34338,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
+          "G",
           "P",
-          "M",
-          "G"
+          "PP"
         ]
       }
     ],
@@ -34663,9 +34661,7 @@
           "P",
           "M"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
