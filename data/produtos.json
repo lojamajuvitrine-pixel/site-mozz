@@ -2953,13 +2953,11 @@
         "tamanhos": [
           "M"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16638618077",
@@ -10942,7 +10940,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "M",
           "P"
         ]
       },
@@ -12382,7 +12379,7 @@
       }
     ],
     "imagem": "/produtos/16561493348--unico--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16561496131",
