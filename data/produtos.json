@@ -6252,11 +6252,10 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "44",
-          "42",
+          "36",
           "40",
-          "38",
-          "36"
+          "42",
+          "44"
         ]
       }
     ],
@@ -23862,7 +23861,6 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "40",
           "42",
           "44"
         ]
@@ -29514,10 +29512,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
+          "GG",
           "G",
-          "GG"
+          "M"
         ]
       },
       {
@@ -30687,10 +30684,7 @@
           "GG",
           "XG"
         ],
-        "tamanhosDisponiveis": [
-          "XG",
-          "P"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Mogno",
@@ -32588,7 +32582,6 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "38",
           "40",
           "42"
         ]
@@ -32931,10 +32924,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
-          "P",
+          "G",
           "M",
-          "G"
+          "P"
         ]
       }
     ],
