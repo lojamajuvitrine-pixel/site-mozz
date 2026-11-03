@@ -36,6 +36,8 @@ export const metadata: Metadata = {
 
 const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const googleAnalyticsId = process.env.NEXT_PUBLIC_GA_ID;
+const googleAdsId = process.env.NEXT_PUBLIC_GADS_ID;
+const googleTagId = googleAnalyticsId || googleAdsId;
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
