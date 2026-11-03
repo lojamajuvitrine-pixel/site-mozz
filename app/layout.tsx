@@ -92,15 +92,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `}
           </Script>
         )}
-        {googleAnalyticsId && (
+               {googleTagId && (
           <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`} strategy="afterInteractive" />
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`} strategy="afterInteractive" />
             <Script id="google-analytics" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${googleAnalyticsId}');
+                ${googleAnalyticsId ? `gtag('config', '${googleAnalyticsId}');` : ""}
+                ${googleAdsId ? `gtag('config', '${googleAdsId}');` : ""}
               `}
             </Script>
           </>
