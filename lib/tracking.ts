@@ -114,4 +114,15 @@ export function rastrearCompra(pedidoId: string, itens: ItemRastreado[]) {
     value: valor,
     items: itensParaGA(itens)
   });
+  // Conversao de compra do Google Ads - so' dispara se as duas variaveis estiverem na Vercel
+  const gadsId = process.env.NEXT_PUBLIC_GADS_ID;
+  const gadsLabel = process.env.NEXT_PUBLIC_GADS_PURCHASE_LABEL;
+  if (gadsId && gadsLabel) {
+    window.gtag?.("event", "conversion", {
+      send_to: `${gadsId}/${gadsLabel}`,
+      value: valor,
+      currency: "BRL",
+      transaction_id: pedidoId
+    });
+  }
 }
