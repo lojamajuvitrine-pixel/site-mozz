@@ -1,5 +1,50 @@
 [
   {
+    "id": "16725437326",
+    "nome": "T-shirt Tricot Basica Gola Alta Color - Branca",
+    "marca": "Animale",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16725437326--unico--0.jpg",
+          "/produtos/16725437326--unico--1.jpg",
+          "/produtos/16725437326--unico--2.jpg",
+          "/produtos/16725437326--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": "/produtos/16725437326--unico--0.jpg",
+    "temEstoque": false
+  },
+  {
+    "id": "16720120491",
+    "nome": "Vestido Camisaria Onça Tinta",
+    "marca": "Animale",
+    "preco": 2198,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "Único"
+        ],
+        "tamanhosDisponiveis": []
+      }
+    ],
+    "imagem": null,
+    "temEstoque": false
+  },
+  {
     "id": "16710762922",
     "nome": "Jaqueta Jeans Balone -",
     "marca": "Animale",
@@ -295,8 +340,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       },
       {
@@ -336,8 +381,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -1069,11 +1114,11 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "34",
-          "36",
-          "38",
+          "44",
           "42",
-          "44"
+          "34",
+          "38",
+          "36"
         ]
       },
       {
@@ -1613,9 +1658,9 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "36",
+          "44",
           "40",
-          "44"
+          "36"
         ]
       }
     ],
@@ -3281,8 +3326,8 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "42",
-          "44"
+          "44",
+          "42"
         ]
       }
     ],
@@ -6252,10 +6297,10 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "36",
-          "40",
+          "44",
           "42",
-          "44"
+          "40",
+          "36"
         ]
       }
     ],
@@ -7712,8 +7757,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "M"
         ]
       },
@@ -7785,8 +7830,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "M"
         ]
       },
@@ -7919,10 +7964,10 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "XG",
           "GG",
-          "M",
-          "XG"
+          "G",
+          "M"
         ]
       },
       {
@@ -8141,10 +8186,7 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": [
-          "G",
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Preto",
@@ -15679,10 +15721,10 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "XG",
           "GG",
-          "P",
-          "XG"
+          "G",
+          "P"
         ]
       }
     ],
@@ -16407,8 +16449,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "46"
+          "46",
+          "38"
         ]
       }
     ],
@@ -18922,9 +18964,7 @@
           "46",
           "48"
         ],
-        "tamanhosDisponiveis": [
-          "44"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Verde Mata",
@@ -19616,10 +19656,7 @@
           "XG",
           "XXG"
         ],
-        "tamanhosDisponiveis": [
-          "GG",
-          "XG"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Vinho",
@@ -22953,6 +22990,1298 @@
     "temEstoque": false
   },
   {
+    "id": "16714545399",
+    "nome": "Camisa Ml Linho Estival",
+    "marca": "Foxton",
+    "preco": 698,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Caqui",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "GG"
+        ]
+      },
+      {
+        "cor": "Aveia",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      },
+      {
+        "cor": "Verde Oliva",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      },
+      {
+        "cor": "Branco",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Caqui": {
+        "G": [
+          "16722922816"
+        ],
+        "M": [
+          "16722922740"
+        ],
+        "P": [
+          "16722922690"
+        ],
+        "GG": [
+          "16714545399"
+        ]
+      },
+      "Aveia": {
+        "G": [
+          "16721685380"
+        ]
+      },
+      "Verde Oliva": {
+        "G": [
+          "16721685119"
+        ]
+      },
+      "Branco": {
+        "GG": [
+          "16721683226"
+        ],
+        "G": [
+          "16721683171"
+        ],
+        "M": [
+          "16721682978"
+        ],
+        "P": [
+          "16721682879"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16718845179",
+    "nome": "Camisa MC Linho Estival",
+    "marca": "Foxton",
+    "preco": 598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0580",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "GG",
+          "XG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "GG",
+          "XG"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0580": {
+        "XG": [
+          "16722922198"
+        ],
+        "M": [
+          "16722922034"
+        ],
+        "GG": [
+          "16718845179"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16710108326",
+    "nome": "Camisa ML Linho Lumiar",
+    "marca": "Foxton",
+    "preco": 698,
+    "novo": true,
+    "descricao": "A Camisa Manga Longa Linho Lumiar leva uma interpretação contemporânea à camisa, combinando cambraia de linho com a identidade própria de uma peça de manga longa. A construção cria uma presença clara no visual e favorece composições em que textura, proporção e material aparecem de forma natural, sem perder a elegância descontraída característica da Foxton\nSua ficha reúne ainda cores exclusivas Foxton e corantes nativos que preservam o brilho das cores e o acabamento do linho, proposta urbana, manga longa, 100% linho. Esses elementos não aparecem como detalhes isolados: juntos, formam a linguagem da peça e orientam sua utilização. A composição declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
+    "composicao": "declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
+    "cores": [
+      {
+        "cor": "Aveia",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      },
+      {
+        "cor": "Verde Oliva",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16718847767--unico--0.jpg",
+          "/produtos/16718847767--unico--1.jpg",
+          "/produtos/16718847767--unico--2.jpg",
+          "/produtos/16718847767--unico--3.jpg",
+          "/produtos/16718847767--unico--4.jpg",
+          "/produtos/16718847767--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Azul Aurora",
+        "imagens": [
+          "/produtos/16710110690--unico--0.jpg",
+          "/produtos/16710110690--unico--1.jpg",
+          "/produtos/16710110690--unico--2.jpg",
+          "/produtos/16710110690--unico--3.jpg",
+          "/produtos/16710110690--unico--4.jpg",
+          "/produtos/16710110690--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "Mogno",
+        "imagens": [
+          "/produtos/16710108899--unico--0.jpg",
+          "/produtos/16710108899--unico--1.jpg",
+          "/produtos/16710108899--unico--2.jpg",
+          "/produtos/16710108899--unico--3.jpg",
+          "/produtos/16710108899--unico--4.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16718847767--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Aveia": {
+        "P": [
+          "16722921210"
+        ]
+      },
+      "Verde Oliva": {
+        "GG": [
+          "16718849298"
+        ],
+        "M": [
+          "16718848856"
+        ]
+      },
+      "Preto": {
+        "P": [
+          "16718847767"
+        ],
+        "GG": [
+          "16710112712"
+        ],
+        "G": [
+          "16710112651"
+        ],
+        "M": [
+          "16710112563"
+        ]
+      },
+      "Azul Aurora": {
+        "G": [
+          "16710110690"
+        ],
+        "M": [
+          "16710110640"
+        ],
+        "P": [
+          "16710110558"
+        ]
+      },
+      "Mogno": {
+        "GG": [
+          "16710108899"
+        ],
+        "M": [
+          "16710108752"
+        ],
+        "P": [
+          "16710108326"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16721671590",
+    "nome": "Tshirt Boreal Tech",
+    "marca": "Foxton",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Branco",
+        "imagens": [
+          "/produtos/16722919896--unico--0.jpg",
+          "/produtos/16722919896--unico--1.jpg",
+          "/produtos/16722919896--unico--2.jpg",
+          "/produtos/16722919896--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16722919425--unico--0.jpg",
+          "/produtos/16722919425--unico--1.jpg",
+          "/produtos/16722919425--unico--2.jpg",
+          "/produtos/16722919425--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16722919896--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Branco": {
+        "G": [
+          "16722919896"
+        ],
+        "P": [
+          "16721679279"
+        ],
+        "GG": [
+          "16721676309"
+        ],
+        "M": [
+          "16721676166"
+        ]
+      },
+      "Preto": {
+        "GG": [
+          "16722919425"
+        ],
+        "G": [
+          "16722919325"
+        ],
+        "M": [
+          "16722919177"
+        ],
+        "P": [
+          "16721671590"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16706316715",
+    "nome": "Tshirt Tricot Saint Michel",
+    "marca": "Foxton",
+    "preco": 578,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Preto",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Verde Oliva",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Preto": {
+        "GG": [
+          "16722918825"
+        ],
+        "P": [
+          "16722918759"
+        ],
+        "G": [
+          "16708152564"
+        ]
+      },
+      "Verde Oliva": {
+        "GG": [
+          "16706316863"
+        ],
+        "G": [
+          "16706316854"
+        ],
+        "M": [
+          "16706316715"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708158396",
+    "nome": "Bermuda Chino",
+    "marca": "Foxton",
+    "preco": 448,
+    "novo": true,
+    "descricao": "A Bermuda Masculina Chino Casual é uma peça de sarja tinturada com elastano que possui modelagem casual em  corte de alfaiataria.  Com bolsos frontais faca e bolsos traseiros de alfaiataria com abotoamento externo, esta bermuda combina funcionalidade e estilo. O fecho frontal com zíper de metal e botão, juntamente com os passadores de cinto no cós, garantem um ajuste seguro e personalizado. Essa peça é funcional, versátil e indispensável no guarda-roupa do homem urbano contemporâneo, , ideal para combinar com  &lt;a href=\"https://www.foxtonbrasil.com.br/moda-masculina/camisas?O=OrderByscoreDESC\" style=\"max-width: 100%; font-family: __FONT_0649b7, __FONT_Fallback_0649b7; text-decoration: none; font-size: 13px;\"&gt;camisas&lt;/a&gt;  de botão.",
+    "cores": [
+      {
+        "cor": "Preto",
+        "imagens": [
+          "/produtos/16722918508--unico--0.jpg",
+          "/produtos/16722918508--unico--1.jpg",
+          "/produtos/16722918508--unico--2.jpg",
+          "/produtos/16722918508--unico--3.jpg",
+          "/produtos/16722918508--unico--4.jpg",
+          "/produtos/16722918508--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "38",
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40",
+          "42",
+          "44"
+        ]
+      },
+      {
+        "cor": "Caqui",
+        "imagens": [
+          "/produtos/16718855429--unico--0.jpg",
+          "/produtos/16718855429--unico--1.jpg",
+          "/produtos/16718855429--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "38"
+        ],
+        "tamanhosDisponiveis": [
+          "38"
+        ]
+      },
+      {
+        "cor": "Aveia",
+        "imagens": [
+          "/produtos/16708214155--unico--0.jpg",
+          "/produtos/16708214155--unico--1.jpg",
+          "/produtos/16708214155--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "38",
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40",
+          "42",
+          "44"
+        ]
+      },
+      {
+        "cor": "Verde Oliva",
+        "imagens": [
+          "/produtos/16708159932--unico--0.jpg",
+          "/produtos/16708159932--unico--1.jpg",
+          "/produtos/16708159932--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "42",
+          "44"
+        ]
+      },
+      {
+        "cor": "Azul Ink",
+        "imagens": [
+          "/produtos/16708158428--unico--0.jpg",
+          "/produtos/16708158428--unico--1.jpg",
+          "/produtos/16708158428--unico--2.jpg",
+          "/produtos/16708158428--unico--3.jpg",
+          "/produtos/16708158428--unico--4.jpg",
+          "/produtos/16708158428--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "40",
+          "42",
+          "44"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16722918508--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Preto": {
+        "38": [
+          "16722918508"
+        ],
+        "40": [
+          "16708159262"
+        ],
+        "42": [
+          "16708159271"
+        ],
+        "44": [
+          "16708159273"
+        ]
+      },
+      "Caqui": {
+        "38": [
+          "16718855429"
+        ]
+      },
+      "Aveia": {
+        "38": [
+          "16708214155"
+        ],
+        "40": [
+          "16708159661"
+        ],
+        "42": [
+          "16708159686"
+        ],
+        "44": [
+          "16708159705"
+        ]
+      },
+      "Verde Oliva": {
+        "40": [
+          "16708159922"
+        ],
+        "42": [
+          "16708159926"
+        ],
+        "44": [
+          "16708159932"
+        ]
+      },
+      "Azul Ink": {
+        "40": [
+          "16708158396"
+        ],
+        "42": [
+          "16708158425"
+        ],
+        "44": [
+          "16708158428"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16710119601",
+    "nome": "Bermuda Flexus",
+    "marca": "Foxton",
+    "preco": 548,
+    "novo": true,
+    "descricao": "Entre precisão casual e facilidade de uso, a Bermuda Flexus foi pensada para dar consistência às escolhas do dia a dia. Sua proposta valoriza uma imagem cuidada sem excessos, fazendo da bermuda um ponto de equilíbrio entre conforto, presença e versatilidade\nA malha compactada reúne durabilidade e conforto, com meio cós elástico e pregas frontais desenhadas sem adicionar volume. A escolha valoriza a categoria da peça e preserva uma leitura coerente, sem elementos gratuitos, para que forma e material tenham protagonismo no visual\nMais do que responder a uma única ocasião, a peça foi concebida para ampliar combinações. Seu desenho permite repetir o uso com novas leituras, favorecendo escolhas conscientes e um armário coeso. É essa capacidade de adaptação que transforma um item casual em presença recorrente",
+    "cores": [
+      {
+        "cor": "Azul Marinho",
+        "imagens": [
+          "/produtos/16722917924--unico--0.jpg",
+          "/produtos/16722917924--unico--1.jpg",
+          "/produtos/16722917924--unico--2.jpg",
+          "/produtos/16722917924--unico--3.jpg",
+          "/produtos/16722917924--unico--4.jpg",
+          "/produtos/16722917924--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Verde Oliva",
+        "imagens": [
+          "/produtos/16721688698--unico--0.jpg",
+          "/produtos/16721688698--unico--1.jpg",
+          "/produtos/16721688698--unico--2.jpg",
+          "/produtos/16721688698--unico--3.jpg",
+          "/produtos/16721688698--unico--4.jpg",
+          "/produtos/16721688698--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Caqui",
+        "imagens": [
+          "/produtos/16710120710--unico--0.jpg",
+          "/produtos/16710120710--unico--1.jpg",
+          "/produtos/16710120710--unico--2.jpg",
+          "/produtos/16710120710--unico--3.jpg",
+          "/produtos/16710120710--unico--4.jpg",
+          "/produtos/16710120710--unico--5.jpg"
+        ],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16722917924--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Azul Marinho": {
+        "GG": [
+          "16722917924"
+        ],
+        "G": [
+          "16710121291"
+        ],
+        "M": [
+          "16710121209"
+        ],
+        "P": [
+          "16710121136"
+        ]
+      },
+      "Verde Oliva": {
+        "GG": [
+          "16721688698"
+        ],
+        "G": [
+          "16710120134"
+        ],
+        "M": [
+          "16710120102"
+        ],
+        "P": [
+          "16710119601"
+        ]
+      },
+      "Caqui": {
+        "G": [
+          "16710120710"
+        ],
+        "M": [
+          "16710120635"
+        ],
+        "P": [
+          "16710120591"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16722870729",
+    "nome": "Calça Jeans Cos Desconstruído",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0105",
+        "imagens": [],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42"
+        ],
+        "tamanhosDisponiveis": [
+          "36",
+          "38",
+          "40",
+          "42"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0105": {
+        "34": [
+          "16722870729"
+        ],
+        "36": [
+          "16722871315"
+        ],
+        "38": [
+          "16722871401"
+        ],
+        "40": [
+          "16722871544"
+        ],
+        "42": [
+          "16722871668"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16711806757",
+    "nome": "Calça Harem Textura Pena",
+    "marca": "Animale",
+    "preco": 998,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57584",
+        "imagens": [],
+        "tamanhos": [
+          "36",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57584": {
+        "36": [
+          "16722866020"
+        ],
+        "40": [
+          "16711806757"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16705646796",
+    "nome": "Blusa Regata Decote Quadrado Azul",
+    "marca": "Animale",
+    "preco": 198,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0005",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "0003",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "07703",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0005": {
+        "G": [
+          "16722857347"
+        ],
+        "M": [
+          "16722857101"
+        ],
+        "P": [
+          "16722856939"
+        ],
+        "PP": [
+          "16722856654"
+        ]
+      },
+      "0003": {
+        "G": [
+          "16722852844"
+        ],
+        "M": [
+          "16722852674"
+        ]
+      },
+      "07703": {
+        "G": [
+          "16705647650"
+        ],
+        "M": [
+          "16705647558"
+        ],
+        "P": [
+          "16705647500"
+        ],
+        "PP": [
+          "16705646796"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16713902181",
+    "nome": "Calça Bordada Listra Mostarda",
+    "marca": "Animale",
+    "preco": 1598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "1807",
+        "imagens": [
+          "/produtos/16722849855--unico--0.jpg",
+          "/produtos/16722849855--unico--1.jpg",
+          "/produtos/16722849855--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "38",
+          "40"
+        ],
+        "tamanhosDisponiveis": [
+          "38",
+          "40"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16722849855--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "1807": {
+        "38": [
+          "16722849855"
+        ],
+        "40": [
+          "16713902181"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16714560967",
+    "nome": "Regata Richilieu Peixe",
+    "marca": "Farm",
+    "preco": 229,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "02542",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "02542": {
+        "G": [
+          "16722842843"
+        ],
+        "M": [
+          "16722842716"
+        ],
+        "P": [
+          "16722842606"
+        ],
+        "PP": [
+          "16714560967"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16722836717",
+    "nome": "Biquini Lacinho Liso Textura",
+    "marca": "Farm",
+    "preco": 298,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "7576",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "7576": {
+        "G": [
+          "16722836994"
+        ],
+        "M": [
+          "16722836888"
+        ],
+        "P": [
+          "16722836717"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16722831461",
+    "nome": "Biquini Correntes Liso",
+    "marca": "Farm",
+    "preco": 398,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "0001",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "0001": {
+        "G": [
+          "16722832524"
+        ],
+        "M": [
+          "16722832326"
+        ],
+        "P": [
+          "16722831461"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707862042",
+    "nome": "Short Puro Linho Pier",
+    "marca": "Foxton",
+    "preco": 598,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "32321",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "G"
+        ]
+      },
+      {
+        "cor": "Caramelo",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Branco",
+        "imagens": [],
+        "tamanhos": [
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Azul Aurora",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G"
+        ]
+      },
+      {
+        "cor": "Verde Oliva",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Preto",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G",
+          "GG"
+        ],
+        "tamanhosDisponiveis": [
+          "M",
+          "G",
+          "GG"
+        ]
+      },
+      {
+        "cor": "Aveia",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M",
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M",
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "32321": {
+        "P": [
+          "16721688464"
+        ],
+        "G": [
+          "16708213527"
+        ]
+      },
+      "Caramelo": {
+        "GG": [
+          "16721688116"
+        ],
+        "G": [
+          "16708216486"
+        ],
+        "P": [
+          "16708216475"
+        ],
+        "M": [
+          "16708154503"
+        ]
+      },
+      "Branco": {
+        "GG": [
+          "16708968693"
+        ],
+        "G": [
+          "16708216754"
+        ],
+        "M": [
+          "16708216739"
+        ]
+      },
+      "Azul Aurora": {
+        "G": [
+          "16708216150"
+        ],
+        "M": [
+          "16708216143"
+        ],
+        "P": [
+          "16708216137"
+        ]
+      },
+      "Verde Oliva": {
+        "GG": [
+          "16708213239"
+        ],
+        "G": [
+          "16708213235"
+        ],
+        "M": [
+          "16708213230"
+        ],
+        "P": [
+          "16708213222"
+        ]
+      },
+      "Preto": {
+        "GG": [
+          "16708212760"
+        ],
+        "G": [
+          "16708212737"
+        ],
+        "M": [
+          "16708212729"
+        ],
+        "P": [
+          "16708212719"
+        ]
+      },
+      "Aveia": {
+        "G": [
+          "16707862153"
+        ],
+        "M": [
+          "16707862138"
+        ],
+        "P": [
+          "16707862042"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16708154143",
+    "nome": "Polo Piquet Basica Rio",
+    "marca": "Foxton",
+    "preco": 228,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Branco",
+        "imagens": [],
+        "tamanhos": [
+          "P"
+        ],
+        "tamanhosDisponiveis": [
+          "P"
+        ]
+      },
+      {
+        "cor": "Verde Oliva",
+        "imagens": [],
+        "tamanhos": [
+          "G"
+        ],
+        "tamanhosDisponiveis": [
+          "G"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "Branco": {
+        "P": [
+          "16721687727"
+        ]
+      },
+      "Verde Oliva": {
+        "G": [
+          "16708154143"
+        ]
+      }
+    }
+  },
+  {
     "id": "16719516091",
     "nome": "Regata Luciana",
     "marca": "NV",
@@ -23337,7 +24666,12 @@
     "cores": [
       {
         "cor": "NV1172",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16718913417--unico--0.jpg",
+          "/produtos/16718913417--unico--1.jpg",
+          "/produtos/16718913417--unico--2.jpg",
+          "/produtos/16718913417--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -23382,7 +24716,7 @@
         ]
       }
     ],
-    "imagem": "/produtos/16712900833--unico--0.jpg",
+    "imagem": "/produtos/16718913417--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "NV1172": {
@@ -23546,9 +24880,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "P",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -23631,7 +24965,6 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "34",
           "36",
           "38",
           "40",
@@ -23801,166 +25134,6 @@
         ],
         "PP": [
           "16718860103"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16708158396",
-    "nome": "Bermuda Chino",
-    "marca": "Foxton",
-    "preco": 448,
-    "novo": true,
-    "descricao": "A Bermuda Chino traduz o casual masculino por uma ótica apurada. É uma bermuda que organiza o visual com naturalidade e permite criar combinações leves, mantendo uma aparência intencional do primeiro ao último compromisso do dia\nA sarja apresenta bolsos faca, cós anatômico e modelagem regular confortável, com tingimento realizado com corante reativo. A escolha valoriza a categoria da peça e preserva uma leitura coerente, sem elementos gratuitos, para que forma e material tenham protagonismo no visual\nO acabamento visual favorece produções duradouras, livres de excessos passageiros. Ao coordenar a peça com itens essenciais, surge um resultado contemporâneo e pessoal. É uma escolha que privilegia a qualidade percebida da composição e a liberdade de adaptar o estilo",
-    "composicao": "e a liberdade de adaptar o estilo",
-    "cores": [
-      {
-        "cor": "Caqui",
-        "imagens": [
-          "/produtos/16718855429--unico--0.jpg",
-          "/produtos/16718855429--unico--1.jpg",
-          "/produtos/16718855429--unico--2.jpg"
-        ],
-        "tamanhos": [
-          "38"
-        ],
-        "tamanhosDisponiveis": [
-          "38"
-        ]
-      },
-      {
-        "cor": "Aveia",
-        "imagens": [
-          "/produtos/16708214155--unico--0.jpg",
-          "/produtos/16708214155--unico--1.jpg",
-          "/produtos/16708214155--unico--2.jpg"
-        ],
-        "tamanhos": [
-          "38",
-          "40",
-          "42",
-          "44"
-        ],
-        "tamanhosDisponiveis": [
-          "38",
-          "40",
-          "42",
-          "44"
-        ]
-      },
-      {
-        "cor": "Verde Oliva",
-        "imagens": [
-          "/produtos/16708159932--unico--0.jpg",
-          "/produtos/16708159932--unico--1.jpg",
-          "/produtos/16708159932--unico--2.jpg"
-        ],
-        "tamanhos": [
-          "40",
-          "42",
-          "44"
-        ],
-        "tamanhosDisponiveis": [
-          "42",
-          "44"
-        ]
-      },
-      {
-        "cor": "Preto",
-        "imagens": [
-          "/produtos/16708159273--unico--0.jpg",
-          "/produtos/16708159273--unico--1.jpg",
-          "/produtos/16708159273--unico--2.jpg",
-          "/produtos/16708159273--unico--3.jpg",
-          "/produtos/16708159273--unico--4.jpg",
-          "/produtos/16708159273--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "40",
-          "42",
-          "44"
-        ],
-        "tamanhosDisponiveis": [
-          "40",
-          "42",
-          "44"
-        ]
-      },
-      {
-        "cor": "Azul Ink",
-        "imagens": [
-          "/produtos/16708158428--unico--0.jpg",
-          "/produtos/16708158428--unico--1.jpg",
-          "/produtos/16708158428--unico--2.jpg",
-          "/produtos/16708158428--unico--3.jpg",
-          "/produtos/16708158428--unico--4.jpg",
-          "/produtos/16708158428--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "40",
-          "42",
-          "44"
-        ],
-        "tamanhosDisponiveis": [
-          "40",
-          "42",
-          "44"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16718855429--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Caqui": {
-        "38": [
-          "16718855429"
-        ]
-      },
-      "Aveia": {
-        "38": [
-          "16708214155"
-        ],
-        "40": [
-          "16708159661"
-        ],
-        "42": [
-          "16708159686"
-        ],
-        "44": [
-          "16708159705"
-        ]
-      },
-      "Verde Oliva": {
-        "40": [
-          "16708159922"
-        ],
-        "42": [
-          "16708159926"
-        ],
-        "44": [
-          "16708159932"
-        ]
-      },
-      "Preto": {
-        "40": [
-          "16708159262"
-        ],
-        "42": [
-          "16708159271"
-        ],
-        "44": [
-          "16708159273"
-        ]
-      },
-      "Azul Ink": {
-        "40": [
-          "16708158396"
-        ],
-        "42": [
-          "16708158425"
-        ],
-        "44": [
-          "16708158428"
         ]
       }
     }
@@ -24164,140 +25337,6 @@
     }
   },
   {
-    "id": "16710108326",
-    "nome": "Camisa ML Linho Lumiar",
-    "marca": "Foxton",
-    "preco": 698,
-    "novo": true,
-    "descricao": "A Camisa Manga Longa Linho Lumiar leva uma interpretação contemporânea à camisa, combinando cambraia de linho com a identidade própria de uma peça de manga longa. A construção cria uma presença clara no visual e favorece composições em que textura, proporção e material aparecem de forma natural, sem perder a elegância descontraída característica da Foxton\nSua ficha reúne ainda cores exclusivas Foxton e corantes nativos que preservam o brilho das cores e o acabamento do linho, proposta urbana, manga longa, 100% linho. Esses elementos não aparecem como detalhes isolados: juntos, formam a linguagem da peça e orientam sua utilização. A composição declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
-    "composicao": "declarada permite conhecer com precisão os materiais empregados, enquanto modelagem, desenho ou acabamento, quando informados, ajudam a definir a melhor leitura da camisa dentro de uma produção completa",
-    "cores": [
-      {
-        "cor": "Verde Oliva",
-        "imagens": [],
-        "tamanhos": [
-          "M",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "M",
-          "GG"
-        ]
-      },
-      {
-        "cor": "Preto",
-        "imagens": [
-          "/produtos/16718847767--unico--0.jpg",
-          "/produtos/16718847767--unico--1.jpg",
-          "/produtos/16718847767--unico--2.jpg",
-          "/produtos/16718847767--unico--3.jpg",
-          "/produtos/16718847767--unico--4.jpg",
-          "/produtos/16718847767--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
-      },
-      {
-        "cor": "Azul Aurora",
-        "imagens": [
-          "/produtos/16710110690--unico--0.jpg",
-          "/produtos/16710110690--unico--1.jpg",
-          "/produtos/16710110690--unico--2.jpg",
-          "/produtos/16710110690--unico--3.jpg",
-          "/produtos/16710110690--unico--4.jpg",
-          "/produtos/16710110690--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "P",
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "G",
-          "M"
-        ]
-      },
-      {
-        "cor": "Mogno",
-        "imagens": [
-          "/produtos/16710108899--unico--0.jpg",
-          "/produtos/16710108899--unico--1.jpg",
-          "/produtos/16710108899--unico--2.jpg",
-          "/produtos/16710108899--unico--3.jpg",
-          "/produtos/16710108899--unico--4.jpg"
-        ],
-        "tamanhos": [
-          "P",
-          "M",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "GG"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16718847767--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Verde Oliva": {
-        "GG": [
-          "16718849298"
-        ],
-        "M": [
-          "16718848856"
-        ]
-      },
-      "Preto": {
-        "P": [
-          "16718847767"
-        ],
-        "GG": [
-          "16710112712"
-        ],
-        "G": [
-          "16710112651"
-        ],
-        "M": [
-          "16710112563"
-        ]
-      },
-      "Azul Aurora": {
-        "G": [
-          "16710110690"
-        ],
-        "M": [
-          "16710110640"
-        ],
-        "P": [
-          "16710110558"
-        ]
-      },
-      "Mogno": {
-        "GG": [
-          "16710108899"
-        ],
-        "M": [
-          "16710108752"
-        ],
-        "P": [
-          "16710108326"
-        ]
-      }
-    }
-  },
-  {
     "id": "16715491882",
     "nome": "Blusa Cropped Gola Alta Tricot Color",
     "marca": "Animale",
@@ -24306,7 +25345,7 @@
     "descricao": "Blusa de Tricot sem mangas, com gola alta e comprimento cropped. Uma escolha atemporal e versátil, perfeita para compor os looks da estação.",
     "cores": [
       {
-        "cor": "03017",
+        "cor": "Azul Azure",
         "imagens": [
           "/produtos/16715504364--unico--0.jpg",
           "/produtos/16715504364--unico--1.jpg",
@@ -24322,7 +25361,7 @@
         ]
       },
       {
-        "cor": "07716",
+        "cor": "Bicolor",
         "imagens": [],
         "tamanhos": [
           "PP",
@@ -24330,12 +25369,12 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       },
       {
-        "cor": "07021",
+        "cor": "Marrom Palha",
         "imagens": [
           "/produtos/16715499633--unico--0.jpg",
           "/produtos/16715499633--unico--1.jpg",
@@ -24355,7 +25394,7 @@
         ]
       },
       {
-        "cor": "09041",
+        "cor": "Bege Manhã",
         "imagens": [
           "/produtos/16715495110--unico--0.jpg",
           "/produtos/16715495110--unico--1.jpg",
@@ -24376,7 +25415,7 @@
     "imagem": "/produtos/16715504364--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
-      "03017": {
+      "Azul Azure": {
         "M": [
           "16715504364"
         ],
@@ -24387,7 +25426,7 @@
           "16715503370"
         ]
       },
-      "07716": {
+      "Bicolor": {
         "M": [
           "16715502424"
         ],
@@ -24398,7 +25437,7 @@
           "16715501624"
         ]
       },
-      "07021": {
+      "Marrom Palha": {
         "G": [
           "16715499633"
         ],
@@ -24412,7 +25451,7 @@
           "16715498061"
         ]
       },
-      "09041": {
+      "Bege Manhã": {
         "M": [
           "16715495110"
         ],
@@ -24522,8 +25561,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -24565,9 +25604,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       },
       {
@@ -24585,9 +25624,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "M",
-          "PP"
+          "G"
         ]
       },
       {
@@ -24604,9 +25643,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       },
       {
@@ -25639,8 +26678,8 @@
         ],
         "tamanhosDisponiveis": [
           "PP",
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -26324,9 +27363,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "PP",
           "P",
-          "M",
-          "PP"
+          "M"
         ]
       },
       {
@@ -26382,8 +27421,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -26786,7 +27825,7 @@
     "id": "16710501215",
     "nome": "Vestido Emily",
     "marca": "NV",
-    "preco": 0,
+    "preco": 789,
     "novo": true,
     "descricao": "",
     "cores": [
@@ -27019,115 +28058,6 @@
     }
   },
   {
-    "id": "16710119601",
-    "nome": "Bermuda Flexus",
-    "marca": "Foxton",
-    "preco": 548,
-    "novo": true,
-    "descricao": "Entre precisão casual e facilidade de uso, a Bermuda Flexus foi pensada para dar consistência às escolhas do dia a dia. Sua proposta valoriza uma imagem cuidada sem excessos, fazendo da bermuda um ponto de equilíbrio entre conforto, presença e versatilidade\nA malha compactada reúne durabilidade e conforto, com meio cós elástico e pregas frontais desenhadas sem adicionar volume. A escolha valoriza a categoria da peça e preserva uma leitura coerente, sem elementos gratuitos, para que forma e material tenham protagonismo no visual\nMais do que responder a uma única ocasião, a peça foi concebida para ampliar combinações. Seu desenho permite repetir o uso com novas leituras, favorecendo escolhas conscientes e um armário coeso. É essa capacidade de adaptação que transforma um item casual em presença recorrente",
-    "cores": [
-      {
-        "cor": "Azul Marinho",
-        "imagens": [
-          "/produtos/16710121291--unico--0.jpg",
-          "/produtos/16710121291--unico--1.jpg",
-          "/produtos/16710121291--unico--2.jpg",
-          "/produtos/16710121291--unico--3.jpg",
-          "/produtos/16710121291--unico--4.jpg",
-          "/produtos/16710121291--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "P",
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "G",
-          "P"
-        ]
-      },
-      {
-        "cor": "Caqui",
-        "imagens": [
-          "/produtos/16710120710--unico--0.jpg",
-          "/produtos/16710120710--unico--1.jpg",
-          "/produtos/16710120710--unico--2.jpg",
-          "/produtos/16710120710--unico--3.jpg",
-          "/produtos/16710120710--unico--4.jpg",
-          "/produtos/16710120710--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "P",
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G"
-        ]
-      },
-      {
-        "cor": "Verde Oliva",
-        "imagens": [
-          "/produtos/16710120134--unico--0.jpg",
-          "/produtos/16710120134--unico--1.jpg",
-          "/produtos/16710120134--unico--2.jpg",
-          "/produtos/16710120134--unico--3.jpg",
-          "/produtos/16710120134--unico--4.jpg",
-          "/produtos/16710120134--unico--5.jpg"
-        ],
-        "tamanhos": [
-          "P",
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "G",
-          "M",
-          "P"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16710121291--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Azul Marinho": {
-        "G": [
-          "16710121291"
-        ],
-        "M": [
-          "16710121209"
-        ],
-        "P": [
-          "16710121136"
-        ]
-      },
-      "Caqui": {
-        "G": [
-          "16710120710"
-        ],
-        "M": [
-          "16710120635"
-        ],
-        "P": [
-          "16710120591"
-        ]
-      },
-      "Verde Oliva": {
-        "G": [
-          "16710120134"
-        ],
-        "M": [
-          "16710120102"
-        ],
-        "P": [
-          "16710119601"
-        ]
-      }
-    }
-  },
-  {
     "id": "16708158558",
     "nome": "Polo Piquet Pima",
     "marca": "Foxton",
@@ -27170,10 +28100,10 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG"
         ]
       },
       {
@@ -27327,9 +28257,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "M",
           "G",
-          "M"
+          "GG"
         ]
       }
     ],
@@ -27499,192 +28429,6 @@
         ],
         "GG": [
           "16706317190"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16707862042",
-    "nome": "Short Puro Linho Pier",
-    "marca": "Foxton",
-    "preco": 598,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Branco",
-        "imagens": [],
-        "tamanhos": [
-          "M",
-          "G",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "GG",
-          "G"
-        ]
-      },
-      {
-        "cor": "Caramelo",
-        "imagens": [],
-        "tamanhos": [
-          "P",
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G"
-        ]
-      },
-      {
-        "cor": "Azul Aurora",
-        "imagens": [],
-        "tamanhos": [
-          "P",
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "M",
-          "G"
-        ]
-      },
-      {
-        "cor": "32321",
-        "imagens": [],
-        "tamanhos": [
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "G"
-        ]
-      },
-      {
-        "cor": "Verde Oliva",
-        "imagens": [],
-        "tamanhos": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ]
-      },
-      {
-        "cor": "Preto",
-        "imagens": [],
-        "tamanhos": [
-          "P",
-          "M",
-          "G",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "M",
-          "G",
-          "GG"
-        ]
-      },
-      {
-        "cor": "Aveia",
-        "imagens": [],
-        "tamanhos": [
-          "P",
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "32321": {
-        "G": [
-          "16708213527"
-        ]
-      },
-      "Branco": {
-        "GG": [
-          "16708968693"
-        ],
-        "G": [
-          "16708216754"
-        ],
-        "M": [
-          "16708216739"
-        ]
-      },
-      "Caramelo": {
-        "G": [
-          "16708216486"
-        ],
-        "P": [
-          "16708216475"
-        ],
-        "M": [
-          "16708154503"
-        ]
-      },
-      "Azul Aurora": {
-        "G": [
-          "16708216150"
-        ],
-        "M": [
-          "16708216143"
-        ],
-        "P": [
-          "16708216137"
-        ]
-      },
-      "Verde Oliva": {
-        "GG": [
-          "16708213239"
-        ],
-        "G": [
-          "16708213235"
-        ],
-        "M": [
-          "16708213230"
-        ],
-        "P": [
-          "16708213222"
-        ]
-      },
-      "Preto": {
-        "GG": [
-          "16708212760"
-        ],
-        "G": [
-          "16708212737"
-        ],
-        "M": [
-          "16708212729"
-        ],
-        "P": [
-          "16708212719"
-        ]
-      },
-      "Aveia": {
-        "G": [
-          "16707862153"
-        ],
-        "M": [
-          "16707862138"
-        ],
-        "P": [
-          "16707862042"
         ]
       }
     }
@@ -29023,10 +29767,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "P",
           "M",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -29066,9 +29810,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
+          "PP",
           "P",
-          "M",
-          "PP"
+          "M"
         ]
       },
       {
@@ -29205,11 +29949,11 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "XG",
-          "GG",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG",
+          "XG"
         ]
       },
       {
@@ -29257,9 +30001,9 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
           "M",
-          "G"
+          "G",
+          "GG"
         ]
       },
       {
@@ -29273,10 +30017,10 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
+          "P",
           "M",
-          "P"
+          "G",
+          "GG"
         ]
       },
       {
@@ -29512,9 +30256,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "M",
           "G",
-          "M"
+          "GG"
         ]
       },
       {
@@ -29803,9 +30547,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       },
       {
@@ -29898,58 +30641,6 @@
         ],
         "P": [
           "16708157163"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16706316715",
-    "nome": "Tshirt Tricot Saint Michel",
-    "marca": "Foxton",
-    "preco": 578,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Preto",
-        "imagens": [],
-        "tamanhos": [
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "G"
-        ]
-      },
-      {
-        "cor": "Verde Oliva",
-        "imagens": [],
-        "tamanhos": [
-          "M",
-          "G",
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "Preto": {
-        "G": [
-          "16708152564"
-        ]
-      },
-      "Verde Oliva": {
-        "GG": [
-          "16706316863"
-        ],
-        "G": [
-          "16706316854"
-        ],
-        "M": [
-          "16706316715"
         ]
       }
     }
@@ -31122,8 +31813,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -31240,8 +31931,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -31847,9 +32538,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       },
       {
@@ -32312,8 +33003,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "PP"
+          "PP",
+          "M"
         ]
       }
     ],
@@ -32478,8 +33169,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       },
       {
@@ -32734,9 +33425,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -32904,9 +33595,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "M",
-          "PP"
+          "G"
         ]
       },
       {
@@ -32924,9 +33615,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -33133,7 +33824,12 @@
       },
       {
         "cor": "Branco",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706052803--unico--0.jpg",
+          "/produtos/16706052803--unico--1.jpg",
+          "/produtos/16706052803--unico--2.jpg",
+          "/produtos/16706052803--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -33149,7 +33845,12 @@
       },
       {
         "cor": "Preto",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706052306--unico--0.jpg",
+          "/produtos/16706052306--unico--1.jpg",
+          "/produtos/16706052306--unico--2.jpg",
+          "/produtos/16706052306--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -33163,7 +33864,12 @@
       },
       {
         "cor": "Cinza Mescla",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705988145--unico--0.jpg",
+          "/produtos/16705988145--unico--1.jpg",
+          "/produtos/16705988145--unico--2.jpg",
+          "/produtos/16705988145--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -33178,7 +33884,12 @@
       },
       {
         "cor": "Verde Harbor",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705979957--unico--0.jpg",
+          "/produtos/16705979957--unico--1.jpg",
+          "/produtos/16705979957--unico--2.jpg",
+          "/produtos/16705979957--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -33472,9 +34183,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -33714,8 +34425,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G"
+          "G",
+          "GG"
         ]
       }
     ],
@@ -33977,8 +34688,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -34011,8 +34722,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -34265,8 +34976,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
-          "G"
+          "G",
+          "GG"
         ]
       }
     ],
@@ -34318,9 +35029,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "P",
-          "PP"
+          "G"
         ]
       }
     ],
@@ -34628,9 +35339,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "PP",
           "M",
-          "PP"
+          "G"
         ]
       },
       {
@@ -34696,10 +35407,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       },
       {
@@ -35596,8 +36307,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -35689,10 +36400,10 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M",
+          "G"
         ]
       },
       {
@@ -35709,9 +36420,9 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
+          "PP",
           "P",
-          "PP"
+          "M"
         ]
       }
     ],
@@ -35908,9 +36619,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "P",
-          "M"
+          "M",
+          "G"
         ]
       }
     ],
@@ -36286,8 +36997,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -36300,49 +37011,6 @@
         ],
         "P": [
           "16705648373"
-        ]
-      }
-    }
-  },
-  {
-    "id": "16705646796",
-    "nome": "Blusa Regata Decote Quadrado Azul",
-    "marca": "Animale",
-    "preco": 198,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "07703",
-        "imagens": [],
-        "tamanhos": [
-          "PP",
-          "P",
-          "M",
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "G",
-          "M",
-          "P"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "07703": {
-        "G": [
-          "16705647650"
-        ],
-        "M": [
-          "16705647558"
-        ],
-        "P": [
-          "16705647500"
-        ],
-        "PP": [
-          "16705646796"
         ]
       }
     }
@@ -37023,9 +37691,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "P",
           "M",
-          "P"
+          "G"
         ]
       }
     ],
@@ -37120,6 +37788,94 @@
           "16705424230"
         ]
       }
+    }
+  },
+  {
+    "id": "16705450592",
+    "nome": "Calça Jeans Folga Bolso - Jeans Escuro",
+    "marca": "Animale",
+    "preco": 898,
+    "novo": true,
+    "descricao": "Calça jeans com modelagem ampla e lavagem escura. Os bolsos frontais amplos e os recortes aparentes valorizam a construção da peça, enquanto as pernas largas reforçam o caimento solto e contemporâneo.",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [
+          "/produtos/16722863630--unico--0.jpg",
+          "/produtos/16722863630--unico--1.jpg",
+          "/produtos/16722863630--unico--2.jpg",
+          "/produtos/16722863630--unico--3.jpg"
+        ],
+        "tamanhos": [
+          "34",
+          "36",
+          "38",
+          "40",
+          "42",
+          "44"
+        ],
+        "tamanhosDisponiveis": [
+          "34",
+          "36",
+          "40",
+          "42",
+          "44"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16722863630--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "34": [
+        "16722863197"
+      ],
+      "36": [
+        "16722863315"
+      ],
+      "38": [
+        "16722863509"
+      ],
+      "40": [
+        "16722863630"
+      ],
+      "42": [
+        "16705450592"
+      ],
+      "44": [
+        "16705453480"
+      ]
+    }
+  },
+  {
+    "id": "16705419048",
+    "nome": "Regata Richilieu Peixe - Off White",
+    "marca": "Farm",
+    "preco": 229,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "PP",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorTamanho": {
+      "M": [
+        "16722843464"
+      ],
+      "PP": [
+        "16705419048"
+      ]
     }
   },
   {
@@ -37312,65 +38068,6 @@
         "16705455138"
       ]
     }
-  },
-  {
-    "id": "16705450592",
-    "nome": "Calça Jeans Folga Bolso - Jeans Escuro",
-    "marca": "Animale",
-    "preco": 898,
-    "novo": true,
-    "descricao": "Calça jeans com modelagem ampla e lavagem escura. Os bolsos frontais amplos e os recortes aparentes valorizam a construção da peça, enquanto as pernas largas reforçam o caimento solto e contemporâneo.",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [
-          "/produtos/16705453480--unico--0.jpg",
-          "/produtos/16705453480--unico--1.jpg",
-          "/produtos/16705453480--unico--2.jpg",
-          "/produtos/16705453480--unico--3.jpg"
-        ],
-        "tamanhos": [
-          "42",
-          "44"
-        ],
-        "tamanhosDisponiveis": [
-          "42",
-          "44"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16705453480--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorTamanho": {
-      "42": [
-        "16705450592"
-      ],
-      "44": [
-        "16705453480"
-      ]
-    }
-  },
-  {
-    "id": "16705419048",
-    "nome": "Regata Richilieu Peixe - Off White",
-    "marca": "Farm",
-    "preco": 229,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "PP"
-        ],
-        "tamanhosDisponiveis": [
-          "PP"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true
   },
   {
     "id": "16705412559",
@@ -41385,29 +42082,6 @@
     "temEstoque": false
   },
   {
-    "id": "16718845179",
-    "nome": "Camisa MC Linho Estival - 0580",
-    "marca": "Foxton",
-    "preco": 598,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "GG"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true,
-    "_corCodigo": "0580"
-  },
-  {
     "id": "16714577732",
     "nome": "Blusa Laysa - NV1305",
     "marca": "NV",
@@ -41460,29 +42134,6 @@
     "_corCodigo": "NV058"
   },
   {
-    "id": "16714560967",
-    "nome": "Regata Richilieu Peixe - 02542",
-    "marca": "Farm",
-    "preco": 229,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "PP"
-        ],
-        "tamanhosDisponiveis": [
-          "PP"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true,
-    "_corCodigo": "02542"
-  },
-  {
     "id": "16714560549",
     "nome": "Maio Localizado Floral Luma - 57807",
     "marca": "Farm",
@@ -41504,29 +42155,6 @@
     "imagem": null,
     "temEstoque": true,
     "_corCodigo": "57807"
-  },
-  {
-    "id": "16714545399",
-    "nome": "Camisa Ml Linho Estival - 0278",
-    "marca": "Foxton",
-    "preco": 698,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "GG"
-        ],
-        "tamanhosDisponiveis": [
-          "GG"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true,
-    "_corCodigo": "0278"
   },
   {
     "id": "16714535919",
@@ -41573,33 +42201,6 @@
     "imagem": null,
     "temEstoque": true,
     "_corCodigo": "57586"
-  },
-  {
-    "id": "16713902181",
-    "nome": "Calça Bordada Listra Mostarda - 1807",
-    "marca": "Animale",
-    "preco": 1598,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [
-          "/produtos/16713902181--unico--0.jpg",
-          "/produtos/16713902181--unico--1.jpg",
-          "/produtos/16713902181--unico--2.jpg"
-        ],
-        "tamanhos": [
-          "40"
-        ],
-        "tamanhosDisponiveis": [
-          "40"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16713902181--unico--0.jpg",
-    "temEstoque": true,
-    "_corCodigo": "1807"
   },
   {
     "id": "16713865562",
@@ -41825,27 +42426,6 @@
     "imagem": null,
     "temEstoque": true,
     "_corCodigo": "01036"
-  },
-  {
-    "id": "16711806757",
-    "nome": "Calça Harem Textura Pena - 57584",
-    "marca": "Animale",
-    "preco": 998,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "40"
-        ],
-        "tamanhosDisponiveis": []
-      }
-    ],
-    "imagem": null,
-    "temEstoque": false,
-    "_corCodigo": "57584"
   },
   {
     "id": "16711797220",
@@ -42380,29 +42960,6 @@
     "imagem": null,
     "temEstoque": false,
     "_corCodigo": "57867"
-  },
-  {
-    "id": "16708154143",
-    "nome": "Polo Piquet Basica Rio - 2119",
-    "marca": "Foxton",
-    "preco": 228,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "G"
-        ],
-        "tamanhosDisponiveis": [
-          "G"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true,
-    "_corCodigo": "2119"
   },
   {
     "id": "16708060496",
