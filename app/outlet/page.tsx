@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
+import { blackNovemberAtiva } from "@/lib/campanha";
 import GradeProdutos from "@/components/GradeProdutos";
 import { listarOutlet } from "@/lib/produtos";
 import { SITE_URL as siteUrl } from "@/lib/site";
@@ -16,6 +18,10 @@ export const metadata: Metadata = {
 export const revalidate = 30;
 
 export default async function PaginaOutlet() {
+  // Durante a Black November (ver lib/campanha.ts) o outlet vira a vitrine /black-november -
+  // quem chega pelo link antigo e' levado pra la'. Depois de 30/11 esta pagina volta ao normal.
+  if (blackNovemberAtiva()) redirect("/black-november");
+
   const produtos = await listarOutlet();
 
   return (
