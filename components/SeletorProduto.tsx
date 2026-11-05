@@ -13,6 +13,7 @@ import AvisoEstoque from "@/components/AvisoEstoque";
 import AvisoFreteGratis from "@/components/AvisoFreteGratis";
 import CompraSegura from "@/components/CompraSegura";
 import { rastrearVisualizarProduto } from "@/lib/tracking";
+import { limiarFreteGratis } from "@/lib/campanha";
 
 function IconeLupa() {
   return (
@@ -268,7 +269,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
           {formatarPreco(produto.preco - calcularDescontoPix(produto.preco))} no Pix{" "}
           <span className="text-mozz-gray">({PERCENTUAL_DESCONTO_PIX}% OFF)</span>
         </p>
-        <AvisoFreteGratis limiar={freteGratisAcimaDe} subtotal={produto.preco} />
+        <AvisoFreteGratis limiar={limiarFreteGratis(freteGratisAcimaDe, !!produto.outlet)} subtotal={produto.preco} />
 
         <div className="mt-6">
           {cores.length > 1 && (
