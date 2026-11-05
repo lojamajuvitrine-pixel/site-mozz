@@ -11,6 +11,7 @@ import CompraSegura from "@/components/CompraSegura";
 import AvisoFreteGratis from "@/components/AvisoFreteGratis";
 import { ehEntregaExpressa, ehRetirada } from "@/lib/frete";
 import { rastrearIniciarCheckout } from "@/lib/tracking";
+import { limiarFreteGratis, nomeVitrinePromocional } from "@/lib/campanha";
 import { validarCpf, formatarCpf } from "@/lib/cpf";
 import { createClient } from "@/lib/supabase/client";
 import { buscarEnderecoPorCep } from "@/lib/cep";
@@ -243,6 +244,15 @@ export default function PaginaCarrinho() {
   }
 
   const quantidadeTotal = itens.reduce((soma, i) => soma + i.quantidade, 0);
+  // Cupom nao vale em peca de outlet/Black November (05/11/2026) - so' desconta sobre as outras
+  // pecas. Mesma regra recalculada no servidor em lib/mercadopago.ts (prepararPedido).
+  const subtotalElegivelCupom = itens.reduce((soma, i) => soma + (i.produto.outlet ? 0 : i.produto.preco * i.quantidade), 0);
+  const temPecaPromocional = itens.some((i) => i.produto.outlet);
+  // Com peca da Black November no carrinho, o frete gratis so' vale acima de R$ 2.000 (ver
+  // lib/campanha.ts) - o resto do carrinho usa essa versao ajustada da configuracao da loja.
+  const configLojaEfetiva: ConfigLojaFrete | null = configLoja
+    ? { ...configLoja, freteGratisAcimaDe: limiarFreteGratis(configLoja.freteGratisAcimaDe, temPecaPromocional) }
+    : null;
   const desconto = cupomAplicado?.valido ? cupomAplicado.desconto : 0;
   const totalComDesconto = Math.max(0, total - desconto);
 
@@ -253,7 +263,7 @@ export default function PaginaCarrinho() {
   // Retirada na loja e' sempre gratis. O checkout revalida tudo isso de novo no servidor (ver
   // lib/mercadopago.ts) - o que acontece aqui e' so' pra mostrar o total certo pro cliente.
   const freteGratisAtivo =
-    configLoja?.freteGratisAcimaDe != null && totalComDesconto >= configLoja.freteGratisAcimaDe;
+    configLojaEfetiva?.freteGratisAcimaDe != null && totalComDesconto >= configLojaEfetiva.freteGratisAcimaDe;
   const precoFreteEfetivo = freteSelecionado
     ? ehRetirada(freteSelecionado) || ehEntregaExpressa(freteSelecionado) || freteGratisAtivo
       ? 0
@@ -403,12 +413,17 @@ export default function PaginaCarrinho() {
   async function aplicarCupom(codigoForcado?: string) {
     const codigo = (codigoForcado ?? codigoCupom).trim();
     if (!codigo) return;
+    if (subtotalElegivelCupom <= 0) {
+      setCupomPendente(null);
+      setCupomAplicado({ valido: false, motivo: `O cupom ${codigo.toUpperCase()} não vale para peças ${nomeVitrinePromocional()}.` });
+      return;
+    }
     setValidandoCupom(true);
     try {
       const resposta = await fetch("/api/cupom/validar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ codigo, subtotal: total, cpf })
+        body: JSON.stringify({ codigo, subtotal: subtotalElegivelCupom, cpf })
       });
       const dados = (await resposta.json()) as ResultadoCupom;
       if (!dados.valido && dados.motivo.startsWith("Preencha seu CPF")) {
@@ -501,7 +516,7 @@ export default function PaginaCarrinho() {
   return (
     <section className="py-8 max-w-xl">
       <p className="font-serif text-3xl mb-2">Carrinho</p>
-      <AvisoFreteGratis limiar={configLoja?.freteGratisAcimaDe ?? null} subtotal={totalComDesconto} />
+      <AvisoFreteGratis limiar={configLojaEfetiva?.freteGratisAcimaDe ?? null} subtotal={totalComDesconto} />
       <CompraSegura compacto />
       <div className="divide-y divide-black/10 mt-6">
         {itens.map((item) => (
@@ -601,6 +616,11 @@ export default function PaginaCarrinho() {
         {cupomAplicado?.valido && (
           <p className="text-[13.5px] text-green-700 mt-2">
             Cupom {cupomAplicado.cupom.codigo} aplicado: -{formatarPreco(cupomAplicado.desconto)}
+          </p>
+        )}
+        {cupomAplicado?.valido && temPecaPromocional && (
+          <p className="text-[13px] text-mozz-gray mt-1">
+            O cupom {cupomAplicado.cupom.codigo} não vale para peças {nomeVitrinePromocional()}; ele foi aplicado só nas outras peças.
           </p>
         )}
       </div>
@@ -713,7 +733,7 @@ export default function PaginaCarrinho() {
             opcaoSelecionada={freteSelecionado}
             onSelecionar={setFreteSelecionado}
             onCepCalculado={aoCalcularFrete}
-            configLoja={configLoja}
+            configLoja={configLojaEfetiva}
             subtotal={totalComDesconto}
           />
 
