@@ -1707,7 +1707,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
           "M"
         ]
       }
@@ -4783,13 +4782,11 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": [
-          "Único"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16637173978--unico--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16637173968",
@@ -7842,9 +7839,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
           "G",
-          "M"
+          "GG"
         ]
       },
       {
@@ -11249,9 +11245,7 @@
           "XG",
           "XXG"
         ],
-        "tamanhosDisponiveis": [
-          "G"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Preto",
@@ -16840,13 +16834,11 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": [
-          "Único"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16541960161--unico--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16541829346",
@@ -25620,9 +25612,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
-          "M",
-          "G"
+          "G",
+          "PP"
         ]
       },
       {
@@ -30252,9 +30243,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "G",
-          "GG"
+          "GG",
+          "M"
         ]
       },
       {
@@ -37809,8 +37799,8 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "34",
           "36",
+          "38",
           "40",
           "42",
           "44"
