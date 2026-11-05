@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { listarProdutos, marcasDisponiveis } from "@/lib/produtos";
 import { SITE_URL as siteUrl } from "@/lib/site";
+import { caminhoVitrinePromocional } from "@/lib/campanha";
 
 // Sitemap gerado automaticamente com TODO produto do catalogo - e' o que ajuda o Google a
 // achar e indexar cada peca (em vez de depender so' de seguir link por link a partir da
@@ -12,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paginasEstaticas: MetadataRoute.Sitemap = [
     { url: siteUrl, changeFrequency: "daily", priority: 1 },
     { url: `${siteUrl}/produtos`, changeFrequency: "daily", priority: 0.9 },
-    { url: `${siteUrl}/outlet`, changeFrequency: "daily", priority: 0.7 },
+    { url: `${siteUrl}${caminhoVitrinePromocional()}`, changeFrequency: "daily", priority: 0.8 },
     { url: `${siteUrl}/trocas`, changeFrequency: "monthly", priority: 0.3 },
       { url: `${siteUrl}/preco-garantido`, changeFrequency: "monthly", priority: 0.4 },
     { url: `${siteUrl}/quem-somos`, changeFrequency: "monthly", priority: 0.4 },
