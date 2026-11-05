@@ -4,7 +4,9 @@ import BannerGenero, { type BannerGeneroItem } from "@/components/BannerGenero";
 import PorQueComprar from "@/components/PorQueComprar";
 import SecaoMarcas from "@/components/SecaoMarcas";
 import VitrineDeMarca from "@/components/VitrineDeMarca";
-import { listarPorMarca, produtosComFoto } from "@/lib/produtos";
+import BannerBlackNovember from "@/components/BannerBlackNovember";
+import { listarOutlet, listarPorMarca, produtosComFoto } from "@/lib/produtos";
+import { blackNovemberAtiva } from "@/lib/campanha";
 import { SITE_URL as siteUrl } from "@/lib/site";
 
 export const revalidate = 30;
@@ -90,8 +92,18 @@ export default async function Home() {
     ? comFotoFarm.filter((p) => p.destaque)
     : comFotoFarm;
 
+  // Banner da Black November (05/11/2026): so' aparece durante a campanha (lib/campanha.ts) e se
+  // tiver pelo menos uma peca na vitrine. O "Ate X%" e' o maior desconto entre elas.
+  const pecasBlackNovember = blackNovemberAtiva() ? await listarOutlet() : [];
+  const maiorDescontoBlackNovember = pecasBlackNovember.reduce(
+    (maior, p) =>
+      p.precoOriginal && p.precoOriginal > p.preco ? Math.max(maior, Math.round((1 - p.preco / p.precoOriginal) * 100)) : maior,
+    0
+  );
+
   return (
     <div>
+      {pecasBlackNovember.length > 0 && <BannerBlackNovember maiorDesconto={maiorDescontoBlackNovember} />}
       <BannerGenero banners={bannersGenero} />
       {/* carrossel so' no desktop - no celular os dois banners acima ocupam o lugar dele */}
       <div className="hidden md:block">
