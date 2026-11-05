@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import BarraBusca from "@/components/BarraBusca";
+import { caminhoVitrinePromocional, rotuloMenuVitrine } from "@/lib/campanha";
 import { useFavoritos } from "@/lib/favoritos-context";
 import { useCart } from "@/lib/cart-context";
 
@@ -196,8 +197,8 @@ export default function Nav() {
             </div>
           </div>
 
-          <Link href="/outlet" className="hover:text-mozz-black transition-colors">
-            Outlet
+          <Link href={caminhoVitrinePromocional()} className="hover:text-mozz-black transition-colors">
+            {rotuloMenuVitrine()}
           </Link>
           <Link href="/quem-somos" className="hover:text-mozz-black transition-colors">
             Quem somos
@@ -315,8 +316,8 @@ export default function Nav() {
                   </div>
                 )}
               </div>
-              <Link href="/outlet" onClick={fecharMenu} className={classeItemMenu}>
-                Outlet
+              <Link href={caminhoVitrinePromocional()} onClick={fecharMenu} className={classeItemMenu}>
+                {rotuloMenuVitrine()}
               </Link>
             </div>
 
