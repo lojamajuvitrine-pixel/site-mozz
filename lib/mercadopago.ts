@@ -15,6 +15,7 @@ import { randomUUID } from "crypto";
 import type { Produto } from "@/lib/produtos";
 import { resolverProdutoIdBling, buscarProduto, coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { validarCupom } from "@/lib/cupom";
+import { limiarFreteGratis } from "@/lib/campanha";
 import { validarCpf } from "@/lib/cpf";
 import { calcularFrete, cepDeReserva, ehEntregaExpressa, ehRetirada, FRETE_ENTREGA_EXPRESSA } from "@/lib/frete";
 import { calcularDescontoPix, calcularParcelamento, MAX_PARCELAS_SEM_JUROS } from "@/lib/formato";
@@ -97,7 +98,8 @@ async function revalidarFrete(
   freteEscolhido: FreteEscolhido | undefined,
   subtotalComDesconto: number,
   cepDestino: string,
-  quantidadeItens: number
+  quantidadeItens: number,
+  temPecaPromocional = false
 ): Promise<FreteEscolhido | undefined> {
   if (!freteEscolhido) return undefined;
 
@@ -141,8 +143,11 @@ async function revalidarFrete(
   // Frete gratis a partir de um valor minimo (configuravel em /admin/produtos, ver
   // lib/configLoja.ts) - se o carrinho bateu o valor, cobra zero independente do que o Melhor
   // Envio cotou pra essa transportadora (mas mantem servicoId real pra compra da etiqueta).
+  // Na Black November, carrinho com peca da campanha so' ganha frete gratis acima de R$ 2.000
+  // (ver limiarFreteGratis em lib/campanha.ts).
   const configuracaoLoja = await buscarConfiguracaoLoja();
-  if (configuracaoLoja.freteGratisAcimaDe !== null && subtotalComDesconto >= configuracaoLoja.freteGratisAcimaDe) {
+  const limiar = limiarFreteGratis(configuracaoLoja.freteGratisAcimaDe, temPecaPromocional);
+  if (limiar !== null && subtotalComDesconto >= limiar) {
     return {
       servico: opcaoReal.servico,
       transportadora: opcaoReal.transportadora,
@@ -216,10 +221,17 @@ async function prepararPedido(
   // no preco unitario de cada item (reduz todo mundo pela mesma porcentagem), o que da' no
   // mesmo total final.
   const subtotal = itensValidados.reduce((soma, { item, produtoReal }) => soma + produtoReal.preco * item.quantidade, 0);
+  // Cupom nao vale em peca de outlet/Black November (decisao do Brunno em 05/11/2026: com o
+  // desconto da campanha mais o cupom a venda ficava abaixo do custo) - ele so' desconta sobre
+  // as outras pecas do carrinho. O Pix (10%) continua valendo sobre tudo.
+  const subtotalElegivelCupom = itensValidados.reduce(
+    (soma, { item, produtoReal }) => soma + (produtoReal.outlet ? 0 : produtoReal.preco * item.quantidade),
+    0
+  );
   let descontoCupom = 0;
   let codigoCupomAplicado: string | undefined;
-  if (cupomCodigo && subtotal > 0) {
-    const resultado = await validarCupom(cupomCodigo, subtotal, cliente.cpf);
+  if (cupomCodigo && subtotalElegivelCupom > 0) {
+    const resultado = await validarCupom(cupomCodigo, subtotalElegivelCupom, cliente.cpf);
     if (resultado.valido) {
       descontoCupom = resultado.desconto;
       codigoCupomAplicado = resultado.cupom.codigo;
@@ -228,15 +240,21 @@ async function prepararPedido(
   // Desconto do Pix (10%, 19/10/2026): NAO soma com cupom - vale o maior dos dois. Se o Pix
   // ganhar, o cupom nao e' aplicado (e por isso nao e' "gasto" no uso unico por CPF).
   let descontoPix = metodo === "pix" ? calcularDescontoPix(subtotal) : 0;
-  let descontoAplicado = descontoCupom;
   if (descontoPix > descontoCupom) {
-    descontoAplicado = descontoPix;
     codigoCupomAplicado = undefined;
   } else {
     descontoPix = 0;
   }
-  const fatorDesconto = subtotal > 0 ? (subtotal - descontoAplicado) / subtotal : 1;
-  const subtotalComDesconto = Math.round(subtotal * fatorDesconto * 100) / 100;
+  // Fator de desconto por item: o Pix reduz todas as pecas igual; o cupom reduz so' as pecas fora
+  // do outlet/Black November (ver subtotalElegivelCupom acima).
+  const fatorPix = subtotal > 0 ? (subtotal - descontoPix) / subtotal : 1;
+  const fatorCupom = subtotalElegivelCupom > 0 ? (subtotalElegivelCupom - descontoCupom) / subtotalElegivelCupom : 1;
+  const fatorDoItem = (produto: Produto) =>
+    descontoPix > 0 ? fatorPix : codigoCupomAplicado && !produto.outlet ? fatorCupom : 1;
+  const subtotalComDesconto =
+    Math.round(
+      itensValidados.reduce((soma, { item, produtoReal }) => soma + produtoReal.preco * item.quantidade * fatorDoItem(produtoReal), 0) * 100
+    ) / 100;
 
   // Revalida o frete (retirada/frete gratis/preco real da transportadora) so' DEPOIS de saber
   // o subtotal com desconto - o valor minimo do frete gratis compara com o subtotal depois do
@@ -244,7 +262,8 @@ async function prepararPedido(
   // o mesmo calculo em app/carrinho/page.tsx.
   const subtotalAposCupom = Math.round((subtotal - descontoCupom) * 100) / 100;
   const quantidadeTotalItens = itens.reduce((soma, item) => soma + item.quantidade, 0);
-  const freteSeguro = await revalidarFrete(frete, subtotalAposCupom, end.cep, quantidadeTotalItens);
+  const temPecaPromocional = itensValidados.some(({ produtoReal }) => !!produtoReal.outlet);
+  const freteSeguro = await revalidarFrete(frete, subtotalAposCupom, end.cep, quantidadeTotalItens, temPecaPromocional);
 
   // Credito de loja (cashback) - revalidado aqui no servidor pelos mesmos motivos do cupom
   // acima: nunca confia no valor calculado no carrinho no navegador. O teto de uso (30% do
@@ -267,7 +286,7 @@ async function prepararPedido(
         ? `${produtoReal.nome} (${item.cor}, ${item.tamanho})`
         : `${produtoReal.nome} (${item.tamanho})`,
     quantity: item.quantidade,
-    unit_price: Math.round(produtoReal.preco * fatorDesconto * fatorCredito * 100) / 100,
+    unit_price: Math.round(produtoReal.preco * fatorDoItem(produtoReal) * fatorCredito * 100) / 100,
     currency_id: "BRL",
     // resolvido AGORA (nao no webhook) pra nao depender do catalogo nao ter mudado ate' o
     // pagamento ser confirmado - ver resolverProdutoIdBling em lib/produtos.ts.
