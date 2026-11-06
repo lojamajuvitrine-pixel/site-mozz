@@ -3323,8 +3323,7 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "44",
-          "42"
+          "44"
         ]
       }
     ],
@@ -7587,9 +7586,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
           "G",
-          "M"
+          "GG"
         ]
       },
       {
@@ -7839,7 +7837,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG"
         ]
       },
@@ -11331,7 +11328,7 @@
       }
     ],
     "imagem": "/produtos/16546465811--unico--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16546483718",
@@ -33258,7 +33255,6 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "40",
           "42"
         ]
       }
@@ -35013,9 +35009,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
-          "P",
-          "G"
+          "G",
+          "PP"
         ]
       }
     ],
