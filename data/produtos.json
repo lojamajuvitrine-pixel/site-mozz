@@ -4498,13 +4498,11 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": [
-          "Único"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16637174031",
@@ -6003,9 +6001,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
-          "M",
-          "P"
+          "P",
+          "PP"
         ]
       },
       {
@@ -17726,13 +17723,11 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": [
-          "Único"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16530949482",
@@ -26838,9 +26833,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "M",
-          "G"
+          "P"
         ]
       }
     ],
