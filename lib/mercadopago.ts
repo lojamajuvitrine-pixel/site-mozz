@@ -13,7 +13,14 @@
 import { MercadoPagoConfig, Payment, Preference } from "mercadopago";
 import { randomUUID } from "crypto";
 import type { Produto } from "@/lib/produtos";
-import { resolverProdutoIdBling, buscarProduto, coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
+import {
+  resolverIdVariacaoBling,
+  buscarProduto,
+  coresDoProduto,
+  estoqueDaVariante,
+  tamanhosDisponiveisDoColor
+} from "@/lib/produtos";
+import { carregarEstoqueAoVivo } from "@/lib/estoqueAoVivo";
 import { validarCupom } from "@/lib/cupom";
 import { limiarFreteGratis } from "@/lib/campanha";
 import { validarCpf } from "@/lib/cpf";
@@ -60,6 +67,9 @@ export type ClienteCheckout = {
   email: string;
   telefone: string;
   endereco: EnderecoCheckout;
+  // Codigo do visitante no Google Analytics (cookies, lido no navegador - ver lerIdsGoogleAnalytics
+  // em lib/tracking.ts). Opcional: sem ele a compra so' nao fica ligada ao anuncio.
+  rastreio?: { gaClientId?: string; gaSessionId?: string };
 };
 
 // Formato compacto guardado no metadata da preferencia (volta intacto no payload do
@@ -88,6 +98,9 @@ export type PedidoMetadata = {
   // lib/melhorEnvio.ts). servicoId undefined quando e' retirada na loja.
   envio: { transportadora: string; servico: string; servicoId?: number } | null;
   quantidadeItens: number;
+  // Google Analytics (07/11/2026): c = codigo do visitante, s = sessao - o webhook manda a compra
+  // pro Analytics com isso quando o pagamento e' aprovado (ver lib/ga4.ts).
+  ga?: { c: string; s?: string };
 };
 
 // Nunca confia no preco de frete que veio do carrinho (o mesmo raciocinio do preco dos
@@ -199,6 +212,9 @@ async function prepararPedido(
   // site normal) conseguiria mandar qualquer preco. Dai' pra frente so' o preco/nome vindos
   // AGORA do catalogo (produtoReal) sao usados - o que veio do carrinho serve so' pra saber
   // QUAL produto/cor/tamanho/quantidade, nunca o preco.
+  // Estoque de agora (estoque ao vivo, ver lib/estoqueAoVivo.ts) - uma busca fresca no banco antes
+  // de conferir os itens; os buscarProduto abaixo reaproveitam esse mesmo retrato.
+  await carregarEstoqueAoVivo(true);
   const itensValidados = await Promise.all(
     itens.map(async (item) => {
       const produtoReal = await buscarProduto(item.produto.id);
@@ -209,6 +225,16 @@ async function prepararPedido(
       if (!corReal || !tamanhosDisponiveisDoColor(corReal).includes(item.tamanho)) {
         throw new ErroValidacaoPedido(
           `"${produtoReal.nome}" (${item.cor}, tamanho ${item.tamanho}) está sem estoque no momento`
+        );
+      }
+      // Nao deixa comprar mais unidades do que tem (07/11/2026) - o carrinho ja' limita, isso e' a
+      // ultima trava (carrinho antigo, duas abas, peca vendida na loja nesse meio-tempo).
+      const limite = estoqueDaVariante(produtoReal, item.cor, item.tamanho);
+      if (limite !== null && item.quantidade > limite) {
+        const variante =
+          item.cor && item.cor !== "Único" ? `${item.cor}, tamanho ${item.tamanho}` : `tamanho ${item.tamanho}`;
+        throw new ErroValidacaoPedido(
+          `Temos só ${limite} ${limite === 1 ? "unidade" : "unidades"} de "${produtoReal.nome}" (${variante}). Ajuste a quantidade no carrinho.`
         );
       }
       return { item, produtoReal };
@@ -289,8 +315,9 @@ async function prepararPedido(
     unit_price: Math.round(produtoReal.preco * fatorDoItem(produtoReal) * fatorCredito * 100) / 100,
     currency_id: "BRL",
     // resolvido AGORA (nao no webhook) pra nao depender do catalogo nao ter mudado ate' o
-    // pagamento ser confirmado - ver resolverProdutoIdBling em lib/produtos.ts.
-    _idBling: resolverProdutoIdBling(produtoReal, item.cor, item.tamanho)
+    // pagamento ser confirmado. Desde 07/11/2026 e' o id da VARIACAO (cor + tamanho) no Bling,
+    // pra baixar o estoque certo - ver resolverIdVariacaoBling em lib/produtos.ts.
+    _idBling: resolverIdVariacaoBling(produtoReal, item.cor, item.tamanho)
   }));
 
   // Frete entra como um item a parte (o Mercado Pago nao tem um campo nativo de "frete" na
@@ -310,7 +337,11 @@ async function prepararPedido(
   const pedidoMetadata: PedidoMetadata = {
     itens: itensValidados.map(({ item, produtoReal }, indice) => ({
       id: itensPreferencia[indice]._idBling,
-      nome: `${produtoReal.nome} (${item.tamanho})`,
+      // com a cor desde 07/11/2026 (vai no e-mail e no historico do pedido)
+      nome:
+        item.cor && item.cor !== "Único"
+          ? `${produtoReal.nome} (${item.cor}, ${item.tamanho})`
+          : `${produtoReal.nome} (${item.tamanho})`,
       qtd: item.quantidade,
       valor: itensPreferencia[indice].unit_price
     })),
@@ -328,6 +359,7 @@ async function prepararPedido(
       ? { transportadora: freteSeguro.transportadora, servico: freteSeguro.servico, servicoId: freteSeguro.servicoId }
       : null,
     quantidadeItens: quantidadeTotalItens,
+    ga: gaDoCliente(cliente),
     endereco: {
       cep: end.cep.replace(/\D/g, ""),
       rua: end.rua.trim(),
@@ -345,6 +377,15 @@ async function prepararPedido(
     Math.round(itensPreferencia.reduce((soma, item) => soma + item.unit_price * item.quantity, 0) * 100) / 100;
 
   return { itensPreferencia, pedidoMetadata, codigoCupomAplicado, valorTotal };
+}
+
+// Codigo do visitante do Google Analytics que veio do navegador - so' aceita o formato esperado
+// (numeros), pra nao guardar nada estranho no pedido.
+function gaDoCliente(cliente: ClienteCheckout): PedidoMetadata["ga"] {
+  const c = cliente.rastreio?.gaClientId;
+  if (typeof c !== "string" || !/^\d{1,20}\.\d{1,20}$/.test(c)) return undefined;
+  const s = cliente.rastreio?.gaSessionId;
+  return typeof s === "string" && /^\d{1,20}$/.test(s) ? { c, s } : { c };
 }
 
 function metadataPedido(pedido: Awaited<ReturnType<typeof prepararPedido>>) {
