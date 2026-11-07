@@ -4,7 +4,8 @@ import BannerGenero, { type BannerGeneroItem } from "@/components/BannerGenero";
 import PorQueComprar from "@/components/PorQueComprar";
 import SecaoMarcas from "@/components/SecaoMarcas";
 import VitrineDeMarca from "@/components/VitrineDeMarca";
-import BannerBlackNovember from "@/components/BannerBlackNovember";
+import Image from "next/image";
+import Link from "next/link";
 import { listarOutlet, listarPorMarca, produtosComFoto } from "@/lib/produtos";
 import { blackNovemberAtiva } from "@/lib/campanha";
 import { SITE_URL as siteUrl } from "@/lib/site";
@@ -92,22 +93,47 @@ export default async function Home() {
     ? comFotoFarm.filter((p) => p.destaque)
     : comFotoFarm;
 
-  // Banner da Black November (05/11/2026): so' aparece durante a campanha (lib/campanha.ts) e se
-  // tiver pelo menos uma peca na vitrine. O "Ate X%" e' o maior desconto entre elas.
+  // Black November (07/11/2026, pedido do Brunno): banner em arte pronta, PRIMEIRO no carrossel do
+  // computador e no topo da home no celular. Some sozinho depois de 30/11 (blackNovemberAtiva) ou se
+  // nao tiver nenhuma peca na campanha. As duas artes ficam em public/ (2800x900 e 1080x1013).
   const pecasBlackNovember = blackNovemberAtiva() ? await listarOutlet() : [];
-  const maiorDescontoBlackNovember = pecasBlackNovember.reduce(
-    (maior, p) =>
-      p.precoOriginal && p.precoOriginal > p.preco ? Math.max(maior, Math.round((1 - p.preco / p.precoOriginal) * 100)) : maior,
-    0
-  );
+  const temBlackNovember = pecasBlackNovember.length > 0;
+  const bannersCarrossel: BannerItem[] = temBlackNovember
+    ? [
+        {
+          imagem: "/black-november-desktop.jpg",
+          marca: "Black November",
+          label: "Black November - ver ofertas",
+          href: "/black-november",
+          somenteImagem: true
+        },
+        ...bannersFinal
+      ]
+    : bannersFinal;
 
   return (
     <div>
-      {pecasBlackNovember.length > 0 && <BannerBlackNovember maiorDesconto={maiorDescontoBlackNovember} />}
+      {temBlackNovember && (
+        <Link
+          href="/black-november"
+          aria-label="Black November - ver ofertas"
+          className="md:hidden relative block -mx-6 aspect-[16/15] bg-mozz-black overflow-hidden"
+        >
+          <Image
+            src="/black-november-celular.jpg"
+            alt="Black November MOZZ"
+            fill
+            priority
+            sizes="100vw"
+            quality={85}
+            className="object-cover"
+          />
+        </Link>
+      )}
       <BannerGenero banners={bannersGenero} />
       {/* carrossel so' no desktop - no celular os dois banners acima ocupam o lugar dele */}
       <div className="hidden md:block">
-        <BannerHero banners={bannersFinal} />
+        <BannerHero banners={bannersCarrossel} />
       </div>
       <PorQueComprar />
 
