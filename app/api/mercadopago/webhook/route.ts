@@ -9,13 +9,21 @@ import { usarCredito, concederCashback } from "@/lib/creditos";
 import { comprarEGerarEtiqueta } from "@/lib/melhorEnvio";
 import { enviarEmailConfirmacaoPedido } from "@/lib/emailPedido";
 import { ehEntregaExpressa, ehRetirada } from "@/lib/frete";
+import { baixarEstoqueVenda } from "@/lib/estoqueGravacao";
+import { enviarCompraGA4 } from "@/lib/ga4";
 
 // O Mercado Pago chama essa rota automaticamente quando o status de um pagamento muda.
 // Documentacao: mercadopago.com.br/developers/pt/docs/checkout-pro/additional-content/notifications/webhooks
 //
 // Fluxo completo:
 // 1. Valida a assinatura (header x-signature) usando MERCADOPAGO_WEBHOOK_SECRET - garante que
-//    a notificacao realmente veio do Mercado Pago.
+//    a notificacao realmente veio do Mercado Pago. Desde 21/10/2026, um aviso de PAGAMENTO sem
+//    assinatura valida nao e' mais descartado: o Mercado Pago manda o mesmo evento em mais de um
+//    formato (o webhook novo assinado, com ?data.id=, e o aviso antigo "IPN", com ?topic=payment&id=,
+//    que nao passa nessa validacao), e descartar arriscava perder uma compra paga se o assinado
+//    falhasse. Em vez disso o pagamento e' conferido direto na API do Mercado Pago com o token da
+//    loja (passo 2), que e' a fonte verdadeira - um aviso falso nao consegue inventar um pagamento
+//    aprovado. Avisos que nao sao de pagamento (ex: merchant_order) sao ignorados sem erro.
 // 2. Busca o pagamento de verdade (GET /v1/payments/{id}) - nunca confia so' no payload do
 //    webhook, que so' avisa "algo mudou", nao traz o status.
 // 3. Se aprovado, le o pedido resolvido que a gente mesmo guardou no metadata da preferencia
@@ -164,6 +172,23 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
 
   if (!inseriuAgora) return;
 
+  // Estoque ao vivo (07/11/2026): baixa as pecas vendidas na hora, sem esperar o Bling avisar o
+  // site - assim a mesma peca unica nao fica a venda pra outra cliente nesse meio-tempo.
+  await baixarEstoqueVenda(
+    pedido.itens.filter((item) => item.id > 0).map((item) => ({ id: item.id, qtd: item.qtd }))
+  );
+
+  // Compra no Google Analytics/Google Ads (07/11/2026) - so' na primeira vez, com o valor real
+  // pago. Conta tambem o Pix pago depois, com a pagina fechada (ver lib/ga4.ts).
+  await enviarCompraGA4({
+    numeroPedido: numeroPedidoLoja,
+    valorTotal,
+    frete: pedido.frete,
+    itens: pedido.itens,
+    gaClientId: pedido.ga?.c,
+    gaSessionId: pedido.ga?.s
+  });
+
   // So' manda o e-mail na PRIMEIRA vez (mesmo raciocinio do resto dessa funcao) - nunca em
   // dobro se o Mercado Pago reenviar o mesmo webhook. Vale pras duas formas de envio
   // (Correios ou retirada), diferente da compra de etiqueta abaixo que e' so' Correios.
@@ -221,26 +246,44 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
   }
 }
 
+// Aviso antigo (IPN) as vezes manda so' o "resource" (ex: ".../payments/123456" ou "123456").
+function idDoResource(resource: string | undefined): string | null {
+  const achado = resource?.match(/(\d+)\s*$/);
+  return achado ? achado[1] : null;
+}
+
 export async function POST(request: NextRequest) {
   const corpoBruto = await request.text();
+  const params = request.nextUrl.searchParams;
+
+  let corpo: { type?: string; topic?: string; action?: string; resource?: string; data?: { id?: string } } = {};
+  try {
+    corpo = corpoBruto ? JSON.parse(corpoBruto) : {};
+  } catch {
+    corpo = {}; // aviso antigo pode vir sem corpo JSON - os dados ficam na URL
+  }
+
+  // Formatos que o Mercado Pago manda pro mesmo evento:
+  //  - webhook novo (assinado): ?data.id=123&type=payment, corpo {type:"payment", action:"payment.updated", data:{id}}
+  //  - aviso antigo (IPN): ?topic=payment&id=123 (ou corpo {topic, resource}) - nao passa na assinatura
+  //  - merchant_order: aviso de "pedido", nao de pagamento - ignorado
+  const tipo = corpo.type ?? corpo.topic ?? params.get("type") ?? params.get("topic") ?? "";
+  const ehPagamento = tipo === "payment" || (corpo.action ?? "").startsWith("payment.");
+  const idBruto =
+    corpo.data?.id ?? params.get("data.id") ?? (ehPagamento ? params.get("id") ?? idDoResource(corpo.resource) : null);
+  const paymentId = idBruto && /^\d+$/.test(String(idBruto)) ? String(idBruto) : null;
+
+  if (!ehPagamento || !paymentId) {
+    console.log(`Webhook Mercado Pago: aviso "${tipo || "sem tipo"}" ignorado (nao e' de pagamento)`);
+    return NextResponse.json({ recebido: true });
+  }
 
   if (!validarAssinatura(request, corpoBruto)) {
-    console.error("Webhook Mercado Pago: assinatura invalida, ignorando notificacao");
-    return NextResponse.json({ erro: "assinatura invalida" }, { status: 401 });
-  }
-
-  let corpo: { type?: string; data?: { id?: string } };
-  try {
-    corpo = JSON.parse(corpoBruto);
-  } catch {
-    return NextResponse.json({ erro: "corpo invalido" }, { status: 400 });
-  }
-
-  // So' processa notificacoes de pagamento - o Mercado Pago tambem manda outros tipos
-  // ("merchant_order" etc) que a gente ignora.
-  const paymentId = corpo.data?.id ?? request.nextUrl.searchParams.get("data.id");
-  if (corpo.type !== "payment" || !paymentId) {
-    return NextResponse.json({ recebido: true });
+    // Nao descarta mais (ver passo 1 no comentario do topo): segue e confere o pagamento direto
+    // na API do Mercado Pago abaixo, com o token da loja.
+    console.warn(
+      `Webhook Mercado Pago: aviso do pagamento ${paymentId} sem assinatura valida (formato ${params.get("topic") ? "antigo/IPN" : "webhook"}) - conferindo direto na API`
+    );
   }
 
   const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
