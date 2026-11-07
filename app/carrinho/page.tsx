@@ -1,6 +1,6 @@
 "use client";
 
-import { useCart } from "@/lib/cart-context";
+import { limiteDoItem, useCart } from "@/lib/cart-context";
 import { idVarianteProduto } from "@/lib/produtos";
 import { formatarPreco, calcularParcelamento, calcularDescontoPix, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
 import { useEffect, useRef, useState } from "react";
@@ -10,7 +10,7 @@ import CalculoFrete, { type OpcaoFrete, type ConfigLojaFrete } from "@/component
 import CompraSegura from "@/components/CompraSegura";
 import AvisoFreteGratis from "@/components/AvisoFreteGratis";
 import { ehEntregaExpressa, ehRetirada } from "@/lib/frete";
-import { rastrearIniciarCheckout } from "@/lib/tracking";
+import { lerIdsGoogleAnalytics, rastrearIniciarCheckout } from "@/lib/tracking";
 import { limiarFreteGratis, nomeVitrinePromocional } from "@/lib/campanha";
 import { validarCpf, formatarCpf } from "@/lib/cpf";
 import { createClient } from "@/lib/supabase/client";
@@ -126,9 +126,36 @@ function CabecalhoEtapa({
 }
 
 export default function PaginaCarrinho() {
-  const { itens, remover, atualizarQuantidade, total } = useCart();
+  const { itens, remover, atualizarQuantidade, sincronizarEstoque, total } = useCart();
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
+
+  // Estoque de agora (07/11/2026): ao abrir o carrinho, confere quantas unidades tem de cada peca
+  // (app/api/estoque/conferir) - peca que esgotou sai, quantidade acima do estoque e' ajustada, e a
+  // cliente ve o aviso. Roda uma vez por visita ao carrinho.
+  const [avisosEstoque, setAvisosEstoque] = useState<string[]>([]);
+  // item (chave da linha) em que a cliente tocou no "+" ja' no limite do estoque
+  const [limiteAberto, setLimiteAberto] = useState<string | null>(null);
+  const estoqueConferido = useRef(false);
+  const sincronizarRef = useRef(sincronizarEstoque);
+  sincronizarRef.current = sincronizarEstoque;
+
+  useEffect(() => {
+    if (estoqueConferido.current || itens.length === 0) return;
+    estoqueConferido.current = true;
+    fetch("/api/estoque/conferir", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ itens: itens.map((i) => ({ produtoId: i.produto.id, cor: i.cor, tamanho: i.tamanho })) })
+    })
+      .then((r) => r.json())
+      .then((d) => {
+        if (!d?.disponivel) return;
+        const avisos = sincronizarRef.current(d.disponivel);
+        if (avisos.length > 0) setAvisosEstoque(avisos);
+      })
+      .catch(() => {});
+  }, [itens]);
 
   // Etapa aberta agora + quais ja' foram concluidas (etapa concluida vira um resumo de 1 linha
   // com "Alterar"). Os campos de todas as etapas continuam montados (so' escondidos), pra nao
@@ -456,6 +483,9 @@ export default function PaginaCarrinho() {
       cpf,
       email: email.trim(),
       telefone: telefone.trim(),
+      // codigo do visitante no Google Analytics - o servidor usa pra avisar o Analytics da compra
+      // quando o pagamento for aprovado, mesmo com a pagina fechada (ver lib/ga4.ts)
+      rastreio: lerIdsGoogleAnalytics(),
       endereco: {
         cep: cepEndereco,
         rua: rua.trim(),
@@ -503,6 +533,14 @@ export default function PaginaCarrinho() {
   }
 
   if (itens.length === 0) {
+    if (avisosEstoque.length > 0) {
+      return (
+        <section className="py-16 max-w-xl mx-auto">
+          <AvisosEstoque avisos={avisosEstoque} />
+          <p className="mt-6 text-center text-mozz-gray text-[14.5px]">Seu carrinho esta vazio.</p>
+        </section>
+      );
+    }
     return <p className="py-16 text-center text-mozz-gray text-[14.5px]">Seu carrinho esta vazio.</p>;
   }
 
@@ -518,10 +556,19 @@ export default function PaginaCarrinho() {
       <p className="font-serif text-3xl mb-2">Carrinho</p>
       <AvisoFreteGratis limiar={configLojaEfetiva?.freteGratisAcimaDe ?? null} subtotal={totalComDesconto} />
       <CompraSegura compacto />
+      {avisosEstoque.length > 0 && (
+        <div className="mt-4">
+          <AvisosEstoque avisos={avisosEstoque} />
+        </div>
+      )}
       <div className="divide-y divide-black/10 mt-6">
-        {itens.map((item) => (
+        {itens.map((item) => {
+          const chaveItem = `${item.produto.id}-${item.cor}-${item.tamanho}`;
+          const limite = limiteDoItem(item);
+          const noLimite = limite !== null && item.quantidade >= limite;
+          return (
           <div
-            key={`${item.produto.id}-${item.cor}-${item.tamanho}`}
+            key={chaveItem}
             className="flex gap-3 py-4 text-[14.5px]"
           >
             {/* Foto da peca na COR escolhida (16/10/2026, pedido do Brunno) - toca e abre a
@@ -551,9 +598,10 @@ export default function PaginaCarrinho() {
               </p>
               <div className="flex items-center border border-black/20 w-fit">
                 <button
-                  onClick={() =>
-                    atualizarQuantidade(item.produto.id, item.cor, item.tamanho, item.quantidade - 1)
-                  }
+                  onClick={() => {
+                    setLimiteAberto(null);
+                    atualizarQuantidade(item.produto.id, item.cor, item.tamanho, item.quantidade - 1);
+                  }}
                   aria-label="Diminuir quantidade"
                   className="w-7 h-7 flex items-center justify-center hover:bg-black/5"
                 >
@@ -561,15 +609,26 @@ export default function PaginaCarrinho() {
                 </button>
                 <span className="w-8 text-center">{item.quantidade}</span>
                 <button
-                  onClick={() =>
-                    atualizarQuantidade(item.produto.id, item.cor, item.tamanho, item.quantidade + 1)
-                  }
+                  onClick={() => {
+                    // no limite do estoque nao soma - so' mostra o aviso
+                    if (noLimite) {
+                      setLimiteAberto(chaveItem);
+                      return;
+                    }
+                    atualizarQuantidade(item.produto.id, item.cor, item.tamanho, item.quantidade + 1);
+                  }}
                   aria-label="Aumentar quantidade"
-                  className="w-7 h-7 flex items-center justify-center hover:bg-black/5"
+                  aria-disabled={noLimite}
+                  className={`w-7 h-7 flex items-center justify-center hover:bg-black/5 ${noLimite ? "opacity-40" : ""}`}
                 >
                   +
                 </button>
               </div>
+              {noLimite && limiteAberto === chaveItem && limite !== null && (
+                <p className="text-[12.5px] text-mozz-gray mt-1.5">
+                  Só temos {limite} {limite === 1 ? "unidade" : "unidades"} desse tamanho.
+                </p>
+              )}
             </div>
             <div className="text-right">
               <p>{formatarPreco(item.produto.preco * item.quantidade)}</p>
@@ -581,7 +640,8 @@ export default function PaginaCarrinho() {
               </button>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="mt-4">
@@ -938,5 +998,16 @@ export default function PaginaCarrinho() {
         </div>
       </div>
     </section>
+  );
+}
+
+// Avisos de estoque do carrinho (peca que esgotou ou quantidade ajustada) - ver avisosEstoque acima.
+function AvisosEstoque({ avisos }: { avisos: string[] }) {
+  return (
+    <div className="border border-black/15 bg-mozz-stone px-4 py-3 text-[13.5px] text-mozz-black flex flex-col gap-1">
+      {avisos.map((aviso) => (
+        <p key={aviso}>{aviso}</p>
+      ))}
+    </div>
   );
 }
