@@ -3,6 +3,7 @@ import produtosData from "@/data/produtos.json";
 import { categoriaDoProduto, type TabelaMedidas } from "@/lib/detalhesProduto";
 import { buscarConfigProdutos, type ConfigProduto } from "@/lib/produtoConfig";
 import { UNIFICACOES, idPrincipalUnificado } from "@/lib/unificacoes";
+import { aplicarEstoqueAoVivo, carregarEstoqueAoVivo, type EstoqueAoVivo } from "@/lib/estoqueAoVivo";
 
 // Uma variacao de COR do produto - cada cor tem suas proprias fotos (pode ser mais de uma,
 // quando cadastradas no Bling) e sua propria lista de tamanhos disponiveis.
@@ -18,6 +19,12 @@ export type VarianteCor = {
   // por compatibilidade com dado antigo (sync anterior a esse controle); nesse caso o site
   // trata ausencia como "todos disponiveis" (ver tamanhosDisponiveisDoColor abaixo).
   tamanhosDisponiveis?: string[];
+  // Estoque ao vivo (07/11/2026, ver lib/estoqueAoVivo.ts): quantas unidades tem de cada tamanho
+  // agora e qual variacao do Bling representa cada tamanho. So' existem quando o produto aparece
+  // na tabela de estoque do Supabase - sem eles o site trabalha como antes (sem limite de
+  // quantidade, pedido com o codigo de sempre).
+  estoquePorTamanho?: Record<string, number>;
+  idsBlingPorTamanho?: Record<string, number>;
 };
 
 // Sempre usar isso (em vez de cor.tamanhosDisponiveis direto) pra saber quais tamanhos de
@@ -108,6 +115,22 @@ export function resolverProdutoIdBling(produto: Produto, cor: string, tamanho: s
     );
   }
   return id;
+}
+
+// Id da VARIACAO exata (cor + tamanho) no Bling, vindo do estoque ao vivo (lib/estoqueAoVivo.ts) -
+// e' esse que vai no pedido de venda, pra o Bling baixar o estoque da variacao certa. Antes ia o
+// codigo geral do produto (ex: o pedido da Calca Casual Iron Cinza Lua 44, em 03/11/2026, foi
+// pro Bling com o codigo da calca, sem cor nem tamanho). Sem esse dado, cai no de sempre.
+export function resolverIdVariacaoBling(produto: Produto, cor: string, tamanho: string): number {
+  const id = produto.cores?.find((c) => c.cor === cor)?.idsBlingPorTamanho?.[tamanho];
+  return typeof id === "number" && Number.isFinite(id) && id > 0 ? id : resolverProdutoIdBling(produto, cor, tamanho);
+}
+
+// Quantas unidades tem agora dessa cor/tamanho (estoque ao vivo). null = sem essa informacao
+// (produto fora da tabela de estoque) - nesse caso o site nao limita a quantidade.
+export function estoqueDaVariante(produto: Produto, cor: string, tamanho: string): number | null {
+  const quantidade = produto.cores?.find((c) => c.cor === cor)?.estoquePorTamanho?.[tamanho];
+  return typeof quantidade === "number" ? quantidade : null;
 }
 
 export type Produto = {
@@ -289,6 +312,15 @@ function aplicarUnificacoes(produtos: Produto[]): Produto[] {
             // o principal nao tem esse tamanho em estoque nessa cor - vende o do cadastro absorvido
             destino.tamanhosDisponiveis!.push(t);
             grupos[destino.cor] = { ...(grupos[destino.cor] ?? {}), [t]: idsDoTamanho(t) };
+            // estoque ao vivo do cadastro absorvido vem junto (quantidade + variacao do Bling)
+            const quantidade = cor.estoquePorTamanho?.[t];
+            if (typeof quantidade === "number") {
+              destino.estoquePorTamanho = { ...(destino.estoquePorTamanho ?? {}), [t]: quantidade };
+            }
+            const idVariacao = cor.idsBlingPorTamanho?.[t];
+            if (typeof idVariacao === "number") {
+              destino.idsBlingPorTamanho = { ...(destino.idsBlingPorTamanho ?? {}), [t]: idVariacao };
+            }
           }
         }
         temEstoque = true;
@@ -308,7 +340,20 @@ function aplicarUnificacoes(produtos: Produto[]): Produto[] {
   return produtos.filter((p) => !absorvidos.has(p.id)).map((p) => unificados.get(p.id) ?? p);
 }
 
-const catalogoUnificado = aplicarUnificacoes(produtosData as Produto[]);
+// Catalogo cru + estoque ao vivo (lib/estoqueAoVivo.ts) + unificacoes. Recalculado so' quando
+// chega um retrato novo do estoque (no maximo a cada 10s por servidor) - o resto do tempo reaproveita.
+// O estoque entra ANTES das unificacoes e do filtro de "sem estoque", pra uma peca que voltou ao
+// estoque no Bling reaparecer no site na hora.
+let catalogoMemorizado: { estoque: EstoqueAoVivo | null; produtos: Produto[] } | null = null;
+
+function catalogoComEstoque(estoque: EstoqueAoVivo | null): Produto[] {
+  if (catalogoMemorizado && catalogoMemorizado.estoque === estoque) return catalogoMemorizado.produtos;
+  const base = produtosData as Produto[];
+  const comEstoque = estoque ? base.map((p) => aplicarEstoqueAoVivo(p, estoque)) : base;
+  const produtos = aplicarUnificacoes(comEstoque);
+  catalogoMemorizado = { estoque, produtos };
+  return produtos;
+}
 
 // Cor com estoque sempre na frente (16/10/2026, pedido do Brunno: "acho muito ruim a primeira
 // estar como esgotado") - o card do mosaico e a pagina do produto abrem na PRIMEIRA cor da
@@ -353,12 +398,18 @@ function ordenarCoresDisponiveisPrimeiro(produto: Produto): Produto {
 // peca do ar (defeito, fora de linha, segurar venda) sem mexer em nada no Bling. Passe
 // { incluirInativos: true } pra ver TODOS os produtos mesmo desativados - usado so' no painel
 // /admin/produtos, pra poder reativar depois.
+// estoqueFresco: busca o saldo de agora na tabela de estoque, sem usar o retrato guardado (ver
+// lib/estoqueAoVivo.ts) - usado no pagamento e na conferencia do carrinho.
 export async function listarProdutos(opcoes?: {
   incluirSemFoto?: boolean;
   incluirInativos?: boolean;
+  estoqueFresco?: boolean;
 }): Promise<Produto[]> {
-  const config = await buscarConfigProdutosCache();
-  const produtos = catalogoUnificado
+  const [config, estoque] = await Promise.all([
+    buscarConfigProdutosCache(),
+    carregarEstoqueAoVivo(!!opcoes?.estoqueFresco)
+  ]);
+  const produtos = catalogoComEstoque(estoque)
     .filter((p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca))
     .filter((p) => opcoes?.incluirSemFoto || !!p.imagem)
     .map((p) => aplicarConfigEspecial(p, config.get(p.id)))
@@ -392,8 +443,8 @@ export async function listarPorGenero(genero: "Masculino" | "Feminino"): Promise
   return produtos.filter((p) => generoDaMarca(p.marca) === genero);
 }
 
-export async function buscarProduto(id: string): Promise<Produto | undefined> {
-  const produtos = await listarProdutos();
+export async function buscarProduto(id: string, opcoes?: { estoqueFresco?: boolean }): Promise<Produto | undefined> {
+  const produtos = await listarProdutos({ estoqueFresco: opcoes?.estoqueFresco });
   // id de um cadastro que foi unificado em outro anuncio (lib/unificacoes.ts) -> abre o
   // anuncio principal, pra link/carrinho/anuncio antigo nao dar "produto nao encontrado".
   const idFinal = idPrincipalUnificado(id) ?? id;
