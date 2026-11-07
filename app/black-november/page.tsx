@@ -20,12 +20,24 @@ export const revalidate = 30;
 
 // "Compre do seu jeito" (pedido do Brunno em 05/11/2026): botoes por faixa de desconto. Cada
 // botao mostra so' as pecas daquela faixa - "Ate 30%" = ate 30% OFF, "Ate 40%" = de 31% a 40%,
-// "Ate 50%" = 41% ou mais. Botao de faixa sem nenhuma peca nao aparece.
+// e assim por diante; "Ate 70%" = 61% ou mais. Faixas de 60% e 70% entraram em 07/11/2026,
+// quando a campanha passou a ter pecas com ate 70% OFF. Botao de faixa sem nenhuma peca nao aparece.
 const FAIXAS = [
   { chave: "30", rotulo: "30%", min: 0, max: 30 },
   { chave: "40", rotulo: "40%", min: 31, max: 40 },
-  { chave: "50", rotulo: "50%", min: 41, max: 100 }
+  { chave: "50", rotulo: "50%", min: 41, max: 50 },
+  { chave: "60", rotulo: "60%", min: 51, max: 60 },
+  { chave: "70", rotulo: "70%", min: 61, max: 100 }
 ] as const;
+
+// Colunas da linha de botoes no computador: uma linha so', com o "Ver tudo" junto (classes
+// escritas por extenso pro Tailwind enxergar).
+const COLUNAS_COMPUTADOR: Record<number, string> = {
+  3: "md:grid-cols-3",
+  4: "md:grid-cols-4",
+  5: "md:grid-cols-5",
+  6: "md:grid-cols-6"
+};
 
 function percentualDesconto(produto: Produto): number {
   if (!produto.precoOriginal || produto.precoOriginal <= produto.preco) return 0;
@@ -80,7 +92,7 @@ export default async function PaginaBlackNovember({
           <p className="text-center text-[16px] md:text-[18px] font-bold uppercase tracking-wide mb-4">
             Compre do seu jeito
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+          <div className={`grid grid-cols-2 ${COLUNAS_COMPUTADOR[faixasComPecas.length + 1] ?? "md:grid-cols-6"} gap-3 md:gap-4`}>
             {faixasComPecas.map((f) => (
               <Link
                 key={f.chave}
