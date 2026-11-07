@@ -108,12 +108,10 @@ export function rastrearCompra(pedidoId: string, itens: ItemRastreado[]) {
     value: valor,
     currency: "BRL"
   });
-  window.gtag?.("event", "purchase", {
-    transaction_id: pedidoId,
-    currency: "BRL",
-    value: valor,
-    items: itensParaGA(itens)
-  });
+  // A compra no Google Analytics (evento "purchase") NAO sai mais daqui desde 07/11/2026: quem
+  // manda agora e' o servidor, quando o Mercado Pago aprova o pagamento (lib/ga4.ts) - com o valor
+  // real e contando tambem o Pix pago depois, com a pagina fechada. Mandar dos dois lugares
+  // contaria a mesma venda duas vezes com valores diferentes.
   // Conversao de compra do Google Ads - so' dispara se as duas variaveis estiverem na Vercel
   const gadsId = process.env.NEXT_PUBLIC_GADS_ID;
   const gadsLabel = process.env.NEXT_PUBLIC_GADS_PURCHASE_LABEL;
@@ -125,4 +123,39 @@ export function rastrearCompra(pedidoId: string, itens: ItemRastreado[]) {
       transaction_id: pedidoId
     });
   }
+}
+
+// Codigos do visitante no Google Analytics (cookies "_ga" e "_ga_<ID>") - vao junto com o pedido
+// pro servidor conseguir avisar o Analytics da compra quando o Mercado Pago aprovar o pagamento,
+// mesmo com a pagina fechada (Pix pago depois) - ver lib/ga4.ts. Sem os cookies (bloqueador,
+// cookie recusado), devolve undefined e a compra entra no Analytics sem ligar a um anuncio.
+export function lerIdsGoogleAnalytics(): { gaClientId?: string; gaSessionId?: string } | undefined {
+  if (typeof document === "undefined") return undefined;
+  const cookies = new Map<string, string>();
+  for (const parte of document.cookie.split(";")) {
+    const posicao = parte.indexOf("=");
+    if (posicao <= 0) continue;
+    try {
+      cookies.set(parte.slice(0, posicao).trim(), decodeURIComponent(parte.slice(posicao + 1).trim()));
+    } catch {
+      // cookie com caractere estranho - ignora
+    }
+  }
+
+  // _ga = "GA1.1.1234567890.1700000000" -> codigo do visitante = "1234567890.1700000000"
+  const partesGa = (cookies.get("_ga") ?? "").split(".");
+  const gaClientId =
+    partesGa.length >= 4 ? `${partesGa[partesGa.length - 2]}.${partesGa[partesGa.length - 1]}` : undefined;
+  if (!gaClientId || !/^\d+\.\d+$/.test(gaClientId)) return undefined;
+
+  // _ga_<ID> = "GS1.1.1700000000.3...." (formato antigo) ou "GS2.1.s1700000000$o3$..." (novo)
+  const idMedicao = (process.env.NEXT_PUBLIC_GA_ID ?? "").replace(/^G-/, "");
+  const sessao = idMedicao ? cookies.get(`_ga_${idMedicao}`) : undefined;
+  let gaSessionId: string | undefined;
+  if (sessao) {
+    const formatoNovo = sessao.match(/\.s(\d+)/);
+    gaSessionId = formatoNovo ? formatoNovo[1] : sessao.split(".")[2];
+    if (!gaSessionId || !/^\d+$/.test(gaSessionId)) gaSessionId = undefined;
+  }
+  return { gaClientId, gaSessionId };
 }
