@@ -261,7 +261,9 @@ export default function ProductCard({
       )}
 
       <Link href={`/produto/${produto.id}`} className="block">
-        <p className="text-[14px] mt-2">{produto.nome}</p>
+        {/* marca em cima do nome, em maiusculas e negrito (07/11/2026, pedido do Brunno) */}
+        <p className="text-[13px] mt-2 font-bold uppercase tracking-wide text-mozz-black">{produto.marca}</p>
+        <p className="text-[14px]">{produto.nome}</p>
         {produto.precoOriginal ? (
           <p className="text-[14px]">
             <span className="text-mozz-gray/50 line-through mr-1.5">{formatarPreco(produto.precoOriginal)}</span>
