@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { listarProdutos, coresDoProduto, idVarianteProduto, type Produto } from "@/lib/produtos";
 import { textoDescricao, tipoDoProduto } from "@/lib/detalhesProduto";
 import { SITE_URL as siteUrl } from "@/lib/site";
+import { blackNovemberAtiva } from "@/lib/campanha";
 
 // Feed de catalogo pro Google Merchant Center (Google Shopping / listagens gratuitas) - fica
 // publico em /api/google-feed, sem autenticacao (o Google busca isso sozinho via "busca
@@ -44,6 +45,7 @@ const COLUNAS = [
   "google_product_category",
   "product_type",
   "shipping_weight",
+  "shipping_label",
   "custom_label_0",
   "custom_label_1",
   "custom_label_2",
@@ -281,6 +283,12 @@ function linhasDoProduto(produto: Produto): Array<Record<Coluna, string>> {
   const generoTexto = genero === "male" ? "Masculino" : genero === "female" ? "Feminino" : "Unissex";
   const tipoProduto = `${generoTexto} > ${tipo} > ${produto.marca}`;
   const curadoria = produto.outlet ? "outlet" : produto.destaque ? "destaque" : "normal";
+  // Etiqueta de frete pro Merchant Center (07/11/2026): na Black November, peca da campanha so' tem
+  // frete gratis acima de R$ 2.000 (ver limiarFreteGratis em lib/campanha.ts). No Merchant ha' uma
+  // regra de frete pra cada etiqueta: "padrao" (gratis acima de R$ 499) e "black-november" (gratis
+  // acima de R$ 2.000) - toda peca tem exatamente uma, assim o anuncio nao promete frete gratis numa
+  // peca que o site cobra. Depois de 30/11 as pecas da campanha voltam sozinhas pra "padrao".
+  const etiquetaFrete = produto.outlet && blackNovemberAtiva() ? "black-november" : "padrao";
 
   for (const cor of corasMescladas(produto)) {
     const imagemCor = cor.imagens[0] ?? produto.imagem ?? "";
@@ -326,6 +334,7 @@ function linhasDoProduto(produto: Produto): Array<Record<Coluna, string>> {
         google_product_category: categoriaGoogle,
         product_type: tipoProduto,
         shipping_weight: PESO_ENVIO,
+        shipping_label: etiquetaFrete,
         custom_label_0: produto.marca,
         custom_label_1: faixaDePreco(produto.preco),
         custom_label_2: rotuloEstoque(tamanhosEmEstoque),
