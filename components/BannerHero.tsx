@@ -4,7 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export type BannerItem = { imagem: string; marca: string; label: string; href: string };
+// somenteImagem: banner que ja' vem pronto como arte (ex: Black November, 07/11/2026) - aparece
+// inteiro, sem o escurecido nem os textos/botao do site por cima, e a imagem toda vira o link.
+export type BannerItem = { imagem: string; marca: string; label: string; href: string; somenteImagem?: boolean };
 
 // Distancia minima (px) de arrasto pra contar como swipe de verdade, em vez de um toque sem
 // querer - valor comum pra gestos horizontais em telas de celular.
@@ -63,9 +65,15 @@ export default function BannerHero({ banners }: { banners: BannerItem[] }) {
           priority={i === 0}
           sizes="100vw"
           quality={85}
-          className={`object-cover transition-opacity duration-700 ${i === indice ? "opacity-80" : "opacity-0"}`}
+          className={`object-cover transition-opacity duration-700 ${
+            i === indice ? (banner.somenteImagem ? "opacity-100" : "opacity-80") : "opacity-0"
+          }`}
         />
       ))}
+      {atual.somenteImagem ? (
+        <Link href={atual.href} aria-label={atual.label} className="absolute inset-0" />
+      ) : (
+        <>
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/30" />
       <div className="absolute inset-0 flex flex-col items-center justify-end text-center pb-16 px-6">
         <p className="text-[13px] text-white/80 tracking-widest2 uppercase mb-2">{atual.label}</p>
@@ -80,6 +88,8 @@ export default function BannerHero({ banners }: { banners: BannerItem[] }) {
           Ver coleção {atual.marca}
         </Link>
       </div>
+        </>
+      )}
 
       {banners.length > 1 && (
         <div className="absolute bottom-4 right-4 flex gap-1.5">
