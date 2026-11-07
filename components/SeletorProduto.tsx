@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Produto } from "@/lib/produtos";
-import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
+import { coresDoProduto, estoqueDaVariante, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { calcularDescontoPix, formatarParcelamento, formatarPreco, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { corAproximada } from "@/lib/cor";
@@ -36,6 +36,14 @@ function IconeSeta({ direcao }: { direcao: "esquerda" | "direita" }) {
   );
 }
 
+// Aviso quando a cliente tenta colocar mais unidades do que tem em estoque (07/11/2026, pedido do
+// Brunno) - o carrinho nao deixa passar do estoque (ver adicionar em lib/cart-context.tsx).
+function textoLimiteEstoque(quantidade: number): string {
+  return quantidade === 1
+    ? "Só temos 1 unidade desse tamanho, e ela já está no seu carrinho."
+    : `Só temos ${quantidade} unidades desse tamanho, e elas já estão no seu carrinho.`;
+}
+
 export default function SeletorProduto({ produto }: { produto: Produto }) {
   const cores = coresDoProduto(produto);
   const [corIndex, setCorIndex] = useState(0);
@@ -55,6 +63,14 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   const chaveAtual = `${corAtual.cor}|${tamanho}`;
   const adicionado = ultimoAdicionado === chaveAtual;
   const qtdNaSacola = itens.reduce((soma, i) => soma + i.quantidade, 0);
+  // Guarda QUAL combinacao (cor + tamanho) bateu no limite do estoque - o aviso fica ate' a cliente
+  // mudar de cor/tamanho, igual ao "Adicionado" acima.
+  const [limiteAtingido, setLimiteAtingido] = useState<string | null>(null);
+  const estoqueDoTamanho = estoqueDaVariante(produto, corAtual.cor, tamanho);
+  const avisoLimite =
+    limiteAtingido === chaveAtual && estoqueDoTamanho !== null && estoqueDoTamanho > 0
+      ? textoLimiteEstoque(estoqueDoTamanho)
+      : null;
 
   // Dispara ViewContent/view_item UMA vez, quando a pagina desse produto abre - ver
   // lib/tracking.ts. So' depende do produto.id (nao da cor/tamanho escolhido), pra nao
@@ -127,7 +143,12 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   }
 
   function adicionarAoCarrinho() {
-    adicionar(produto, corAtual.cor, tamanho);
+    if (!adicionar(produto, corAtual.cor, tamanho)) {
+      setUltimoAdicionado(null);
+      setLimiteAtingido(chaveAtual);
+      return;
+    }
+    setLimiteAtingido(null);
     setUltimoAdicionado(chaveAtual);
   }
 
@@ -339,6 +360,8 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
             {!tamanhoEstaDisponivel ? "Esgotado" : adicionado ? "Adicionado" : "Adicionar ao carrinho"}
           </button>
 
+          {avisoLimite && <p className="text-[13.5px] mt-3 text-mozz-black">{avisoLimite}</p>}
+
           {adicionado && (
             <p className="text-[13.5px] mt-3 text-mozz-black">
               Peça adicionada à sacola.{" "}
@@ -381,6 +404,8 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
             </div>
           </div>
         ) : (
+          <div>
+            {avisoLimite && <p className="text-[12.5px] text-mozz-black mb-2">{avisoLimite}</p>}
           <div className="flex items-center gap-3">
             <button onClick={irParaTamanhos} className="shrink-0 text-left" aria-label="Escolher tamanho">
               <span className="block text-[15px]">{formatarPreco(produto.preco)}</span>
@@ -393,6 +418,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
             >
               {!tamanhoEstaDisponivel ? "Esgotado" : "Adicionar ao carrinho"}
             </button>
+          </div>
           </div>
         )}
       </div>
