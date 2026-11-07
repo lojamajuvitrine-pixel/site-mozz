@@ -19,6 +19,7 @@ import { listarProdutosBling } from "../lib/bling";
 import { extrairTamanho, tamanhosDisponiveisDaCor } from "../lib/blingParse";
 import type { Produto } from "../lib/produtos";
 import { notificarAvisosDeEstoque } from "./avisoEstoque";
+import { gravarEstoqueSync } from "../lib/estoqueGravacao";
 
 const PAUSA_ENTRE_PAGINAS_MS = 350;
 
@@ -190,9 +191,26 @@ function atualizarProdutoFundidoPorCor(
 async function main() {
   console.log("Sync rapido de preco/estoque (sem fotos/marca/descricao)...");
 
+  // hora em que o retrato do Bling comecou a ser tirado - ver gravarEstoqueSync abaixo
+  const inicio = new Date().toISOString();
   const todos = await listarTodosProdutos();
   const ativos = todos.filter((p) => p.situacao === "A");
   console.log(`${ativos.length} produtos ativos encontrados no Bling.`);
+
+  // Estoque ao vivo (07/11/2026, ver lib/estoqueAoVivo.ts): grava o saldo de cada variacao no
+  // Supabase - e' de la' que o site le o estoque agora, sem esperar o JSON abaixo ser publicado.
+  // Rede de seguranca dos avisos do Bling (app/api/bling/webhook). Se falhar, o sync segue normal.
+  await gravarEstoqueSync(
+    ativos
+      .filter((p) => p.formato !== "V")
+      .map((p) => ({
+        id: p.id,
+        id_pai: p.idProdutoPai || null,
+        nome: p.nome,
+        saldo: p.estoque?.saldoVirtualTotal ?? 0
+      })),
+    inicio
+  );
 
   // agrupa por produto-pai (mesma logica do sync completo) pra decidir preco/estoque por
   // GRUPO (produto do site), nao por SKU individual.
