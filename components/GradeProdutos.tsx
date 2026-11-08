@@ -3,8 +3,9 @@
 import { useEffect, useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
 import { coresDoProduto, tamanhosDisponiveisDoColor, compararTamanhos, type Produto } from "@/lib/produtos";
-import { familiaDaCor, normalizarTexto } from "@/lib/cor";
+import { normalizarTexto } from "@/lib/cor";
 import { categoriaDoProduto, CATEGORIA_OUTRAS } from "@/lib/categorias";
+import { familiasDaCor, FAMILIA_ESTAMPADO, FAMILIA_OUTRAS } from "@/lib/coresFiltro";
 
 type Ordenacao = "relevancia" | "menor-preco" | "maior-preco";
 // Quantas colunas por linha no desktop - pedido do Brunno em 27/09/2026, inspirado no seletor
@@ -25,8 +26,8 @@ const QUANTIDADE_POR_PAGINA = 24;
 // lista vazia sem avisar.
 //
 // COR volta agrupada por familia (o filtro de cor tinha saido em 27/09 porque o Bling tem 100+
-// nomes de cor). Cor sem nome reconhecido (ex.: so' o codigo "07705") cai em "Outras cores" ate'
-// ganhar nome no Bling.
+// nomes de cor) - regras em lib/coresFiltro.ts. Com filtro de cor marcado, o card ja' abre na
+// foto da cor que bateu (corInicial do ProductCard).
 // ---------------------------------------------------------------------------------------------
 
 type Filtros = {
@@ -39,10 +40,6 @@ type Filtros = {
 type Faceta = keyof Filtros;
 
 const FILTROS_VAZIOS: Filtros = { marcas: [], categorias: [], tamanhos: [], cores: [] };
-
-const FAMILIA_OUTRAS = "Outras cores";
-const FAMILIA_ESTAMPADO = "Estampado";
-const PALAVRAS_ESTAMPADO = ["estamp", "print", "floral", "onca", "listra", "listrad", "xadrez", "poa", "tie dye", "animal"];
 
 // Ordem e bolinha de cor de cada familia no filtro.
 const FAMILIAS: Array<{ nome: string; amostra: string }> = [
@@ -66,20 +63,17 @@ const FAMILIAS: Array<{ nome: string; amostra: string }> = [
 const ORDEM_FAMILIA = new Map(FAMILIAS.map((f, i) => [f.nome, i]));
 const AMOSTRA_FAMILIA = new Map(FAMILIAS.map((f) => [f.nome, f.amostra]));
 
-function familiaParaFiltro(nomeCor: string): string {
-  const normalizado = normalizarTexto(nomeCor);
-  if (PALAVRAS_ESTAMPADO.some((palavra) => normalizado.includes(palavra))) return FAMILIA_ESTAMPADO;
-  const familia = familiaDaCor(nomeCor);
-  return familia === "Outras" ? FAMILIA_OUTRAS : familia;
-}
-
 // Resumo de cada peca calculado uma vez so' (a contagem de cada opcao roda o filtro varias vezes).
-type Variante = { familia: string; tamanhos: string[] };
+type Variante = { cor: string; familias: string[]; tamanhos: string[] };
 type PecaResumo = { produto: Produto; categoria: string; variantes: Variante[] };
 
 function resumir(produto: Produto): PecaResumo {
   const variantes = coresDoProduto(produto)
-    .map((cor) => ({ familia: familiaParaFiltro(cor.cor), tamanhos: tamanhosDisponiveisDoColor(cor) }))
+    .map((cor) => ({
+      cor: cor.cor,
+      familias: familiasDaCor(cor.cor, produto.nome, produto.marca),
+      tamanhos: tamanhosDisponiveisDoColor(cor)
+    }))
     .filter((variante) => variante.tamanhos.length > 0);
   return { produto, categoria: categoriaDoProduto(produto), variantes };
 }
@@ -94,11 +88,20 @@ function passa(peca: PecaResumo, filtros: Filtros, ignorar?: Faceta): boolean {
   const usaTamanho = ignorar !== "tamanhos" && filtros.tamanhos.length > 0;
   const usaCor = ignorar !== "cores" && filtros.cores.length > 0;
   if (!usaTamanho && !usaCor) return true;
-  return peca.variantes.some(
-    (variante) =>
-      (!usaCor || filtros.cores.includes(variante.familia)) &&
-      (!usaTamanho || variante.tamanhos.some((t) => filtros.tamanhos.includes(t)))
+  return peca.variantes.some((variante) => varianteServe(variante, filtros, usaCor, usaTamanho));
+}
+
+function varianteServe(variante: Variante, filtros: Filtros, usaCor: boolean, usaTamanho: boolean): boolean {
+  return (
+    (!usaCor || variante.familias.some((familia) => filtros.cores.includes(familia))) &&
+    (!usaTamanho || variante.tamanhos.some((t) => filtros.tamanhos.includes(t)))
   );
+}
+
+// Cor que o card deve abrir quando ha' filtro de cor: a primeira cor da peca que bate.
+function corQueBate(peca: PecaResumo, filtros: Filtros): string | undefined {
+  if (filtros.cores.length === 0) return undefined;
+  return peca.variantes.find((variante) => varianteServe(variante, filtros, true, filtros.tamanhos.length > 0))?.cor;
 }
 
 function valoresDaPeca(peca: PecaResumo, faceta: Faceta, filtros: Filtros): string[] {
@@ -108,11 +111,11 @@ function valoresDaPeca(peca: PecaResumo, faceta: Faceta, filtros: Filtros): stri
   const valores = new Set<string>();
   for (const variante of peca.variantes) {
     if (faceta === "tamanhos") {
-      if (filtros.cores.length > 0 && !filtros.cores.includes(variante.familia)) continue;
+      if (filtros.cores.length > 0 && !variante.familias.some((familia) => filtros.cores.includes(familia))) continue;
       variante.tamanhos.forEach((t) => valores.add(t));
     } else {
       if (filtros.tamanhos.length > 0 && !variante.tamanhos.some((t) => filtros.tamanhos.includes(t))) continue;
-      valores.add(variante.familia);
+      variante.familias.forEach((familia) => valores.add(familia));
     }
   }
   return Array.from(valores);
@@ -376,9 +379,11 @@ export default function GradeProdutos({
   );
 
   const listaFiltrada = useMemo(() => {
-    const lista = pecasDaBusca.filter((peca) => passa(peca, filtros)).map((peca) => peca.produto);
+    const lista = pecasDaBusca.filter((peca) => passa(peca, filtros));
     // produto com foto sempre antes de produto sem foto, mesmo ordenando por preco.
-    return [...lista].sort((a, b) => {
+    return [...lista].sort((pecaA, pecaB) => {
+      const a = pecaA.produto;
+      const b = pecaB.produto;
       const temFotoA = a.imagem ? 0 : 1;
       const temFotoB = b.imagem ? 0 : 1;
       if (temFotoA !== temFotoB) return temFotoA - temFotoB;
@@ -558,9 +563,16 @@ export default function GradeProdutos({
                   : "grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6"
               }
             >
-              {produtosVisiveis.map((produto) => (
-                <ProductCard key={produto.id} produto={produto} />
-              ))}
+              {produtosVisiveis.map((peca) => {
+                const corInicial = corQueBate(peca, filtros);
+                return (
+                  <ProductCard
+                    key={`${peca.produto.id}-${corInicial ?? ""}`}
+                    produto={peca.produto}
+                    corInicial={corInicial}
+                  />
+                );
+              })}
             </div>
             {temMaisPraCarregar && (
               <div className="flex justify-center mt-8">
