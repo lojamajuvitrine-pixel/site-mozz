@@ -60,7 +60,8 @@ function IconeCoracao({ preenchido }: { preenchido: boolean }) {
 export default function ProductCard({
   produto,
   mostrarCarrosselFoto = true,
-  mostrarFavorito = true
+  mostrarFavorito = true,
+  corInicial
 }: {
   produto: Produto;
   // Desliga so' as setinhas de trocar foto dentro do card (nao mexe nas bolinhas de cor
@@ -74,13 +75,18 @@ export default function ProductCard({
   // das pecas apenas da pagina inicial"). So' a home passa false - catalogo, paginas de marca e
   // "quem viu tambem gostou" continuam com o coracao normalmente.
   mostrarFavorito?: boolean;
+  // Cor que o card ja' abre mostrando - a vitrine passa a cor que bateu com o filtro de cor
+  // (ex.: filtro "Preto" mostra a foto preta da peca, e nao a primeira cor dela). 08/11/2026.
+  corInicial?: string;
 }) {
   const router = useRouter();
   const { adicionar } = useCart();
   const { ehFavorito, alternarFavorito } = useFavoritos();
   const favoritado = ehFavorito(produto.id);
   const cores = coresDoProduto(produto);
-  const [corIndex, setCorIndex] = useState(0);
+  const [corIndex, setCorIndex] = useState(() =>
+    corInicial ? Math.max(0, cores.findIndex((cor) => cor.cor === corInicial)) : 0
+  );
   const [adicionado, setAdicionado] = useState<string | null>(null); // guarda o tamanho adicionado, pra feedback
   const corAtual = cores[corIndex];
   // Carrossel direto no card do mosaico, com setinha - pra rodar as fotos da peca sem precisar
