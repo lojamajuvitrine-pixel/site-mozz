@@ -7,12 +7,14 @@ import { caminhoVitrinePromocional, rotuloMenuVitrine } from "@/lib/campanha";
 import { useFavoritos } from "@/lib/favoritos-context";
 import { useCart } from "@/lib/cart-context";
 
-const MARCAS_FEMININO = [
+type Marca = { nome: string; slug: string };
+
+const MARCAS_FEMININO: Marca[] = [
   { nome: "Animale", slug: "animale" },
-  { nome: "NV", slug: "nv" },
-  { nome: "Farm", slug: "farm" }
+  { nome: "Farm", slug: "farm" },
+  { nome: "NV", slug: "nv" }
 ];
-const MARCAS_MASCULINO = [
+const MARCAS_MASCULINO: Marca[] = [
   { nome: "Reserva", slug: "reserva" },
   { nome: "Foxton", slug: "foxton" }
 ];
@@ -41,7 +43,7 @@ function IconeChevron({ aberto }: { aberto: boolean }) {
 
 function IconeMenu({ aberto }: { aberto: boolean }) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" width="20" height="20">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" width="24" height="24">
       {aberto ? (
         <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" />
       ) : (
@@ -60,7 +62,7 @@ function IconeMenu({ aberto }: { aberto: boolean }) {
 function IconeSacola({ quantidade }: { quantidade: number }) {
   if (quantidade <= 0) {
     return (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="19" height="19">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="24" height="24">
         <path d="M6 8h12l-1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z" />
         <path d="M9 8V6a3 3 0 0 1 6 0v2" />
       </svg>
@@ -68,7 +70,7 @@ function IconeSacola({ quantidade }: { quantidade: number }) {
   }
   const texto = quantidade > 99 ? "99+" : String(quantidade);
   return (
-    <svg viewBox="0 0 24 24" width="21" height="21" className="text-mozz-black">
+    <svg viewBox="0 0 24 24" width="24" height="24" className="text-mozz-black">
       <path
         d="M6 8h12l-1 12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z"
         fill="currentColor"
@@ -94,7 +96,7 @@ function IconeSacola({ quantidade }: { quantidade: number }) {
 
 function IconeConta() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="19" height="19">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="24" height="24">
       <circle cx="12" cy="8" r="3.2" />
       <path d="M5 20c1.2-3.8 4-5.6 7-5.6s5.8 1.8 7 5.6" strokeLinecap="round" />
     </svg>
@@ -103,7 +105,7 @@ function IconeConta() {
 
 function IconeCoracaoNav() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="19" height="19">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="24" height="24">
       <path
         d="M12 20.5s-7.5-4.6-10-9.3C.5 8 1.9 4.5 5.3 4c2-.3 3.9.7 4.8 2.4.9-1.7 2.8-2.7 4.8-2.4 3.4.5 4.8 4 3.3 7.2-2.5 4.7-10 9.3-10 9.3z"
         strokeLinecap="round"
@@ -122,7 +124,66 @@ function BadgeContagem({ valor }: { valor: number }) {
   );
 }
 
-export default function Nav() {
+// Painel que abre ao passar o mouse em Feminino / Masculino (pacote 2, aprovado pelo Brunno em
+// 07/11/2026): coluna MARCAS (+ "Ver tudo") e coluna CATEGORIAS com tudo que tem peca em estoque
+// (calculado no servidor em components/MenuTopo.tsx). A categoria usa <a> comum, e nao <Link>,
+// de proposito: a pagina abre do zero e a vitrine (GradeProdutos) le ?categoria= da URL ao
+// carregar - com <Link> indo de /feminino?categoria=Saias pra /feminino?categoria=Vestidos a
+// vitrine ficaria montada com o filtro antigo.
+function PainelMenu({ marcas, categorias, caminho }: { marcas: Marca[]; categorias: string[]; caminho: string }) {
+  const linhasPorColuna = Math.min(Math.max(categorias.length, 1), 8);
+  return (
+    <div className="absolute left-0 top-full hidden group-hover:block pt-4 z-30">
+      <div className="flex gap-14 bg-white border border-black/10 shadow-lg px-8 py-6 text-mozz-black font-normal">
+        <div className="min-w-[120px]">
+          <p className="text-[11.5px] font-bold uppercase tracking-widest text-mozz-gray mb-3">Marcas</p>
+          <ul className="space-y-2.5">
+            {marcas.map((marca) => (
+              <li key={marca.slug}>
+                <Link href={`/marca/${marca.slug}`} className="text-[14.5px] hover:underline underline-offset-4">
+                  {marca.nome}
+                </Link>
+              </li>
+            ))}
+            <li className="pt-1">
+              <Link href={caminho} className="text-[14.5px] font-semibold underline underline-offset-4">
+                Ver tudo
+              </Link>
+            </li>
+          </ul>
+        </div>
+        {categorias.length > 0 && (
+          <div>
+            <p className="text-[11.5px] font-bold uppercase tracking-widest text-mozz-gray mb-3">Categorias</p>
+            <ul
+              className="grid grid-flow-col gap-x-10 gap-y-2.5"
+              style={{ gridTemplateRows: `repeat(${linhasPorColuna}, minmax(0, auto))` }}
+            >
+              {categorias.map((categoria) => (
+                <li key={categoria}>
+                  <a
+                    href={`${caminho}?categoria=${encodeURIComponent(categoria)}`}
+                    className="text-[14.5px] whitespace-nowrap hover:underline underline-offset-4"
+                  >
+                    {categoria}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default function Nav({
+  categoriasFeminino = [],
+  categoriasMasculino = []
+}: {
+  categoriasFeminino?: string[];
+  categoriasMasculino?: string[];
+}) {
   const [menuAberto, setMenuAberto] = useState(false);
   const [marcasAberto, setMarcasAberto] = useState(false);
   const { favoritos } = useFavoritos();
@@ -158,57 +219,36 @@ export default function Nav() {
           <div className="font-serif text-[14.5px] tracking-widest2">MOZZ</div>
         </Link>
 
-        <nav className="flex items-center gap-6 text-[14.5px] text-mozz-gray">
+        {/* Menu do topo em preto e negrito (pacote 2, 07/11/2026) - antes era cinza fino. */}
+        <nav className="flex items-center gap-7 text-[15px] font-bold text-mozz-black">
           <div className="relative group">
-            <Link href="/feminino" className="hover:text-mozz-black transition-colors">
+            <Link href="/feminino" className="block py-1 hover:opacity-70 transition-opacity">
               Feminino
             </Link>
-            <div className="absolute left-0 top-full hidden group-hover:block pt-3 z-30">
-              <div className="flex flex-col min-w-[140px] bg-white border border-black/10 shadow-sm py-2">
-                {MARCAS_FEMININO.map((marca) => (
-                  <Link
-                    key={marca.slug}
-                    href={`/marca/${marca.slug}`}
-                    className="px-4 py-2 text-[14px] hover:bg-mozz-stone transition-colors"
-                  >
-                    {marca.nome}
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <PainelMenu marcas={MARCAS_FEMININO} categorias={categoriasFeminino} caminho="/feminino" />
           </div>
 
           <div className="relative group">
-            <Link href="/masculino" className="hover:text-mozz-black transition-colors">
+            <Link href="/masculino" className="block py-1 hover:opacity-70 transition-opacity">
               Masculino
             </Link>
-            <div className="absolute left-0 top-full hidden group-hover:block pt-3 z-30">
-              <div className="flex flex-col min-w-[140px] bg-white border border-black/10 shadow-sm py-2">
-                {MARCAS_MASCULINO.map((marca) => (
-                  <Link
-                    key={marca.slug}
-                    href={`/marca/${marca.slug}`}
-                    className="px-4 py-2 text-[14px] hover:bg-mozz-stone transition-colors"
-                  >
-                    {marca.nome}
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <PainelMenu marcas={MARCAS_MASCULINO} categorias={categoriasMasculino} caminho="/masculino" />
           </div>
 
-          <Link href={caminhoVitrinePromocional()} className="hover:text-mozz-black transition-colors">
+          <Link href={caminhoVitrinePromocional()} className="py-1 hover:opacity-70 transition-opacity">
             {rotuloMenuVitrine()}
           </Link>
-          <Link href="/quem-somos" className="hover:text-mozz-black transition-colors">
+          <Link href="/quem-somos" className="py-1 hover:opacity-70 transition-opacity">
             Quem somos
           </Link>
         </nav>
 
         <div className="flex-1" />
 
-        <div className="flex items-center gap-4 text-mozz-black/80">
-          <BarraBusca expansivel />
+        <div className="flex items-center gap-4 text-mozz-black">
+          <div className="w-[240px]">
+            <BarraBusca />
+          </div>
           <Link href="/conta" aria-label="Minha conta" className="p-1">
             <IconeConta />
           </Link>
@@ -239,7 +279,7 @@ export default function Nav() {
             <div className="font-serif text-[14.5px] tracking-widest2">MOZZ</div>
           </Link>
 
-          <div className="flex justify-end items-center gap-3 text-mozz-black/80">
+          <div className="flex justify-end items-center gap-2.5 text-mozz-black">
             <Link href="/conta" aria-label="Minha conta" className="p-1">
               <IconeConta />
             </Link>
