@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import Nav from "@/components/Nav";
+import MenuTopo from "@/components/MenuTopo";
 import Footer from "@/components/Footer";
 import BotaoWhatsapp from "@/components/BotaoWhatsapp";
 import FaixaBeneficios from "@/components/FaixaBeneficios";
@@ -125,7 +125,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 troca...) continua rolando junto com a pagina, pra nao comer espaco da tela. */}
             <div className="sticky top-0 z-50 bg-white">
               <FaixaCupom />
-              <Nav />
+              <MenuTopo />
             </div>
             <FaixaBeneficios />
             <main className="max-w-[1600px] mx-auto px-6">{children}</main>
