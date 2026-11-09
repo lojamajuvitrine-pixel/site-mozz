@@ -8,6 +8,7 @@ import { coresDoProduto, estoqueDaVariante, tamanhosDisponiveisDoColor } from "@
 import { calcularDescontoPix, emPromocao, formatarParcelamento, formatarPreco, maxParcelas, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { corAproximada } from "@/lib/cor";
+import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 import CalculoFrete from "@/components/CalculoFrete";
 import AvisoEstoque from "@/components/AvisoEstoque";
 import AvisoFreteGratis from "@/components/AvisoFreteGratis";
@@ -201,7 +202,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
               <Image
                 key={fotoAtual}
                 src={fotoAtual}
-                alt={`${produto.marca} ${produto.nome} - ${corAtual.cor}`}
+                alt={`${produto.marca} ${produto.nome} - ${nomeDaCorParaExibir(corAtual.cor, produto.marca)}`}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 // foto grande da pagina do produto - qualidade alta, e' onde o cliente olha o
@@ -300,14 +301,14 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
         <div className="mt-6">
           {cores.length > 1 && (
             <>
-              <p className="text-[13.5px] text-mozz-gray mb-2">Cor: {corAtual.cor}</p>
+              <p className="text-[13.5px] text-mozz-gray mb-2">Cor: {nomeDaCorParaExibir(corAtual.cor, produto.marca)}</p>
               <div className="flex gap-2 mb-6 flex-wrap">
                 {cores.map((c, i) => (
                   <button
                     key={c.cor}
                     onClick={() => selecionarCor(i)}
-                    aria-label={c.cor}
-                    title={c.cor}
+                    aria-label={nomeDaCorParaExibir(c.cor, produto.marca)}
+                    title={nomeDaCorParaExibir(c.cor, produto.marca)}
                     className={`w-9 h-9 rounded-full border-2 ${
                       i === corIndex ? "border-mozz-black" : "border-transparent"
                     }`}
@@ -315,7 +316,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
                   >
                     <span
                       className="block w-full h-full rounded-full border border-black/15"
-                      style={{ background: corAproximada(c.cor) }}
+                      style={{ background: corAproximada(nomeDaCorParaExibir(c.cor, produto.marca)) }}
                     />
                   </button>
                 ))}

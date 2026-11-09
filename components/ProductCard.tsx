@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { corAproximada } from "@/lib/cor";
+import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 import { emPromocao, formatarParcelamento, formatarPreco, maxParcelas } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { useFavoritos } from "@/lib/favoritos-context";
@@ -256,12 +257,12 @@ export default function ProductCard({
             <button
               key={c.cor}
               onClick={(e) => selecionarCor(e, i)}
-              aria-label={c.cor}
-              title={c.cor}
+              aria-label={nomeDaCorParaExibir(c.cor, produto.marca)}
+              title={nomeDaCorParaExibir(c.cor, produto.marca)}
               className={`w-4 h-4 rounded-full border ${i === corIndex ? "border-mozz-black" : "border-black/15"}`}
               style={{ padding: 1.5 }}
             >
-              <span className="block w-full h-full rounded-full" style={{ background: corAproximada(c.cor) }} />
+              <span className="block w-full h-full rounded-full" style={{ background: corAproximada(nomeDaCorParaExibir(c.cor, produto.marca)) }} />
             </button>
           ))}
         </div>
