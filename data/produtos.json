@@ -3322,13 +3322,11 @@
           "42",
           "44"
         ],
-        "tamanhosDisponiveis": [
-          "44"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16638481555",
@@ -6924,8 +6922,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "G"
         ]
       }
     ],
@@ -7832,9 +7829,7 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": [
-          "GG"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Preto",
@@ -31214,7 +31209,6 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "34",
           "38",
           "40",
           "42"
@@ -38572,13 +38566,11 @@
           "36",
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "34"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594139899--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorTamanho": {
       "34": [
         "16442980854"
@@ -42192,13 +42184,11 @@
         "tamanhos": [
           "36"
         ],
-        "tamanhosDisponiveis": [
-          "36"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16713865562--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "_corCodigo": "07707"
   },
   {
@@ -42219,13 +42209,11 @@
         "tamanhos": [
           "P"
         ],
-        "tamanhosDisponiveis": [
-          "P"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16713849438--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "_corCodigo": "NV089"
   },
   {
