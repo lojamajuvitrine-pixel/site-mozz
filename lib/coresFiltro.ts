@@ -63,6 +63,16 @@ function traduzirCodigo(marca: string, codigo: string): string | null {
   return daTabelaDoSite !== codigo ? daTabelaDoSite : null;
 }
 
+// Nome da cor para MOSTRAR a cliente (09/11/2026, pedido do Brunno): troca o codigo cru que vem
+// do Bling ("0013") pelo nome pesquisado ("Preto"). E' so' exibicao - o codigo continua sendo a
+// chave da cor no carrinho, no estoque e no pedido do Bling. Sem traducao conhecida, devolve
+// a cor como veio.
+export function nomeDaCorParaExibir(cor: string, marca = ""): string {
+  const limpa = (cor || "").trim();
+  if (!/^[A-Za-z]{0,3}\d{3,5}$/.test(limpa)) return cor;
+  return traduzirCodigo(marca, limpa.toUpperCase()) ?? cor;
+}
+
 export const FAMILIA_OUTRAS = "Outras cores";
 export const FAMILIA_ESTAMPADO = "Estampado";
 

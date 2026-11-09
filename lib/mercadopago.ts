@@ -27,6 +27,7 @@ import { validarCpf } from "@/lib/cpf";
 import { calcularFrete, cepDeReserva, ehEntregaExpressa, ehRetirada, FRETE_ENTREGA_EXPRESSA } from "@/lib/frete";
 import { calcularDescontoPix, calcularParcelamento, emPromocao, maxParcelas, MAX_PARCELAS_SEM_JUROS } from "@/lib/formato";
 import { buscarConfiguracaoLoja } from "@/lib/configLoja";
+import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 import { buscarSaldoCredito, calcularCreditoAplicavel } from "@/lib/creditos";
 
 // Erro "esperado" (o pedido em si nao pode seguir por um motivo que o cliente precisa saber -
@@ -224,7 +225,7 @@ async function prepararPedido(
       const corReal = coresDoProduto(produtoReal).find((c) => c.cor === item.cor);
       if (!corReal || !tamanhosDisponiveisDoColor(corReal).includes(item.tamanho)) {
         throw new ErroValidacaoPedido(
-          `"${produtoReal.nome}" (${item.cor}, tamanho ${item.tamanho}) está sem estoque no momento`
+          `"${produtoReal.nome}" (${nomeDaCorParaExibir(item.cor, produtoReal.marca)}, tamanho ${item.tamanho}) está sem estoque no momento`
         );
       }
       // Nao deixa comprar mais unidades do que tem (07/11/2026) - o carrinho ja' limita, isso e' a
@@ -232,7 +233,7 @@ async function prepararPedido(
       const limite = estoqueDaVariante(produtoReal, item.cor, item.tamanho);
       if (limite !== null && item.quantidade > limite) {
         const variante =
-          item.cor && item.cor !== "Único" ? `${item.cor}, tamanho ${item.tamanho}` : `tamanho ${item.tamanho}`;
+          item.cor && item.cor !== "Único" ? `${nomeDaCorParaExibir(item.cor, produtoReal.marca)}, tamanho ${item.tamanho}` : `tamanho ${item.tamanho}`;
         throw new ErroValidacaoPedido(
           `Temos só ${limite} ${limite === 1 ? "unidade" : "unidades"} de "${produtoReal.nome}" (${variante}). Ajuste a quantidade no carrinho.`
         );
@@ -322,7 +323,7 @@ async function prepararPedido(
     id: produtoReal.id,
     title:
       item.cor && item.cor !== "Único"
-        ? `${produtoReal.nome} (${item.cor}, ${item.tamanho})`
+        ? `${produtoReal.nome} (${nomeDaCorParaExibir(item.cor, produtoReal.marca)}, ${item.tamanho})`
         : `${produtoReal.nome} (${item.tamanho})`,
     quantity: item.quantidade,
     unit_price: Math.round(produtoReal.preco * fatorDoItem(produtoReal) * fatorCredito * 100) / 100,
@@ -353,7 +354,7 @@ async function prepararPedido(
       // com a cor desde 07/11/2026 (vai no e-mail e no historico do pedido)
       nome:
         item.cor && item.cor !== "Único"
-          ? `${produtoReal.nome} (${item.cor}, ${item.tamanho})`
+          ? `${produtoReal.nome} (${nomeDaCorParaExibir(item.cor, produtoReal.marca)}, ${item.tamanho})`
           : `${produtoReal.nome} (${item.tamanho})`,
       qtd: item.quantidade,
       valor: itensPreferencia[indice].unit_price
