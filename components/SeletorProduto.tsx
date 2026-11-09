@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, estoqueDaVariante, tamanhosDisponiveisDoColor } from "@/lib/produtos";
-import { calcularDescontoPix, formatarParcelamento, formatarPreco, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
+import { calcularDescontoPix, emPromocao, formatarParcelamento, formatarPreco, maxParcelas, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { corAproximada } from "@/lib/cor";
 import CalculoFrete from "@/components/CalculoFrete";
@@ -283,13 +283,18 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
         ) : (
           <p className="text-[17px] mt-2">{formatarPreco(produto.preco)}</p>
         )}
-        {formatarParcelamento(produto.preco) && (
-          <p className="text-[13.5px] text-mozz-gray mt-1">{formatarParcelamento(produto.preco)}</p>
+        {/* Peca em promocao (09/11/2026): ate 3x sem juros e sem o desconto do Pix */}
+        {formatarParcelamento(produto.preco, maxParcelas(emPromocao(produto))) && (
+          <p className="text-[13.5px] text-mozz-gray mt-1">
+            {formatarParcelamento(produto.preco, maxParcelas(emPromocao(produto)))}
+          </p>
         )}
-        <p className="text-[13.5px] text-mozz-black mt-1">
-          {formatarPreco(produto.preco - calcularDescontoPix(produto.preco))} no Pix{" "}
-          <span className="text-mozz-gray">({PERCENTUAL_DESCONTO_PIX}% OFF)</span>
-        </p>
+        {!emPromocao(produto) && (
+          <p className="text-[13.5px] text-mozz-black mt-1">
+            {formatarPreco(produto.preco - calcularDescontoPix(produto.preco))} no Pix{" "}
+            <span className="text-mozz-gray">({PERCENTUAL_DESCONTO_PIX}% OFF)</span>
+          </p>
+        )}
         <AvisoFreteGratis limiar={limiarFreteGratis(freteGratisAcimaDe, !!produto.outlet)} subtotal={produto.preco} />
 
         <div className="mt-6">

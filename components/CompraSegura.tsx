@@ -13,13 +13,20 @@ function IconeEscudo() {
 // Quadro "Compra segura" (pedido do Brunno em 19/10/2026) - na pagina do produto (completo) e no
 // carrinho (compacto, so' uma linha perto do pagamento). Os compromissos de prazo (envio em ate
 // 1 dia util, resposta no WhatsApp no mesmo dia util) precisam ser cumpridos pela equipe.
-export default function CompraSegura({ compacto = false }: { compacto?: boolean }) {
+// "parcelas": teto do carrinho (3x quando tem peca em promocao - 09/11/2026).
+export default function CompraSegura({
+  compacto = false,
+  parcelas = MAX_PARCELAS_SEM_JUROS
+}: {
+  compacto?: boolean;
+  parcelas?: number;
+}) {
   if (compacto) {
     return (
       <div className="flex items-center gap-2 text-[13px] px-3 py-2 border mt-3 bg-mozz-stone border-black/10 text-mozz-black">
         <IconeEscudo />
         <span>
-          Pagamento seguro pelo Mercado Pago · Cartão em até {MAX_PARCELAS_SEM_JUROS}x sem juros ·{" "}
+          Pagamento seguro pelo Mercado Pago · Cartão em até {parcelas}x sem juros ·{" "}
           <Link href="/trocas" className="underline">
             Troca em 30 dias
           </Link>

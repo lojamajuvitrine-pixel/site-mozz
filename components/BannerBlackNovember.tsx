@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MAX_PARCELAS_SEM_JUROS, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
+import { MAX_PARCELAS_PROMOCAO } from "@/lib/formato";
 
 // Banner da Black November no topo da home, no celular e no desktop (pedido do Brunno em
 // 05/11/2026, textos aprovados por ele). O "Ate X% OFF" vem do maior desconto entre as pecas da
@@ -15,7 +15,8 @@ export default function BannerBlackNovember({ maiorDesconto }: { maiorDesconto: 
           {maiorDesconto > 0 ? `Até ${maiorDesconto}% OFF em peças selecionadas` : "Ofertas em peças selecionadas"}
         </p>
         <p className="mt-1.5 text-[12.5px] md:text-[13.5px] text-white/75">
-          {PERCENTUAL_DESCONTO_PIX}% OFF no Pix · até {MAX_PARCELAS_SEM_JUROS}x sem juros · até 30/11
+          {/* Pecas em promocao: sem desconto no Pix e ate 3x sem juros (09/11/2026) */}
+          até {MAX_PARCELAS_PROMOCAO}x sem juros · até 30/11
         </p>
         <span className="inline-block mt-5 border border-white px-7 py-2.5 text-[12.5px] tracking-[0.2em] uppercase">
           Ver ofertas

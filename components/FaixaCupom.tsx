@@ -16,12 +16,12 @@ export default function FaixaCupom() {
       <span className="sm:hidden text-[11px]">
         1ª compra: 15% OFF com <strong className="font-semibold">PRIMEIRACOMPRA</strong>
         <span className="mx-1.5 opacity-60">·</span>
-        Pix: {PERCENTUAL_DESCONTO_PIX}% OFF
+        Pix: {PERCENTUAL_DESCONTO_PIX}% OFF (exceto promoções)
       </span>
       <span className="hidden sm:inline text-[12.5px]">
         1ª compra: 15% OFF com o cupom <strong className="font-semibold">PRIMEIRACOMPRA</strong>
         <span className="mx-2 opacity-60">·</span>
-        Pix: {PERCENTUAL_DESCONTO_PIX}% OFF
+        Pix: {PERCENTUAL_DESCONTO_PIX}% OFF (exceto promoções)
       </span>
     </div>
   );

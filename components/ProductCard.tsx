@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
 import { corAproximada } from "@/lib/cor";
-import { formatarParcelamento, formatarPreco } from "@/lib/formato";
+import { emPromocao, formatarParcelamento, formatarPreco, maxParcelas } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { useFavoritos } from "@/lib/favoritos-context";
 
@@ -98,7 +98,8 @@ export default function ProductCard({
   // produto" (mesmo comportamento ja usado na pagina do produto, ver SeletorProduto.tsx) em
   // vez de uma foto que nao e' da cor escolhida. Na carga inicial (corIndex 0) isso raramente
   // muda algo, ja que o sync poe cor com foto primeiro.
-  const parcelamento = formatarParcelamento(produto.preco);
+  // Peca em promocao: ate 3x sem juros (09/11/2026)
+  const parcelamento = formatarParcelamento(produto.preco, maxParcelas(emPromocao(produto)));
   const disponiveisAtual = tamanhosDisponiveisDoColor(corAtual);
   // % de desconto pra mostrar na badge da foto - calculado em cima do preco original vs o
   // preco especial (cadastrados no painel /admin/produtos), arredondado pro inteiro mais
