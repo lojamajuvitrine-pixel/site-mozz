@@ -2,7 +2,15 @@
 
 import { limiteDoItem, useCart } from "@/lib/cart-context";
 import { idVarianteProduto } from "@/lib/produtos";
-import { formatarPreco, calcularParcelamento, calcularDescontoPix, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
+import {
+  formatarPreco,
+  calcularParcelamento,
+  calcularDescontoPix,
+  emPromocao,
+  maxParcelas,
+  MAX_PARCELAS_PROMOCAO,
+  PERCENTUAL_DESCONTO_PIX
+} from "@/lib/formato";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -275,6 +283,11 @@ export default function PaginaCarrinho() {
   // pecas. Mesma regra recalculada no servidor em lib/mercadopago.ts (prepararPedido).
   const subtotalElegivelCupom = itens.reduce((soma, i) => soma + (i.produto.outlet ? 0 : i.produto.preco * i.quantidade), 0);
   const temPecaPromocional = itens.some((i) => i.produto.outlet);
+  // Peca em promocao (preco riscado ou outlet - 09/11/2026): nao tem desconto no Pix e, se tiver
+  // pelo menos uma no carrinho, o pedido inteiro vai ate 3x sem juros. Mesma regra no servidor
+  // (lib/mercadopago.ts, prepararPedido e pagamento com cartao).
+  const temPecaEmPromocao = itens.some((i) => emPromocao(i.produto));
+  const subtotalSemPromocao = itens.reduce((soma, i) => soma + (emPromocao(i.produto) ? 0 : i.produto.preco * i.quantidade), 0);
   // Com peca da Black November no carrinho, o frete gratis so' vale acima de R$ 2.000 (ver
   // lib/campanha.ts) - o resto do carrinho usa essa versao ajustada da configuracao da loja.
   const configLojaEfetiva: ConfigLojaFrete | null = configLoja
@@ -306,13 +319,13 @@ export default function PaginaCarrinho() {
   const creditoMaximoAplicavel = Math.min(creditoDisponivel, tetoCredito);
   const creditoAplicado = Math.min(creditoMaximoAplicavel, Math.max(0, Number(valorCreditoUsar) || 0));
   const totalFinal = Math.max(0, totalComFrete - creditoAplicado);
-  const parcelamentoTotal = calcularParcelamento(totalFinal);
+  const parcelamentoTotal = calcularParcelamento(totalFinal, maxParcelas(temPecaEmPromocao));
 
   // Total pagando no Pix: 10% sobre as pecas (so' as pecas, nao o frete). Nao soma com cupom:
   // se o cupom aplicado der desconto maior, vale o cupom e o Pix fica igual ao cartao. Mesma
   // regra de prepararPedido em lib/mercadopago.ts (o servidor refaz a conta). O frete gratis
   // continua olhando o subtotal depois do cupom (nao tira frete gratis por causa do Pix).
-  const descontoPixBruto = calcularDescontoPix(total);
+  const descontoPixBruto = calcularDescontoPix(subtotalSemPromocao);
   const descontoPixAplicado = descontoPixBruto > desconto ? descontoPixBruto : 0;
   const subtotalPix = descontoPixAplicado > 0 ? Math.round((total - descontoPixAplicado) * 100) / 100 : totalComDesconto;
   const totalComFretePix = subtotalPix + precoFreteEfetivo;
@@ -555,7 +568,7 @@ export default function PaginaCarrinho() {
     <section className="py-8 max-w-xl">
       <p className="font-serif text-3xl mb-2">Carrinho</p>
       <AvisoFreteGratis limiar={configLojaEfetiva?.freteGratisAcimaDe ?? null} subtotal={totalComDesconto} />
-      <CompraSegura compacto />
+      <CompraSegura compacto parcelas={maxParcelas(temPecaEmPromocao)} />
       {avisosEstoque.length > 0 && (
         <div className="mt-4">
           <AvisosEstoque avisos={avisosEstoque} />
@@ -953,6 +966,12 @@ export default function PaginaCarrinho() {
                 <span>No Pix ({PERCENTUAL_DESCONTO_PIX}% OFF)</span>
                 <span>{formatarPreco(totalFinalPix)}</span>
               </div>
+            )}
+            {temPecaEmPromocao && (
+              <p className="pb-3 text-[12.5px] text-mozz-gray">
+                O desconto do Pix não vale para peças em promoção. Com peça em promoção no carrinho, o cartão vai
+                até {MAX_PARCELAS_PROMOCAO}x sem juros.
+              </p>
             )}
             {desconto > 0 && descontoPixAplicado === 0 && (
               <p className="pb-3 text-[12.5px] text-mozz-gray">
