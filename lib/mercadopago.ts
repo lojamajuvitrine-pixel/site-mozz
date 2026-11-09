@@ -25,7 +25,7 @@ import { validarCupom } from "@/lib/cupom";
 import { limiarFreteGratis } from "@/lib/campanha";
 import { validarCpf } from "@/lib/cpf";
 import { calcularFrete, cepDeReserva, ehEntregaExpressa, ehRetirada, FRETE_ENTREGA_EXPRESSA } from "@/lib/frete";
-import { calcularDescontoPix, calcularParcelamento, MAX_PARCELAS_SEM_JUROS } from "@/lib/formato";
+import { calcularDescontoPix, calcularParcelamento, emPromocao, maxParcelas, MAX_PARCELAS_SEM_JUROS } from "@/lib/formato";
 import { buscarConfiguracaoLoja } from "@/lib/configLoja";
 import { buscarSaldoCredito, calcularCreditoAplicavel } from "@/lib/creditos";
 
@@ -249,7 +249,7 @@ async function prepararPedido(
   const subtotal = itensValidados.reduce((soma, { item, produtoReal }) => soma + produtoReal.preco * item.quantidade, 0);
   // Cupom nao vale em peca de outlet/Black November (decisao do Brunno em 05/11/2026: com o
   // desconto da campanha mais o cupom a venda ficava abaixo do custo) - ele so' desconta sobre
-  // as outras pecas do carrinho. O Pix (10%) continua valendo sobre tudo.
+  // as outras pecas do carrinho.
   const subtotalElegivelCupom = itensValidados.reduce(
     (soma, { item, produtoReal }) => soma + (produtoReal.outlet ? 0 : produtoReal.preco * item.quantidade),
     0
@@ -265,18 +265,31 @@ async function prepararPedido(
   }
   // Desconto do Pix (10%, 19/10/2026): NAO soma com cupom - vale o maior dos dois. Se o Pix
   // ganhar, o cupom nao e' aplicado (e por isso nao e' "gasto" no uso unico por CPF).
-  let descontoPix = metodo === "pix" ? calcularDescontoPix(subtotal) : 0;
+  // Desde 09/11/2026 o Pix so' desconta as pecas SEM promocao (preco riscado ou outlet nao tem
+  // desconto no Pix - ver emPromocao em lib/formato.ts).
+  const subtotalSemPromocao = itensValidados.reduce(
+    (soma, { item, produtoReal }) => soma + (emPromocao(produtoReal) ? 0 : produtoReal.preco * item.quantidade),
+    0
+  );
+  const temPecaEmPromocao = itensValidados.some(({ produtoReal }) => emPromocao(produtoReal));
+  let descontoPix = metodo === "pix" ? calcularDescontoPix(subtotalSemPromocao) : 0;
   if (descontoPix > descontoCupom) {
     codigoCupomAplicado = undefined;
   } else {
     descontoPix = 0;
   }
-  // Fator de desconto por item: o Pix reduz todas as pecas igual; o cupom reduz so' as pecas fora
-  // do outlet/Black November (ver subtotalElegivelCupom acima).
-  const fatorPix = subtotal > 0 ? (subtotal - descontoPix) / subtotal : 1;
+  // Fator de desconto por item: o Pix reduz igual as pecas SEM promocao; o cupom reduz so' as
+  // pecas fora do outlet/Black November (ver subtotalElegivelCupom acima).
+  const fatorPix = subtotalSemPromocao > 0 ? (subtotalSemPromocao - descontoPix) / subtotalSemPromocao : 1;
   const fatorCupom = subtotalElegivelCupom > 0 ? (subtotalElegivelCupom - descontoCupom) / subtotalElegivelCupom : 1;
   const fatorDoItem = (produto: Produto) =>
-    descontoPix > 0 ? fatorPix : codigoCupomAplicado && !produto.outlet ? fatorCupom : 1;
+    descontoPix > 0
+      ? emPromocao(produto)
+        ? 1
+        : fatorPix
+      : codigoCupomAplicado && !produto.outlet
+        ? fatorCupom
+        : 1;
   const subtotalComDesconto =
     Math.round(
       itensValidados.reduce((soma, { item, produtoReal }) => soma + produtoReal.preco * item.quantidade * fatorDoItem(produtoReal), 0) * 100
@@ -376,7 +389,10 @@ async function prepararPedido(
   const valorTotal =
     Math.round(itensPreferencia.reduce((soma, item) => soma + item.unit_price * item.quantity, 0) * 100) / 100;
 
-  return { itensPreferencia, pedidoMetadata, codigoCupomAplicado, valorTotal };
+  // Teto de parcelas do pedido: com pelo menos uma peca em promocao, ate 3x (09/11/2026).
+  const parcelasMaximas = maxParcelas(temPecaEmPromocao);
+
+  return { itensPreferencia, pedidoMetadata, codigoCupomAplicado, valorTotal, parcelasMaximas };
 }
 
 // Codigo do visitante do Google Analytics que veio do navegador - so' aceita o formato esperado
@@ -433,7 +449,9 @@ export async function criarPreferenciaPagamento(
         pending: `${siteUrl}/checkout/pendente`
       },
       auto_return: "approved",
-      notification_url: `${siteUrl}/api/mercadopago/webhook`
+      notification_url: `${siteUrl}/api/mercadopago/webhook`,
+      // Mesmo teto de parcelas do site (10x, ou 3x com peca em promocao - 09/11/2026)
+      payment_methods: { installments: pedido.parcelasMaximas }
     }
   });
 
@@ -603,7 +621,8 @@ export async function criarPagamentoCartao(
   conferirValorEsperado(pedido.valorTotal, valorEsperado);
   // Parcela minima de R$ 60: o numero de parcelas tem que caber no valor do pedido (mesma regra
   // do site, calcularParcelamento). Folga de R$ 1 pelo mesmo motivo da tolerancia acima.
-  const parcelasPermitidas = calcularParcelamento(pedido.valorTotal + 1)?.parcelas ?? 1;
+  // Com peca em promocao o teto e' 3x (09/11/2026 - pedido.parcelasMaximas).
+  const parcelasPermitidas = calcularParcelamento(pedido.valorTotal + 1, pedido.parcelasMaximas)?.parcelas ?? 1;
   if (parcelas > parcelasPermitidas) {
     throw new ErroValidacaoPedido(`Para esse valor, o parcelamento vai até ${parcelasPermitidas}x`);
   }
