@@ -1,6 +1,7 @@
 "use client";
 
 import { limiteDoItem, useCart } from "@/lib/cart-context";
+import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 import { idVarianteProduto } from "@/lib/produtos";
 import {
   formatarPreco,
@@ -606,7 +607,7 @@ export default function PaginaCarrinho() {
                 {item.produto.nome}
               </Link>
               <p className="text-mozz-gray mb-2">
-                {item.cor && item.cor !== "Único" ? `Cor ${item.cor} · ` : ""}
+                {item.cor && item.cor !== "Único" ? `Cor ${nomeDaCorParaExibir(item.cor, item.produto.marca)} · ` : ""}
                 Tam. {item.tamanho}
               </p>
               <div className="flex items-center border border-black/20 w-fit">
