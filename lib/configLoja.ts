@@ -4,8 +4,17 @@
 // configuracoes_loja no Supabase, editavel pelo painel /admin/produtos (ver
 // components/admin/ConfiguracoesLoja.tsx) - o mesmo padrao ja usado pra preco especial/
 // destaque/outlet/medidas em lib/produtoConfig.ts.
-import { clientePublico } from "@/lib/supabase/publico";
-import { SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
+import { createClient as criarClienteSupabase } from "@supabase/supabase-js";
+import { SUPABASE_CONFIGURADO, SUPABASE_URL, SUPABASE_ANON_KEY } from "@/lib/supabase/config";
+
+// Leitura SEMPRE ao vivo (09/11/2026): o Next guardava a resposta do Supabase no cache de dados
+// da Vercel e o site seguia mostrando frete gratis acima de R$ 499 depois da configuracao ter
+// mudado para R$ 399. Com cache "no-store" a mudanca no painel vale na hora.
+function clienteSemCache() {
+  return criarClienteSupabase(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    global: { fetch: (entrada, opcoes) => fetch(entrada, { ...opcoes, cache: "no-store" }) }
+  });
+}
 
 export type ConfiguracaoLoja = {
   // null/0 = frete gratis desativado - abaixo disso o cliente paga o frete calculado normal.
@@ -36,7 +45,7 @@ type LinhaConfiguracoesLoja = {
 export async function buscarConfiguracaoLoja(): Promise<ConfiguracaoLoja> {
   if (!SUPABASE_CONFIGURADO) return CONFIGURACAO_PADRAO;
   try {
-    const supabase = clientePublico();
+    const supabase = clienteSemCache();
     const { data, error } = await supabase
       .from("configuracoes_loja")
       .select("frete_gratis_acima_de, retirada_habilitada, retirada_instrucoes")
