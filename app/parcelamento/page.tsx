@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 // no rodape da Foxton.
 export const metadata: Metadata = {
   title: "Formas de parcelamento",
-  description: "Como pagar na MOZZ: cartão de crédito em até 10x sem juros (parcela mínima de R$ 60) ou Pix."
+  description: "Como pagar na MOZZ: cartão de crédito em até 10x sem juros (peças em promoção: até 3x) ou Pix."
 };
 
 export default function PaginaParcelamento() {
@@ -21,7 +21,9 @@ export default function PaginaParcelamento() {
             Parcele em até 10x sem juros, nas bandeiras aceitas pelo Mercado Pago. A parcela
             mínima é de R$ 60, então o número de parcelas varia conforme o valor da compra:
             uma compra de R$ 600 sai em até 10x de R$ 60, e uma de R$ 300 em até 5x de R$ 60.
-            O número de parcelas disponível aparece em cada peça e no carrinho.
+            O número de parcelas disponível aparece em cada peça e no carrinho. Peças em promoção
+            (com preço riscado ou da Black November) saem em até 3x sem juros, e um carrinho com
+            alguma peça em promoção vai até 3x no pedido todo.
           </p>
         </div>
 
@@ -29,8 +31,9 @@ export default function PaginaParcelamento() {
           <p className="text-mozz-black font-medium mb-1">Pix</p>
           <p>
             Pagamento à vista, com confirmação normalmente imediata. Pagando com Pix você ganha{" "}
-            <strong className="text-mozz-black">10% de desconto</strong> nas peças. O desconto do
-            Pix não soma com cupom: vale o maior dos dois.
+            <strong className="text-mozz-black">10% de desconto</strong> nas peças que não estão em
+            promoção. Peças com preço riscado ou da Black November não têm desconto no Pix. O
+            desconto do Pix não soma com cupom: vale o maior dos dois.
           </p>
         </div>
 
