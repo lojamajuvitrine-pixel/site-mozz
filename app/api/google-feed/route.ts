@@ -3,6 +3,7 @@ import { listarProdutos, coresDoProduto, idVarianteProduto, type Produto } from 
 import { textoDescricao, tipoDoProduto } from "@/lib/detalhesProduto";
 import { SITE_URL as siteUrl } from "@/lib/site";
 import { blackNovemberAtiva } from "@/lib/campanha";
+import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 
 // Feed de catalogo pro Google Merchant Center (Google Shopping / listagens gratuitas) - fica
 // publico em /api/google-feed, sem autenticacao (o Google busca isso sozinho via "busca
@@ -244,7 +245,10 @@ function corasMescladas(produto: Produto): Array<{ cor: string; imagens: string[
   const porChave = new Map<string, { cor: string; imagens: string[]; tamanhos: string[]; disponiveis: Set<string> }>();
 
   for (const cor of coresDoProduto(produto)) {
-    const chave = corValidaParaFeed(cor.cor) ? cor.cor.trim().toLowerCase() : "";
+    // Codigo cru do Bling ("0013") vira o nome da cor ("Preto") antes de agrupar (09/11/2026) -
+    // assim cores diferentes com codigo nao se juntam numa so', e duas que dao o mesmo nome se juntam.
+    const nomeCor = corValidaParaFeed(nomeDaCorParaExibir(cor.cor, produto.marca));
+    const chave = nomeCor ? nomeCor.toLowerCase() : "";
     const disponiveisDessaEntrada = new Set(cor.tamanhosDisponiveis ?? cor.tamanhos);
     const existente = porChave.get(chave);
     if (!existente) {
@@ -298,7 +302,7 @@ function linhasDoProduto(produto: Produto): Array<Record<Coluna, string>> {
       .map((img) => `${siteUrl}${img}`)
       .join(",");
     // cor do cadastro; se vier vazia/codigo cru, tenta ler do nome da peca
-    const corParaFeed = corValidaParaFeed(cor.cor) || corNoNomeDaPeca(produto.nome);
+    const corParaFeed = corValidaParaFeed(nomeDaCorParaExibir(cor.cor, produto.marca)) || corNoNomeDaPeca(produto.nome);
     const disponiveisAgora = cor.disponiveis;
     const tamanhosEmEstoque = cor.tamanhos.filter((t) => disponiveisAgora.has(t)).length;
 
