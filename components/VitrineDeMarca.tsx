@@ -88,7 +88,7 @@ export default function VitrineDeMarca({
             )}
             <div
               ref={carrosselRef}
-              className="scrollbar-hide flex gap-4 overflow-x-auto scroll-smooth pb-2 -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory"
+              className="scrollbar-hide flex gap-4 overflow-x-auto scroll-smooth pb-2 -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory scroll-pl-6 md:scroll-pl-0"
             >
               {produtos.slice(0, 8).map((produto) => (
                 <div key={produto.id} className="w-[46%] md:w-[200px] shrink-0 snap-start">
