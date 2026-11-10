@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import BannerHero, { type BannerItem } from "@/components/BannerHero";
 import BannerGenero, { type BannerGeneroItem } from "@/components/BannerGenero";
 import PorQueComprar from "@/components/PorQueComprar";
+import FaixaBeneficios from "@/components/FaixaBeneficios";
 import SecaoMarcas from "@/components/SecaoMarcas";
 import VitrineDeMarca from "@/components/VitrineDeMarca";
 import Image from "next/image";
@@ -136,6 +137,10 @@ export default async function Home() {
         <BannerHero banners={bannersCarrossel} />
       </div>
       <PorQueComprar />
+      {/* faixa de parcelamento/troca/frete/compra segura: saiu do topo de todas as paginas e ficou so aqui */}
+      <div className="-mx-6">
+        <FaixaBeneficios />
+      </div>
 
       <SecaoMarcas />
 
