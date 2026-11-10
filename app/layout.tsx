@@ -4,7 +4,6 @@ import "./globals.css";
 import MenuTopo from "@/components/MenuTopo";
 import Footer from "@/components/Footer";
 import BotaoWhatsapp from "@/components/BotaoWhatsapp";
-import FaixaBeneficios from "@/components/FaixaBeneficios";
 import FaixaCupom from "@/components/FaixaCupom";
 import { CartProvider } from "@/lib/cart-context";
 import { FavoritosProvider } from "@/lib/favoritos-context";
@@ -122,12 +121,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <FavoritosProvider>
             {/* faixa preta do cupom + menu ficam fixos no topo ao rolar a pagina (pedido do
                 Brunno, 19/10/2026), no celular e no desktop. A faixa de beneficios (parcelamento,
-                troca...) continua rolando junto com a pagina, pra nao comer espaco da tela. */}
+                troca...) agora so aparece na home, abaixo de "Por que comprar" (pedido do Brunno, 10/11/2026). */}
             <div className="sticky top-0 z-50 bg-white">
               <FaixaCupom />
               <MenuTopo />
             </div>
-            <FaixaBeneficios />
             <main className="max-w-[1600px] mx-auto px-6">{children}</main>
             <Footer />
             <BotaoWhatsapp />
