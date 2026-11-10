@@ -7553,8 +7553,7 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "G"
         ]
       },
       {
@@ -7815,9 +7814,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
           "G",
-          "M"
+          "GG"
         ]
       },
       {
@@ -31980,9 +31978,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G"
+          "G",
+          "P"
         ]
       }
     ],
@@ -42134,13 +42131,11 @@
         "tamanhos": [
           "M"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true,
+    "temEstoque": false,
     "_corCodigo": "57870"
   },
   {
