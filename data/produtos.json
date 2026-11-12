@@ -23991,9 +23991,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
           "M",
-          "G"
+          "P"
         ]
       }
     ],
@@ -25996,9 +25995,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G"
+          "G",
+          "P"
         ]
       }
     ],
@@ -29697,9 +29695,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G"
+          "G",
+          "P"
         ]
       }
     ],
@@ -32301,8 +32298,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M"
+          "P"
         ]
       }
     ],
