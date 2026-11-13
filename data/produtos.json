@@ -7287,9 +7287,7 @@
           "GG",
           "XG"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Caqui",
@@ -25574,9 +25572,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "PP",
           "P",
-          "M"
+          "PP"
         ]
       },
       {
@@ -35756,7 +35753,6 @@
         "tamanhosDisponiveis": [
           "34",
           "36",
-          "38",
           "40"
         ]
       }
