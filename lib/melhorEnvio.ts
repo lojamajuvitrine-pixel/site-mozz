@@ -103,6 +103,12 @@ async function renovarToken(refreshToken: string): Promise<LinhaToken> {
 // Devolve um access_token valido, renovando sozinho quando necessario - todo o resto deste
 // arquivo chama isso antes de qualquer requisicao, nunca guarda o token numa variavel solta.
 async function obterAccessToken(): Promise<string> {
+  // Token pessoal de longa duracao (1 ano) so' com permissoes de envio, criado em 14/11/2026 no
+  // painel do Melhor Envio (Gerenciar > Permissoes de acesso). Evita a autorizacao OAuth que
+  // expirava e derrubava a compra de etiquetas. Anotar a data de vencimento no calendario.
+  const tokenEtiqueta = process.env.MELHOR_ENVIO_TOKEN_ETIQUETA?.trim();
+  if (tokenEtiqueta) return tokenEtiqueta;
+
   const salvo = await lerTokenSalvo();
   if (!salvo) {
     throw new Error(
