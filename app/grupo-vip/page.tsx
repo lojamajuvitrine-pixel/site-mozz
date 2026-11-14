@@ -20,8 +20,7 @@ const MARCAS = [
 
 const BENEFICIOS = [
   "Promoções e lançamentos em primeira mão",
-  "Preços que só mandamos no grupo",
-  "Sem excesso de mensagens"
+  "Preços que só mandamos no grupo"
 ];
 
 export default function GrupoVipPage() {
