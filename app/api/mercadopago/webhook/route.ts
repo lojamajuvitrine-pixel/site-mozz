@@ -354,7 +354,7 @@ export async function POST(request: NextRequest) {
     const mensagem = erro instanceof Error ? erro.message : String(erro);
     // numeroLoja duplicado = provavelmente reenvio do mesmo webhook (ver comentario de
     // idempotencia acima) - trata como sucesso silencioso em vez de erro.
-    if (/numeroLoja|duplicad/i.test(mensagem)) {
+    if (/numeroLoja|duplicad|id(?:ê|\\u00ea|e)nticas/i.test(mensagem)) {
       console.warn(`Webhook Mercado Pago: pedido do pagamento ${paymentId} parece ja existir no Bling - ignorando`);
       await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
       await processarCreditoSeNecessario(pedido, numeroPedidoLoja);
