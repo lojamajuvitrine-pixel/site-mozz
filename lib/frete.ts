@@ -14,7 +14,10 @@
 // isso aqui em vez do padrao.
 const PESO_MEDIO_POR_PECA_KG = 0.3;
 const PESO_MINIMO_KG = 0.3;
-export const PACOTE_PADRAO = { width: 30, height: 8, length: 40 }; // cm - caixa media de roupa dobrada
+// Caixa padrao da MOZZ (14/11/2026): 15 x 20 x 25 cm - a unica que a loja tem hoje. Cotacao e etiqueta
+// usam a MESMA medida (ver lib/melhorEnvio.ts), senao a loja paga a diferenca. Quando chegarem os
+// envelopes plasticos (mais baratos, abaixo de 6.000 cm3), e' so' trocar os numeros aqui.
+export const PACOTE_PADRAO = { width: 20, height: 15, length: 25 }; // cm
 
 // Exportado pra lib/melhorEnvio.ts (compra/geracao de etiqueta) reusar o mesmo switch
 // sandbox/producao em vez de duplicar essa logica - MELHOR_ENVIO_SANDBOX controla os dois.
@@ -80,6 +83,27 @@ export function cepDeReserva(cep: string): boolean {
   return cep.replace(/\D/g, "").startsWith("84320");
 }
 
+// Frete fixo temporario (14/11/2026, pedido do Brunno): ate' a chegada dos envelopes mais baratos, a
+// loja cobra no maximo R$ 20 de frete pra Sul, Sudeste e Centro-Oeste, em pedidos de ate' 2 pecas,
+// e banca a diferenca pro PAC real. Se o PAC real sair abaixo de R$ 20, cobra o valor real.
+// Norte, Nordeste e pedidos de 3+ pecas continuam com o preco real do PAC.
+const FRETE_FIXO_REAIS = 20;
+const MAX_PECAS_FRETE_FIXO = 2;
+
+// Regiao pela faixa de CEP (5 primeiros digitos): Sudeste 01000-39999, Centro-Oeste (DF/GO
+// 70000-76799, MT 78000-78899, MS 79000-79999) e Sul 80000-99999. Fora disso (Norte/Nordeste,
+// RO e TO) nao entra no frete fixo.
+export function cepComFreteFixo(cep: string): boolean {
+  const n = Number(cep.replace(/\D/g, "").slice(0, 5));
+  if (!Number.isFinite(n)) return false;
+  return (
+    (n >= 1000 && n <= 39999) ||
+    (n >= 70000 && n <= 76799) ||
+    (n >= 78000 && n <= 78899) ||
+    (n >= 79000 && n <= 99999)
+  );
+}
+
 // Quando a entrega expressa chega, conforme o horario de corte (fuso de Sao Paulo): segunda a
 // sexta, pedido pago ate' 14h sai no mesmo dia; sabado, ate' 11h (a loja fecha 12h); depois
 // disso, ou no domingo, vai pro proximo dia util. Feriado nao e' considerado.
@@ -102,29 +126,17 @@ export function previsaoEntregaExpressa(agora: Date = new Date()): "hoje" | "ama
   return dia === "Fri" ? "segunda-feira" : "amanhã";
 }
 
-// Transportadoras que a gente NAO oferece no site, mesmo que o Melhor Envio cote preco pra
-// elas - descoberto testando em producao em 31/08/2026: a Jadlog recusa etiquetas com o erro
-// "Esta transportadora nao aceita envios nao-comerciais partindo deste estado", porque a MOZZ
-// ainda nao anexa nota fiscal eletronica (NF-e) na etiqueta (so' faria isso integrando emissao
-// de NF-e no Bling, nao existe hoje) - toda etiqueta da loja e' tratada como "nao comercial", e
-// como o Parana (origem de todo envio da MOZZ) esta' nessa lista de restricao da Jadlog, TODO
-// pedido que caisse nela ia falhar, nao so' alguns. Por isso excluida aqui na cotacao (nunca
-// aparece nem como opcao pro cliente), em vez de so' tentar e falhar depois na compra da
-// etiqueta.
-const TRANSPORTADORAS_EXCLUIDAS = new Set(["jadlog"]);
-
-// O Melhor Envio costuma devolver bastante opcao (Correios PAC/SEDEX, Jadlog .Package/.Com
-// etc) - o Brunno achou que isso confunde o cliente na hora de escolher (pedido de
-// 29/08/2026). Reduz pra no maximo 2: a mais barata, e a mais rapida entre as que chegam MAIS
-// rapido que a mais barata (pra nao mostrar uma segunda opcao so' redundante, com o mesmo
-// prazo por um preco maior). Lista ja' vem ordenada por preco de calcularFrete.
-function simplificarOpcoes(opcoesPorPreco: OpcaoFrete[]): OpcaoFrete[] {
-  if (opcoesPorPreco.length <= 2) return opcoesPorPreco;
-  const [maisBarata, ...resto] = opcoesPorPreco;
-  const maisRapida = resto
-    .filter((opcao) => opcao.prazoDias < maisBarata.prazoDias)
-    .sort((a, b) => a.prazoDias - b.prazoDias || a.preco - b.preco)[0];
-  return maisRapida ? [maisBarata, maisRapida] : [maisBarata];
+// Desde 14/11/2026 o site oferece SO' os Correios (PAC): Loggi, Jadlog e as outras nao tem coleta
+// em Reserva (so' os Correios, que tem agencia na cidade) e a Loggi cotava bem mais barato que a
+// etiqueta real, o que dava prejuizo (pedidos MOZZ-1794539067960 e MOZZ-1794585162414). O cliente ve
+// uma linha so', sem escolher transportadora.
+function escolherOpcaoCorreios(opcoes: OpcaoFrete[]): OpcaoFrete | undefined {
+  const correios = opcoes.filter(
+    (o) => o.transportadora.toLowerCase().includes("correios") && !o.servico.toLowerCase().includes("mini")
+  );
+  const pac = correios.filter((o) => o.servico.toUpperCase().includes("PAC"));
+  const base = pac.length > 0 ? pac : correios;
+  return base.sort((a, b) => a.preco - b.preco)[0];
 }
 
 type RespostaMelhorEnvio = Array<{
@@ -184,7 +196,7 @@ export async function calcularFrete(cepDestino: string, quantidadeItens: number)
 
   const dados = (await resposta.json()) as RespostaMelhorEnvio;
 
-  const opcoesPorPreco = dados
+  const opcoes: OpcaoFrete[] = dados
     .filter((opcao) => !opcao.error && opcao.price)
     .map((opcao) => ({
       servico: opcao.name ?? "Entrega",
@@ -192,9 +204,13 @@ export async function calcularFrete(cepDestino: string, quantidadeItens: number)
       preco: Number(opcao.price),
       prazoDias: opcao.delivery_time ?? 0,
       servicoId: opcao.id
-    }))
-    .filter((opcao) => !TRANSPORTADORAS_EXCLUIDAS.has(opcao.transportadora.toLowerCase()))
-    .sort((a, b) => a.preco - b.preco);
+    }));
 
-  return simplificarOpcoes(opcoesPorPreco);
+  const escolhida = escolherOpcaoCorreios(opcoes);
+  if (!escolhida) return [];
+
+  if (cepComFreteFixo(cepLimpo) && quantidadeItens <= MAX_PECAS_FRETE_FIXO) {
+    return [{ ...escolhida, preco: Math.min(escolhida.preco, FRETE_FIXO_REAIS) }];
+  }
+  return [escolhida];
 }
