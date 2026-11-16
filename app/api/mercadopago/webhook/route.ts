@@ -34,14 +34,16 @@ import { enviarCompraGA4 } from "@/lib/ga4";
 //    que o cliente so' aplicou o cupom no carrinho (carrinho abandonado nao pode "gastar" o
 //    cupom - pedido do Brunno em 30/08/2026, ver lib/cupom.ts).
 //
-// Idempotencia: o Mercado Pago pode chamar esse webhook mais de uma vez pro MESMO pagamento
-// (reenvio em caso de timeout, por exemplo). Sem um banco proprio pra marcar "ja processado",
-// a defesa aqui e' deixar o Bling recusar numeroLoja duplicado (numeroPedidoLoja = mesmo
-// external_reference sempre) e tratar esse erro especifico como sucesso silencioso. Se no
-// futuro isso causar pedido duplicado na pratica, o proximo passo e' guardar o pedido numa
-// tabela (Supabase) na hora de criar a preferencia e checar o status ali antes de criar de novo.
-// O registro de uso do cupom (passo 4) e' idempotente por natureza (ON CONFLICT DO NOTHING na
-// funcao registrar_uso_cupom), entao chamar duas vezes pro mesmo pagamento nao causa problema.
+// Idempotencia (16/11/2026): o Mercado Pago chama esse webhook mais de uma vez pro MESMO
+// pagamento (payment.created + payment.updated, aviso antigo IPN, reenvio em timeout) e o Bling
+// NAO recusa numeroLoja repetido - isso duplicava vendas no Bling. Agora, antes de criar, o site
+// reserva o numero do pedido na tabela controle_pedido_bling (RPC reservar_criacao_bling, que o
+// banco aceita uma vez so', mesmo com dois avisos no mesmo segundo):
+//  - 'reservado'    -> cria no Bling e confirma (confirmar_criacao_bling);
+//  - 'ja_criado'    -> nao cria de novo, so' refaz os passos seguintes (todos idempotentes);
+//  - 'em_andamento' -> outro aviso esta' criando agora, responde 200 e sai.
+// Se a criacao no Bling der erro, libera a reserva (liberar_criacao_bling) e devolve 500 pro
+// Mercado Pago tentar de novo. Cupom, credito e salvar_pedido ja eram idempotentes.
 function validarAssinatura(request: NextRequest, corpoBruto: string): boolean {
   const secret = process.env.MERCADOPAGO_WEBHOOK_SECRET;
   if (!secret) {
@@ -246,6 +248,34 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
   }
 }
 
+type ReservaBling = "reservado" | "ja_criado" | "em_andamento";
+
+// Sem Supabase configurado (ou se a consulta falhar) segue como antes: tenta criar no Bling.
+async function reservarCriacaoBling(numeroPedidoLoja: string): Promise<ReservaBling> {
+  if (!SUPABASE_CONFIGURADO) return "reservado";
+  try {
+    const { data, error } = await clientePublico().rpc("reservar_criacao_bling", {
+      p_numero_pedido: numeroPedidoLoja
+    });
+    if (error) throw error;
+    if (data === "ja_criado" || data === "em_andamento") return data;
+    return "reservado";
+  } catch (erro) {
+    console.error(`Webhook Mercado Pago: erro ao reservar criacao no Bling do pedido ${numeroPedidoLoja}:`, erro);
+    return "reservado";
+  }
+}
+
+async function marcarControleBling(funcao: "confirmar_criacao_bling" | "liberar_criacao_bling", numeroPedidoLoja: string) {
+  if (!SUPABASE_CONFIGURADO) return;
+  try {
+    const { error } = await clientePublico().rpc(funcao, { p_numero_pedido: numeroPedidoLoja });
+    if (error) throw error;
+  } catch (erro) {
+    console.error(`Webhook Mercado Pago: erro em ${funcao} do pedido ${numeroPedidoLoja}:`, erro);
+  }
+}
+
 // Aviso antigo (IPN) as vezes manda so' o "resource" (ex: ".../payments/123456" ou "123456").
 function idDoResource(resource: string | undefined): string | null {
   const achado = resource?.match(/(\d+)\s*$/);
@@ -329,6 +359,19 @@ export async function POST(request: NextRequest) {
 
   const numeroPedidoLoja = pagamento.external_reference ?? `MP-${paymentId}`;
 
+  const reserva = await reservarCriacaoBling(numeroPedidoLoja);
+  if (reserva === "em_andamento") {
+    console.log(`Webhook Mercado Pago: pedido ${numeroPedidoLoja} ja esta sendo criado por outro aviso - ignorando`);
+    return NextResponse.json({ recebido: true, emAndamento: true });
+  }
+  if (reserva === "ja_criado") {
+    console.log(`Webhook Mercado Pago: pedido ${numeroPedidoLoja} ja existe no Bling - nao cria de novo`);
+    await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
+    await processarCreditoSeNecessario(pedido, numeroPedidoLoja);
+    await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado);
+    return NextResponse.json({ recebido: true, duplicado: true });
+  }
+
   try {
     const resultado = await criarPedidoVendaBling({
       numeroPedidoLoja,
@@ -347,21 +390,23 @@ export async function POST(request: NextRequest) {
     });
 
     console.log(`Webhook Mercado Pago: pedido de venda criado no Bling pro pagamento ${paymentId}`, resultado);
+    await marcarControleBling("confirmar_criacao_bling", numeroPedidoLoja);
     await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
     await processarCreditoSeNecessario(pedido, numeroPedidoLoja);
     await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado);
   } catch (erro) {
     const mensagem = erro instanceof Error ? erro.message : String(erro);
-    // numeroLoja duplicado = provavelmente reenvio do mesmo webhook (ver comentario de
-    // idempotencia acima) - trata como sucesso silencioso em vez de erro.
+    // Bling dizendo que o pedido ja existe - trata como sucesso silencioso em vez de erro.
     if (/numeroLoja|duplicad|id(?:ê|\\u00ea|e)nticas/i.test(mensagem)) {
       console.warn(`Webhook Mercado Pago: pedido do pagamento ${paymentId} parece ja existir no Bling - ignorando`);
+      await marcarControleBling("confirmar_criacao_bling", numeroPedidoLoja);
       await registrarUsoCupomSeNecessario(codigoCupomUsado, pedido.cpf);
       await processarCreditoSeNecessario(pedido, numeroPedidoLoja);
       await salvarPedidoEComprarEtiquetaSeNecessario(pedido, numeroPedidoLoja, codigoCupomUsado);
       return NextResponse.json({ recebido: true, duplicado: true });
     }
     console.error(`Webhook Mercado Pago: erro ao criar pedido no Bling pro pagamento ${paymentId}:`, mensagem);
+    await marcarControleBling("liberar_criacao_bling", numeroPedidoLoja);
     // devolve 500 aqui (nao 200) pra o Mercado Pago RE-TENTAR essa notificacao depois - erro
     // de rede/Bling fora do ar e' recuperavel, diferente dos casos de dado invalido acima.
     return NextResponse.json({ erro: "erro ao criar pedido no Bling" }, { status: 500 });
