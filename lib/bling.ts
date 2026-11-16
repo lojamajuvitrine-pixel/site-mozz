@@ -257,4 +257,291 @@ async function obterAccessToken(): Promise<string> {
   };
 
   if (dados.refresh_token && dados.refresh_token !== refreshTokenUsado) {
-    process.env.BLING_REFRESH_TOKEN = dados.refresh_token; // vale pro resto
+    process.env.BLING_REFRESH_TOKEN = dados.refresh_token; // vale pro resto desse processo
+    atualizarRefreshTokenLocal(dados.refresh_token); // conveniencia so' quando roda localmente
+    await salvarRefreshTokenCompartilhado(dados.refresh_token); // fonte de verdade pros processos
+  }
+
+  return cachedAccessToken.token;
+}
+
+async function blingFetch<T>(caminho: string, init?: RequestInit): Promise<T> {
+  const token = await obterAccessToken();
+  const resposta = await fetch(`${BLING_HOST}${caminho}`, {
+    ...init,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      "enable-jwt": "1",
+      ...(init?.headers ?? {}),
+    },
+  });
+
+  if (!resposta.ok) {
+    const texto = await resposta.text();
+    throw new Error(
+      `Bling API erro ${resposta.status} em ${caminho}: ${texto}`,
+    );
+  }
+
+  return resposta.json() as Promise<T>;
+}
+
+// GET /Api/v3/produtos - lista de produtos cadastrados no Bling.
+export async function listarProdutosBling(pagina = 1) {
+  return blingFetch<{ data: unknown[] }>(
+    `/produtos?pagina=${pagina}&limite=100`,
+  );
+}
+
+// GET /Api/v3/estoques/saldos - saldo de estoque por produto/deposito.
+export async function listarSaldosEstoqueBling(idsProdutos: number[]) {
+  const query = idsProdutos.map((id) => `idsProdutos[]=${id}`).join("&");
+  return blingFetch<{ data: unknown[] }>(`/estoques/saldos?${query}`);
+}
+
+// GET /Api/v3/produtos/{id} - detalhe completo de UM produto. Usado so' pra diagnostico
+// (ver diagnostico-marca abaixo): o endpoint de LISTA (/produtos) nao devolve o campo de
+// marca, entao aqui a gente confirma se o detalhe traz esse campo antes de montar o
+// mapeamento definitivo em scripts/sync-bling.ts.
+export async function buscarProdutoDetalheBling(id: number) {
+  return blingFetch<{ data: unknown }>(`/produtos/${id}`);
+}
+
+// POST /Api/v3/pedidos/vendas - cria um pedido de venda no Bling a partir de um pedido
+// aprovado no site. O mapeamento exato de campos (deposito, categoria, forma de pagamento,
+// numeracao) depende de como a conta Bling da MOZZ esta configurada hoje - o formato abaixo
+// e' o esqueleto padrao da API; precisa validar com uma venda de teste antes de ir pra producao.
+export type ItemPedidoBling = {
+  produtoId: number;
+  quantidade: number;
+  valor: number;
+};
+
+// Endereco de entrega (ver EnderecoCheckout em lib/mercadopago.ts) - adicionado em 25/08/2026
+// depois de descobrir, numa venda de teste real, que o checkout nunca coletava isso (so' CPF/
+// nome/CEP-pra-frete). Manda o endereco em DOIS lugares do payload porque a documentacao da
+// API v3 do Bling nao deixa 100% claro qual delas vira a etiqueta de envio de verdade:
+// "contato.endereco" (endereco cadastral do cliente) e "transporte.etiqueta" (endereco
+// especifico de entrega desse pedido). IMPORTANTE: confirmar contra um pedido real criado no
+// Bling (a propria venda teste de hoje serve pra isso) e remover o que sobrar redundante.
+export type EnderecoPedidoBling = {
+  cep: string;
+  rua: string;
+  numero: string;
+  complemento?: string;
+  bairro: string;
+  cidade: string;
+  uf: string;
+};
+
+// Busca um contato existente no Bling pelo CPF (query "pesquisa" da API de listagem) e,
+// se nao encontrar, cria um novo via POST /contatos. Descoberto em 25/08/2026, contra a
+// primeira venda real: o POST /pedidos/vendas exige "contato.id" (referencia a um contato
+// JA CADASTRADO no Bling) - so' mandar nome/cpf/email inline (sem id) da' os erros
+// "Id do contato da venda e' obrigatorio" e "O cliente nao foi preenchido", mesmo com todos
+// os outros dados presentes. O endereco do CLIENTE (cadastro) vai aqui, no contato; o endereco
+// de ENTREGA desse pedido especifico continua em transporte.etiqueta (podem ser diferentes).
+async function buscarOuCriarContatoBling(params: {
+  nome: string;
+  cpf: string;
+  email: string;
+  telefone?: string;
+  endereco: EnderecoPedidoBling;
+}): Promise<number> {
+  const cpfLimpo = params.cpf.replace(/\D/g, "");
+
+  // BUG encontrado em 25/08/2026, na primeira venda real (pagamento 174612277989): o endpoint
+  // GET /contatos?pesquisa={cpf} do Bling e' busca por TEXTO LIVRE, nao busca exata - com
+  // cpfLimpo valido (11 digitos de um cliente real, ja' cadastrado no Bling com esse CPF) ele
+  // devolveu um contato TOTALMENTE diferente ("Consumo Interno", um cadastro generico de baixa
+  // de estoque) como primeiro resultado, que a gente aceitava cegamente. A API v3 do Bling tem
+  // um parametro dedicado pra isso - "numeroDocumento" (confirmado no OpenAPI spec oficial,
+  // GET /contatos) - que filtra por CPF/CNPJ exato no proprio servidor, entao usamos ele em vez
+  // de "pesquisa". Mesmo assim mantemos a conferencia client-side como cinto-de-seguranca, caso
+  // o filtro do servidor um dia se comporte como busca parcial tambem.
+  const end = params.endereco;
+  const corpoContato = {
+    nome: params.nome,
+    tipo: "F",
+    // "situacao" passou a ser obrigatoria na API do Bling: sem ela o POST /contatos volta 400
+    // ("Situacao invalida. Valores aceitos A, I, E ou S") e o pedido nao e' criado - foi o que
+    // travou a primeira venda real do site em 03/11/2026 (pagamento 186499115845). "A" = ativo.
+    situacao: "A",
+    numeroDocumento: cpfLimpo,
+    email: params.email || undefined,
+    celular: params.telefone,
+    endereco: {
+      geral: {
+        endereco: end.rua,
+        numero: end.numero,
+        complemento: end.complemento ?? "",
+        bairro: end.bairro,
+        cep: end.cep,
+        municipio: end.cidade,
+        uf: end.uf,
+      },
+    },
+  };
+
+  if (cpfLimpo) {
+    const busca = await blingFetch<{
+      data: Array<{ id: number; numeroDocumento?: string }>;
+    }>(`/contatos?numeroDocumento=${encodeURIComponent(cpfLimpo)}&limite=10`);
+    const encontrado =
+      busca.data?.find(
+        (c) => (c.numeroDocumento ?? "").replace(/\D/g, "") === cpfLimpo,
+      ) ?? busca.data?.[0];
+    if (encontrado) {
+      // Achado um contato ja' cadastrado com esse CPF - ATUALIZA com os dados de agora (PUT,
+      // corpo completo) em vez de so' devolver o id como estava antes. Bug encontrado em
+      // 31/08/2026, numa venda de teste real: o Bling acusou "pendencias cadastrais" (Numero/
+      // Bairro/CEP/Cidade/UF do Cliente ausentes) numa compra que, do lado do site, mandou
+      // esses dados certinho - o contato da cliente ja' existia no Bling de uma compra
+      // ANTERIOR (de antes do checkout coletar endereco completo, ou criado so' com nome/CPF),
+      // e como so' devolviamos o id sem nunca atualizar o cadastro, o endereco antigo (vazio)
+      // ficava pra sempre, mesmo em compras novas com tudo preenchido. Se o PUT falhar (ex:
+      // Bling fora do ar), so' loga e segue com o id encontrado - melhor criar o pedido com o
+      // cadastro desatualizado (mesmo problema de antes) do que travar a venda inteira por
+      // isso, ja' que a pendencia so' bloqueia a emissao da nota fiscal, nao a venda em si.
+      try {
+        await blingFetch(`/contatos/${encontrado.id}`, {
+          method: "PUT",
+          body: JSON.stringify(corpoContato),
+        });
+      } catch (erro) {
+        console.warn(
+          `Bling: falha ao atualizar cadastro do contato ${encontrado.id} (CPF ${cpfLimpo}) - seguindo com o cadastro antigo:`,
+          erro instanceof Error ? erro.message : erro,
+        );
+      }
+      return encontrado.id;
+    }
+  }
+
+  const criado = await blingFetch<{ data: { id: number } }>("/contatos", {
+    method: "POST",
+    body: JSON.stringify(corpoContato),
+  });
+  return criado.data.id;
+}
+
+export async function criarPedidoVendaBling(params: {
+  numeroPedidoLoja: string;
+  cliente: { nome: string; cpf: string; email: string; telefone?: string };
+  endereco: EnderecoPedidoBling;
+  itens: ItemPedidoBling[];
+  totalFrete: number;
+}) {
+  const end = params.endereco;
+  const contatoId = await buscarOuCriarContatoBling({
+    nome: params.cliente.nome,
+    cpf: params.cliente.cpf,
+    email: params.cliente.email,
+    telefone: params.cliente.telefone,
+    endereco: end,
+  });
+
+  // "data" (data do pedido) e' obrigatoria - sem ela o Bling nem consegue gerar a(s)
+  // parcela(s) financeira(s) padrao automaticamente (erro "data para geracao das parcelas
+  // e' invalida"). dataSaida/dataPrevista tambem sao exigidas pelo schema da API; usamos a
+  // data de hoje pras tres na falta de um calculo de prazo de envio mais preciso.
+  const hoje = new Date().toISOString().slice(0, 10);
+
+  const totalItens = params.itens.reduce(
+    (soma, item) => soma + item.quantidade * item.valor,
+    0,
+  );
+  const totalPedido = totalItens + params.totalFrete;
+
+  // ID da forma de pagamento "Mercado Pago", cadastrada manualmente no Bling em 25/08/2026
+  // (Cadastros > Formas de pagamento; Tipo "Outros", Destino "Conta a receber/pagar", Conta
+  // financeira "Mercado Pago - Mercado Livre"). Sem "parcelas" o pedido ficava sem forma de
+  // pagamento nenhuma e sem conta a receber gerada.
+  const ID_FORMA_PAGAMENTO_MERCADO_PAGO = 10977522;
+
+  // Vendedor padrao pras vendas do site - decisao do Brunno em 25/08/2026: usar sempre a
+  // Izabella, ja' que o site nao tem noção de vendedor proprio. A conta Bling tem "Vendedor
+  // obrigatorio nos pedidos de vendas" ativado, entao sem isso o POST falha assim que o
+  // contato deixa de ser o generico "Consumo Interno".
+  const ID_VENDEDOR_PADRAO_SITE = 15596528457;
+
+  // Id da situacao "Em andamento" NESSA conta especifica de Bling (cada conta tem ids
+  // diferentes pros mesmos nomes de situacao - ver historico de tentativas em versoes
+  // anteriores desse arquivo). Descoberto em 31/08/2026: o Brunno mudou manualmente os pedidos
+  // 3501 (MOZZ-1788202687495) e 3499 (MOZZ-1788197945083) pra "Em andamento" na tela do Bling,
+  // e os dois voltaram com situacao {id: 15, valor: 3} na API - confirmado por ele. Decisao do
+  // Brunno: toda venda que vem do site ja' nasce "Em andamento" (nao mais "Em aberto", que e' o
+  // padrao do Bling pra pedido novo), porque o pagamento ja' foi aprovado no Mercado Pago antes
+  // desse pedido ser criado - ela nunca esta' de fato "em aberto"/pendente de decisao.
+  const ID_SITUACAO_EM_ANDAMENTO = 15;
+
+  const corpoPedido = {
+    numeroLoja: params.numeroPedidoLoja,
+    data: hoje,
+    dataSaida: hoje,
+    dataPrevista: hoje,
+    contato: {
+      id: contatoId,
+      nome: params.cliente.nome,
+    },
+    situacao: { id: ID_SITUACAO_EM_ANDAMENTO },
+    vendedor: { id: ID_VENDEDOR_PADRAO_SITE },
+    itens: params.itens.map((item) => ({
+      produto: { id: item.produtoId },
+      quantidade: item.quantidade,
+      valor: item.valor,
+    })),
+    parcelas: [
+      {
+        dataVencimento: hoje,
+        valor: totalPedido,
+        formaPagamento: { id: ID_FORMA_PAGAMENTO_MERCADO_PAGO },
+        observacoes: "Pago via Mercado Pago",
+      },
+    ],
+    transporte: {
+      frete: params.totalFrete,
+      etiqueta: {
+        nome: params.cliente.nome,
+        endereco: end.rua,
+        numero: end.numero,
+        complemento: end.complemento ?? "",
+        municipio: end.cidade,
+        uf: end.uf,
+        cep: end.cep,
+        bairro: end.bairro,
+        nomePais: "Brasil",
+      },
+    },
+  };
+
+  // Loja "Site Mozz" (integracao API) no Bling - id tirado do endereco da tela de configuracao
+  // da loja em 16/11/2026 (configuracoes.integracoes.lojas.virtuais.php#edit/206369243). Com ela
+  // as vendas do site aparecem separadas no Bling, como Somaplace e Mercado Livre. Trava de
+  // seguranca: se o Bling recusar o pedido por causa da loja (id errado), tenta de novo na hora
+  // sem a loja - a venda nunca deixa de entrar por causa disso.
+  const ID_LOJA_SITE_MOZZ = 206369243;
+
+  try {
+    return await blingFetch<{ data: unknown }>("/pedidos/vendas", {
+      method: "POST",
+      body: JSON.stringify({ ...corpoPedido, loja: { id: ID_LOJA_SITE_MOZZ } }),
+    });
+  } catch (erro) {
+    const mensagem = erro instanceof Error ? erro.message : String(erro);
+    if (
+      !/loja/i.test(mensagem) ||
+      /numeroLoja|duplicad|id(?:ê|\\u00ea|e)nticas/i.test(mensagem)
+    )
+      throw erro;
+    console.error(
+      `Bling recusou o pedido ${params.numeroPedidoLoja} com a loja ${ID_LOJA_SITE_MOZZ} - tentando sem a loja:`,
+      mensagem,
+    );
+    return blingFetch<{ data: unknown }>("/pedidos/vendas", {
+      method: "POST",
+      body: JSON.stringify(corpoPedido),
+    });
+  }
+}
