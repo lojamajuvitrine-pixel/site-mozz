@@ -577,9 +577,8 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "42",
           "38",
-          "36"
+          "42"
         ]
       }
     ],
@@ -3966,13 +3965,11 @@
           "36",
           "38"
         ],
-        "tamanhosDisponiveis": [
-          "38"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16630932887",
@@ -27885,7 +27882,7 @@
     "id": "16710501215",
     "nome": "Vestido Emily",
     "marca": "NV",
-    "preco": 789,
+    "preco": 0,
     "novo": true,
     "descricao": "",
     "cores": [
@@ -31885,8 +31882,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "G"
+          "M"
         ]
       }
     ],
@@ -43185,13 +43181,11 @@
         "tamanhos": [
           "34"
         ],
-        "tamanhosDisponiveis": [
-          "34"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true,
+    "temEstoque": false,
     "_corCodigo": "1566"
   },
   {
