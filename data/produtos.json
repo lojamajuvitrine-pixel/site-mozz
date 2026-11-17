@@ -577,8 +577,8 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "42"
+          "42",
+          "38"
         ]
       }
     ],
@@ -23973,11 +23973,15 @@
     "marca": "Farm",
     "preco": 229,
     "novo": true,
-    "descricao": "",
+    "descricao": "regata richilieu peixe apresenta um design único e charmoso, com alças largas que proporcionam conforto e um belo decote rente ao pescoço. a textura rica do bordado enriquece o visual, tornando-a perfeita para ocasiões casuais e frescas. a peça reflete autenticidade e estilo em cada detalhe.",
     "cores": [
       {
         "cor": "02542",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16722842843--unico--0.jpg",
+          "/produtos/16722842843--unico--1.jpg",
+          "/produtos/16722842843--unico--2.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -23992,7 +23996,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16722842843--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "02542": {
@@ -27882,7 +27886,7 @@
     "id": "16710501215",
     "nome": "Vestido Emily",
     "marca": "NV",
-    "preco": 0,
+    "preco": 789,
     "novo": true,
     "descricao": "",
     "cores": [
@@ -29922,11 +29926,15 @@
     "marca": "Farm",
     "preco": 298,
     "novo": true,
-    "descricao": "",
+    "descricao": "vestido alça estampado lenço riviera. uma peça cheia de charme com alças finas e decote discreto, revelando detalhes únicos. a modelagem fluida traz leveza, perfeita para passeios à beira-mar ou encontros casuais. o toque especial da estampa lenço completa o visual autêntico e inesquecível.",
     "cores": [
       {
         "cor": "57883",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708387142--unico--0.jpg",
+          "/produtos/16708387142--unico--1.jpg",
+          "/produtos/16708387142--unico--2.jpg"
+        ],
         "tamanhos": [
           "PP",
           "M",
@@ -29938,7 +29946,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708387142--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57883": {
@@ -36552,11 +36560,16 @@
     "marca": "Farm",
     "preco": 559,
     "novo": true,
-    "descricao": "",
+    "descricao": "vestido cropped estampado flor do deserto: com decote profundo em v, este vestido traz uma proposta casual e encantadora. as mangas curtas em estilo delicado, e o ajuste na cintura com cordinha adicionam um toque diferenciado. perfeito para passeios ao ar livre ou encontros especiais.",
     "cores": [
       {
         "cor": "58923",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705800331--unico--0.jpg",
+          "/produtos/16705800331--unico--1.jpg",
+          "/produtos/16705800331--unico--2.jpg",
+          "/produtos/16705800331--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -36566,7 +36579,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705800331--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "58923": {
@@ -42993,11 +43006,16 @@
     "marca": "Farm",
     "preco": 598,
     "novo": true,
-    "descricao": "",
+    "descricao": "vestido longo manga estampado floral leni. possui decote em v profundo que valoriza a região do colo e costas, mangas bufantes que trazem movimento e um toque especial, além de amarração na cintura que define a peça com charme. ideal para eventos casuais e saídas especiais.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708385475--unico--0.jpg",
+          "/produtos/16708385475--unico--1.jpg",
+          "/produtos/16708385475--unico--2.jpg",
+          "/produtos/16708385475--unico--3.jpg"
+        ],
         "tamanhos": [
           "M"
         ],
@@ -43006,7 +43024,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708385475--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "57809"
   },
@@ -43016,11 +43034,17 @@
     "marca": "Farm",
     "preco": 579,
     "novo": true,
-    "descricao": "",
+    "descricao": "vestido midi estampado flor nana. esse modelo deslumbrante possui decote em v profundo com delicada cordinha para ajuste, valorizando o busto. as mangas curtas elevam o design casual, e a cintura levemente destacada confere fluidez à saia. uma escolha versátil para almoços ao ar livre ou passeios pela cidade.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16708383191--unico--0.jpg",
+          "/produtos/16708383191--unico--1.jpg",
+          "/produtos/16708383191--unico--2.jpg",
+          "/produtos/16708383191--unico--3.jpg",
+          "/produtos/16708383191--unico--4.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
@@ -43029,7 +43053,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16708383191--unico--0.jpg",
     "temEstoque": true,
     "_corCodigo": "57787"
   },
