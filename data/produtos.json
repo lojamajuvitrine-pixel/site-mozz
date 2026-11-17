@@ -5999,8 +5999,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       },
       {
@@ -7580,8 +7580,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "GG"
+          "GG",
+          "G"
         ]
       },
       {
@@ -7728,8 +7728,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "M"
         ]
       },
@@ -7815,8 +7815,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "GG"
+          "GG",
+          "G"
         ]
       },
       {
@@ -22961,6 +22961,83 @@
     "temEstoque": false
   },
   {
+    "id": "16705791856",
+    "nome": "Regata Bordada Coqueiro",
+    "marca": "Farm",
+    "preco": 179,
+    "novo": true,
+    "descricao": "Regata bordada coqueiro destaca-se pelo charme do bordado sutil no centro. com alças largas e corte ajustado, proporciona conforto e estilo em qualquer ocasião casual. uma peça única para complementar visuais com naturalidade e leveza, é perfeita para os dias ensolarados em que o frescor é essencial.",
+    "cores": [
+      {
+        "cor": "07448",
+        "imagens": [
+          "/produtos/16705792648--unico--0.jpg",
+          "/produtos/16705792648--unico--1.jpg",
+          "/produtos/16705792648--unico--2.jpg"
+        ],
+        "tamanhos": [
+          "PP",
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "PP",
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": "/produtos/16705792648--unico--0.jpg",
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "07448": {
+        "PP": [
+          "16736117615"
+        ],
+        "M": [
+          "16705792648"
+        ],
+        "P": [
+          "16705791856"
+        ]
+      }
+    }
+  },
+  {
+    "id": "16707201020",
+    "nome": "Vestido Longo Floral Maite",
+    "marca": "Farm",
+    "preco": 449,
+    "novo": true,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "57911",
+        "imagens": [],
+        "tamanhos": [
+          "P",
+          "M"
+        ],
+        "tamanhosDisponiveis": [
+          "P",
+          "M"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true,
+    "gruposBlingPorCorTamanho": {
+      "57911": {
+        "M": [
+          "16736112438"
+        ],
+        "P": [
+          "16707201020"
+        ]
+      }
+    }
+  },
+  {
     "id": "16714545399",
     "nome": "Camisa Ml Linho Estival",
     "marca": "Foxton",
@@ -23584,8 +23661,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       },
       {
@@ -23989,8 +24066,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
@@ -25572,8 +25649,8 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "PP",
+          "P"
         ]
       },
       {
@@ -25591,8 +25668,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "PP"
+          "PP",
+          "G"
         ]
       },
       {
@@ -25980,23 +26057,27 @@
     "marca": "Farm",
     "preco": 449,
     "novo": true,
-    "descricao": "",
+    "descricao": "Maiô localizado romance. apresenta decote halter que eleva o visual com as alças finas. o corte reto nas costas adiciona um toque moderno e casual à peça. ideal para momentos à beira-mar ou uma tarde relaxante à beira da piscina, é um convite à originalidade e conforto que só a FARM proporciona.",
     "cores": [
       {
         "cor": "57824",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16714557506--unico--0.jpg",
+          "/produtos/16714557506--unico--1.jpg",
+          "/produtos/16714557506--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16714557506--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57824": {
@@ -26137,11 +26218,15 @@
     "marca": "Farm",
     "preco": 398,
     "novo": true,
-    "descricao": "",
+    "descricao": "Biquíni meia taça textura borboleta. com design impecável, apresenta bojo estruturado e alças reguláveis que garantem conforto e ajuste perfeito. a calcinha com amarração lateral traz um toque de casualidade, enquanto a textura exclusiva eleva o visual para dias ensolarados na praia ou na piscina.",
     "cores": [
       {
         "cor": "10066",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16714533917--unico--0.jpg",
+          "/produtos/16714533917--unico--1.jpg",
+          "/produtos/16714533917--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -26154,7 +26239,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16714533917--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "10066": {
@@ -26631,11 +26716,16 @@
     "marca": "Farm",
     "preco": 479,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido frente única midi. apresenta modelagem fluida e delicada, com alças finas que se cruzam nas costas, criando um visual único e charmoso. o decote halter realça a leveza da peça, perfeita para dias casuais ou ocasiões especiais à beira-mar. uma escolha versátil que complementa o seu estilo.",
     "cores": [
       {
         "cor": "0013",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712947936--unico--0.jpg",
+          "/produtos/16712947936--unico--1.jpg",
+          "/produtos/16712947936--unico--2.jpg",
+          "/produtos/16712947936--unico--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -26648,7 +26738,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712947936--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0013": {
@@ -26779,8 +26869,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "PP"
+          "P"
         ]
       }
     ],
@@ -26806,23 +26895,29 @@
     "marca": "Farm",
     "preco": 349,
     "novo": true,
-    "descricao": "",
+    "descricao": "A camisa rosa é confeccionada em tecido leve sem elasticidade. A peça solta ao corpo possui gola com lapela, mangas curtas amplas com barra dobrada, estampa de listras verticais em rosa e branco, comprimento cropped* e fechamento frontal por amarração na altura da cintura.",
     "cores": [
       {
         "cor": "57860",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16712928256--unico--0.jpg",
+          "/produtos/16712928256--unico--1.jpg",
+          "/produtos/16712928256--unico--2.jpg",
+          "/produtos/16712928256--unico--3.jpg",
+          "/produtos/16712928256--unico--4.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
           "G"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "P",
+          "M"
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16712928256--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57860": {
@@ -26907,9 +27002,9 @@
           "G"
         ],
         "tamanhosDisponiveis": [
+          "P",
           "M",
-          "G",
-          "P"
+          "G"
         ]
       }
     ],
@@ -27786,7 +27881,7 @@
     "id": "16710501215",
     "nome": "Vestido Emily",
     "marca": "NV",
-    "preco": 0,
+    "preco": 789,
     "novo": true,
     "descricao": "",
     "cores": [
@@ -29688,8 +29783,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
@@ -31712,11 +31807,15 @@
     "marca": "Farm",
     "preco": 449,
     "novo": true,
-    "descricao": "",
+    "descricao": "vestido longo ombro só. com design assimétrico e alças delicadas, este vestido destaca os ombros e oferece um toque moderno. confeccionado em tecido leve, proporciona movimento e conforto. sua modelagem fluida é perfeita para ocasiões casuais e passeios ao ar livre, tornando-se um essencial no guarda-roupa de verão.",
     "cores": [
       {
         "cor": "07742",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707607896--unico--0.jpg",
+          "/produtos/16707607896--unico--1.jpg",
+          "/produtos/16707607896--unico--2.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
@@ -31726,7 +31825,11 @@
       },
       {
         "cor": "07708",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705788100--unico--0.jpg",
+          "/produtos/16705788100--unico--1.jpg",
+          "/produtos/16705788100--unico--2.jpg"
+        ],
         "tamanhos": [
           "P"
         ],
@@ -31735,7 +31838,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707607896--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "07742": {
@@ -31839,11 +31942,16 @@
     "marca": "Farm",
     "preco": 479.2,
     "novo": true,
-    "descricao": "",
+    "descricao": "vestido curto manga estampado flor nana. um toque de frescor e originalidade para o seu guarda-roupa. com decote em v, detalhes em viés e mangas três quartos, é perfeito para um passeio casual ou um encontro mais descontraído. a estampa floral exclusiva flui por todo o tecido leve, elevando qualquer ocasião.",
     "cores": [
       {
         "cor": "57787",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707606284--unico--0.jpg",
+          "/produtos/16707606284--unico--1.jpg",
+          "/produtos/16707606284--unico--2.jpg",
+          "/produtos/16707606284--unico--3.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -31856,7 +31964,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707606284--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57787": {
@@ -31916,7 +32024,11 @@
     "cores": [
       {
         "cor": "57794",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16707603934--unico--0.jpg",
+          "/produtos/16707603934--unico--1.jpg",
+          "/produtos/16707603934--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -31929,7 +32041,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16707603934--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57794": {
@@ -31967,8 +32079,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "P"
+          "P",
+          "G"
         ]
       }
     ],
@@ -34820,11 +34932,15 @@
     "marca": "Farm",
     "preco": 479,
     "novo": true,
-    "descricao": "",
+    "descricao": "O Vestido Franzido Café Da Tarde E Farm combina delicadeza, conforto e o estilo autêntico da Farm em uma peça cheia de charme. Com modelagem franzida, proporciona um caimento elegante que valoriza a silhueta com leveza e feminilidade. Seu design exclusivo traz um visual sofisticado e versátil, perfeito para passeios, encontros, eventos casuais e momentos especiais. O Vestido Franzido Café Da Tarde E Farm traduz a essência tropical da Farm, unindo beleza, conforto e personalidade em uma única peça.",
     "cores": [
       {
         "cor": "5784",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706234925--unico--0.jpg",
+          "/produtos/16706234925--unico--1.jpg",
+          "/produtos/16706234925--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -34835,7 +34951,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706234925--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "5784": {
@@ -34978,8 +35094,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "PP"
+          "PP",
+          "G"
         ]
       }
     ],
@@ -35045,11 +35161,15 @@
     "marca": "Farm",
     "preco": 459,
     "novo": true,
-    "descricao": "",
+    "descricao": "calça estampada brisa de flor apresenta uma modelagem soltinha e cintura alta com elástico confortável, perfeita para um visual casual e estiloso. os acabamentos delicados e a estampa exclusiva trazem originalidade. ideal para passeios ao ar livre ou encontros descontraídos.",
     "cores": [
       {
         "cor": "57835",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706210886--unico--0.jpg",
+          "/produtos/16706210886--unico--1.jpg",
+          "/produtos/16706210886--unico--2.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P"
@@ -35060,7 +35180,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706210886--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57835": {
@@ -35241,11 +35361,15 @@
     "marca": "Farm",
     "preco": 498,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido longo estampado lenço petra é uma peça única, com decote em v e alças finas que proporcionam leveza ao visual. Sua modelagem solta permite conforto e movimento, ideal para momentos especiais ou um passeio casual. O destaque fica por conta da estampa exclusiva, que adiciona charme e originalidade",
     "cores": [
       {
         "cor": "57874",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16706168815--unico--0.jpg",
+          "/produtos/16706168815--unico--1.jpg",
+          "/produtos/16706168815--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -35256,7 +35380,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16706168815--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57874": {
@@ -35287,8 +35411,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "M",
+          "G"
         ]
       },
       {
@@ -36475,44 +36599,6 @@
     }
   },
   {
-    "id": "16705791856",
-    "nome": "Regata Bordada Coqueiro",
-    "marca": "Farm",
-    "preco": 179,
-    "novo": true,
-    "descricao": "Regata bordada coqueiro destaca-se pelo charme do bordado sutil no centro. com alças largas e corte ajustado, proporciona conforto e estilo em qualquer ocasião casual. uma peça única para complementar visuais com naturalidade e leveza, é perfeita para os dias ensolarados em que o frescor é essencial.",
-    "cores": [
-      {
-        "cor": "07448",
-        "imagens": [
-          "/produtos/16705792648--unico--0.jpg",
-          "/produtos/16705792648--unico--1.jpg",
-          "/produtos/16705792648--unico--2.jpg"
-        ],
-        "tamanhos": [
-          "P",
-          "M"
-        ],
-        "tamanhosDisponiveis": [
-          "P",
-          "M"
-        ]
-      }
-    ],
-    "imagem": "/produtos/16705792648--unico--0.jpg",
-    "temEstoque": true,
-    "gruposBlingPorCorTamanho": {
-      "07448": {
-        "M": [
-          "16705792648"
-        ],
-        "P": [
-          "16705791856"
-        ]
-      }
-    }
-  },
-  {
     "id": "16705790233",
     "nome": "Vestido Longo Lenço Riviera",
     "marca": "Farm",
@@ -36708,11 +36794,15 @@
     "marca": "Farm",
     "preco": 349,
     "novo": true,
-    "descricao": "",
+    "descricao": "Short estampado floral luma. com cós alto e elástico na parte traseira, proporciona conforto em qualquer movimento. a barra com delicado detalhe em renda traz um toque especial à peça. ideal para compor looks casuais, garantindo charme em passeios ou encontros ao ar livre.",
     "cores": [
       {
         "cor": "57807",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705694400--unico--0.jpg",
+          "/produtos/16705694400--unico--1.jpg",
+          "/produtos/16705694400--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -36723,7 +36813,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705694400--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57807": {
@@ -36742,11 +36832,15 @@
     "marca": "Farm",
     "preco": 179,
     "novo": true,
-    "descricao": "",
+    "descricao": "A Regata Botões Assimétrica da Farm é feita em 100% algodão, fresca e confortável, com botões em posição assimétrica que dão um toque moderno ao básico.",
     "cores": [
       {
         "cor": "0013",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705686910--unico--0.jpg",
+          "/produtos/16705686910--unico--1.jpg",
+          "/produtos/16705686910--unico--2.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -36769,7 +36863,7 @@
         "tamanhosDisponiveis": []
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705686910--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "0013": {
@@ -36891,7 +36985,9 @@
     "cores": [
       {
         "cor": "57873",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705660422--unico--0.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -36905,7 +37001,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705660422--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57873": {
@@ -37060,11 +37156,15 @@
     "marca": "Farm",
     "preco": 429,
     "novo": true,
-    "descricao": "",
+    "descricao": "saia cropped estampada aurora. possui cintura alta e cós em elástico, garantindo conforto e ajuste perfeito. a modelagem fluida proporciona leveza e movimento, com comprimento que destaca o estilo descontraído. ideal para almoços ensolarados e passeios ao ar livre, a saia traz originalidade para o dia a dia.",
     "cores": [
       {
         "cor": "58925",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705614594--unico--0.jpg",
+          "/produtos/16705614594--unico--1.jpg",
+          "/produtos/16705614594--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -37077,7 +37177,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705614594--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "58925": {
@@ -37263,11 +37363,15 @@
     "marca": "Farm",
     "preco": 298,
     "novo": true,
-    "descricao": "",
+    "descricao": "Vestido T-Shirt Big Lenço Rio Paraíso, Farm O vestido marrom é confeccionado em malha  com baixa elasticidade. A peça possui decote redondo com acabamento canelado, mangas curtas amplas com ombros deslocados, caimento reto, estampa localizada Rio Paraíso, comprimento curto, barra simples com acabamento canelado e não possui fechamento.",
     "cores": [
       {
         "cor": "57799",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16705509120--unico--0.jpg",
+          "/produtos/16705509120--unico--1.jpg",
+          "/produtos/16705509120--unico--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M",
@@ -37280,7 +37384,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16705509120--unico--0.jpg",
     "temEstoque": true,
     "gruposBlingPorCorTamanho": {
       "57799": {
@@ -37732,6 +37836,28 @@
         ]
       }
     }
+  },
+  {
+    "id": "16732199793",
+    "nome": "Calça Jeans Mix Pregas Jeans Médio -",
+    "marca": "Animale",
+    "preco": 798,
+    "novo": false,
+    "descricao": "",
+    "cores": [
+      {
+        "cor": "Único",
+        "imagens": [],
+        "tamanhos": [
+          "36"
+        ],
+        "tamanhosDisponiveis": [
+          "36"
+        ]
+      }
+    ],
+    "imagem": null,
+    "temEstoque": true
   },
   {
     "id": "16705450592",
@@ -43057,29 +43183,6 @@
     "imagem": "/produtos/16707219157--unico--0.jpg",
     "temEstoque": false,
     "_corCodigo": "NV1258"
-  },
-  {
-    "id": "16707201020",
-    "nome": "Vestido Longo Floral Maite - 57911",
-    "marca": "Farm",
-    "preco": 449,
-    "novo": true,
-    "descricao": "",
-    "cores": [
-      {
-        "cor": "Único",
-        "imagens": [],
-        "tamanhos": [
-          "P"
-        ],
-        "tamanhosDisponiveis": [
-          "P"
-        ]
-      }
-    ],
-    "imagem": null,
-    "temEstoque": true,
-    "_corCodigo": "57911"
   },
   {
     "id": "16706679444",
