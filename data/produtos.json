@@ -12742,7 +12742,7 @@
       }
     ],
     "imagem": "/produtos/16580533582--azul-off--0.jpg",
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16454777923",
@@ -23020,8 +23020,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M"
+          "P"
         ]
       }
     ],
@@ -24813,7 +24812,6 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "34",
           "38",
           "42"
         ]
