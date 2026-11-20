@@ -11,9 +11,8 @@
 import { cache } from "react";
 import { createClient } from "@supabase/supabase-js";
 
-export const BLACK_FRIDAY_ACESSO_ANTECIPADO = "2026-11-27T21:00:00-03:00";
-export const BLACK_FRIDAY_ABERTURA = "2026-11-28T00:00:00-03:00";
-export const BLACK_FRIDAY_FIM = "2026-11-30T23:59:59-03:00";
+import { BLACK_FRIDAY_ACESSO_ANTECIPADO, BLACK_FRIDAY_ABERTURA, BLACK_FRIDAY_FIM } from "./blackFridayDatas";
+export { BLACK_FRIDAY_ACESSO_ANTECIPADO, BLACK_FRIDAY_ABERTURA, BLACK_FRIDAY_FIM };
 
 // Codigo do link de acesso antecipado (vai no e-mail e na mensagem de WhatsApp). So' funciona a
 // partir de 27/11 21h, entao vazar antes nao adianta nada.

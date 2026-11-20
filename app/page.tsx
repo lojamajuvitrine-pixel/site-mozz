@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { listarOutlet, listarPorMarca, produtosComFoto } from "@/lib/produtos";
 import { blackNovemberAtiva } from "@/lib/campanha";
+import FaixaBlackFriday from "@/components/FaixaBlackFriday";
 import { SITE_URL as siteUrl } from "@/lib/site";
 
 export const revalidate = 30;
@@ -114,6 +115,7 @@ export default async function Home() {
 
   return (
     <div>
+      <FaixaBlackFriday />
       {temBlackNovember && (
         <Link
           href="/black-november"

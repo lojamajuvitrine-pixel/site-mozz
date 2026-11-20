@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import BarraBusca from "@/components/BarraBusca";
-import { caminhoVitrinePromocional, rotuloMenuVitrine } from "@/lib/campanha";
+import { caminhoVitrinePromocional, menuEhBlackFriday, rotuloMenuVitrine } from "@/lib/campanha";
 import { useFavoritos } from "@/lib/favoritos-context";
 import { useCart } from "@/lib/cart-context";
 
@@ -235,7 +235,11 @@ export default function Nav({
             <PainelMenu marcas={MARCAS_MASCULINO} categorias={categoriasMasculino} caminho="/masculino" />
           </div>
 
-          <Link href={caminhoVitrinePromocional()} className="py-1 hover:opacity-70 transition-opacity">
+          <Link
+            href={caminhoVitrinePromocional()}
+            className="py-1 hover:opacity-70 transition-opacity"
+            style={menuEhBlackFriday() ? { color: "#C9A24B" } : undefined}
+          >
             {rotuloMenuVitrine()}
           </Link>
           <Link href="/quem-somos" className="py-1 hover:opacity-70 transition-opacity">
@@ -356,7 +360,12 @@ export default function Nav({
                   </div>
                 )}
               </div>
-              <Link href={caminhoVitrinePromocional()} onClick={fecharMenu} className={classeItemMenu}>
+              <Link
+                href={caminhoVitrinePromocional()}
+                onClick={fecharMenu}
+                className={classeItemMenu}
+                style={menuEhBlackFriday() ? { color: "#C9A24B" } : undefined}
+              >
                 {rotuloMenuVitrine()}
               </Link>
             </div>
