@@ -93,6 +93,30 @@ function estadoInicial(linha: LinhaProduto): EstadoLinha {
   };
 }
 
+// Selo "OK" (pedido do Brunno em 20/11/2026): a peca esta' completa quando tem foto em todas as
+// cores, composicao e tabela de medidas cadastradas no painel, e a 1a foto escolhida em cada cor
+// com mais de uma foto. Conta sempre o que ja' esta' SALVO (nao o que esta' digitado e nao salvo).
+type DadosSalvos = { composicao: boolean; medidas: boolean; capaPorCor: Record<string, string> };
+
+function dadosSalvosIniciais(linha: LinhaProduto): DadosSalvos {
+  return {
+    composicao: linha.composicaoCustomizada,
+    medidas: !!linha.medidasSalvas,
+    capaPorCor: linha.capaPorCorSalva ?? {}
+  };
+}
+
+function oQueFalta(linha: LinhaProduto, salvo: DadosSalvos): string[] {
+  const falta: string[] = [];
+  const temFoto = linha.cores.length > 0 ? linha.cores.every((c) => c.imagens.length > 0) : !!linha.imagem;
+  if (!temFoto) falta.push("foto");
+  if (!salvo.composicao) falta.push("composição");
+  if (!salvo.medidas) falta.push("medidas");
+  const capaOk = linha.cores.filter((c) => c.imagens.length > 1).every((c) => !!salvo.capaPorCor[c.cor]);
+  if (!capaOk) falta.push("1ª foto");
+  return falta;
+}
+
 function precoComDesconto(precoBling: number, percentualTexto: string): string | null {
   const percentual = Number(percentualTexto.replace(",", "."));
   if (!Number.isFinite(percentual) || percentual <= 0 || percentual >= 100) return null;
@@ -105,12 +129,21 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
   const [soSemFoto, setSoSemFoto] = useState(false);
   const [soDesativadas, setSoDesativadas] = useState(false);
   const [marcaFiltro, setMarcaFiltro] = useState("");
+  const [soIncompletas, setSoIncompletas] = useState(false);
+  const [salvos, setSalvos] = useState<Record<string, DadosSalvos>>(() =>
+    Object.fromEntries(produtosIniciais.map((p) => [p.id, dadosSalvosIniciais(p)]))
+  );
   const [estados, setEstados] = useState<Record<string, EstadoLinha>>(() =>
     Object.fromEntries(produtosIniciais.map((p) => [p.id, estadoInicial(p)]))
   );
 
   const totalSemFoto = useMemo(() => produtosIniciais.filter((p) => !p.imagem).length, [produtosIniciais]);
   const totalDesativadas = useMemo(() => produtosIniciais.filter((p) => !p.ativo).length, [produtosIniciais]);
+  const faltasPorPeca = useMemo(
+    () => Object.fromEntries(produtosIniciais.map((p) => [p.id, oQueFalta(p, salvos[p.id] ?? dadosSalvosIniciais(p))])),
+    [produtosIniciais, salvos]
+  );
+  const totalOk = produtosIniciais.filter((p) => faltasPorPeca[p.id]?.length === 0).length;
 
   // Lista de marcas presentes no catalogo agora, com quantas pecas cada uma tem - pra montar o
   // filtro abaixo e o Brunno ver de cara onde tem mais peca pra revisar. Ordem alfabetica.
@@ -128,10 +161,11 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
       if (marcaFiltro && p.marca !== marcaFiltro) return false;
       if (soSemFoto && p.imagem) return false;
       if (soDesativadas && p.ativo) return false;
+      if (soIncompletas && faltasPorPeca[p.id]?.length === 0) return false;
       if (!termo) return true;
       return normalizarTexto(p.nome).includes(termo) || normalizarTexto(p.marca).includes(termo);
     });
-  }, [produtosIniciais, busca, soSemFoto, soDesativadas, marcaFiltro]);
+  }, [produtosIniciais, busca, soSemFoto, soDesativadas, soIncompletas, faltasPorPeca, marcaFiltro]);
 
   function atualizarEstado(id: string, alteracao: Partial<EstadoLinha>) {
     setEstados((atual) => ({ ...atual, [id]: { ...atual[id], ...alteracao, salvoAgora: false, erro: null } }));
@@ -220,6 +254,10 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
         ...atual,
         [linha.id]: { ...atual[linha.id], salvando: false, salvoAgora: true }
       }));
+      setSalvos((atual) => ({
+        ...atual,
+        [linha.id]: { composicao: !!composicaoCustomizada, medidas: !!medidasCustomizadas, capaPorCor: { ...estado.capaPorCor } }
+      }));
     } catch (e) {
       atualizarEstado(linha.id, {
         salvando: false,
@@ -267,6 +305,18 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
           />
           Só desativadas ({totalDesativadas})
         </label>
+        <label className="flex items-center gap-1.5 text-[13.5px] text-mozz-gray cursor-pointer">
+          <input
+            type="checkbox"
+            checked={soIncompletas}
+            onChange={(e) => setSoIncompletas(e.target.checked)}
+            className="w-4 h-4"
+          />
+          Só incompletas ({produtosIniciais.length - totalOk})
+        </label>
+        <span className="text-[13.5px] font-medium text-green-700">
+          {totalOk} de {produtosIniciais.length} peças OK
+        </span>
       </div>
       <p className="text-[13px] text-mozz-gray mb-4">
         Peça sem foto fica automaticamente fora do catálogo até alguém subir a foto no Bling - não
@@ -307,7 +357,17 @@ export default function PainelProdutos({ produtosIniciais }: { produtosIniciais:
                           )}
                         </div>
                         <div>
-                          <p className="leading-tight">{linha.nome}</p>
+                          <p className="leading-tight">
+                            {linha.nome}
+                            {faltasPorPeca[linha.id]?.length === 0 && (
+                              <span className="ml-2 inline-block rounded bg-green-600 px-1.5 py-0.5 text-[11px] font-medium text-white align-middle">
+                                OK
+                              </span>
+                            )}
+                          </p>
+                          {(faltasPorPeca[linha.id]?.length ?? 0) > 0 && (
+                            <p className="text-[11.5px] text-mozz-gray">Falta: {faltasPorPeca[linha.id].join(", ")}</p>
+                          )}
                           <p className="text-mozz-gray text-[12px]">
                             {linha.marca}
                             {!linha.imagem && (
