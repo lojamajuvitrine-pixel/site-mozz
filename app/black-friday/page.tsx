@@ -109,9 +109,13 @@ export default async function PaginaBlackFriday({ searchParams }: { searchParams
           </div>
         )}
         <p className="mt-4 text-[14px] uppercase tracking-[0.2em]" style={{ color: OURO }}>
-          {acessoAntecipado && !aberta ? "Acesso antecipado · " : ""}termina em{" "}
+          {aberta ? "termina em" : acessoAntecipado ? "Acesso antecipado · abre para todos em" : "começa em"}{" "}
           <span className="text-white">
-            <ContagemRegressiva alvo={BLACK_FRIDAY_FIM} compacta recarregarAoFim={false} />
+            {aberta ? (
+              <ContagemRegressiva alvo={BLACK_FRIDAY_FIM} compacta recarregarAoFim={false} />
+            ) : (
+              <ContagemRegressiva alvo={BLACK_FRIDAY_ABERTURA} compacta />
+            )}
           </span>
         </p>
       </div>
