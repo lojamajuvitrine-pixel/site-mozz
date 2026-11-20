@@ -4,6 +4,7 @@ import { categoriaDoProduto, type TabelaMedidas } from "@/lib/detalhesProduto";
 import { buscarConfigProdutos, type ConfigProduto } from "@/lib/produtoConfig";
 import { UNIFICACOES, idPrincipalUnificado } from "@/lib/unificacoes";
 import { aplicarEstoqueAoVivo, carregarEstoqueAoVivo, type EstoqueAoVivo } from "@/lib/estoqueAoVivo";
+import { buscarPrecosBlackFridayCache, precosBlackFridayAtivos } from "@/lib/blackFriday";
 
 // Uma variacao de COR do produto - cada cor tem suas proprias fotos (pode ser mais de uma,
 // quando cadastradas no Bling) e sua propria lista de tamanhos disponiveis.
@@ -242,6 +243,17 @@ function aplicarConfigEspecial(produto: Produto, config: ConfigProduto | undefin
   return comFlags;
 }
 
+// Preco da Black Friday (painel /admin/black-friday, ver lib/blackFriday.ts) - passa por cima do
+// preco do Bling e do preco especial, mas so' quando o mapa vem preenchido (listarProdutos so'
+// busca os precos dentro da janela da Black Friday). O preco cheio do Bling vira o "de" riscado.
+function aplicarPrecoBlackFriday(produto: Produto, precos: Map<string, number>): Produto {
+  const precoBlack = precos.get(produto.id);
+  if (!precoBlack) return produto;
+  const precoCheio = produto.precoOriginal ?? produto.preco;
+  if (precoBlack >= precoCheio) return produto;
+  return { ...produto, preco: precoBlack, precoOriginal: precoCheio };
+}
+
 // Aplica a escolha manual de "1a foto" por cor (painel /admin/produtos, campo capaPorCor,
 // ver aplicarConfigEspecial acima) - so' REORDENA, nunca apaga nenhuma foto: a escolhida vai
 // pro inicio do array de imagens daquela cor, o resto continua atras dela na mesma ordem que
@@ -405,14 +417,16 @@ export async function listarProdutos(opcoes?: {
   incluirInativos?: boolean;
   estoqueFresco?: boolean;
 }): Promise<Produto[]> {
-  const [config, estoque] = await Promise.all([
+  const [config, estoque, precosBlack] = await Promise.all([
     buscarConfigProdutosCache(),
-    carregarEstoqueAoVivo(!!opcoes?.estoqueFresco)
+    carregarEstoqueAoVivo(!!opcoes?.estoqueFresco),
+    precosBlackFridayAtivos() ? buscarPrecosBlackFridayCache() : Promise.resolve(new Map<string, number>())
   ]);
   const produtos = catalogoComEstoque(estoque)
     .filter((p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca))
     .filter((p) => opcoes?.incluirSemFoto || !!p.imagem)
     .map((p) => aplicarConfigEspecial(p, config.get(p.id)))
+    .map((p) => aplicarPrecoBlackFriday(p, precosBlack))
     .map(aplicarCapaPorCor)
     .map(ordenarCoresDisponiveisPrimeiro)
     .filter((p) => opcoes?.incluirInativos || p.ativo !== false)
@@ -470,6 +484,13 @@ export async function produtosComFoto(): Promise<Produto[]> {
 export async function listarOutlet(): Promise<Produto[]> {
   const produtos = await listarProdutos();
   return produtos.filter((p) => p.outlet);
+}
+
+// Pecas da Black Friday (painel /admin/black-friday). Dentro da janela da Black os precos ja'
+// vem aplicados por listarProdutos; fora dela (previa do admin) aplica aqui so' pra mostrar.
+export async function listarBlackFriday(): Promise<Produto[]> {
+  const [produtos, precos] = await Promise.all([listarProdutos(), buscarPrecosBlackFridayCache()]);
+  return produtos.filter((p) => precos.has(p.id)).map((p) => aplicarPrecoBlackFriday(p, precos));
 }
 
 // Pecas marcadas como "destaque" no painel /admin/produtos - usado pra priorizar a vitrine
