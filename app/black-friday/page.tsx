@@ -1,3 +1,4 @@
+import { temAcessoVipBlackFriday } from "@/lib/blackFridayVip";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import GradeProdutos from "@/components/GradeProdutos";
@@ -51,7 +52,9 @@ export default async function PaginaBlackFriday({ searchParams }: { searchParams
 
   const admin = await usuarioEhAdmin();
   const aberta = blackFridayAberta();
-  const acessoAntecipado = searchParams?.acesso === CODIGO_ACESSO_ANTECIPADO && precosBlackFridayAtivos();
+  // quem ja' abriu o link uma vez (cookie) continua entrando mesmo voltando sem o ?acesso
+  const acessoAntecipado =
+    (searchParams?.acesso === CODIGO_ACESSO_ANTECIPADO || temAcessoVipBlackFriday()) && precosBlackFridayAtivos();
   const mostrarVitrine = aberta || acessoAntecipado || admin;
   const previa = admin && !aberta && !acessoAntecipado;
 

@@ -1,3 +1,4 @@
+import { temAcessoVipBlackFriday } from "@/lib/blackFridayVip";
 import type { Metadata } from "next";
 import { buscarProduto, coresDoProduto } from "@/lib/produtos";
 import { notFound } from "next/navigation";
@@ -10,10 +11,11 @@ import { SITE_URL as siteUrl } from "@/lib/site";
 // generateMetadata roda no servidor por produto - e' o que faz o Google (e o preview de link
 // no WhatsApp/Instagram) mostrar o nome/foto/preco certos da peca em vez do titulo generico
 // do site inteiro.
-export const revalidate = 30;
+// Dinamica (20/11/2026) pra mostrar o preco da Black a quem abriu o link de acesso antecipado.
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const produto = await buscarProduto(params.slug);
+  const produto = await buscarProduto(params.slug, { acessoVip: temAcessoVipBlackFriday() });
   if (!produto) return {};
 
   const descricao = textoDescricao(produto).slice(0, 160);
@@ -35,7 +37,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function PaginaProduto({ params }: { params: { slug: string } }) {
-  const produto = await buscarProduto(params.slug);
+  const produto = await buscarProduto(params.slug, { acessoVip: temAcessoVipBlackFriday() });
   if (!produto) notFound();
 
   const cores = coresDoProduto(produto);

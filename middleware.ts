@@ -2,6 +2,33 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
 import { ehAdmin } from "@/lib/admin";
+import {
+  BLACK_FRIDAY_ACESSO_ANTECIPADO,
+  BLACK_FRIDAY_FIM,
+  CODIGO_ACESSO_ANTECIPADO,
+  COOKIE_ACESSO_VIP
+} from "@/lib/blackFridayDatas";
+
+// Acesso antecipado da Black Friday (20/11/2026): quem abre /black-friday?acesso=<codigo> a
+// partir de 27/11 21h fica marcado com um cookie e passa a ver/pagar o preco Black no site todo.
+function marcarAcessoVip(request: NextRequest, resposta: NextResponse): NextResponse {
+  const agora = Date.now();
+  if (
+    request.nextUrl.pathname === "/black-friday" &&
+    request.nextUrl.searchParams.get("acesso") === CODIGO_ACESSO_ANTECIPADO &&
+    agora >= Date.parse(BLACK_FRIDAY_ACESSO_ANTECIPADO) &&
+    agora <= Date.parse(BLACK_FRIDAY_FIM)
+  ) {
+    resposta.cookies.set(COOKIE_ACESSO_VIP, CODIGO_ACESSO_ANTECIPADO, {
+      path: "/",
+      httpOnly: true,
+      sameSite: "lax",
+      secure: true,
+      expires: new Date(Date.parse(BLACK_FRIDAY_FIM))
+    });
+  }
+  return resposta;
+}
 
 // Roda em TODA requisicao que bate no site (ver "matcher" no final do arquivo). Duas coisas:
 // 1) renova o cookie de sessao do Supabase automaticamente (sem isso o login expira sozinho
@@ -18,7 +45,7 @@ export async function middleware(request: NextRequest) {
   // em app/conta/entrar/page.tsx). Evita quebrar o middleware (e o site inteiro) antes da
   // conta Supabase existir.
   if (!SUPABASE_CONFIGURADO) {
-    return resposta;
+    return marcarAcessoVip(request, resposta);
   }
 
   // Bug conhecido do Supabase: no PRIMEIRO login de um e-mail novo, o link de confirmacao
@@ -80,7 +107,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  return resposta;
+  return marcarAcessoVip(request, resposta);
 }
 
 export const config = {

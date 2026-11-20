@@ -1,3 +1,4 @@
+import { temAcessoVipBlackFriday } from "@/lib/blackFridayVip";
 // Integracao com o Mercado Pago via Checkout Pro (Preferences API).
 // Fluxo: o carrinho vira uma "preferencia" criada aqui no servidor -> o comprador e'
 // redirecionado pro ambiente do Mercado Pago (init_point) -> ele paga -> o Mercado Pago
@@ -216,9 +217,11 @@ async function prepararPedido(
   // Estoque de agora (estoque ao vivo, ver lib/estoqueAoVivo.ts) - uma busca fresca no banco antes
   // de conferir os itens; os buscarProduto abaixo reaproveitam esse mesmo retrato.
   await carregarEstoqueAoVivo(true);
+  // Acesso antecipado da Black Friday: quem abriu o link paga o preco Black ja' as 21h de 27/11.
+  const acessoVip = temAcessoVipBlackFriday();
   const itensValidados = await Promise.all(
     itens.map(async (item) => {
-      const produtoReal = await buscarProduto(item.produto.id);
+      const produtoReal = await buscarProduto(item.produto.id, { acessoVip });
       if (!produtoReal) {
         throw new ErroValidacaoPedido(`"${item.produto.nome}" não está mais disponível`);
       }

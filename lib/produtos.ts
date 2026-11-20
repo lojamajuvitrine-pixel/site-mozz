@@ -4,7 +4,8 @@ import { categoriaDoProduto, type TabelaMedidas } from "@/lib/detalhesProduto";
 import { buscarConfigProdutos, type ConfigProduto } from "@/lib/produtoConfig";
 import { UNIFICACOES, idPrincipalUnificado } from "@/lib/unificacoes";
 import { aplicarEstoqueAoVivo, carregarEstoqueAoVivo, type EstoqueAoVivo } from "@/lib/estoqueAoVivo";
-import { buscarPrecosBlackFridayCache, precosBlackFridayAtivos } from "@/lib/blackFriday";
+import { buscarPrecosBlackFridayCache } from "@/lib/blackFriday";
+import { precosBlackFridayLiberados } from "@/lib/blackFridayDatas";
 
 // Uma variacao de COR do produto - cada cor tem suas proprias fotos (pode ser mais de uma,
 // quando cadastradas no Bling) e sua propria lista de tamanhos disponiveis.
@@ -416,11 +417,13 @@ export async function listarProdutos(opcoes?: {
   incluirSemFoto?: boolean;
   incluirInativos?: boolean;
   estoqueFresco?: boolean;
+  // true quando o visitante abriu o link de acesso antecipado (ver lib/blackFridayVip.ts)
+  acessoVip?: boolean;
 }): Promise<Produto[]> {
   const [config, estoque, precosBlack] = await Promise.all([
     buscarConfigProdutosCache(),
     carregarEstoqueAoVivo(!!opcoes?.estoqueFresco),
-    precosBlackFridayAtivos() ? buscarPrecosBlackFridayCache() : Promise.resolve(new Map<string, number>())
+    precosBlackFridayLiberados(!!opcoes?.acessoVip) ? buscarPrecosBlackFridayCache() : Promise.resolve(new Map<string, number>())
   ]);
   const produtos = catalogoComEstoque(estoque)
     .filter((p) => p.temEstoque !== false && MARCAS_ATIVAS.has(p.marca))
@@ -457,8 +460,11 @@ export async function listarPorGenero(genero: "Masculino" | "Feminino"): Promise
   return produtos.filter((p) => generoDaMarca(p.marca) === genero);
 }
 
-export async function buscarProduto(id: string, opcoes?: { estoqueFresco?: boolean }): Promise<Produto | undefined> {
-  const produtos = await listarProdutos({ estoqueFresco: opcoes?.estoqueFresco });
+export async function buscarProduto(
+  id: string,
+  opcoes?: { estoqueFresco?: boolean; acessoVip?: boolean }
+): Promise<Produto | undefined> {
+  const produtos = await listarProdutos({ estoqueFresco: opcoes?.estoqueFresco, acessoVip: opcoes?.acessoVip });
   // id de um cadastro que foi unificado em outro anuncio (lib/unificacoes.ts) -> abre o
   // anuncio principal, pra link/carrinho/anuncio antigo nao dar "produto nao encontrado".
   const idFinal = idPrincipalUnificado(id) ?? id;

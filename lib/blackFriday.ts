@@ -16,7 +16,7 @@ export { BLACK_FRIDAY_ACESSO_ANTECIPADO, BLACK_FRIDAY_ABERTURA, BLACK_FRIDAY_FIM
 
 // Codigo do link de acesso antecipado (vai no e-mail e na mensagem de WhatsApp). So' funciona a
 // partir de 27/11 21h, entao vazar antes nao adianta nada.
-export const CODIGO_ACESSO_ANTECIPADO = "vip-mozz-2711";
+export { CODIGO_ACESSO_ANTECIPADO } from "./blackFridayDatas";
 
 // A partir de quando o botao "Enviar e-mail de acesso antecipado" funciona (meia hora antes,
 // pra dar tempo de o Brunno disparar e os e-mails chegarem ate' as 21h).
