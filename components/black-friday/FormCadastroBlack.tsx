@@ -11,8 +11,9 @@ export default function FormCadastroBlack() {
   const [whatsapp, setWhatsapp] = useState("");
   const [email, setEmail] = useState("");
   const [aceite, setAceite] = useState(true);
-  // 22/11/2026 (Brunno): opcao de entrar no Grupo VIP do WhatsApp - opcional e desmarcada.
-  const [querGrupo, setQuerGrupo] = useState(false);
+  // 22/11/2026 (Brunno): opcao de entrar no Grupo VIP do WhatsApp - ja' vem marcada, a cliente
+  // desmarca se nao quiser. Entrar no grupo continua sendo um toque dela no botao da confirmacao.
+  const [querGrupo, setQuerGrupo] = useState(true);
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [confirmado, setConfirmado] = useState<string | null>(null);
