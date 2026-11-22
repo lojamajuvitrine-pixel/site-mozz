@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { LINK_GRUPO_WHATSAPP } from "@/lib/grupoWhatsapp";
 import { rastrearCadastro } from "@/lib/tracking";
+import { celularValido, mascararCelular, MENSAGEM_CELULAR_INVALIDO } from "@/lib/celular";
 
 const OURO = "#C9A24B";
 
@@ -24,6 +25,10 @@ export default function FormCadastroBlack() {
     setErro(null);
     if (!aceite) {
       setErro("Marque a opção para receber as ofertas da Mozz.");
+      return;
+    }
+    if (!celularValido(whatsapp)) {
+      setErro(MENSAGEM_CELULAR_INVALIDO);
       return;
     }
     setEnviando(true);
@@ -73,9 +78,9 @@ export default function FormCadastroBlack() {
       <input className={classeCampo} placeholder="Nome" value={nome} onChange={(e) => setNome(e.target.value)} required autoComplete="name" />
       <input
         className={classeCampo}
-        placeholder="WhatsApp com DDD"
+        placeholder="WhatsApp com DDD — (42) 99999-9999"
         value={whatsapp}
-        onChange={(e) => setWhatsapp(e.target.value)}
+        onChange={(e) => setWhatsapp(mascararCelular(e.target.value))}
         required
         inputMode="tel"
         autoComplete="tel"
