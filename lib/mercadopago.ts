@@ -217,7 +217,7 @@ async function prepararPedido(
   // Estoque de agora (estoque ao vivo, ver lib/estoqueAoVivo.ts) - uma busca fresca no banco antes
   // de conferir os itens; os buscarProduto abaixo reaproveitam esse mesmo retrato.
   await carregarEstoqueAoVivo(true);
-  // Acesso antecipado da Black Friday: quem abriu o link paga o preco Black ja' as 21h de 27/11.
+  // Acesso antecipado da Black Friday: quem abriu o link paga o preco Black ja' as 21h de 26/11.
   const acessoVip = temAcessoVipBlackFriday();
   const itensValidados = await Promise.all(
     itens.map(async (item) => {

@@ -31,7 +31,7 @@ function htmlEmail(nome: string, link: string): string {
       </p>
       <a href="${link}" style="display:inline-block;background:${OURO};color:#000;text-decoration:none;font-weight:bold;font-size:16px;padding:16px 32px;border-radius:999px;">Entrar na Black Friday</a>
       <p style="font-size:13px;color:#999;margin:24px 0 0;">
-        A partir de 28/11 à 00h00 a página abre para todo mundo e as peças podem esgotar.
+        A partir de 27/11 à 00h00 a página abre para todo mundo e as peças podem esgotar.
       </p>
     </div>
   </div>`;
@@ -48,7 +48,7 @@ export async function POST() {
   if (!ehAdmin(user?.email)) return NextResponse.json({ erro: "Não autorizado" }, { status: 401 });
 
   if (Date.now() < Date.parse(LIBERAR_ENVIO_EMAIL_EM)) {
-    return NextResponse.json({ erro: "O envio libera em 27/11 a partir das 20h30." }, { status: 400 });
+    return NextResponse.json({ erro: "O envio libera em 26/11 a partir das 20h30." }, { status: 400 });
   }
 
   const apiKey = process.env.RESEND_API_KEY;

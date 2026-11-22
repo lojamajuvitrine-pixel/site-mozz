@@ -22,7 +22,7 @@ import { SITE_URL as siteUrl } from "@/lib/site";
 // vitrine completa a qualquer momento (previa), pra ir montando as ofertas.
 export const metadata: Metadata = {
   title: "Black Friday",
-  description: "Black Friday Mozz: Farm, NV, Reserva, Animale e Foxton de 28 a 30/11. Cadastre-se e compre antes de todo mundo.",
+  description: "Black Friday Mozz: Farm, NV, Reserva, Animale e Foxton de 27 a 30/11. Cadastre-se e compre antes de todo mundo.",
   alternates: { canonical: `${siteUrl}/black-friday` }
 };
 
@@ -81,7 +81,7 @@ export default async function PaginaBlackFriday({ searchParams }: { searchParams
             <FormCadastroBlack />
           </div>
 
-          <p className="mt-6 text-xs text-white/50">Black Friday Mozz: de 28 a 30/11, enquanto durarem os estoques.</p>
+          <p className="mt-6 text-xs text-white/50">Black Friday Mozz: de 27 a 30/11, enquanto durarem os estoques.</p>
         </div>
       </section>
     );
@@ -95,8 +95,8 @@ export default async function PaginaBlackFriday({ searchParams }: { searchParams
     <section className="py-6">
       {previa && (
         <div className="mb-4 rounded-md bg-yellow-300 px-4 py-3 text-[14px] text-black">
-          <strong>PRÉVIA</strong> - só você está vendo. Acesso antecipado em 27/11 às 21h e abertura para todos em
-          28/11 à 00h00. Monte as ofertas em{" "}
+          <strong>PRÉVIA</strong> - só você está vendo. Acesso antecipado em 26/11 às 21h e abertura para todos em
+          27/11 à 00h00. Monte as ofertas em{" "}
           <a href="/admin/black-friday" className="underline">
             /admin/black-friday
           </a>

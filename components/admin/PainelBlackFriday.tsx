@@ -295,7 +295,7 @@ export default function PainelBlackFriday({
             </button>
           </div>
           {!envioLiberado && (
-            <p className="mb-4 text-[13px] text-mozz-gray">O envio de e-mail libera em 27/11 a partir das 20h30.</p>
+            <p className="mb-4 text-[13px] text-mozz-gray">O envio de e-mail libera em 26/11 a partir das 20h30.</p>
           )}
           <div className="overflow-x-auto">
             <table className="w-full text-left text-[14px]">

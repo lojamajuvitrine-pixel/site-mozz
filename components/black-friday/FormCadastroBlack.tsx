@@ -43,7 +43,7 @@ export default function FormCadastroBlack() {
       <div className="rounded-lg border border-[#C9A24B]/50 bg-white/5 p-5 text-center">
         <p className="text-lg font-medium text-white">Pronto, {confirmado}!</p>
         <p className="mt-2 text-[15px] text-white/80">
-          Dia 27/11 às 21h você recebe no WhatsApp e no e-mail o link de acesso antecipado.
+          Dia 26/11 às 21h você recebe no WhatsApp e no e-mail o link de acesso antecipado.
         </p>
       </div>
     );

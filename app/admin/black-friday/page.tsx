@@ -53,7 +53,7 @@ export default async function PaginaAdminBlackFriday() {
         </a>
       </div>
       <p className="text-[14.5px] text-mozz-gray mb-6">
-        Marque as peças e o preço da Black. O preço passa a valer no site inteiro em 27/11 às 21h (acesso
+        Marque as peças e o preço da Black. O preço passa a valer no site inteiro em 26/11 às 21h (acesso
         antecipado) e vai até 30/11 às 23h59. Antes disso, só você vê, na prévia.
       </p>
       <PainelBlackFriday

@@ -1,7 +1,7 @@
 // Black Friday Mozz 2026 (pedido do Brunno em 20/11/2026):
-// - ate' 27/11 21h: pagina /black-friday mostra contagem regressiva + cadastro;
-// - 27/11 21h ate' 23h59: acesso antecipado pra quem se cadastrou (link com ?acesso=...);
-// - 28/11 00h ate' 30/11 23h59: pagina aberta pra todo mundo;
+// - ate' 26/11 21h: pagina /black-friday mostra contagem regressiva + cadastro;
+// - 26/11 21h ate' 23h59: acesso antecipado pra quem se cadastrou (link com ?acesso=...);
+// - 27/11 00h ate' 30/11 23h59: pagina aberta pra todo mundo;
 // - depois disso: /black-friday manda pro /outlet.
 // O preco da Black Friday de cada peca e' cadastrado em /admin/black-friday e fica na tabela
 // black_friday_produtos (Supabase). Ele so' passa a valer no site inteiro (vitrine, pagina do
@@ -15,12 +15,12 @@ import { BLACK_FRIDAY_ACESSO_ANTECIPADO, BLACK_FRIDAY_ABERTURA, BLACK_FRIDAY_FIM
 export { BLACK_FRIDAY_ACESSO_ANTECIPADO, BLACK_FRIDAY_ABERTURA, BLACK_FRIDAY_FIM };
 
 // Codigo do link de acesso antecipado (vai no e-mail e na mensagem de WhatsApp). So' funciona a
-// partir de 27/11 21h, entao vazar antes nao adianta nada.
+// partir de 26/11 21h, entao vazar antes nao adianta nada.
 export { CODIGO_ACESSO_ANTECIPADO } from "./blackFridayDatas";
 
 // A partir de quando o botao "Enviar e-mail de acesso antecipado" funciona (meia hora antes,
 // pra dar tempo de o Brunno disparar e os e-mails chegarem ate' as 21h).
-export const LIBERAR_ENVIO_EMAIL_EM = "2026-11-27T20:30:00-03:00";
+export const LIBERAR_ENVIO_EMAIL_EM = "2026-11-26T20:30:00-03:00";
 
 const ms = (iso: string) => Date.parse(iso);
 

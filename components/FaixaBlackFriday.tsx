@@ -7,8 +7,8 @@ import { BLACK_FRIDAY_ABERTURA, BLACK_FRIDAY_FIM } from "@/lib/blackFridayDatas"
 const OURO = "#C9A24B";
 
 // Banner da Black Friday no topo da home (textos aprovados pelo Brunno em 20/11/2026).
-// Antes de 28/11 00h: contagem ate' a abertura + "Quero acesso antecipado" (leva ao cadastro).
-// De 28/11 a 30/11: "termina em" + "Ver ofertas". Depois de 30/11 23h59 some sozinho.
+// Antes de 27/11 00h: contagem ate' a abertura + "Quero acesso antecipado" (leva ao cadastro).
+// De 27/11 a 30/11: "termina em" + "Ver ofertas". Depois de 30/11 23h59 some sozinho.
 // Calculado no navegador pra trocar de fase na hora certa.
 export default function FaixaBlackFriday() {
   const agora = Date.now();
@@ -48,7 +48,7 @@ export default function FaixaBlackFriday() {
         <p className="mt-3 text-[12.5px] text-white/60">
           {aberta
             ? "Só até 30/11, enquanto durarem os estoques"
-            : "De 28 a 30/11 · cadastre-se e compre antes de todo mundo"}
+            : "De 27 a 30/11 · cadastre-se e compre antes de todo mundo"}
         </p>
       </Link>
     </section>
