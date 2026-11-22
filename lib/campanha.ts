@@ -1,4 +1,4 @@
-import { campanhaBlackFridayNoAr } from "./blackFridayDatas";
+import { campanhaBlackFridayNoAr, freteGratisSuspensoNaBlack } from "./blackFridayDatas";
 
 // Campanha Black November 2026 (pedido do Brunno em 05/11/2026): durante novembro a vitrine de
 // outlet vira "Black November" - menu, pagina propria (/black-november) e banner na home. As
@@ -52,5 +52,6 @@ export const FRETE_GRATIS_BLACK_NOVEMBER = 2000;
 
 export function limiarFreteGratis(limiarBase: number | null, temPecaPromocional: boolean): number | null {
   if (limiarBase === null) return null;
+  if (freteGratisSuspensoNaBlack()) return null;
   return temPecaPromocional && regraFretePromocionalAtiva() ? Math.max(limiarBase, FRETE_GRATIS_BLACK_NOVEMBER) : limiarBase;
 }

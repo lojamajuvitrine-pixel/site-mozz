@@ -22,3 +22,20 @@ export function precosBlackFridayLiberados(acessoVip: boolean, agora: Date = new
 export function campanhaBlackFridayNoAr(agora: Date = new Date()): boolean {
   return agora.getTime() <= Date.parse(BLACK_FRIDAY_FIM);
 }
+
+// Frete gratis (22/11/2026, Brunno): vale normalmente (valor do painel, hoje R$ 399) ate' a Black.
+// Do acesso antecipado ate' o fim da Black o site NAO da' frete gratis (pecas a preco de custo).
+// Depois de 30/11 volta sozinho ao valor do painel.
+export function freteGratisSuspensoNaBlack(agora: Date = new Date()): boolean {
+  const t = agora.getTime();
+  return t >= Date.parse(BLACK_FRIDAY_ACESSO_ANTECIPADO) && t <= Date.parse(BLACK_FRIDAY_FIM);
+}
+
+// No feed do Google a troca comeca antes (25/11 20h), porque o Merchant Center le o feed ~1x por
+// dia: todos os produtos vao com a etiqueta "black-november" (politica do Merchant com frete
+// gratis so' acima de R$ 2.000, ou seja, frete pago na pratica) ate' 30/11 23h59.
+export const FEED_FRETE_BLACK_INICIO = "2026-11-25T20:00:00-03:00";
+export function feedComFretePagoDaBlack(agora: Date = new Date()): boolean {
+  const t = agora.getTime();
+  return t >= Date.parse(FEED_FRETE_BLACK_INICIO) && t <= Date.parse(BLACK_FRIDAY_FIM);
+}

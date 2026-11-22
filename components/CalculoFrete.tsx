@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { formatarPreco } from "@/lib/formato";
+import { freteGratisSuspensoNaBlack } from "@/lib/blackFridayDatas";
 import {
   FRETE_ENTREGA_EXPRESSA,
   FRETE_RETIRADA,
@@ -60,7 +61,7 @@ export default function CalculoFrete({
   const [cepCalculado, setCepCalculado] = useState<string | null>(null);
   const mostrarExpressa = !!opcoes && !!cepCalculado && cepDeReserva(cepCalculado);
 
-  const limiarFreteGratis = configLoja?.freteGratisAcimaDe ?? null;
+  const limiarFreteGratis = freteGratisSuspensoNaBlack() ? null : configLoja?.freteGratisAcimaDe ?? null;
   const freteGratisConquistado =
     selecionavel && limiarFreteGratis !== null && subtotal !== undefined && subtotal >= limiarFreteGratis;
 

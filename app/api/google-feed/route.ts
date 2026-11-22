@@ -3,6 +3,7 @@ import { listarProdutos, coresDoProduto, idVarianteProduto, type Produto } from 
 import { textoDescricao, tipoDoProduto } from "@/lib/detalhesProduto";
 import { SITE_URL as siteUrl } from "@/lib/site";
 import { regraFretePromocionalAtiva } from "@/lib/campanha";
+import { feedComFretePagoDaBlack } from "@/lib/blackFridayDatas";
 import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 
 // Feed de catalogo pro Google Merchant Center (Google Shopping / listagens gratuitas) - fica
@@ -292,7 +293,8 @@ function linhasDoProduto(produto: Produto): Array<Record<Coluna, string>> {
   // regra de frete pra cada etiqueta: "padrao" (gratis acima de R$ 499) e "black-november" (gratis
   // acima de R$ 2.000) - toda peca tem exatamente uma, assim o anuncio nao promete frete gratis numa
   // peca que o site cobra. Depois de 30/11 as pecas da campanha voltam sozinhas pra "padrao".
-  const etiquetaFrete = produto.outlet && regraFretePromocionalAtiva() ? "black-november" : "padrao";
+  const etiquetaFrete =
+    feedComFretePagoDaBlack() || (produto.outlet && regraFretePromocionalAtiva()) ? "black-november" : "padrao";
 
   for (const cor of corasMescladas(produto)) {
     const imagemCor = cor.imagens[0] ?? produto.imagem ?? "";

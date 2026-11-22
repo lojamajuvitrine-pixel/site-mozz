@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { formatarPreco, MAX_PARCELAS_PROMOCAO, MAX_PARCELAS_SEM_JUROS, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
+import { freteGratisSuspensoNaBlack } from "@/lib/blackFridayDatas";
 
 // Faixa de beneficios logo abaixo do cabecalho, em todas as paginas da loja (pedido do Brunno em
 // 19/10/2026 - mostrar parcelamento, troca, frete gratis e compra segura logo de cara, pra dar
@@ -12,12 +13,12 @@ const FRETE_GRATIS_PADRAO = 399;
 
 export default function FaixaBeneficios() {
   const pathname = usePathname();
-  const [freteGratisAcimaDe, setFreteGratisAcimaDe] = useState<number | null>(FRETE_GRATIS_PADRAO);
+  const [freteGratisAcimaDe, setFreteGratisAcimaDe] = useState<number | null>(freteGratisSuspensoNaBlack() ? null : FRETE_GRATIS_PADRAO);
 
   useEffect(() => {
     fetch("/api/config-loja")
       .then((r) => r.json())
-      .then((config) => setFreteGratisAcimaDe(config?.freteGratisAcimaDe ?? null))
+      .then((config) => setFreteGratisAcimaDe(freteGratisSuspensoNaBlack() ? null : config?.freteGratisAcimaDe ?? null))
       .catch(() => {});
   }, []);
 
