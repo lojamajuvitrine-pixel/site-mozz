@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, estoqueDaVariante, tamanhosDisponiveisDoColor } from "@/lib/produtos";
-import { calcularDescontoPix, emPromocao, formatarParcelamento, formatarPreco, maxParcelas, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
+import { calcularDescontoPix, emPromocao, entraNoDescontoPix, formatarParcelamento, formatarPreco, maxParcelas, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { corAproximada } from "@/lib/cor";
 import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
@@ -290,7 +290,7 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
             {formatarParcelamento(produto.preco, maxParcelas(emPromocao(produto)))}
           </p>
         )}
-        {!emPromocao(produto) && (
+        {entraNoDescontoPix(produto) && (
           <p className="text-[13.5px] text-mozz-black mt-1">
             {formatarPreco(produto.preco - calcularDescontoPix(produto.preco))} no Pix{" "}
             <span className="text-mozz-gray">({PERCENTUAL_DESCONTO_PIX}% OFF)</span>

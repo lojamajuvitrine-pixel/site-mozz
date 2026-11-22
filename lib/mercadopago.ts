@@ -26,7 +26,7 @@ import { validarCupom } from "@/lib/cupom";
 import { limiarFreteGratis } from "@/lib/campanha";
 import { validarCpf } from "@/lib/cpf";
 import { calcularFrete, cepDeReserva, ehEntregaExpressa, ehRetirada, FRETE_ENTREGA_EXPRESSA } from "@/lib/frete";
-import { calcularDescontoPix, calcularParcelamento, emPromocao, maxParcelas, MAX_PARCELAS_SEM_JUROS } from "@/lib/formato";
+import { calcularDescontoPix, calcularParcelamento, emPromocao, entraNoDescontoPix, maxParcelas, MAX_PARCELAS_SEM_JUROS } from "@/lib/formato";
 import { buscarConfiguracaoLoja } from "@/lib/configLoja";
 import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 import { buscarSaldoCredito, calcularCreditoAplicavel } from "@/lib/creditos";
@@ -255,7 +255,7 @@ async function prepararPedido(
   // desconto da campanha mais o cupom a venda ficava abaixo do custo) - ele so' desconta sobre
   // as outras pecas do carrinho.
   const subtotalElegivelCupom = itensValidados.reduce(
-    (soma, { item, produtoReal }) => soma + (produtoReal.outlet ? 0 : produtoReal.preco * item.quantidade),
+    (soma, { item, produtoReal }) => soma + (emPromocao(produtoReal) ? 0 : produtoReal.preco * item.quantidade),
     0
   );
   let descontoCupom = 0;
@@ -272,7 +272,7 @@ async function prepararPedido(
   // Desde 09/11/2026 o Pix so' desconta as pecas SEM promocao (preco riscado ou outlet nao tem
   // desconto no Pix - ver emPromocao em lib/formato.ts).
   const subtotalSemPromocao = itensValidados.reduce(
-    (soma, { item, produtoReal }) => soma + (emPromocao(produtoReal) ? 0 : produtoReal.preco * item.quantidade),
+    (soma, { item, produtoReal }) => soma + (entraNoDescontoPix(produtoReal) ? produtoReal.preco * item.quantidade : 0),
     0
   );
   const temPecaEmPromocao = itensValidados.some(({ produtoReal }) => emPromocao(produtoReal));
@@ -288,10 +288,10 @@ async function prepararPedido(
   const fatorCupom = subtotalElegivelCupom > 0 ? (subtotalElegivelCupom - descontoCupom) / subtotalElegivelCupom : 1;
   const fatorDoItem = (produto: Produto) =>
     descontoPix > 0
-      ? emPromocao(produto)
-        ? 1
-        : fatorPix
-      : codigoCupomAplicado && !produto.outlet
+      ? entraNoDescontoPix(produto)
+        ? fatorPix
+        : 1
+      : codigoCupomAplicado && !emPromocao(produto)
         ? fatorCupom
         : 1;
   const subtotalComDesconto =

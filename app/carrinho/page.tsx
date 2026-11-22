@@ -8,6 +8,8 @@ import {
   calcularParcelamento,
   calcularDescontoPix,
   emPromocao,
+  entraNoDescontoPix,
+  CUPOM_VISIVEL,
   maxParcelas,
   MAX_PARCELAS_PROMOCAO,
   PERCENTUAL_DESCONTO_PIX
@@ -282,13 +284,13 @@ export default function PaginaCarrinho() {
   const quantidadeTotal = itens.reduce((soma, i) => soma + i.quantidade, 0);
   // Cupom nao vale em peca de outlet/Black November (05/11/2026) - so' desconta sobre as outras
   // pecas. Mesma regra recalculada no servidor em lib/mercadopago.ts (prepararPedido).
-  const subtotalElegivelCupom = itens.reduce((soma, i) => soma + (i.produto.outlet ? 0 : i.produto.preco * i.quantidade), 0);
+  const subtotalElegivelCupom = itens.reduce((soma, i) => soma + (emPromocao(i.produto) ? 0 : i.produto.preco * i.quantidade), 0);
   const temPecaPromocional = itens.some((i) => i.produto.outlet);
   // Peca em promocao (preco riscado ou outlet - 09/11/2026): nao tem desconto no Pix e, se tiver
   // pelo menos uma no carrinho, o pedido inteiro vai ate 3x sem juros. Mesma regra no servidor
   // (lib/mercadopago.ts, prepararPedido e pagamento com cartao).
   const temPecaEmPromocao = itens.some((i) => emPromocao(i.produto));
-  const subtotalSemPromocao = itens.reduce((soma, i) => soma + (emPromocao(i.produto) ? 0 : i.produto.preco * i.quantidade), 0);
+  const subtotalSemPromocao = itens.reduce((soma, i) => soma + (entraNoDescontoPix(i.produto) ? i.produto.preco * i.quantidade : 0), 0);
   // Com peca da Black November no carrinho, o frete gratis so' vale acima de R$ 2.000 (ver
   // lib/campanha.ts) - o resto do carrinho usa essa versao ajustada da configuracao da loja.
   const configLojaEfetiva: ConfigLojaFrete | null = configLoja
@@ -658,6 +660,7 @@ export default function PaginaCarrinho() {
         })}
       </div>
 
+      {CUPOM_VISIVEL && (
       <div className="mt-4">
         <label htmlFor="cupom-codigo" className="text-[13.5px] text-mozz-gray mb-2 block">
           Cupom de desconto
@@ -698,6 +701,7 @@ export default function PaginaCarrinho() {
           </p>
         )}
       </div>
+      )}
 
       <div className="flex justify-between pt-4 mt-4 border-t border-black/10 text-[14.5px]">
         <span className="text-mozz-gray">Subtotal</span>
@@ -970,8 +974,7 @@ export default function PaginaCarrinho() {
             )}
             {temPecaEmPromocao && (
               <p className="pb-3 text-[12.5px] text-mozz-gray">
-                O desconto do Pix não vale para peças em promoção. Com peça em promoção no carrinho, o cartão vai
-                até {MAX_PARCELAS_PROMOCAO}x sem juros.
+                Com peça em promoção no carrinho, o cartão vai até {MAX_PARCELAS_PROMOCAO}x sem juros.
               </p>
             )}
             {desconto > 0 && descontoPixAplicado === 0 && (

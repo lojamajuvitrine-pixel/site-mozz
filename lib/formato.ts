@@ -16,6 +16,18 @@ export function emPromocao(produto: { precoOriginal?: number | null; outlet?: bo
   return !!produto.precoOriginal || !!produto.outlet;
 }
 
+// 22/11/2026 (Brunno): o Pix de 10% vale em TODAS as pecas, inclusive promocao/Black. Para voltar
+// a regra antiga ("exceto promocoes"), troque para false.
+export const PIX_VALE_EM_PROMOCAO = true;
+
+export function entraNoDescontoPix(produto: { precoOriginal?: number | null; outlet?: boolean | null }): boolean {
+  return PIX_VALE_EM_PROMOCAO || !emPromocao(produto);
+}
+
+// 22/11/2026 (Brunno): cupom fora do site por enquanto - campo escondido no carrinho e fora da
+// faixa do topo. Para voltar a mostrar, troque para true.
+export const CUPOM_VISIVEL = false;
+
 export function maxParcelas(promocao: boolean): number {
   return promocao ? MAX_PARCELAS_PROMOCAO : MAX_PARCELAS_SEM_JUROS;
 }
