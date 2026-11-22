@@ -18,6 +18,7 @@ export type CadastroBlack = {
   email: string;
   criado_em: string;
   email_acesso_enviado_em: string | null;
+  quer_grupo?: boolean | null;
 };
 
 const POR_PAGINA = 60;
@@ -174,9 +175,9 @@ export default function PainelBlackFriday({
 
   function baixarCsv() {
     const linhas = [
-      "nome,whatsapp,email,cadastrado_em",
+      "nome,whatsapp,email,cadastrado_em,quer_grupo",
       ...cadastros.map((c) =>
-        [c.nome, `55${c.whatsapp}`, c.email, new Date(c.criado_em).toLocaleString("pt-BR")]
+        [c.nome, `55${c.whatsapp}`, c.email, new Date(c.criado_em).toLocaleString("pt-BR"), c.quer_grupo ? "sim" : "nao"]
           .map((v) => `"${String(v).replace(/"/g, '""')}"`)
           .join(",")
       )
@@ -294,6 +295,9 @@ export default function PainelBlackFriday({
               {enviando ? "Enviando..." : `Enviar e-mail de acesso antecipado (${pendentesEmail})`}
             </button>
           </div>
+          <p className="mb-4 text-[13.5px]">
+            Querem entrar no Grupo VIP do WhatsApp: <strong>{cadastros.filter((c) => c.quer_grupo).length}</strong>
+          </p>
           {!envioLiberado && (
             <p className="mb-4 text-[13px] text-mozz-gray">O envio de e-mail libera em 26/11 a partir das 20h30.</p>
           )}
@@ -305,7 +309,8 @@ export default function PainelBlackFriday({
                   <th className="py-2 pr-3">WhatsApp</th>
                   <th className="py-2 pr-3">E-mail</th>
                   <th className="py-2 pr-3">Cadastro</th>
-                  <th className="py-2">E-mail enviado</th>
+                  <th className="py-2 pr-3">E-mail enviado</th>
+                  <th className="py-2">Quer o grupo</th>
                 </tr>
               </thead>
               <tbody>
@@ -315,7 +320,8 @@ export default function PainelBlackFriday({
                     <td className="py-2 pr-3 whitespace-nowrap">{formatarWhatsapp(c.whatsapp)}</td>
                     <td className="py-2 pr-3">{c.email}</td>
                     <td className="py-2 pr-3 whitespace-nowrap">{new Date(c.criado_em).toLocaleString("pt-BR")}</td>
-                    <td className="py-2">{c.email_acesso_enviado_em ? "Sim" : "-"}</td>
+                    <td className="py-2 pr-3">{c.email_acesso_enviado_em ? "Sim" : "-"}</td>
+                    <td className="py-2">{c.quer_grupo ? "Sim" : "-"}</td>
                   </tr>
                 ))}
               </tbody>

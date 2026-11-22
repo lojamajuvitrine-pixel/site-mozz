@@ -9,6 +9,7 @@ export async function POST(request: NextRequest) {
     whatsapp?: string;
     email?: string;
     aceite?: boolean;
+    querGrupo?: boolean;
   };
 
   const nome = (body.nome ?? "").trim().slice(0, 120);
@@ -32,7 +33,7 @@ export async function POST(request: NextRequest) {
 
   const { error } = await supabase
     .from("black_friday_cadastros")
-    .upsert({ nome, whatsapp, email, aceita_marketing: true }, { onConflict: "whatsapp" });
+    .upsert({ nome, whatsapp, email, aceita_marketing: true, quer_grupo: !!body.querGrupo }, { onConflict: "whatsapp" });
   if (error) {
     console.error("Black Friday: erro ao salvar cadastro:", error.message);
     return NextResponse.json({ erro: "Não foi possível concluir o cadastro. Tente de novo." }, { status: 500 });

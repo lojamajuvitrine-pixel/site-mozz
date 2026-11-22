@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false }
 };
 
-const LINK_GRUPO = "https://chat.whatsapp.com/Kb04yUcuJJTFW6IdBpowFw";
+import { LINK_GRUPO_WHATSAPP } from "@/lib/grupoWhatsapp";
+
+const LINK_GRUPO = LINK_GRUPO_WHATSAPP;
 const OURO = "#C9A24B";
 
 const MARCAS = [

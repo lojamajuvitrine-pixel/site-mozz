@@ -30,7 +30,7 @@ export default async function PaginaAdminBlackFriday() {
     servico
       ? servico
           .from("black_friday_cadastros")
-          .select("nome, whatsapp, email, criado_em, email_acesso_enviado_em")
+          .select("nome, whatsapp, email, criado_em, email_acesso_enviado_em, quer_grupo")
           .order("criado_em", { ascending: false })
       : Promise.resolve({ data: [] as CadastroBlack[] })
   ]);

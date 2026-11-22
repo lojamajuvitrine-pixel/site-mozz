@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { LINK_GRUPO_WHATSAPP } from "@/lib/grupoWhatsapp";
 
 const OURO = "#C9A24B";
 
@@ -10,6 +11,8 @@ export default function FormCadastroBlack() {
   const [whatsapp, setWhatsapp] = useState("");
   const [email, setEmail] = useState("");
   const [aceite, setAceite] = useState(true);
+  // 22/11/2026 (Brunno): opcao de entrar no Grupo VIP do WhatsApp - opcional e desmarcada.
+  const [querGrupo, setQuerGrupo] = useState(false);
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [confirmado, setConfirmado] = useState<string | null>(null);
@@ -26,7 +29,7 @@ export default function FormCadastroBlack() {
       const resposta = await fetch("/api/black-friday/cadastro", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome, whatsapp, email, aceite })
+        body: JSON.stringify({ nome, whatsapp, email, aceite, querGrupo })
       });
       const dados = await resposta.json().catch(() => ({}));
       if (!resposta.ok) throw new Error(dados.erro ?? "Não foi possível concluir o cadastro.");
@@ -45,6 +48,16 @@ export default function FormCadastroBlack() {
         <p className="mt-2 text-[15px] text-white/80">
           Dia 26/11 às 21h você recebe no WhatsApp e no e-mail o link de acesso antecipado.
         </p>
+        {querGrupo && (
+          <a
+            href={LINK_GRUPO_WHATSAPP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block rounded-full bg-[#25D366] px-6 py-3 text-[15px] font-semibold text-white transition-opacity hover:opacity-90"
+          >
+            Entrar no Grupo VIP do WhatsApp
+          </a>
+        )}
       </div>
     );
   }
@@ -76,6 +89,13 @@ export default function FormCadastroBlack() {
       <label className="flex items-start gap-2 text-[13.5px] text-white/70">
         <input type="checkbox" checked={aceite} onChange={(e) => setAceite(e.target.checked)} className="mt-1" />
         Aceito receber ofertas da Mozz
+      </label>
+      <label className="flex items-start gap-2 text-[13.5px] text-white/70">
+        <input type="checkbox" checked={querGrupo} onChange={(e) => setQuerGrupo(e.target.checked)} className="mt-1" />
+        <span>
+          <strong className="font-semibold text-white/90">Quero entrar no Grupo VIP da Mozz no WhatsApp</strong> (novidades e
+          ofertas antes de todo mundo)
+        </span>
       </label>
       {erro && <p className="text-[14px] text-red-300">{erro}</p>}
       <button
