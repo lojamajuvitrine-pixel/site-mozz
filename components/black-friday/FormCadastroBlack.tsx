@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { LINK_GRUPO_WHATSAPP } from "@/lib/grupoWhatsapp";
+import { rastrearCadastro } from "@/lib/tracking";
 
 const OURO = "#C9A24B";
 
@@ -34,6 +35,7 @@ export default function FormCadastroBlack() {
       });
       const dados = await resposta.json().catch(() => ({}));
       if (!resposta.ok) throw new Error(dados.erro ?? "Não foi possível concluir o cadastro.");
+      rastrearCadastro("black-friday");
       setConfirmado(nome.trim().split(" ")[0] || nome.trim());
     } catch (falha) {
       setErro(falha instanceof Error ? falha.message : "Não foi possível concluir o cadastro.");

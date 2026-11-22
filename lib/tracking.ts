@@ -129,6 +129,13 @@ export function rastrearCompra(pedidoId: string, itens: ItemRastreado[]) {
 // pro servidor conseguir avisar o Analytics da compra quando o Mercado Pago aprovar o pagamento,
 // mesmo com a pagina fechada (Pix pago depois) - ver lib/ga4.ts. Sem os cookies (bloqueador,
 // cookie recusado), devolve undefined e a compra entra no Analytics sem ligar a um anuncio.
+// Cadastro do acesso antecipado da Black Friday (22/11/2026) - evento "Lead" pro Meta otimizar
+// campanhas de cadastro, e "generate_lead" pro Google Analytics.
+export function rastrearCadastro(origem: string) {
+  window.fbq?.("track", "Lead", { content_name: origem });
+  window.gtag?.("event", "generate_lead", { lead_source: origem });
+}
+
 export function lerIdsGoogleAnalytics(): { gaClientId?: string; gaSessionId?: string } | undefined {
   if (typeof document === "undefined") return undefined;
   const cookies = new Map<string, string>();
