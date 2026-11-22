@@ -29,7 +29,15 @@ export default function AvisoFreteGratis({
   limiar: number | null;
   subtotal?: number;
 }) {
-  if (limiar === null) return null;
+  // Sem frete gratis (ex.: durante a Black, 22/11/2026): avisa o frete antes do checkout.
+  if (limiar === null) {
+    return (
+      <div className="flex items-center gap-2 text-[13px] px-3 py-2 border mt-3 bg-mozz-stone border-black/10 text-mozz-black">
+        <IconeCaminhao />
+        <span>Enviamos para todo o Brasil. Calcule o frete pelo seu CEP.</span>
+      </div>
+    );
+  }
 
   const conquistado = subtotal !== undefined && subtotal >= limiar;
 

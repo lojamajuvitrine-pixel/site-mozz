@@ -11,6 +11,7 @@ import { enviarEmailConfirmacaoPedido } from "@/lib/emailPedido";
 import { ehEntregaExpressa, ehRetirada } from "@/lib/frete";
 import { baixarEstoqueVenda } from "@/lib/estoqueGravacao";
 import { enviarCompraGA4 } from "@/lib/ga4";
+import { enviarCompraMeta } from "@/lib/metaCapi";
 
 // O Mercado Pago chama essa rota automaticamente quando o status de um pagamento muda.
 // Documentacao: mercadopago.com.br/developers/pt/docs/checkout-pro/additional-content/notifications/webhooks
@@ -189,6 +190,17 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
     itens: pedido.itens,
     gaClientId: pedido.ga?.c,
     gaSessionId: pedido.ga?.s
+  });
+
+  // Compra no Meta pelo servidor (22/11/2026) - mesmo event_id do navegador (numero do pedido).
+  await enviarCompraMeta({
+    numeroPedido: numeroPedidoLoja,
+    valorTotal,
+    itens: pedido.itens,
+    email: pedido.email,
+    telefone: pedido.telefone,
+    cpf: pedido.cpf,
+    endereco: pedido.endereco
   });
 
   // So' manda o e-mail na PRIMEIRA vez (mesmo raciocinio do resto dessa funcao) - nunca em

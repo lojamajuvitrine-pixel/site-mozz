@@ -107,7 +107,7 @@ export function rastrearCompra(pedidoId: string, itens: ItemRastreado[]) {
     contents: itens.map((i) => ({ id: i.id, quantity: i.quantidade })),
     value: valor,
     currency: "BRL"
-  });
+  }, { eventID: pedidoId }); // mesmo event_id da API de Conversoes (lib/metaCapi.ts) - sem duplicar
   // A compra no Google Analytics (evento "purchase") NAO sai mais daqui desde 07/11/2026: quem
   // manda agora e' o servidor, quando o Mercado Pago aprova o pagamento (lib/ga4.ts) - com o valor
   // real e contando tambem o Pix pago depois, com a pagina fechada. Mandar dos dois lugares

@@ -9,7 +9,7 @@ import { freteGratisSuspensoNaBlack } from "@/lib/blackFridayDatas";
 // 19/10/2026 - mostrar parcelamento, troca, frete gratis e compra segura logo de cara, pra dar
 // confianca a quem chega sem conhecer a loja). O valor do frete gratis vem da configuracao da
 // loja (/admin/produtos) - comeca com o valor atual e atualiza sozinho se a configuracao mudar.
-const FRETE_GRATIS_PADRAO = 399;
+const FRETE_GRATIS_PADRAO = 199;
 
 export default function FaixaBeneficios() {
   const pathname = usePathname();
