@@ -11,6 +11,7 @@ import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 import { emPromocao, formatarParcelamento, formatarPreco, maxParcelas } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { useFavoritos } from "@/lib/favoritos-context";
+import SeletorTamanhoMobile from "@/components/SeletorTamanhoMobile";
 
 function IconeCheck() {
   return (
@@ -89,6 +90,8 @@ export default function ProductCard({
     corInicial ? Math.max(0, cores.findIndex((cor) => cor.cor === corInicial)) : 0
   );
   const [adicionado, setAdicionado] = useState<string | null>(null); // guarda o tamanho adicionado, pra feedback
+  // Barra de tamanhos do celular (24/11/2026) - ver SeletorTamanhoMobile.tsx
+  const [seletorAberto, setSeletorAberto] = useState(false);
   const corAtual = cores[corIndex];
   // Carrossel direto no card do mosaico, com setinha - pra rodar as fotos da peca sem precisar
   // abrir a pagina do produto (pedido do Brunno em 24/08/2026).
@@ -144,6 +147,12 @@ export default function ProductCard({
     // fica 5s com o aviso "Adicionado · Ver sacola" (antes era so' um check por 1,5s e a cliente
     // nao sabia como chegar no carrinho - 17/10/2026).
     setTimeout(() => setAdicionado(null), 5000);
+  }
+
+  function abrirSeletor(evento: React.MouseEvent) {
+    evento.preventDefault();
+    evento.stopPropagation();
+    setSeletorAberto(true);
   }
 
   function irParaSacola(evento: React.MouseEvent) {
@@ -214,6 +223,23 @@ export default function ProductCard({
             </>
           )}
 
+          {/* Celular: "+" no canto da foto abre a barra de tamanhos (24/11/2026) */}
+          {cores.some((c) => tamanhosDisponiveisDoColor(c).length > 0) ? (
+            <button
+              onClick={abrirSeletor}
+              aria-label="Escolher tamanho"
+              className="md:hidden absolute bottom-2 right-2 z-20 w-9 h-9 rounded-full bg-white/95 shadow flex items-center justify-center text-mozz-black"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
+                <path d="M12 5v14M5 12h14" strokeLinecap="round" />
+              </svg>
+            </button>
+          ) : (
+            <span className="md:hidden absolute bottom-2 right-2 z-20 text-[11.5px] bg-white/90 text-mozz-gray px-2 py-0.5">
+              Esgotado
+            </span>
+          )}
+
           {corAtual.tamanhos.length > 0 && (
             <div className={`hidden md:flex absolute inset-x-0 bottom-0 p-2 flex-wrap gap-1 justify-center bg-gradient-to-t from-black/40 to-transparent transition-opacity ${adicionado !== null ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}>
               {adicionado !== null ? (
@@ -250,6 +276,20 @@ export default function ProductCard({
           )}
         </div>
       </Link>
+
+      {seletorAberto && (
+        <SeletorTamanhoMobile
+          produto={produto}
+          cores={cores}
+          corIndex={corIndex}
+          onTrocarCor={(i) => {
+            setCorIndex(i);
+            setFotoIndex(0);
+          }}
+          parcelamento={parcelamento}
+          onFechar={() => setSeletorAberto(false)}
+        />
+      )}
 
       {cores.length > 1 && (
         <div className="flex gap-1.5 mt-2">
