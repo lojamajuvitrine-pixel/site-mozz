@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createHmac, timingSafeEqual } from "crypto";
 import { clientePublico } from "@/lib/supabase/publico";
+import { enviarEmailRastreioPedido } from "@/lib/emailRastreio";
 
 // Recebe os avisos do Melhor Envio quando uma etiqueta muda de status (gerada, postada,
 // entregue etc) - pedido do Brunno em 31/08/2026, junto com a compra automatica da etiqueta
@@ -97,6 +98,12 @@ export async function POST(request: NextRequest) {
       p_status_envio: statusNovo
     });
     if (erroUpdate) throw erroUpdate;
+
+    // E-mail "pedido enviado" com o rastreio (24/11/2026). A funcao nao manda duas vezes e
+    // ignora pedido ainda sem codigo.
+    if ((statusNovo === "etiqueta_gerada" || statusNovo === "postado") && corpo.data?.tracking) {
+      await enviarEmailRastreioPedido(pedido.numero_pedido);
+    }
   } catch (erro) {
     console.error("Webhook Melhor Envio: erro ao atualizar rastreio:", erro);
     return NextResponse.json({ erro: "erro ao atualizar rastreio" }, { status: 500 });

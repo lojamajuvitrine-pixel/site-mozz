@@ -47,9 +47,14 @@ export default async function PaginaAdminProdutos() {
     <section className="py-8">
       <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
         <p className="font-serif text-3xl">Painel de produtos</p>
-        <a href="/admin/carrinhos-abandonados" className="text-[14px] underline">
-          Carrinhos abandonados →
-        </a>
+        <span className="flex gap-4">
+          <a href="/admin/pedidos" className="text-[14px] underline">
+            Pedidos →
+          </a>
+          <a href="/admin/carrinhos-abandonados" className="text-[14px] underline">
+            Carrinhos abandonados →
+          </a>
+        </span>
       </div>
       <p className="text-[14.5px] text-mozz-gray mb-6">
         Preço especial, destaque na home, outlet, ativar/desativar, composição, tabela de

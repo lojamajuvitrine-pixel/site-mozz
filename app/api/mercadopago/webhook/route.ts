@@ -7,6 +7,7 @@ import { clientePublico } from "@/lib/supabase/publico";
 import { SUPABASE_CONFIGURADO } from "@/lib/supabase/config";
 import { usarCredito, concederCashback } from "@/lib/creditos";
 import { comprarEGerarEtiqueta } from "@/lib/melhorEnvio";
+import { enviarEmailRastreioPedido } from "@/lib/emailRastreio";
 import { enviarEmailConfirmacaoPedido } from "@/lib/emailPedido";
 import { ehEntregaExpressa, ehRetirada } from "@/lib/frete";
 import { baixarEstoqueVenda } from "@/lib/estoqueGravacao";
@@ -249,6 +250,8 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
       p_status_envio: "etiqueta_gerada"
     });
     console.log(`Webhook Mercado Pago: etiqueta comprada no Melhor Envio pro pedido ${numeroPedidoLoja}`, resultado.melhorEnvioId);
+    // E-mail "pedido enviado" com o rastreio (24/11/2026) - so' sai se ja' tiver codigo.
+    if (resultado.codigoRastreio) await enviarEmailRastreioPedido(numeroPedidoLoja);
   } catch (erro) {
     console.error(`Webhook Mercado Pago: falha ao comprar/gerar etiqueta no Melhor Envio pro pedido ${numeroPedidoLoja}:`, erro);
     try {
