@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, tamanhosDisponiveisDoColor } from "@/lib/produtos";
-import { corAproximada } from "@/lib/cor";
+import { corAproximada, corEhConhecida } from "@/lib/cor";
 import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 import { emPromocao, formatarParcelamento, formatarPreco, maxParcelas } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
@@ -289,6 +289,27 @@ export default function ProductCard({
           parcelamento={parcelamento}
           onFechar={() => setSeletorAberto(false)}
         />
+      )}
+
+      {/* Bolinhas de cor sempre ocupam a mesma linha (24/11/2026): peca de uma cor so' mostra a
+          bolinha dela quando a cor e' conhecida; sem cor identificavel ("Unico"), fica um espaco
+          vazio da mesma altura, pra marca/nome/preco ficarem alinhados com os cards vizinhos. */}
+      {cores.length === 1 && (
+        <div className="flex gap-1.5 mt-2 h-4">
+          {corEhConhecida(nomeDaCorParaExibir(cores[0].cor, produto.marca)) && (
+            <span
+              title={nomeDaCorParaExibir(cores[0].cor, produto.marca)}
+              aria-label={nomeDaCorParaExibir(cores[0].cor, produto.marca)}
+              className="w-4 h-4 rounded-full border border-mozz-black"
+              style={{ padding: 1.5 }}
+            >
+              <span
+                className="block w-full h-full rounded-full"
+                style={{ background: corAproximada(nomeDaCorParaExibir(cores[0].cor, produto.marca)) }}
+              />
+            </span>
+          )}
+        </div>
       )}
 
       {cores.length > 1 && (

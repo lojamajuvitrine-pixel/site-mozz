@@ -24,6 +24,12 @@ const CORES_APROX: Array<[string, string]> = [
   ["palha", "#e0ab73"],
   ["bege manha", "#edc8a2"],
   ["off white", "#f5f0e6"],
+  // 24/11/2026: cores que apareciam em pecas de uma cor so' e caiam no cinza padrao
+  ["magenta", "#c2185b"],
+  ["fuligem", "#3d3d3d"],
+  ["lotus", "#e48aa8"],
+  ["klein", "#1f3fbf"],
+  ["dries", "#7a5236"],
   ["branco", "#ffffff"],
   ["branca", "#ffffff"],
   ["preto", "#111111"],
@@ -147,4 +153,11 @@ export function corAproximada(nomeCor: string): string {
   const normalizado = normalizarTexto(nomeCor);
   const encontrada = CORES_APROX.find(([chave]) => normalizado.includes(chave));
   return encontrada?.[1] ?? "#c7c6c0";
+}
+
+// true quando o nome da cor bate com alguma cor conhecida (sem cair no cinza padrao) - usado no
+// card pra decidir se mostra a bolinha de uma cor so' (24/11/2026).
+export function corEhConhecida(nomeCor: string): boolean {
+  const normalizado = normalizarTexto(nomeCor);
+  return CORES_APROX.some(([chave]) => normalizado.includes(chave));
 }
