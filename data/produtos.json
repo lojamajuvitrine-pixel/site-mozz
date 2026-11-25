@@ -3197,8 +3197,7 @@
         ],
         "tamanhosDisponiveis": [
           "G",
-          "M",
-          "P"
+          "M"
         ]
       },
       {
@@ -15677,10 +15676,9 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "XG",
-          "GG",
           "G",
-          "P"
+          "GG",
+          "XG"
         ]
       }
     ],
@@ -24171,11 +24169,7 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": [
-          "G",
-          "M",
-          "P"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Caqui",
@@ -31316,10 +31310,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
+          "GG",
           "G",
-          "GG"
+          "M"
         ]
       },
       {
@@ -34751,13 +34744,11 @@
           "36",
           "38"
         ],
-        "tamanhosDisponiveis": [
-          "34"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16706290213--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorCorTamanho": {
       "1566": {
         "34": [
