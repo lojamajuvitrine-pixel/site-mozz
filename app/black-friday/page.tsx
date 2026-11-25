@@ -1,10 +1,10 @@
 import { temAcessoVipBlackFriday } from "@/lib/blackFridayVip";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import GradeProdutos from "@/components/GradeProdutos";
 import ContagemRegressiva from "@/components/black-friday/ContagemRegressiva";
 import FormCadastroBlack from "@/components/black-friday/FormCadastroBlack";
-import { listarBlackFriday, type Produto } from "@/lib/produtos";
+import { listarBlackFriday, generoDaMarca, type Produto } from "@/lib/produtos";
+import AbasGeneroBlack from "@/components/black-friday/AbasGeneroBlack";
 import {
   BLACK_FRIDAY_ABERTURA,
   BLACK_FRIDAY_FIM,
@@ -88,7 +88,6 @@ export default async function PaginaBlackFriday({ searchParams }: { searchParams
   }
 
   const produtos = (await listarBlackFriday()).sort((a, b) => percentualDesconto(b) - percentualDesconto(a));
-  const marcas = Array.from(new Set(produtos.map((p) => p.marca))).sort();
   const maiorDesconto = produtos.reduce((maior, p) => Math.max(maior, percentualDesconto(p)), 0);
 
   return (
@@ -124,7 +123,10 @@ export default async function PaginaBlackFriday({ searchParams }: { searchParams
       </div>
 
       {produtos.length > 0 ? (
-        <GradeProdutos produtos={produtos} marcas={marcas} />
+        <AbasGeneroBlack
+          feminino={produtos.filter((p) => generoDaMarca(p.marca) === "Feminino")}
+          masculino={produtos.filter((p) => generoDaMarca(p.marca) === "Masculino")}
+        />
       ) : (
         <p className="py-10 text-center text-mozz-gray">
           {previa ? "Nenhuma peça marcada ainda. Marque as peças em /admin/black-friday." : "As ofertas aparecem aqui em instantes."}
