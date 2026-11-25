@@ -88,13 +88,24 @@ function ordenarTamanhosDoProduto(produto: Produto): Produto {
 function capitalizarNomeProduto(nome: string): string {
   return nome
     .trim()
+    // Codigo de cor/colecao grudado no fim do nome ("Blusa Laysa - NV1305", "Blusa ... - 07708")
+    // some no site (24/11/2026, pedido do Brunno) - so' exibicao, o Bling continua igual.
+    .replace(/\s+-\s*[A-Za-z]{0,3}\d{3,6}\s*$/, "")
     .replace(/\s+/g, " ")
     .toLowerCase()
     .replace(/\p{L}+/gu, (palavra) => palavra.charAt(0).toUpperCase() + palavra.slice(1));
 }
 
+// Descricoes corrigidas so' no site, quando o texto do Bling esta errado (24/11/2026).
+const DESCRICOES_CORRIGIDAS: Record<string, string> = {
+  // Bling dizia "Manga Longa" mas a peca e' manga curta
+  "16706008510":
+    "A Blusa Manga Curta Tricot Isabel traz uma textura especial e shape impecável. É essencial para combinar com diversos looks e é uma blusa que vai bem em qualquer estação. Com manga curta e gola careca, é uma escolha atemporal no closet."
+};
+
 function normalizarNomeDoProduto(produto: Produto): Produto {
-  return { ...produto, nome: capitalizarNomeProduto(produto.nome) };
+  const descricao = DESCRICOES_CORRIGIDAS[produto.id] ?? produto.descricao;
+  return { ...produto, nome: capitalizarNomeProduto(produto.nome), descricao };
 }
 
 // Devolve o id do produto NO BLING (numerico) que corresponde a uma cor+tamanho especificos -

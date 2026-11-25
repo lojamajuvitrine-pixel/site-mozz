@@ -53,6 +53,12 @@ const CODIGOS_COR_PESQUISADOS: Record<string, Record<string, string>> = {
     "07821": "Caramelo Salgado",
     "10066": "Branco Tela",
     "42205": "Estampa Tapete de Flor"
+  },
+  // NV (24/11/2026, conferido no guia de tamanhos do bynv.com.br)
+  NV: {
+    NV875: "Jeans Médio Escuro",
+    NV1172: "Bege Sugar",
+    NV1312: "Estampa Stardust Azul"
   }
 };
 
