@@ -1835,11 +1835,15 @@
     "marca": "Animale",
     "preco": 1398,
     "novo": false,
-    "descricao": "",
+    "descricao": "A saia verde é confeccionada em tecido leve sem elasticidade . A peça solta ao corpo possui cós com elástico embutido, estampa em cores contrastantes, fecho lateral com ziper invisivel e botão, recorte em camadas com franzidos na altura da barra, comprimento longo, transparência sutil na parte inferior, forro e acabamento pespontado.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16644362339--unico--0.jpg",
+          "/produtos/16644362339--unico--1.jpg",
+          "/produtos/16644362339--unico--2.jpg"
+        ],
         "tamanhos": [
           "34",
           "38"
@@ -1849,7 +1853,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16644362339--unico--0.jpg",
     "temEstoque": true
   },
   {
@@ -3184,11 +3188,16 @@
     "marca": "Animale",
     "preco": 498,
     "novo": false,
-    "descricao": "",
+    "descricao": "Blusa Lisa com comprimento médio, fechamento por zíper nas costas, mangas curtas e gola alta. Um modelo essencial e atemporal.",
     "cores": [
       {
         "cor": "VERDE MARCHE",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16628446857--verde-marche--0.jpg",
+          "/produtos/16628446857--verde-marche--1.jpg",
+          "/produtos/16628446857--verde-marche--2.jpg",
+          "/produtos/16628446857--verde-marche--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -3202,7 +3211,12 @@
       },
       {
         "cor": "PRETO",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16628446857--preto--0.jpg",
+          "/produtos/16628446857--preto--1.jpg",
+          "/produtos/16628446857--preto--2.jpg",
+          "/produtos/16628446857--preto--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -3216,7 +3230,12 @@
       },
       {
         "cor": "VERMELHO WING",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16628446857--vermelho-wing--0.jpg",
+          "/produtos/16628446857--vermelho-wing--1.jpg",
+          "/produtos/16628446857--vermelho-wing--2.jpg",
+          "/produtos/16628446857--vermelho-wing--3.jpg"
+        ],
         "tamanhos": [
           "PP",
           "P",
@@ -3229,7 +3248,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16628446857--verde-marche--0.jpg",
     "temEstoque": true
   },
   {
@@ -3238,11 +3257,15 @@
     "marca": "Animale",
     "preco": 498,
     "novo": false,
-    "descricao": "",
+    "descricao": "Body em jersey com modelagem ajustada e decote tomara que caia. Possui franzido ao longo da peça.",
     "cores": [
       {
         "cor": "PRETO",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16629178647--preto--0.jpg",
+          "/produtos/16629178647--preto--1.jpg",
+          "/produtos/16629178647--preto--2.jpg"
+        ],
         "tamanhos": [
           "Único"
         ],
@@ -3251,7 +3274,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16629178647--preto--0.jpg",
     "temEstoque": true
   },
   {
@@ -3844,11 +3867,15 @@
     "marca": "Animale",
     "preco": 1198,
     "novo": false,
-    "descricao": "",
+    "descricao": "Cardigan de Tricot Canelado com lurex. A peça apresenta comprimento médio, shape slim, abotoamento e bolsos na parte frontal. Uma escolha autêntica para a estação.",
     "cores": [
       {
         "cor": "VERMELHO WING/ DOURADO",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16638327454--vermelho-wing-dourado--0.jpg",
+          "/produtos/16638327454--vermelho-wing-dourado--1.jpg",
+          "/produtos/16638327454--vermelho-wing-dourado--2.jpg"
+        ],
         "tamanhos": [
           "P",
           "M"
@@ -3858,7 +3885,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16638327454--vermelho-wing-dourado--0.jpg",
     "temEstoque": true
   },
   {
@@ -5639,11 +5666,15 @@
     "marca": "Animale",
     "preco": 598,
     "novo": false,
-    "descricao": "",
+    "descricao": "Short Clochard com cintura média, regulagem por rolotê com cadarço, bolsos e barra dobrada. Uma proposta leve, versátil e atemporal.",
     "cores": [
       {
         "cor": "PRETO",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16629067888--preto--0.jpg",
+          "/produtos/16629067888--preto--1.jpg",
+          "/produtos/16629067888--preto--2.jpg"
+        ],
         "tamanhos": [
           "36",
           "38",
@@ -5656,7 +5687,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16629067888--preto--0.jpg",
     "temEstoque": true
   },
   {
