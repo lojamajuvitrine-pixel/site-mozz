@@ -3495,20 +3495,26 @@
     "marca": "Animale",
     "preco": 898,
     "novo": false,
-    "descricao": "",
+    "descricao": "Bata Com Bordado Rechelieu, Animale. A bata roxa é confeccionada em tecido leve sem elasticidade . A peça solta ao corpo possui decote arredondado, mangas longas amplas com abotoamento nos punhos, ombros levemente deslocados, recortes com franzidos, aplicações de bordado em rechilieu floral na parte frontal e posterior, transparência e fechamento frontal por botões.",
     "cores": [
       {
         "cor": "ROXO PAISLEY",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16629050580--roxo-paisley--0.jpg",
+          "/produtos/16629050580--roxo-paisley--1.jpg",
+          "/produtos/16629050580--roxo-paisley--2.jpg"
+        ],
         "tamanhos": [
           "38",
           "40"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "38"
+        ]
       }
     ],
-    "imagem": null,
-    "temEstoque": false
+    "imagem": "/produtos/16629050580--roxo-paisley--0.jpg",
+    "temEstoque": true
   },
   {
     "id": "16638369321",
@@ -7783,8 +7789,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "G",
           "GG",
+          "G",
           "P"
         ]
       },
@@ -15676,9 +15682,9 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "G",
+          "XG",
           "GG",
-          "XG"
+          "G"
         ]
       }
     ],
@@ -16218,8 +16224,8 @@
           "48"
         ],
         "tamanhosDisponiveis": [
-          "38",
-          "44"
+          "44",
+          "38"
         ]
       }
     ],
@@ -22270,11 +22276,15 @@
     "marca": "NV",
     "preco": 798,
     "novo": false,
-    "descricao": "",
+    "descricao": "Saia Marta é uma peça elegante e versátil, perfeita para compor produções sofisticadas com muito conforto. Com modelagem que valoriza a silhueta e caimento fluido, proporciona leveza aos movimentos e um visual moderno. Ideal para combinar com camisas, blusas ou tops, transitando facilmente entre ocasiões casuais e especiais.",
     "cores": [
       {
         "cor": "Único",
-        "imagens": [],
+        "imagens": [
+          "/produtos/16434032922--unico--0.jpg",
+          "/produtos/16434032922--unico--1.jpg",
+          "/produtos/16434032922--unico--2.jpg"
+        ],
         "tamanhos": [
           "Único"
         ],
@@ -22283,7 +22293,7 @@
         ]
       }
     ],
-    "imagem": null,
+    "imagem": "/produtos/16434032922--unico--0.jpg",
     "temEstoque": true
   },
   {
@@ -28415,7 +28425,7 @@
     "id": "16710501215",
     "nome": "Vestido Emily",
     "marca": "NV",
-    "preco": 0,
+    "preco": 789,
     "novo": true,
     "descricao": "",
     "cores": [
@@ -31310,9 +31320,9 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "GG",
+          "M",
           "G",
-          "M"
+          "GG"
         ]
       },
       {
