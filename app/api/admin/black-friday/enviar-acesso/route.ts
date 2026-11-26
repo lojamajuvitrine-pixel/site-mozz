@@ -62,9 +62,14 @@ export async function POST() {
   if (error) return NextResponse.json({ erro: error.message }, { status: 500 });
 
   const link = `${SITE_URL}/black-friday?acesso=${CODIGO_ACESSO_ANTECIPADO}`;
-  const pendentes = data ?? [];
+  // 26/11/2026: um e-mail mal digitado derrubava o lote inteiro no Resend (422). Os invalidos
+  // ficam de fora e voltam como falha, pra corrigir o cadastro e mandar de novo.
+  const formatoValido = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+  const todos = data ?? [];
+  const pendentes = todos.filter((c) => formatoValido.test((c.email ?? "").trim()));
+  const invalidos = todos.filter((c) => !formatoValido.test((c.email ?? "").trim())).map((c) => c.email);
   let enviados = 0;
-  let falhas = 0;
+  let falhas = invalidos.length;
 
   // Resend aceita ate' 100 e-mails por chamada no envio em lote.
   for (let i = 0; i < pendentes.length; i += 100) {
@@ -97,5 +102,5 @@ export async function POST() {
     }
   }
 
-  return NextResponse.json({ ok: true, enviados, falhas });
+  return NextResponse.json({ ok: true, enviados, falhas, invalidos });
 }
