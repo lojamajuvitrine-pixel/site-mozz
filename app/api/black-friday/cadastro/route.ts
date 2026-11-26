@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { clienteServicoBlackFriday } from "@/lib/blackFriday";
+import { gravarCookieVip, janelaAcessoAntecipadoAberta } from "@/lib/blackFridayCookieVip";
 import { celularValido, normalizarCelular, MENSAGEM_CELULAR_INVALIDO } from "@/lib/celular";
 
 // Cadastro pro acesso antecipado da Black Friday (pagina /black-friday). Mesmo WhatsApp
@@ -38,5 +39,7 @@ export async function POST(request: NextRequest) {
     console.error("Black Friday: erro ao salvar cadastro:", error.message);
     return NextResponse.json({ erro: "Não foi possível concluir o cadastro. Tente de novo." }, { status: 500 });
   }
+  // 26/11/2026 (Brunno): durante o acesso antecipado, quem se cadastra ja' entra na hora.
+  if (janelaAcessoAntecipadoAberta()) return gravarCookieVip(NextResponse.json({ ok: true, liberado: true }));
   return NextResponse.json({ ok: true });
 }

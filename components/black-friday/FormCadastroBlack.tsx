@@ -19,6 +19,7 @@ export default function FormCadastroBlack() {
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState<string | null>(null);
   const [confirmado, setConfirmado] = useState<string | null>(null);
+  const [liberado, setLiberado] = useState(false);
 
   async function enviar(e: React.FormEvent) {
     e.preventDefault();
@@ -42,6 +43,10 @@ export default function FormCadastroBlack() {
       if (!resposta.ok) throw new Error(dados.erro ?? "Não foi possível concluir o cadastro.");
       rastrearCadastro("black-friday");
       setConfirmado(nome.trim().split(" ")[0] || nome.trim());
+      if (dados.liberado) {
+        setLiberado(true);
+        setTimeout(() => window.location.assign("/black-friday"), 2500);
+      }
     } catch (falha) {
       setErro(falha instanceof Error ? falha.message : "Não foi possível concluir o cadastro.");
     } finally {
@@ -54,7 +59,9 @@ export default function FormCadastroBlack() {
       <div className="rounded-lg border border-[#C9A24B]/50 bg-white/5 p-5 text-center">
         <p className="text-lg font-medium text-white">Pronto, {confirmado}!</p>
         <p className="mt-2 text-[15px] text-white/80">
-          Dia 26/11 às 21h você recebe no WhatsApp e no e-mail o link de acesso antecipado.
+          {liberado
+            ? "Seu acesso antecipado está liberado. Abrindo as ofertas..."
+            : "Dia 26/11 às 21h você recebe no WhatsApp e no e-mail o link de acesso antecipado."}
         </p>
         {querGrupo && (
           <a

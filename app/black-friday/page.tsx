@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import ContagemRegressiva from "@/components/black-friday/ContagemRegressiva";
 import FormCadastroBlack from "@/components/black-friday/FormCadastroBlack";
+import EntrarComEmailBlack from "@/components/black-friday/EntrarComEmailBlack";
 import { listarBlackFriday, generoDaMarca, type Produto } from "@/lib/produtos";
 import AbasGeneroBlack from "@/components/black-friday/AbasGeneroBlack";
 import {
@@ -59,6 +60,8 @@ export default async function PaginaBlackFriday({ searchParams }: { searchParams
   const previa = admin && !aberta && !acessoAntecipado;
 
   if (!mostrarVitrine) {
+    // 26/11/2026 (Brunno): das 21h ate' a abertura, quem ja' se cadastrou entra pelo e-mail.
+    const janelaVip = precosBlackFridayAtivos();
     return (
       <section className="-mx-4 sm:mx-0 bg-black px-6 py-12 sm:rounded-lg">
         <div className="mx-auto max-w-md text-center">
@@ -71,15 +74,33 @@ export default async function PaginaBlackFriday({ searchParams }: { searchParams
             <ContagemRegressiva alvo={BLACK_FRIDAY_ABERTURA} />
           </div>
 
-          <h1 className="mt-8 text-xl font-medium leading-snug text-white">As melhores ofertas do ano estão chegando</h1>
-          <p className="mt-3 text-[15px] leading-relaxed text-white/80">
-            Farm, NV, Reserva, Animale e Foxton com descontos que só acontecem uma vez por ano. Cadastre-se e receba
-            acesso antecipado: você compra antes de todo mundo, com a grade completa.
-          </p>
-
-          <div className="mt-7">
-            <FormCadastroBlack />
-          </div>
+          {janelaVip ? (
+            <>
+              <h1 className="mt-8 text-xl font-medium leading-snug text-white">O acesso antecipado está aberto</h1>
+              <p className="mt-3 text-[15px] leading-relaxed text-white/80">
+                Só para quem está cadastrado, até a meia-noite. Digite o e-mail do seu cadastro para entrar.
+              </p>
+              <div className="mt-7">
+                <EntrarComEmailBlack />
+              </div>
+              <p className="mt-10 text-[15px] font-medium text-white">Ainda não se cadastrou?</p>
+              <p className="mt-1 text-[14px] text-white/70">Cadastre-se agora e entre na hora.</p>
+              <div className="mt-5">
+                <FormCadastroBlack />
+              </div>
+            </>
+          ) : (
+            <>
+              <h1 className="mt-8 text-xl font-medium leading-snug text-white">As melhores ofertas do ano estão chegando</h1>
+              <p className="mt-3 text-[15px] leading-relaxed text-white/80">
+                Farm, NV, Reserva, Animale e Foxton com descontos que só acontecem uma vez por ano. Cadastre-se e receba
+                acesso antecipado: você compra antes de todo mundo, com a grade completa.
+              </p>
+              <div className="mt-7">
+                <FormCadastroBlack />
+              </div>
+            </>
+          )}
 
           <p className="mt-6 text-xs text-white/50">Black Friday Mozz: de 27 a 30/11, enquanto durarem os estoques.</p>
         </div>
