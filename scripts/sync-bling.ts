@@ -61,6 +61,7 @@ import {
   ehColecaoVer26,
   tamanhosDisponiveisDaCor
 } from "../lib/blingParse";
+import { corrigirNomeSku } from "../lib/blingParse";
 
 // Pasta publica do Next.js - tudo aqui dentro fica acessivel direto por URL (ex:
 // public/produtos/123--branco.jpg vira https://.../produtos/123--branco.jpg).
@@ -608,7 +609,7 @@ async function main() {
   }
 
   console.log("Buscando lista completa de produtos no Bling...");
-  const todos = await listarTodosProdutos();
+  const todos = (await listarTodosProdutos()).map(corrigirNomeSku);
   const ativos = todos.filter((p) => p.situacao === "A");
   console.log(`${ativos.length} produtos ativos (de ${todos.length} no total).`);
 

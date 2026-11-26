@@ -2,6 +2,19 @@
 // (scripts/sync-bling.ts) e o sync rapido de estoque (scripts/sync-estoque.ts) - ficam aqui
 // pra garantir que os dois calculam disponibilidade por tamanho exatamente da mesma forma.
 
+// 26/11/2026 (Brunno): variacoes cadastradas no Bling fora do padrao "Cor:X;Tamanho:Y" que
+// devem ser aceitas assim mesmo. Chave = id do SKU no Bling, valor = nome no padrao. Aplicado
+// na leitura da lista do Bling (sync completo e sync de estoque), antes de qualquer parsing.
+const NOMES_SKU_CORRIGIDOS: Record<string, string> = {
+  // Macacao De Algodao Vermelho Busto Transpassado - variacao 36 veio como "... Vermelho Flame - 36"
+  "16576737162": "Macacão De Algodão Vermelho Busto Transpassado Cor:Vermelho Flame;Tamanho:36"
+};
+
+export function corrigirNomeSku<T extends { id: number | string; nome: string }>(sku: T): T {
+  const corrigido = NOMES_SKU_CORRIGIDOS[String(sku.id)];
+  return corrigido ? { ...sku, nome: corrigido } : sku;
+}
+
 export function extrairTamanho(nome: string): string | null {
   const m = nome.match(/Tamanho:\s*([^;]+)/i);
   return m ? m[1].trim() : null;

@@ -17,6 +17,7 @@ carregarEnv({ path: ".env.local" });
 import { readFileSync, writeFileSync } from "fs";
 import { listarProdutosBling } from "../lib/bling";
 import { extrairTamanho, tamanhosDisponiveisDaCor } from "../lib/blingParse";
+import { corrigirNomeSku } from "../lib/blingParse";
 import type { Produto } from "../lib/produtos";
 import { notificarAvisosDeEstoque } from "./avisoEstoque";
 import { gravarEstoqueSync } from "../lib/estoqueGravacao";
@@ -193,7 +194,7 @@ async function main() {
 
   // hora em que o retrato do Bling comecou a ser tirado - ver gravarEstoqueSync abaixo
   const inicio = new Date().toISOString();
-  const todos = await listarTodosProdutos();
+  const todos = (await listarTodosProdutos()).map(corrigirNomeSku);
   const ativos = todos.filter((p) => p.situacao === "A");
   console.log(`${ativos.length} produtos ativos encontrados no Bling.`);
 
