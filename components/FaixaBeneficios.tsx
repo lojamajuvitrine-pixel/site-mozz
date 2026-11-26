@@ -25,7 +25,10 @@ export default function FaixaBeneficios() {
   if (pathname?.startsWith("/admin")) return null;
 
   const itens = [
-    { titulo: `Até ${MAX_PARCELAS_SEM_JUROS}x sem juros`, detalhe: `${PERCENTUAL_DESCONTO_PIX}% OFF no Pix · promoções: até ${MAX_PARCELAS_PROMOCAO}x`, destaque: true },
+    // 26/11/2026 (Brunno): durante a Black, pecas da Black so' Pix ou cartao a vista.
+    freteGratisSuspensoNaBlack()
+      ? { titulo: "Black: Pix ou cartão à vista", detalhe: `demais peças: até ${MAX_PARCELAS_SEM_JUROS}x sem juros`, destaque: true }
+      : { titulo: `Até ${MAX_PARCELAS_SEM_JUROS}x sem juros`, detalhe: `${PERCENTUAL_DESCONTO_PIX}% OFF no Pix · promoções: até ${MAX_PARCELAS_PROMOCAO}x`, destaque: true },
     { titulo: "Troca em 30 dias", detalhe: "1ª troca grátis", destaque: true },
     freteGratisAcimaDe
       ? { titulo: "Frete grátis", detalhe: `acima de ${formatarPreco(freteGratisAcimaDe)}`, destaque: false }
