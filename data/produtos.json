@@ -13833,11 +13833,14 @@
           "/produtos/16573796123--vermelho-flame--5.jpg"
         ],
         "tamanhos": [
+          "36",
           "40",
           "44",
           "48"
         ],
-        "tamanhosDisponiveis": []
+        "tamanhosDisponiveis": [
+          "36"
+        ]
       }
     ],
     "imagem": "/produtos/16573796123--vermelho-flame--0.jpg",
@@ -28456,7 +28459,7 @@
     "id": "16710501215",
     "nome": "Vestido Emily",
     "marca": "NV",
-    "preco": 0,
+    "preco": 789,
     "novo": true,
     "descricao": "",
     "cores": [
