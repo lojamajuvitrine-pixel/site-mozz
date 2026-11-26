@@ -183,6 +183,8 @@ export type Produto = {
   // lib/produtoConfig.ts). Usado pra mostrar o "de/por" riscado no card e na pagina do
   // produto. Ausente = "preco" ja e' o preco normal do Bling, sem oferta ativa.
   precoOriginal?: number;
+  // 26/11/2026: true quando o preco atual veio da Black Friday (so' Pix sem desconto ou cartao 1x)
+  blackFriday?: boolean;
   // Configs "so' do site" (painel /admin/produtos), sem nada equivalente no Bling.
   destaque?: boolean;
   outlet?: boolean;
@@ -263,7 +265,7 @@ function aplicarPrecoBlackFriday(produto: Produto, precos: Map<string, number>):
   if (!precoBlack) return produto;
   const precoCheio = produto.precoOriginal ?? produto.preco;
   if (precoBlack >= precoCheio) return produto;
-  return { ...produto, preco: precoBlack, precoOriginal: precoCheio };
+  return { ...produto, preco: precoBlack, precoOriginal: precoCheio, blackFriday: true };
 }
 
 // Aplica a escolha manual de "1a foto" por cor (painel /admin/produtos, campo capaPorCor,

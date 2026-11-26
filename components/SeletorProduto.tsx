@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Produto } from "@/lib/produtos";
 import { coresDoProduto, estoqueDaVariante, tamanhosDisponiveisDoColor } from "@/lib/produtos";
-import { calcularDescontoPix, emPromocao, entraNoDescontoPix, formatarParcelamento, formatarPreco, maxParcelas, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
+import { calcularDescontoPix, entraNoDescontoPix, formatarParcelamento, formatarPreco, parcelasMaximasProduto, PERCENTUAL_DESCONTO_PIX } from "@/lib/formato";
 import { useCart } from "@/lib/cart-context";
 import { corAproximada } from "@/lib/cor";
 import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
@@ -285,9 +285,9 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
           <p className="text-[17px] mt-2">{formatarPreco(produto.preco)}</p>
         )}
         {/* Peca em promocao (09/11/2026): ate 3x sem juros e sem o desconto do Pix */}
-        {formatarParcelamento(produto.preco, maxParcelas(emPromocao(produto))) && (
+        {formatarParcelamento(produto.preco, parcelasMaximasProduto(produto)) && (
           <p className="text-[13.5px] text-mozz-gray mt-1">
-            {formatarParcelamento(produto.preco, maxParcelas(emPromocao(produto)))}
+            {formatarParcelamento(produto.preco, parcelasMaximasProduto(produto))}
           </p>
         )}
         {entraNoDescontoPix(produto) && (

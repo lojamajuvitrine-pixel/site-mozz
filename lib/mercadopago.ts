@@ -26,7 +26,8 @@ import { validarCupom } from "@/lib/cupom";
 import { limiarFreteGratis } from "@/lib/campanha";
 import { validarCpf } from "@/lib/cpf";
 import { calcularFrete, cepDeReserva, ehEntregaExpressa, ehRetirada, FRETE_ENTREGA_EXPRESSA } from "@/lib/frete";
-import { calcularDescontoPix, calcularParcelamento, emPromocao, entraNoDescontoPix, maxParcelas, MAX_PARCELAS_SEM_JUROS } from "@/lib/formato";
+import { calcularDescontoPix, calcularParcelamento, emPromocao, entraNoDescontoPix, maxParcelas,
+  parcelasMaximasCarrinho, MAX_PARCELAS_SEM_JUROS } from "@/lib/formato";
 import { buscarConfiguracaoLoja } from "@/lib/configLoja";
 import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 import { buscarSaldoCredito, calcularCreditoAplicavel } from "@/lib/creditos";
@@ -394,7 +395,8 @@ async function prepararPedido(
     Math.round(itensPreferencia.reduce((soma, item) => soma + item.unit_price * item.quantity, 0) * 100) / 100;
 
   // Teto de parcelas do pedido: com pelo menos uma peca em promocao, ate 3x (09/11/2026).
-  const parcelasMaximas = maxParcelas(temPecaEmPromocao);
+  // 26/11/2026: com peca da Black Friday, so' 1x (ver parcelasMaximasCarrinho em lib/formato.ts).
+  const parcelasMaximas = parcelasMaximasCarrinho(itensValidados.map(({ produtoReal }) => produtoReal));
 
   return { itensPreferencia, pedidoMetadata, codigoCupomAplicado, valorTotal, parcelasMaximas };
 }

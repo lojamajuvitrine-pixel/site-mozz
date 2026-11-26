@@ -20,8 +20,22 @@ export function emPromocao(produto: { precoOriginal?: number | null; outlet?: bo
 // a regra antiga ("exceto promocoes"), troque para false.
 export const PIX_VALE_EM_PROMOCAO = true;
 
-export function entraNoDescontoPix(produto: { precoOriginal?: number | null; outlet?: boolean | null }): boolean {
+// 26/11/2026 (Brunno): peca com preco de Black Friday so' no Pix SEM desconto ou no cartao em 1x
+// (credito ou debito). Carrinho com pelo menos uma peca da Black vai em 1x no pedido inteiro.
+export const PARCELAS_BLACK_FRIDAY = 1;
+
+export function entraNoDescontoPix(produto: { precoOriginal?: number | null; outlet?: boolean | null; blackFriday?: boolean | null }): boolean {
+  if (produto.blackFriday) return false;
   return PIX_VALE_EM_PROMOCAO || !emPromocao(produto);
+}
+
+export function parcelasMaximasProduto(produto: { precoOriginal?: number | null; outlet?: boolean | null; blackFriday?: boolean | null }): number {
+  return produto.blackFriday ? PARCELAS_BLACK_FRIDAY : maxParcelas(emPromocao(produto));
+}
+
+export function parcelasMaximasCarrinho(produtos: Array<{ precoOriginal?: number | null; outlet?: boolean | null; blackFriday?: boolean | null }>): number {
+  if (produtos.length === 0) return MAX_PARCELAS_SEM_JUROS;
+  return Math.min(...produtos.map(parcelasMaximasProduto));
 }
 
 // 22/11/2026 (Brunno): cupom fora do site por enquanto - campo escondido no carrinho e fora da

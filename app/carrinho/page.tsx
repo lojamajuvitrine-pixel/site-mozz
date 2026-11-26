@@ -12,7 +12,8 @@ import {
   CUPOM_VISIVEL,
   maxParcelas,
   MAX_PARCELAS_PROMOCAO,
-  PERCENTUAL_DESCONTO_PIX
+  PERCENTUAL_DESCONTO_PIX,
+  parcelasMaximasCarrinho
 } from "@/lib/formato";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -322,7 +323,7 @@ export default function PaginaCarrinho() {
   const creditoMaximoAplicavel = Math.min(creditoDisponivel, tetoCredito);
   const creditoAplicado = Math.min(creditoMaximoAplicavel, Math.max(0, Number(valorCreditoUsar) || 0));
   const totalFinal = Math.max(0, totalComFrete - creditoAplicado);
-  const parcelamentoTotal = calcularParcelamento(totalFinal, maxParcelas(temPecaEmPromocao));
+  const parcelamentoTotal = calcularParcelamento(totalFinal, parcelasMaximasCarrinho(itens.map((i) => i.produto)));
 
   // Total pagando no Pix: 10% sobre as pecas (so' as pecas, nao o frete). Nao soma com cupom:
   // se o cupom aplicado der desconto maior, vale o cupom e o Pix fica igual ao cartao. Mesma
@@ -571,7 +572,7 @@ export default function PaginaCarrinho() {
     <section className="py-8 max-w-xl">
       <p className="font-serif text-3xl mb-2">Carrinho</p>
       <AvisoFreteGratis limiar={configLojaEfetiva?.freteGratisAcimaDe ?? null} subtotal={totalComDesconto} />
-      <CompraSegura compacto parcelas={maxParcelas(temPecaEmPromocao)} />
+      <CompraSegura compacto parcelas={parcelasMaximasCarrinho(itens.map((i) => i.produto))} />
       {avisosEstoque.length > 0 && (
         <div className="mt-4">
           <AvisosEstoque avisos={avisosEstoque} />
