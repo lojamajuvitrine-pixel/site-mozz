@@ -6849,13 +6849,11 @@
           "34",
           "38"
         ],
-        "tamanhosDisponiveis": [
-          "38"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16628430071",
@@ -22652,13 +22650,11 @@
         "tamanhos": [
           "Único"
         ],
-        "tamanhosDisponiveis": [
-          "Único"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16433838189",
@@ -37376,8 +37372,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M"
+          "P"
         ]
       }
     ],
@@ -43060,13 +43055,11 @@
         "tamanhos": [
           "M"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16712943119--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "_corCodigo": "58924"
   },
   {
