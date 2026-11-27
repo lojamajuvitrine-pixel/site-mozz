@@ -2125,8 +2125,6 @@
         ],
         "tamanhosDisponiveis": [
           "36",
-          "38",
-          "40",
           "42"
         ]
       }
@@ -6896,13 +6894,11 @@
           "PP",
           "M"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16628426090",
@@ -32018,13 +32014,11 @@
           "PP",
           "P"
         ],
-        "tamanhosDisponiveis": [
-          "PP"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorCorTamanho": {
       "58934": {
         "P": [
