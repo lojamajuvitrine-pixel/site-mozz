@@ -169,6 +169,8 @@ async function salvarPedidoEComprarEtiquetaSeNecessario(
     });
     if (error) throw error;
     inseriuAgora = data === true;
+    // 27/11/2026: grava de onde a cliente veio (lib/origemVisita.ts). Falha aqui nao trava o pedido.
+    if (inseriuAgora && pedido.o) await gravarOrigemPedido(numeroPedidoLoja, pedido.o);
   } catch (erro) {
     console.error(`Webhook Mercado Pago: erro ao salvar pedido ${numeroPedidoLoja} em 'pedidos':`, erro);
     return;
@@ -428,4 +430,18 @@ export async function POST(request: NextRequest) {
   }
 
   return NextResponse.json({ recebido: true });
+}
+
+async function gravarOrigemPedido(numeroPedido: string, origem: string): Promise<void> {
+  try {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const chave = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!url || !chave) return;
+    const { createClient } = await import("@supabase/supabase-js");
+    const supabase = createClient(url, chave, { auth: { persistSession: false } });
+    const { error } = await supabase.from("pedidos").update({ origem }).eq("numero_pedido", numeroPedido);
+    if (error) console.error(`Webhook Mercado Pago: erro ao gravar origem do pedido ${numeroPedido}:`, error.message);
+  } catch (erro) {
+    console.error(`Webhook Mercado Pago: erro ao gravar origem do pedido ${numeroPedido}:`, erro);
+  }
 }

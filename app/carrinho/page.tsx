@@ -1,5 +1,6 @@
 "use client";
 
+import { lerOrigemVisita } from "@/lib/origemVisita";
 import { limiteDoItem, useCart } from "@/lib/cart-context";
 import { nomeDaCorParaExibir } from "@/lib/coresFiltro";
 import { idVarianteProduto } from "@/lib/produtos";
@@ -502,7 +503,7 @@ export default function PaginaCarrinho() {
       telefone: telefone.trim(),
       // codigo do visitante no Google Analytics - o servidor usa pra avisar o Analytics da compra
       // quando o pagamento for aprovado, mesmo com a pagina fechada (ver lib/ga4.ts)
-      rastreio: lerIdsGoogleAnalytics(),
+      rastreio: { ...lerIdsGoogleAnalytics(), origem: lerOrigemVisita() },
       endereco: {
         cep: cepEndereco,
         rua: rua.trim(),

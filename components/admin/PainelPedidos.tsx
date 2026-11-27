@@ -15,6 +15,7 @@ export type PedidoPainel = {
   linkRastreio: string | null;
   criadoEm: string;
   emailRastreioEnviadoEm: string | null;
+  origem: string | null;
 };
 
 const ROTULO_STATUS: Record<string, string> = {
@@ -78,7 +79,7 @@ function LinhaPedido({ inicial }: { inicial: PedidoPainel }) {
           {pedido.nome} <span className="text-mozz-gray text-[13px]">· {pedido.numeroPedido}</span>
         </p>
         <p className="text-[13px] text-mozz-gray">
-          {dataCurta(pedido.criadoEm)} · {formatarPreco(pedido.valorTotal)}
+          {dataCurta(pedido.criadoEm)} · {formatarPreco(pedido.valorTotal)} · Origem: {pedido.origem ?? "não registrada"}
         </p>
       </div>
       <p className="text-[14px]">{pedido.pecas.join(" · ")}</p>

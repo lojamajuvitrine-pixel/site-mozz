@@ -72,7 +72,7 @@ export type ClienteCheckout = {
   endereco: EnderecoCheckout;
   // Codigo do visitante no Google Analytics (cookies, lido no navegador - ver lerIdsGoogleAnalytics
   // em lib/tracking.ts). Opcional: sem ele a compra so' nao fica ligada ao anuncio.
-  rastreio?: { gaClientId?: string; gaSessionId?: string };
+  rastreio?: { gaClientId?: string; gaSessionId?: string; origem?: string };
 };
 
 // Formato compacto guardado no metadata da preferencia (volta intacto no payload do
@@ -104,6 +104,8 @@ export type PedidoMetadata = {
   // Google Analytics (07/11/2026): c = codigo do visitante, s = sessao - o webhook manda a compra
   // pro Analytics com isso quando o pagamento e' aprovado (ver lib/ga4.ts).
   ga?: { c: string; s?: string };
+  // 27/11/2026: de onde a cliente chegou (lib/origemVisita.ts), gravado em pedidos.origem.
+  o?: string;
 };
 
 // Nunca confia no preco de frete que veio do carrinho (o mesmo raciocinio do preco dos
@@ -378,6 +380,7 @@ async function prepararPedido(
       : null,
     quantidadeItens: quantidadeTotalItens,
     ga: gaDoCliente(cliente),
+    o: origemDoCliente(cliente),
     endereco: {
       cep: end.cep.replace(/\D/g, ""),
       rua: end.rua.trim(),
@@ -408,6 +411,11 @@ function gaDoCliente(cliente: ClienteCheckout): PedidoMetadata["ga"] {
   if (typeof c !== "string" || !/^\d{1,20}\.\d{1,20}$/.test(c)) return undefined;
   const s = cliente.rastreio?.gaSessionId;
   return typeof s === "string" && /^\d{1,20}$/.test(s) ? { c, s } : { c };
+}
+
+function origemDoCliente(cliente: ClienteCheckout): string | undefined {
+  const o = cliente.rastreio?.origem;
+  return typeof o === "string" && /^[a-z0-9_\-./]{1,60}$/.test(o) ? o : undefined;
 }
 
 function metadataPedido(pedido: Awaited<ReturnType<typeof prepararPedido>>) {

@@ -23,7 +23,7 @@ export default async function PaginaAdminPedidos() {
     const supabase = clienteSupabase(url, chave, { auth: { persistSession: false } });
     const { data } = await supabase
       .from("pedidos")
-      .select("numero_pedido, nome, email, itens, valor_total, forma_envio, status_envio, codigo_rastreio, link_rastreio, criado_em, email_rastreio_enviado_em")
+      .select("numero_pedido, nome, email, itens, valor_total, forma_envio, status_envio, codigo_rastreio, link_rastreio, criado_em, email_rastreio_enviado_em, origem")
       .order("criado_em", { ascending: false })
       .limit(50);
     pedidos = (data ?? []).map((p) => ({
@@ -39,7 +39,8 @@ export default async function PaginaAdminPedidos() {
       codigoRastreio: p.codigo_rastreio ? String(p.codigo_rastreio) : null,
       linkRastreio: p.link_rastreio ? String(p.link_rastreio) : null,
       criadoEm: String(p.criado_em),
-      emailRastreioEnviadoEm: p.email_rastreio_enviado_em ? String(p.email_rastreio_enviado_em) : null
+      emailRastreioEnviadoEm: p.email_rastreio_enviado_em ? String(p.email_rastreio_enviado_em) : null,
+      origem: p.origem ? String(p.origem) : null
     }));
   }
 

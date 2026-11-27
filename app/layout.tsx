@@ -1,3 +1,4 @@
+import OrigemVisita from "@/components/OrigemVisita";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
@@ -131,6 +132,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
             <BotaoWhatsapp />
             <RastreioWhatsapp />
+            <OrigemVisita />
           </FavoritosProvider>
         </CartProvider>
       </body>
