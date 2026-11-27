@@ -1148,13 +1148,11 @@
         "tamanhos": [
           "36"
         ],
-        "tamanhosDisponiveis": [
-          "36"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16649365530",
@@ -1651,9 +1649,8 @@
           "44"
         ],
         "tamanhosDisponiveis": [
-          "44",
           "40",
-          "36"
+          "44"
         ]
       }
     ],
@@ -14252,9 +14249,7 @@
           "G",
           "GG"
         ],
-        "tamanhosDisponiveis": [
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       },
       {
         "cor": "Militar",
@@ -37178,9 +37173,8 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G"
+          "G",
+          "M"
         ]
       }
     ],
