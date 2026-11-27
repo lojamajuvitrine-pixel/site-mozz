@@ -166,3 +166,18 @@ export function lerIdsGoogleAnalytics(): { gaClientId?: string; gaSessionId?: st
   }
   return { gaClientId, gaSessionId };
 }
+
+// Clique em qualquer link de conversa no WhatsApp da loja (wa.me / api.whatsapp.com) - e' o
+// principal jeito que a cliente da regiao entra em contato. Vira conversao no Google Ads
+// (importada do GA4 como "contato_whatsapp") e evento "Contact" no Pixel da Meta. Disparado
+// pelo components/RastreioWhatsapp.tsx, que escuta cliques no site inteiro.
+export function rastrearContatoWhatsapp(origem: string) {
+  window.fbq?.("track", "Contact", { content_name: origem });
+  window.gtag?.("event", "contato_whatsapp", { pagina_origem: origem });
+}
+
+// Clique no convite do Grupo VIP (chat.whatsapp.com) - sinal de interesse, mas nao e'
+// pedido de atendimento, entao fica como evento separado (nao conversao).
+export function rastrearEntrarGrupoVip(origem: string) {
+  window.gtag?.("event", "entrar_grupo_vip", { pagina_origem: origem });
+}
