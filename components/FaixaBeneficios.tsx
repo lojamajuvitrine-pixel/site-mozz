@@ -27,7 +27,7 @@ export default function FaixaBeneficios() {
   const itens = [
     // 26/11/2026 (Brunno): durante a Black, pecas da Black so' Pix ou cartao a vista.
     freteGratisSuspensoNaBlack()
-      ? { titulo: "Black: Pix ou cartão à vista", detalhe: `demais peças: até ${MAX_PARCELAS_SEM_JUROS}x sem juros`, destaque: true }
+      ? { titulo: "Black: até 3x sem juros", detalhe: "frete R$ 20 para todo o Brasil", destaque: true }
       : { titulo: `Até ${MAX_PARCELAS_SEM_JUROS}x sem juros`, detalhe: `${PERCENTUAL_DESCONTO_PIX}% OFF no Pix · promoções: até ${MAX_PARCELAS_PROMOCAO}x`, destaque: true },
     { titulo: "Troca em 30 dias", detalhe: "1ª troca grátis", destaque: true },
     freteGratisAcimaDe

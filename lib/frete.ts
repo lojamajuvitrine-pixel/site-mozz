@@ -1,3 +1,4 @@
+import { freteGratisSuspensoNaBlack } from "./blackFridayDatas";
 // Calculo de frete por CEP via Melhor Envio (agregador de transportadoras - Correios,
 // Jadlog etc numa API so). Documentacao: docs.melhorenvio.com.br
 //
@@ -209,6 +210,11 @@ export async function calcularFrete(cepDestino: string, quantidadeItens: number)
   const escolhida = escolherOpcaoCorreios(opcoes);
   if (!escolhida) return [];
 
+  // 27/11/2026 (Brunno): durante a Black, frete fixo de R$ 20 para qualquer CEP e qualquer
+  // quantidade de pecas (a diferenca do PAC e' subsidiada pela loja).
+  if (freteGratisSuspensoNaBlack()) {
+    return [{ ...escolhida, preco: Math.min(escolhida.preco, FRETE_FIXO_REAIS) }];
+  }
   if (cepComFreteFixo(cepLimpo) && quantidadeItens <= MAX_PECAS_FRETE_FIXO) {
     return [{ ...escolhida, preco: Math.min(escolhida.preco, FRETE_FIXO_REAIS) }];
   }

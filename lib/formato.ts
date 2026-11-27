@@ -22,7 +22,7 @@ export const PIX_VALE_EM_PROMOCAO = true;
 
 // 26/11/2026 (Brunno): peca com preco de Black Friday so' no Pix SEM desconto ou no cartao em 1x
 // (credito ou debito). Carrinho com pelo menos uma peca da Black vai em 1x no pedido inteiro.
-export const PARCELAS_BLACK_FRIDAY = 1;
+export const PARCELAS_BLACK_FRIDAY = 3; // 27/11 12h: Brunno liberou 3x sem juros na Black
 
 export function entraNoDescontoPix(produto: { precoOriginal?: number | null; outlet?: boolean | null; blackFriday?: boolean | null }): boolean {
   if (produto.blackFriday) return false;
