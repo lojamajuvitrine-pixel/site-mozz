@@ -2361,13 +2361,11 @@
           "36",
           "38"
         ],
-        "tamanhosDisponiveis": [
-          "34"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": null,
-    "temEstoque": true
+    "temEstoque": false
   },
   {
     "id": "16638746893",
@@ -3997,8 +3995,7 @@
           "42"
         ],
         "tamanhosDisponiveis": [
-          "42",
-          "36"
+          "42"
         ]
       }
     ],
@@ -17308,9 +17305,8 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "3G",
-          "GG",
           "G",
+          "GG",
           "M",
           "P"
         ]
@@ -20417,7 +20413,6 @@
         ],
         "tamanhosDisponiveis": [
           "GG",
-          "G",
           "P"
         ]
       },
@@ -26914,8 +26909,7 @@
           "38"
         ],
         "tamanhosDisponiveis": [
-          "34",
-          "38"
+          "34"
         ]
       }
     ],
@@ -37152,14 +37146,11 @@
           "M",
           "G"
         ],
-        "tamanhosDisponiveis": [
-          "G",
-          "M"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16705789710--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorCorTamanho": {
       "57797": {
         "G": [
@@ -37635,7 +37626,6 @@
         "tamanhosDisponiveis": [
           "34",
           "36",
-          "38",
           "40",
           "42"
         ]
@@ -38273,8 +38263,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "PP",
-          "G"
+          "PP"
         ]
       }
     ],
@@ -38351,7 +38340,6 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "PP",
           "P",
           "M"
         ]
@@ -40905,13 +40893,11 @@
           "36",
           "40"
         ],
-        "tamanhosDisponiveis": [
-          "36"
-        ]
+        "tamanhosDisponiveis": []
       }
     ],
     "imagem": "/produtos/16594128957--unico--0.jpg",
-    "temEstoque": true,
+    "temEstoque": false,
     "gruposBlingPorTamanho": {
       "36": [
         "16594128957"
