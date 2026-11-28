@@ -94,6 +94,8 @@ function semAcento(texto: string): string {
 
 function limparNomeParaTitulo(nome: string): string {
   const limpo = nome
+    // "E" solto antes do codigo da colecao e codigo da Farm ("Bata Rosa Rio E VER26"), nao a palavra "e"
+    .replace(/\s+E(?=\s+(VER|INV)\s?\d{2}\b)/g, "")
     .replace(/:\s*\d+\b/g, "")
     .replace(/\s+-\s+[A-Za-z]{0,3}\d{3,6}\b/g, "")
     .replace(/\s+-\s+(PP|P|M|G|GG|XG|XGG|EG|U|UN|Único|Unico|\d{2})\s*$/i, "")
