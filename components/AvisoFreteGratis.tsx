@@ -1,6 +1,7 @@
 "use client";
 
 import { formatarPreco } from "@/lib/formato";
+import { freteGratisSuspensoNaBlack } from "@/lib/blackFridayDatas";
 
 function IconeCaminhao() {
   return (
@@ -34,7 +35,11 @@ export default function AvisoFreteGratis({
     return (
       <div className="flex items-center gap-2 text-[13px] px-3 py-2 border mt-3 bg-mozz-stone border-black/10 text-mozz-black">
         <IconeCaminhao />
-        <span>Enviamos para todo o Brasil. Calcule o frete pelo seu CEP.</span>
+        <span>
+          {freteGratisSuspensoNaBlack()
+            ? "Black: frete fixo de R$ 20 para todo o Brasil."
+            : "Enviamos para todo o Brasil. Calcule o frete pelo seu CEP."}
+        </span>
       </div>
     );
   }

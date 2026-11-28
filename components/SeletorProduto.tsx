@@ -15,6 +15,7 @@ import AvisoFreteGratis from "@/components/AvisoFreteGratis";
 import CompraSegura from "@/components/CompraSegura";
 import { rastrearVisualizarProduto } from "@/lib/tracking";
 import { limiarFreteGratis } from "@/lib/campanha";
+import { freteGratisSuspensoNaBlack } from "@/lib/blackFridayDatas";
 
 function IconeLupa() {
   return (
@@ -92,6 +93,13 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
   // meio-tempo o aviso simplesmente nao aparece ainda (a pagina nunca trava por causa disso,
   // mesmo padrao ja' usado no carrinho - ver app/carrinho/page.tsx).
   const [freteGratisAcimaDe, setFreteGratisAcimaDe] = useState<number | null>(null);
+  const limiarSelo = limiarFreteGratis(freteGratisAcimaDe, !!produto.outlet);
+  const textoSeloFrete = freteGratisSuspensoNaBlack()
+    ? "Frete R$ 20 para todo o Brasil"
+    : limiarSelo !== null
+      ? `Frete grátis acima de ${formatarPreco(limiarSelo)}`
+      : "Enviamos para todo o Brasil";
+  const parcelasSelo = parcelasMaximasProduto(produto);
   useEffect(() => {
     fetch("/api/config-loja")
       .then((r) => r.json())
@@ -358,6 +366,13 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
 
           {!tamanhoEstaDisponivel && <AvisoEstoque produtoId={produto.id} tamanho={tamanho} />}
 
+          {/* Ultimas unidades (28/11/2026, pedido do Brunno): so' com 1 ou 2 pecas no tamanho escolhido */}
+          {tamanhoEstaDisponivel && estoqueDoTamanho !== null && estoqueDoTamanho > 0 && estoqueDoTamanho <= 2 && (
+            <p className="text-[13.5px] font-medium text-[#A8873E] mb-2">
+              {estoqueDoTamanho === 1 ? "Última peça neste tamanho" : "Últimas 2 peças neste tamanho"}
+            </p>
+          )}
+
           <button
             onClick={adicionarAoCarrinho}
             disabled={!tamanhoEstaDisponivel}
@@ -376,6 +391,13 @@ export default function SeletorProduto({ produto }: { produto: Produto }) {
               </Link>
             </p>
           )}
+
+          {/* Selos abaixo do botao (28/11/2026, pedido do Brunno) - quem chega pelo Google entra direto na peca */}
+          <p className="flex flex-wrap gap-x-3 gap-y-1 text-[12.5px] text-mozz-gray mt-3">
+            <span>{textoSeloFrete}</span>
+            {parcelasSelo > 1 && <span>· {parcelasSelo}x sem juros</span>}
+            <span>· Primeira troca grátis</span>
+          </p>
 
           <CalculoFrete quantidadeItens={1} />
 
