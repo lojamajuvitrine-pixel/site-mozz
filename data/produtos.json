@@ -10164,7 +10164,6 @@
           "GG"
         ],
         "tamanhosDisponiveis": [
-          "M",
           "P"
         ]
       }
@@ -20265,7 +20264,6 @@
         "tamanhosDisponiveis": [
           "3G",
           "GG",
-          "G",
           "M",
           "P"
         ]
@@ -37502,8 +37500,7 @@
           "G"
         ],
         "tamanhosDisponiveis": [
-          "G",
-          "M"
+          "G"
         ]
       }
     ],
