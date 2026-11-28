@@ -7150,8 +7150,7 @@
           "M"
         ],
         "tamanhosDisponiveis": [
-          "M",
-          "P"
+          "M"
         ]
       }
     ],
@@ -15676,9 +15675,8 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "XG",
-          "GG",
-          "G"
+          "G",
+          "XG"
         ]
       }
     ],
@@ -31882,11 +31880,10 @@
           "XG"
         ],
         "tamanhosDisponiveis": [
-          "P",
-          "M",
-          "G",
+          "XG",
           "GG",
-          "XG"
+          "G",
+          "P"
         ]
       },
       {
